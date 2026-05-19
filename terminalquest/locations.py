@@ -13,8 +13,8 @@ from .ui import show_stats
 INN_COST = 20
 POTION_COST = 30
 GREATER_POTION_COST = 70
-ATTACK_UPGRADE_COST = 100
-DEFENSE_UPGRADE_COST = 80
+ATTACK_UPGRADE_GOLD_PER_POINT = 8
+DEFENSE_UPGRADE_GOLD_PER_POINT = 14
 SIGNPOST_THRESHOLD = 2
 
 _SERVICE_LABELS = {
@@ -28,11 +28,13 @@ def shop(state):
     io.clear()
     io.show_slow("🏪 Welcome to the Shop!\n")
     while True:
+        atk_cost = player.attack * ATTACK_UPGRADE_GOLD_PER_POINT
+        def_cost = player.defense * DEFENSE_UPGRADE_GOLD_PER_POINT
         io.show(f"Your gold: {player.gold}")
         io.show(f"\n1. Health Potion ({POTION_COST} gold)")
         io.show(f"2. Greater Potion ({GREATER_POTION_COST} gold)")
-        io.show(f"3. Upgrade Attack (+5 attack, {ATTACK_UPGRADE_COST} gold)")
-        io.show(f"4. Upgrade Defense (+3 defense, {DEFENSE_UPGRADE_COST} gold)")
+        io.show(f"3. Upgrade Attack (+5 attack, {atk_cost} gold)")
+        io.show(f"4. Upgrade Defense (+3 defense, {def_cost} gold)")
         io.show("5. Leave Shop")
         choice = io.ask("\nWhat would you like? ")
 
@@ -51,15 +53,15 @@ def shop(state):
             else:
                 io.show("\n❌ Not enough gold!")
         elif choice == "3":
-            if player.gold >= ATTACK_UPGRADE_COST:
-                player.gold -= ATTACK_UPGRADE_COST
+            if player.gold >= atk_cost:
+                player.gold -= atk_cost
                 player.attack += 5
                 io.show(f"\n✅ Attack increased to {player.attack}!")
             else:
                 io.show("\n❌ Not enough gold!")
         elif choice == "4":
-            if player.gold >= DEFENSE_UPGRADE_COST:
-                player.gold -= DEFENSE_UPGRADE_COST
+            if player.gold >= def_cost:
+                player.gold -= def_cost
                 player.defense += 3
                 io.show(f"\n✅ Defense increased to {player.defense}!")
             else:

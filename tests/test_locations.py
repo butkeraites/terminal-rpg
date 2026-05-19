@@ -36,7 +36,8 @@ def test_boss_travel_locked_below_unlock_level(content):
 def test_boss_victory_ends_the_game(content):
     player = _strong_player(content)
     player.level = 5  # the summit unlocks at level 5
-    io = ScriptedIO(["5", "1", "1"])  # travel to summit -> challenge -> attack
+    # travel to summit -> challenge -> attack -> two boon picks from the XP
+    io = ScriptedIO(["5", "1", "1", "1", "1"])
     locations.location_loop(make_state(player, content, io, StubRandom()))
     text = io.text()
     assert "VICTORY" in text
@@ -44,7 +45,8 @@ def test_boss_victory_ends_the_game(content):
 
 
 def test_run_encounter_returns_boss_victory(content):
-    state = make_state(_strong_player(content), content, ScriptedIO(["1"]), StubRandom())
+    state = make_state(_strong_player(content), content,
+                       ScriptedIO(["1", "1", "1"]), StubRandom())
     encounter = content.locations["summit"]["encounters"][0]
     assert locations.run_encounter(state, encounter) == "boss_victory"
 

@@ -1,5 +1,5 @@
 """Player stats, progression and serialization."""
-from terminalquest.player import Player
+from terminalquest.player import LEVEL_BASELINE, LEVEL_BOONS, Player
 
 
 def test_take_damage_subtracts_defense(warrior):
@@ -21,13 +21,12 @@ def test_heal_caps_at_max(warrior):
     assert warrior.hp == warrior.max_hp
 
 
-def test_level_up_applies_stat_gains(warrior):
-    attack, defense = warrior.attack, warrior.defense
-    warrior.level_up()
-    assert warrior.level == 2
-    assert warrior.attack == attack + 5
-    assert warrior.defense == defense + 2
-    assert warrior.hp == warrior.max_hp
+def test_apply_level_up_grants_baseline_plus_boon(warrior):
+    attack = warrior.attack
+    warrior.apply_level_up("might")
+    boon = LEVEL_BOONS["might"]["gains"]["attack"]
+    assert warrior.attack == attack + LEVEL_BASELINE["attack"] + boon
+    assert warrior.hp == warrior.max_hp  # a level-up restores HP
 
 
 def test_gain_xp_handles_multiple_level_ups(warrior):

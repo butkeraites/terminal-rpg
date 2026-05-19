@@ -18,6 +18,8 @@ class Enemy(Combatant):
         self.ai = enemy_def["ai"]
         # Optional special move used by the "caster" AI.
         self.ability = enemy_def.get("ability")
+        # Set to a pending action name while a big attack is telegraphed.
+        self.winding_up = None
 
 
 def make_enemy(enemy_id, content):

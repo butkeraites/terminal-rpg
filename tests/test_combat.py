@@ -97,6 +97,57 @@ def test_potion_picker_chooses_among_types(content):
     assert "Health Potion" in warrior.inventory
 
 
+def test_status_help_is_available_in_combat(content):
+    """'?' in the combat menu prints the status glossary without using a turn."""
+    warrior = _player(content)
+    io = ScriptedIO(["?", "1"])
+    result = combat._player_turn(warrior, make_enemy("goblin", content), content,
+                                 io, StubRandom())
+    assert result == "acted"
+    assert "vulnerable" in io.text()
+
+
+def test_weak_attacker_deals_reduced_damage(content):
+    """weak applies after defense — 0.6x a normal post-defense hit, no flooring."""
+    normal, _, _ = combat._perform_attack(
+        _player(content), make_enemy("goblin", content), 1.0, StubRandom())
+    weak_attacker = _player(content)
+    status.apply_status(weak_attacker, "weak", 2)
+    weak_dmg, _, _ = combat._perform_attack(
+        weak_attacker, make_enemy("goblin", content), 1.0, StubRandom())
+    assert weak_dmg == max(1, round(normal * 0.6))
+
+
+def test_aggressive_enemy_telegraphs_a_heavy_blow(content):
+    """An aggressive enemy winds up (no damage), then lands the blow next turn."""
+    player = _player(content)
+    goblin = make_enemy("goblin", content)  # the goblin's AI is aggressive
+    io = ScriptedIO()
+    rng = StubRandom(rnd=0.0)  # low roll -> the wind-up triggers
+    full_hp = player.hp
+
+    combat._enemy_turn(goblin, player, io, rng)
+    assert goblin.winding_up == "heavy"
+    assert player.hp == full_hp  # winding up deals no damage
+    assert "rears back" in io.text()
+
+    combat._enemy_turn(goblin, player, io, rng)
+    assert goblin.winding_up is None
+    assert player.hp < full_hp  # the telegraphed blow lands
+
+
+def test_level_up_offers_a_boon_choice(content):
+    """Winning a fight that grants a level prompts for a boon and applies it."""
+    warrior = _player(content)
+    warrior.xp = 95  # a goblin kill (30 XP) crosses the level-100 threshold
+    base_attack = warrior.attack
+    io = ScriptedIO(["1", "1", "1", "2"])  # 3 attacks to win, then boon 2 (Might)
+    state = make_state(warrior, content, io, StubRandom())
+    assert combat.run_combat(state, make_enemy("goblin", content)) == "victory"
+    assert warrior.level == 2
+    assert warrior.attack == base_attack + 9  # +2 baseline, +7 Might boon
+
+
 def test_victory_grants_xp_and_gold(content):
     warrior = _player(content)
     goblin = make_enemy("goblin", content)

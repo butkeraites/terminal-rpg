@@ -9,6 +9,7 @@ testable with ``ScriptedIO``. Damage/AI helpers are pure functions of
 their arguments and an injected ``random.Random`` for determinism.
 """
 from . import status
+from .player import LEVEL_BOONS
 
 ATTACK_VARIANCE = (-2, 4)
 CRIT_CHANCE = 0.15
@@ -17,18 +18,19 @@ STAMINA_PER_TURN = 2
 FLEE_CHANCE = 0.5
 POTION_HEAL = {"Health Potion": 40, "Greater Potion": 80}
 DEFEND_TURNS = 1
+HEAVY_BLOW_POWER = 2.0
 
 
 def _perform_attack(attacker, target, power, rng):
     """Resolve one attack. Returns ``(damage_dealt, dodged, crit)``."""
     if status.has_status(target, "evasive") and rng.random() < 0.5:
         return 0, True, False
-    base = attacker.attack * status.attack_multiplier(attacker)
-    raw = max(1, round(base * power) + rng.randint(*ATTACK_VARIANCE))
+    raw = max(1, round(attacker.attack * power) + rng.randint(*ATTACK_VARIANCE))
     crit = rng.random() < CRIT_CHANCE
     if crit:
         raw = round(raw * CRIT_MULTIPLIER)
-    return target.take_damage(raw), False, crit
+    dealt = target.take_damage(raw, status.attack_multiplier(attacker))
+    return dealt, False, crit
 
 
 def _resolve_start_of_turn(combatant, io):
@@ -97,10 +99,17 @@ def _player_turn(player, enemy, content, io, rng):
     while True:
         io.show("\n1. Attack")
         io.show("2. Use Ability")
-        io.show("3. Use Health Potion")
+        io.show("3. Use Potion")
         io.show("4. Defend")
         io.show("5. Flee")
+        io.show("(? — what do status effects do)")
         choice = io.ask("\nWhat do you do? ")
+
+        if choice == "?":
+            io.show("")
+            for line in status.glossary():
+                io.show(line)
+            continue
 
         if choice == "1":
             damage, dodged, crit = _perform_attack(player, enemy, 1.0, rng)
@@ -161,8 +170,49 @@ def _player_turn(player, enemy, content, io, rng):
         io.show("\n❌ Invalid choice!")
 
 
+def _enemy_cast(enemy, player, io, rng):
+    """Resolve the enemy's special ability (used by the 'caster' AI)."""
+    spell = enemy.ability
+    damage, dodged, crit = _perform_attack(enemy, player, spell["power"], rng)
+    if dodged:
+        io.show(f"\n💨 You dodge {enemy.name}'s {spell['name']}!")
+        return
+    if crit:
+        io.show(f"\n💥 CRITICAL! {enemy.name}'s {spell['name']} blasts you "
+                f"for {damage} damage!")
+    else:
+        io.show(f"\n🌑 {enemy.name} uses {spell['name']} for {damage} damage!")
+    if "status" in spell:
+        status.apply_status(player, spell["status"], spell["status_turns"])
+        io.show(f"   You are afflicted with {spell['status']}!")
+
+
+def _enemy_strike(enemy, player, power, io, rng):
+    """Resolve a basic or heavy enemy attack."""
+    damage, dodged, crit = _perform_attack(enemy, player, power, rng)
+    if dodged:
+        io.show(f"\n💨 You dodge {enemy.name}'s attack!")
+    elif crit:
+        io.show(f"\n💥 {enemy.name} lands a CRITICAL blow for {damage} damage!")
+    elif power > 1.0:
+        io.show(f"\n💢 {enemy.name} lands a crushing blow for {damage} damage!")
+    else:
+        io.show(f"\n💢 {enemy.name} deals {damage} damage to you!")
+
+
 def _enemy_turn(enemy, player, io, rng):
-    """Run the enemy's action according to its AI. Returns 'acted' or 'fled'."""
+    """Run the enemy's action according to its AI. Returns 'acted' or 'fled'.
+
+    An aggressive enemy telegraphs its heavy blow — it spends a turn winding
+    up, then delivers the blow next turn, giving the player a chance to Defend.
+    Casters strike without warning, so their signature spell stays a threat.
+    """
+    # A telegraphed heavy blow announced last turn lands now.
+    if enemy.winding_up == "heavy":
+        enemy.winding_up = None
+        _enemy_strike(enemy, player, HEAVY_BLOW_POWER, io, rng)
+        return "acted"
+
     low_hp = enemy.hp <= enemy.max_hp * 0.35
 
     if enemy.ai == "fleer" and enemy.hp <= enemy.max_hp * 0.30 and rng.random() < 0.5:
@@ -175,41 +225,39 @@ def _enemy_turn(enemy, player, io, rng):
         return "acted"
 
     if enemy.ai == "caster" and enemy.ability and rng.random() < 0.5:
-        spell = enemy.ability
-        damage, dodged, crit = _perform_attack(enemy, player, spell["power"], rng)
-        if dodged:
-            io.show(f"\n💨 You dodge {enemy.name}'s {spell['name']}!")
-        else:
-            if crit:
-                io.show(f"\n💥 CRITICAL! {enemy.name}'s {spell['name']} blasts you "
-                        f"for {damage} damage!")
-            else:
-                io.show(f"\n🌑 {enemy.name} uses {spell['name']} for {damage} damage!")
-            if "status" in spell:
-                status.apply_status(player, spell["status"], spell["status_turns"])
-                io.show(f"   You are afflicted with {spell['status']}!")
+        _enemy_cast(enemy, player, io, rng)
         return "acted"
 
-    power = 1.5 if (enemy.ai == "aggressive" and rng.random() < 0.3) else 1.0
-    damage, dodged, crit = _perform_attack(enemy, player, power, rng)
-    if dodged:
-        io.show(f"\n💨 You dodge {enemy.name}'s attack!")
-    elif crit:
-        io.show(f"\n💥 {enemy.name} lands a CRITICAL blow for {damage} damage!")
-    elif power > 1.0:
-        io.show(f"\n💢 {enemy.name} lands a heavy blow for {damage} damage!")
-    else:
-        io.show(f"\n💢 {enemy.name} deals {damage} damage to you!")
+    if enemy.ai == "aggressive" and rng.random() < 0.3:
+        enemy.winding_up = "heavy"
+        io.show(f"\n🌀 {enemy.name} rears back for a crushing blow!")
+        return "acted"
+
+    _enemy_strike(enemy, player, 1.0, io, rng)
     return "acted"
 
 
+def _choose_boon(player, io):
+    """Prompt the player to pick a level-up boon. Returns the boon id."""
+    boons = list(LEVEL_BOONS.items())
+    while True:
+        io.show("\nChoose a boon:")
+        for index, (_boon_id, boon) in enumerate(boons, start=1):
+            io.show(f"{index}. {boon['name']} — {boon['blurb']}")
+        choice = io.ask("\nYour choice? ")
+        if choice.isdigit() and 1 <= int(choice) <= len(boons):
+            return boons[int(choice) - 1][0]
+        io.show("\n❌ Invalid choice!")
+
+
 def _grant_rewards(player, enemy, io):
-    """Award XP and gold for a defeated enemy, reporting any level-ups."""
+    """Award XP and gold for a defeated enemy, with a boon per level gained."""
     io.show_slow(f"\n🎉 You defeated {enemy.name}!")
     io.show(f"Gained {enemy.xp_reward} XP and {enemy.gold_reward} gold!")
     player.gold += enemy.gold_reward
-    if player.gain_xp(enemy.xp_reward):
-        io.show(f"\n🎉 LEVEL UP! You are now level {player.level}!")
+    for _ in range(player.gain_xp(enemy.xp_reward)):
+        io.show_slow(f"\n🎉 LEVEL UP! You are now level {player.level}!")
+        player.apply_level_up(_choose_boon(player, io))
         io.show(f"HP: {player.max_hp} | Attack: {player.attack} | "
                 f"Defense: {player.defense} | Stamina: {player.max_stamina}")
 
@@ -226,8 +274,10 @@ def run_combat(state, enemy):
     outcome = None
     while outcome is None:
         io.show(f"\n{player.name}: {player.hp}/{player.max_hp} HP | "
-                f"⚡{player.stamina}/{player.max_stamina}")
-        io.show(f"{enemy.name}: {enemy.hp}/{enemy.max_hp} HP")
+                f"⚡{player.stamina}/{player.max_stamina} | "
+                f"⚔️{player.attack} 🛡️{player.defense}")
+        io.show(f"{enemy.name}: {enemy.hp}/{enemy.max_hp} HP | "
+                f"⚔️{enemy.attack} 🛡️{enemy.defense}")
         enemy_effects = status.describe(enemy)
         if enemy_effects:
             io.show(f"{enemy.name} status: {enemy_effects}")

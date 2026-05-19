@@ -12,6 +12,15 @@ _MODIFIERS = {"stun", "weak", "vulnerable", "braced", "evasive"}
 
 ALL_EFFECTS = set(DOT_DAMAGE) | _MODIFIERS
 
+# One-line player-facing explanations for the non-damage effects.
+_MODIFIER_HELP = {
+    "stun": "loses its next turn",
+    "weak": "deals 40% less attack damage",
+    "vulnerable": "takes 30% more damage",
+    "braced": "takes 50% less damage from the next hit",
+    "evasive": "has a 50% chance to dodge attacks",
+}
+
 _EMOJI = {
     "poison": "🟢",
     "burn": "🔥",
@@ -75,3 +84,12 @@ def describe(entity):
         return ""
     parts = [f"{_EMOJI.get(n, '')}{n}({t})" for n, t in entity.statuses.items()]
     return " ".join(parts)
+
+
+def glossary():
+    """Return the status-effect glossary as a list of display lines."""
+    lines = [f"{_EMOJI[name]} {name} — takes {dmg} damage each turn"
+             for name, dmg in DOT_DAMAGE.items()]
+    lines += [f"{_EMOJI[name]} {name} — {desc}"
+              for name, desc in _MODIFIER_HELP.items()]
+    return lines

@@ -52,3 +52,11 @@ def test_unknown_status_is_rejected():
     dummy = make_dummy()
     with pytest.raises(ValueError):
         status.apply_status(dummy, "nonsense", 1)
+
+
+def test_glossary_covers_every_effect():
+    lines = status.glossary()
+    assert len(lines) == len(status.ALL_EFFECTS)
+    text = "\n".join(lines)
+    for name in status.ALL_EFFECTS:
+        assert name in text

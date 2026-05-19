@@ -5,11 +5,15 @@ STARTING_GOLD = 50
 STARTING_XP_TO_LEVEL = 100
 LEVEL_XP_GROWTH = 1.5
 
-# Stat gains applied on each level-up.
-LEVEL_HP_GAIN = 20
-LEVEL_ATTACK_GAIN = 5
-LEVEL_DEFENSE_GAIN = 2
-LEVEL_STAMINA_GAIN = 2
+# Every level-up grants this baseline, plus one player-chosen boon.
+LEVEL_BASELINE = {"max_hp": 10, "attack": 2, "defense": 1, "max_stamina": 1}
+
+LEVEL_BOONS = {
+    "vigor": {"name": "Vigor", "blurb": "+25 Max HP", "gains": {"max_hp": 25}},
+    "might": {"name": "Might", "blurb": "+7 Attack", "gains": {"attack": 7}},
+    "bulwark": {"name": "Bulwark", "blurb": "+4 Defense, +3 Stamina",
+                "gains": {"defense": 4, "max_stamina": 3}},
+}
 
 # Inventory item names treated as usable healing potions.
 POTION_ITEMS = ("Health Potion", "Greater Potion")
@@ -43,22 +47,32 @@ class Player(Combatant):
         self.stamina = min(self.max_stamina, self.stamina + amount)
 
     def gain_xp(self, amount):
-        """Add XP, leveling up repeatedly while enough XP has accrued."""
-        self.xp += amount
-        leveled = False
-        while self.xp >= self.xp_to_level:
-            self.level_up()
-            leveled = True
-        return leveled
+        """Add XP and advance levels. Returns the number of levels gained.
 
-    def level_up(self):
-        self.level += 1
-        self.xp -= self.xp_to_level
-        self.xp_to_level = int(self.xp_to_level * LEVEL_XP_GROWTH)
-        self.max_hp += LEVEL_HP_GAIN
-        self.attack += LEVEL_ATTACK_GAIN
-        self.defense += LEVEL_DEFENSE_GAIN
-        self.max_stamina += LEVEL_STAMINA_GAIN
+        Stat gains are applied separately via ``apply_level_up`` so the
+        player chooses a boon for each level earned.
+        """
+        self.xp += amount
+        levels = 0
+        while self.xp >= self.xp_to_level:
+            self.xp -= self.xp_to_level
+            self.level += 1
+            self.xp_to_level = int(self.xp_to_level * LEVEL_XP_GROWTH)
+            levels += 1
+        return levels
+
+    def apply_level_up(self, boon_id):
+        """Apply one level's baseline gains plus the chosen boon.
+
+        Restores HP and stamina to full, as a level-up always has.
+        """
+        gains = dict(LEVEL_BASELINE)
+        for stat, amount in LEVEL_BOONS[boon_id]["gains"].items():
+            gains[stat] += amount
+        self.max_hp += gains["max_hp"]
+        self.attack += gains["attack"]
+        self.defense += gains["defense"]
+        self.max_stamina += gains["max_stamina"]
         self.hp = self.max_hp
         self.stamina = self.max_stamina
 
