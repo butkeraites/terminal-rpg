@@ -9,8 +9,9 @@ from pathlib import Path
 
 DATA_DIR = Path(__file__).parent / "data"
 
-_VALID_AI = {"aggressive", "defensive", "caster", "fleer"}
-_VALID_ENCOUNTER_TYPES = {"combat"}
+_VALID_AI = {"aggressive", "defensive", "caster", "fleer", "relentless", "enrager"}
+_VALID_ENCOUNTER_TYPES = {"combat", "discovery"}
+_VALID_ACTS = {1, 2, 3}
 
 
 class ContentError(ValueError):
@@ -52,10 +53,14 @@ class Content:
         self._validate_locations()
 
     def _validate_locations(self):
-        """Check the location graph: connections, encounters, reachability."""
+        """Check the location graph: connections, encounters, acts, reachability."""
         if "crossroads" not in self.locations:
             raise ValueError("no 'crossroads' location — the graph needs a hub")
         for loc_id, loc in self.locations.items():
+            if loc.get("kind") == "zone" and loc.get("act") not in _VALID_ACTS:
+                raise ValueError(
+                    f"zone '{loc_id}' has invalid act {loc.get('act')!r}"
+                )
             for dest in loc.get("connections", []):
                 if dest not in self.locations:
                     raise ValueError(
@@ -74,6 +79,16 @@ class Content:
                                 f"location '{loc_id}' references unknown enemy "
                                 f"'{enemy_id}'"
                             )
+                elif kind == "discovery":
+                    if not encounter.get("id"):
+                        raise ValueError(
+                            f"location '{loc_id}' has a discovery with no id"
+                        )
+                    if not encounter.get("lines"):
+                        raise ValueError(
+                            f"location '{loc_id}' discovery '{encounter['id']}' "
+                            f"has no lines"
+                        )
         self._check_reachable()
 
     def _check_reachable(self):

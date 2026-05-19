@@ -96,21 +96,49 @@ def _run_service(state, service):
         _rest_at_inn(state)
 
 
+def _entry_act(state, entry):
+    """The act of the zone where a Chronicle entry's character fell, or None."""
+    loc = state.content.locations.get(entry.get("location", ""), {})
+    return loc.get("act")
+
+
 def _hollowed_candidates(state, fallen):
-    """Fallen characters eligible to rise as the Hollowed in the current zone."""
+    """Fallen characters eligible to rise as the Hollowed in the current act.
+
+    Graves and Hollowed match by act, not exact zone, so a larger world's
+    deaths still pool densely enough that the Chronicle keeps being felt.
+    """
+    act = state.content.locations[state.current_location].get("act")
+    if act is None:
+        return []
     return [e for e in fallen
-            if e.get("location") == state.current_location
+            if _entry_act(state, e) == act
             and e["player"]["level"] <= state.player.level + 1]
+
+
+def _run_discovery(state, encounter):
+    """Reveal a one-time lore fragment, then mark it found in ``state.flags``."""
+    io = state.io
+    io.clear()
+    for line in encounter["lines"]:
+        io.show_slow(line)
+    io.pause(2)
+    state.flags.setdefault("discoveries_seen", []).append(encounter["id"])
 
 
 def run_encounter(state, encounter, fallen, wardens):
     """Run one encounter at the current location.
 
-    Returns the combat outcome ('victory'/'defeat'/'fled'/'enemy_fled'),
-    or 'boss_victory' when a boss encounter is won. A random-pick combat
-    may instead raise a Hollowed — a past character who fell here — and a
-    boss encounter becomes the last victor, kept by the Pall as the Warden.
+    A 'discovery' encounter reveals a lore fragment and returns None. A
+    'combat' encounter returns its outcome ('victory'/'defeat'/'fled'/
+    'enemy_fled'), or 'boss_victory' when a boss encounter is won. A
+    random-pick combat may instead raise a Hollowed — a past character who
+    fell nearby — and a boss encounter becomes the last victor, kept by the
+    Pall as the Warden.
     """
+    if encounter["type"] == "discovery":
+        _run_discovery(state, encounter)
+        return None
     io, rng, content = state.io, state.rng, state.content
     if encounter["type"] != "combat":
         return None
@@ -214,7 +242,13 @@ def _save_menu(state):
 
 
 def _encounter_label(encounter, content):
-    """A menu label for one encounter."""
+    """A menu label for one encounter.
+
+    An encounter may carry an explicit ``label`` (mini-bosses, discoveries);
+    otherwise a boss is named and a plain combat pool is 'Search for a fight'.
+    """
+    if "label" in encounter:
+        return encounter["label"]
     if encounter.get("boss"):
         name = content.enemies[encounter["enemies"][0]]["name"]
         return f"⚔️  Challenge the {name}"
@@ -235,20 +269,23 @@ def _travel_label(dest, player):
 
 
 def _grave_here(state, loc, fallen):
-    """True if this zone holds an unsearched grave from a past character."""
-    if loc.get("kind") != "zone":
+    """True if this zone holds an unsearched grave from this act's fallen."""
+    if loc.get("kind") != "zone" or loc.get("boss"):
         return False
     if state.current_location in state.flags.get("graves_searched", []):
         return False
-    return any(e.get("location") == state.current_location for e in fallen)
+    act = loc.get("act")
+    return act is not None and any(_entry_act(state, e) == act for e in fallen)
 
 
 def _search_grave(state, fallen):
-    """Search the current zone for the remains of one who fell here."""
+    """Search the current zone for the remains of one who fell in this act."""
     player, io = state.player, state.io
-    here = [e for e in fallen if e.get("location") == state.current_location]
-    p = state.rng.choice(here)["player"]
-    place = state.content.locations[state.current_location]["name"]
+    act = state.content.locations[state.current_location].get("act")
+    entry = state.rng.choice([e for e in fallen if _entry_act(state, e) == act])
+    p = entry["player"]
+    fell_at = state.content.locations.get(entry.get("location", ""), {})
+    place = fell_at.get("name", "the grey")
     io.show_slow(f"\n🪦 Half-buried in the grey earth: {p['name']} the {p['class_name']}.")
     io.show(f"{place} took them at level {p['level']}. It will take you too, in time.")
     coins = min(p.get("gold", 0), 40)
@@ -268,6 +305,9 @@ def _build_options(state, loc, fallen):
     for service in loc.get("services", []):
         options.append((_SERVICE_LABELS[service], ("service", service)))
     for encounter in loc.get("encounters", []):
+        if (encounter["type"] == "discovery"
+                and encounter["id"] in state.flags.get("discoveries_seen", [])):
+            continue
         options.append((_encounter_label(encounter, content), ("encounter", encounter)))
     if _grave_here(state, loc, fallen):
         options.append(("🪦 Search a grave", ("grave", None)))

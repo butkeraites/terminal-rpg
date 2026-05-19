@@ -19,6 +19,9 @@ FLEE_CHANCE = 0.5
 POTION_HEAL = {"Health Potion": 40, "Greater Potion": 80}
 DEFEND_TURNS = 1
 HEAVY_BLOW_POWER = 2.0
+ENRAGE_THRESHOLD = 0.5
+ENRAGE_ATTACK_GAIN = 3
+RELENTLESS_PERIOD = 3
 
 
 def _perform_attack(attacker, target, power, rng):
@@ -206,11 +209,33 @@ def _enemy_turn(enemy, player, io, rng):
     An aggressive enemy telegraphs its heavy blow — it spends a turn winding
     up, then delivers the blow next turn, giving the player a chance to Defend.
     Casters strike without warning, so their signature spell stays a threat.
+    A relentless enemy surges every third turn, telegraphing and striking in
+    the same beat — too fast to react to, so the player must count. An enrager
+    grows stronger every turn once wounded past half HP — a race to finish it.
     """
     # A telegraphed heavy blow announced last turn lands now.
     if enemy.winding_up == "heavy":
         enemy.winding_up = None
         _enemy_strike(enemy, player, HEAVY_BLOW_POWER, io, rng)
+        return "acted"
+
+    if enemy.ai == "relentless":
+        enemy.turns_taken += 1
+        if enemy.turns_taken % RELENTLESS_PERIOD == 0:
+            io.show(f"\n🌀 {enemy.name} surges forward — no wind-up, no mercy!")
+            _enemy_strike(enemy, player, HEAVY_BLOW_POWER, io, rng)
+        else:
+            _enemy_strike(enemy, player, 1.0, io, rng)
+        return "acted"
+
+    if enemy.ai == "enrager":
+        if enemy.hp <= enemy.max_hp * ENRAGE_THRESHOLD:
+            if not enemy.enraged:
+                enemy.enraged = True
+                io.show(f"\n😡 {enemy.name} is wounded into a frenzy — "
+                        f"its blows grow heavier with every turn!")
+            enemy.attack += ENRAGE_ATTACK_GAIN
+        _enemy_strike(enemy, player, 1.0, io, rng)
         return "acted"
 
     low_hp = enemy.hp <= enemy.max_hp * 0.35

@@ -22,6 +22,10 @@ class Enemy(Combatant):
         self.flavor = enemy_def.get("flavor", "")
         # Set to a pending action name while a big attack is telegraphed.
         self.winding_up = None
+        # Turn counter the "relentless" AI uses to time its surge.
+        self.turns_taken = 0
+        # Latched once an "enrager" enemy drops past its HP threshold.
+        self.enraged = False
 
 
 def make_enemy(enemy_id, content):

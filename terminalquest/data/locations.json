@@ -21,6 +21,7 @@
   "forest": {
     "name": "The Witherwood",
     "kind": "zone",
+    "act": 1,
     "recommended_level": 1,
     "intro": [
       "🌲 The Witherwood, where the trees have stopped pretending to be alive.",
@@ -34,6 +35,7 @@
   "cave": {
     "name": "The Gullet",
     "kind": "zone",
+    "act": 2,
     "recommended_level": 3,
     "intro": [
       "🕳️  The Gullet — a wound in the rock that breathes cold, wet air.",
@@ -47,6 +49,7 @@
   "mountain": {
     "name": "The Ashen Climb",
     "kind": "zone",
+    "act": 3,
     "recommended_level": 5,
     "intro": [
       "⛰️  The Ashen Climb. Grey snow falls here, and it is not snow.",
@@ -60,6 +63,7 @@
   "summit": {
     "name": "The Shrouded Summit",
     "kind": "zone",
+    "act": 3,
     "boss": true,
     "unlock_level": 5,
     "intro": [
