@@ -1,4 +1,4 @@
-# Terminal Quest — Development Roadmap: The Thousand-Hour Universe
+# Mournhold — Development Roadmap: The Thousand-Hour Universe
 
 *A build roadmap for the development team. Supersedes the prior strategic roadmap.*
 *Prepared by the development board: Creative Director, Game Design Director,*
@@ -36,7 +36,7 @@ universe with a grimdark story spine*. We do **not** throw the story away. We ad
 - **The body** — the procedural, combinatorial roguelike that hangs off the spine and
   supplies ~85% of the playtime.
 
-Terminal Quest is already closer to this than it looks: it has **permadeath**, the
+Mournhold is already closer to this than it looks: it has **permadeath**, the
 **Chronicle** (cross-run meta-progression), and a **data-driven** content pipeline. We
 are completing a roguelike, not starting one.
 

@@ -266,7 +266,7 @@ def _victory_screen(state):
     io.show("as you broke the one before.")
     io.show("=" * 50)
     _run_summary(state)
-    io.show("\nThank you for playing Terminal Quest.")
+    io.show("\nThank you for playing Mournhold.")
 
 
 def _save_menu(state):

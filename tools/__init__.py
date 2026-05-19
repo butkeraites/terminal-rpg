@@ -1,1 +1,1 @@
-"""Maintained development tooling for Terminal Quest — not shipped with the game."""
+"""Maintained development tooling for Mournhold — not shipped with the game."""

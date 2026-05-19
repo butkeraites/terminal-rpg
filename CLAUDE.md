@@ -4,7 +4,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Overview
 
-Terminal Quest is a text-based RPG written in pure Python 3 (>= 3.9). It is deliberately
+Mournhold (formerly Terminal Quest) is a grimdark terminal RPG written in pure Python 3
+(>= 3.9). It is deliberately
 hermetic: **no runtime dependencies** beyond the standard library, and no build step. The
 game lives in the `terminalquest/` package; `rpg.py` at the repo root is a thin
 compatibility shim kept so the historically documented `python3 rpg.py` still works.
@@ -17,7 +18,7 @@ python3 -m terminalquest  # equivalent — runs terminalquest/__main__.py
 ```
 
 Both call `terminalquest.game.main()`. Installing the package (`pip install -e .`) also
-exposes a `terminal-quest` console script. The game is interactive and reads from stdin
+exposes a `mournhold` console script. The game is interactive and reads from stdin
 via `input()`.
 
 ## Testing & linting

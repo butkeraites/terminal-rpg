@@ -1,4 +1,4 @@
-"""Headless balance simulator for Terminal Quest (roadmap ticket A1).
+"""Headless balance simulator for Mournhold (roadmap ticket A1).
 
 A maintained development tool — not part of the shipped game. It plays the
 full Crossroads-to-Summit chain headlessly under a combat policy, many times
@@ -283,7 +283,7 @@ def check_balance(content):
 
 def main(argv=None):
     """CLI entry point: run both rest profiles and print their reports."""
-    parser = argparse.ArgumentParser(description="Terminal Quest balance simulator.")
+    parser = argparse.ArgumentParser(description="Mournhold balance simulator.")
     parser.add_argument("--runs", type=int, default=400, help="runs per class")
     parser.add_argument("--seed", default="terminalquest", help="master seed")
     parser.add_argument("--builds", type=int, default=20,

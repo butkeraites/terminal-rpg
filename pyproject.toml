@@ -3,9 +3,9 @@ requires = ["setuptools>=68"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "terminal-quest"
+name = "mournhold"
 version = "0.1.0"
-description = "A hermetic, offline terminal RPG."
+description = "A hermetic, offline grimdark terminal RPG."
 readme = "README.md"
 requires-python = ">=3.9"
 license = { text = "MIT" }
@@ -16,7 +16,7 @@ dependencies = []
 dev = ["pytest>=7", "ruff>=0.1"]
 
 [project.scripts]
-terminal-quest = "terminalquest.game:main"
+mournhold = "terminalquest.game:main"
 
 [tool.setuptools]
 packages = ["terminalquest"]

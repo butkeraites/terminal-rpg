@@ -138,7 +138,7 @@ def run(io=None, content=None, rng=None, chronicle_dir=None, seed=None):
 
     io.clear()
     io.show_slow("=" * 50)
-    io.show_slow("⚔️  TERMINAL QUEST ⚔️", delay=0.05)
+    io.show_slow("⚔️  MOURNHOLD ⚔️", delay=0.05)
     io.show_slow("=" * 50)
     io.show(f"v{__version__}\n")
 
