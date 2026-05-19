@@ -9,7 +9,7 @@ from . import chronicle, saves
 from .combat import run_combat
 from .enemy import make_enemy, make_hollowed, make_warden
 from .ui import hud, show_stats
-from .weapon import roll_weapon
+from .weapon import WEAPON_SLOTS, roll_weapon
 
 INN_COST = 20
 POTION_COST = 30
@@ -323,6 +323,24 @@ def _search_grave(state, fallen):
     state.flags.setdefault("graves_searched", []).append(state.current_location)
 
 
+def _inspect_weapon(state):
+    """Show the equipped weapon — its bonuses, and each component's flavor."""
+    io, player = state.io, state.player
+    weapon = player.equipment.get("weapon")
+    io.clear()
+    if weapon is None:
+        io.show("\nYou carry no weapon. Your hands will have to do.")
+        io.pause(1)
+        return
+    io.show(f"\n🗡️  {weapon.name}")
+    io.show(f"   {weapon.summary()}\n")
+    for slot in WEAPON_SLOTS:
+        component = state.content.components[slot][weapon.components[slot]]
+        io.show(f"  {slot.title()}: {component['name']}")
+        io.show(f"    {component['flavor']}")
+    io.pause(2)
+
+
 def _build_options(state, loc, fallen):
     """Build the ordered list of ``(label, (kind, arg))`` menu entries."""
     player, content = state.player, state.content
@@ -339,6 +357,7 @@ def _build_options(state, loc, fallen):
     for dest_id in loc.get("connections", []):
         dest = content.locations[dest_id]
         options.append((_travel_label(dest, player), ("travel", dest_id)))
+    options.append(("🗡️  Inspect Weapon", ("weapon", None)))
     options.append(("View Stats", ("stats", None)))
     options.append(("Save Game", ("save", None)))
     options.append(("Quit Game", ("quit", None)))
@@ -386,6 +405,8 @@ def location_loop(state):
         elif kind == "travel":
             if try_travel(state, arg):
                 arrived = True
+        elif kind == "weapon":
+            _inspect_weapon(state)
         elif kind == "stats":
             show_stats(io, player)
         elif kind == "save":

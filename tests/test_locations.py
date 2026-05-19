@@ -25,14 +25,14 @@ def _strong_player(content):
 
 
 def test_location_loop_shows_recommended_levels(content):
-    io = ScriptedIO(["5"])  # quit from the Crossroads
+    io = ScriptedIO(["6"])  # quit from the Crossroads
     locations.location_loop(make_state(_player(content), content, io, StubRandom()))
     assert "recommended Lv" in io.text()
 
 
 def test_boss_travel_locked_below_unlock_level(content):
     # at the Ashen Climb, a low-level hero tries the sealed Summit, then quits
-    io = ScriptedIO(["4", "7"])
+    io = ScriptedIO(["4", "8"])
     locations.location_loop(make_state(_player(content), content, io, StubRandom(),
                                        current_location="mountain"))
     text = io.text()
@@ -72,7 +72,7 @@ def test_grave_appears_and_can_be_searched(tmp_path, content):
     chronicle.record(fallen_run, "fell", tmp_path)
     player = _player(content)
     gold_before = player.gold
-    io = ScriptedIO(["2", "3", "7"])  # crossroads -> forest, search grave, quit
+    io = ScriptedIO(["2", "3", "8"])  # crossroads -> forest, search grave, quit
     state = make_state(player, content, io, StubRandom(), chronicle_dir=tmp_path)
     locations.location_loop(state)
     assert "Half-buried" in io.text()
@@ -122,7 +122,7 @@ def test_defeating_a_hollowed_lays_it_to_rest(tmp_path, content):
 
 def test_overlevel_travel_warns_and_can_turn_back(content):
     # level 1 at the Gullet vs Mourncross (recommended 4): warned -> turn back
-    io = ScriptedIO(["4", "2", "7"])
+    io = ScriptedIO(["4", "2", "8"])
     locations.location_loop(make_state(_player(content), content, io, StubRandom(),
                                        current_location="cave"))
     text = io.text()
@@ -132,7 +132,7 @@ def test_overlevel_travel_warns_and_can_turn_back(content):
 
 def test_travel_into_a_zone_fight_and_return(content):
     # travel to the Witherwood, win a fight, travel back to the Crossroads, quit
-    io = ScriptedIO(["2", "1", "1", "3", "5"])
+    io = ScriptedIO(["2", "1", "1", "3", "6"])
     state = make_state(_strong_player(content), content, io, StubRandom())
     locations.location_loop(state)
     text = io.text()
@@ -261,3 +261,13 @@ def test_full_chain_is_traversable_to_the_summit(content):
             if encounter["type"] == "combat":
                 assert outcome in ("victory", "boss_victory"), (dest, outcome)
     assert state.current_location == "summit"
+
+
+def test_inspect_weapon_shows_the_equipped_weapon(content):
+    """D5: inspecting the weapon names it and lists its components."""
+    io = ScriptedIO()
+    state = make_state(_player(content), content, io, StubRandom())
+    locations._inspect_weapon(state)
+    text = io.text()
+    assert "Gravewatch Cleaver" in text  # the warrior's starting weapon
+    assert "Head:" in text and "Inscription:" in text
