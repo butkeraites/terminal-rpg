@@ -59,3 +59,10 @@ def test_lay_to_rest_frees_a_fallen_character(tmp_path, content, warrior):
     reloaded = chronicle.load(tmp_path)
     assert reloaded[0].get("resolved") is True
     assert chronicle.fallen(reloaded) == []
+
+
+def test_record_carries_the_run_seed(tmp_path, content, warrior):
+    """B3: a recorded character keeps the seed of the run that made it."""
+    state = make_state(warrior, content, chronicle_dir=tmp_path, seed="473019")
+    chronicle.record(state, "fell", tmp_path)
+    assert chronicle.load(tmp_path)[0]["seed"] == "473019"

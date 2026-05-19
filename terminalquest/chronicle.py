@@ -59,6 +59,7 @@ def record(state, fate, chronicle_dir=DEFAULT_DIR):
     entry = {
         "fate": fate,
         "location": state.current_location,
+        "seed": state.seed,
         "player": state.player.to_dict(),
     }
     _write({"version": CHRONICLE_VERSION, "entries": load(chronicle_dir) + [entry]},

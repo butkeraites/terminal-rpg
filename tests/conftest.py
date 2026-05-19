@@ -43,7 +43,7 @@ def warrior(content):
 
 
 def make_state(player, content, io=None, rng=None,
-               current_location="crossroads", chronicle_dir=None):
+               current_location="crossroads", chronicle_dir=None, seed=None):
     """Build a GameState for tests, defaulting io/rng to test doubles.
 
     ``chronicle_dir`` defaults to a fresh temp dir so tests never touch
@@ -55,4 +55,5 @@ def make_state(player, content, io=None, rng=None,
         rng if rng is not None else StubRandom(),
         current_location=current_location,
         chronicle_dir=chronicle_dir or tempfile.mkdtemp(),
+        seed=seed,
     )

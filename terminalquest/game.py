@@ -9,6 +9,11 @@ from .state import GameState
 from .ui import GameIO
 
 
+def _new_seed():
+    """A short, shareable seed for a fresh run."""
+    return str(random.Random().randint(100000, 999999))
+
+
 def choose_class(content, io):
     """Prompt the player to pick a class. Returns ``(class_id, class_def)``."""
     class_ids = list(content.classes)
@@ -100,11 +105,13 @@ def settings_menu(io):
             io.show("\n❌ Invalid choice!")
 
 
-def run(io=None, content=None, rng=None, chronicle_dir=None):
+def run(io=None, content=None, rng=None, chronicle_dir=None, seed=None):
     """Run the game from the title screen. Arguments are injectable for tests."""
     io = io or GameIO()
     content = content or load_content()
-    rng = rng or random.Random()
+    if seed is None:
+        seed = _new_seed()
+    rng = rng or random.Random(seed)
     chronicle_dir = chronicle_dir or chronicle.DEFAULT_DIR
 
     io.clear()
@@ -122,12 +129,15 @@ def run(io=None, content=None, rng=None, chronicle_dir=None):
 
         if choice == "1":
             player = create_character(content, io, chronicle_dir)
+            io.show(f"\n🎲 This run is seeded: {seed}")
             location_loop(GameState(player, content, io, rng,
-                                    chronicle_dir=chronicle_dir))
+                                    chronicle_dir=chronicle_dir, seed=seed))
             return
         elif choice == "2":
             state = load_menu(content, io, rng)
             if state is not None:
+                if state.seed:
+                    io.show(f"\n🎲 This run is seeded: {state.seed}")
                 location_loop(state)
                 return
         elif choice == "3":

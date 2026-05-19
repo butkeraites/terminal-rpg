@@ -104,3 +104,10 @@ def test_save_round_trips_an_equipped_weapon(tmp_path, content, warrior):
     assert loaded.player.equipment["weapon"].name == "Probe"
     assert loaded.player.equipment["weapon"].stats == weapon.stats
     assert loaded.to_dict() == state.to_dict()
+
+
+def test_save_round_trips_the_run_seed(tmp_path, content, warrior):
+    """B2: the run seed is stored in the save and restored on load."""
+    state = make_state(warrior, content, seed="888777")
+    saves.save_game(state, 1, save_dir=tmp_path)
+    assert _load(1, content, tmp_path).seed == "888777"
