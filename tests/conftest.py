@@ -39,7 +39,7 @@ def content():
 
 @pytest.fixture
 def warrior(content):
-    return Player("Hero", "warrior", content.classes["warrior"])
+    return Player("Hero", "warrior", content.classes["warrior"], content)
 
 
 def make_state(player, content, io=None, rng=None,

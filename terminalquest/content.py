@@ -49,6 +49,13 @@ class Content:
                     raise ValueError(
                         f"class '{class_id}' references unknown ability '{ability_id}'"
                     )
+            for slot in WEAPON_SLOTS:
+                cid = cls["weapon"]["components"][slot]
+                if cid not in self.components[slot]:
+                    raise ValueError(
+                        f"class '{class_id}' starting weapon references "
+                        f"unknown {slot} component '{cid}'"
+                    )
         for enemy_id, enemy in self.enemies.items():
             if enemy["ai"] not in _VALID_AI:
                 raise ValueError(

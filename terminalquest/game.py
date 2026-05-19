@@ -51,7 +51,7 @@ def create_character(content, io, chronicle_dir):
     """Run new-game character creation and return a fresh Player."""
     name = io.ask("\nEnter your hero's name: ") or "Hero"
     class_id, class_def = choose_class(content, io)
-    player = Player(name, class_id, class_def)
+    player = Player(name, class_id, class_def, content)
     io.clear()
     io.show_slow(f"{player.name} the {player.class_name}.")
     io.show_slow("The realm of Mournhold has been dying for three winters now.")

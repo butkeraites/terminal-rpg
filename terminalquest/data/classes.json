@@ -2,51 +2,76 @@
   "warrior": {
     "name": "Warrior",
     "description": "A stalwart fighter with high HP and defense.",
-    "max_hp": 120,
-    "attack": 12,
-    "defense": 8,
-    "max_stamina": 8,
+    "max_hp": 100,
+    "attack": 6,
+    "defense": 4,
+    "max_stamina": 6,
     "abilities": ["power_strike", "shield_wall"],
-    "inventory": ["Health Potion", "Health Potion", "Health Potion"]
+    "inventory": ["Health Potion", "Health Potion", "Health Potion"],
+    "weapon": {
+      "name": "Gravewatch Cleaver",
+      "components": {"head": "scavver_fang_head", "haft": "withe_haft",
+                     "core": "warden_seal_core", "inscription": "mourners_mark"}
+    }
   },
   "rogue": {
     "name": "Rogue",
     "description": "A nimble striker who bleeds enemies and slips past blows.",
-    "max_hp": 90,
-    "attack": 14,
-    "defense": 4,
-    "max_stamina": 10,
+    "max_hp": 75,
+    "attack": 9,
+    "defense": 2,
+    "max_stamina": 6,
     "abilities": ["backstab", "quick_step"],
-    "inventory": ["Health Potion", "Health Potion"]
+    "inventory": ["Health Potion", "Health Potion"],
+    "weapon": {
+      "name": "Cutpurse's Dirk",
+      "components": {"head": "bog_iron_head", "haft": "procession_haft",
+                     "core": "grave_iron_core", "inscription": "mourners_mark"}
+    }
   },
   "mage": {
     "name": "Mage",
     "description": "A glass cannon wielding devastating elemental magic.",
-    "max_hp": 75,
-    "attack": 16,
-    "defense": 3,
-    "max_stamina": 12,
+    "max_hp": 60,
+    "attack": 8,
+    "defense": 1,
+    "max_stamina": 10,
     "abilities": ["fireball", "frost_armor"],
-    "inventory": ["Health Potion", "Health Potion"]
+    "inventory": ["Health Potion", "Health Potion"],
+    "weapon": {
+      "name": "Witherwood Stave",
+      "components": {"head": "reliquary_edge", "haft": "withe_haft",
+                     "core": "grave_iron_core", "inscription": "mourners_mark"}
+    }
   },
   "ranger": {
     "name": "Ranger",
     "description": "A precise hunter who marks prey and picks it off.",
-    "max_hp": 95,
-    "attack": 13,
-    "defense": 5,
-    "max_stamina": 10,
+    "max_hp": 80,
+    "attack": 7,
+    "defense": 3,
+    "max_stamina": 7,
     "abilities": ["aimed_shot", "hunters_mark"],
-    "inventory": ["Health Potion", "Health Potion"]
+    "inventory": ["Health Potion", "Health Potion"],
+    "weapon": {
+      "name": "Weir-Hunter's Bow",
+      "components": {"head": "scavver_fang_head", "haft": "weir_pole",
+                     "core": "grave_iron_core", "inscription": "mourners_mark"}
+    }
   },
   "cleric": {
     "name": "Cleric",
     "description": "A holy warrior who smites foes and mends wounds.",
-    "max_hp": 105,
-    "attack": 11,
-    "defense": 6,
-    "max_stamina": 10,
+    "max_hp": 85,
+    "attack": 6,
+    "defense": 2,
+    "max_stamina": 8,
     "abilities": ["smite", "mend"],
-    "inventory": ["Health Potion", "Health Potion"]
+    "inventory": ["Health Potion", "Health Potion"],
+    "weapon": {
+      "name": "Bellward's Maul",
+      "components": {"head": "bog_iron_head", "haft": "withe_haft",
+                     "core": "warden_seal_core", "inscription": "mourners_mark"}
+    }
   }
 }

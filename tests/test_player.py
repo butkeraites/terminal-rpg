@@ -43,10 +43,10 @@ def test_serialization_round_trip(warrior):
     assert clone.to_dict() == warrior.to_dict()
 
 
-def test_new_player_has_consumables_and_empty_equipment(warrior):
-    """C1: belongings split into a consumables bag and a (still empty) gear loadout."""
+def test_new_player_starts_with_consumables_and_a_weapon(warrior):
+    """C1/C3: belongings are a consumables bag plus a loadout with a starting weapon."""
     assert warrior.consumables  # the class's starting kit
-    assert warrior.equipment == {}
+    assert "weapon" in warrior.equipment
 
 
 def _weapon(content, head="reliquary_edge"):
@@ -56,6 +56,7 @@ def _weapon(content, head="reliquary_edge"):
 
 
 def test_equipping_a_weapon_applies_its_stats(warrior, content):
+    warrior.unequip_weapon()  # set the class starting weapon aside
     base_attack, base_hp = warrior.attack, warrior.max_hp
     weapon = _weapon(content)
     warrior.equip_weapon(weapon)
@@ -65,6 +66,7 @@ def test_equipping_a_weapon_applies_its_stats(warrior, content):
 
 
 def test_unequipping_a_weapon_restores_stats(warrior, content):
+    warrior.unequip_weapon()  # start from the bare class base
     before = (warrior.attack, warrior.defense, warrior.max_hp, warrior.max_stamina)
     weapon = _weapon(content)
     warrior.equip_weapon(weapon)
@@ -75,6 +77,7 @@ def test_unequipping_a_weapon_restores_stats(warrior, content):
 
 
 def test_equipping_replaces_the_previous_weapon(warrior, content):
+    warrior.unequip_weapon()  # set the class starting weapon aside
     base_attack = warrior.attack
     warrior.equip_weapon(_weapon(content, head="bog_iron_head"))
     strong = _weapon(content, head="ashen_greathead")

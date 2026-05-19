@@ -167,7 +167,7 @@ def _fight(content, player, io, rng, enemy_id):
 
 def simulate_run(content, class_id, rng, rest_each, policy_factory=CompetentPolicy):
     """Play one full run. ``rest_each`` rests before every fight, not just zones."""
-    player = Player("Sim", class_id, content.classes[class_id])
+    player = Player("Sim", class_id, content.classes[class_id], content)
     io = PolicyIO(policy_factory(content))
     for zone_id in zone_chain(content):
         loc = content.locations[zone_id]

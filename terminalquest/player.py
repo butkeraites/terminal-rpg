@@ -1,6 +1,6 @@
 """The player character and its progression logic."""
 from .combatant import Combatant
-from .weapon import Weapon
+from .weapon import Weapon, make_weapon
 
 STARTING_GOLD = 50
 STARTING_XP_TO_LEVEL = 100
@@ -23,7 +23,7 @@ POTION_ITEMS = ("Health Potion", "Greater Potion")
 class Player(Combatant):
     """The hero. Built from a class definition loaded from content."""
 
-    def __init__(self, name, class_id, class_def):
+    def __init__(self, name, class_id, class_def, content):
         super().__init__()
         self.name = name
         self.class_id = class_id
@@ -41,6 +41,10 @@ class Player(Combatant):
         self.consumables = list(class_def["inventory"])
         self.equipment = {}
         self.abilities = list(class_def["abilities"])
+        starter = class_def["weapon"]
+        self.equip_weapon(make_weapon(content, starter["components"], starter["name"]))
+        self.hp = self.max_hp
+        self.stamina = self.max_stamina
 
     def heal(self, amount):
         self.hp = min(self.max_hp, self.hp + amount)

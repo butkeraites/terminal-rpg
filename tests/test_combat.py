@@ -8,7 +8,7 @@ from terminalquest.ui import ScriptedIO
 
 
 def _player(content, class_id="warrior"):
-    return Player("Hero", class_id, content.classes[class_id])
+    return Player("Hero", class_id, content.classes[class_id], content)
 
 
 def test_perform_attack_applies_defense(content):

@@ -8,7 +8,7 @@ from terminalquest.ui import ScriptedIO
 
 
 def _player(content):
-    return Player("Hero", "warrior", content.classes["warrior"])
+    return Player("Hero", "warrior", content.classes["warrior"], content)
 
 
 def _strong_player(content):
@@ -95,7 +95,7 @@ def test_run_encounter_can_raise_a_hollowed(tmp_path, content):
 
 def test_summit_boss_is_the_last_warden(tmp_path, content):
     """Once a hero has won, the Summit boss wears their name."""
-    victor = Player("Kara", "mage", content.classes["mage"])
+    victor = Player("Kara", "mage", content.classes["mage"], content)
     won = make_state(victor, content, current_location="summit", chronicle_dir=tmp_path)
     chronicle.record(won, "warden", tmp_path)
     wardens = chronicle.wardens(chronicle.load(tmp_path))
