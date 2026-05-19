@@ -61,15 +61,19 @@ def make_weapon(content, components, name):
     return Weapon(name, components, stats, procs)
 
 
-def roll_weapon(content, act, rng):
+def roll_weapon(content, act, rng, unlocked=None):
     """Assemble a random weapon from components of tier <= ``act``.
 
     Deeper acts unlock higher-tier components, so salvage improves as the
-    journey descends. The weapon takes its name from its head component.
+    journey descends. Components carrying an ``unlock`` token are excluded
+    unless that token is in ``unlocked``; pass ``None`` to ignore gating
+    entirely (used by balance sampling). The weapon is named after its head.
     """
     chosen = {}
     for slot in WEAPON_SLOTS:
         pool = [cid for cid, comp in content.components[slot].items()
-                if comp.get("tier", 1) <= act]
+                if comp.get("tier", 1) <= act
+                and (unlocked is None or "unlock" not in comp
+                     or comp["unlock"] in unlocked)]
         chosen[slot] = rng.choice(pool)
     return make_weapon(content, chosen, content.components["head"][chosen["head"]]["name"])

@@ -56,7 +56,7 @@
       "flavor": "Climb-stone shaped by something the size of a door. It breaks what it meets."
     },
     "summit_splinter": {
-      "name": "Summit Splinter", "tier": 3,
+      "name": "Summit Splinter", "tier": 3, "unlock": "ashen_penitent",
       "stats": {"attack": 14, "max_stamina": 1},
       "flavor": "A shard off the Pall's own dark. It is very cold, and very sharp."
     }
@@ -108,7 +108,7 @@
       "flavor": "Wound from the chain an acolyte never set down. It still wants to swing."
     },
     "warden_haft": {
-      "name": "Warden's Haft", "tier": 3,
+      "name": "Warden's Haft", "tier": 3, "unlock": "hollow_bellward",
       "stats": {"max_stamina": 4, "max_hp": 8},
       "flavor": "The grip the last Warden's hand wore smooth. It knows how to hold on."
     },
@@ -175,7 +175,7 @@
       "flavor": "The sigil the last Warden wore. It keeps whatever it is given."
     },
     "bleeding_core": {
-      "name": "Bleeding-Edge Core", "tier": 3,
+      "name": "Bleeding-Edge Core", "tier": 3, "unlock": "pallid_stag",
       "stats": {"attack": 2},
       "proc": {"trigger": "on_crit", "status": "bleed", "turns": 3},
       "flavor": "It keeps an edge no whetstone ever gave it. Wounds it opens do not close."

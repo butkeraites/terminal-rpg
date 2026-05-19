@@ -134,7 +134,8 @@ def _offer_drop(state):
     if act is None or state.rng.random() >= WEAPON_DROP_CHANCE:
         return
     player, io = state.player, state.io
-    weapon = roll_weapon(state.content, act, state.rng)
+    weapon = roll_weapon(state.content, act, state.rng,
+                         chronicle.unlocked(state.chronicle_dir))
     current = player.equipment.get("weapon")
     io.show_slow(f"\n🗡️  Salvaged from the dead: {weapon.name}")
     io.show(f"   {weapon.summary()}")
@@ -196,6 +197,8 @@ def run_encounter(state, encounter, fallen, wardens):
         name = hollowed_entry["player"]["name"]
         io.show_slow(f"\n🕯️  {name} is still, at last. The Pall will not raise "
                      f"them again — you have given them that much.")
+    if outcome == "victory" and enemy is not None and enemy.unique:
+        chronicle.unlock(enemy.enemy_id, state.chronicle_dir)
     if outcome == "victory" and not encounter.get("boss"):
         _offer_drop(state)
     if encounter.get("boss") and outcome == "victory":

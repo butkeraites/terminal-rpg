@@ -105,6 +105,28 @@ def settings_menu(io):
             io.show("\n❌ Invalid choice!")
 
 
+def chronicle_screen(io, content, chronicle_dir):
+    """Show the cross-run Chronicle: who fell, who was kept, what they unlocked."""
+    entries = chronicle.load(chronicle_dir)
+    held = chronicle.unlocked(chronicle_dir)
+    io.clear()
+    io.show("📖 The Chronicle of the Fallen\n")
+    io.show(f"   {len(entries)} have walked the road into Mournhold.")
+    io.show(f"   {len(chronicle.fallen(entries))} lie unquiet still; "
+            f"{len(chronicle.wardens(entries))} broke the Pall and were kept by it.")
+    earned = [comp["name"]
+              for slot in content.components.values()
+              for comp in slot.values()
+              if comp.get("unlock") in held]
+    if earned:
+        io.show("\n   Salvage their deeds have unlocked:")
+        for name in earned:
+            io.show(f"     ⚒  {name}")
+    else:
+        io.show("\n   Their deeds have unlocked no salvage yet.")
+    io.pause(2)
+
+
 def run(io=None, content=None, rng=None, chronicle_dir=None, seed=None):
     """Run the game from the title screen. Arguments are injectable for tests."""
     io = io or GameIO()
@@ -123,8 +145,9 @@ def run(io=None, content=None, rng=None, chronicle_dir=None, seed=None):
     while True:
         io.show("1. New Game")
         io.show("2. Continue")
-        io.show("3. Settings")
-        io.show("4. Quit")
+        io.show("3. The Chronicle")
+        io.show("4. Settings")
+        io.show("5. Quit")
         choice = io.ask("\nYour choice? ")
 
         if choice == "1":
@@ -141,8 +164,10 @@ def run(io=None, content=None, rng=None, chronicle_dir=None, seed=None):
                 location_loop(state)
                 return
         elif choice == "3":
-            settings_menu(io)
+            chronicle_screen(io, content, chronicle_dir)
         elif choice == "4":
+            settings_menu(io)
+        elif choice == "5":
             io.show("\n👋 Farewell, adventurer!")
             return
         else:

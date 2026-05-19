@@ -23,14 +23,28 @@ def _path(chronicle_dir):
     return Path(chronicle_dir) / _FILENAME
 
 
-def load(chronicle_dir=DEFAULT_DIR):
-    """Return recorded characters, oldest first. Never raises."""
+def _load_raw(chronicle_dir):
+    """Return the whole chronicle as ``{entries, unlocks}``. Never raises."""
     try:
         data = json.loads(_path(chronicle_dir).read_text(encoding="utf-8"))
-        entries = data["entries"]
-        return list(entries) if isinstance(entries, list) else []
-    except (OSError, json.JSONDecodeError, KeyError, TypeError):
-        return []
+        entries = data.get("entries", [])
+        unlocks = data.get("unlocks", [])
+        return {
+            "entries": list(entries) if isinstance(entries, list) else [],
+            "unlocks": list(unlocks) if isinstance(unlocks, list) else [],
+        }
+    except (OSError, json.JSONDecodeError, AttributeError, TypeError):
+        return {"entries": [], "unlocks": []}
+
+
+def load(chronicle_dir=DEFAULT_DIR):
+    """Return recorded characters, oldest first. Never raises."""
+    return _load_raw(chronicle_dir)["entries"]
+
+
+def unlocked(chronicle_dir=DEFAULT_DIR):
+    """Return the set of tokens permanently unlocked across runs. Never raises."""
+    return set(_load_raw(chronicle_dir)["unlocks"])
 
 
 def _write(payload, chronicle_dir):
@@ -50,29 +64,43 @@ def _write(payload, chronicle_dir):
         pass
 
 
+def _save(raw, chronicle_dir):
+    """Atomically write the whole chronicle (``{entries, unlocks}``)."""
+    _write({"version": CHRONICLE_VERSION,
+            "entries": raw["entries"], "unlocks": raw["unlocks"]}, chronicle_dir)
+
+
 def record(state, fate, chronicle_dir=DEFAULT_DIR):
     """Append the current character to the chronicle.
 
     ``fate`` is 'fell' (died) or 'warden' (broke the Warden and was kept
     by the Pall as the next one). The write is atomic; failure is swallowed.
     """
-    entry = {
+    raw = _load_raw(chronicle_dir)
+    raw["entries"].append({
         "fate": fate,
         "location": state.current_location,
         "seed": state.seed,
         "player": state.player.to_dict(),
-    }
-    _write({"version": CHRONICLE_VERSION, "entries": load(chronicle_dir) + [entry]},
-           chronicle_dir)
+    })
+    _save(raw, chronicle_dir)
 
 
 def lay_to_rest(entry, chronicle_dir=DEFAULT_DIR):
     """Mark a fallen character as freed — they no longer rise as the Hollowed."""
-    entries = load(chronicle_dir)
-    for stored in entries:
+    raw = _load_raw(chronicle_dir)
+    for stored in raw["entries"]:
         if stored == entry:
             stored["resolved"] = True
-    _write({"version": CHRONICLE_VERSION, "entries": entries}, chronicle_dir)
+    _save(raw, chronicle_dir)
+
+
+def unlock(token, chronicle_dir=DEFAULT_DIR):
+    """Permanently unlock ``token`` across all future runs. Idempotent."""
+    raw = _load_raw(chronicle_dir)
+    if token not in raw["unlocks"]:
+        raw["unlocks"].append(token)
+        _save(raw, chronicle_dir)
 
 
 def fallen(entries):

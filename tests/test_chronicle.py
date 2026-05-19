@@ -66,3 +66,21 @@ def test_record_carries_the_run_seed(tmp_path, content, warrior):
     state = make_state(warrior, content, chronicle_dir=tmp_path, seed="473019")
     chronicle.record(state, "fell", tmp_path)
     assert chronicle.load(tmp_path)[0]["seed"] == "473019"
+
+
+def test_unlock_persists_and_is_idempotent(tmp_path):
+    """E1m: the cross-run unlock store survives and never double-records."""
+    chronicle.unlock("pallid_stag", tmp_path)
+    chronicle.unlock("pallid_stag", tmp_path)  # idempotent
+    chronicle.unlock("maw_mother", tmp_path)
+    assert chronicle.unlocked(tmp_path) == {"pallid_stag", "maw_mother"}
+
+
+def test_unlocks_and_entries_coexist(tmp_path, content, warrior):
+    """Recording a death keeps the unlocks; unlocking keeps the fallen."""
+    chronicle.unlock("pallid_stag", tmp_path)
+    chronicle.record(make_state(warrior, content, chronicle_dir=tmp_path), "fell",
+                     tmp_path)
+    chronicle.unlock("maw_mother", tmp_path)
+    assert chronicle.unlocked(tmp_path) == {"pallid_stag", "maw_mother"}
+    assert len(chronicle.load(tmp_path)) == 1

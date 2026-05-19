@@ -51,3 +51,12 @@ def test_roll_weapon_respects_the_act_tier(content):
         weapon = roll_weapon(content, 1, rng)
         for slot, cid in weapon.components.items():
             assert content.components[slot][cid]["tier"] == 1
+
+
+def test_roll_weapon_excludes_locked_components(content):
+    """E2m: a gated component never rolls while its unlock token is unheld."""
+    rng = random.Random(5)
+    for _ in range(40):
+        weapon = roll_weapon(content, 3, rng, unlocked=set())
+        for slot, cid in weapon.components.items():
+            assert "unlock" not in content.components[slot][cid]

@@ -271,3 +271,12 @@ def test_inspect_weapon_shows_the_equipped_weapon(content):
     text = io.text()
     assert "Gravewatch Cleaver" in text  # the warrior's starting weapon
     assert "Head:" in text and "Inscription:" in text
+
+
+def test_defeating_a_mini_boss_unlocks_it(tmp_path, content):
+    """E2m: beating a unique foe records its unlock token in the Chronicle."""
+    state = make_state(_strong_player(content), content, ScriptedIO(["1"]),
+                       StubRandom(), current_location="forest", chronicle_dir=tmp_path)
+    stag = content.locations["forest"]["encounters"][1]  # the Pallid Stag mini-boss
+    locations.run_encounter(state, stag, [], [])
+    assert "pallid_stag" in chronicle.unlocked(tmp_path)
