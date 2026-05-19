@@ -128,3 +128,18 @@ def test_validate_rejects_an_unknown_component_stat():
     some_head["stats"]["wisdom"] = 5
     with pytest.raises(ValueError):
         content.validate()
+
+
+def test_component_pool_has_breadth():
+    """D3: each weapon slot offers a substantial pool of components."""
+    content = load_content()
+    for slot in ("head", "haft", "core", "inscription"):
+        assert len(content.components[slot]) >= 12, slot
+
+
+def test_validate_rejects_an_unknown_proc_status():
+    content = load_content()
+    some_core = next(iter(content.components["core"].values()))
+    some_core["proc"] = {"trigger": "on_hit", "status": "enlightenment", "turns": 1}
+    with pytest.raises(ValueError):
+        content.validate()
