@@ -7,11 +7,14 @@ touching Python. This module is the only place that reads those files.
 import json
 from pathlib import Path
 
+from .weapon import WEAPON_SLOTS
+
 DATA_DIR = Path(__file__).parent / "data"
 
 _VALID_AI = {"aggressive", "defensive", "caster", "fleer", "relentless", "enrager"}
 _VALID_ENCOUNTER_TYPES = {"combat", "discovery"}
 _VALID_ACTS = {1, 2, 3}
+_VALID_STATS = {"attack", "defense", "max_hp", "max_stamina"}
 
 
 class ContentError(ValueError):
@@ -31,11 +34,12 @@ def _load(name):
 class Content:
     """An immutable bundle of all loaded game content."""
 
-    def __init__(self, classes, abilities, enemies, locations):
+    def __init__(self, classes, abilities, enemies, locations, components):
         self.classes = classes
         self.abilities = abilities
         self.enemies = enemies
         self.locations = locations
+        self.components = components
 
     def validate(self):
         """Raise ValueError if the data files are internally inconsistent."""
@@ -51,6 +55,7 @@ class Content:
                     f"enemy '{enemy_id}' has invalid ai '{enemy['ai']}'"
                 )
         self._validate_locations()
+        self._validate_components()
 
     def _validate_locations(self):
         """Check the location graph: connections, encounters, acts, reachability."""
@@ -107,6 +112,18 @@ class Content:
                 f"locations unreachable from the crossroads: {sorted(unreachable)}"
             )
 
+    def _validate_components(self):
+        """Check every weapon slot exists and components grant only real stats."""
+        for slot in WEAPON_SLOTS:
+            if slot not in self.components:
+                raise ValueError(f"components.json is missing the '{slot}' slot")
+            for cid, comp in self.components[slot].items():
+                for stat in comp.get("stats", {}):
+                    if stat not in _VALID_STATS:
+                        raise ValueError(
+                            f"component '{cid}' grants unknown stat '{stat}'"
+                        )
+
 
 def load_content():
     """Load and validate every content file, returning a Content bundle."""
@@ -115,6 +132,7 @@ def load_content():
         abilities=_load("abilities.json"),
         enemies=_load("enemies.json"),
         locations=_load("locations.json"),
+        components=_load("components.json"),
     )
     content.validate()
     return content

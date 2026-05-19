@@ -6,6 +6,7 @@ from conftest import StubRandom, make_state
 
 from terminalquest import saves
 from terminalquest.ui import ScriptedIO
+from terminalquest.weapon import make_weapon
 
 
 def _load(slot, content, tmp_path):
@@ -89,3 +90,17 @@ def test_corrupt_save_raises_save_error(tmp_path, content):
     (tmp_path / "slot1.json").write_text("{ not valid json", encoding="utf-8")
     with pytest.raises(saves.SaveError):
         _load(1, content, tmp_path)
+
+
+def test_save_round_trips_an_equipped_weapon(tmp_path, content, warrior):
+    """An equipped weapon survives a save/load cycle with its stats intact."""
+    weapon = make_weapon(content, {"head": "reliquary_edge", "haft": "weir_pole",
+                                   "core": "pall_glass_core",
+                                   "inscription": "unremembered_name"}, "Probe")
+    warrior.equip_weapon(weapon)
+    state = make_state(warrior, content)
+    saves.save_game(state, 1, save_dir=tmp_path)
+    loaded = _load(1, content, tmp_path)
+    assert loaded.player.equipment["weapon"].name == "Probe"
+    assert loaded.player.equipment["weapon"].stats == weapon.stats
+    assert loaded.to_dict() == state.to_dict()

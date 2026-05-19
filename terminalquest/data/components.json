@@ -1,0 +1,90 @@
+{
+  "head": {
+    "bog_iron_head": {
+      "name": "Bog-Iron Head",
+      "stats": {"attack": 5},
+      "flavor": "Dredged from the Reach. It rings wrong — a bell with water in its throat."
+    },
+    "scavver_fang_head": {
+      "name": "Scavver-Fang Head",
+      "stats": {"attack": 6},
+      "flavor": "Filed from something that learned to grow teeth only at the very end."
+    },
+    "reliquary_edge": {
+      "name": "Reliquary Edge",
+      "stats": {"attack": 8},
+      "flavor": "A saint's shinbone, honed sharp. It was holy once; now it only cuts."
+    },
+    "ashen_greathead": {
+      "name": "Ashen Greathead",
+      "stats": {"attack": 10},
+      "flavor": "Climb-stone, too heavy by half. It does not strike so much as arrive."
+    }
+  },
+  "haft": {
+    "withe_haft": {
+      "name": "Witherwood Haft",
+      "stats": {"max_stamina": 2},
+      "flavor": "Cut from a tree that has forgotten how to be wood — light, and patient."
+    },
+    "weir_pole": {
+      "name": "Weir-Keeper's Pole",
+      "stats": {"max_stamina": 3},
+      "flavor": "It tended the gates that starved the holds. It knows long, thankless work."
+    },
+    "bellrope_grip": {
+      "name": "Bell-Rope Grip",
+      "stats": {"max_stamina": 3, "attack": 1},
+      "flavor": "Wound from the curfew bell's rope. It has never stopped wanting to be pulled."
+    },
+    "procession_haft": {
+      "name": "Procession Haft",
+      "stats": {"max_stamina": 4},
+      "flavor": "A bier-pole from a funeral that set out for the grave and never arrived."
+    }
+  },
+  "core": {
+    "grave_iron_core": {
+      "name": "Grave-Iron Core",
+      "stats": {"defense": 2},
+      "flavor": "Pried from a tomb door. It guards from habit, having nothing left to guard."
+    },
+    "pall_glass_core": {
+      "name": "Pall-Glass Core",
+      "stats": {"defense": 3},
+      "flavor": "A bead of the Pall, cooled hard. It still remembers being a wall."
+    },
+    "warden_seal_core": {
+      "name": "Warden's Seal",
+      "stats": {"defense": 4, "max_hp": 5},
+      "flavor": "The sigil the last Warden wore. It keeps whatever it is given."
+    },
+    "census_core": {
+      "name": "Census-Stone Core",
+      "stats": {"defense": 3, "max_stamina": 1},
+      "flavor": "Chipped from the plinth where one unscratched name still stands."
+    }
+  },
+  "inscription": {
+    "mourners_mark": {
+      "name": "Mourner's Mark",
+      "stats": {"max_hp": 15},
+      "flavor": "An old grief, cut deep into the steel. Grief, at least, endures."
+    },
+    "unremembered_name": {
+      "name": "An Unremembered Name",
+      "stats": {"max_hp": 20},
+      "flavor": "A name scored over and over — yet the steel beneath still holds its shape."
+    },
+    "hold_fast_rune": {
+      "name": "Hold-Fast Rune",
+      "stats": {"max_hp": 12, "defense": 1},
+      "flavor": "The weir-keepers' mark for a sealed gate. It does not let things through."
+    },
+    "last_breath_verse": {
+      "name": "Last-Breath Verse",
+      "stats": {"max_hp": 25},
+      "flavor": "The one line of the rite the fire spared. It keeps you here a while longer."
+    }
+  }
+}

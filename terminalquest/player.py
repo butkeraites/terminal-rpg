@@ -1,5 +1,6 @@
 """The player character and its progression logic."""
 from .combatant import Combatant
+from .weapon import Weapon
 
 STARTING_GOLD = 50
 STARTING_XP_TO_LEVEL = 100
@@ -47,6 +48,23 @@ class Player(Combatant):
     def restore_stamina(self, amount):
         self.stamina = min(self.max_stamina, self.stamina + amount)
 
+    def equip_weapon(self, weapon):
+        """Equip ``weapon``, replacing any current one, and apply its stat bonuses."""
+        self.unequip_weapon()
+        self.equipment["weapon"] = weapon
+        for stat, amount in weapon.stats.items():
+            setattr(self, stat, getattr(self, stat) + amount)
+
+    def unequip_weapon(self):
+        """Remove and return the equipped weapon, undoing its stat bonuses."""
+        weapon = self.equipment.pop("weapon", None)
+        if weapon is not None:
+            for stat, amount in weapon.stats.items():
+                setattr(self, stat, getattr(self, stat) - amount)
+            self.hp = min(self.hp, self.max_hp)
+            self.stamina = min(self.stamina, self.max_stamina)
+        return weapon
+
     def gain_xp(self, amount):
         """Add XP and advance levels. Returns the number of levels gained.
 
@@ -82,6 +100,9 @@ class Player(Combatant):
 
     def to_dict(self):
         """Serialize to a plain dict for saving."""
+        equipment = {}
+        if "weapon" in self.equipment:
+            equipment["weapon"] = self.equipment["weapon"].to_dict()
         return {
             "name": self.name,
             "class_id": self.class_id,
@@ -97,7 +118,7 @@ class Player(Combatant):
             "xp": self.xp,
             "xp_to_level": self.xp_to_level,
             "consumables": list(self.consumables),
-            "equipment": dict(self.equipment),
+            "equipment": equipment,
             "abilities": list(self.abilities),
         }
 
@@ -120,6 +141,8 @@ class Player(Combatant):
         player.xp = data["xp"]
         player.xp_to_level = data["xp_to_level"]
         player.consumables = list(data["consumables"])
-        player.equipment = dict(data["equipment"])
+        player.equipment = {}
+        if "weapon" in data["equipment"]:
+            player.equipment["weapon"] = Weapon.from_dict(data["equipment"]["weapon"])
         player.abilities = list(data["abilities"])
         return player

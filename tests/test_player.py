@@ -1,5 +1,6 @@
 """Player stats, progression and serialization."""
 from terminalquest.player import LEVEL_BASELINE, LEVEL_BOONS, Player
+from terminalquest.weapon import make_weapon
 
 
 def test_take_damage_subtracts_defense(warrior):
@@ -46,3 +47,36 @@ def test_new_player_has_consumables_and_empty_equipment(warrior):
     """C1: belongings split into a consumables bag and a (still empty) gear loadout."""
     assert warrior.consumables  # the class's starting kit
     assert warrior.equipment == {}
+
+
+def _weapon(content, head="reliquary_edge"):
+    return make_weapon(content, {"head": head, "haft": "withe_haft",
+                                 "core": "grave_iron_core",
+                                 "inscription": "mourners_mark"}, "Probe")
+
+
+def test_equipping_a_weapon_applies_its_stats(warrior, content):
+    base_attack, base_hp = warrior.attack, warrior.max_hp
+    weapon = _weapon(content)
+    warrior.equip_weapon(weapon)
+    assert warrior.attack == base_attack + weapon.stats.get("attack", 0)
+    assert warrior.max_hp == base_hp + weapon.stats.get("max_hp", 0)
+    assert warrior.equipment["weapon"] is weapon
+
+
+def test_unequipping_a_weapon_restores_stats(warrior, content):
+    before = (warrior.attack, warrior.defense, warrior.max_hp, warrior.max_stamina)
+    weapon = _weapon(content)
+    warrior.equip_weapon(weapon)
+    assert warrior.unequip_weapon() is weapon
+    after = (warrior.attack, warrior.defense, warrior.max_hp, warrior.max_stamina)
+    assert after == before
+    assert "weapon" not in warrior.equipment
+
+
+def test_equipping_replaces_the_previous_weapon(warrior, content):
+    base_attack = warrior.attack
+    warrior.equip_weapon(_weapon(content, head="bog_iron_head"))
+    strong = _weapon(content, head="ashen_greathead")
+    warrior.equip_weapon(strong)
+    assert warrior.attack == base_attack + strong.stats["attack"]

@@ -114,3 +114,17 @@ def test_validate_rejects_a_zone_without_an_act():
     del content.locations["forest"]["act"]
     with pytest.raises(ValueError):
         content.validate()
+
+
+def test_components_load_with_four_slots():
+    content = load_content()
+    for slot in ("head", "haft", "core", "inscription"):
+        assert content.components[slot], slot
+
+
+def test_validate_rejects_an_unknown_component_stat():
+    content = load_content()
+    some_head = next(iter(content.components["head"].values()))
+    some_head["stats"]["wisdom"] = 5
+    with pytest.raises(ValueError):
+        content.validate()
