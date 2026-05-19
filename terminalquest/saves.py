@@ -20,6 +20,10 @@ DEFAULT_SAVE_DIR = Path.home() / ".terminalquest" / "saves"
 SLOTS = (1, 2, 3)
 
 
+class SaveError(ValueError):
+    """Raised when a save file exists but cannot be read or migrated."""
+
+
 def _slot_path(slot, save_dir):
     return Path(save_dir) / f"slot{slot}.json"
 
@@ -66,12 +70,18 @@ def save_game(state, slot, save_dir=DEFAULT_SAVE_DIR):
 
 
 def load_game(slot, content, io, rng, save_dir=DEFAULT_SAVE_DIR):
-    """Load and return the GameState from ``slot``, or None if the slot is empty."""
+    """Load and return the GameState from ``slot``, or None if the slot is empty.
+
+    Raises ``SaveError`` if the slot holds a file that cannot be parsed.
+    """
     path = _slot_path(slot, Path(save_dir))
     if not path.exists():
         return None
-    data = _migrate(json.loads(path.read_text(encoding="utf-8")))
-    return GameState.from_dict(data["state"], content, io, rng)
+    try:
+        data = _migrate(json.loads(path.read_text(encoding="utf-8")))
+        return GameState.from_dict(data["state"], content, io, rng)
+    except (KeyError, ValueError) as exc:
+        raise SaveError(f"save slot {slot} could not be loaded: {exc}") from exc
 
 
 def list_saves(save_dir=DEFAULT_SAVE_DIR):

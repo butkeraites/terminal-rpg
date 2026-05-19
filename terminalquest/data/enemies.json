@@ -1,86 +1,95 @@
 {
   "goblin": {
-    "name": "Goblin",
+    "name": "Scavver",
     "hp": 30,
     "attack": 8,
     "defense": 2,
     "xp_reward": 30,
     "gold_reward": 15,
-    "ai": "aggressive"
+    "ai": "aggressive",
+    "flavor": "A starving thing that learned to walk upright when the food ran out."
   },
   "wolf": {
-    "name": "Wolf",
+    "name": "Gaunt Wolf",
     "hp": 25,
     "attack": 12,
     "defense": 1,
     "xp_reward": 25,
     "gold_reward": 10,
-    "ai": "fleer"
+    "ai": "fleer",
+    "flavor": "Every rib shows through its hide. It has not eaten, and it has not died."
   },
   "bandit": {
-    "name": "Bandit",
+    "name": "Cutthroat",
     "hp": 40,
     "attack": 10,
     "defense": 3,
     "xp_reward": 40,
     "gold_reward": 25,
-    "ai": "aggressive"
+    "ai": "aggressive",
+    "flavor": "A farmer once. The Pall left him only his knife and his hunger."
   },
   "giant_bat": {
-    "name": "Giant Bat",
+    "name": "Carrion Bat",
     "hp": 35,
     "attack": 15,
     "defense": 2,
     "xp_reward": 50,
     "gold_reward": 30,
-    "ai": "fleer"
+    "ai": "fleer",
+    "flavor": "It roosts in the ribcages of the dead and drinks what pools there."
   },
   "cave_troll": {
-    "name": "Cave Troll",
+    "name": "Charnel Troll",
     "hp": 60,
     "attack": 12,
     "defense": 5,
     "xp_reward": 70,
     "gold_reward": 40,
-    "ai": "defensive"
+    "ai": "defensive",
+    "flavor": "It drags the bones of older meals behind it, unwilling to let them go."
   },
   "dark_slime": {
-    "name": "Dark Slime",
+    "name": "Creeping Rot",
     "hp": 40,
     "attack": 10,
     "defense": 1,
     "xp_reward": 45,
     "gold_reward": 20,
     "ai": "caster",
-    "ability": {"name": "Acid Spit", "power": 1.2, "status": "poison", "status_turns": 3}
+    "ability": {"name": "Acid Spit", "power": 1.2, "status": "poison", "status_turns": 3},
+    "flavor": "The Pall itself, given just enough shape to crawl toward the warm."
   },
   "mountain_ogre": {
-    "name": "Mountain Ogre",
+    "name": "Ridge Ravager",
     "hp": 80,
     "attack": 18,
     "defense": 6,
     "xp_reward": 100,
     "gold_reward": 60,
-    "ai": "aggressive"
+    "ai": "aggressive",
+    "flavor": "It was a man the size of a door once. Now it is only the size."
   },
   "ice_wraith": {
-    "name": "Ice Wraith",
+    "name": "Hollow Wraith",
     "hp": 50,
     "attack": 20,
     "defense": 3,
     "xp_reward": 80,
     "gold_reward": 45,
     "ai": "caster",
-    "ability": {"name": "Frostbite", "power": 1.1, "status": "weak", "status_turns": 2}
+    "ability": {"name": "Frostbite", "power": 1.1, "status": "weak", "status_turns": 2},
+    "flavor": "It remembers being cold. It remembers nothing else at all."
   },
   "stone_golem": {
-    "name": "Stone Golem",
+    "name": "Grave Sentinel",
     "hp": 100,
     "attack": 15,
     "defense": 10,
     "xp_reward": 120,
     "gold_reward": 70,
-    "ai": "defensive"
+    "ai": "defensive",
+    "flavor": "Set to guard a tomb whose name has long worn away. It still guards."
   },
   "shadow_warden": {
     "name": "Shadow Warden",
@@ -90,6 +99,7 @@
     "xp_reward": 300,
     "gold_reward": 250,
     "ai": "caster",
-    "ability": {"name": "Umbral Nova", "power": 1.7, "status": "weak", "status_turns": 2}
+    "ability": {"name": "Umbral Nova", "power": 1.7, "status": "weak", "status_turns": 2},
+    "flavor": "The first to climb the Summit. The Pall did not kill it — it kept it."
   }
 }

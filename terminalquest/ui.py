@@ -6,7 +6,7 @@ captures output, letting the whole game loop run headless under pytest.
 import sys
 import time
 
-from . import status
+from . import color, status
 
 
 class GameIO:
@@ -18,7 +18,7 @@ class GameIO:
     def show(self, text=""):
         print(text)
 
-    def show_slow(self, text, delay=0.03):
+    def show_slow(self, text, delay=0.02):
         """Print text character-by-character for dramatic effect."""
         if not self.animate:
             print(text)
@@ -50,7 +50,7 @@ class ScriptedIO(GameIO):
     def show(self, text=""):
         self.output.append(str(text))
 
-    def show_slow(self, text, delay=0.03):
+    def show_slow(self, text, delay=0.02):
         self.output.append(str(text))
 
     def ask(self, prompt):
@@ -67,6 +67,17 @@ class ScriptedIO(GameIO):
     def text(self):
         """All captured output joined into a single string."""
         return "\n".join(self.output)
+
+
+def hud(player):
+    """A compact one-line status bar shown across the game's screens."""
+    hp = f"{player.hp}/{player.max_hp}"
+    if player.hp <= player.max_hp * 0.3:
+        hp = color.paint(hp, "red")
+    elif player.hp >= player.max_hp * 0.7:
+        hp = color.paint(hp, "green")
+    return (f"Lv{player.level}  ❤️ {hp}  ⚡ {player.stamina}/{player.max_stamina}"
+            f"  💰 {player.gold}  🎒 {player.potion_count()}")
 
 
 def show_stats(io, player):

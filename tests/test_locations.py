@@ -72,7 +72,7 @@ def test_travel_into_a_zone_fight_and_return(content):
     state = make_state(_strong_player(content), content, io, StubRandom())
     locations.location_loop(state)
     text = io.text()
-    assert "Dark Forest" in text
+    assert "Witherwood" in text
     assert "You defeated" in text
     assert state.current_location == "crossroads"
 

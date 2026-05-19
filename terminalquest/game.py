@@ -32,8 +32,12 @@ def create_character(content, io):
     class_id, class_def = choose_class(content, io)
     player = Player(name, class_id, class_def)
     io.clear()
-    io.show_slow(f"Welcome, {player.name} the {player.class_name}!")
-    io.show_slow("Your adventure begins...\n")
+    io.show_slow(f"{player.name} the {player.class_name}.")
+    io.show_slow("The realm of Mournhold has been dying for three winters now.")
+    io.show_slow("The Pall came down off the heights and the land went grey behind it —")
+    io.show_slow("crops, then cattle, then people, all turned hollow and hungry.")
+    io.show_slow("You are no hero; the heroes died first. You are only still breathing —")
+    io.show_slow("and the last road that leads anywhere climbs toward the Pall's heart.\n")
     io.pause(2)
     return player
 
@@ -51,8 +55,27 @@ def load_menu(content, io, rng):
     io.show("4. Cancel")
     choice = io.ask("\nLoad which slot? ")
     if choice in ("1", "2", "3") and int(choice) in saved:
-        return saves.load_game(int(choice), content, io, rng)
+        try:
+            return saves.load_game(int(choice), content, io, rng)
+        except saves.SaveError:
+            io.show("\n❌ That save is corrupt and cannot be loaded.")
+            io.pause(1)
     return None
+
+
+def settings_menu(io):
+    """Toggle display settings from the title screen."""
+    while True:
+        state = "ON" if io.animate else "OFF"
+        io.show(f"\n1. Text animation: {state}")
+        io.show("2. Back")
+        choice = io.ask("\nYour choice? ")
+        if choice == "1":
+            io.animate = not io.animate
+        elif choice == "2":
+            return
+        else:
+            io.show("\n❌ Invalid choice!")
 
 
 def run(io=None, content=None, rng=None):
@@ -70,7 +93,8 @@ def run(io=None, content=None, rng=None):
     while True:
         io.show("1. New Game")
         io.show("2. Continue")
-        io.show("3. Quit")
+        io.show("3. Settings")
+        io.show("4. Quit")
         choice = io.ask("\nYour choice? ")
 
         if choice == "1":
@@ -83,6 +107,8 @@ def run(io=None, content=None, rng=None):
                 location_loop(state)
                 return
         elif choice == "3":
+            settings_menu(io)
+        elif choice == "4":
             io.show("\n👋 Farewell, adventurer!")
             return
         else:

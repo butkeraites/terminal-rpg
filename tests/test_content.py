@@ -1,7 +1,7 @@
 """Content files load and are internally consistent."""
 import pytest
 
-from terminalquest.content import load_content
+from terminalquest.content import ContentError, _load, load_content
 
 
 def test_load_content_succeeds():
@@ -76,3 +76,9 @@ def test_zones_have_a_recommended_level():
     for loc in content.locations.values():
         if loc.get("kind") == "zone" and not loc.get("boss"):
             assert isinstance(loc["recommended_level"], int)
+
+
+def test_load_rejects_a_missing_data_file():
+    """A missing data file fails with a clear ContentError, not a raw crash."""
+    with pytest.raises(ContentError):
+        _load("does_not_exist.json")

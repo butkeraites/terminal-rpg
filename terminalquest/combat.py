@@ -269,7 +269,9 @@ def run_combat(state, enemy):
     Combat-only status effects are cleared and stamina restored on exit.
     """
     player, content, io, rng = state.player, state.content, state.io, state.rng
-    io.show_slow(f"\n⚔️  A wild {enemy.name} appears!")
+    io.show_slow(f"\n⚔️  A {enemy.name} comes for you.")
+    if enemy.flavor:
+        io.show_slow(enemy.flavor)
 
     outcome = None
     while outcome is None:

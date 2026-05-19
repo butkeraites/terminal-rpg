@@ -63,3 +63,10 @@ def test_migrates_v1_save_to_v2(tmp_path, content, warrior):
     assert loaded.flags == {}
     assert loaded.player.name == warrior.name
     assert loaded.player.level == warrior.level
+
+
+def test_corrupt_save_raises_save_error(tmp_path, content):
+    """A slot holding unparseable data raises SaveError, not a raw crash."""
+    (tmp_path / "slot1.json").write_text("{ not valid json", encoding="utf-8")
+    with pytest.raises(saves.SaveError):
+        _load(1, content, tmp_path)

@@ -8,7 +8,7 @@ until the player dies, wins, or quits.
 from . import saves
 from .combat import run_combat
 from .enemy import make_enemy
-from .ui import show_stats
+from .ui import hud, show_stats
 
 INN_COST = 20
 POTION_COST = 30
@@ -30,7 +30,7 @@ def shop(state):
     while True:
         atk_cost = player.attack * ATTACK_UPGRADE_GOLD_PER_POINT
         def_cost = player.defense * DEFENSE_UPGRADE_GOLD_PER_POINT
-        io.show(f"Your gold: {player.gold}")
+        io.show(hud(player))
         io.show(f"\n1. Health Potion ({POTION_COST} gold)")
         io.show(f"2. Greater Potion ({GREATER_POTION_COST} gold)")
         io.show(f"3. Upgrade Attack (+5 attack, {atk_cost} gold)")
@@ -163,12 +163,15 @@ def _victory_screen(state):
     """Render the win screen after the final boss is defeated."""
     player, io = state.player, state.io
     io.clear()
-    io.show_slow("🌟 The shadow dissolves into fading light...")
-    io.show_slow("Dawn breaks over the realm. You have won!")
+    io.show_slow("The Shadow Warden comes apart like wet ash, and is gone.")
+    io.show_slow("The Pall does not lift — but for the first time in three winters,")
+    io.show_slow("it stops climbing.")
     io.show("\n" + "=" * 50)
     io.show("🏆  VICTORY")
     io.show(f"{player.name} the {player.class_name} — Level {player.level}")
     io.show(f"💰 Gold: {player.gold}")
+    io.show("\nThe realm is still dead. You bought it only time.")
+    io.show("It will have to be enough.")
     io.show("=" * 50)
     io.show("\nThank you for playing Terminal Quest!")
 
@@ -239,8 +242,7 @@ def location_loop(state):
                 io.show_slow(line)
             arrived = False
         io.show(f"\n📍 {loc['name']}")
-        io.show(f"HP: {player.hp}/{player.max_hp} | Gold: {player.gold} "
-                f"| Potions: {player.potion_count()}")
+        io.show(hud(player))
 
         options = _build_options(state, loc)
         for index, (label, _action) in enumerate(options, start=1):
@@ -273,7 +275,7 @@ def location_loop(state):
             return
 
     io.clear()
-    io.show_slow("💀 You have been defeated...")
+    io.show_slow("💀 The Pall takes another. It always does.")
     io.show("\nFinal Stats:")
     io.show(f"Level: {player.level}")
     io.show(f"Gold: {player.gold}")

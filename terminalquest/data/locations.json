@@ -3,28 +3,28 @@
     "name": "The Crossroads",
     "kind": "hub",
     "intro": [
-      "🗺️  You stand at the Crossroads.",
-      "Roads lead off in every direction."
+      "🗺️  A scar of bare road where four ways meet.",
+      "Every one of them leads somewhere worse."
     ],
     "connections": ["village", "forest", "cave", "mountain", "summit"]
   },
   "village": {
-    "name": "Village",
+    "name": "Gravewatch",
     "kind": "settlement",
     "intro": [
-      "🏘️  Welcome to the Village.",
-      "A peaceful place with a shop and an inn."
+      "🏚️  Gravewatch — the last village with a fire still lit.",
+      "Its people do not ask your name. Names are for the dead."
     ],
     "connections": ["crossroads"],
     "services": ["shop", "inn"]
   },
   "forest": {
-    "name": "Dark Forest",
+    "name": "The Witherwood",
     "kind": "zone",
     "recommended_level": 1,
     "intro": [
-      "🌲 You enter the Dark Forest...",
-      "Strange sounds echo through the trees."
+      "🌲 The Witherwood, where the trees have stopped pretending to be alive.",
+      "Something keeps pace with you, just past the edge of the light."
     ],
     "connections": ["crossroads"],
     "encounters": [
@@ -32,12 +32,12 @@
     ]
   },
   "cave": {
-    "name": "Cave",
+    "name": "The Gullet",
     "kind": "zone",
     "recommended_level": 3,
     "intro": [
-      "🕳️  You enter a dark cave...",
-      "You can barely see anything."
+      "🕳️  The Gullet — a wound in the rock that breathes cold, wet air.",
+      "The dark in here has a weight to it, and it leans on you."
     ],
     "connections": ["crossroads"],
     "encounters": [
@@ -45,12 +45,12 @@
     ]
   },
   "mountain": {
-    "name": "Mountain",
+    "name": "The Ashen Climb",
     "kind": "zone",
     "recommended_level": 5,
     "intro": [
-      "⛰️  You climb the treacherous mountain...",
-      "The air grows thin and cold."
+      "⛰️  The Ashen Climb. Grey snow falls here, and it is not snow.",
+      "What lived on this slope did not die so much as change."
     ],
     "connections": ["crossroads"],
     "encounters": [
@@ -63,8 +63,8 @@
     "boss": true,
     "unlock_level": 5,
     "intro": [
-      "⛰️  Beyond the peak lies the Shrouded Summit...",
-      "A presence of pure shadow waits for you."
+      "⛰️  The Shrouded Summit. The Pall pours from the dark ahead like smoke off a pyre.",
+      "Whatever is left of the one who began all this has been waiting for you."
     ],
     "connections": ["crossroads"],
     "encounters": [

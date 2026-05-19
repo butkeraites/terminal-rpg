@@ -13,8 +13,18 @@ _VALID_AI = {"aggressive", "defensive", "caster", "fleer"}
 _VALID_ENCOUNTER_TYPES = {"combat"}
 
 
+class ContentError(ValueError):
+    """Raised when a data file is missing or malformed."""
+
+
 def _load(name):
-    return json.loads((DATA_DIR / name).read_text(encoding="utf-8"))
+    path = DATA_DIR / name
+    try:
+        return json.loads(path.read_text(encoding="utf-8"))
+    except FileNotFoundError as exc:
+        raise ContentError(f"missing data file: {name}") from exc
+    except json.JSONDecodeError as exc:
+        raise ContentError(f"{name} is not valid JSON: {exc}") from exc
 
 
 class Content:
