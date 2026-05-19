@@ -33,3 +33,9 @@ def test_sim_build_sampling_reports_a_win_rate_spread():
     result = _run_sim("--runs", "3", "--builds", "5")
     assert "BUILD SAMPLING" in result.stdout
     assert "degenerate" in result.stdout
+
+
+def test_balance_check_passes_against_the_committed_baseline():
+    """A3: the committed baseline matches the current build — the gate is green."""
+    result = _run_sim("--check")  # _run_sim asserts a zero exit via check=True
+    assert "PASS" in result.stdout

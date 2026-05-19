@@ -1,0 +1,13 @@
+{
+  "_comment": "Committed CAREFUL-profile win-rates. `python3 -m tools.sim --check` re-runs the simulation and fails CI if any class drifts beyond `tolerance`. Intentional balance changes should update these numbers in the same commit.",
+  "seed": "ci-baseline",
+  "runs": 300,
+  "tolerance": 0.1,
+  "careful_win_rate": {
+    "warrior": 0.947,
+    "rogue": 0.693,
+    "mage": 0.777,
+    "ranger": 0.883,
+    "cleric": 0.6
+  }
+}

@@ -17,8 +17,11 @@ A given ``--seed`` always produces the same report — the run is reproducible.
 from __future__ import annotations
 
 import argparse
+import json
 import random
+import sys
 from dataclasses import dataclass
+from pathlib import Path
 
 from terminalquest import combat
 from terminalquest.content import load_content
@@ -247,6 +250,37 @@ def run_build_report(content, n_builds, seed):
               f"max {rates[-1]:4.0%}   dead {dead}  degenerate {degenerate}")
 
 
+def profile_win_rates(content, rest_each, trials, seed):
+    """Return ``{class_id: win_rate}`` for one rest profile — the check's metric."""
+    rates = {}
+    for class_id in content.classes:
+        rng = random.Random(f"{seed}:{class_id}")
+        won = sum(simulate_run(content, class_id, rng, rest_each).won
+                  for _ in range(trials))
+        rates[class_id] = won / trials
+    return rates
+
+
+def check_balance(content):
+    """Compare CAREFUL win-rates to the committed baseline; True if all in band."""
+    baseline = json.loads(
+        (Path(__file__).parent / "balance_baseline.json").read_text(encoding="utf-8"))
+    rates = profile_win_rates(content, True, baseline["runs"], baseline["seed"])
+    tolerance = baseline["tolerance"]
+    ok = True
+    print("\n=== BALANCE REGRESSION CHECK ===")
+    for class_id, want in baseline["careful_win_rate"].items():
+        got = rates[class_id]
+        drift = got - want
+        in_band = abs(drift) <= tolerance
+        ok = ok and in_band
+        print(f"  {class_id:9s} baseline {want:5.0%}  now {got:5.0%}  "
+              f"drift {drift:+.0%}  [{'ok' if in_band else 'OUT OF BAND'}]")
+    print("PASS — balance holds." if ok
+          else "FAIL — balance drifted; fix the regression or update the baseline.")
+    return ok
+
+
 def main(argv=None):
     """CLI entry point: run both rest profiles and print their reports."""
     parser = argparse.ArgumentParser(description="Terminal Quest balance simulator.")
@@ -254,9 +288,13 @@ def main(argv=None):
     parser.add_argument("--seed", default="terminalquest", help="master seed")
     parser.add_argument("--builds", type=int, default=20,
                         help="random weapon builds to sample per class (0 to skip)")
+    parser.add_argument("--check", action="store_true",
+                        help="compare win-rates to the committed baseline and exit")
     args = parser.parse_args(argv)
 
     content = load_content()
+    if args.check:
+        sys.exit(0 if check_balance(content) else 1)
     run_profile(content, "RECKLESS (rest only between zones)", False, args.runs, args.seed)
     run_profile(content, "CAREFUL  (rest before every fight)", True, args.runs, args.seed)
     if args.builds > 0:
