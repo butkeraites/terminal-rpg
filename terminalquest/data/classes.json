@@ -1,0 +1,52 @@
+{
+  "warrior": {
+    "name": "Warrior",
+    "description": "A stalwart fighter with high HP and defense.",
+    "max_hp": 120,
+    "attack": 12,
+    "defense": 8,
+    "max_stamina": 8,
+    "abilities": ["power_strike", "shield_wall"],
+    "inventory": ["Health Potion", "Health Potion", "Health Potion"]
+  },
+  "rogue": {
+    "name": "Rogue",
+    "description": "A nimble striker who bleeds enemies and slips past blows.",
+    "max_hp": 90,
+    "attack": 14,
+    "defense": 4,
+    "max_stamina": 10,
+    "abilities": ["backstab", "quick_step"],
+    "inventory": ["Health Potion", "Health Potion"]
+  },
+  "mage": {
+    "name": "Mage",
+    "description": "A glass cannon wielding devastating elemental magic.",
+    "max_hp": 75,
+    "attack": 16,
+    "defense": 3,
+    "max_stamina": 12,
+    "abilities": ["fireball", "frost_armor"],
+    "inventory": ["Health Potion", "Health Potion"]
+  },
+  "ranger": {
+    "name": "Ranger",
+    "description": "A precise hunter who marks prey and picks it off.",
+    "max_hp": 95,
+    "attack": 13,
+    "defense": 5,
+    "max_stamina": 10,
+    "abilities": ["aimed_shot", "hunters_mark"],
+    "inventory": ["Health Potion", "Health Potion"]
+  },
+  "cleric": {
+    "name": "Cleric",
+    "description": "A holy warrior who smites foes and mends wounds.",
+    "max_hp": 105,
+    "attack": 11,
+    "defense": 6,
+    "max_stamina": 10,
+    "abilities": ["smite", "mend"],
+    "inventory": ["Health Potion", "Health Potion"]
+  }
+}

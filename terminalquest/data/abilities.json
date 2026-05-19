@@ -1,0 +1,76 @@
+{
+  "power_strike": {
+    "name": "Power Strike",
+    "stamina": 3,
+    "kind": "attack",
+    "power": 1.6,
+    "description": "A heavy blow dealing 60% extra damage."
+  },
+  "shield_wall": {
+    "name": "Shield Wall",
+    "stamina": 2,
+    "kind": "defend",
+    "description": "Brace behind your shield, halving the next hit."
+  },
+  "backstab": {
+    "name": "Backstab",
+    "stamina": 3,
+    "kind": "attack",
+    "power": 1.3,
+    "status": "bleed",
+    "status_turns": 3,
+    "description": "A precise strike that leaves the target bleeding."
+  },
+  "quick_step": {
+    "name": "Quick Step",
+    "stamina": 2,
+    "kind": "buff",
+    "status": "evasive",
+    "status_turns": 2,
+    "description": "Become evasive, dodging incoming attacks."
+  },
+  "fireball": {
+    "name": "Fireball",
+    "stamina": 4,
+    "kind": "attack",
+    "power": 1.4,
+    "status": "burn",
+    "status_turns": 3,
+    "description": "Hurl fire that ignites the target."
+  },
+  "frost_armor": {
+    "name": "Frost Armor",
+    "stamina": 3,
+    "kind": "defend",
+    "description": "Encase yourself in ice, halving the next hit."
+  },
+  "aimed_shot": {
+    "name": "Aimed Shot",
+    "stamina": 3,
+    "kind": "attack",
+    "power": 1.7,
+    "description": "A carefully aimed shot for 70% extra damage."
+  },
+  "hunters_mark": {
+    "name": "Hunter's Mark",
+    "stamina": 2,
+    "kind": "debuff",
+    "status": "vulnerable",
+    "status_turns": 3,
+    "description": "Mark the enemy so it takes more damage."
+  },
+  "smite": {
+    "name": "Smite",
+    "stamina": 3,
+    "kind": "attack",
+    "power": 1.4,
+    "description": "Call down holy power for 40% extra damage."
+  },
+  "mend": {
+    "name": "Mend",
+    "stamina": 4,
+    "kind": "heal",
+    "power": 35,
+    "description": "Channel light to restore 35 HP."
+  }
+}

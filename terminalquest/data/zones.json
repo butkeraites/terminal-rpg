@@ -1,0 +1,26 @@
+{
+  "forest": {
+    "name": "Dark Forest",
+    "intro": [
+      "🌲 You enter the Dark Forest...",
+      "Strange sounds echo through the trees."
+    ],
+    "enemies": ["goblin", "wolf", "bandit"]
+  },
+  "cave": {
+    "name": "Cave",
+    "intro": [
+      "🕳️  You enter a dark cave...",
+      "You can barely see anything."
+    ],
+    "enemies": ["giant_bat", "cave_troll", "dark_slime"]
+  },
+  "mountain": {
+    "name": "Mountain",
+    "intro": [
+      "⛰️  You climb the treacherous mountain...",
+      "The air grows thin and cold."
+    ],
+    "enemies": ["mountain_ogre", "ice_wraith", "stone_golem"]
+  }
+}
