@@ -7,6 +7,7 @@ touching Python. This module is the only place that reads those files.
 import json
 from pathlib import Path
 
+from . import status
 from .weapon import WEAPON_SLOTS
 
 DATA_DIR = Path(__file__).parent / "data"
@@ -15,6 +16,7 @@ _VALID_AI = {"aggressive", "defensive", "caster", "fleer", "relentless", "enrage
 _VALID_ENCOUNTER_TYPES = {"combat", "discovery"}
 _VALID_ACTS = {1, 2, 3}
 _VALID_STATS = {"attack", "defense", "max_hp", "max_stamina"}
+_VALID_PROC_TRIGGERS = {"on_hit", "on_crit"}
 
 
 class ContentError(ValueError):
@@ -129,6 +131,18 @@ class Content:
                     if stat not in _VALID_STATS:
                         raise ValueError(
                             f"component '{cid}' grants unknown stat '{stat}'"
+                        )
+                proc = comp.get("proc")
+                if proc is not None:
+                    if proc.get("trigger") not in _VALID_PROC_TRIGGERS:
+                        raise ValueError(
+                            f"component '{cid}' has invalid proc trigger "
+                            f"'{proc.get('trigger')}'"
+                        )
+                    if proc.get("status") not in status.ALL_EFFECTS:
+                        raise ValueError(
+                            f"component '{cid}' proc applies unknown status "
+                            f"'{proc.get('status')}'"
                         )
 
 

@@ -5,6 +5,7 @@ from terminalquest import combat, status
 from terminalquest.enemy import make_enemy
 from terminalquest.player import Player
 from terminalquest.ui import ScriptedIO
+from terminalquest.weapon import make_weapon
 
 
 def _player(content, class_id="warrior"):
@@ -210,3 +211,34 @@ def test_enrager_grows_stronger_once_wounded(content):
     assert procession.enraged
     assert procession.attack > base_attack
     assert "frenzy" in io.text()
+
+
+def _bleed_weapon(content):
+    return make_weapon(content, {"head": "bog_iron_head", "haft": "withe_haft",
+                                 "core": "bleeding_core",
+                                 "inscription": "mourners_mark"}, "Bleeder")
+
+
+def test_weapon_proc_applies_a_status_on_crit(content):
+    """D2: a Bleeding-Edge Core leaves the enemy bleeding when the player crits."""
+    player = _player(content)
+    player.equip_weapon(_bleed_weapon(content))
+    goblin = make_enemy("goblin", content)
+    combat._fire_procs(player, goblin, dodged=False, crit=True, io=ScriptedIO())
+    assert status.has_status(goblin, "bleed")
+
+
+def test_weapon_proc_holds_until_its_trigger(content):
+    player = _player(content)
+    player.equip_weapon(_bleed_weapon(content))
+    goblin = make_enemy("goblin", content)
+    combat._fire_procs(player, goblin, dodged=False, crit=False, io=ScriptedIO())
+    assert not status.has_status(goblin, "bleed")  # on_crit needs a crit
+
+
+def test_a_crit_in_a_turn_fires_the_weapon_proc(content):
+    player = _player(content)
+    player.equip_weapon(_bleed_weapon(content))
+    troll = make_enemy("cave_troll", content)  # tanky enough to survive the hit
+    combat._player_turn(player, troll, content, ScriptedIO(["1"]), StubRandom(rnd=0.0))
+    assert status.has_status(troll, "bleed")

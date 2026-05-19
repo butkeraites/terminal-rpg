@@ -63,6 +63,18 @@
       "name": "Census-Stone Core",
       "stats": {"defense": 3, "max_stamina": 1},
       "flavor": "Chipped from the plinth where one unscratched name still stands."
+    },
+    "bleeding_core": {
+      "name": "Bleeding-Edge Core",
+      "stats": {"attack": 2},
+      "proc": {"trigger": "on_crit", "status": "bleed", "turns": 3},
+      "flavor": "It keeps an edge no whetstone ever gave it. Wounds it opens do not close."
+    },
+    "bog_rot_core": {
+      "name": "Bog-Rot Core",
+      "stats": {"defense": 1},
+      "proc": {"trigger": "on_hit", "status": "poison", "turns": 2},
+      "flavor": "Wet rot packed into the weapon's heart. What it touches begins to turn."
     }
   },
   "inscription": {

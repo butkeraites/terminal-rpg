@@ -26,7 +26,17 @@ def test_components_in_different_slots_stack_their_stats(content):
 
 def test_weapon_round_trips_through_a_dict(content):
     ids = {"head": "reliquary_edge", "haft": "weir_pole",
-           "core": "pall_glass_core", "inscription": "last_breath_verse"}
+           "core": "bleeding_core", "inscription": "last_breath_verse"}
     weapon = make_weapon(content, ids, "Keening")
     clone = Weapon.from_dict(weapon.to_dict())
     assert clone.to_dict() == weapon.to_dict()
+    assert clone.procs == weapon.procs
+
+
+def test_make_weapon_collects_component_procs(content):
+    """A proc-bearing core contributes its combat trigger to the weapon."""
+    ids = {"head": "bog_iron_head", "haft": "withe_haft",
+           "core": "bleeding_core", "inscription": "mourners_mark"}
+    weapon = make_weapon(content, ids, "Probe")
+    assert any(p["status"] == "bleed" and p["trigger"] == "on_crit"
+               for p in weapon.procs)

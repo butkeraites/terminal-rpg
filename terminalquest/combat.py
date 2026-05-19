@@ -36,6 +36,20 @@ def _perform_attack(attacker, target, power, rng):
     return dealt, False, crit
 
 
+def _fire_procs(player, enemy, dodged, crit, io):
+    """Fire the equipped weapon's procs after a player attack."""
+    if not enemy.is_alive():
+        return
+    weapon = player.equipment.get("weapon")
+    if weapon is None:
+        return
+    for proc in weapon.procs:
+        trigger = proc["trigger"]
+        if (trigger == "on_hit" and not dodged) or (trigger == "on_crit" and crit):
+            status.apply_status(enemy, proc["status"], proc["turns"])
+            io.show(f"   ⟡ {weapon.name}: {enemy.name} is gripped by {proc['status']}!")
+
+
 def _resolve_start_of_turn(combatant, io):
     """Tick damage-over-time and timers. Returns True if the combatant survives."""
     dot, messages = status.tick_statuses(combatant)
@@ -61,6 +75,7 @@ def _use_ability(player, enemy, ability, io, rng):
         if not dodged and "status" in ability:
             status.apply_status(enemy, ability["status"], ability["status_turns"])
             io.show(f"   {enemy.name} is afflicted with {ability['status']}!")
+        _fire_procs(player, enemy, dodged, crit, io)
     elif kind == "defend":
         status.apply_status(player, "braced", DEFEND_TURNS)
         io.show(f"🛡️  {ability['name']}! You brace against the next blow.")
@@ -122,6 +137,7 @@ def _player_turn(player, enemy, content, io, rng):
                 io.show(f"\n💥 CRITICAL HIT! You deal {damage} damage to {enemy.name}!")
             else:
                 io.show(f"\n💥 You deal {damage} damage to {enemy.name}!")
+            _fire_procs(player, enemy, dodged, crit, io)
             return "acted"
 
         if choice == "2":
