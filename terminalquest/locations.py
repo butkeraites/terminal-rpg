@@ -9,6 +9,7 @@ from . import chronicle, saves
 from .combat import run_combat
 from .enemy import make_enemy, make_hollowed, make_warden
 from .ui import hud, show_stats
+from .weapon import roll_weapon
 
 INN_COST = 20
 POTION_COST = 30
@@ -17,6 +18,7 @@ ATTACK_UPGRADE_GOLD_PER_POINT = 8
 DEFENSE_UPGRADE_GOLD_PER_POINT = 14
 SIGNPOST_THRESHOLD = 2
 HOLLOWED_CHANCE = 0.25
+WEAPON_DROP_CHANCE = 0.35
 
 _SERVICE_LABELS = {
     "shop": "🏪 Visit the Shop",
@@ -126,6 +128,27 @@ def _run_discovery(state, encounter):
     state.flags.setdefault("discoveries_seen", []).append(encounter["id"])
 
 
+def _offer_drop(state):
+    """After a victory, maybe drop a salvaged weapon to equip or leave behind."""
+    act = state.content.locations[state.current_location].get("act")
+    if act is None or state.rng.random() >= WEAPON_DROP_CHANCE:
+        return
+    player, io = state.player, state.io
+    weapon = roll_weapon(state.content, act, state.rng)
+    current = player.equipment.get("weapon")
+    io.show_slow(f"\n🗡️  Salvaged from the dead: {weapon.name}")
+    io.show(f"   {weapon.summary()}")
+    if current is not None:
+        io.show(f"   you wield: {current.name} — {current.summary()}")
+    io.show("\n1. Take it up")
+    io.show("2. Leave it")
+    if io.ask("\nYour choice? ") == "1":
+        player.equip_weapon(weapon)
+        io.show(f"\n✅ You take up the {weapon.name}.")
+    else:
+        io.show("\nYou leave it for the grey.")
+
+
 def run_encounter(state, encounter, fallen, wardens):
     """Run one encounter at the current location.
 
@@ -173,6 +196,8 @@ def run_encounter(state, encounter, fallen, wardens):
         name = hollowed_entry["player"]["name"]
         io.show_slow(f"\n🕯️  {name} is still, at last. The Pall will not raise "
                      f"them again — you have given them that much.")
+    if outcome == "victory" and not encounter.get("boss"):
+        _offer_drop(state)
     if encounter.get("boss") and outcome == "victory":
         return "boss_victory"
     return outcome

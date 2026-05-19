@@ -1,193 +1,193 @@
 {
   "head": {
     "gaunt_hook": {
-      "name": "Gaunt Hook",
+      "name": "Gaunt Hook", "tier": 1,
       "stats": {"attack": 4, "max_stamina": 1},
       "flavor": "A wolf-catcher's hook, kept keen by a hunger that never let it rest."
     },
     "bog_iron_head": {
-      "name": "Bog-Iron Head",
+      "name": "Bog-Iron Head", "tier": 1,
       "stats": {"attack": 5},
       "flavor": "Dredged from the Reach. It rings wrong — a bell with water in its throat."
     },
     "scavver_fang_head": {
-      "name": "Scavver-Fang Head",
+      "name": "Scavver-Fang Head", "tier": 1,
       "stats": {"attack": 6},
       "flavor": "Filed from something that learned to grow teeth only at the very end."
     },
     "drowned_sickle": {
-      "name": "Drowned Sickle",
+      "name": "Drowned Sickle", "tier": 1,
       "stats": {"attack": 6, "max_hp": 5},
       "flavor": "Still curved for a harvest. The Reach took the field, not the habit."
     },
     "cutthroat_point": {
-      "name": "Cutthroat's Point",
+      "name": "Cutthroat's Point", "tier": 2,
       "stats": {"attack": 7},
       "flavor": "A farmer's knife that learned a second, worse trade."
     },
     "reliquary_edge": {
-      "name": "Reliquary Edge",
+      "name": "Reliquary Edge", "tier": 2,
       "stats": {"attack": 8},
       "flavor": "A saint's shinbone, honed sharp. It was holy once; now it only cuts."
     },
     "magistrate_gavel": {
-      "name": "Magistrate's Gavel",
+      "name": "Magistrate's Gavel", "tier": 2,
       "stats": {"attack": 8, "defense": 1},
       "flavor": "It sentenced a city of no one. It still falls like a verdict."
     },
     "charnel_cleaver": {
-      "name": "Charnel Cleaver",
+      "name": "Charnel Cleaver", "tier": 2,
       "stats": {"attack": 9, "defense": 1},
       "flavor": "Heavy enough to part bone. The troll that swung it kept the bones."
     },
     "ashen_greathead": {
-      "name": "Ashen Greathead",
+      "name": "Ashen Greathead", "tier": 3,
       "stats": {"attack": 10},
       "flavor": "Climb-stone, too heavy by half. It does not strike so much as arrive."
     },
     "choir_pike": {
-      "name": "Choirmaster's Pike",
+      "name": "Choirmaster's Pike", "tier": 3,
       "stats": {"attack": 11},
       "flavor": "A processional pike, raised once for show. It has found its true use."
     },
     "ridge_breaker": {
-      "name": "Ridge-Breaker",
+      "name": "Ridge-Breaker", "tier": 3,
       "stats": {"attack": 13},
       "flavor": "Climb-stone shaped by something the size of a door. It breaks what it meets."
     },
     "summit_splinter": {
-      "name": "Summit Splinter",
+      "name": "Summit Splinter", "tier": 3,
       "stats": {"attack": 14, "max_stamina": 1},
       "flavor": "A shard off the Pall's own dark. It is very cold, and very sharp."
     }
   },
   "haft": {
     "reed_shaft": {
-      "name": "Sodden Reed Shaft",
+      "name": "Sodden Reed Shaft", "tier": 1,
       "stats": {"max_stamina": 1, "attack": 1},
       "flavor": "Light as a held breath. Cut to call holds to a supper that never came."
     },
     "withe_haft": {
-      "name": "Witherwood Haft",
+      "name": "Witherwood Haft", "tier": 1,
       "stats": {"max_stamina": 2},
       "flavor": "Cut from a tree that has forgotten how to be wood — light, and patient."
     },
     "gullet_bone": {
-      "name": "Gullet-Bone Haft",
+      "name": "Gullet-Bone Haft", "tier": 1,
       "stats": {"max_stamina": 2, "defense": 1},
       "flavor": "A long bone from the throat of the rock. It does not tire."
     },
     "iron_brace_haft": {
-      "name": "Iron-Braced Haft",
+      "name": "Iron-Braced Haft", "tier": 1,
       "stats": {"max_stamina": 2, "defense": 2},
       "flavor": "Banded for a grip that would not be struck loose. It never was."
     },
     "weir_pole": {
-      "name": "Weir-Keeper's Pole",
+      "name": "Weir-Keeper's Pole", "tier": 2,
       "stats": {"max_stamina": 3},
       "flavor": "It tended the gates that starved the holds. It knows long, thankless work."
     },
     "bellrope_grip": {
-      "name": "Bell-Rope Grip",
+      "name": "Bell-Rope Grip", "tier": 2,
       "stats": {"max_stamina": 3, "attack": 1},
       "flavor": "Wound from the curfew bell's rope. It has never stopped wanting to be pulled."
     },
     "census_rod": {
-      "name": "Census Rod",
+      "name": "Census Rod", "tier": 2,
       "stats": {"max_stamina": 3, "max_hp": 5},
       "flavor": "The rod a clerk struck names with. It remembers every one it unmade."
     },
     "procession_haft": {
-      "name": "Procession Haft",
+      "name": "Procession Haft", "tier": 2,
       "stats": {"max_stamina": 4},
       "flavor": "A bier-pole from a funeral that set out for the grave and never arrived."
     },
     "censer_chain": {
-      "name": "Censer-Chain Haft",
+      "name": "Censer-Chain Haft", "tier": 3,
       "stats": {"max_stamina": 4, "attack": 1},
       "flavor": "Wound from the chain an acolyte never set down. It still wants to swing."
     },
     "warden_haft": {
-      "name": "Warden's Haft",
+      "name": "Warden's Haft", "tier": 3,
       "stats": {"max_stamina": 4, "max_hp": 8},
       "flavor": "The grip the last Warden's hand wore smooth. It knows how to hold on."
     },
     "pilgrim_stave": {
-      "name": "Pilgrim's Stave",
+      "name": "Pilgrim's Stave", "tier": 3,
       "stats": {"max_stamina": 5},
       "flavor": "It walked the whole road to the Pall, and back, and to the Pall again."
     },
     "ashen_grip": {
-      "name": "Ashen Climb Grip",
+      "name": "Ashen Climb Grip", "tier": 3,
       "stats": {"max_stamina": 6},
       "flavor": "Wrapped in hide off the slope. Whatever wore that hide is climbing still."
     }
   },
   "core": {
     "grave_iron_core": {
-      "name": "Grave-Iron Core",
+      "name": "Grave-Iron Core", "tier": 1,
       "stats": {"defense": 2},
       "flavor": "Pried from a tomb door. It guards from habit, having nothing left to guard."
     },
-    "pall_glass_core": {
-      "name": "Pall-Glass Core",
-      "stats": {"defense": 3},
-      "flavor": "A bead of the Pall, cooled hard. It still remembers being a wall."
-    },
-    "warden_seal_core": {
-      "name": "Warden's Seal",
-      "stats": {"defense": 4, "max_hp": 5},
-      "flavor": "The sigil the last Warden wore. It keeps whatever it is given."
-    },
-    "census_core": {
-      "name": "Census-Stone Core",
-      "stats": {"defense": 3, "max_stamina": 1},
-      "flavor": "Chipped from the plinth where one unscratched name still stands."
-    },
-    "bleeding_core": {
-      "name": "Bleeding-Edge Core",
-      "stats": {"attack": 2},
-      "proc": {"trigger": "on_crit", "status": "bleed", "turns": 3},
-      "flavor": "It keeps an edge no whetstone ever gave it. Wounds it opens do not close."
-    },
     "bog_rot_core": {
-      "name": "Bog-Rot Core",
+      "name": "Bog-Rot Core", "tier": 1,
       "stats": {"defense": 1},
       "proc": {"trigger": "on_hit", "status": "poison", "turns": 2},
       "flavor": "Wet rot packed into the weapon's heart. What it touches begins to turn."
     },
-    "ember_core": {
-      "name": "Ember Core",
-      "stats": {"attack": 1},
-      "proc": {"trigger": "on_crit", "status": "burn", "turns": 3},
-      "flavor": "A coal off a pyre that has not gone cold in three long winters."
-    },
-    "silt_core": {
-      "name": "Silt-Choke Core",
-      "stats": {"defense": 2},
-      "proc": {"trigger": "on_hit", "status": "weak", "turns": 2},
-      "flavor": "Packed with drowning-silt. What it strikes forgets how to strike back."
-    },
-    "hexward_core": {
-      "name": "Hexward Core",
-      "stats": {"defense": 2},
-      "proc": {"trigger": "on_crit", "status": "vulnerable", "turns": 2},
-      "flavor": "A magistrate's seal. Marked by it, a thing is guilty, and easier to harm."
-    },
-    "tolling_core": {
-      "name": "Tolling Core",
-      "stats": {"attack": 1},
-      "proc": {"trigger": "on_crit", "status": "stun", "turns": 1},
-      "flavor": "It rings, once, when it bites. The sound stops whatever hears it."
+    "census_core": {
+      "name": "Census-Stone Core", "tier": 1,
+      "stats": {"defense": 3, "max_stamina": 1},
+      "flavor": "Chipped from the plinth where one unscratched name still stands."
     },
     "grave_chill_core": {
-      "name": "Grave-Chill Core",
+      "name": "Grave-Chill Core", "tier": 1,
       "stats": {"defense": 3},
       "proc": {"trigger": "on_hit", "status": "weak", "turns": 1},
       "flavor": "Cold the way a tomb is cold. It leans on the arm that meets it."
     },
+    "pall_glass_core": {
+      "name": "Pall-Glass Core", "tier": 2,
+      "stats": {"defense": 3},
+      "flavor": "A bead of the Pall, cooled hard. It still remembers being a wall."
+    },
+    "silt_core": {
+      "name": "Silt-Choke Core", "tier": 2,
+      "stats": {"defense": 2},
+      "proc": {"trigger": "on_hit", "status": "weak", "turns": 2},
+      "flavor": "Packed with drowning-silt. What it strikes forgets how to strike back."
+    },
+    "ember_core": {
+      "name": "Ember Core", "tier": 2,
+      "stats": {"attack": 1},
+      "proc": {"trigger": "on_crit", "status": "burn", "turns": 3},
+      "flavor": "A coal off a pyre that has not gone cold in three long winters."
+    },
+    "hexward_core": {
+      "name": "Hexward Core", "tier": 2,
+      "stats": {"defense": 2},
+      "proc": {"trigger": "on_crit", "status": "vulnerable", "turns": 2},
+      "flavor": "A magistrate's seal. Marked by it, a thing is guilty, and easier to harm."
+    },
+    "warden_seal_core": {
+      "name": "Warden's Seal", "tier": 3,
+      "stats": {"defense": 4, "max_hp": 5},
+      "flavor": "The sigil the last Warden wore. It keeps whatever it is given."
+    },
+    "bleeding_core": {
+      "name": "Bleeding-Edge Core", "tier": 3,
+      "stats": {"attack": 2},
+      "proc": {"trigger": "on_crit", "status": "bleed", "turns": 3},
+      "flavor": "It keeps an edge no whetstone ever gave it. Wounds it opens do not close."
+    },
+    "tolling_core": {
+      "name": "Tolling Core", "tier": 3,
+      "stats": {"attack": 1},
+      "proc": {"trigger": "on_crit", "status": "stun", "turns": 1},
+      "flavor": "It rings, once, when it bites. The sound stops whatever hears it."
+    },
     "pall_heart_core": {
-      "name": "Pall-Heart Core",
+      "name": "Pall-Heart Core", "tier": 3,
       "stats": {"attack": 2, "defense": 1},
       "proc": {"trigger": "on_hit", "status": "bleed", "turns": 2},
       "flavor": "A clot of the Pall itself. It is hungry, and it shares the hunger."
@@ -195,62 +195,62 @@
   },
   "inscription": {
     "grief_sigil": {
-      "name": "Grief-Sigil",
+      "name": "Grief-Sigil", "tier": 1,
       "stats": {"max_hp": 10},
       "flavor": "A small grief. It does not weigh much, but it is yours to carry."
     },
     "hold_fast_rune": {
-      "name": "Hold-Fast Rune",
+      "name": "Hold-Fast Rune", "tier": 1,
       "stats": {"max_hp": 12, "defense": 1},
       "flavor": "The weir-keepers' mark for a sealed gate. It does not let things through."
     },
     "sealed_gate_mark": {
-      "name": "Sealed-Gate Mark",
+      "name": "Sealed-Gate Mark", "tier": 1,
       "stats": {"max_hp": 14, "defense": 1},
       "flavor": "The word for shut, cut deep. Nothing the steel guards gets past it."
     },
     "mourners_mark": {
-      "name": "Mourner's Mark",
+      "name": "Mourner's Mark", "tier": 1,
       "stats": {"max_hp": 15},
       "flavor": "An old grief, cut deep into the steel. Grief, at least, endures."
     },
     "census_line": {
-      "name": "An Unscratched Line",
+      "name": "An Unscratched Line", "tier": 2,
       "stats": {"max_hp": 16, "max_stamina": 1},
       "flavor": "One line the clerk's nib spared. Someone, somewhere, is still counted."
     },
     "choir_descant": {
-      "name": "The Choir's Descant",
+      "name": "The Choir's Descant", "tier": 2,
       "stats": {"max_hp": 17},
       "flavor": "A high line of the rite, sung over the rest. It carries; it endures."
     },
     "starveling_psalm": {
-      "name": "Starveling's Psalm",
+      "name": "Starveling's Psalm", "tier": 2,
       "stats": {"max_hp": 18, "attack": 1},
       "flavor": "A hold's last prayer, learned by heart because there was nothing else."
     },
     "unremembered_name": {
-      "name": "An Unremembered Name",
+      "name": "An Unremembered Name", "tier": 2,
       "stats": {"max_hp": 20},
       "flavor": "A name scored over and over — yet the steel beneath still holds its shape."
     },
     "pall_ward_verse": {
-      "name": "Pall-Ward Verse",
+      "name": "Pall-Ward Verse", "tier": 3,
       "stats": {"max_hp": 20, "max_stamina": 2},
       "flavor": "A line said against the grey. It buys a breath, and another, and another."
     },
     "warden_oath": {
-      "name": "Warden's Oath",
+      "name": "Warden's Oath", "tier": 3,
       "stats": {"max_hp": 22, "defense": 1},
       "flavor": "The promise the Pall keeps its Wardens to. It is a heavy thing to wear."
     },
     "last_breath_verse": {
-      "name": "Last-Breath Verse",
+      "name": "Last-Breath Verse", "tier": 3,
       "stats": {"max_hp": 25},
       "flavor": "The one line of the rite the fire spared. It keeps you here a while longer."
     },
     "ash_remembrance": {
-      "name": "Ash-Remembrance",
+      "name": "Ash-Remembrance", "tier": 3,
       "stats": {"max_hp": 28},
       "flavor": "Cut deep, against forgetting. The deeper the cut, the longer it holds."
     }

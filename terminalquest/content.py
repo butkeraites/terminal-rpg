@@ -17,6 +17,7 @@ _VALID_ENCOUNTER_TYPES = {"combat", "discovery"}
 _VALID_ACTS = {1, 2, 3}
 _VALID_STATS = {"attack", "defense", "max_hp", "max_stamina"}
 _VALID_PROC_TRIGGERS = {"on_hit", "on_crit"}
+_VALID_TIERS = {1, 2, 3}
 
 
 class ContentError(ValueError):
@@ -127,6 +128,10 @@ class Content:
             if slot not in self.components:
                 raise ValueError(f"components.json is missing the '{slot}' slot")
             for cid, comp in self.components[slot].items():
+                if comp.get("tier") not in _VALID_TIERS:
+                    raise ValueError(
+                        f"component '{cid}' has invalid tier {comp.get('tier')!r}"
+                    )
                 for stat in comp.get("stats", {}):
                     if stat not in _VALID_STATS:
                         raise ValueError(

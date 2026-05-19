@@ -19,6 +19,16 @@ class Weapon:
         self.stats = dict(stats)
         self.procs = list(procs or [])
 
+    def summary(self):
+        """A compact one-line description of the weapon's bonuses and procs."""
+        icons = {"attack": "⚔️", "defense": "🛡️", "max_hp": "❤️", "max_stamina": "⚡"}
+        parts = [f"{icons[s]}+{self.stats[s]}"
+                 for s in ("attack", "defense", "max_hp", "max_stamina")
+                 if self.stats.get(s)]
+        for proc in self.procs:
+            parts.append(f"{proc['status']} on {proc['trigger'].replace('on_', '')}")
+        return "  ".join(parts) or "(no bonuses)"
+
     def to_dict(self):
         """Serialize to a plain dict for saving."""
         return {
@@ -49,3 +59,17 @@ def make_weapon(content, components, name):
         if "proc" in component:
             procs.append(dict(component["proc"]))
     return Weapon(name, components, stats, procs)
+
+
+def roll_weapon(content, act, rng):
+    """Assemble a random weapon from components of tier <= ``act``.
+
+    Deeper acts unlock higher-tier components, so salvage improves as the
+    journey descends. The weapon takes its name from its head component.
+    """
+    chosen = {}
+    for slot in WEAPON_SLOTS:
+        pool = [cid for cid, comp in content.components[slot].items()
+                if comp.get("tier", 1) <= act]
+        chosen[slot] = rng.choice(pool)
+    return make_weapon(content, chosen, content.components["head"][chosen["head"]]["name"])

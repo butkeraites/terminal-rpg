@@ -1,5 +1,7 @@
 """Combinatorial weapons: assembly from components and serialization."""
-from terminalquest.weapon import Weapon, make_weapon
+import random
+
+from terminalquest.weapon import Weapon, make_weapon, roll_weapon
 
 
 def test_make_weapon_sums_component_stats(content):
@@ -40,3 +42,12 @@ def test_make_weapon_collects_component_procs(content):
     weapon = make_weapon(content, ids, "Probe")
     assert any(p["status"] == "bleed" and p["trigger"] == "on_crit"
                for p in weapon.procs)
+
+
+def test_roll_weapon_respects_the_act_tier(content):
+    """An Act I drop is assembled only from tier-1 components."""
+    rng = random.Random(7)
+    for _ in range(25):
+        weapon = roll_weapon(content, 1, rng)
+        for slot, cid in weapon.components.items():
+            assert content.components[slot][cid]["tier"] == 1

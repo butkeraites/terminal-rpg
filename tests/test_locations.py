@@ -85,7 +85,7 @@ def test_run_encounter_can_raise_a_hollowed(tmp_path, content):
                             chronicle_dir=tmp_path)
     chronicle.record(fallen_run, "fell", tmp_path)
     fallen = chronicle.fallen(chronicle.load(tmp_path))
-    state = make_state(_strong_player(content), content, ScriptedIO(["1"]),
+    state = make_state(_strong_player(content), content, ScriptedIO(["1", "2"]),
                        StubRandom(rnd=0.0), current_location="forest",
                        chronicle_dir=tmp_path)
     encounter = content.locations["forest"]["encounters"][0]
@@ -112,7 +112,7 @@ def test_defeating_a_hollowed_lays_it_to_rest(tmp_path, content):
                       chronicle_dir=tmp_path)
     chronicle.record(dead, "fell", tmp_path)
     fallen = chronicle.fallen(chronicle.load(tmp_path))
-    state = make_state(_strong_player(content), content, ScriptedIO(["1"]),
+    state = make_state(_strong_player(content), content, ScriptedIO(["1", "2"]),
                        StubRandom(rnd=0.0), current_location="forest",
                        chronicle_dir=tmp_path)
     encounter = content.locations["forest"]["encounters"][0]
@@ -220,6 +220,33 @@ def test_summit_gate_opens_at_level_seven(content):
                       current_location="mountain")
     assert locations.try_travel(high, "summit") is True
     assert high.current_location == "summit"
+
+
+def test_a_weapon_drop_can_be_taken_up(content):
+    """A weapon salvaged after a victory can be equipped in place of the old one."""
+    player = _player(content)
+    starting = player.equipment["weapon"]
+    state = make_state(player, content, ScriptedIO(["1"]), StubRandom(rnd=0.0),
+                       current_location="forest")
+    locations._offer_drop(state)
+    assert "Salvaged" in state.io.text()
+    assert player.equipment["weapon"] is not starting
+
+
+def test_a_weapon_drop_can_be_left(content):
+    player = _player(content)
+    starting = player.equipment["weapon"]
+    state = make_state(player, content, ScriptedIO(["2"]), StubRandom(rnd=0.0),
+                       current_location="forest")
+    locations._offer_drop(state)
+    assert player.equipment["weapon"] is starting
+
+
+def test_no_weapon_drops_when_the_roll_fails(content):
+    """A failed drop roll prompts for nothing — no scripted input is consumed."""
+    state = make_state(_player(content), content, ScriptedIO(), StubRandom(rnd=0.99),
+                       current_location="forest")
+    locations._offer_drop(state)  # rng 0.99 >= the drop chance -> no drop
 
 
 def test_full_chain_is_traversable_to_the_summit(content):
