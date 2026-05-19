@@ -6,6 +6,7 @@ loaded content, the IO channel, the RNG, the current location, and a
 save/load — ``player``, ``current_location`` and ``flags`` are persisted;
 ``content``, ``io`` and ``rng`` are runtime-injected and never serialized.
 """
+from . import chronicle
 from .player import Player
 
 
@@ -13,13 +14,15 @@ class GameState:
     """Mutable state for a single playthrough."""
 
     def __init__(self, player, content, io, rng,
-                 current_location="crossroads", flags=None):
+                 current_location="crossroads", flags=None, chronicle_dir=None):
         self.player = player
         self.content = content
         self.io = io
         self.rng = rng
         self.current_location = current_location
         self.flags = flags if flags is not None else {}
+        # Where the cross-run Chronicle lives; not part of the save.
+        self.chronicle_dir = chronicle_dir or chronicle.DEFAULT_DIR
 
     def to_dict(self):
         """Serialize the persistable fields to a plain dict."""

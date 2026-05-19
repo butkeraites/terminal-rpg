@@ -27,3 +27,19 @@ class Enemy(Combatant):
 def make_enemy(enemy_id, content):
     """Construct a fresh Enemy instance from loaded content."""
     return Enemy(enemy_id, content.enemies[enemy_id])
+
+
+def make_hollowed(entry):
+    """Build a Hollowed — a Pall-twisted past character — from a Chronicle entry."""
+    p = entry["player"]
+    return Enemy("hollowed", {
+        "name": f"Hollow {p['name']}",
+        "hp": p["max_hp"],
+        "attack": p["attack"],
+        "defense": p["defense"],
+        "xp_reward": p["level"] * 25,
+        "gold_reward": p.get("gold", 0),
+        "ai": "aggressive",
+        "flavor": (f"It wears {p['name']}'s face — the {p['class_name']} who came "
+                   f"before you. The Pall kept what was left."),
+    })

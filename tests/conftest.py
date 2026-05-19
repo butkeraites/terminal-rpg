@@ -1,4 +1,6 @@
 """Shared pytest fixtures and a deterministic RNG stub."""
+import tempfile
+
 import pytest
 
 from terminalquest.content import load_content
@@ -40,11 +42,17 @@ def warrior(content):
     return Player("Hero", "warrior", content.classes["warrior"])
 
 
-def make_state(player, content, io=None, rng=None, current_location="crossroads"):
-    """Build a GameState for tests, defaulting io/rng to test doubles."""
+def make_state(player, content, io=None, rng=None,
+               current_location="crossroads", chronicle_dir=None):
+    """Build a GameState for tests, defaulting io/rng to test doubles.
+
+    ``chronicle_dir`` defaults to a fresh temp dir so tests never touch
+    or depend on the real ~/.terminalquest chronicle.
+    """
     return GameState(
         player, content,
         io if io is not None else ScriptedIO(),
         rng if rng is not None else StubRandom(),
         current_location=current_location,
+        chronicle_dir=chronicle_dir or tempfile.mkdtemp(),
     )

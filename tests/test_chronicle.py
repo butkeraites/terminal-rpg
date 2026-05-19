@@ -1,0 +1,40 @@
+"""The Chronicle of the Fallen: recording, resilient loading, filtering."""
+from conftest import make_state
+
+from terminalquest import chronicle
+
+
+def test_record_and_load_round_trip(tmp_path, content, warrior):
+    state = make_state(warrior, content, current_location="forest",
+                       chronicle_dir=tmp_path)
+    chronicle.record(state, "fell", tmp_path)
+    entries = chronicle.load(tmp_path)
+    assert len(entries) == 1
+    assert entries[0]["fate"] == "fell"
+    assert entries[0]["location"] == "forest"
+    assert entries[0]["player"]["name"] == warrior.name
+
+
+def test_record_appends_across_runs(tmp_path, content, warrior):
+    state = make_state(warrior, content, chronicle_dir=tmp_path)
+    chronicle.record(state, "fell", tmp_path)
+    chronicle.record(state, "triumphed", tmp_path)
+    assert len(chronicle.load(tmp_path)) == 2
+
+
+def test_load_missing_chronicle_is_empty(tmp_path):
+    assert chronicle.load(tmp_path) == []
+
+
+def test_load_corrupt_chronicle_is_empty(tmp_path):
+    (tmp_path / "chronicle.json").write_text("{ not json", encoding="utf-8")
+    assert chronicle.load(tmp_path) == []
+
+
+def test_fallen_excludes_victors(tmp_path, content, warrior):
+    state = make_state(warrior, content, chronicle_dir=tmp_path)
+    chronicle.record(state, "fell", tmp_path)
+    chronicle.record(state, "triumphed", tmp_path)
+    fallen = chronicle.fallen(chronicle.load(tmp_path))
+    assert len(fallen) == 1
+    assert fallen[0]["fate"] == "fell"

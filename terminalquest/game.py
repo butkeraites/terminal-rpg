@@ -1,7 +1,7 @@
 """Game bootstrap: title screen, character creation, and the entry point."""
 import random
 
-from . import __version__, saves
+from . import __version__, chronicle, saves
 from .content import load_content
 from .locations import location_loop
 from .player import Player
@@ -26,7 +26,24 @@ def choose_class(content, io):
         io.show("\n❌ Invalid choice!")
 
 
-def create_character(content, io):
+def _name_the_fallen(io, content, entries):
+    """Tell the new hero of the characters who walked the road before."""
+    if not entries:
+        return
+    io.show_slow("\nOthers walked this road before you. Mournhold keeps their names:")
+    for entry in entries[-5:]:
+        p = entry["player"]
+        if entry.get("fate") == "triumphed":
+            io.show(f"  ⚜️  {p['name']} the {p['class_name']} — broke the Pall once; "
+                    f"still it rose again.")
+        else:
+            loc = content.locations.get(entry.get("location", ""), {})
+            io.show(f"  🪦 {p['name']} the {p['class_name']} — fell at level "
+                    f"{p['level']} in {loc.get('name', 'the dark')}.")
+    io.show_slow("It will keep yours the same way.\n")
+
+
+def create_character(content, io, chronicle_dir):
     """Run new-game character creation and return a fresh Player."""
     name = io.ask("\nEnter your hero's name: ") or "Hero"
     class_id, class_def = choose_class(content, io)
@@ -38,6 +55,7 @@ def create_character(content, io):
     io.show_slow("crops, then cattle, then people, all turned hollow and hungry.")
     io.show_slow("You are no hero; the heroes died first. You are only still breathing —")
     io.show_slow("and the last road that leads anywhere climbs toward the Pall's heart.\n")
+    _name_the_fallen(io, content, chronicle.load(chronicle_dir))
     io.pause(2)
     return player
 
@@ -78,11 +96,12 @@ def settings_menu(io):
             io.show("\n❌ Invalid choice!")
 
 
-def run(io=None, content=None, rng=None):
+def run(io=None, content=None, rng=None, chronicle_dir=None):
     """Run the game from the title screen. Arguments are injectable for tests."""
     io = io or GameIO()
     content = content or load_content()
     rng = rng or random.Random()
+    chronicle_dir = chronicle_dir or chronicle.DEFAULT_DIR
 
     io.clear()
     io.show_slow("=" * 50)
@@ -98,8 +117,9 @@ def run(io=None, content=None, rng=None):
         choice = io.ask("\nYour choice? ")
 
         if choice == "1":
-            player = create_character(content, io)
-            location_loop(GameState(player, content, io, rng))
+            player = create_character(content, io, chronicle_dir)
+            location_loop(GameState(player, content, io, rng,
+                                    chronicle_dir=chronicle_dir))
             return
         elif choice == "2":
             state = load_menu(content, io, rng)

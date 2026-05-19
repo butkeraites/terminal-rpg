@@ -1,7 +1,7 @@
 """The location graph: travel, signposting, encounters, the boss and the shop."""
 from conftest import StubRandom, make_state
 
-from terminalquest import locations
+from terminalquest import chronicle, locations
 from terminalquest.locations import GREATER_POTION_COST
 from terminalquest.player import Player
 from terminalquest.ui import ScriptedIO
@@ -48,13 +48,41 @@ def test_run_encounter_returns_boss_victory(content):
     state = make_state(_strong_player(content), content,
                        ScriptedIO(["1", "1", "1"]), StubRandom())
     encounter = content.locations["summit"]["encounters"][0]
-    assert locations.run_encounter(state, encounter) == "boss_victory"
+    assert locations.run_encounter(state, encounter, []) == "boss_victory"
 
 
 def test_run_encounter_normal_victory_is_plain_victory(content):
     state = make_state(_strong_player(content), content, ScriptedIO(["1"]), StubRandom())
     encounter = content.locations["forest"]["encounters"][0]
-    assert locations.run_encounter(state, encounter) == "victory"
+    assert locations.run_encounter(state, encounter, []) == "victory"
+
+
+def test_grave_appears_and_can_be_searched(tmp_path, content):
+    """A past character who fell in a zone leaves a searchable grave there."""
+    fallen_run = make_state(_player(content), content, current_location="forest",
+                            chronicle_dir=tmp_path)
+    chronicle.record(fallen_run, "fell", tmp_path)
+    player = _player(content)
+    gold_before = player.gold
+    io = ScriptedIO(["2", "2", "5"])  # crossroads -> forest, search grave, quit
+    state = make_state(player, content, io, StubRandom(), chronicle_dir=tmp_path)
+    locations.location_loop(state)
+    assert "Half-buried" in io.text()
+    assert player.gold > gold_before  # scavenged the dead's coins
+
+
+def test_run_encounter_can_raise_a_hollowed(tmp_path, content):
+    """With a past character recorded in a zone, a fight can be the Hollowed."""
+    fallen_run = make_state(_player(content), content, current_location="forest",
+                            chronicle_dir=tmp_path)
+    chronicle.record(fallen_run, "fell", tmp_path)
+    fallen = chronicle.fallen(chronicle.load(tmp_path))
+    state = make_state(_strong_player(content), content, ScriptedIO(["1"]),
+                       StubRandom(rnd=0.0), current_location="forest",
+                       chronicle_dir=tmp_path)
+    encounter = content.locations["forest"]["encounters"][0]
+    locations.run_encounter(state, encounter, fallen)
+    assert "Hollow" in state.io.text()
 
 
 def test_overlevel_travel_warns_and_can_turn_back(content):

@@ -5,9 +5,9 @@ The world is a graph of locations loaded from ``data/locations.json``.
 location, offers its services, encounters and travel routes, and runs
 until the player dies, wins, or quits.
 """
-from . import saves
+from . import chronicle, saves
 from .combat import run_combat
-from .enemy import make_enemy
+from .enemy import make_enemy, make_hollowed
 from .ui import hud, show_stats
 
 INN_COST = 20
@@ -16,6 +16,7 @@ GREATER_POTION_COST = 70
 ATTACK_UPGRADE_GOLD_PER_POINT = 8
 DEFENSE_UPGRADE_GOLD_PER_POINT = 14
 SIGNPOST_THRESHOLD = 2
+HOLLOWED_CHANCE = 0.25
 
 _SERVICE_LABELS = {
     "shop": "🏪 Visit the Shop",
@@ -95,27 +96,36 @@ def _run_service(state, service):
         _rest_at_inn(state)
 
 
-def run_encounter(state, encounter):
+def _hollowed_candidates(state, fallen):
+    """Fallen characters eligible to rise as the Hollowed in the current zone."""
+    return [e for e in fallen
+            if e.get("location") == state.current_location
+            and e["player"]["level"] <= state.player.level + 1]
+
+
+def run_encounter(state, encounter, fallen):
     """Run one encounter at the current location.
 
     Returns the combat outcome ('victory'/'defeat'/'fled'/'enemy_fled'),
-    or 'boss_victory' when a boss encounter is won. Currently only the
-    'combat' encounter type exists; the dispatch leaves room for more.
+    or 'boss_victory' when a boss encounter is won. A random-pick combat
+    may instead raise a Hollowed — a past character who fell in this zone.
     """
     io, rng, content = state.io, state.rng, state.content
     if encounter["type"] != "combat":
         return None
 
-    pool = encounter["enemies"]
-    if encounter.get("pick") == "random":
-        enemy_ids = [rng.choice(pool)]
+    candidates = _hollowed_candidates(state, fallen)
+    if (encounter.get("pick") == "random" and candidates
+            and rng.random() < HOLLOWED_CHANCE):
+        enemies = [make_hollowed(rng.choice(candidates))]
+    elif encounter.get("pick") == "random":
+        enemies = [make_enemy(rng.choice(encounter["enemies"]), content)]
     else:
-        enemy_ids = list(pool)
+        enemies = [make_enemy(eid, content) for eid in encounter["enemies"]]
 
     outcome = None
     enemy = None
-    for enemy_id in enemy_ids:
-        enemy = make_enemy(enemy_id, content)
+    for enemy in enemies:
         outcome = run_combat(state, enemy)
         if outcome != "victory":
             break
@@ -162,6 +172,7 @@ def try_travel(state, dest_id):
 def _victory_screen(state):
     """Render the win screen after the final boss is defeated."""
     player, io = state.player, state.io
+    chronicle.record(state, "triumphed", state.chronicle_dir)
     io.clear()
     io.show_slow("The Shadow Warden comes apart like wet ash, and is gone.")
     io.show_slow("The Pall does not lift — but for the first time in three winters,")
@@ -213,7 +224,34 @@ def _travel_label(dest, player):
     return f"Travel to {name}{suffix}"
 
 
-def _build_options(state, loc):
+def _grave_here(state, loc, fallen):
+    """True if this zone holds an unsearched grave from a past character."""
+    if loc.get("kind") != "zone":
+        return False
+    if state.current_location in state.flags.get("graves_searched", []):
+        return False
+    return any(e.get("location") == state.current_location for e in fallen)
+
+
+def _search_grave(state, fallen):
+    """Search the current zone for the remains of one who fell here."""
+    player, io = state.player, state.io
+    here = [e for e in fallen if e.get("location") == state.current_location]
+    p = state.rng.choice(here)["player"]
+    place = state.content.locations[state.current_location]["name"]
+    io.show_slow(f"\n🪦 Half-buried in the grey earth: {p['name']} the {p['class_name']}.")
+    io.show(f"{place} took them at level {p['level']}. It will take you too, in time.")
+    coins = min(p.get("gold", 0), 40)
+    if coins:
+        player.gold += coins
+        io.show(f"You prise {coins} coins from the cold — they have no use for them now.")
+    else:
+        io.show("They left nothing behind. The dead here rarely do.")
+    io.pause(1)
+    state.flags.setdefault("graves_searched", []).append(state.current_location)
+
+
+def _build_options(state, loc, fallen):
     """Build the ordered list of ``(label, (kind, arg))`` menu entries."""
     player, content = state.player, state.content
     options = []
@@ -221,6 +259,8 @@ def _build_options(state, loc):
         options.append((_SERVICE_LABELS[service], ("service", service)))
     for encounter in loc.get("encounters", []):
         options.append((_encounter_label(encounter, content), ("encounter", encounter)))
+    if _grave_here(state, loc, fallen):
+        options.append(("🪦 Search a grave", ("grave", None)))
     for dest_id in loc.get("connections", []):
         dest = content.locations[dest_id]
         options.append((_travel_label(dest, player), ("travel", dest_id)))
@@ -233,6 +273,7 @@ def _build_options(state, loc):
 def location_loop(state):
     """The central game loop. Runs until the player dies, wins, or quits."""
     player, content, io = state.player, state.content, state.io
+    fallen = chronicle.fallen(chronicle.load(state.chronicle_dir))
     arrived = True
     while player.is_alive():
         loc = content.locations[state.current_location]
@@ -244,7 +285,7 @@ def location_loop(state):
         io.show(f"\n📍 {loc['name']}")
         io.show(hud(player))
 
-        options = _build_options(state, loc)
+        options = _build_options(state, loc, fallen)
         for index, (label, _action) in enumerate(options, start=1):
             io.show(f"{index}. {label}")
         choice = io.ask("\nWhat do you do? ")
@@ -257,12 +298,14 @@ def location_loop(state):
             _run_service(state, arg)
         elif kind == "encounter":
             here = state.current_location
-            outcome = run_encounter(state, arg)
+            outcome = run_encounter(state, arg, fallen)
             if outcome == "boss_victory":
                 _victory_screen(state)
                 return
             if state.current_location != here:
                 arrived = True
+        elif kind == "grave":
+            _search_grave(state, fallen)
         elif kind == "travel":
             if try_travel(state, arg):
                 arrived = True
@@ -274,6 +317,7 @@ def location_loop(state):
             io.show("\n👋 Thanks for playing!")
             return
 
+    chronicle.record(state, "fell", state.chronicle_dir)
     io.clear()
     io.show_slow("💀 The Pall takes another. It always does.")
     io.show("\nFinal Stats:")
