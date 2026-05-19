@@ -1,122 +1,236 @@
-# Terminal Quest — 5-Year Strategic Roadmap
+# Terminal Quest — Development Roadmap: The Thousand-Hour Universe
 
-*Prepared by the executive team (CEO, CTO, Chief Game Officer, Chief Revenue Officer, COO).*
-*Status as of 2026-05-18.*
+*A build roadmap for the development team. Supersedes the prior strategic roadmap.*
+*Prepared by the development board: Creative Director, Game Design Director,*
+*Systems Director, Production Director. Baselined on the live build (six-zone*
+*journey, 79 tests, CI green).*
 
-## Executive Summary
+---
 
-Terminal Quest is a ~340-line single-file Python prototype today. The vision is to
-evolve it into a **deep, fully offline, hermetic terminal RPG** that installs locally
-with zero dependencies, plays without internet, and accepts **optional, signed remote
-updates** when the host machine is online.
+## Mandate
 
-A note on ambition: "the most compelling RPG ever made" is the north star, but the
-honest, achievable goal is **the most compelling _terminal_ RPG** — winning on depth,
-emergence, and authored narrative rather than graphics. This is a niche market.
-Plan to the **base case (~$80k revenue over 5 years)**, treat it as a lean,
-founder-funded passion project, and **never staff ahead of revenue**.
+The owner's goal: **a game an engaged player can sink ~1,000 hours into.** The named
+pillars are **combinatorial weapons**, **crafting**, **combinatorial problem-solving**,
+**deeper ability systems**, and breadth — *"we need to be a universe."*
 
-## Strategic Pillars
+> **Interpretation flag — "ability three":** the brief here was voice-transcribed and
+> partly garbled. We have read it as **tiered ability progression (Tier I/II/III) plus
+> a third *category* of ability** (see Epic E3). If the intent was different —
+> a third ability *slot*, a third class archetype, etc. — correct E3 and the rest holds.
 
-1. **Hermetic & offline-first** — the game always runs fully offline; the network is
-   never required to install or play.
-2. **Optional online updates** — a separate, opt-in, cryptographically signed update
-   channel delivers patches and paid expansions when internet is available.
-3. **Content is the moat** — a data-driven content pipeline lets designers and writers
-   add content without engineering, enabling sustained quarterly releases.
-4. **Monetize loyalty, not lockdown** — DRM-free, low-priced, expansion-driven. We
-   out-friendly piracy rather than fighting it.
+## The honest premise
 
-## Cross-Cutting Decisions
+A ~6-hour authored story cannot be 1,000 hours, and **1,000 hours cannot be authored** —
+no team writes that much content. 1,000 hours is *generated* by systems. Every game that
+reaches that depth ceiling (NetHack, Caves of Qud, Path of Exile, Slay the Spire, Hades)
+does it the same way: **combinatorial systems + procedural content + meta-progression +
+endless escalation.** This roadmap is that pivot.
 
-- **Packaging:** PyInstaller — bundles a CPython runtime so users need no Python install.
-- **Architecture:** refactor the single script into an installable package with a central
-  event loop, a `GameState` object, and content as JSON/TOML data files.
-- **Save system:** schema-versioned JSON in an OS-appropriate user data dir, atomic writes,
-  forward-migration. Never pickle.
-- **Update integrity:** Ed25519-signed manifests + SHA-256 checks; staged atomic apply with
-  auto-rollback; private signing key kept offline.
-- **Licensing:** signed offline entitlement tokens — a casual-sharing deterrent, not a wall.
-  Lean on store entitlement (Steam/itch) where available.
-- **Engineering baseline (Y1, critical path):** pytest, ruff, mypy, GitHub Actions CI matrix
-  across Windows/macOS/Linux. None exist today — this is a prerequisite, not optional.
-- **Combat bug fix:** the enemy currently retaliates only after the player's "Attack"
-  action; using a potion grants a free turn. Fix during the Y1 combat rework — establish a
-  clean turn-economy where every player action consumes a turn.
+It is a genuine identity change — from *a grimdark story* to *a combinatorial roguelike
+universe with a grimdark story spine*. We do **not** throw the story away. We adopt the
+**spine-and-body** model:
 
-## Year-by-Year Roadmap
+- **The spine** — the authored Mournhold myth, the named mini-bosses, the discovery
+  fragments. It stays hand-crafted to the current quality bar ("never filler"). It
+  becomes the onboarding campaign and the universe's framing.
+- **The body** — the procedural, combinatorial roguelike that hangs off the spine and
+  supplies ~85% of the playtime.
 
-### Year 1 — Foundation & MVP
-- **Tech:** package refactor, data-driven content loader, save system, config, pytest + CI,
-  PyInstaller builds. Fix the combat turn-economy.
-- **Game:** combat depth (abilities, stamina, status effects, enemy AI archetypes),
-  4–6 classes, convert all hardcoded content to data files. Permadeath as default mode.
-- **Ops:** team of 4 (2 engineers, 1 designer/writer, founder-COO). Gates: G1 playable MVP,
-  G2 internal alpha with the offline→online→offline update flow proven.
-- **Revenue:** prepare a polished v1.0 and a free demo.
+Terminal Quest is already closer to this than it looks: it has **permadeath**, the
+**Chronicle** (cross-run meta-progression), and a **data-driven** content pipeline. We
+are completing a roguelike, not starting one.
 
-### Year 2 — World, Story & Launch
-- **Tech:** harden the signed update channel + rollback; offline licensing/entitlement.
-- **Game:** authored main narrative arc, 8–12 regions, quest system, factions, first win
-  condition.
-- **Ops:** grow to ~7 (add engineer, QA lead, community/support). Public Beta channel.
-  Gates: G3 v1.0 launch, G4 first paid expansion.
-- **Revenue:** **launch v1.0 on itch.io at $7.99** + free demo; open GitHub Sponsors.
-  **Steam launch with a wishlist campaign** — this is where real revenue lives.
+## Where 1,000 hours actually comes from
 
-### Year 3 — Depth & Expansions
-- **Tech:** content-expansion engine, modding-friendly data format, opt-in telemetry.
-- **Game:** crafting, item identification, skill trees, procedural dungeons, New Game+ via a
-  meta-progression "Chronicle".
-- **Ops:** grow to ~10; localization for 2 languages; modding API alpha.
-- **Revenue:** **Expansion 1** ($3.99–4.99); raise base game to $9.99.
+A roguelike run is 45–75 min. 1,000 hours ≈ ~1,000 runs. ~1,000 runs are sustained by
+six compounding loops — none of which is "more authored content":
 
-### Year 4 — Emergence & Endings
-- **Tech:** platform polish; possible TUI overhaul; DLC content-pack delivery.
-- **Game:** advanced enemy AI, 3–4 branching endings, faction warfare, multiclassing,
-  daily-seed challenge runs.
-- **Ops:** grow to ~13; sustained quarterly cadence; mod marketplace beta.
-- **Revenue:** **Expansion 2** + quality-of-life update via the remote-update channel.
+1. **Build variety** — you have not tried build X yet (weapons × abilities × crafting).
+2. **The unlock chase** — the Chronicle gates components, abilities, classes, biomes.
+3. **Endless escalation** — the Ascension ladder always goes one tier higher.
+4. **Procedural novelty** — every world is a different assembly of zones and affixes.
+5. **Mastery & collection** — bestiary, component codex, per-class mastery tracks.
+6. **The Warden cycle** — your own dead heroes return as the content.
 
-### Year 5 — Community Content & Platform
-- **Tech:** engine reuse; stable self-serve content tooling.
-- **Game:** mod support via the data pipeline, community content packs, expansion arc,
-  offline-verifiable leaderboards.
-- **Ops:** grow to ~15; major "Definitive Edition" relaunch (G9).
-- **Revenue:** "Complete Edition" bundle, seasonal sales; evaluate a second product.
+1,000 hours is a **depth ceiling for the most engaged player**, not an average — exactly
+as PoE has 40-hour players and 5,000-hour players. We build the ceiling; players choose
+their depth.
 
-## Revenue Outlook (scenario modelling — not promises)
+---
 
-Net of store fees, lean 1–2 person effective team.
+## Workstream epics
 
-| Year | Conservative | Base | Optimistic |
-|------|--------------|------|------------|
-| 1    | $2k          | $6k  | $15k       |
-| 2    | $8k          | $25k | $70k       |
-| 3    | $6k          | $20k | $55k       |
-| 4    | $5k          | $15k | $45k       |
-| 5    | $4k          | $14k | $40k       |
-| **Total** | **~$25k** | **~$80k** | **~$225k** |
+Eight epics. Each names its *combinatorial mechanism* (how it multiplies hours) and its
+*data architecture* (the JSON the systems consume — designers extend the universe by
+editing data, engineers build the systems that read it).
 
-Plan against the base case. It funds a passion project and modestly one developer — not
-a payroll. Expansions are the revenue engine; a slipped expansion flattens Years 3–5.
+### E1 — Combinatorial Weapons
+*The first depth engine, and the most self-contained — start here.*
+- **Mechanism:** a weapon is **assembled from slotted components** — Head (damage &
+  type), Haft (speed / stamina / crit profile), Core (a combat *proc* keyword), and
+  Inscription (a stat / status synergy). 4 slots × ~15 options ≈ 50k base weapons,
+  before rolled affix values → effectively unbounded.
+- **Engine:** an equipment layer on `Player`; a `Weapon` object; `_perform_attack`
+  consults the weapon for damage mods and procs. Procs hook the **existing** combat
+  events (on-hit, on-crit, every-Nth-turn, on-kill) and emit the **existing** status
+  effects — the status engine is the substrate, not new tech.
+- **Data:** `components.json`.
+- **Milestones:** M1 equipment system + `Weapon` model · M2 components + procs wired to
+  combat · M3 ~60 components across 4 slots + drop tables.
 
-## Top Risks
+### E2 — Crafting & Materials
+*The combinatorial sink — the reason to grind a build.*
+- **Mechanism:** materials drop per biome (bog-iron from the Reach, reliquary-bone from
+  the Choir…); the **Forge** crafts components, **salvages** loot back to materials, and
+  **reforges/transmutes** to gamble on affixes — the ARPG loot loop.
+- **Data:** `materials.json`, `recipes.json`.
+- **Milestones:** M1 materials + drop tables · M2 the Forge: craft + salvage · M3
+  reforge / reroll / transmute (the gamble loop).
 
-- **Niche market** caps upside even with flawless execution — do not over-invest.
-- **Update channel is the long pole** — it gates monetization and all post-launch fixes;
-  a signing-key compromise is catastrophic. Harden before the Y2 launch.
-- **Save corruption across versions** — versioned schema, migration tests, pre-migration backups.
-- **No bug visibility from offline users** — ship an opt-in "export bug report" tool and
-  deferred (consent-based) telemetry that uploads on the next online launch.
-- **Piracy is structural** in a hermetic offline product — mitigate with pricing and
-  goodwill, never DRM that breaks the offline mandate.
-- **Scope creep & solo-team bus factor** — fixed quarterly release trains (cut content,
-  not dates); documentation gate per milestone; contractors as surge buffer.
+### E3 — Ability Trees & Combos
+*Combinatorial problem-solving inside combat.*
+- **Mechanism:** each class gets a **tiered tree** (Tier I/II/III, ~15–24 abilities); the
+  player builds a **loadout** from what they have unlocked — the loadout is the build.
+  Abilities are designed to **combo**: "setup" abilities apply a state, "payoff"
+  abilities consume it. Adds a **third ability category** beyond active/passive —
+  **Stances** (a sustained mode you toggle, reshaping the turn).
+- **Data:** `abilities.json` expanded into trees; `combos.json`.
+- **Milestones:** M1 ability-tree model + loadout screen · M2 setup/payoff combo
+  keyword layer · M3 full trees for all classes + Stances.
 
-## Immediate Next Step
+### E4 — The Procedural Universe
+*"We need to be a universe" — breadth without hand-authoring it.*
+- **Mechanism:** zones become **biome templates**; each seeded run **assembles a world**
+  from the pool (a roguelike map/Atlas). The authored spine is injected as guaranteed
+  beats; procedural zones fill between. Zone **modifiers** reshape rules per run.
+- **Data:** `biomes.json` (zone templates), seed-driven world assembly.
+- **Milestones:** M1 seeded runs + procedural world assembly · M2 large biome pool +
+  zone modifiers · M3 factions + universe breadth (new acts, expanding myth).
 
-The Year 1 critical path starts with the engineering baseline (package refactor, tests,
-CI) and the data-driven content pipeline. Recommend kicking off with the combat
-turn-economy fix and the content-pipeline refactor, since all later content velocity
-depends on them.
+### E5 — The Chronicle Meta-Layer & Endless Ascension
+*The engine that turns ~150 hours of systems into 1,000.*
+- **Mechanism:** the Chronicle becomes the **meta-progression hub** — persistent
+  unlocks (components, abilities, classes, biomes), mastery tracks, a codex/bestiary.
+  **Endless Ascension:** after the Summit, the Warden cycle becomes an **infinite
+  escalating ladder** (cf. Hades heat / PoE maps / StS ascension) — the home of the
+  long tail.
+- **Milestones:** M1 Chronicle unlocks + mastery · M2 the Ascension ladder · M3
+  collection / codex + offline-verifiable leaderboards.
+
+### E6 — Combinatorial Encounters & Enemy Affixes
+*Every fight a fresh problem.*
+- **Mechanism:** enemies roll **affixes** (armored, enraged, hexing, swift…); 6 AI
+  archetypes × affixes = combinatorial threats. Procedural **multi-solution encounters**
+  — combat / stat-check / item / class-ability / sacrifice — extend the discovery system
+  into branching puzzles.
+- **Data:** `affixes.json`, `encounters.json`.
+- **Milestones:** M1 enemy affix system · M2 procedural multi-solution encounters · M3
+  elite / nemesis enemies, tied to the Chronicle and the Hollowed.
+
+### E7 — Balance & Simulation Infrastructure
+*Non-negotiable, and it ships first.*
+- **Mechanism:** combinatorial systems **cannot be hand-balanced** — the space is too
+  large. The throwaway Monte-Carlo harness used to tune the six-zone world becomes
+  **maintained `tools/` infrastructure**: it samples thousands of build × content
+  combinations and reports win-rate distributions, dead builds, and degenerate builds.
+- **Every later epic depends on it. It is Year 1, M1.**
+- **Milestones:** M1 maintained harness + build sampling · M2 regression dashboards ·
+  M3 auto-tuning assists.
+
+### E8 — Distribution & Onboarding
+*The parallel enabling track — carried forward from the studio dossier.*
+- **Mechanism:** the systems must be tested by real players. PyInstaller binaries (no
+  Python needed), an itch.io page, PyPI/`pipx`, a Pyodide "play in browser" demo; a
+  first-run tutorial that teaches the *systems*; a Windows-terminal compatibility pass;
+  an accessibility mode.
+- **Re-sequenced:** no longer the Year-1 headline (the owner redirected to depth), but
+  early-access distribution lands in **Year 2** — combinatorial systems need players to
+  surface degenerate builds.
+- **Milestones:** M1 packaged builds + itch early-access · M2 systems onboarding/tutorial
+  · M3 v1.0 launch.
+
+---
+
+## Five-year sequencing
+
+| Year | Theme | Epics in flight | Depth ceiling |
+|------|-------|-----------------|---------------|
+| 1 | The Combinatorial Foundation | E7, run-loop, equipment, **E1** | ~30–50 h |
+| 2 | The Build Game | **E2**, **E3**, E6 (affixes), **E8** early access | ~150 h |
+| 3 | The Universe | **E4**, E6 (encounters), factions | ~350 h |
+| 4 | The Endless | **E5** Ascension, branching endings, mastery | ~700 h |
+| 5 | The Living Universe | modding, daily seeds, Definitive Edition | **1,000 h+** |
+
+**Year 1 — The Combinatorial Foundation.** Stand up E7 (the sim harness) first. Formalise
+the **run** as the unit of play (seeded, ends in death/victory, feeds the Chronicle).
+Build the equipment layer and ship **E1 Combinatorial Weapons v1**. Scaffold the Chronicle
+meta-layer (first unlocks). *Gate G1: a run is a real roguelike run; weapon combinatorics
++ unlocks already pull 30–50 h.*
+
+**Year 2 — The Build Game.** Ship **E2 Crafting** (full loot loop), **E3 Ability Trees &
+Combos**, and **E6 enemy affixes**. Ship **E8 early-access** distribution — get players in.
+*Gate G2: builds are real and diverse; players are testing; early access is live.*
+
+**Year 3 — The Universe.** Ship **E4** — the seeded procedural world and a large biome
+pool — and **E6** procedural multi-solution encounters. Factions begin. *Gate G3: no two
+worlds are alike.*
+
+**Year 4 — The Endless.** Ship **E5 Endless Ascension** — the 1,000-hour engine —
+branching endings (the myth earns more than one outcome), and mastery/collection.
+*Gate G4: the ladder + meta-progression sustain 500 h+.*
+
+**Year 5 — The Living Universe.** Modding via the JSON pipeline (community content =
+unbounded hours), localization, daily-seed challenges, the Definitive Edition.
+*Gate G5: 1,000 h is reachable; community content extends it indefinitely.*
+
+---
+
+## Deep decisions
+
+- **D1 — The roguelike pivot (spine + body).** Adopt it. Keep the authored Mournhold
+  story as the campaign spine; build the combinatorial roguelike as the body. *Rationale:
+  1,000 h is impossible to author and proven to generate — and the Chronicle already is
+  a roguelike meta-layer.*
+- **D2 — Run length.** Target **45–75 min** runs. The current ~2 h linear run is too long
+  for a ~1,000-run loop; runs must be tighter, procedural, and self-contained.
+- **D3 — Hermetic, stdlib-only engine.** **Keep it.** Every system here is data + logic,
+  no graphics — no runtime dependency is needed, and zero-dependency is a real
+  differentiator and de-risks distribution. The constraint scales fine to this scope.
+- **D4 — Balance philosophy.** With combinatorics you cannot balance every combination.
+  Target: **no dominant degenerate build, no dead builds, a wide viable middle.** E7
+  enforces it statistically. Accept that build freedom implies some imbalance — that is
+  the genre.
+- **D5 — Authored vs. procedural ratio.** Named mini-bosses, the myth, and discovery
+  fragments stay **hand-authored** to the current bar. Procedural content carries breadth
+  — but procedural flavor must be **templated in the Mournhold voice**, never lorem-ipsum.
+  Roughly 10–15 % authored spine, 85 % systems/procedural.
+- **D6 — Distribution timing.** Early access in **Year 2** — not Year 1 (no player-ready
+  build yet), not Year 5 (combinatorial systems need players to break them early).
+- **D7 — Permadeath stays.** It is the roguelike core and the Chronicle depends on it.
+  The run is the unit. A non-permadeath mode is explicitly *not* on this roadmap.
+
+## Risks
+
+- **Combinatorial balance is combinatorially hard** — E7 is infrastructure, not a
+  nice-to-have. Underfunding it sinks the project.
+- **Scope discipline** — the team's instinct will be to *author* content; the discipline
+  is to build *generators*. Fixed release trains; cut scope, not dates.
+- **Identity drift** — the grimdark soul must survive proceduralisation (see D5).
+- **The terminal-niche ceiling** still caps the audience (per the studio dossier) — build
+  for depth and a cult following, not mass market.
+- **Solo / hobby bus factor** — the JSON schemas *are* the moat; document them obsessively.
+
+## Data architecture (designer-facing summary)
+
+New data files the systems will consume — designers extend the universe by editing JSON:
+`components.json` · `materials.json` · `recipes.json` · `affixes.json` · `biomes.json` ·
+`encounters.json` · `combos.json`; and `abilities.json` grows into class trees. The
+existing principle holds: **content is data, systems are code.**
+
+## Immediate next steps (Year 1, Quarter 1)
+
+1. Stand up **E7** — promote the simulation harness to maintained `tools/` infrastructure.
+2. Formalise the **run** (seeded; the Chronicle is its ledger).
+3. Build the **equipment layer** — the prerequisite for E1.
+4. Prototype **E1 weapon components** end-to-end as a vertical slice and prove the
+   combinatorial loop is fun before scaling the component pool.
