@@ -116,8 +116,10 @@
     "connections": ["mourncross", "mountain"],
     "encounters": [
       {"type": "combat",
-       "enemies": ["censer_shade", "reliquary_golem", "choirmaster_effigy", "cantor_vael"],
-       "label": "⚔️  Walk the length of the Choir  (a gauntlet — no rest, ending in Cantor Vael)"},
+       "enemies": ["censer_shade", "reliquary_golem", "choirmaster_effigy"],
+       "label": "⚔️  Walk the length of the Choir  (a gauntlet — 3 fights, no rest between)"},
+      {"type": "combat", "enemies": ["cantor_vael"],
+       "label": "⚔️  Challenge Cantor Vael, the Last Voice"},
       {"type": "discovery", "id": "choir_rite", "label": "📜 The half-burned rite",
        "lines": [
          "📜 A service-book, half its pages burned away to black lace.",

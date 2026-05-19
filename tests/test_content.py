@@ -82,3 +82,35 @@ def test_load_rejects_a_missing_data_file():
     """A missing data file fails with a clear ContentError, not a raw crash."""
     with pytest.raises(ContentError):
         _load("does_not_exist.json")
+
+
+def test_every_zone_declares_an_act():
+    content = load_content()
+    for loc_id, loc in content.locations.items():
+        if loc.get("kind") == "zone":
+            assert loc["act"] in (1, 2, 3), loc_id
+
+
+def test_discovery_encounters_carry_an_id_and_lines():
+    content = load_content()
+    discoveries = [enc for loc in content.locations.values()
+                   for enc in loc.get("encounters", []) if enc["type"] == "discovery"]
+    assert discoveries, "the expanded world should add discovery fragments"
+    for discovery in discoveries:
+        assert discovery["id"]
+        assert discovery["lines"]
+
+
+def test_validate_rejects_a_discovery_without_lines():
+    content = load_content()
+    content.locations["forest"]["encounters"].append(
+        {"type": "discovery", "id": "phantom"})
+    with pytest.raises(ValueError):
+        content.validate()
+
+
+def test_validate_rejects_a_zone_without_an_act():
+    content = load_content()
+    del content.locations["forest"]["act"]
+    with pytest.raises(ValueError):
+        content.validate()

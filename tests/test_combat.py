@@ -173,3 +173,40 @@ def test_flee_succeeds_on_a_winning_roll(content):
     state = make_state(warrior, content, ScriptedIO(["5"]), StubRandom(rnd=0.0))
     outcome = combat.run_combat(state, goblin)
     assert outcome == "fled"
+
+
+def test_relentless_enemy_surges_every_third_turn(content):
+    """A relentless enemy strikes normally twice, then surges on the third turn."""
+    player = _player(content)
+    lurcher = make_enemy("bog_lurcher", content)  # ai: relentless
+    io = ScriptedIO()
+    rng = StubRandom()  # no crits, no dodges, zero variance — deterministic
+
+    hp = player.hp
+    combat._enemy_turn(lurcher, player, io, rng)
+    first = hp - player.hp
+    hp = player.hp
+    combat._enemy_turn(lurcher, player, io, rng)
+    second = hp - player.hp
+    hp = player.hp
+    combat._enemy_turn(lurcher, player, io, rng)
+    surge = hp - player.hp
+
+    assert first == second  # turns one and two are ordinary blows
+    assert surge > second   # the third turn is the heavy surge
+    assert "surges forward" in io.text()
+
+
+def test_enrager_grows_stronger_once_wounded(content):
+    """An enrager below half HP latches into a frenzy and gains attack each turn."""
+    player = _player(content)
+    procession = make_enemy("hollow_procession", content)  # ai: enrager
+    procession.hp = procession.max_hp // 3  # wounded past the enrage threshold
+    base_attack = procession.attack
+
+    io = ScriptedIO()
+    combat._enemy_turn(procession, player, io, StubRandom())
+
+    assert procession.enraged
+    assert procession.attack > base_attack
+    assert "frenzy" in io.text()

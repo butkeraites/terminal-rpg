@@ -155,3 +155,82 @@ def test_shop_attack_upgrade_renumbered_to_option_three(content):
     starting_attack = player.attack
     locations.shop(make_state(player, content, ScriptedIO(["3", "5"]), StubRandom()))
     assert player.attack == starting_attack + 5
+
+
+def test_discovery_reveals_lore_once_and_is_marked_seen(content):
+    """A discovery encounter prints its fragment and records itself as found."""
+    io = ScriptedIO()
+    state = make_state(_player(content), content, io, StubRandom(),
+                       current_location="reach")
+    discovery = next(e for e in content.locations["reach"]["encounters"]
+                     if e["type"] == "discovery")
+    assert locations.run_encounter(state, discovery, [], []) is None
+    assert discovery["id"] in state.flags["discoveries_seen"]
+    assert "weir-keeper" in io.text()
+
+
+def test_seen_discovery_drops_out_of_the_menu(content):
+    state = make_state(_player(content), content, ScriptedIO(), StubRandom(),
+                       current_location="reach")
+    loc = content.locations["reach"]
+    before = [label for label, _ in locations._build_options(state, loc, [])]
+    assert any("📜" in label for label in before)
+    state.flags["discoveries_seen"] = ["reach_tally"]
+    after = [label for label, _ in locations._build_options(state, loc, [])]
+    assert not any("📜" in label for label in after)
+
+
+def test_grave_matches_by_act_not_exact_zone(tmp_path, content):
+    """A character who fell in one zone leaves a grave anywhere in that act."""
+    fell = make_state(_player(content), content, current_location="cave",
+                      chronicle_dir=tmp_path)  # the Gullet — Act II
+    chronicle.record(fell, "fell", tmp_path)
+    fallen = chronicle.fallen(chronicle.load(tmp_path))
+    here = make_state(_player(content), content, current_location="mourncross",
+                      chronicle_dir=tmp_path)  # also Act II
+    away = make_state(_player(content), content, current_location="forest",
+                      chronicle_dir=tmp_path)  # the Witherwood — Act I
+    assert locations._grave_here(here, content.locations["mourncross"], fallen)
+    assert not locations._grave_here(away, content.locations["forest"], fallen)
+
+
+def test_hollowed_candidates_match_by_act(tmp_path, content):
+    fell = make_state(_player(content), content, current_location="cave",
+                      chronicle_dir=tmp_path)  # Act II
+    chronicle.record(fell, "fell", tmp_path)
+    fallen = chronicle.fallen(chronicle.load(tmp_path))
+    here = make_state(_player(content), content, current_location="mourncross",
+                      chronicle_dir=tmp_path)  # Act II — same act, different zone
+    away = make_state(_player(content), content, current_location="forest",
+                      chronicle_dir=tmp_path)  # Act I
+    assert locations._hollowed_candidates(here, fallen)
+    assert not locations._hollowed_candidates(away, fallen)
+
+
+def test_summit_gate_opens_at_level_seven(content):
+    """The Summit is sealed below level 7 and opens once the hero reaches it."""
+    low = make_state(_player(content), content, ScriptedIO(), StubRandom(),
+                     current_location="mountain")
+    assert locations.try_travel(low, "summit") is False
+    assert low.current_location == "mountain"
+
+    ready = _player(content)
+    ready.level = 7
+    high = make_state(ready, content, ScriptedIO(), StubRandom(),
+                      current_location="mountain")
+    assert locations.try_travel(high, "summit") is True
+    assert high.current_location == "summit"
+
+
+def test_full_chain_is_traversable_to_the_summit(content):
+    """A strong hero can travel Crossroads -> Summit, clearing every encounter."""
+    player = _strong_player(content)
+    player.level = 7
+    state = make_state(player, content, ScriptedIO(["1"] * 200), StubRandom())
+    for dest in ["forest", "reach", "cave", "mourncross", "choir", "mountain", "summit"]:
+        assert locations.try_travel(state, dest), dest
+        for encounter in content.locations[dest].get("encounters", []):
+            outcome = locations.run_encounter(state, encounter, [], [])
+            if encounter["type"] == "combat":
+                assert outcome in ("victory", "boss_victory"), (dest, outcome)
+    assert state.current_location == "summit"
