@@ -45,7 +45,7 @@
       "This country fed a kingdom once. Now it drowns the grain it grows,",
       "again and again, like a thing trying to apologise and not knowing how."
     ],
-    "connections": ["forest", "cave"],
+    "connections": ["forest", "drowned_holds"],
     "encounters": [
       {"type": "combat",
        "enemies": ["drowned_thresher", "silt_drowner", "bog_lurcher"],
@@ -61,17 +61,45 @@
        ]}
     ]
   },
+  "drowned_holds": {
+    "name": "The Drowned Holds",
+    "kind": "zone",
+    "act": 1,
+    "recommended_level": 3,
+    "intro": [
+      "🌊 The Drowned Holds — the villages the Reach took down with it.",
+      "The streets are still streets. The doors are still shut. The dead",
+      "are still in the rooms behind them. The water is grief, kept liquid."
+    ],
+    "connections": ["reach", "cave"],
+    "encounters": [
+      {"type": "combat",
+       "enemies": ["doorshut", "reedwife", "forager_boy", "bonesong"],
+       "label": "⚔️  Walk the drowned streets  (4 fights, no rest between)"},
+      {"type": "combat", "enemies": ["red_beard"], "label": "⚔️  Challenge Red Beard"},
+      {"type": "discovery", "id": "drowned_holds_petition", "label": "📜 The last petition of the holds",
+       "lines": [
+         "📜 The last petition of the outer holds. Written four times. Drowned four times.",
+         "'Our children are eating the seed-grain. The gates are still shut.'",
+         "'We have written before — you have not written back. We write now'",
+         "'because the water is already in the lane, and we believe the river'",
+         "'has been told the same word you tell us. We do not know the word.'",
+         "'We only know what it does. Please. Please send it back.'",
+         "It is signed with twenty-eight names. None of them are in the census."
+       ]}
+    ]
+  },
   "cave": {
     "name": "The Gullet",
     "kind": "zone",
     "act": 2,
-    "recommended_level": 3,
+    "recommended_level": 4,
     "intro": [
       "🕳️  The Gullet — a wound in the rock that breathes cold air, and wet.",
       "Everything the drowned country loses, it loses down through here.",
       "The Pall is the kingdom's own hunger. This is the kingdom's throat."
     ],
-    "connections": ["reach", "mourncross"],
+    "connections": ["drowned_holds", "mourncross"],
     "encounters": [
       {"type": "combat", "enemies": ["giant_bat", "cave_troll", "dark_slime"], "pick": "random"},
       {"type": "combat", "enemies": ["maw_mother"], "label": "⚔️  Challenge the Maw-Mother"}
@@ -81,7 +109,7 @@
     "name": "Mourncross",
     "kind": "zone",
     "act": 2,
-    "recommended_level": 4,
+    "recommended_level": 5,
     "intro": [
       "🏛️  Mourncross, the capital — not burned, not broken, only emptied.",
       "Every door stands open. Every hearth is cold. Every name is gone.",
@@ -107,7 +135,7 @@
     "name": "The Unanswered Choir",
     "kind": "zone",
     "act": 3,
-    "recommended_level": 5,
+    "recommended_level": 6,
     "intro": [
       "⛪ The Unanswered Choir — the cathedral where a kingdom knelt to forget.",
       "The rite was performed here, in full, and it was answered after a fashion.",
@@ -134,7 +162,7 @@
     "name": "The Ashen Climb",
     "kind": "zone",
     "act": 3,
-    "recommended_level": 6,
+    "recommended_level": 7,
     "intro": [
       "⛰️  The Ashen Climb. Grey snow falls here, and it has never once been snow.",
       "This is the last ground that is still ground. What lived on this slope",
@@ -151,7 +179,7 @@
     "kind": "zone",
     "act": 3,
     "boss": true,
-    "unlock_level": 7,
+    "unlock_level": 8,
     "intro": [
       "☁️  The Shrouded Summit. The Pall pours off the dark ahead like smoke off a pyre.",
       "This high, it has stopped pretending to be weather, or grief, or anything but hunger.",

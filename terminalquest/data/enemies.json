@@ -83,6 +83,59 @@
     "ability": {"name": "Drowning Pull", "power": 1.3, "status": "weak", "status_turns": 2},
     "flavor": "The weir-keeper who sealed the last gate. The Reach gave him the flood he spent a life withholding."
   },
+  "doorshut": {
+    "name": "The Doorshut",
+    "hp": 50,
+    "attack": 12,
+    "defense": 4,
+    "xp_reward": 50,
+    "gold_reward": 22,
+    "ai": "defensive",
+    "flavor": "She held the lane door against the water until the water came under it. She is still holding the door."
+  },
+  "reedwife": {
+    "name": "The Reedwife",
+    "hp": 42,
+    "attack": 13,
+    "defense": 2,
+    "xp_reward": 52,
+    "gold_reward": 24,
+    "ai": "caster",
+    "ability": {"name": "Drowning Grasp", "power": 1.1, "status": "weak", "status_turns": 2},
+    "flavor": "She waded out to call her children back. Her children had been called back already, by someone else."
+  },
+  "forager_boy": {
+    "name": "The Forager-Boy",
+    "hp": 38,
+    "attack": 14,
+    "defense": 2,
+    "xp_reward": 48,
+    "gold_reward": 20,
+    "ai": "fleer",
+    "flavor": "He was sent to look for grain before the gates closed. He has not stopped looking."
+  },
+  "bonesong": {
+    "name": "The Bonesong",
+    "hp": 46,
+    "attack": 12,
+    "defense": 2,
+    "xp_reward": 56,
+    "gold_reward": 26,
+    "ai": "caster",
+    "ability": {"name": "Hold-Song", "power": 1.0, "status": "vulnerable", "status_turns": 2},
+    "flavor": "A hold-singer. The hold's old prayers travelled through the water with him, and he with them."
+  },
+  "red_beard": {
+    "name": "Red Beard",
+    "hp": 175,
+    "attack": 19,
+    "defense": 6,
+    "xp_reward": 180,
+    "gold_reward": 95,
+    "ai": "enrager",
+    "unique": true,
+    "flavor": "The smith of Brackmere. When the gates closed he took his anvil-hammer and started for the capital. The river took him on the way. The Pall left him his hammer, and the water it killed him with."
+  },
   "giant_bat": {
     "name": "Carrion Bat",
     "hp": 38,

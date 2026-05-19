@@ -42,7 +42,7 @@ def test_boss_travel_locked_below_unlock_level(content):
 
 def test_boss_victory_ends_the_game(content):
     player = _strong_player(content)
-    player.level = 7  # the summit unlocks at level 7
+    player.level = 8  # the summit unlocks at level 8
     # at the Ashen Climb: travel to the Summit -> challenge -> one-shot the Warden
     io = ScriptedIO(["4", "1", "1"])
     locations.location_loop(make_state(player, content, io, StubRandom(),
@@ -207,15 +207,15 @@ def test_hollowed_candidates_match_by_act(tmp_path, content):
     assert not locations._hollowed_candidates(away, fallen)
 
 
-def test_summit_gate_opens_at_level_seven(content):
-    """The Summit is sealed below level 7 and opens once the hero reaches it."""
+def test_summit_gate_opens_at_level_eight(content):
+    """The Summit is sealed below level 8 and opens once the hero reaches it."""
     low = make_state(_player(content), content, ScriptedIO(), StubRandom(),
                      current_location="mountain")
     assert locations.try_travel(low, "summit") is False
     assert low.current_location == "mountain"
 
     ready = _player(content)
-    ready.level = 7
+    ready.level = 8
     high = make_state(ready, content, ScriptedIO(), StubRandom(),
                       current_location="mountain")
     assert locations.try_travel(high, "summit") is True
@@ -252,9 +252,10 @@ def test_no_weapon_drops_when_the_roll_fails(content):
 def test_full_chain_is_traversable_to_the_summit(content):
     """A strong hero can travel Crossroads -> Summit, clearing every encounter."""
     player = _strong_player(content)
-    player.level = 7
+    player.level = 8
     state = make_state(player, content, ScriptedIO(["1"] * 200), StubRandom())
-    for dest in ["forest", "reach", "cave", "mourncross", "choir", "mountain", "summit"]:
+    for dest in ["forest", "reach", "drowned_holds", "cave", "mourncross",
+                 "choir", "mountain", "summit"]:
         assert locations.try_travel(state, dest), dest
         for encounter in content.locations[dest].get("encounters", []):
             outcome = locations.run_encounter(state, encounter, [], [])
