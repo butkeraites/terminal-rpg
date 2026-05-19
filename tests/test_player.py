@@ -37,6 +37,12 @@ def test_gain_xp_handles_multiple_level_ups(warrior):
 
 def test_serialization_round_trip(warrior):
     warrior.gain_xp(50)
-    warrior.inventory.append("Health Potion")
+    warrior.consumables.append("Health Potion")
     clone = Player.from_dict(warrior.to_dict())
     assert clone.to_dict() == warrior.to_dict()
+
+
+def test_new_player_has_consumables_and_empty_equipment(warrior):
+    """C1: belongings split into a consumables bag and a (still empty) gear loadout."""
+    assert warrior.consumables  # the class's starting kit
+    assert warrior.equipment == {}

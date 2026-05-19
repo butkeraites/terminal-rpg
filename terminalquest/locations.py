@@ -42,14 +42,14 @@ def shop(state):
         if choice == "1":
             if player.gold >= POTION_COST:
                 player.gold -= POTION_COST
-                player.inventory.append("Health Potion")
+                player.consumables.append("Health Potion")
                 io.show("\n✅ Bought a Health Potion!")
             else:
                 io.show("\n❌ Not enough gold!")
         elif choice == "2":
             if player.gold >= GREATER_POTION_COST:
                 player.gold -= GREATER_POTION_COST
-                player.inventory.append("Greater Potion")
+                player.consumables.append("Greater Potion")
                 io.show("\n✅ Bought a Greater Potion!")
             else:
                 io.show("\n❌ Not enough gold!")

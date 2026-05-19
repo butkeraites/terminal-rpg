@@ -145,7 +145,7 @@ def test_shop_buys_greater_potion(content):
     player = _player(content)
     player.gold = 100
     locations.shop(make_state(player, content, ScriptedIO(["2", "5"]), StubRandom()))
-    assert "Greater Potion" in player.inventory
+    assert "Greater Potion" in player.consumables
     assert player.gold == 100 - GREATER_POTION_COST
 
 

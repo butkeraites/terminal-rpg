@@ -15,7 +15,7 @@ from pathlib import Path
 
 from .state import GameState
 
-SAVE_VERSION = 2
+SAVE_VERSION = 3
 DEFAULT_SAVE_DIR = Path.home() / ".terminalquest" / "saves"
 SLOTS = (1, 2, 3)
 
@@ -47,6 +47,11 @@ def _migrate(data):
             "flags": {},
             "player": player,
         }
+    if version <= 2:
+        # v3 splits the flat inventory into a consumables bag and a gear loadout.
+        player = data["state"]["player"]
+        player["consumables"] = player.pop("inventory", [])
+        player.setdefault("equipment", {})
     data["save_version"] = SAVE_VERSION
     return data
 

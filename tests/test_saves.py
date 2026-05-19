@@ -14,7 +14,7 @@ def _load(slot, content, tmp_path):
 
 def test_save_load_round_trip(tmp_path, content, warrior):
     warrior.gain_xp(120)
-    warrior.inventory.append("Health Potion")
+    warrior.consumables.append("Health Potion")
     state = make_state(warrior, content, current_location="forest")
     saves.save_game(state, 1, save_dir=tmp_path)
     loaded = _load(1, content, tmp_path)
@@ -53,16 +53,35 @@ def test_future_save_version_is_rejected(tmp_path, content, warrior):
         _load(1, content, tmp_path)
 
 
-def test_migrates_v1_save_to_v2(tmp_path, content, warrior):
-    """A legacy v1 payload (bare player + position) loads as a v2 GameState."""
-    legacy = {"save_version": 1,
-              "player": dict(warrior.to_dict(), position="world")}
+def test_migrates_v1_save_forward(tmp_path, content, warrior):
+    """A legacy v1 payload (bare player, position, flat inventory) migrates forward."""
+    v1_player = warrior.to_dict()
+    v1_player["inventory"] = v1_player.pop("consumables")  # v1's flat field
+    del v1_player["equipment"]                             # v1 had no equipment
+    v1_player["position"] = "world"                        # v1's vestigial field
+    legacy = {"save_version": 1, "player": v1_player}
     (tmp_path / "slot1.json").write_text(json.dumps(legacy), encoding="utf-8")
     loaded = _load(1, content, tmp_path)
     assert loaded.current_location == "crossroads"
     assert loaded.flags == {}
     assert loaded.player.name == warrior.name
-    assert loaded.player.level == warrior.level
+    assert loaded.player.consumables == warrior.consumables
+    assert loaded.player.equipment == {}
+
+
+def test_migrates_v2_save_to_v3(tmp_path, content, warrior):
+    """A v2 payload (player.inventory) migrates to v3 — consumables plus equipment."""
+    v2_player = warrior.to_dict()
+    v2_player["inventory"] = v2_player.pop("consumables")
+    del v2_player["equipment"]
+    legacy = {"save_version": 2,
+              "state": {"current_location": "forest", "flags": {},
+                        "player": v2_player}}
+    (tmp_path / "slot1.json").write_text(json.dumps(legacy), encoding="utf-8")
+    loaded = _load(1, content, tmp_path)
+    assert loaded.current_location == "forest"
+    assert loaded.player.consumables == warrior.consumables
+    assert loaded.player.equipment == {}
 
 
 def test_corrupt_save_raises_save_error(tmp_path, content):

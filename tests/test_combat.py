@@ -75,26 +75,26 @@ def test_greater_potion_heals_more(content):
     """A Greater Potion restores 80 HP; one potion type needs no picker prompt."""
     warrior = _player(content)
     warrior.hp = 30
-    warrior.inventory = ["Greater Potion"]
+    warrior.consumables = ["Greater Potion"]
     result = combat._player_turn(warrior, make_enemy("goblin", content), content,
                                  ScriptedIO(["3"]), StubRandom())
     assert result == "acted"
     assert warrior.hp == 110  # 30 + 80
-    assert "Greater Potion" not in warrior.inventory
+    assert "Greater Potion" not in warrior.consumables
 
 
 def test_potion_picker_chooses_among_types(content):
     """With multiple potion types the player picks which to drink."""
     warrior = _player(content)
     warrior.hp = 30
-    warrior.inventory = ["Health Potion", "Greater Potion"]
+    warrior.consumables = ["Health Potion", "Greater Potion"]
     io = ScriptedIO(["3", "2"])  # use potion -> pick option 2, the Greater Potion
     result = combat._player_turn(warrior, make_enemy("goblin", content), content,
                                  io, StubRandom())
     assert result == "acted"
     assert warrior.hp == 110  # Greater Potion = +80
-    assert "Greater Potion" not in warrior.inventory
-    assert "Health Potion" in warrior.inventory
+    assert "Greater Potion" not in warrior.consumables
+    assert "Health Potion" in warrior.consumables
 
 
 def test_status_help_is_available_in_combat(content):

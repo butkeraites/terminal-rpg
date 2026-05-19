@@ -37,7 +37,8 @@ class Player(Combatant):
         self.gold = STARTING_GOLD
         self.xp = 0
         self.xp_to_level = STARTING_XP_TO_LEVEL
-        self.inventory = list(class_def["inventory"])
+        self.consumables = list(class_def["inventory"])
+        self.equipment = {}
         self.abilities = list(class_def["abilities"])
 
     def heal(self, amount):
@@ -77,7 +78,7 @@ class Player(Combatant):
         self.stamina = self.max_stamina
 
     def potion_count(self):
-        return sum(self.inventory.count(name) for name in POTION_ITEMS)
+        return sum(self.consumables.count(name) for name in POTION_ITEMS)
 
     def to_dict(self):
         """Serialize to a plain dict for saving."""
@@ -95,7 +96,8 @@ class Player(Combatant):
             "gold": self.gold,
             "xp": self.xp,
             "xp_to_level": self.xp_to_level,
-            "inventory": list(self.inventory),
+            "consumables": list(self.consumables),
+            "equipment": dict(self.equipment),
             "abilities": list(self.abilities),
         }
 
@@ -117,6 +119,7 @@ class Player(Combatant):
         player.gold = data["gold"]
         player.xp = data["xp"]
         player.xp_to_level = data["xp_to_level"]
-        player.inventory = list(data["inventory"])
+        player.consumables = list(data["consumables"])
+        player.equipment = dict(data["equipment"])
         player.abilities = list(data["abilities"])
         return player

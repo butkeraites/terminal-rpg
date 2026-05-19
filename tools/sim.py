@@ -153,9 +153,9 @@ def _rest(player):
     player.hp = player.max_hp
     player.stamina = player.max_stamina
     player.statuses.clear()
-    player.inventory = [item for item in player.inventory
-                        if item not in ("Health Potion", "Greater Potion")]
-    player.inventory += ["Health Potion"] * RESTOCK_POTIONS
+    player.consumables = [item for item in player.consumables
+                          if item not in ("Health Potion", "Greater Potion")]
+    player.consumables += ["Health Potion"] * RESTOCK_POTIONS
 
 
 def _fight(content, player, io, rng, enemy_id):

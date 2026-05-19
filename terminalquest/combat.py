@@ -134,7 +134,7 @@ def _player_turn(player, enemy, content, io, rng):
             return "acted"
 
         if choice == "3":
-            owned = [name for name in POTION_HEAL if name in player.inventory]
+            owned = [name for name in POTION_HEAL if name in player.consumables]
             if not owned:
                 io.show("\n❌ You have no potions!")
                 continue
@@ -151,7 +151,7 @@ def _player_turn(player, enemy, content, io, rng):
                     io.show("\n❌ Invalid choice!")
                     continue
                 potion = owned[int(pick) - 1]
-            player.inventory.remove(potion)
+            player.consumables.remove(potion)
             heal = POTION_HEAL[potion]
             player.heal(heal)
             io.show(f"\n💚 You drink a {potion} and restore {heal} HP "
