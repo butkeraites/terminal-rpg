@@ -21,7 +21,7 @@ def test_location_encounters_reference_real_enemies():
     content = load_content()
     for loc in content.locations.values():
         for encounter in loc.get("encounters", []):
-            for enemy_id in encounter["enemies"]:
+            for enemy_id in encounter.get("enemies", []):
                 assert enemy_id in content.enemies
 
 

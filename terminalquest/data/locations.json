@@ -3,10 +3,11 @@
     "name": "The Crossroads",
     "kind": "hub",
     "intro": [
-      "🗺️  A scar of bare road where four ways meet.",
-      "Every one of them leads somewhere worse."
+      "🗺️  The Crossroads — a scar of bare road, and the last place a choice still means anything.",
+      "One way bends back to Gravewatch, and the single fire it has left lit.",
+      "The other climbs grey into the dying kingdom, and it does not bend back."
     ],
-    "connections": ["village", "forest", "cave", "mountain", "summit"]
+    "connections": ["village", "forest"]
   },
   "village": {
     "name": "Gravewatch",
@@ -24,12 +25,40 @@
     "act": 1,
     "recommended_level": 1,
     "intro": [
-      "🌲 The Witherwood, where the trees have stopped pretending to be alive.",
-      "Something keeps pace with you, just past the edge of the light."
+      "🌲 The Witherwood, where the trees have given up the pretence of being alive.",
+      "This is only the realm's edge; the grey blew in here first, and thinnest.",
+      "The wood still half-remembers being green. It will not remember much longer."
     ],
-    "connections": ["crossroads"],
+    "connections": ["crossroads", "reach"],
     "encounters": [
-      {"type": "combat", "enemies": ["goblin", "wolf", "bandit"], "pick": "random"}
+      {"type": "combat", "enemies": ["goblin", "wolf", "bandit"], "pick": "random"},
+      {"type": "combat", "enemies": ["pallid_stag"], "label": "⚔️  Challenge the Pallid Stag"}
+    ]
+  },
+  "reach": {
+    "name": "The Sodden Reach",
+    "kind": "zone",
+    "act": 1,
+    "recommended_level": 2,
+    "intro": [
+      "🌊 The Sodden Reach — the farmland the floodwater rose up to take back.",
+      "This country fed a kingdom once. Now it drowns the grain it grows,",
+      "again and again, like a thing trying to apologise and not knowing how."
+    ],
+    "connections": ["forest", "cave"],
+    "encounters": [
+      {"type": "combat",
+       "enemies": ["drowned_thresher", "silt_drowner", "bog_lurcher"],
+       "label": "⚔️  Wade into the floodfields  (3 fights, no rest between)"},
+      {"type": "combat", "enemies": ["last_reaper"], "label": "⚔️  Challenge the Last Reaper"},
+      {"type": "discovery", "id": "reach_tally", "label": "📜 A weir-keeper's tally",
+       "lines": [
+         "📜 A weir-keeper's tally board, its chalk gone soft and grey with damp.",
+         "Every gate, every season, the same order copied down the column: HOLD SHUT.",
+         "The outer holds are named beside each — and beside each, no yield, no yield, no yield.",
+         "At the foot of the board, in a smaller and a later hand: 'the capital eats.'",
+         "'The capital eats. And it is we who keep the gates that keep them from the water.'"
+       ]}
     ]
   },
   "cave": {
@@ -38,26 +67,81 @@
     "act": 2,
     "recommended_level": 3,
     "intro": [
-      "🕳️  The Gullet — a wound in the rock that breathes cold, wet air.",
-      "The dark in here has a weight to it, and it leans on you."
+      "🕳️  The Gullet — a wound in the rock that breathes cold air, and wet.",
+      "Everything the drowned country loses, it loses down through here.",
+      "The Pall is the kingdom's own hunger. This is the kingdom's throat."
     ],
-    "connections": ["crossroads"],
+    "connections": ["reach", "mourncross"],
     "encounters": [
-      {"type": "combat", "enemies": ["giant_bat", "cave_troll", "dark_slime"], "pick": "random"}
+      {"type": "combat", "enemies": ["giant_bat", "cave_troll", "dark_slime"], "pick": "random"},
+      {"type": "combat", "enemies": ["maw_mother"], "label": "⚔️  Challenge the Maw-Mother"}
+    ]
+  },
+  "mourncross": {
+    "name": "Mourncross",
+    "kind": "zone",
+    "act": 2,
+    "recommended_level": 4,
+    "intro": [
+      "🏛️  Mourncross, the capital — not burned, not broken, only emptied.",
+      "Every door stands open. Every hearth is cold. Every name is gone.",
+      "The city did not fall. It was forgotten, all in one breath, and obeyed."
+    ],
+    "connections": ["cave", "choir"],
+    "encounters": [
+      {"type": "combat",
+       "enemies": ["pall_magistrate", "hollow_procession", "gutter_wretch"],
+       "pick": "random"},
+      {"type": "combat", "enemies": ["hollow_bellward"], "label": "⚔️  Challenge the Hollow Bellward"},
+      {"type": "discovery", "id": "mourncross_census", "label": "📜 The last census of Mourncross",
+       "lines": [
+         "📜 The last census of Mourncross, bound in cracked grey leather.",
+         "Page after page of names — and every name struck through, not once but many times,",
+         "scored over and over until the nib tore the paper and the ink ran dry.",
+         "One line at the very end survives unmarked, in the census-clerk's own hand:",
+         "'If no one is written down, then no one was left behind to starve.'"
+       ]}
+    ]
+  },
+  "choir": {
+    "name": "The Unanswered Choir",
+    "kind": "zone",
+    "act": 3,
+    "recommended_level": 5,
+    "intro": [
+      "⛪ The Unanswered Choir — the cathedral where a kingdom knelt to forget.",
+      "The rite was performed here, in full, and it was answered after a fashion.",
+      "What knelt for absolution rose up as the Pall. It has been singing since."
+    ],
+    "connections": ["mourncross", "mountain"],
+    "encounters": [
+      {"type": "combat",
+       "enemies": ["censer_shade", "reliquary_golem", "choirmaster_effigy", "cantor_vael"],
+       "label": "⚔️  Walk the length of the Choir  (a gauntlet — no rest, ending in Cantor Vael)"},
+      {"type": "discovery", "id": "choir_rite", "label": "📜 The half-burned rite",
+       "lines": [
+         "📜 A service-book, half its pages burned away to black lace.",
+         "What survives is an order of rite — performed once, by a whole kingdom at once.",
+         "The celebrant's line is still legible across the spine: 'Let us, with one voice,'",
+         "'unremember the winter of the sealed gates, and the holds we let go quiet.'",
+         "The rite worked. A thing was forgotten. It did not, for that, cease to exist."
+       ]}
     ]
   },
   "mountain": {
     "name": "The Ashen Climb",
     "kind": "zone",
     "act": 3,
-    "recommended_level": 5,
+    "recommended_level": 6,
     "intro": [
-      "⛰️  The Ashen Climb. Grey snow falls here, and it is not snow.",
-      "What lived on this slope did not die so much as change."
+      "⛰️  The Ashen Climb. Grey snow falls here, and it has never once been snow.",
+      "This is the last ground that is still ground. What lived on this slope",
+      "did not die so much as forget the difference, and go on climbing."
     ],
-    "connections": ["crossroads"],
+    "connections": ["choir", "summit"],
     "encounters": [
-      {"type": "combat", "enemies": ["mountain_ogre", "ice_wraith", "stone_golem"], "pick": "random"}
+      {"type": "combat", "enemies": ["mountain_ogre", "ice_wraith", "stone_golem"], "pick": "random"},
+      {"type": "combat", "enemies": ["ashen_penitent"], "label": "⚔️  Challenge the Ashen Penitent"}
     ]
   },
   "summit": {
@@ -65,12 +149,13 @@
     "kind": "zone",
     "act": 3,
     "boss": true,
-    "unlock_level": 5,
+    "unlock_level": 7,
     "intro": [
-      "⛰️  The Shrouded Summit. The Pall pours from the dark ahead like smoke off a pyre.",
-      "Whatever is left of the one who began all this has been waiting for you."
+      "☁️  The Shrouded Summit. The Pall pours off the dark ahead like smoke off a pyre.",
+      "This high, it has stopped pretending to be weather, or grief, or anything but hunger.",
+      "Something waits in it that was a person once — who climbed here, and won."
     ],
-    "connections": ["crossroads"],
+    "connections": ["mountain"],
     "encounters": [
       {"type": "combat", "enemies": ["shadow_warden"], "boss": true}
     ]

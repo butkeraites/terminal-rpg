@@ -12,22 +12,29 @@ def _player(content):
 
 
 def _strong_player(content):
-    """A player who one-shots any enemy, for deterministic fight outcomes."""
+    """A player who one-shots any enemy, for deterministic fight outcomes.
+
+    ``xp_to_level`` is pushed out of reach so a kill never triggers an
+    incidental level-up (which would prompt for a boon and eat inputs).
+    """
     player = _player(content)
     player.attack = 1000
     player.max_hp = player.hp = 10000
+    player.xp_to_level = 10 ** 9
     return player
 
 
 def test_location_loop_shows_recommended_levels(content):
-    io = ScriptedIO(["8"])  # quit from the Crossroads
+    io = ScriptedIO(["5"])  # quit from the Crossroads
     locations.location_loop(make_state(_player(content), content, io, StubRandom()))
     assert "recommended Lv" in io.text()
 
 
 def test_boss_travel_locked_below_unlock_level(content):
-    io = ScriptedIO(["5", "8"])  # try to travel to the boss (sealed), then quit
-    locations.location_loop(make_state(_player(content), content, io, StubRandom()))
+    # at the Ashen Climb, a low-level hero tries the sealed Summit, then quits
+    io = ScriptedIO(["4", "7"])
+    locations.location_loop(make_state(_player(content), content, io, StubRandom(),
+                                       current_location="mountain"))
     text = io.text()
     assert "sealed" in text
     assert "VICTORY" not in text
@@ -35,10 +42,11 @@ def test_boss_travel_locked_below_unlock_level(content):
 
 def test_boss_victory_ends_the_game(content):
     player = _strong_player(content)
-    player.level = 5  # the summit unlocks at level 5
-    # travel to summit -> challenge -> attack -> two boon picks from the XP
-    io = ScriptedIO(["5", "1", "1", "1", "1"])
-    locations.location_loop(make_state(player, content, io, StubRandom()))
+    player.level = 7  # the summit unlocks at level 7
+    # at the Ashen Climb: travel to the Summit -> challenge -> one-shot the Warden
+    io = ScriptedIO(["4", "1", "1"])
+    locations.location_loop(make_state(player, content, io, StubRandom(),
+                                       current_location="mountain"))
     text = io.text()
     assert "THE PALL KEEPS YOU" in text
     assert "Thank you for playing" in text
@@ -64,7 +72,7 @@ def test_grave_appears_and_can_be_searched(tmp_path, content):
     chronicle.record(fallen_run, "fell", tmp_path)
     player = _player(content)
     gold_before = player.gold
-    io = ScriptedIO(["2", "2", "5"])  # crossroads -> forest, search grave, quit
+    io = ScriptedIO(["2", "3", "7"])  # crossroads -> forest, search grave, quit
     state = make_state(player, content, io, StubRandom(), chronicle_dir=tmp_path)
     locations.location_loop(state)
     assert "Half-buried" in io.text()
@@ -113,17 +121,18 @@ def test_defeating_a_hollowed_lays_it_to_rest(tmp_path, content):
 
 
 def test_overlevel_travel_warns_and_can_turn_back(content):
-    # level 1 vs Mountain (recommended level 5): travel -> warned -> turn back -> quit
-    io = ScriptedIO(["4", "2", "8"])
-    locations.location_loop(make_state(_player(content), content, io, StubRandom()))
+    # level 1 at the Gullet vs Mourncross (recommended 4): warned -> turn back
+    io = ScriptedIO(["4", "2", "7"])
+    locations.location_loop(make_state(_player(content), content, io, StubRandom(),
+                                       current_location="cave"))
     text = io.text()
     assert "recommended for level" in text
     assert "turn back" in text.lower()
 
 
 def test_travel_into_a_zone_fight_and_return(content):
-    # travel to the forest, win a fight, travel back to the Crossroads, quit
-    io = ScriptedIO(["2", "1", "1", "2", "8"])
+    # travel to the Witherwood, win a fight, travel back to the Crossroads, quit
+    io = ScriptedIO(["2", "1", "1", "3", "5"])
     state = make_state(_strong_player(content), content, io, StubRandom())
     locations.location_loop(state)
     text = io.text()

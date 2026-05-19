@@ -20,6 +20,8 @@ class Enemy(Combatant):
         self.ability = enemy_def.get("ability")
         # Optional one-line flavour shown when the enemy appears.
         self.flavor = enemy_def.get("flavor", "")
+        # Named, one-of-a-kind foes (mini-bosses, the Warden) take no article.
+        self.unique = enemy_def.get("unique", False)
         # Set to a pending action name while a big attack is telegraphed.
         self.winding_up = None
         # Turn counter the "relentless" AI uses to time its surge.

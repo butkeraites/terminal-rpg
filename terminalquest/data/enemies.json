@@ -29,6 +29,60 @@
     "ai": "aggressive",
     "flavor": "A farmer once. The Pall left him only his knife and his hunger."
   },
+  "pallid_stag": {
+    "name": "Pallid Stag",
+    "hp": 95,
+    "attack": 13,
+    "defense": 4,
+    "xp_reward": 110,
+    "gold_reward": 55,
+    "ai": "aggressive",
+    "unique": true,
+    "flavor": "Once the wood's forester. He wore antlers of dead branch to pass unseen, and wore them far too long."
+  },
+  "drowned_thresher": {
+    "name": "Drowned Thresher",
+    "hp": 42,
+    "attack": 12,
+    "defense": 3,
+    "xp_reward": 40,
+    "gold_reward": 18,
+    "ai": "aggressive",
+    "flavor": "A field-hand who kept reaping after the floodwater closed over the rows."
+  },
+  "silt_drowner": {
+    "name": "Silt Drowner",
+    "hp": 36,
+    "attack": 11,
+    "defense": 2,
+    "xp_reward": 44,
+    "gold_reward": 20,
+    "ai": "caster",
+    "ability": {"name": "Silt-Choke", "power": 1.1, "status": "vulnerable", "status_turns": 2},
+    "flavor": "A child sent running to call the outer holds to supper. The supper was never sent."
+  },
+  "bog_lurcher": {
+    "name": "Bog Lurcher",
+    "hp": 48,
+    "attack": 11,
+    "defense": 3,
+    "xp_reward": 48,
+    "gold_reward": 22,
+    "ai": "relentless",
+    "flavor": "A tax-rider of the capital, still riding its rounds of holds that drowned owing nothing."
+  },
+  "last_reaper": {
+    "name": "Last Reaper",
+    "hp": 135,
+    "attack": 16,
+    "defense": 5,
+    "xp_reward": 160,
+    "gold_reward": 85,
+    "ai": "caster",
+    "unique": true,
+    "ability": {"name": "Drowning Pull", "power": 1.3, "status": "weak", "status_turns": 2},
+    "flavor": "The weir-keeper who sealed the last gate. The Reach gave him the flood he spent a life withholding."
+  },
   "giant_bat": {
     "name": "Carrion Bat",
     "hp": 35,
@@ -59,6 +113,102 @@
     "ai": "caster",
     "ability": {"name": "Acid Spit", "power": 1.2, "status": "poison", "status_turns": 3},
     "flavor": "The Pall itself, given just enough shape to crawl toward the warm."
+  },
+  "maw_mother": {
+    "name": "Maw-Mother",
+    "hp": 210,
+    "attack": 17,
+    "defense": 8,
+    "xp_reward": 210,
+    "gold_reward": 115,
+    "ai": "defensive",
+    "unique": true,
+    "flavor": "She kept the capital's granary, and counted its stores too few to share. They were not."
+  },
+  "pall_magistrate": {
+    "name": "Pall-Sworn Magistrate",
+    "hp": 78,
+    "attack": 16,
+    "defense": 5,
+    "xp_reward": 95,
+    "gold_reward": 48,
+    "ai": "caster",
+    "ability": {"name": "Sentence", "power": 1.0, "status": "stun", "status_turns": 1},
+    "flavor": "A magistrate of Mourncross, still passing sentence in a courtroom with no one left to judge."
+  },
+  "hollow_procession": {
+    "name": "Hollow Procession",
+    "hp": 92,
+    "attack": 14,
+    "defense": 4,
+    "xp_reward": 100,
+    "gold_reward": 52,
+    "ai": "enrager",
+    "flavor": "A funeral that set out for the graveyard, never arrived, and never thought to stop."
+  },
+  "gutter_wretch": {
+    "name": "Gutter Wretch",
+    "hp": 64,
+    "attack": 17,
+    "defense": 3,
+    "xp_reward": 88,
+    "gold_reward": 65,
+    "ai": "fleer",
+    "flavor": "It lined its pockets while the holds went hungry. It lines them still, with fistfuls of grey."
+  },
+  "hollow_bellward": {
+    "name": "Hollow Bellward",
+    "hp": 235,
+    "attack": 19,
+    "defense": 7,
+    "xp_reward": 270,
+    "gold_reward": 145,
+    "ai": "relentless",
+    "unique": true,
+    "flavor": "The bellward of Mourncross, who rang the curfew that shut the city's gates. He rings it yet."
+  },
+  "censer_shade": {
+    "name": "Censer Shade",
+    "hp": 80,
+    "attack": 17,
+    "defense": 4,
+    "xp_reward": 115,
+    "gold_reward": 50,
+    "ai": "relentless",
+    "flavor": "An acolyte who swung the censer through the whole long rite, and could not learn to stop."
+  },
+  "reliquary_golem": {
+    "name": "Reliquary Golem",
+    "hp": 140,
+    "attack": 15,
+    "defense": 12,
+    "xp_reward": 135,
+    "gold_reward": 62,
+    "ai": "defensive",
+    "flavor": "Set to guard the bones of saints. The saints are unremembered now; it guards the empty box."
+  },
+  "choirmaster_effigy": {
+    "name": "Choirmaster Effigy",
+    "hp": 95,
+    "attack": 19,
+    "defense": 5,
+    "xp_reward": 125,
+    "gold_reward": 58,
+    "ai": "caster",
+    "ability": {"name": "Discordant Hymn", "power": 1.2, "status": "weak", "status_turns": 2},
+    "flavor": "Straw and stitched vestments in the choirmaster's shape, holding his note in his absence."
+  },
+  "cantor_vael": {
+    "name": "Cantor Vael",
+    "hp": 245,
+    "attack": 22,
+    "defense": 7,
+    "xp_reward": 300,
+    "gold_reward": 165,
+    "ai": "caster",
+    "unique": true,
+    "ability": {"name": "Rite of Unremembering", "power": 1.4, "status": "vulnerable", "status_turns": 2},
+    "flavor": "The cantor who led the rite of unremembering. He carried the realm's one voice, and cannot set it down."
   },
   "mountain_ogre": {
     "name": "Ridge Ravager",
@@ -91,6 +241,17 @@
     "ai": "defensive",
     "flavor": "Set to guard a tomb whose name has long worn away. It still guards."
   },
+  "ashen_penitent": {
+    "name": "Ashen Penitent",
+    "hp": 270,
+    "attack": 23,
+    "defense": 8,
+    "xp_reward": 350,
+    "gold_reward": 185,
+    "ai": "enrager",
+    "unique": true,
+    "flavor": "The first to climb toward the Pall — and the first to turn back. The Climb does not permit a man to leave it twice."
+  },
   "shadow_warden": {
     "name": "Shadow Warden",
     "hp": 280,
@@ -99,6 +260,7 @@
     "xp_reward": 300,
     "gold_reward": 250,
     "ai": "caster",
+    "unique": true,
     "ability": {"name": "Umbral Nova", "power": 1.7, "status": "weak", "status_turns": 2},
     "flavor": "The first to climb the Summit. The Pall did not kill it — it kept it."
   }
