@@ -26,9 +26,11 @@ from terminalquest.enemy import make_enemy
 from terminalquest.player import Player
 from terminalquest.state import GameState
 from terminalquest.ui import GameIO
+from terminalquest.weapon import roll_weapon
 
-POOL_RUNS = 4        # times a thorough player grinds a random encounter pool
-RESTOCK_POTIONS = 4  # Health Potions a rest tops the player up to
+POOL_RUNS = 4         # times a thorough player grinds a random encounter pool
+RESTOCK_POTIONS = 4   # Health Potions a rest tops the player up to
+RUNS_PER_BUILD = 12   # runs used to measure one weapon build's win-rate
 
 
 @dataclass
@@ -165,9 +167,15 @@ def _fight(content, player, io, rng, enemy_id):
     return combat.run_combat(GameState(player, content, io, rng), enemy)
 
 
-def simulate_run(content, class_id, rng, rest_each, policy_factory=CompetentPolicy):
-    """Play one full run. ``rest_each`` rests before every fight, not just zones."""
+def simulate_run(content, class_id, rng, rest_each, policy_factory=CompetentPolicy,
+                 weapon=None):
+    """Play one full run. ``rest_each`` rests before every fight, not just zones.
+
+    A ``weapon`` overrides the class starting weapon — used for build-sampling.
+    """
     player = Player("Sim", class_id, content.classes[class_id], content)
+    if weapon is not None:
+        player.equip_weapon(weapon)
     io = PolicyIO(policy_factory(content))
     for zone_id in zone_chain(content):
         loc = content.locations[zone_id]
@@ -214,16 +222,45 @@ def run_profile(content, label, rest_each, trials, seed):
               f"win {won / trials:5.0%}  avg Lv {avg_level:4.1f}  deaths {hotspots}")
 
 
+def sample_builds(content, class_id, n_builds, seed):
+    """Roll random weapons and measure each build's win-rate over many runs."""
+    rng = random.Random(f"{seed}:{class_id}:builds")
+    rates = []
+    for _ in range(n_builds):
+        weapon = roll_weapon(content, 3, rng)  # act 3 — the full component pool
+        wins = sum(simulate_run(content, class_id, rng, True, weapon=weapon).won
+                   for _ in range(RUNS_PER_BUILD))
+        rates.append(wins / RUNS_PER_BUILD)
+    return rates
+
+
+def run_build_report(content, n_builds, seed):
+    """Sample random weapon builds per class; flag dead and degenerate ones."""
+    print(f"\n=== BUILD SAMPLING ({n_builds} random weapons/class, "
+          f"{RUNS_PER_BUILD} runs each) ===")
+    for class_id in content.classes:
+        rates = sorted(sample_builds(content, class_id, n_builds, seed))
+        median = rates[len(rates) // 2]
+        dead = sum(r < 0.10 for r in rates)
+        degenerate = sum(r > 0.95 for r in rates)
+        print(f"  {class_id:9s} win  min {rates[0]:4.0%}  median {median:4.0%}  "
+              f"max {rates[-1]:4.0%}   dead {dead}  degenerate {degenerate}")
+
+
 def main(argv=None):
     """CLI entry point: run both rest profiles and print their reports."""
     parser = argparse.ArgumentParser(description="Terminal Quest balance simulator.")
     parser.add_argument("--runs", type=int, default=400, help="runs per class")
     parser.add_argument("--seed", default="terminalquest", help="master seed")
+    parser.add_argument("--builds", type=int, default=20,
+                        help="random weapon builds to sample per class (0 to skip)")
     args = parser.parse_args(argv)
 
     content = load_content()
     run_profile(content, "RECKLESS (rest only between zones)", False, args.runs, args.seed)
     run_profile(content, "CAREFUL  (rest before every fight)", True, args.runs, args.seed)
+    if args.builds > 0:
+        run_build_report(content, args.builds, args.seed)
 
 
 if __name__ == "__main__":
