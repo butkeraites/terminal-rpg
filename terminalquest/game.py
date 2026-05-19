@@ -31,15 +31,19 @@ def _name_the_fallen(io, content, entries):
     if not entries:
         return
     io.show_slow("\nOthers walked this road before you. Mournhold keeps their names:")
-    for entry in entries[-5:]:
+    for entry in entries[-6:]:
         p = entry["player"]
-        if entry.get("fate") == "triumphed":
-            io.show(f"  ⚜️  {p['name']} the {p['class_name']} — broke the Pall once; "
-                    f"still it rose again.")
+        loc = content.locations.get(entry.get("location", ""), {})
+        place = loc.get("name", "the dark")
+        if entry.get("fate") == "warden":
+            io.show(f"  👑 {p['name']} the {p['class_name']} — took the Summit, "
+                    f"and the Pall took them. They keep it still.")
+        elif entry.get("resolved"):
+            io.show(f"  🕯️  {p['name']} the {p['class_name']} — fell in {place}, "
+                    f"and was laid to rest.")
         else:
-            loc = content.locations.get(entry.get("location", ""), {})
             io.show(f"  🪦 {p['name']} the {p['class_name']} — fell at level "
-                    f"{p['level']} in {loc.get('name', 'the dark')}.")
+                    f"{p['level']} in {place}.")
     io.show_slow("It will keep yours the same way.\n")
 
 

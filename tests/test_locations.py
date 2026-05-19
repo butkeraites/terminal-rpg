@@ -40,7 +40,7 @@ def test_boss_victory_ends_the_game(content):
     io = ScriptedIO(["5", "1", "1", "1", "1"])
     locations.location_loop(make_state(player, content, io, StubRandom()))
     text = io.text()
-    assert "VICTORY" in text
+    assert "THE PALL KEEPS YOU" in text
     assert "Thank you for playing" in text
 
 
@@ -48,13 +48,13 @@ def test_run_encounter_returns_boss_victory(content):
     state = make_state(_strong_player(content), content,
                        ScriptedIO(["1", "1", "1"]), StubRandom())
     encounter = content.locations["summit"]["encounters"][0]
-    assert locations.run_encounter(state, encounter, []) == "boss_victory"
+    assert locations.run_encounter(state, encounter, [], []) == "boss_victory"
 
 
 def test_run_encounter_normal_victory_is_plain_victory(content):
     state = make_state(_strong_player(content), content, ScriptedIO(["1"]), StubRandom())
     encounter = content.locations["forest"]["encounters"][0]
-    assert locations.run_encounter(state, encounter, []) == "victory"
+    assert locations.run_encounter(state, encounter, [], []) == "victory"
 
 
 def test_grave_appears_and_can_be_searched(tmp_path, content):
@@ -81,8 +81,35 @@ def test_run_encounter_can_raise_a_hollowed(tmp_path, content):
                        StubRandom(rnd=0.0), current_location="forest",
                        chronicle_dir=tmp_path)
     encounter = content.locations["forest"]["encounters"][0]
-    locations.run_encounter(state, encounter, fallen)
+    locations.run_encounter(state, encounter, fallen, [])
     assert "Hollow" in state.io.text()
+
+
+def test_summit_boss_is_the_last_warden(tmp_path, content):
+    """Once a hero has won, the Summit boss wears their name."""
+    victor = Player("Kara", "mage", content.classes["mage"])
+    won = make_state(victor, content, current_location="summit", chronicle_dir=tmp_path)
+    chronicle.record(won, "warden", tmp_path)
+    wardens = chronicle.wardens(chronicle.load(tmp_path))
+    state = make_state(_strong_player(content), content, ScriptedIO(["1", "1", "1"]),
+                       StubRandom(), current_location="summit", chronicle_dir=tmp_path)
+    encounter = content.locations["summit"]["encounters"][0]
+    locations.run_encounter(state, encounter, [], wardens)
+    assert "Kara, the Shadow Warden" in state.io.text()
+
+
+def test_defeating_a_hollowed_lays_it_to_rest(tmp_path, content):
+    """Beating a Hollowed frees that character — it no longer rises."""
+    dead = make_state(_player(content), content, current_location="forest",
+                      chronicle_dir=tmp_path)
+    chronicle.record(dead, "fell", tmp_path)
+    fallen = chronicle.fallen(chronicle.load(tmp_path))
+    state = make_state(_strong_player(content), content, ScriptedIO(["1"]),
+                       StubRandom(rnd=0.0), current_location="forest",
+                       chronicle_dir=tmp_path)
+    encounter = content.locations["forest"]["encounters"][0]
+    locations.run_encounter(state, encounter, fallen, [])
+    assert chronicle.fallen(chronicle.load(tmp_path)) == []  # resolved — at rest
 
 
 def test_overlevel_travel_warns_and_can_turn_back(content):

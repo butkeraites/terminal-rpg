@@ -7,7 +7,7 @@ until the player dies, wins, or quits.
 """
 from . import chronicle, saves
 from .combat import run_combat
-from .enemy import make_enemy, make_hollowed
+from .enemy import make_enemy, make_hollowed, make_warden
 from .ui import hud, show_stats
 
 INN_COST = 20
@@ -103,21 +103,26 @@ def _hollowed_candidates(state, fallen):
             and e["player"]["level"] <= state.player.level + 1]
 
 
-def run_encounter(state, encounter, fallen):
+def run_encounter(state, encounter, fallen, wardens):
     """Run one encounter at the current location.
 
     Returns the combat outcome ('victory'/'defeat'/'fled'/'enemy_fled'),
     or 'boss_victory' when a boss encounter is won. A random-pick combat
-    may instead raise a Hollowed — a past character who fell in this zone.
+    may instead raise a Hollowed — a past character who fell here — and a
+    boss encounter becomes the last victor, kept by the Pall as the Warden.
     """
     io, rng, content = state.io, state.rng, state.content
     if encounter["type"] != "combat":
         return None
 
     candidates = _hollowed_candidates(state, fallen)
-    if (encounter.get("pick") == "random" and candidates
-            and rng.random() < HOLLOWED_CHANCE):
-        enemies = [make_hollowed(rng.choice(candidates))]
+    hollowed_entry = None
+    if encounter.get("boss") and wardens:
+        enemies = [make_warden(wardens[-1], content)]
+    elif (encounter.get("pick") == "random" and candidates
+          and rng.random() < HOLLOWED_CHANCE):
+        hollowed_entry = rng.choice(candidates)
+        enemies = [make_hollowed(hollowed_entry)]
     elif encounter.get("pick") == "random":
         enemies = [make_enemy(rng.choice(encounter["enemies"]), content)]
     else:
@@ -135,6 +140,11 @@ def run_encounter(state, encounter, fallen):
     elif outcome == "fled":
         io.show("\nYou retreat to the Crossroads, shaken but alive.")
         state.current_location = "crossroads"
+    if hollowed_entry is not None and outcome == "victory":
+        chronicle.lay_to_rest(hollowed_entry, state.chronicle_dir)
+        name = hollowed_entry["player"]["name"]
+        io.show_slow(f"\n🕯️  {name} is still, at last. The Pall will not raise "
+                     f"them again — you have given them that much.")
     if encounter.get("boss") and outcome == "victory":
         return "boss_victory"
     return outcome
@@ -170,21 +180,21 @@ def try_travel(state, dest_id):
 
 
 def _victory_screen(state):
-    """Render the win screen after the final boss is defeated."""
+    """The end screen: the Warden falls, and the Pall keeps the victor."""
     player, io = state.player, state.io
-    chronicle.record(state, "triumphed", state.chronicle_dir)
+    chronicle.record(state, "warden", state.chronicle_dir)
     io.clear()
-    io.show_slow("The Shadow Warden comes apart like wet ash, and is gone.")
-    io.show_slow("The Pall does not lift — but for the first time in three winters,")
-    io.show_slow("it stops climbing.")
+    io.show_slow("The Shadow Warden comes apart like wet ash — and the Pall,")
+    io.show_slow("finding itself without a Warden, turns to the soul still")
+    io.show_slow("standing on the Summit. It pours into you. You never feel it take.")
     io.show("\n" + "=" * 50)
-    io.show("🏆  VICTORY")
-    io.show(f"{player.name} the {player.class_name} — Level {player.level}")
-    io.show(f"💰 Gold: {player.gold}")
-    io.show("\nThe realm is still dead. You bought it only time.")
-    io.show("It will have to be enough.")
+    io.show("🥀  THE PALL KEEPS YOU")
+    io.show(f"{player.name} the {player.class_name} — Warden of the Shrouded Summit")
+    io.show("\nYou will not climb down. You will wait here, wearing your own")
+    io.show("face, until the next soul reaches the Summit to break you —")
+    io.show("as you broke the one before.")
     io.show("=" * 50)
-    io.show("\nThank you for playing Terminal Quest!")
+    io.show("\nThank you for playing Terminal Quest.")
 
 
 def _save_menu(state):
@@ -273,7 +283,9 @@ def _build_options(state, loc, fallen):
 def location_loop(state):
     """The central game loop. Runs until the player dies, wins, or quits."""
     player, content, io = state.player, state.content, state.io
-    fallen = chronicle.fallen(chronicle.load(state.chronicle_dir))
+    _entries = chronicle.load(state.chronicle_dir)
+    fallen = chronicle.fallen(_entries)
+    wardens = chronicle.wardens(_entries)
     arrived = True
     while player.is_alive():
         loc = content.locations[state.current_location]
@@ -298,7 +310,7 @@ def location_loop(state):
             _run_service(state, arg)
         elif kind == "encounter":
             here = state.current_location
-            outcome = run_encounter(state, arg, fallen)
+            outcome = run_encounter(state, arg, fallen, wardens)
             if outcome == "boss_victory":
                 _victory_screen(state)
                 return

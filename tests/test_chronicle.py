@@ -18,7 +18,7 @@ def test_record_and_load_round_trip(tmp_path, content, warrior):
 def test_record_appends_across_runs(tmp_path, content, warrior):
     state = make_state(warrior, content, chronicle_dir=tmp_path)
     chronicle.record(state, "fell", tmp_path)
-    chronicle.record(state, "triumphed", tmp_path)
+    chronicle.record(state, "warden", tmp_path)
     assert len(chronicle.load(tmp_path)) == 2
 
 
@@ -31,10 +31,31 @@ def test_load_corrupt_chronicle_is_empty(tmp_path):
     assert chronicle.load(tmp_path) == []
 
 
-def test_fallen_excludes_victors(tmp_path, content, warrior):
+def test_fallen_excludes_wardens(tmp_path, content, warrior):
     state = make_state(warrior, content, chronicle_dir=tmp_path)
     chronicle.record(state, "fell", tmp_path)
-    chronicle.record(state, "triumphed", tmp_path)
+    chronicle.record(state, "warden", tmp_path)
     fallen = chronicle.fallen(chronicle.load(tmp_path))
     assert len(fallen) == 1
     assert fallen[0]["fate"] == "fell"
+
+
+def test_wardens_lists_those_kept_by_the_pall(tmp_path, content, warrior):
+    state = make_state(warrior, content, current_location="summit",
+                       chronicle_dir=tmp_path)
+    chronicle.record(state, "warden", tmp_path)
+    chronicle.record(state, "fell", tmp_path)
+    kept = chronicle.wardens(chronicle.load(tmp_path))
+    assert len(kept) == 1
+    assert kept[0]["fate"] == "warden"
+
+
+def test_lay_to_rest_frees_a_fallen_character(tmp_path, content, warrior):
+    state = make_state(warrior, content, current_location="forest",
+                       chronicle_dir=tmp_path)
+    chronicle.record(state, "fell", tmp_path)
+    entry = chronicle.load(tmp_path)[0]
+    chronicle.lay_to_rest(entry, tmp_path)
+    reloaded = chronicle.load(tmp_path)
+    assert reloaded[0].get("resolved") is True
+    assert chronicle.fallen(reloaded) == []

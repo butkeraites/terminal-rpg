@@ -43,3 +43,17 @@ def make_hollowed(entry):
         "flavor": (f"It wears {p['name']}'s face — the {p['class_name']} who came "
                    f"before you. The Pall kept what was left."),
     })
+
+
+def make_warden(entry, content):
+    """The Shadow Warden as a past victor — kept by the Pall, wearing their face.
+
+    Mechanically the tuned boss; narratively the last character who won.
+    """
+    p = entry["player"]
+    return Enemy("shadow_warden", {
+        **content.enemies["shadow_warden"],
+        "name": f"{p['name']}, the Shadow Warden",
+        "flavor": (f"It wears {p['name']}'s face — the {p['class_name']} who broke "
+                   f"the Pall and was kept by it. You climb to do the same."),
+    })
