@@ -3,6 +3,8 @@ import pytest
 
 from terminalquest.content import load_content
 from terminalquest.player import Player
+from terminalquest.state import GameState
+from terminalquest.ui import ScriptedIO
 
 
 class StubRandom:
@@ -36,3 +38,13 @@ def content():
 @pytest.fixture
 def warrior(content):
     return Player("Hero", "warrior", content.classes["warrior"])
+
+
+def make_state(player, content, io=None, rng=None, current_location="crossroads"):
+    """Build a GameState for tests, defaulting io/rng to test doubles."""
+    return GameState(
+        player, content,
+        io if io is not None else ScriptedIO(),
+        rng if rng is not None else StubRandom(),
+        current_location=current_location,
+    )

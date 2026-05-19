@@ -3,8 +3,9 @@ import random
 
 from . import __version__, saves
 from .content import load_content
-from .locations import world_map
+from .locations import location_loop
 from .player import Player
+from .state import GameState
 from .ui import GameIO
 
 
@@ -37,8 +38,8 @@ def create_character(content, io):
     return player
 
 
-def load_menu(io):
-    """Show occupied save slots and return a loaded Player, or None to cancel."""
+def load_menu(content, io, rng):
+    """Show occupied save slots and return a loaded GameState, or None to cancel."""
     saved = saves.list_saves()
     if not saved:
         io.show("\n❌ No saved games found.")
@@ -50,7 +51,7 @@ def load_menu(io):
     io.show("4. Cancel")
     choice = io.ask("\nLoad which slot? ")
     if choice in ("1", "2", "3") and int(choice) in saved:
-        return saves.load_game(int(choice))
+        return saves.load_game(int(choice), content, io, rng)
     return None
 
 
@@ -74,12 +75,12 @@ def run(io=None, content=None, rng=None):
 
         if choice == "1":
             player = create_character(content, io)
-            world_map(player, content, io, rng)
+            location_loop(GameState(player, content, io, rng))
             return
         elif choice == "2":
-            player = load_menu(io)
-            if player is not None:
-                world_map(player, content, io, rng)
+            state = load_menu(content, io, rng)
+            if state is not None:
+                location_loop(state)
                 return
         elif choice == "3":
             io.show("\n👋 Farewell, adventurer!")

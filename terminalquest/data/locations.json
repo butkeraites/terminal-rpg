@@ -1,0 +1,74 @@
+{
+  "crossroads": {
+    "name": "The Crossroads",
+    "kind": "hub",
+    "intro": [
+      "🗺️  You stand at the Crossroads.",
+      "Roads lead off in every direction."
+    ],
+    "connections": ["village", "forest", "cave", "mountain", "summit"]
+  },
+  "village": {
+    "name": "Village",
+    "kind": "settlement",
+    "intro": [
+      "🏘️  Welcome to the Village.",
+      "A peaceful place with a shop and an inn."
+    ],
+    "connections": ["crossroads"],
+    "services": ["shop", "inn"]
+  },
+  "forest": {
+    "name": "Dark Forest",
+    "kind": "zone",
+    "recommended_level": 1,
+    "intro": [
+      "🌲 You enter the Dark Forest...",
+      "Strange sounds echo through the trees."
+    ],
+    "connections": ["crossroads"],
+    "encounters": [
+      {"type": "combat", "enemies": ["goblin", "wolf", "bandit"], "pick": "random"}
+    ]
+  },
+  "cave": {
+    "name": "Cave",
+    "kind": "zone",
+    "recommended_level": 3,
+    "intro": [
+      "🕳️  You enter a dark cave...",
+      "You can barely see anything."
+    ],
+    "connections": ["crossroads"],
+    "encounters": [
+      {"type": "combat", "enemies": ["giant_bat", "cave_troll", "dark_slime"], "pick": "random"}
+    ]
+  },
+  "mountain": {
+    "name": "Mountain",
+    "kind": "zone",
+    "recommended_level": 5,
+    "intro": [
+      "⛰️  You climb the treacherous mountain...",
+      "The air grows thin and cold."
+    ],
+    "connections": ["crossroads"],
+    "encounters": [
+      {"type": "combat", "enemies": ["mountain_ogre", "ice_wraith", "stone_golem"], "pick": "random"}
+    ]
+  },
+  "summit": {
+    "name": "The Shrouded Summit",
+    "kind": "zone",
+    "boss": true,
+    "unlock_level": 5,
+    "intro": [
+      "⛰️  Beyond the peak lies the Shrouded Summit...",
+      "A presence of pure shadow waits for you."
+    ],
+    "connections": ["crossroads"],
+    "encounters": [
+      {"type": "combat", "enemies": ["shadow_warden"], "boss": true}
+    ]
+  }
+}

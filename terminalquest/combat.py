@@ -8,24 +8,27 @@ turn. Using a potion is no longer a free action.
 testable with ``ScriptedIO``. Damage/AI helpers are pure functions of
 their arguments and an injected ``random.Random`` for determinism.
 """
-import random
-
 from . import status
 
 ATTACK_VARIANCE = (-2, 4)
+CRIT_CHANCE = 0.15
+CRIT_MULTIPLIER = 1.8
 STAMINA_PER_TURN = 2
 FLEE_CHANCE = 0.5
-POTION_HEAL = 40
+POTION_HEAL = {"Health Potion": 40, "Greater Potion": 80}
 DEFEND_TURNS = 1
 
 
 def _perform_attack(attacker, target, power, rng):
-    """Resolve one attack. Returns ``(damage_dealt, dodged)``."""
+    """Resolve one attack. Returns ``(damage_dealt, dodged, crit)``."""
     if status.has_status(target, "evasive") and rng.random() < 0.5:
-        return 0, True
+        return 0, True, False
     base = attacker.attack * status.attack_multiplier(attacker)
     raw = max(1, round(base * power) + rng.randint(*ATTACK_VARIANCE))
-    return target.take_damage(raw), False
+    crit = rng.random() < CRIT_CHANCE
+    if crit:
+        raw = round(raw * CRIT_MULTIPLIER)
+    return target.take_damage(raw), False, crit
 
 
 def _resolve_start_of_turn(combatant, io):
@@ -42,9 +45,12 @@ def _use_ability(player, enemy, ability, io, rng):
     """Apply a class ability's effect. Stamina is charged by the caller."""
     kind = ability["kind"]
     if kind == "attack":
-        damage, dodged = _perform_attack(player, enemy, ability["power"], rng)
+        damage, dodged, crit = _perform_attack(player, enemy, ability["power"], rng)
         if dodged:
             io.show(f"💨 {enemy.name} dodges your {ability['name']}!")
+        elif crit:
+            io.show(f"💥 CRITICAL! {ability['name']} smashes {enemy.name} "
+                    f"for {damage} damage!")
         else:
             io.show(f"✨ {ability['name']} hits {enemy.name} for {damage} damage!")
         if not dodged and "status" in ability:
@@ -97,9 +103,11 @@ def _player_turn(player, enemy, content, io, rng):
         choice = io.ask("\nWhat do you do? ")
 
         if choice == "1":
-            damage, dodged = _perform_attack(player, enemy, 1.0, rng)
+            damage, dodged, crit = _perform_attack(player, enemy, 1.0, rng)
             if dodged:
                 io.show(f"\n💨 {enemy.name} dodges your attack!")
+            elif crit:
+                io.show(f"\n💥 CRITICAL HIT! You deal {damage} damage to {enemy.name}!")
             else:
                 io.show(f"\n💥 You deal {damage} damage to {enemy.name}!")
             return "acted"
@@ -114,12 +122,27 @@ def _player_turn(player, enemy, content, io, rng):
             return "acted"
 
         if choice == "3":
-            if "Health Potion" not in player.inventory:
+            owned = [name for name in POTION_HEAL if name in player.inventory]
+            if not owned:
                 io.show("\n❌ You have no potions!")
                 continue
-            player.inventory.remove("Health Potion")
-            player.heal(POTION_HEAL)
-            io.show(f"\n💚 You drink a Health Potion and restore {POTION_HEAL} HP "
+            if len(owned) == 1:
+                potion = owned[0]
+            else:
+                for index, name in enumerate(owned, start=1):
+                    io.show(f"{index}. {name} (+{POTION_HEAL[name]} HP)")
+                io.show(f"{len(owned) + 1}. Cancel")
+                pick = io.ask("\nWhich potion? ")
+                if pick == str(len(owned) + 1):
+                    continue
+                if not (pick.isdigit() and 1 <= int(pick) <= len(owned)):
+                    io.show("\n❌ Invalid choice!")
+                    continue
+                potion = owned[int(pick) - 1]
+            player.inventory.remove(potion)
+            heal = POTION_HEAL[potion]
+            player.heal(heal)
+            io.show(f"\n💚 You drink a {potion} and restore {heal} HP "
                     f"({player.hp}/{player.max_hp}).")
             return "acted"
 
@@ -153,20 +176,26 @@ def _enemy_turn(enemy, player, io, rng):
 
     if enemy.ai == "caster" and enemy.ability and rng.random() < 0.5:
         spell = enemy.ability
-        damage, dodged = _perform_attack(enemy, player, spell["power"], rng)
+        damage, dodged, crit = _perform_attack(enemy, player, spell["power"], rng)
         if dodged:
             io.show(f"\n💨 You dodge {enemy.name}'s {spell['name']}!")
         else:
-            io.show(f"\n🌑 {enemy.name} uses {spell['name']} for {damage} damage!")
+            if crit:
+                io.show(f"\n💥 CRITICAL! {enemy.name}'s {spell['name']} blasts you "
+                        f"for {damage} damage!")
+            else:
+                io.show(f"\n🌑 {enemy.name} uses {spell['name']} for {damage} damage!")
             if "status" in spell:
                 status.apply_status(player, spell["status"], spell["status_turns"])
                 io.show(f"   You are afflicted with {spell['status']}!")
         return "acted"
 
     power = 1.5 if (enemy.ai == "aggressive" and rng.random() < 0.3) else 1.0
-    damage, dodged = _perform_attack(enemy, player, power, rng)
+    damage, dodged, crit = _perform_attack(enemy, player, power, rng)
     if dodged:
         io.show(f"\n💨 You dodge {enemy.name}'s attack!")
+    elif crit:
+        io.show(f"\n💥 {enemy.name} lands a CRITICAL blow for {damage} damage!")
     elif power > 1.0:
         io.show(f"\n💢 {enemy.name} lands a heavy blow for {damage} damage!")
     else:
@@ -185,13 +214,13 @@ def _grant_rewards(player, enemy, io):
                 f"Defense: {player.defense} | Stamina: {player.max_stamina}")
 
 
-def run_combat(player, enemy, content, io, rng=None):
+def run_combat(state, enemy):
     """Fight ``enemy`` to a conclusion.
 
     Returns one of: 'victory', 'defeat', 'fled', 'enemy_fled'.
     Combat-only status effects are cleared and stamina restored on exit.
     """
-    rng = rng or random.Random()
+    player, content, io, rng = state.player, state.content, state.io, state.rng
     io.show_slow(f"\n⚔️  A wild {enemy.name} appears!")
 
     outcome = None

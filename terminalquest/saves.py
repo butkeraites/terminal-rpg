@@ -4,15 +4,18 @@ Saves are schema-versioned JSON written atomically (temp file + replace)
 to ``~/.terminalquest/saves`` by default. The directory is overridable so
 tests can use a temporary path. No third-party dependencies — the game
 stays hermetic.
+
+A save stores a whole ``GameState`` (the player plus the current location
+and world flags). ``_migrate`` upgrades older payloads forward in place.
 """
 import json
 import os
 import tempfile
 from pathlib import Path
 
-from .player import Player
+from .state import GameState
 
-SAVE_VERSION = 1
+SAVE_VERSION = 2
 DEFAULT_SAVE_DIR = Path.home() / ".terminalquest" / "saves"
 SLOTS = (1, 2, 3)
 
@@ -31,18 +34,26 @@ def _migrate(data):
         raise ValueError(
             f"save is version {version}; this game supports up to {SAVE_VERSION}"
         )
-    # No migrations needed yet — version 1 is the first schema.
+    if version <= 1:
+        # v1 stored a bare player; v2 wraps it in a GameState payload.
+        player = data.pop("player", {})
+        player.pop("position", None)  # v1's vestigial field, dropped in v2
+        data["state"] = {
+            "current_location": "crossroads",
+            "flags": {},
+            "player": player,
+        }
     data["save_version"] = SAVE_VERSION
     return data
 
 
-def save_game(player, slot, save_dir=DEFAULT_SAVE_DIR):
-    """Write the player to ``slot``, replacing any existing save atomically."""
+def save_game(state, slot, save_dir=DEFAULT_SAVE_DIR):
+    """Write ``state`` to ``slot``, replacing any existing save atomically."""
     if slot not in SLOTS:
         raise ValueError(f"invalid save slot {slot}")
     save_dir = Path(save_dir)
     save_dir.mkdir(parents=True, exist_ok=True)
-    payload = {"save_version": SAVE_VERSION, "player": player.to_dict()}
+    payload = {"save_version": SAVE_VERSION, "state": state.to_dict()}
 
     handle, tmp_name = tempfile.mkstemp(dir=save_dir, suffix=".tmp")
     try:
@@ -54,13 +65,13 @@ def save_game(player, slot, save_dir=DEFAULT_SAVE_DIR):
         raise
 
 
-def load_game(slot, save_dir=DEFAULT_SAVE_DIR):
-    """Load and return the Player from ``slot``, or None if the slot is empty."""
+def load_game(slot, content, io, rng, save_dir=DEFAULT_SAVE_DIR):
+    """Load and return the GameState from ``slot``, or None if the slot is empty."""
     path = _slot_path(slot, Path(save_dir))
     if not path.exists():
         return None
     data = _migrate(json.loads(path.read_text(encoding="utf-8")))
-    return Player.from_dict(data["player"])
+    return GameState.from_dict(data["state"], content, io, rng)
 
 
 def list_saves(save_dir=DEFAULT_SAVE_DIR):
@@ -71,11 +82,11 @@ def list_saves(save_dir=DEFAULT_SAVE_DIR):
         if not path.exists():
             continue
         try:
-            data = json.loads(path.read_text(encoding="utf-8"))
-            p = data["player"]
+            data = _migrate(json.loads(path.read_text(encoding="utf-8")))
+            p = data["state"]["player"]
             summaries[slot] = (f"{p['name']} the {p['class_name']} "
                                f"- Level {p['level']}")
-        except (json.JSONDecodeError, KeyError):
+        except (json.JSONDecodeError, KeyError, ValueError):
             summaries[slot] = "(corrupt save)"
     return summaries
 

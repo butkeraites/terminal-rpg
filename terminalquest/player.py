@@ -11,6 +11,9 @@ LEVEL_ATTACK_GAIN = 5
 LEVEL_DEFENSE_GAIN = 2
 LEVEL_STAMINA_GAIN = 2
 
+# Inventory item names treated as usable healing potions.
+POTION_ITEMS = ("Health Potion", "Greater Potion")
+
 
 class Player(Combatant):
     """The hero. Built from a class definition loaded from content."""
@@ -32,7 +35,6 @@ class Player(Combatant):
         self.xp_to_level = STARTING_XP_TO_LEVEL
         self.inventory = list(class_def["inventory"])
         self.abilities = list(class_def["abilities"])
-        self.position = "village"
 
     def heal(self, amount):
         self.hp = min(self.max_hp, self.hp + amount)
@@ -61,7 +63,7 @@ class Player(Combatant):
         self.stamina = self.max_stamina
 
     def potion_count(self):
-        return self.inventory.count("Health Potion")
+        return sum(self.inventory.count(name) for name in POTION_ITEMS)
 
     def to_dict(self):
         """Serialize to a plain dict for saving."""
@@ -81,7 +83,6 @@ class Player(Combatant):
             "xp_to_level": self.xp_to_level,
             "inventory": list(self.inventory),
             "abilities": list(self.abilities),
-            "position": self.position,
         }
 
     @classmethod
@@ -104,5 +105,4 @@ class Player(Combatant):
         player.xp_to_level = data["xp_to_level"]
         player.inventory = list(data["inventory"])
         player.abilities = list(data["abilities"])
-        player.position = data["position"]
         return player

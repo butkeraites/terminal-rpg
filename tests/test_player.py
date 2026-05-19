@@ -39,6 +39,5 @@ def test_gain_xp_handles_multiple_level_ups(warrior):
 def test_serialization_round_trip(warrior):
     warrior.gain_xp(50)
     warrior.inventory.append("Health Potion")
-    warrior.position = "world"
     clone = Player.from_dict(warrior.to_dict())
     assert clone.to_dict() == warrior.to_dict()

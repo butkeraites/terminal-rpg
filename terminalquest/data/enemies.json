@@ -81,5 +81,15 @@
     "xp_reward": 120,
     "gold_reward": 70,
     "ai": "defensive"
+  },
+  "shadow_warden": {
+    "name": "Shadow Warden",
+    "hp": 320,
+    "attack": 28,
+    "defense": 9,
+    "xp_reward": 300,
+    "gold_reward": 250,
+    "ai": "caster",
+    "ability": {"name": "Umbral Nova", "power": 1.7}
   }
 }
