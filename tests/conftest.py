@@ -1,0 +1,38 @@
+"""Shared pytest fixtures and a deterministic RNG stub."""
+import pytest
+
+from terminalquest.content import load_content
+from terminalquest.player import Player
+
+
+class StubRandom:
+    """Deterministic stand-in for ``random.Random`` used by combat tests.
+
+    ``rnd`` is returned by ``random()``, ``ri`` by ``randint()``. With the
+    defaults, probability rolls fail and attack variance is zero, making
+    combat fully predictable.
+    """
+
+    def __init__(self, rnd=0.9, ri=0, choice_index=0):
+        self._rnd = rnd
+        self._ri = ri
+        self._choice_index = choice_index
+
+    def random(self):
+        return self._rnd
+
+    def randint(self, a, b):
+        return self._ri
+
+    def choice(self, seq):
+        return list(seq)[self._choice_index]
+
+
+@pytest.fixture
+def content():
+    return load_content()
+
+
+@pytest.fixture
+def warrior(content):
+    return Player("Hero", "warrior", content.classes["warrior"])
