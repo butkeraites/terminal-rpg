@@ -235,6 +235,21 @@ def try_travel(state, dest_id):
     return True
 
 
+def _run_summary(state):
+    """The end-of-run recap — the hero, the build they carried, and the seed."""
+    player, io = state.player, state.io
+    place = state.content.locations[state.current_location]["name"]
+    weapon = player.equipment.get("weapon")
+    io.show("\n" + "─" * 50)
+    io.show(f"  {player.name} the {player.class_name}, level {player.level}")
+    io.show(f"  Last stood in {place}, with {player.gold} gold.")
+    if weapon is not None:
+        io.show(f"  Wielding {weapon.name} — {weapon.summary()}")
+    if state.seed:
+        io.show(f"  This run was seeded: {state.seed}")
+    io.show("─" * 50)
+
+
 def _victory_screen(state):
     """The end screen: the Warden falls, and the Pall keeps the victor."""
     player, io = state.player, state.io
@@ -250,6 +265,7 @@ def _victory_screen(state):
     io.show("face, until the next soul reaches the Summit to break you —")
     io.show("as you broke the one before.")
     io.show("=" * 50)
+    _run_summary(state)
     io.show("\nThank you for playing Terminal Quest.")
 
 
@@ -421,7 +437,5 @@ def location_loop(state):
     chronicle.record(state, "fell", state.chronicle_dir)
     io.clear()
     io.show_slow("💀 The Pall takes another. It always does.")
-    io.show("\nFinal Stats:")
-    io.show(f"Level: {player.level}")
-    io.show(f"Gold: {player.gold}")
+    _run_summary(state)
     io.show("\nGame Over!")

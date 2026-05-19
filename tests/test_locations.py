@@ -280,3 +280,13 @@ def test_defeating_a_mini_boss_unlocks_it(tmp_path, content):
     stag = content.locations["forest"]["encounters"][1]  # the Pallid Stag mini-boss
     locations.run_encounter(state, stag, [], [])
     assert "pallid_stag" in chronicle.unlocked(tmp_path)
+
+
+def test_run_summary_reports_the_build_and_seed(content):
+    """B4: the end-of-run recap names the hero, the weapon, and the seed."""
+    io = ScriptedIO()
+    state = make_state(_player(content), content, io, StubRandom(), seed="551234")
+    locations._run_summary(state)
+    text = io.text()
+    assert "551234" in text
+    assert "Gravewatch Cleaver" in text  # the warrior's starting weapon
