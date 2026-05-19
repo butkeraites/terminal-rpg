@@ -227,10 +227,71 @@ New data files the systems will consume — designers extend the universe by edi
 `encounters.json` · `combos.json`; and `abilities.json` grows into class trees. The
 existing principle holds: **content is data, systems are code.**
 
-## Immediate next steps (Year 1, Quarter 1)
+## Year 1 Backlog — The Combinatorial Foundation
 
-1. Stand up **E7** — promote the simulation harness to maintained `tools/` infrastructure.
-2. Formalise the **run** (seeded; the Chronicle is its ledger).
-3. Build the **equipment layer** — the prerequisite for E1.
-4. Prototype **E1 weapon components** end-to-end as a vertical slice and prove the
-   combinatorial loop is fun before scaling the component pool.
+Year 1 exists to **prove the combinatorial roguelike loop is fun** before scaling it.
+~18 tickets across five workstreams. Definition of done for every ticket: it lands with
+tests, and pytest + ruff + CI stay green.
+
+### Workstream A — Balance & Simulation Infrastructure (ships first)
+
+- **A1** — Promote the throwaway sim harness into a maintained `tools/sim` module: a
+  headless combat driver with a pluggable policy. *Deps: none. Accept: `python3 -m
+  tools.sim` runs and is reproducible by seed.*
+- **A2** — Build-sampling: the simulator equips random weapons and reports win-rate
+  distributions across builds. *Deps: D1, D3, C2. Accept: flags dead and degenerate builds.*
+- **A3** — Balance regression gate in CI: committed win-rate baselines with a tolerance
+  check. *Deps: A2. Accept: CI fails when tuning moves a band out of band.*
+
+### Workstream B — The Run (the roguelike loop)
+
+- **B1** — Formalise a `Run`: seeded, begins at character creation, ends at death or
+  victory. *Deps: none.*
+- **B2** — Make the RNG seed explicit: `run()` accepts or generates a seed, surfaced to
+  the player and stored. *Deps: B1.*
+- **B3** — The Chronicle becomes the run ledger — entries carry the seed. *Deps: B2.*
+- **B4** — End-of-run summary screen: zones cleared, build, seed. *Deps: B3, Workstream D.*
+
+### Workstream C — The Equipment Layer (prerequisite for weapons)
+
+- **C1** — Structured inventory: separate consumables from equipment (today `inventory`
+  is a flat potion list). *Deps: none. Accept: potions still work.*
+- **C2** — A weapon slot on `Player`, with save round-trip. *Deps: C1, X1.*
+- **C3** — Class starting weapons: route combat damage through the equipped weapon and
+  retire the implicit flat `attack`. *Deps: C2, D1. Accept: v1 balance unchanged.*
+
+### Workstream D — Combinatorial Weapons v1
+
+- **D1** — `Weapon` model + `components.json`: four slots (Head, Haft, Core, Inscription);
+  a weapon is four components plus rolled affixes. *Deps: C2.*
+- **D2** — Proc hooks in combat (on-hit, on-crit, every-Nth-turn, on-kill); weapon Cores
+  fire the existing status effects. *Deps: D1. Accept: a "bleed on crit" Core is unit-tested.*
+- **D3** — Component pool v1: ~12 options per slot (~48), authored in the Mournhold voice.
+  *Deps: D1, D2.*
+- **D4** — Weapon drops and drop tables. *Deps: D1.*
+- **D5** — Equip / inspect menu: compare stats, read component flavor. *Deps: C2, D1.*
+
+### Workstream E — Chronicle Meta-Layer (first slice)
+
+- **E1m** — A persistent unlock store in the Chronicle, corruption-resilient. *Deps: none.*
+- **E2m** — First unlock hooks — e.g. a first mini-boss kill unlocks a component into the
+  drop pool. *Deps: E1m, D3, D4.*
+- **E3m** — A meta-progression screen on the title menu. *Deps: E1m.*
+
+### Cross-cutting
+
+- **X1** — Save schema v3 (equipment + run seed), with migration from v2. Gates C2.
+- **X2** — Definition of done: every ticket lands with tests; pytest, ruff and CI green.
+
+### Quarter sequencing
+
+| Quarter | Tickets |
+|---------|---------|
+| Q1 | A1, B1, B2, B3, C1, X1 |
+| Q2 | C2, D1, D2, C3 |
+| Q3 | D3, D4, D5, A2 |
+| Q4 | E1m, E2m, E3m, A3, B4 |
+
+**Gate G1** — a seeded run with weapon combinatorics and the first unlocks is genuinely
+fun and pulls 30–50 hours. **If the loop is not fun at G1, do not start Year 2 — fix the
+loop.** Front-loading that judgement is the entire purpose of Year 1.
