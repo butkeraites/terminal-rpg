@@ -32,7 +32,17 @@ if [ ! -d dist ]; then
     exit 1
 fi
 
-if [ ! -f "$HOME/.config/itch/butler_creds" ]; then
+creds_found=""
+for candidate in \
+    "$HOME/Library/Application Support/itch/butler_creds" \
+    "$HOME/.config/itch/butler_creds" \
+    "$HOME/.local/share/itch/butler_creds"; do
+    if [ -f "$candidate" ]; then
+        creds_found="$candidate"
+        break
+    fi
+done
+if [ -z "$creds_found" ]; then
     echo "error: butler not authenticated. Run 'butler login' in this terminal first." >&2
     exit 1
 fi
