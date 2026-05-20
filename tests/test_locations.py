@@ -192,7 +192,10 @@ def test_seen_discovery_drops_out_of_the_menu(content):
     loc = content.locations["reach"]
     before = [label for label, _ in locations._build_options(state, loc, [])]
     assert any("📜" in label for label in before)
-    state.flags["discoveries_seen"] = ["reach_tally"]
+    # Mark every discovery in the reach as seen — any of them should drop.
+    state.flags["discoveries_seen"] = [
+        e["id"] for e in loc["encounters"] if e["type"] == "discovery"
+    ]
     after = [label for label, _ in locations._build_options(state, loc, [])]
     assert not any("📜" in label for label in after)
 
