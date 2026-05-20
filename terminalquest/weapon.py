@@ -57,9 +57,16 @@ class Weapon:
         self.upgrade = upgrade
 
     def summary(self):
-        """A compact one-line description of the weapon's bonuses and procs."""
+        """A compact one-line description of the weapon's bonuses and procs.
+
+        Each stat is rendered as ``<icon>+N <label>`` — the emoji is decorative
+        but the text label is the source of truth, so a terminal whose font
+        can't render emoji glyphs still shows the meaning of every number.
+        """
         icons = {"attack": "⚔️", "defense": "🛡️", "max_hp": "❤️", "max_stamina": "⚡"}
-        parts = [f"{icons[s]}+{self.stats[s]}"
+        labels = {"attack": "atk", "defense": "def", "max_hp": "HP",
+                  "max_stamina": "stamina"}
+        parts = [f"{icons[s]}+{self.stats[s]} {labels[s]}"
                  for s in ("attack", "defense", "max_hp", "max_stamina")
                  if self.stats.get(s)]
         for proc in self.procs:

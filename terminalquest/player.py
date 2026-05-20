@@ -19,8 +19,10 @@ LEVEL_BOONS = {
                 "gains": {"defense": 4, "max_stamina": 3}},
 }
 
-# Inventory item names treated as usable healing potions.
-POTION_ITEMS = ("Health Potion", "Greater Potion")
+# Inventory item names treated as usable healing potions (HUD potion counter).
+POTION_ITEMS = ("Health Potion", "Greater Potion", "Sovereign Potion",
+                "Pall-Drinker", "Warrior's Breath", "Rogue's Vial",
+                "Mage's Crystal", "Ranger's Tonic", "Cleric's Wafer")
 
 
 class Player(Combatant):

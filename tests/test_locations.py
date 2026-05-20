@@ -515,6 +515,96 @@ def test_echo_trader_buys_an_accessory_with_echoes(content, tmp_path):
     assert player.equipment["trinket"].accessory_id == "stag_tine_pendant"
 
 
+def test_pact_broker_hidden_on_fresh_chronicle(content, tmp_path):
+    """Pact-Broker is a NG+ service — hidden until the first completion is in the Chronicle.
+
+    Gravewatch on a fresh chronicle: 1 shop, 2 inn, 3 smith, 4 quartermaster,
+    5 night_hunt, 6 quest_board, 7 travel-to-Crossroads, 8 inspect, 9 stats,
+    10 save, 11 quit.
+    """
+    player = _player(content)
+    io = ScriptedIO(["1", "11"])  # crossroads "1" -> Gravewatch, then Quit (11)
+    state = make_state(player, content, io, StubRandom(), chronicle_dir=tmp_path)
+    locations.location_loop(state)
+    text = io.text()
+    assert "Pact-Broker" not in text
+    assert "Echo Trader" not in text
+
+
+def test_pact_broker_visible_after_warden_completion(tmp_path, content):
+    """Once a Warden run is chronicled, NG+ services become visible at Gravewatch.
+
+    With NG+ unlocked the two extra services push the menu down: Quit is
+    now at 13 (8 services + travel + 4 utilities).
+    """
+    from terminalquest import chronicle
+    finished = make_state(_player(content), content, current_location="summit",
+                          chronicle_dir=tmp_path)
+    chronicle.record(finished, "warden", tmp_path)
+    player = _player(content)
+    io = ScriptedIO(["1", "13"])
+    state = make_state(player, content, io, StubRandom(), chronicle_dir=tmp_path)
+    locations.location_loop(state)
+    text = io.text()
+    assert "Pact-Broker" in text
+    assert "Echo Trader" in text
+
+
+def test_night_hunt_takes_gold_and_runs_a_fight(content):
+    """Night Hunt charges gold and fires a fight against a boosted enemy."""
+    player = _player(content)
+    player.gold = 100
+    # rnd=0.0 -> low rolls; one-shot the goblin via huge attack.
+    player.attack = 1000
+    io = ScriptedIO(["1"])  # attack once, kill the boosted goblin
+    state = make_state(player, content, io, StubRandom(rnd=0.0))
+    locations.night_hunt(state)
+    assert player.gold < 100  # the night-hunt fee was charged
+    assert "Night-Stalking" in io.text()
+
+
+def test_quest_board_picks_up_and_completes_a_quest(content, tmp_path):
+    """The quest board takes a slip, tracks kills, and pays out gold + class consumable."""
+    from terminalquest import combat
+    from terminalquest.enemy import make_enemy
+    player = _player(content)
+    player.attack = 1000  # one-shot kills
+
+    # 1) Pick up the wolf cull (3 wolves).
+    io = ScriptedIO(["1", "4"])  # accept quest #1, then Leave
+    state = make_state(player, content, io, StubRandom(rnd=0.99),
+                       chronicle_dir=tmp_path)
+    locations.quest_board(state)
+    assert "wolf_cull" in state.flags["active_quests"]
+
+    # 2) Kill three wolves through run_combat — counter ticks.
+    for _ in range(3):
+        state.io = ScriptedIO(["1"])
+        combat.run_combat(state, make_enemy("wolf", content))
+    assert state.flags["quest_progress"]["wolf_cull"] == 3
+
+    # 3) Return to the board and claim the reward.
+    gold_before = player.gold
+    state.io = ScriptedIO(["1", "4"])  # claim, then Leave
+    locations.quest_board(state)
+    assert "wolf_cull" in state.flags["completed_quests"]
+    assert player.gold > gold_before  # reward gold paid
+    assert "Warrior's Breath" in player.consumables  # class consumable awarded
+
+
+def test_class_consumable_applies_status_in_combat(content):
+    """Drinking Warrior's Breath grants the player the braced status."""
+    from terminalquest import combat, status
+    from terminalquest.enemy import make_enemy
+    warrior = _player(content)
+    warrior.consumables = ["Warrior's Breath"]
+    result = combat._player_turn(warrior, make_enemy("goblin", content), content,
+                                 ScriptedIO(["3"]), StubRandom())
+    assert result == "acted"
+    assert status.has_status(warrior, "braced")
+    assert "Warrior's Breath" not in warrior.consumables
+
+
 def test_fast_travel_not_offered_at_the_crossroads(content):
     """The hub itself doesn't offer fast travel — there's nowhere to walk back from."""
     io = ScriptedIO(["6"])  # quit (option 6 at the Crossroads — no fast-travel slot)

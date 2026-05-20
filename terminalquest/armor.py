@@ -19,9 +19,14 @@ class Armor:
         self.flavor = flavor
 
     def summary(self):
-        """A compact one-line description of the armor's bonuses."""
+        """A compact one-line description of the armor's bonuses.
+
+        Each stat carries a text label after the emoji so terminals that can't
+        render emoji glyphs still convey what every number means.
+        """
         icons = {"defense": "🛡️", "max_hp": "❤️"}
-        parts = [f"{icons[s]}+{self.stats[s]}"
+        labels = {"defense": "def", "max_hp": "HP"}
+        parts = [f"{icons[s]}+{self.stats[s]} {labels[s]}"
                  for s in ("defense", "max_hp")
                  if self.stats.get(s)]
         if self.dodge_chance:

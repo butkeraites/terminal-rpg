@@ -18,16 +18,24 @@ class Accessory:
         self.flavor = flavor
 
     def summary(self):
-        """A compact one-line description of the accessory's bonuses."""
+        """A compact one-line description of the accessory's bonuses.
+
+        Each stat carries a text label after the emoji so terminals that can't
+        render emoji glyphs still convey what every number means.
+        """
         icons = {"attack": "⚔️", "defense": "🛡️", "max_hp": "❤️",
                  "max_stamina": "⚡", "crit_bonus": "🎯", "dodge_chance": "💨"}
+        labels = {"attack": "atk", "defense": "def", "max_hp": "HP",
+                  "max_stamina": "stamina", "crit_bonus": "crit",
+                  "dodge_chance": "dodge"}
         parts = []
         for stat, amount in self.stats.items():
             icon = icons.get(stat, stat)
+            label = labels.get(stat, stat)
             if stat in ("crit_bonus", "dodge_chance"):
-                parts.append(f"{icon}+{int(amount * 100)}%")
+                parts.append(f"{icon}+{int(amount * 100)}% {label}")
             else:
-                parts.append(f"{icon}+{amount}")
+                parts.append(f"{icon}+{amount} {label}")
         return "  ".join(parts) or "(no bonuses)"
 
     def to_dict(self):

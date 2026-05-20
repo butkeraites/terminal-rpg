@@ -280,15 +280,23 @@ def test_stamina_regen_is_announced_each_turn(content):
     assert "catch your breath" in io.text()
 
 
-def test_boon_menu_hides_skill_option_when_nothing_to_learn(content):
-    """A level-up below the first progression gate shows only the three boons."""
+def test_boon_menu_shows_locked_skill_option_when_nothing_unlocked_yet(content):
+    """Below the first progression gate, option 4 still appears with a hint.
+
+    Brother's v0.5.0 feedback: at level 2 the boon menu only showed 3 options
+    and he thought the class was missing the system entirely. Now option 4
+    always renders — locked with '(next unlocks at level X)' before any
+    skill is reachable.
+    """
     warrior = _player(content)
     warrior.xp = warrior.xp_to_level - 1  # one XP shy of level 2
     io = ScriptedIO(["1", "1", "1", "2"])  # 3 attacks, then boon 2 (Might)
     state = make_state(warrior, content, io, StubRandom())
     combat.run_combat(state, make_enemy("goblin", content))
     assert warrior.level == 2  # below the lv-3 progression gate
-    assert "Learn a new skill" not in io.text()
+    text = io.text()
+    assert "🔒 Learn a new skill" in text
+    assert "unlocks at level 3" in text
 
 
 def test_boon_menu_offers_skill_when_progression_unlocks(content):

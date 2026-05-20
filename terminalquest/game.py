@@ -202,6 +202,15 @@ def run(io=None, content=None, rng=None, chronicle_dir=None, seed=None):
 def main():
     _configure_console_for_unicode()
     run()
+    # On Windows, a PyInstaller --onefile binary closes its console window
+    # the moment the Python process exits — so the final screen (victory,
+    # Reborn, defeat summary) flashes by unread. Hold the window open until
+    # the player presses Enter. macOS/Linux terminals don't have this problem.
+    if sys.platform == "win32":
+        try:
+            input("\nPress Enter to close.")
+        except (EOFError, KeyboardInterrupt):
+            pass
 
 
 if __name__ == "__main__":

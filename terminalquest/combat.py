@@ -16,9 +16,92 @@ CRIT_CHANCE = 0.15
 CRIT_MULTIPLIER = 1.8
 STAMINA_PER_TURN = 2
 FLEE_CHANCE = 0.5
-POTION_HEAL = {"Health Potion": 40, "Greater Potion": 80,
-               "Sovereign Potion": 160, "Pall-Drinker": 250}
-POTION_RESTORES_STAMINA = {"Pall-Drinker"}
+# Consumables carry an effects dict — heal, status, full restores. Class
+# consumables (Warrior's Breath etc.) reuse the same machinery as the
+# basic potions, so the in-combat menu treats them uniformly.
+CONSUMABLE_EFFECTS = {
+    "Health Potion":    {"heal": 40},
+    "Greater Potion":   {"heal": 80},
+    "Sovereign Potion": {"heal": 160},
+    "Pall-Drinker":     {"heal": 250, "stamina_full": True},
+    "Warrior's Breath": {"status": "braced", "status_turns": 3},
+    "Rogue's Vial":     {"status": "evasive", "status_turns": 3},
+    "Mage's Crystal":   {"stamina_full": True},
+    "Ranger's Tonic":   {"heal": 60},
+    "Cleric's Wafer":   {"heal_full": True},
+}
+
+# Legacy alias kept so the existing shop and tests can still read potion heals.
+POTION_HEAL = {name: CONSUMABLE_EFFECTS[name]["heal"]
+               for name in CONSUMABLE_EFFECTS
+               if "heal" in CONSUMABLE_EFFECTS[name]}
+POTION_RESTORES_STAMINA = {name for name, e in CONSUMABLE_EFFECTS.items()
+                           if e.get("stamina_full")}
+
+CLASS_CONSUMABLE = {
+    "warrior": "Warrior's Breath",
+    "rogue":   "Rogue's Vial",
+    "mage":    "Mage's Crystal",
+    "ranger":  "Ranger's Tonic",
+    "cleric":  "Cleric's Wafer",
+}
+
+# Quest catalog — picked up at the Gravewatch Quest Board, completed by kills,
+# claimed back at the board for gold + a class-themed consumable.
+QUESTS = {
+    "wolf_cull": {
+        "name": "Cull the Gaunt Wolves",
+        "target_enemy": "wolf",
+        "needed": 3,
+        "reward_gold": 100,
+        "flavor": "The wolves at the wood-edge have learned the taste of people. Thin them.",
+    },
+    "scavver_purge": {
+        "name": "Purge the Scavvers",
+        "target_enemy": "goblin",
+        "needed": 4,
+        "reward_gold": 80,
+        "flavor": "They are crawling closer to the village fire each night.",
+    },
+    "bandit_hunt": {
+        "name": "Bring the Cutthroats to Heel",
+        "target_enemy": "bandit",
+        "needed": 3,
+        "reward_gold": 150,
+        "flavor": "Three farms have gone silent this month.",
+    },
+}
+
+
+def _track_quest_kill(state, enemy):
+    """If the slain enemy matches an active quest's target, increment its tally."""
+    active = state.flags.get("active_quests", [])
+    progress = state.flags.setdefault("quest_progress", {})
+    target = getattr(enemy, "enemy_id", None)
+    if target is None:
+        return
+    for quest_id in active:
+        quest = QUESTS.get(quest_id)
+        if quest and quest["target_enemy"] == target:
+            progress[quest_id] = progress.get(quest_id, 0) + 1
+            if progress[quest_id] == quest["needed"]:
+                state.io.show(f"\n📜 {quest['name']} — complete. "
+                              f"Return to the Quest Board to claim your reward.")
+
+
+def _consumable_label(name):
+    """A short bracketed description of a consumable's effects."""
+    effects = CONSUMABLE_EFFECTS.get(name, {})
+    parts = []
+    if "heal" in effects:
+        parts.append(f"+{effects['heal']} HP")
+    if effects.get("heal_full"):
+        parts.append("full HP")
+    if effects.get("stamina_full"):
+        parts.append("full stamina")
+    if "status" in effects:
+        parts.append(f"{effects['status']} {effects['status_turns']}t")
+    return ", ".join(parts) or "—"
 DEFEND_TURNS = 1
 HEAVY_BLOW_POWER = 2.0
 ENRAGE_THRESHOLD = 0.5
@@ -201,32 +284,41 @@ def _player_turn(player, enemy, content, io, rng):
             return "acted"
 
         if choice == "3":
-            owned = [name for name in POTION_HEAL if name in player.consumables]
+            owned = [name for name in CONSUMABLE_EFFECTS if name in player.consumables]
             if not owned:
-                io.show("\n❌ You have no potions!")
+                io.show("\n❌ You have no consumables!")
                 continue
             if len(owned) == 1:
                 potion = owned[0]
             else:
                 for index, name in enumerate(owned, start=1):
-                    io.show(f"{index}. {name} (+{POTION_HEAL[name]} HP)")
+                    io.show(f"{index}. {name} ({_consumable_label(name)})")
                 io.show(f"{len(owned) + 1}. Cancel")
-                pick = io.ask("\nWhich potion? ")
+                pick = io.ask("\nWhich item? ")
                 if pick == str(len(owned) + 1):
                     continue
                 if not (pick.isdigit() and 1 <= int(pick) <= len(owned)):
                     io.show("\n❌ Invalid choice!")
                     continue
                 potion = owned[int(pick) - 1]
+            effects = CONSUMABLE_EFFECTS[potion]
             player.consumables.remove(potion)
-            heal = POTION_HEAL[potion]
-            player.heal(heal)
-            io.show(f"\n💚 You drink a {potion} and restore {heal} HP "
-                    f"({player.hp}/{player.max_hp}).")
-            if potion in POTION_RESTORES_STAMINA:
+            io.show(f"\n💚 You use a {potion}.")
+            if "heal" in effects:
+                player.heal(effects["heal"])
+                io.show(f"   +{effects['heal']} HP ({player.hp}/{player.max_hp}).")
+            if effects.get("heal_full"):
+                player.hp = player.max_hp
+                io.show(f"   HP restored to full ({player.hp}/{player.max_hp}).")
+            if effects.get("stamina_full"):
                 player.stamina = player.max_stamina
-                io.show(f"⚡ Your stamina surges back to {player.stamina}/"
+                io.show(f"⚡ Stamina surges back to {player.stamina}/"
                         f"{player.max_stamina}.")
+            if "status" in effects:
+                status.apply_status(player, effects["status"],
+                                    effects["status_turns"])
+                io.show(f"   You gain {effects['status']} for "
+                        f"{effects['status_turns']} turns.")
             return "acted"
 
         if choice == "4":
@@ -350,31 +442,52 @@ def _choose_skill(player, learnable, content, io):
         io.show("\n❌ Invalid choice!")
 
 
+def _next_progression_level(player, content):
+    """The lowest unlock-level of an unlearned progression ability, or None."""
+    progression = content.classes[player.class_id].get("progression", [])
+    unlearned = [entry for entry in progression
+                 if entry["ability"] not in player.abilities]
+    if not unlearned:
+        return None
+    return min(entry["level"] for entry in unlearned)
+
+
 def _choose_boon(player, content, io):
     """Prompt the player to pick a level-up reward.
 
     Returns ``('boon', boon_id)`` for a stat boon, or ``('learn', ability_id)``
-    for a newly-learned skill. A 4th option appears only when the player has
-    progression abilities unlocked by level but not yet learned.
+    for a newly-learned skill. The 4th option always renders: when no skill
+    is yet unlocked, it shows a "(unlocks at level X)" hint so the player
+    knows the system exists and waits for it.
     """
     boons = list(LEVEL_BOONS.items())
     while True:
         learnable = player.learnable_abilities(content)
+        next_unlock = _next_progression_level(player, content)
         io.show("\nChoose a boon:")
         for index, (_boon_id, boon) in enumerate(boons, start=1):
             io.show(f"{index}. {boon['name']} — {boon['blurb']}")
+        learn_idx = len(boons) + 1
         if learnable:
-            io.show(f"{len(boons) + 1}. 🎓 Learn a new skill")
+            io.show(f"{learn_idx}. 🎓 Learn a new skill")
+        elif next_unlock is not None:
+            io.show(f"{learn_idx}. 🔒 Learn a new skill  "
+                    f"(next unlocks at level {next_unlock})")
         choice = io.ask("\nYour choice? ")
         if choice.isdigit():
             idx = int(choice)
             if 1 <= idx <= len(boons):
                 return ("boon", boons[idx - 1][0])
-            if learnable and idx == len(boons) + 1:
-                ability_id = _choose_skill(player, learnable, content, io)
-                if ability_id is not None:
-                    return ("learn", ability_id)
-                continue  # cancelled — re-show the boon menu
+            if idx == learn_idx:
+                if learnable:
+                    ability_id = _choose_skill(player, learnable, content, io)
+                    if ability_id is not None:
+                        return ("learn", ability_id)
+                    continue  # cancelled — re-show the boon menu
+                if next_unlock is not None:
+                    io.show(f"\n🔒 No skill is unlocked yet — "
+                            f"reach level {next_unlock} to learn one.")
+                    continue
         io.show("\n❌ Invalid choice!")
 
 
@@ -404,6 +517,7 @@ def _grant_rewards(state, enemy):
         return
     io.show(f"Gained {enemy.xp_reward} XP and {enemy.gold_reward} gold!")
     player.gold += enemy.gold_reward
+    _track_quest_kill(state, enemy)
     for _ in range(player.gain_xp(enemy.xp_reward)):
         io.show_slow(f"\n🎉 LEVEL UP! You are now level {player.level}!")
         player.apply_baseline()

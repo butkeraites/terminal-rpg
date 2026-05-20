@@ -125,6 +125,18 @@ def wardens(entries):
     return [e for e in entries if e.get("fate") == "warden"]
 
 
+def has_completed_run(chronicle_dir=DEFAULT_DIR):
+    """True if the Chronicle has a record of any completed boss run.
+
+    Either fate counts: a Warden ending (kept by the Pall) or a Reborn
+    ending (refused). Used to gate New Game Plus services like the
+    Pact-Broker behind 'beat the game at least once.'
+    """
+    if echoes(chronicle_dir) > 0:
+        return True  # Reborn at least once
+    return any(e.get("fate") == "warden" for e in load(chronicle_dir))
+
+
 def echoes(chronicle_dir=DEFAULT_DIR):
     """The Echo currency balance (earned via Reborn, spent on accessories)."""
     return _load_raw(chronicle_dir)["echoes"]

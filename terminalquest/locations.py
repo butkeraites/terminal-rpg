@@ -8,7 +8,7 @@ until the player dies, wins, or quits.
 from . import chronicle, saves
 from .accessory import make_accessory
 from .armor import make_armor
-from .combat import run_combat
+from .combat import CLASS_CONSUMABLE, QUESTS, run_combat
 from .companion import make_companion
 from .enemy import make_enemy, make_hollowed, make_warden
 from .ui import hud, show_stats
@@ -26,6 +26,9 @@ DEFENSE_UPGRADE_GOLD_PER_POINT = 14
 SIGNPOST_THRESHOLD = 2
 HOLLOWED_CHANCE = 0.25
 WEAPON_DROP_CHANCE = 0.35
+NIGHT_HUNT_COST = 40
+NIGHT_HUNT_STAT_BOOST = 1.5  # enemy hp/atk multiplied by this for night hunts
+NIGHT_HUNT_REWARD_MULT = 2.5  # XP and gold rewards scale up the same way
 
 _SERVICE_LABELS = {
     "shop": "🏪 Visit the Shop",
@@ -34,6 +37,8 @@ _SERVICE_LABELS = {
     "quartermaster": "🛡️  Visit the Quartermaster",
     "pact_broker": "🐺 Visit the Pact-Broker",
     "echo_trader": "🕯️  Visit the Echo Trader",
+    "night_hunt": f"🌑 Hunt at Night ({NIGHT_HUNT_COST} gold)",
+    "quest_board": "📜 Read the Quest Board",
 }
 
 REBORN_ECHO_BASE = 30  # baseline Echo for a Reborn — boosted by what was done
@@ -151,6 +156,124 @@ def _run_service(state, service):
         pact_broker(state)
     elif service == "echo_trader":
         echo_trader(state)
+    elif service == "night_hunt":
+        night_hunt(state)
+    elif service == "quest_board":
+        quest_board(state)
+
+
+def _quest_status(state, quest_id):
+    """Return one of: 'available', 'active', 'completable', 'claimed'."""
+    if quest_id in state.flags.get("completed_quests", []):
+        return "claimed"
+    if quest_id not in state.flags.get("active_quests", []):
+        return "available"
+    progress = state.flags.get("quest_progress", {}).get(quest_id, 0)
+    if progress >= QUESTS[quest_id]["needed"]:
+        return "completable"
+    return "active"
+
+
+def quest_board(state):
+    """The Gravewatch quest board: pick up bounty quests, claim rewards on completion."""
+    player, io = state.player, state.io
+    catalog = list(QUESTS.items())
+    io.clear()
+    io.show_slow("📜 The Quest Board — slips of vellum pinned with rust nails.\n")
+    while True:
+        io.show(hud(player))
+        for index, (quest_id, quest) in enumerate(catalog, start=1):
+            status = _quest_status(state, quest_id)
+            progress = state.flags.get("quest_progress", {}).get(quest_id, 0)
+            tag = {
+                "available":   f"[{quest['reward_gold']}g + a class flask]",
+                "active":      f"[{progress}/{quest['needed']} {quest['target_enemy']}s]",
+                "completable": "[READY TO CLAIM]",
+                "claimed":     "[done]",
+            }[status]
+            io.show(f"\n{index}. {quest['name']}  {tag}")
+            io.show(f"   {quest['flavor']}")
+        io.show(f"\n{len(catalog) + 1}. Leave")
+        choice = io.ask("\nWhat would you like? ")
+        if choice == str(len(catalog) + 1):
+            return
+        if not (choice.isdigit() and 1 <= int(choice) <= len(catalog)):
+            io.show("\n❌ Invalid choice!")
+            io.pause(1)
+            continue
+        quest_id, quest = catalog[int(choice) - 1]
+        status = _quest_status(state, quest_id)
+        if status == "available":
+            state.flags.setdefault("active_quests", []).append(quest_id)
+            state.flags.setdefault("quest_progress", {})[quest_id] = 0
+            io.show_slow(f"\n📜 You take the slip: {quest['name']}.")
+            io.pause(1)
+        elif status == "active":
+            progress = state.flags["quest_progress"][quest_id]
+            io.show(f"\nNot finished yet: {progress}/{quest['needed']} "
+                    f"{quest['target_enemy']}s.")
+            io.pause(1)
+        elif status == "completable":
+            player.gold += quest["reward_gold"]
+            consumable = CLASS_CONSUMABLE.get(player.class_id)
+            if consumable is not None:
+                player.consumables.append(consumable)
+            state.flags["active_quests"].remove(quest_id)
+            state.flags.setdefault("completed_quests", []).append(quest_id)
+            io.show_slow("\n📜 The Board takes the slip back, marked done.")
+            io.show(f"   +{quest['reward_gold']} gold")
+            if consumable is not None:
+                io.show(f"   +1 {consumable}")
+            io.pause(2)
+        else:  # claimed
+            io.show("\nAlready claimed. The Board has no other use for you.")
+            io.pause(1)
+
+
+def night_hunt(state):
+    """Pay gold to go out at night and pick one boosted fight from the road's pool.
+
+    Pulls an enemy id from a zone the player has already passed through (one
+    at or below their level), boosts its stats by NIGHT_HUNT_STAT_BOOST, and
+    runs a single fight. Rewards (XP + gold) are scaled by NIGHT_HUNT_REWARD_MULT
+    on success. Brother's design — risk for reward — without inventing a full
+    day/night clock.
+    """
+    player, content, io, rng = state.player, state.content, state.io, state.rng
+    if player.gold < NIGHT_HUNT_COST:
+        io.show(f"\n❌ The Night Hunt costs {NIGHT_HUNT_COST} gold — "
+                f"you don't carry enough.")
+        io.pause(1)
+        return
+    # Pool: enemies from zones the player is allowed to be in (act-relevant).
+    pool = []
+    for loc in content.locations.values():
+        rec = loc.get("recommended_level", 1)
+        if loc.get("kind") != "zone" or loc.get("boss") or rec > player.level + 1:
+            continue
+        for encounter in loc.get("encounters", []):
+            if encounter.get("type") != "combat" or encounter.get("boss"):
+                continue
+            pool.extend(encounter.get("enemies", []))
+    pool = [e for e in pool if not content.enemies[e].get("unique")]
+    if not pool:
+        io.show("\n🌑 No prey worth chasing tonight.")
+        io.pause(1)
+        return
+    player.gold -= NIGHT_HUNT_COST
+    enemy_id = rng.choice(pool)
+    enemy = make_enemy(enemy_id, content)
+    enemy.max_hp = int(enemy.max_hp * NIGHT_HUNT_STAT_BOOST)
+    enemy.hp = enemy.max_hp
+    enemy.attack = int(enemy.attack * NIGHT_HUNT_STAT_BOOST)
+    enemy.xp_reward = int(enemy.xp_reward * NIGHT_HUNT_REWARD_MULT)
+    enemy.gold_reward = int(enemy.gold_reward * NIGHT_HUNT_REWARD_MULT)
+    enemy.name = f"Night-Stalking {enemy.name}"
+    io.clear()
+    io.show_slow("🌑 You leave the firelight behind. The grey closes in faster.")
+    io.show_slow("Something heavier waits at the road's edge tonight.\n")
+    io.pause(1)
+    run_combat(state, enemy)
 
 
 def echo_trader(state):
@@ -719,11 +842,26 @@ def _inspect_weapon(state):
     io.pause(2)
 
 
+def _service_is_visible(state, service):
+    """Some services are New Game Plus unlocks — hidden until the first run ends.
+
+    The Pact-Broker and the Echo Trader both deal in things you only acquire
+    after you've reached the Summit at least once. Hiding them on the first
+    run gives the brother-style discovery loop: beat the game, then a new
+    layer of services opens up.
+    """
+    if service in ("pact_broker", "echo_trader"):
+        return chronicle.has_completed_run(state.chronicle_dir)
+    return True
+
+
 def _build_options(state, loc, fallen):
     """Build the ordered list of ``(label, (kind, arg))`` menu entries."""
     player, content = state.player, state.content
     options = []
     for service in loc.get("services", []):
+        if not _service_is_visible(state, service):
+            continue
         options.append((_SERVICE_LABELS[service], ("service", service)))
     for encounter in loc.get("encounters", []):
         if (encounter["type"] == "discovery"
