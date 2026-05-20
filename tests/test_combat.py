@@ -355,6 +355,22 @@ def test_at_level_kill_grants_xp_normally(content):
     assert warrior.xp > xp_before  # XP awarded
 
 
+def test_overleveled_kill_still_counts_for_npc_quest(content):
+    """An over-leveled kill should still tally for Old Halna's quest.
+
+    Regression — before this fix, the XP soft-cap returned early from
+    _grant_rewards, skipping _track_quest_kill. Renan reported wolf kills
+    not progressing the Witherwood NPC quest at a high level.
+    """
+    warrior = _player(content)
+    warrior.level = 20  # over-leveled for the Witherwood
+    warrior.attack = 1000
+    io = ScriptedIO(["1"])
+    state = make_state(warrior, content, io, StubRandom(), current_location="forest")
+    combat.run_combat(state, make_enemy("wolf", content))
+    assert state.flags.get("npc_kills", {}).get("wolf") == 1
+
+
 def test_pall_drinker_restores_full_stamina(content):
     """The Pall-Drinker tops HP and stamina back to full in one drink."""
     warrior = _player(content)

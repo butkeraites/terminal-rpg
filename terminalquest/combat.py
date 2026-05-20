@@ -633,6 +633,11 @@ def _grant_rewards(state, enemy):
     """
     player, content, io = state.player, state.content, state.io
     io.show_slow(f"\n🎉 You defeated {enemy.name}!")
+    # Quest counters and trophy drops happen regardless of XP soft-cap.
+    # The soft cap suppresses XP/boons in over-leveled zones; it should NOT
+    # invalidate kills the player legitimately did for an NPC's tally.
+    _maybe_drop_trophy(state, enemy)
+    _track_quest_kill(state, enemy)
     if _is_overleveled(state):
         io.show(f"This place has nothing left to teach you. "
                 f"Gained {enemy.gold_reward} gold (no XP).")
@@ -640,8 +645,6 @@ def _grant_rewards(state, enemy):
         return
     io.show(f"Gained {enemy.xp_reward} XP and {enemy.gold_reward} gold!")
     player.gold += enemy.gold_reward
-    _maybe_drop_trophy(state, enemy)
-    _track_quest_kill(state, enemy)
     for _ in range(player.gain_xp(enemy.xp_reward)):
         io.show_slow(f"\n🎉 LEVEL UP! You are now level {player.level}!")
         player.apply_baseline()
