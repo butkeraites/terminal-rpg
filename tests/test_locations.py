@@ -1492,6 +1492,73 @@ def test_witnessed_dead_only_in_matching_zone(tmp_path, content):
     assert "Honor" not in labels
 
 
+def test_discovery_records_cross_run_reading(tmp_path, content):
+    """SQ1 — running a discovery records its id in the cross-run read set."""
+    from terminalquest import chronicle
+    state = make_state(_player(content), content, ScriptedIO(), StubRandom(),
+                       chronicle_dir=tmp_path)
+    assert chronicle.discoveries_read(tmp_path) == 0
+    locations._run_discovery(state, {"id": "reach_tally", "lines": ["t"]})
+    assert chronicle.discoveries_read(tmp_path) == 1
+    # Idempotent: re-reading the same discovery doesn't double-count.
+    state.flags["discoveries_seen"] = []  # so the flag-side allows re-call
+    locations._run_discovery(state, {"id": "reach_tally", "lines": ["t"]})
+    assert chronicle.discoveries_read(tmp_path) == 1
+    locations._run_discovery(state, {"id": "mourncross_census", "lines": ["t"]})
+    assert chronicle.discoveries_read(tmp_path) == 2
+
+
+def test_reader_service_hidden_below_threshold(tmp_path, content):
+    """SQ1 — the Reader is not in Gravewatch's menu until threshold is met."""
+    state = make_state(_player(content), content, ScriptedIO(), StubRandom(),
+                       current_location="village", chronicle_dir=tmp_path)
+    loc = content.locations["village"]
+    labels = " ".join(label for label, _ in
+                      locations._build_options(state, loc, []))
+    assert "Reader" not in labels
+
+
+def test_reader_service_appears_at_threshold(tmp_path, content):
+    """SQ1 — at 25 cross-run reads, the Reader becomes a Gravewatch service."""
+    from terminalquest import chronicle
+    for i in range(locations.READER_THRESHOLD):
+        chronicle.add_read_discovery(f"seed_{i}", tmp_path)
+    state = make_state(_player(content), content, ScriptedIO(), StubRandom(),
+                       current_location="village", chronicle_dir=tmp_path)
+    loc = content.locations["village"]
+    labels = " ".join(label for label, _ in
+                      locations._build_options(state, loc, []))
+    assert "Reader" in labels
+
+
+def test_reader_grants_per_run_max_hp_buff(tmp_path, content):
+    """SQ1 — reading with the Reader scales max-HP by cross-run read count."""
+    from terminalquest import chronicle
+    for i in range(30):
+        chronicle.add_read_discovery(f"seed_{i}", tmp_path)
+    player = _player(content)
+    max_hp_before = player.max_hp
+    state = make_state(player, content, ScriptedIO(), StubRandom(),
+                       chronicle_dir=tmp_path)
+    locations.reader(state)
+    assert player.max_hp == max_hp_before + 6  # 30 // 5
+    assert state.flags.get("read_with_reader") is True
+
+
+def test_reader_is_once_per_run(tmp_path, content):
+    """SQ1 — re-visiting the Reader in the same run does not stack."""
+    from terminalquest import chronicle
+    for i in range(30):
+        chronicle.add_read_discovery(f"seed_{i}", tmp_path)
+    player = _player(content)
+    state = make_state(player, content, ScriptedIO(), StubRandom(),
+                       chronicle_dir=tmp_path)
+    locations.reader(state)
+    mhp = player.max_hp
+    locations.reader(state)  # second call, same run
+    assert player.max_hp == mhp
+
+
 def test_honor_the_dead_grants_kills_and_lays_to_rest(tmp_path, content):
     """SQ9 — honoring transfers progress, marks resolved, and grants memorial gold."""
     from terminalquest import chronicle

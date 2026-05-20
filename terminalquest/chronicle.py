@@ -40,6 +40,7 @@ def _load_raw(chronicle_dir):
         cat_pets = data.get("cat_pets", 0)
         piranesi_ids = data.get("piranesi_notes_seen_ids", [])
         verse_ids = data.get("lost_verse_fragments_seen_ids", [])
+        read_ids = data.get("read_discovery_ids", [])
         return {
             "entries": list(entries) if isinstance(entries, list) else [],
             "unlocks": list(unlocks) if isinstance(unlocks, list) else [],
@@ -55,13 +56,16 @@ def _load_raw(chronicle_dir):
                                     if isinstance(piranesi_ids, list) else 0),
             "lost_verse_fragments_seen_ids": (list(verse_ids)
                                               if isinstance(verse_ids, list) else []),
+            "read_discovery_ids": (list(read_ids)
+                                   if isinstance(read_ids, list) else []),
         }
     except (OSError, json.JSONDecodeError, AttributeError, TypeError):
         return {"entries": [], "unlocks": [], "owned_accessories": [],
                 "owned_pets": [], "echoes": 0, "cleanses": 0, "purified": False,
                 "cat_pets": 0, "piranesi_notes_seen_ids": [],
                 "piranesi_notes_seen": 0,
-                "lost_verse_fragments_seen_ids": []}
+                "lost_verse_fragments_seen_ids": [],
+                "read_discovery_ids": []}
 
 
 def load(chronicle_dir=DEFAULT_DIR):
@@ -107,6 +111,7 @@ def _save(raw, chronicle_dir):
         "piranesi_notes_seen_ids": raw.get("piranesi_notes_seen_ids", []),
         "lost_verse_fragments_seen_ids":
             raw.get("lost_verse_fragments_seen_ids", []),
+        "read_discovery_ids": raw.get("read_discovery_ids", []),
     }, chronicle_dir)
 
 
@@ -300,6 +305,25 @@ def add_lost_verse_fragment(fragment_id, chronicle_dir=DEFAULT_DIR):
     seen = raw.setdefault("lost_verse_fragments_seen_ids", [])
     if fragment_id not in seen:
         seen.append(fragment_id)
+        _save(raw, chronicle_dir)
+
+
+def discoveries_read(chronicle_dir=DEFAULT_DIR):
+    """How many unique lore discoveries the player has read across all runs.
+
+    SQ1 — the Reader Who Watches Back. At 25 unique reads, a presence
+    appears in Gravewatch — someone who has been reading along with the
+    player and finally introduces themselves.
+    """
+    return len(_load_raw(chronicle_dir).get("read_discovery_ids", []))
+
+
+def add_read_discovery(discovery_id, chronicle_dir=DEFAULT_DIR):
+    """Record that this lore discovery has been read at least once. Idempotent."""
+    raw = _load_raw(chronicle_dir)
+    seen = raw.setdefault("read_discovery_ids", [])
+    if discovery_id not in seen:
+        seen.append(discovery_id)
         _save(raw, chronicle_dir)
 
 

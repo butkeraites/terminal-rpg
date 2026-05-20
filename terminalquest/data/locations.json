@@ -18,7 +18,7 @@
       "Its people do not ask your name. Names are for the dead."
     ],
     "connections": ["crossroads"],
-    "services": ["shop", "inn", "smith", "quartermaster", "pact_broker", "echo_trader", "night_hunt", "quest_board", "survivor", "beastmaster", "hireling_hall"],
+    "services": ["shop", "inn", "smith", "quartermaster", "pact_broker", "echo_trader", "night_hunt", "quest_board", "survivor", "beastmaster", "hireling_hall", "reader"],
     "npc_services": ["scholar"]
   },
   "forest": {

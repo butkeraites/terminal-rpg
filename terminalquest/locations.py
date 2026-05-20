@@ -54,7 +54,12 @@ _SERVICE_LABELS = {
     "beastmaster": "🐾 Visit the Beastmaster",
     "hireling_hall": "🛡️  Hire a Sworn",
     "scholar": "📚 Speak with the Mournhold Scholar",
+    "reader": "📖 Read with the Reader",
 }
+
+# SQ1 — The Reader Who Watches Back surfaces in Gravewatch after this many
+# unique lore discoveries have been read across all runs.
+READER_THRESHOLD = 25
 
 SCHOLAR_PAYOUT = 75  # gold per unique lore discovery she records
 
@@ -186,6 +191,8 @@ def _run_service(state, service):
         hireling_hall(state)
     elif service == "scholar":
         scholar(state)
+    elif service == "reader":
+        reader(state)
 
 
 def scholar(state):
@@ -837,6 +844,8 @@ def _run_discovery(state, encounter):
     io.pause(2)
     discovery_id = encounter["id"]
     state.flags.setdefault("discoveries_seen", []).append(discovery_id)
+    # SQ1 — every discovery the player reads is also recorded cross-run.
+    chronicle.add_read_discovery(discovery_id, state.chronicle_dir)
     if discovery_id in _DISCOVERY_FLAGS:
         state.flags[_DISCOVERY_FLAGS[discovery_id]] = True
     # SQ4: Piranesi notes accumulate cross-run via the Chronicle.
@@ -1589,6 +1598,43 @@ def _read_piranesi_map(state):
     io.pause(2)
 
 
+def reader(state):
+    """SQ1 — The Reader Who Watches Back.
+
+    A presence in Gravewatch that surfaces once the player has read
+    ``READER_THRESHOLD`` unique lore fragments across runs. The Reader
+    has been reading along with the player from the start and finally
+    introduces themselves. Once-per-run reward: a small max-HP boost
+    scaling with how much the player has actually read.
+    """
+    player, io = state.player, state.io
+    if state.flags.get("read_with_reader"):
+        io.clear()
+        io.show_slow("📖 The Reader is already with you, today. They look up, smile,")
+        io.show_slow("close the book, and gesture for you to climb on.")
+        io.pause(2)
+        return
+    read = chronicle.discoveries_read(state.chronicle_dir)
+    io.clear()
+    io.show_slow("📖 A figure at a desk in the corner of Gravewatch's hall.")
+    io.show_slow("They are reading. They have been reading since you first came in,")
+    io.show_slow("but they have not looked up before. They look up now.")
+    io.show("")
+    io.show_slow("'I am the Reader. I have read what you have read, when you read it.'")
+    io.show_slow(f"'You have brought me — let me count — {read} fragments of the'")
+    io.show_slow("'kingdom's lost selves. I have read each one with you.'")
+    io.show_slow("'Sit. Read one more with me, the one of your own climb.'")
+    io.show("")
+    io.show_slow("They open their book. The page is blank, then is not blank.")
+    io.show_slow("They are reading you, now. The way you have read everyone else.")
+    bonus = max(2, read // 5)  # 25 reads → +5, 50 → +10, capped softly
+    player.max_hp += bonus
+    player.hp = min(player.hp + bonus, player.max_hp)
+    state.flags["read_with_reader"] = True
+    io.show(f"\n   +{bonus} max HP — the Reader has read you in.")
+    io.pause(2)
+
+
 def _maybe_open_border(state):
     """The Border opens after 2 cleanses — Arc III's gating signal."""
     if state.flags.get("border_open"):
@@ -1664,6 +1710,10 @@ def _service_is_visible(state, service):
         # to save the world" rewards: the cycle continuing buys you more help.
         return (chronicle.has_completed_run(state.chronicle_dir)
                 and not chronicle.purified(state.chronicle_dir))
+    if service == "reader":
+        # SQ1 — the Reader Who Watches Back surfaces once a completionist
+        # threshold of cross-run lore reading has been crossed.
+        return chronicle.discoveries_read(state.chronicle_dir) >= READER_THRESHOLD
     return True
 
 
