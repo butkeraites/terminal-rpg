@@ -21,15 +21,22 @@ conversation. Flags persist via the normal state.flags save/load.
 
 
 def run_dialogue(state, tree, start_node="initial"):
-    """Walk a dialogue tree. Returns the id of the last node visited."""
+    """Walk a dialogue tree. Returns the id of the last node visited.
+
+    A node may carry ``voice: "stone"`` to render its lines through the
+    speaking-through-stone formatting — used by Cael in v0.12 Arc V, where
+    her mouth is filled with the seal she became.
+    """
     io = state.io
     current = start_node
     while current is not None:
         node = tree.get(current)
         if node is None:
             return current
+        voice = node.get("voice", "normal")
+        renderer = io.show_through_stone if voice == "stone" else io.show_slow
         for line in node.get("lines", []):
-            io.show_slow(line)
+            renderer(line)
         responses = node.get("responses", [])
         if not responses:
             io.pause(2)

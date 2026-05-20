@@ -449,6 +449,7 @@
       "Something stands at the altar, hands folded, waiting to be remembered."
     ],
     "connections": ["mountain"],
+    "conditional_connections": ["bone_tomb"],
     "encounters": [
       {"type": "combat", "enemies": ["shrine_keeper"], "label": "⚔️  Face the Shrine Keeper"},
       {"type": "discovery", "id": "pre_pall_shrine_lore", "label": "📜 The first vow",
@@ -458,7 +459,35 @@
          "'We will not seal our gates against our own. We will not let our holds go quiet.',",
          "'We will eat last, when we eat at all, and we will say the names of the dead.'",
          "Below: a name. The kingdom's first king. He kept the vow. Those who came after did not."
+       ]},
+      {"type": "discovery", "id": "verren_fragment", "label": "📜 A fragment in older script",
+       "lines": [
+         "📜 A small inscription on the wall behind the altar, in script older than the tablet.",
+         "Only four words survive intact:",
+         "                    VERREN.   WE WERE.",
+         "Mournhold's archives know no Verren. No kingdom by that name has ever existed.",
+         "The script is older than the language Mournhold was written in.",
+         "Whatever Verren was, it was here first. And it ended."
        ]}
+    ]
+  },
+  "bone_tomb": {
+    "name": "The Bone Tomb",
+    "kind": "zone",
+    "act": 3,
+    "recommended_level": 8,
+    "unlock_flag": "the_hardest_gate",
+    "intro": [
+      "🪨 The altar in the Pre-Pall Shrine is also a door. You see it now.",
+      "Beneath it: a stair, and at the foot of the stair, a small room.",
+      "A figure sits cross-legged at the centre. Ossified. The stone of the room",
+      "has grown into her, and out of her, and through her open mouth.",
+      "She is the floor. She is the walls. She is the seal.",
+      "She is alive. She turns her head only a little. She sees you."
+    ],
+    "connections": ["pre_pall_shrine"],
+    "encounters": [
+      {"type": "dialogue", "dialogue_id": "cael", "label": "▒  Speak with Cael"}
     ]
   }
 }

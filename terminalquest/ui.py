@@ -38,6 +38,25 @@ class GameIO:
     def clear(self):
         print("\n" * 2)
 
+    def show_through_stone(self, text):
+        """Render a line as if spoken through ossified stone — Cael's voice.
+
+        v0.12 Arc V mechanic: Cael's mouth is full of stone. Her words come
+        through anyway. Each line is prefixed with ▒ and rendered slowly,
+        with a fractional pause between characters — the stone modulates.
+        """
+        prefix = "▒  "
+        if not self.animate:
+            print(prefix + text)
+            return
+        sys.stdout.write(prefix)
+        sys.stdout.flush()
+        for char in text:
+            sys.stdout.write(char)
+            sys.stdout.flush()
+            time.sleep(0.04)  # slower than normal show_slow
+        print()
+
 
 class ScriptedIO(GameIO):
     """Test double: replays a list of inputs and records all output."""
@@ -52,6 +71,9 @@ class ScriptedIO(GameIO):
 
     def show_slow(self, text, delay=0.02):
         self.output.append(str(text))
+
+    def show_through_stone(self, text):
+        self.output.append("▒  " + str(text))
 
     def ask(self, prompt):
         if not self.inputs:

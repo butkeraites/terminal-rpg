@@ -1,4 +1,144 @@
 {
+  "cael": {
+    "initial": {
+      "voice": "stone",
+      "lines": [
+        "I am Cael.",
+        "I was the daughter of the first king of Mournhold.",
+        "There was a kingdom here before Mournhold. It was called Verren.",
+        "Something ate Verren. We were the ones who came after.",
+        "My father wrote the vow above me. We will eat last. We will say the names.",
+        "He kept it. After him, it weakened. Now it is forgotten.",
+        "I am the seal. I have been the seal for a long time."
+      ],
+      "responses": [
+        {"text": "What ate Verren?", "next": "hunger"},
+        {"text": "Why are you the seal?", "next": "why_seal"},
+        {"text": "Is there another way?", "next": "another"},
+        {"text": "(step back)", "next": null}
+      ]
+    },
+    "hunger": {
+      "voice": "stone",
+      "lines": [
+        "A hunger under the mountain. Older than language.",
+        "It does not eat bodies. It eats the memory of bodies — and then,",
+        "after a generation has passed and the memory is gone,",
+        "the bodies that the memory belonged to also stop having ever existed.",
+        "Verren forgot itself like that. So thoroughly.",
+        "No archive of theirs survived. Only the word VERREN, and only because",
+        "my father carved it into the stone of the shrine before he started forgetting."
+      ],
+      "responses": [
+        {"text": "And the Pall?", "next": "pall"},
+        {"text": "Why are you the seal?", "next": "why_seal"}
+      ]
+    },
+    "pall": {
+      "voice": "stone",
+      "lines": [
+        "The Pall is not new. The Pall is the old hunger.",
+        "What the rite of unremembering did was simple. It cracked the seal I am.",
+        "It let some of the hunger out, dressed as a thing the kingdom could explain.",
+        "But there is no Pall above. There is only hunger. There has only ever been hunger.",
+        "Above ground it wears the colour grey. Below ground, where I sit, it has no colour.",
+        "It only has a mouth. The mouth is mine. The mouth is the seal."
+      ],
+      "responses": [
+        {"text": "Can the seal be repaired?", "next": "another"},
+        {"text": "How long have you been here?", "next": "long"}
+      ]
+    },
+    "why_seal": {
+      "voice": "stone",
+      "lines": [
+        "Because somebody had to be. My father was an old man. I was twenty-one.",
+        "The hunger was already loud under the mountain when Mournhold was founded.",
+        "We knew it would devour us as it devoured Verren, unless something held.",
+        "I offered. I sat down here. I said the names of Verren as I knew them",
+        "until the stone closed over my mouth and I could only say them inside.",
+        "I am still saying them. Quietly. Quietly."
+      ],
+      "responses": [
+        {"text": "What names?", "next": "names"},
+        {"text": "Can someone else take your place?", "next": "another"}
+      ]
+    },
+    "names": {
+      "voice": "stone",
+      "lines": [
+        "Verren names. Hold-names. The two villages that were here before Verren.",
+        "I learned them all from my father, the night before I came down.",
+        "He sat at my feet and named them, slowly. Both my parents did. Three hundred names.",
+        "I have not stopped saying them. Some I have forgotten the spelling of.",
+        "I do not let myself forget the sound. The sound is the seal. The sound is the seal."
+      ],
+      "responses": [
+        {"text": "Can someone else take your place?", "next": "another"},
+        {"text": "(listen to the seal)", "next": "long"}
+      ]
+    },
+    "long": {
+      "voice": "stone",
+      "lines": [
+        "I do not know. The stone does not let me count winters.",
+        "Long enough for the kingdom above me to forget I existed.",
+        "Long enough for them to invent another rite — the rite of unremembering —",
+        "and use it on their own gates instead of on the hunger below.",
+        "Long enough to be very tired. Long enough to want to lie down.",
+        "But the seal is the mouth, and the mouth still has names to say."
+      ],
+      "responses": [
+        {"text": "Can someone else take your place?", "next": "another"},
+        {"text": "(step back)", "next": null}
+      ]
+    },
+    "another": {
+      "voice": "stone",
+      "lines": [
+        "Yes. Someone with a mouth, and a long memory, and a willingness to stop walking.",
+        "It would have to be permanent. It would have to be silent.",
+        "You would not climb back up. You would not be remembered above.",
+        "The Pall above would die because the hunger below has its mouth back.",
+        "Mournhold would live. Mournhold would not know how. They would not know your name.",
+        "But the seal would hold for as long as you said names. Centuries. As I have.",
+        "I would lie down. I would finally lie down. It would be a gift."
+      ],
+      "responses": [
+        {"text": "I will take your place.",
+         "next": "accepted", "sets_flag": "offered_old_seal"},
+        {"text": "I cannot do this.", "next": "refused"},
+        {"text": "Let me think.", "next": null}
+      ]
+    },
+    "accepted": {
+      "voice": "stone",
+      "lines": [
+        "Thank you. Thank you.",
+        "I will teach you the names. We have time. The stone is patient.",
+        "When you have learned them, climb back up — only once more —",
+        "and break the Warden. After the Warden falls, come down again.",
+        "Sit where I have sat. The stone will know what to do. So will you.",
+        "Thank you. Thank you. Thank you."
+      ],
+      "responses": [
+        {"text": "(climb)", "next": null}
+      ]
+    },
+    "refused": {
+      "voice": "stone",
+      "lines": [
+        "Then go. I have held this long. I will hold longer.",
+        "Maybe forever. The stone does not seem to be in a hurry to release me.",
+        "If you change your mind, the stair is still here. The seat is still here.",
+        "Go and break the Warden. Climb back, or do not. Either is yours to choose.",
+        "Say my name to no one. It would not help anything. Thank you for asking."
+      ],
+      "responses": [
+        {"text": "(climb)", "next": null}
+      ]
+    }
+  },
   "atrel": {
     "initial": {
       "lines": [

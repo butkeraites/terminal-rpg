@@ -983,6 +983,50 @@ def test_dialogue_sets_flag_on_choice(content):
     assert state.flags.get("promised") is True
 
 
+def test_bone_tomb_requires_all_four_npc_quests_and_verren(content, tmp_path):
+    """The Bone Tomb opens only after every NPC quest + Verren fragment."""
+    state = make_state(_player(content), content, ScriptedIO(), StubRandom(),
+                       chronicle_dir=tmp_path)
+    state.flags["verren_found"] = True
+    state.flags["npcs_done"] = ["old_halna", "weir_engineer", "lampkeeper"]
+    # Missing the_penitent — gate stays closed.
+    locations._maybe_open_hardest_gate(state)
+    assert not state.flags.get("the_hardest_gate")
+    # Add the last NPC.
+    state.flags["npcs_done"].append("old_penitent")
+    locations._maybe_open_hardest_gate(state)
+    assert state.flags.get("the_hardest_gate") is True
+
+
+def test_old_seal_ending_requires_offer(content, tmp_path):
+    """The Old Seal ending is hidden until Cael's offer is accepted."""
+    from terminalquest import endings
+    state = make_state(_player(content), content, ScriptedIO(), StubRandom(),
+                       chronicle_dir=tmp_path)
+    available = [e[0] for e in endings.available(state)]
+    assert "old_seal" not in available
+    state.flags["offered_old_seal"] = True
+    available = [e[0] for e in endings.available(state)]
+    assert "old_seal" in available
+
+
+def test_speaking_through_stone_format(content):
+    """A dialogue node with voice='stone' renders via the through-stone wrapper."""
+    from terminalquest import dialogue
+    state = make_state(_player(content), content, ScriptedIO(), StubRandom())
+    tree = {"initial": {"voice": "stone", "lines": ["I am Cael."]}}
+    dialogue.run_dialogue(state, tree)
+    assert "▒  I am Cael." in state.io.text()
+
+
+def test_verren_discovery_sets_flag(content, tmp_path):
+    """Reading the Verren fragment sets verren_found."""
+    state = make_state(_player(content), content, ScriptedIO(), StubRandom(),
+                       chronicle_dir=tmp_path)
+    locations._run_discovery(state, {"id": "verren_fragment", "lines": ["test"]})
+    assert state.flags.get("verren_found") is True
+
+
 def test_scholar_pays_for_unseen_discoveries(tmp_path, content):
     """The Mournhold Scholar pays SCHOLAR_PAYOUT per unrecorded discovery."""
     player = _player(content)

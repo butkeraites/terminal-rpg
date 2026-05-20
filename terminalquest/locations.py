@@ -796,7 +796,27 @@ ATREL_LORE_FRAGMENTS = ("atrel_marker", "atrel_register", "atrel_side_altar")
 _DISCOVERY_FLAGS = {
     "mourncross_scuffmarks": "sealed_chamber_found",
     "real_minutes": "read_real_minutes",
+    "verren_fragment": "verren_found",
 }
+
+# The Bone Tomb requires the player to have done everything Mournhold can
+# offer them — all four NPC quests completed AND the Verren fragment found.
+_HARDEST_GATE_NPCS = ("old_halna", "weir_engineer", "lampkeeper", "old_penitent")
+
+
+def _maybe_open_hardest_gate(state):
+    """If every NPC quest is complete and Verren is found, open the Bone Tomb."""
+    if state.flags.get("the_hardest_gate"):
+        return
+    if not state.flags.get("verren_found"):
+        return
+    done = set(state.flags.get("npcs_done", []))
+    if set(_HARDEST_GATE_NPCS).issubset(done):
+        state.flags["the_hardest_gate"] = True
+        state.io.show_slow("\n🪨 You have spoken with every keeper. You have read every "
+                           "stone Mournhold left for you to read.")
+        state.io.show_slow("Behind the Pre-Pall Shrine's altar, a stair is opening.")
+        state.io.pause(2)
 
 
 def _run_discovery(state, encounter):
@@ -825,6 +845,7 @@ def _run_discovery(state, encounter):
         io.show_slow("\n📿 You have gathered all three traces of Atrél.")
         io.show_slow("Something in the Choir has noticed you noticing.")
         io.pause(2)
+    _maybe_open_hardest_gate(state)
 
 
 def _npc_progress(state, npc):
@@ -1097,6 +1118,45 @@ def _reborn_screen(state):
     io.show("\nThank you for playing Mournhold.")
 
 
+def _old_seal_screen(state):
+    """The seventh ending — take Cael's place as the seal beneath the mountain.
+
+    Requires ``offered_old_seal`` (player accepted Cael's offer). Records
+    'old_seal_taken' in the Chronicle. Mournhold lives without knowing.
+    The hunger is sealed, not undone — the player IS the seal now.
+    """
+    player, io = state.player, state.io
+    chronicle.mark_purified(state.chronicle_dir)  # the realm survives, after all
+    chronicle.add_cleanse(state.chronicle_dir)
+    io.clear()
+    io.show_slow("You break the Warden. The Pall reaches for you.")
+    io.show_slow("You walk past its reaching. You walk down — past the Choir,")
+    io.show_slow("past Mourncross, past the Reach, past the Witherwood, past the road.")
+    io.show_slow("You walk down the stair below the Pre-Pall Shrine.\n")
+    io.pause(1)
+    io.show_slow("Cael stands. The stone lets her stand. Her mouth empties of names.")
+    io.show_slow("She passes them to you, name by name, until you can say them all.")
+    io.show_slow("Then she lies down. The stone takes her, gently, like a sheet pulled up.")
+    io.show_slow("She rests. She has rested. She is resting.\n")
+    io.pause(1)
+    io.show_slow("You sit where she sat. The stone closes over your mouth, and your hands,")
+    io.show_slow("and your name. You begin to say the names she taught you.")
+    io.show_slow("Quietly. Quietly. The Pall above ground unmakes itself in silence —")
+    io.show_slow("the hunger has its mouth back, and the mouth is yours now.\n")
+    io.pause(2)
+    io.show("=" * 50)
+    io.show("🪨  THE OLD SEAL")
+    io.show(f"{player.name} the {player.class_name} — the next seal under the mountain.")
+    io.show("\nThe Pall is undone. The Warden is no more. Mournhold lives, and does not know.")
+    io.show("You will not climb back up. You will say names. You will say them quietly.")
+    io.show("Centuries from now, when the seal is tired again, someone will sit at your feet")
+    io.show("and you will teach them the names — yours among them — and lie down.")
+    io.show("\nThe Chronicle records: purified. The smallest, oldest, hardest ending.")
+    io.show("=" * 50)
+    _run_summary(state)
+    io.show("\nThank you for playing Mournhold.")
+
+
 def _atrel_peace_screen(state):
     """The quiet ending — return the rite to Atrél; both god and Pall end together.
 
@@ -1188,6 +1248,12 @@ endings.register(
     "📿 Bring the rite back to Atrél  (the quiet end — none will know)",
     _atrel_peace_screen,
     lambda s: s.flags.get("atrel_offered", False),
+)
+endings.register(
+    "old_seal",
+    "🪨 Take Cael's place  (the oldest end — you become the seal)",
+    _old_seal_screen,
+    lambda s: s.flags.get("offered_old_seal", False),
 )
 
 
