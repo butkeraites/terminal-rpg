@@ -45,6 +45,7 @@ def _load_raw(chronicle_dir):
         kacts = data.get("kind_acts", 0)
         endings = data.get("endings_seen_ids", [])
         fline = data.get("first_line", "")
+        zone_visits = data.get("zone_visits_total", {})
         return {
             "entries": list(entries) if isinstance(entries, list) else [],
             "unlocks": list(unlocks) if isinstance(unlocks, list) else [],
@@ -69,6 +70,8 @@ def _load_raw(chronicle_dir):
             "endings_seen_ids": (list(endings)
                                  if isinstance(endings, list) else []),
             "first_line": (str(fline) if isinstance(fline, str) else ""),
+            "zone_visits_total": (dict(zone_visits)
+                                  if isinstance(zone_visits, dict) else {}),
         }
     except (OSError, json.JSONDecodeError, AttributeError, TypeError):
         return {"entries": [], "unlocks": [], "owned_accessories": [],
@@ -80,7 +83,8 @@ def _load_raw(chronicle_dir):
                 "gravewatch_visits": 0,
                 "kind_acts": 0,
                 "endings_seen_ids": [],
-                "first_line": ""}
+                "first_line": "",
+                "zone_visits_total": {}}
 
 
 def load(chronicle_dir=DEFAULT_DIR):
@@ -131,6 +135,7 @@ def _save(raw, chronicle_dir):
         "kind_acts": raw.get("kind_acts", 0),
         "endings_seen_ids": raw.get("endings_seen_ids", []),
         "first_line": raw.get("first_line", ""),
+        "zone_visits_total": raw.get("zone_visits_total", {}),
     }, chronicle_dir)
 
 
@@ -424,6 +429,27 @@ def add_kind_act(chronicle_dir=DEFAULT_DIR):
     """Record one more small act of kindness."""
     raw = _load_raw(chronicle_dir)
     raw["kind_acts"] = raw.get("kind_acts", 0) + 1
+    _save(raw, chronicle_dir)
+
+
+def zone_visits_total(chronicle_dir=DEFAULT_DIR):
+    """Cross-run per-zone arrival counts. Dict keyed by location id.
+
+    v1.2 — used to switch to ``intro_familiar`` once the player has been
+    to a zone often enough that the kingdom should start recognizing them.
+    """
+    raw = _load_raw(chronicle_dir).get("zone_visits_total", {})
+    return dict(raw) if isinstance(raw, dict) else {}
+
+
+def add_zone_visit(zone_id, chronicle_dir=DEFAULT_DIR):
+    """Record one arrival at this zone for the cross-run visit counter."""
+    raw = _load_raw(chronicle_dir)
+    visits = raw.setdefault("zone_visits_total", {})
+    if not isinstance(visits, dict):
+        visits = {}
+        raw["zone_visits_total"] = visits
+    visits[zone_id] = int(visits.get(zone_id, 0)) + 1
     _save(raw, chronicle_dir)
 
 

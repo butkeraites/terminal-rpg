@@ -1642,6 +1642,45 @@ def test_caretaker_service_appears_at_threshold(tmp_path, content):
     assert "Caretaker" in labels
 
 
+def test_intro_familiar_replaces_cold_intro_after_threshold_visits(
+        tmp_path, content):
+    """v1.2 — after FAMILIAR_VISITS cross-run arrivals, the zone uses its
+    intro_familiar variant instead of the cold-open intro.
+    """
+    from terminalquest import chronicle
+    # Push the Witherwood visit count past the threshold.
+    for _ in range(locations.FAMILIAR_VISITS):
+        chronicle.add_zone_visit("forest", tmp_path)
+    # Start a new run that arrives at the Witherwood and immediately quits.
+    # forest has 11 menu options; the Quit Game option is at index 11.
+    io = ScriptedIO(["13"])
+    state = make_state(_player(content), content, io, StubRandom(),
+                       current_location="forest", chronicle_dir=tmp_path)
+    locations.location_loop(state)
+    text = io.text()
+    # The familiar variant runs; the cold-open variant does not.
+    assert "third from the road north" in text
+    assert "given up the pretence of being alive" not in text
+
+
+def test_intro_familiar_does_not_appear_below_threshold(tmp_path, content):
+    """v1.2 — below the threshold, the zone still cold-opens to a new climber.
+
+    The cross-run counter is bumped on arrival, so prior=FAMILIAR_VISITS-1 then
+    this arrival already triggers the variant. Test with prior=FAMILIAR_VISITS-2,
+    so this arrival lands at FAMILIAR_VISITS-1 (still below).
+    """
+    from terminalquest import chronicle
+    for _ in range(locations.FAMILIAR_VISITS - 2):
+        chronicle.add_zone_visit("forest", tmp_path)
+    io = ScriptedIO(["13"])
+    state = make_state(_player(content), content, io, StubRandom(),
+                       current_location="forest", chronicle_dir=tmp_path)
+    locations.location_loop(state)
+    text = io.text()
+    assert "third from the road north" not in text
+
+
 def test_endings_seen_records_distinct_endings(tmp_path, content):
     """SQ5 — chronicle.endings_seen tracks distinct ending ids reached."""
     from terminalquest import chronicle

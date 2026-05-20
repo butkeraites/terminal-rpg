@@ -7,6 +7,11 @@
       "One way bends back to Gravewatch, and the single fire it has left lit.",
       "The other climbs grey into the dying kingdom, and it does not bend back."
     ],
+    "intro_familiar": [
+      "🗺️  The Crossroads again. You have stood here many times now.",
+      "You know which way the wind comes from when it is going to rain on the climb.",
+      "The stone you sit on while you choose is the same stone. It is warm where you sit."
+    ],
     "connections": ["village", "forest"],
     "conditional_connections": ["the_border"]
   },
@@ -16,6 +21,11 @@
     "intro": [
       "🏚️  Gravewatch — the last village with a fire still lit.",
       "Its people do not ask your name. Names are for the dead."
+    ],
+    "intro_familiar": [
+      "🏚️  Gravewatch. Its people still do not ask your name — but they have come",
+      "to know your step in their door. The hearth-keeper sets a cup before you ask.",
+      "They do not ask why you have come back. They know why. They know."
     ],
     "connections": ["crossroads"],
     "services": ["shop", "inn", "smith", "quartermaster", "pact_broker", "echo_trader", "night_hunt", "quest_board", "survivor", "beastmaster", "hireling_hall", "reader", "insomniac", "caretaker"],
@@ -30,6 +40,11 @@
       "🌲 The Witherwood, where the trees have given up the pretence of being alive.",
       "This is only the realm's edge; the grey blew in here first, and thinnest.",
       "The wood still half-remembers being green. It will not remember much longer."
+    ],
+    "intro_familiar": [
+      "🌲 The Witherwood. You know which tree is the third from the road north now.",
+      "You climb past it without stopping. Old Halna nods at you from her fallen pine.",
+      "The wolves you have killed here outnumber the wolves you can still hear."
     ],
     "intro_cleansed": [
       "🌲 The Witherwood. Sunlight finds the lower branches again — thin, but it finds them.",
@@ -85,6 +100,11 @@
       "This country fed a kingdom once. Now it drowns the grain it grows,",
       "again and again, like a thing trying to apologise and not knowing how."
     ],
+    "intro_familiar": [
+      "🌊 The Reach. You have waded these floodfields. You know which step takes you under.",
+      "The water knows you the way a river learns a person who keeps standing in it.",
+      "The Weir Engineer's hammer is set down where she always sets it. You know where."
+    ],
     "intro_cleansed": [
       "🌊 The Sodden Reach. The water has drawn back a little — you can see furrows again.",
       "The grain that grows now does not drown. Not all of it.",
@@ -133,6 +153,11 @@
       "The streets are still streets. The doors are still shut. The dead",
       "are still in the rooms behind them. The water is grief, kept liquid."
     ],
+    "intro_familiar": [
+      "🌊 The Drowned Holds. You have walked these streets that are still streets.",
+      "The water is still grief, kept liquid. But the doors you have walked past",
+      "you know now — which ones never opened, which ones still might."
+    ],
     "intro_cleansed": [
       "🌊 The Drowned Holds. The water has receded from some of the lanes.",
       "A few of the doors stand open now — the dead behind them have been laid down.",
@@ -174,6 +199,11 @@
       "Everything the drowned country loses, it loses down through here.",
       "The Pall is the kingdom's own hunger. This is the kingdom's throat."
     ],
+    "intro_familiar": [
+      "🕳️  The Gullet. The cold air still rises. You have learned how to walk against it.",
+      "You know which stone is the dry one, and which is the one with no lichen.",
+      "The throat of the kingdom has begun, just a little, to know the shape of you."
+    ],
     "intro_cleansed": [
       "🕳️  The Gullet. The wound is closing. The cold air still rises, but less of it.",
       "Where the throat used to drink, the throat is learning to swallow nothing.",
@@ -202,6 +232,11 @@
       "🏛️  Mourncross, the capital — not burned, not broken, only emptied.",
       "Every door stands open. Every hearth is cold. Every name is gone.",
       "The city did not fall. It was forgotten, all in one breath, and obeyed."
+    ],
+    "intro_familiar": [
+      "🏛️  Mourncross. You have walked its open doors many times. You have stopped",
+      "counting the cold hearths. The Lampkeeper has begun keeping a small flame",
+      "for whoever you are, in case you come past. You keep coming past."
     ],
     "intro_cleansed": [
       "🏛️  Mourncross. A few of the hearths are warm. A few of the doors are shut.",
@@ -263,6 +298,11 @@
       "⛪ The Unanswered Choir — the cathedral where a kingdom knelt to forget.",
       "The rite was performed here, in full, and it was answered after a fashion.",
       "What knelt for absolution rose up as the Pall. It has been singing since."
+    ],
+    "intro_familiar": [
+      "⛪ The Unanswered Choir. You know which pew is broken, which window catches the dawn.",
+      "The hymn does not feel quite as long as it did the first time. Atrél's small altar",
+      "has flowers on it that you do not remember setting there. Someone is keeping them."
     ],
     "intro_cleansed": [
       "⛪ The Unanswered Choir. The hymn has gone quiet in the lower nave.",
@@ -350,6 +390,11 @@
       "⛰️  The Ashen Climb. Grey snow falls here, and it has never once been snow.",
       "This is the last ground that is still ground. What lived on this slope",
       "did not die so much as forget the difference, and go on climbing."
+    ],
+    "intro_familiar": [
+      "⛰️  The Ashen Climb. The grey snow falls the way it has fallen every time.",
+      "You know which footstep echoes, which is muffled. The Old Penitent looks up",
+      "when you pass. They do not look up for everyone. Slowly, they are becoming the Penitent of someone."
     ],
     "intro_cleansed": [
       "⛰️  The Ashen Climb. The fall is thinner — half ash, half something cleaner.",

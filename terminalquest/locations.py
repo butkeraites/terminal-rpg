@@ -69,6 +69,11 @@ INSOMNIAC_THRESHOLD = 50
 # SQ2 — The Caretaker ending surfaces after this many small kindnesses.
 CARETAKER_THRESHOLD = 40
 
+# v1.2 — after this many cross-run visits to a zone, switch to its
+# ``intro_familiar`` variant if defined: the kingdom starts speaking
+# to the player in past-tense recognition instead of cold-open description.
+FAMILIAR_VISITS = 5
+
 SCHOLAR_PAYOUT = 75  # gold per unique lore discovery she records
 
 REBORN_ECHO_BASE = 30  # baseline Echo for a Reborn — boosted by what was done
@@ -2087,14 +2092,24 @@ def location_loop(state):
         # At 50, the Insomniac surfaces in the village's service list.
         if arrived and state.current_location == "village":
             chronicle.add_gravewatch_visit(state.chronicle_dir)
+        # v1.2: every arrival anywhere increments the cross-run zone counter,
+        # used to switch to intro_familiar once the player has been here often.
+        if arrived:
+            chronicle.add_zone_visit(state.current_location, state.chronicle_dir)
         io.clear()
         if arrived:
-            # Cleansed intros (v0.7) show after the first completed run — the
-            # world begins to remember itself as the player keeps climbing.
-            intro_key = ("intro_cleansed"
-                         if chronicle.cleanses(state.chronicle_dir) >= 1
-                         and "intro_cleansed" in loc
-                         else "intro")
+            # Intro variants stack: intro_familiar (after FAMILIAR_VISITS+ cross-
+            # run visits to this zone) is most specific; intro_cleansed (after
+            # any completed run) is next; intro is the cold open.
+            visits_here = chronicle.zone_visits_total(
+                state.chronicle_dir).get(state.current_location, 0)
+            if "intro_familiar" in loc and visits_here >= FAMILIAR_VISITS:
+                intro_key = "intro_familiar"
+            elif (chronicle.cleanses(state.chronicle_dir) >= 1
+                    and "intro_cleansed" in loc):
+                intro_key = "intro_cleansed"
+            else:
+                intro_key = "intro"
             for line in loc[intro_key]:
                 io.show_slow(line)
             arrived = False
