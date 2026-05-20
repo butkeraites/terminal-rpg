@@ -103,6 +103,53 @@ def test_run_encounter_can_raise_a_hollowed(tmp_path, content):
     assert "Hollow" in state.io.text()
 
 
+def test_background_presence_cat_appears_in_gravewatch_intro(tmp_path, content):
+    """v1.9 — once the cat has been petted often enough, it sleeps by the
+    inn's hearth in Gravewatch's intro flavor, even without being met."""
+    from terminalquest import chronicle
+    for _ in range(10):
+        chronicle.add_cat_pet(tmp_path)
+    # Travel from crossroads to Gravewatch, then quit at Gravewatch.
+    # crossroads menu: 1 Gravewatch, 2 forest, 3-6 util → "1" then quit=6.
+    # Gravewatch menu varies; just send "Quit" via a big number to be safe.
+    # Simplest: arrive directly at village by starting there, quit immediately.
+    # village's quit option is the last util.
+    state = make_state(_player(content), content, ScriptedIO(), StubRandom(),
+                       current_location="village", chronicle_dir=tmp_path)
+    locations._print_background_presences(state)
+    assert "cat is asleep" in state.io.text()
+
+
+def test_background_presence_reader_appears_after_threshold(tmp_path, content):
+    """v1.9 — once enough lore has been read, the Reader is silently at their desk."""
+    from terminalquest import chronicle
+    for i in range(locations.READER_THRESHOLD):
+        chronicle.add_read_discovery(f"d{i}", tmp_path)
+    state = make_state(_player(content), content, ScriptedIO(), StubRandom(),
+                       current_location="village", chronicle_dir=tmp_path)
+    locations._print_background_presences(state)
+    assert "has not looked up" in state.io.text()
+
+
+def test_background_presence_piranesi_vellum_at_pre_pall_shrine(tmp_path, content):
+    """v1.9 — once Piranesi's map is unlocked, his vellum is on the altar."""
+    state = make_state(_player(content), content, ScriptedIO(), StubRandom(),
+                       current_location="pre_pall_shrine", chronicle_dir=tmp_path)
+    state.flags["piranesi_map_unlocked"] = True
+    locations._print_background_presences(state)
+    assert "Piranesi's vellum" in state.io.text()
+
+
+def test_background_presence_first_line_box_at_crossroads(tmp_path, content):
+    """v1.9 — once a first line has been written, a small box sits at the road's edge."""
+    from terminalquest import chronicle
+    chronicle.set_first_line("Be kind to the cat.", tmp_path)
+    state = make_state(_player(content), content, ScriptedIO(), StubRandom(),
+                       current_location="crossroads", chronicle_dir=tmp_path)
+    locations._print_background_presences(state)
+    assert "small wooden box" in state.io.text()
+
+
 def test_hollowed_speaks_one_line_of_persistence_before_combat(tmp_path, content):
     """v1.6 — a rising Hollowed speaks one line as themselves before the fight.
 

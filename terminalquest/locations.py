@@ -2099,6 +2099,39 @@ def _build_options(state, loc, fallen):
     return options
 
 
+def _print_background_presences(state):
+    """v1.9 — recurring presences exist in the world between visits.
+
+    After the intro is read, drop one or two quiet lines per zone showing
+    that the cat / Piranesi / the Reader / the Insomniac / the child are
+    HERE — they have not left, the kingdom is populated by them. Each
+    line is gated by the same threshold that surfaces the character.
+    """
+    io = state.io
+    loc_id = state.current_location
+    cdir = state.chronicle_dir
+    if loc_id == "village":
+        if chronicle.cat_pets(cdir) >= 10:
+            io.show_slow("  (The cat is asleep by the inn's hearth.)")
+        if chronicle.discoveries_read(cdir) >= READER_THRESHOLD:
+            io.show_slow("  (A figure at the desk in the corner has not "
+                         "looked up. They are reading.)")
+        if chronicle.gravewatch_visits(cdir) >= INSOMNIAC_THRESHOLD:
+            io.show_slow("  (An old woman by the cold hearth is counting "
+                         "something quietly.)")
+        if chronicle.kind_acts(cdir) >= CARETAKER_THRESHOLD:
+            io.show_slow("  (A basket of small flowers is set by the door, "
+                         "fresh today.)")
+    elif loc_id == "pre_pall_shrine":
+        if state.flags.get("piranesi_map_unlocked"):
+            io.show_slow("  (Piranesi's vellum is folded on the altar where "
+                         "he left it for you.)")
+    elif loc_id == "crossroads":
+        if chronicle.first_line(cdir):
+            io.show_slow("  (A small wooden box sits at the road's edge. "
+                         "Whose, no one knows. It has not been moved.)")
+
+
 def location_loop(state):
     """The central game loop. Runs until the player dies, wins, or quits."""
     player, content, io = state.player, state.content, state.io
@@ -2140,6 +2173,7 @@ def location_loop(state):
                 intro_key = "intro"
             for line in loc[intro_key]:
                 io.show_slow(line)
+            _print_background_presences(state)
             arrived = False
         io.show(f"\n📍 {loc['name']}")
         io.show(hud(player))
