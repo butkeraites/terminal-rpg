@@ -2,10 +2,27 @@
 from .combatant import Combatant
 
 
+def resolve_flavor(entity_def, state_flags):
+    """Return the flavor line, picking ``flavor_after`` variants when their
+    state flag is set.
+
+    Pattern: enemies (and locations, weapons) may carry an ``flavor_after``
+    dict — ``{flag_name: alternate_line}``. The first matching flag wins
+    (registration order). Lets later arcs retroactively recontextualize
+    existing flavour without rewriting the original line.
+    """
+    overlays = entity_def.get("flavor_after", {})
+    if state_flags:
+        for flag, line in overlays.items():
+            if state_flags.get(flag):
+                return line
+    return entity_def.get("flavor", "")
+
+
 class Enemy(Combatant):
     """A hostile combatant. ``ai`` selects its behaviour in combat."""
 
-    def __init__(self, enemy_id, enemy_def):
+    def __init__(self, enemy_id, enemy_def, state_flags=None):
         super().__init__()
         self.enemy_id = enemy_id
         self.name = enemy_def["name"]
@@ -18,8 +35,9 @@ class Enemy(Combatant):
         self.ai = enemy_def["ai"]
         # Optional special move used by the "caster" AI.
         self.ability = enemy_def.get("ability")
-        # Optional one-line flavour shown when the enemy appears.
-        self.flavor = enemy_def.get("flavor", "")
+        # Flavour resolves against state.flags — flavor_after entries can
+        # override the default once their gating flag is set.
+        self.flavor = resolve_flavor(enemy_def, state_flags or {})
         # Named, one-of-a-kind foes (mini-bosses, the Warden) take no article.
         self.unique = enemy_def.get("unique", False)
         # Set to a pending action name while a big attack is telegraphed.
@@ -30,9 +48,9 @@ class Enemy(Combatant):
         self.enraged = False
 
 
-def make_enemy(enemy_id, content):
+def make_enemy(enemy_id, content, state_flags=None):
     """Construct a fresh Enemy instance from loaded content."""
-    return Enemy(enemy_id, content.enemies[enemy_id])
+    return Enemy(enemy_id, content.enemies[enemy_id], state_flags)
 
 
 def make_hollowed(entry):

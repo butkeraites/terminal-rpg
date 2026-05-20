@@ -5,7 +5,8 @@ The world is a graph of locations loaded from ``data/locations.json``.
 location, offers its services, encounters and travel routes, and runs
 until the player dies, wins, or quits.
 """
-from . import chronicle, saves
+from . import chronicle, endings, saves
+from . import dialogue as _dialogue
 from .accessory import make_accessory
 from .armor import make_armor
 from .combat import CLASS_CONSUMABLE, QUESTS, _consumable_label, run_combat
@@ -486,7 +487,7 @@ def night_hunt(state):
         return
     player.gold -= NIGHT_HUNT_COST
     enemy_id = rng.choice(pool)
-    enemy = make_enemy(enemy_id, content)
+    enemy = make_enemy(enemy_id, content, state.flags)
     enemy.max_hp = int(enemy.max_hp * NIGHT_HUNT_STAT_BOOST)
     enemy.hp = enemy.max_hp
     enemy.attack = int(enemy.attack * NIGHT_HUNT_STAT_BOOST)
@@ -788,14 +789,29 @@ def _hollowed_candidates(state, fallen):
             and e["player"]["level"] <= state.player.level + 1]
 
 
+ATREL_LORE_FRAGMENTS = ("atrel_marker", "atrel_register", "atrel_side_altar")
+
+
 def _run_discovery(state, encounter):
-    """Reveal a one-time lore fragment, then mark it found in ``state.flags``."""
+    """Reveal a one-time lore fragment, then mark it found in ``state.flags``.
+
+    Atrél's three fragments collectively set ``atrel_lore_found`` when all
+    three are seen — gating the Last Altar zone and overlaying Cantor Vael's
+    flavour with the recontextualized version.
+    """
     io = state.io
     io.clear()
     for line in encounter["lines"]:
         io.show_slow(line)
     io.pause(2)
     state.flags.setdefault("discoveries_seen", []).append(encounter["id"])
+    seen = set(state.flags["discoveries_seen"])
+    if (set(ATREL_LORE_FRAGMENTS).issubset(seen)
+            and not state.flags.get("atrel_lore_found")):
+        state.flags["atrel_lore_found"] = True
+        io.show_slow("\n📿 You have gathered all three traces of Atrél.")
+        io.show_slow("Something in the Choir has noticed you noticing.")
+        io.pause(2)
 
 
 def _npc_progress(state, npc):
@@ -891,6 +907,11 @@ def run_encounter(state, encounter, fallen, wardens):
     if encounter["type"] == "npc":
         _run_npc(state, encounter)
         return None
+    if encounter["type"] == "dialogue":
+        tree = state.content.dialogues[encounter["dialogue_id"]]
+        state.io.clear()
+        _dialogue.run_dialogue(state, tree)
+        return None
     io, rng, content = state.io, state.rng, state.content
     if encounter["type"] != "combat":
         return None
@@ -908,9 +929,11 @@ def run_encounter(state, encounter, fallen, wardens):
         hollowed_entry = rng.choice(candidates)
         enemies = [make_hollowed(hollowed_entry)]
     elif encounter.get("pick") == "random":
-        enemies = [make_enemy(rng.choice(encounter["enemies"]), content)]
+        enemies = [make_enemy(rng.choice(encounter["enemies"]),
+                              content, state.flags)]
     else:
-        enemies = [make_enemy(eid, content) for eid in encounter["enemies"]]
+        enemies = [make_enemy(eid, content, state.flags)
+                   for eid in encounter["enemies"]]
 
     outcome = None
     enemy = None
@@ -991,42 +1014,21 @@ def _run_summary(state):
     io.show("─" * 50)
 
 
-def _victory_screen(state):
-    """The end screen: the Warden falls — and the player chooses their fate.
+_VICTORY_LEAD_IN = [
+    "The Shadow Warden comes apart like wet ash. The Pall, finding",
+    "itself without a Warden, turns to the soul still standing on",
+    "the Summit. It reaches.\n",
+]
 
-    Two endings, with a third unlocked once the realm has been cleansed
-    PURIFY_CLEANSES_REQUIRED times. Warden = kept by the Pall (canon).
-    Reborn = refuse and earn Echoes (prestige). Purify = end the cycle
-    forever (mythic, gated).
-    """
+
+def _victory_screen(state):
+    """Dispatch to the player's chosen ending via the endings registry."""
+    endings.choose_and_render(state, _VICTORY_LEAD_IN)
+
+
+def _warden_screen(state):
+    """The canonical ending: the Pall keeps the victor as the next Warden."""
     player, io = state.player, state.io
-    cleanses = chronicle.cleanses(state.chronicle_dir)
-    can_purify = cleanses >= PURIFY_CLEANSES_REQUIRED
-    io.clear()
-    io.show_slow("The Shadow Warden comes apart like wet ash. The Pall, finding")
-    io.show_slow("itself without a Warden, turns to the soul still standing on")
-    io.show_slow("the Summit. It reaches.\n")
-    io.pause(1)
-    io.show("You can let it take you, and become the next Warden — the one")
-    io.show("future climbers will have to break to free this place.")
-    io.show("\nOr you can refuse it. The Pall does not let go for nothing.")
-    io.show("It will take everything you have, except what the dead carry —")
-    io.show("the Echoes of what you've done. With those, you can come back.")
-    if can_purify:
-        io.show("\nOr — for the first and last time — you can refuse the cycle itself.")
-        io.show("Five times the realm has been cleansed by your hand. The Pall is thin")
-        io.show("enough now to be unmade. You will not come back from this choice.")
-    io.show("\n1. Be kept by the Pall  (end the run, become the Warden)")
-    io.show("2. Reborn               (end this hero — earn Echoes — start again)")
-    if can_purify:
-        io.show("3. 🌅 Purify Mournhold  (end the cycle — the Pall is undone)")
-    choice = io.ask("\nYour choice? ")
-    if choice == "2":
-        _reborn_screen(state)
-        return
-    if choice == "3" and can_purify:
-        _purify_screen(state)
-        return
     chronicle.record(state, "warden", state.chronicle_dir)
     chronicle.add_cleanse(state.chronicle_dir)
     io.clear()
@@ -1070,6 +1072,44 @@ def _reborn_screen(state):
     io.show("\nThank you for playing Mournhold.")
 
 
+def _atrel_peace_screen(state):
+    """The quiet ending — return the rite to Atrél; both god and Pall end together.
+
+    Available only when ``atrel_offered`` is True (player promised Atrél to
+    bring the rite back). Marks the Chronicle purified, but the screen
+    deliberately does NOT name the player as the one who said the names —
+    Atrél's small ending is unwitnessed by design.
+    """
+    player, io = state.player, state.io
+    chronicle.mark_purified(state.chronicle_dir)
+    chronicle.add_cleanse(state.chronicle_dir)
+    io.clear()
+    io.show_slow("You do not climb back to the Summit to say the names.")
+    io.show_slow("You climb back down. To the Choir. To the south aisle. To Atrél.")
+    io.show_slow("He is waiting. He has been waiting since you left.\n")
+    io.pause(1)
+    io.show_slow("You set the rite down at his altar. Not the kingdom-scale. The altar-scale.")
+    io.show_slow("Atrél takes it. His hands close around it like someone receiving a wound back.")
+    io.show_slow("He says: 'Thank you.' He says it small. It is the right size.")
+    io.show_slow("He dies. The altar does not. Someone will set down a small grief here, one day.\n")
+    io.pause(1)
+    io.show_slow("And the Pall — the Pall has nothing left to be made of.")
+    io.show_slow("It unmakes itself in silence. No crescendo. No witness.")
+    io.show_slow("The grey goes thin. The road brightens. Nobody knows you did it.\n")
+    io.pause(2)
+    io.show("=" * 50)
+    io.show("📿  ATRÉL'S PEACE")
+    io.show(f"{player.name} the {player.class_name} — who brought the rite back.")
+    io.show("\nThe Pall is undone. The Warden is no more. Atrél is dead.")
+    io.show("Mournhold lives. It does not know it owes anyone a debt.")
+    io.show("\nThe Chronicle records: purified, quietly. The smaller ending.")
+    io.show("Future climbers will find a kingdom — and a side-altar")
+    io.show("where small griefs can be set down again, the way they used to.")
+    io.show("=" * 50)
+    _run_summary(state)
+    io.show("\nThank you for playing Mournhold.")
+
+
 def _purify_screen(state):
     """The mythic ending — the Pall is undone permanently."""
     player, io = state.player, state.io
@@ -1096,6 +1136,34 @@ def _purify_screen(state):
     io.show("=" * 50)
     _run_summary(state)
     io.show("\nThank you for playing Mournhold.")
+
+
+# --- ending registry — add new endings here as the story grows ---
+# Order in this list is order in the menu.
+endings.register(
+    "warden",
+    "Be kept by the Pall  (end the run, become the Warden)",
+    _warden_screen,
+    lambda s: True,
+)
+endings.register(
+    "reborn",
+    "Reborn               (end this hero — earn Echoes — start again)",
+    _reborn_screen,
+    lambda s: True,
+)
+endings.register(
+    "purify",
+    "🌅 Purify Mournhold  (end the cycle — the Pall is undone)",
+    _purify_screen,
+    lambda s: chronicle.cleanses(s.chronicle_dir) >= PURIFY_CLEANSES_REQUIRED,
+)
+endings.register(
+    "atrel_peace",
+    "📿 Bring the rite back to Atrél  (the quiet end — none will know)",
+    _atrel_peace_screen,
+    lambda s: s.flags.get("atrel_offered", False),
+)
 
 
 def _save_menu(state):
@@ -1239,10 +1307,17 @@ def _build_options(state, loc, fallen):
         dest = content.locations[dest_id]
         options.append((_travel_label(dest, player), ("travel", dest_id)))
     # Conditional connections — sub-zones the NPC quest opens up.
+    # Also: any zone with `unlock_flag` opens when that flag is True
+    # (the Atrél lore route reuses this mechanism without an NPC).
     for dest_id in loc.get("conditional_connections", []):
-        if dest_id in state.flags.get("unlocked_connections", []):
-            dest = content.locations[dest_id]
-            options.append((_travel_label(dest, player), ("travel", dest_id)))
+        dest = content.locations[dest_id]
+        unlock_flag = dest.get("unlock_flag")
+        if unlock_flag is not None:
+            if not state.flags.get(unlock_flag):
+                continue
+        elif dest_id not in state.flags.get("unlocked_connections", []):
+            continue
+        options.append((_travel_label(dest, player), ("travel", dest_id)))
     # Fast travel back to the Crossroads — one-way, available from any zone
     # (not from hub/settlements, not from the Summit). Preserves the descent
     # outbound while letting the player shortcut the long walk home.

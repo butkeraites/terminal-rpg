@@ -7,13 +7,13 @@ touching Python. This module is the only place that reads those files.
 import json
 from pathlib import Path
 
-from . import status
+from . import dialogue, status
 from .weapon import WEAPON_SLOTS
 
 DATA_DIR = Path(__file__).parent / "data"
 
 _VALID_AI = {"aggressive", "defensive", "caster", "fleer", "relentless", "enrager"}
-_VALID_ENCOUNTER_TYPES = {"combat", "discovery", "npc"}
+_VALID_ENCOUNTER_TYPES = {"combat", "discovery", "npc", "dialogue"}
 _VALID_ACTS = {1, 2, 3}
 _VALID_STATS = {"attack", "defense", "max_hp", "max_stamina"}
 _VALID_PROC_TRIGGERS = {"on_hit", "on_crit"}
@@ -38,7 +38,7 @@ class Content:
     """An immutable bundle of all loaded game content."""
 
     def __init__(self, classes, abilities, enemies, locations, components, armor,
-                 companions, accessories, pets, hirelings, npcs):
+                 companions, accessories, pets, hirelings, npcs, dialogues):
         self.classes = classes
         self.abilities = abilities
         self.enemies = enemies
@@ -50,6 +50,7 @@ class Content:
         self.pets = pets
         self.hirelings = hirelings
         self.npcs = npcs
+        self.dialogues = dialogues
 
     def validate(self):
         """Raise ValueError if the data files are internally inconsistent."""
@@ -86,6 +87,8 @@ class Content:
                 )
         self._validate_locations()
         self._validate_components()
+        for dialogue_id, tree in self.dialogues.items():
+            dialogue.validate_tree(tree, dialogue_id)
 
     def _validate_locations(self):
         """Check the location graph: connections, encounters, acts, reachability."""
@@ -128,6 +131,13 @@ class Content:
                     if not encounter.get("id"):
                         raise ValueError(
                             f"location '{loc_id}' has an npc with no id"
+                        )
+                elif kind == "dialogue":
+                    did = encounter.get("dialogue_id")
+                    if did is None or did not in self.dialogues:
+                        raise ValueError(
+                            f"location '{loc_id}' dialogue encounter references "
+                            f"unknown dialogue '{did}'"
                         )
         self._check_reachable()
 
@@ -198,6 +208,7 @@ def load_content():
         pets=_load("pets.json"),
         hirelings=_load("hirelings.json"),
         npcs=_load("npcs.json"),
+        dialogues=_load("dialogues.json"),
     )
     content.validate()
     return content

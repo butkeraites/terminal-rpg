@@ -1,0 +1,151 @@
+{
+  "atrel": {
+    "initial": {
+      "lines": [
+        "The figure at the altar is small. Smaller than the altar.",
+        "He does not look like what you expected a god to look like.",
+        "He looks like an old man whose work has been taken away from him.",
+        "",
+        "'I am Atrél,' he says. 'You found the marker. You found the registrar's book.'",
+        "'You found the side-altar where they tried to burn me out, and could not.'",
+        "'So you know.'"
+      ],
+      "responses": [
+        {"text": "What was the rite for?", "next": "rite"},
+        {"text": "Who taught it to them?", "next": "taught"},
+        {"text": "What did they do wrong?", "next": "scaled"},
+        {"text": "Why are you still here?", "next": "here"}
+      ]
+    },
+    "rite": {
+      "lines": [
+        "'For small forgettings,' he says. 'A slap given in anger. A child's first cruelty.'",
+        "'A husband's last word that should not have been the last word.'",
+        "'Things people brought me, set down at this altar, and walked away lighter for.'",
+        "'You cannot carry every hurt. You should not have to. That is what I was for.'",
+        "'I was a small god. I was the right size for the work.'"
+      ],
+      "responses": [
+        {"text": "But the famine winter?", "next": "famine"},
+        {"text": "How did they scale it?", "next": "scaled"},
+        {"text": "(say nothing)", "next": "initial"}
+      ]
+    },
+    "taught": {
+      "lines": [
+        "'I taught it. Slowly. To the keeper of this side-altar, first.'",
+        "'Then to her daughter. Then to a circle. Then to the cathedral above us, when it was built.'",
+        "'They wrote it down. They taught it back to me, with corrections.'",
+        "'I let them. I was proud. A small god gets proud of small things.'",
+        "'When they came to me with the kingdom-rite — I should have refused. I did not refuse.'",
+        "'I told them: you are asking the cup to hold the sea. They said: we will be careful.'",
+        "'They were not careful. The cup broke.'"
+      ],
+      "responses": [
+        {"text": "And then?", "next": "scaled"},
+        {"text": "(say nothing)", "next": "initial"}
+      ]
+    },
+    "scaled": {
+      "lines": [
+        "'They took my rite. They scaled it past me.'",
+        "'They did not ask me to forget a hurt. They asked me to forget a winter.'",
+        "'They asked me to forget the gates closing on the holds, and the holds going quiet,'",
+        "'and the children at the gates, and the order from the capital that no help would be sent.'",
+        "'I could not hold it. No god my size could have held it. They knew that.'",
+        "'I broke. What broke out of me — that is what walks the Climb now. That is the Pall.'",
+        "'The Pall is not a thing I made. It is what was left of me, after they took too much.'"
+      ],
+      "responses": [
+        {"text": "Can it be undone?", "next": "undone"},
+        {"text": "Why are you still here?", "next": "here"}
+      ]
+    },
+    "famine": {
+      "lines": [
+        "'The famine winter,' he says, and looks down at his hands for a long while.",
+        "'The famine winter is the wound the rite was scaled to cover. The wound is still there.'",
+        "'You walk over it every time you climb the road. The Pall is the wound's voice now.'",
+        "'A wound speaks until it is heard. I did not get to hear it. I was made to forget it instead.'"
+      ],
+      "responses": [
+        {"text": "Can the wound be heard?", "next": "undone"},
+        {"text": "(step back)", "next": "initial"}
+      ]
+    },
+    "here": {
+      "lines": [
+        "'I am still here because gods do not die quickly. We diminish.'",
+        "'There is a little of me left. A little of the rite I used to be.'",
+        "'If you bring my rite back to me — not at the kingdom-scale, only at the altar-scale —'",
+        "'I can take it back. The Pall is what slipped out of me when they over-asked.'",
+        "'If I take the rite back at my size, the Pall has nothing to be made of, and it ends.'",
+        "'It will end softly. Not loudly. Not the way you have been told it would end.'",
+        "'You will not be remembered as the one who broke it. You will not be remembered at all.'",
+        "'I cannot offer you a story. Only an end.'"
+      ],
+      "responses": [
+        {"text": "I'll bring the rite back to you.",
+         "next": "offered", "sets_flag": "atrel_offered"},
+        {"text": "I want the story. I'll do it the loud way.", "next": "loud"},
+        {"text": "Let me think.", "next": null}
+      ]
+    },
+    "undone": {
+      "lines": [
+        "'It can. There are two ways I know of.'",
+        "'One: you climb the Summit and say the names back, every one, and the Pall stops because',",
+        "'it has been heard. This is the way the world has been built to give you. Mournhold purified.'",
+        "'You will be remembered as the one who said the names.'",
+        "",
+        "'Two: you bring the rite back to me. At my altar. At my size.'",
+        "'The Pall does not stop because it is heard. It stops because it is no longer being made.'",
+        "'You will not be remembered. The kingdom will go on, not knowing how close it came.'",
+        "'It is the smaller ending. It is also the only ending where I get to die in peace.'"
+      ],
+      "responses": [
+        {"text": "I'll bring the rite back.",
+         "next": "offered", "sets_flag": "atrel_offered"},
+        {"text": "Why two endings?", "next": "two"},
+        {"text": "(step back)", "next": "initial"}
+      ]
+    },
+    "two": {
+      "lines": [
+        "'Because gods are made by the stories we tell about them.'",
+        "'If you take the loud ending, the story keeps me dead. The world has decided I never existed.'",
+        "'If you take the small ending, the story does not know about you. But it knows about me.'",
+        "'Someone will set a small grief down at this altar again, one day, and walk away lighter.'",
+        "'That is the difference. Pick the ending. Both are kindnesses. Neither is for you.'"
+      ],
+      "responses": [
+        {"text": "I'll bring the rite back.",
+         "next": "offered", "sets_flag": "atrel_offered"},
+        {"text": "I want the kingdom to remember me.", "next": "loud"}
+      ]
+    },
+    "loud": {
+      "lines": [
+        "He nods. He does not look hurt. Gods that small have learned not to look hurt.",
+        "'Then go,' he says. 'Climb. Say the names. Be remembered.'",
+        "'I will be here. Diminishing.'",
+        "'If you change your mind on the way up, you can come back. The road runs both ways.'"
+      ],
+      "responses": [
+        {"text": "(leave)", "next": null}
+      ]
+    },
+    "offered": {
+      "lines": [
+        "Atrél closes his eyes. He looks, for the first time, almost rested.",
+        "'When you break the Warden,' he says, 'do not say the names yet.'",
+        "'Come back here. Set the rite down where I can take it.'",
+        "'I will end. The Pall will end with me. No one will know either of us were ever here.'",
+        "'It is the only thing I have left to offer you. Thank you for accepting it.'"
+      ],
+      "responses": [
+        {"text": "(leave)", "next": null}
+      ]
+    }
+  }
+}

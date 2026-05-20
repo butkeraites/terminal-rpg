@@ -265,7 +265,10 @@
     "ai": "caster",
     "unique": true,
     "ability": {"name": "Rite of Unremembering", "power": 1.4, "status": "vulnerable", "status_turns": 2},
-    "flavor": "The cantor who led the rite of unremembering. He carried the realm's one voice, and cannot set it down."
+    "flavor": "The cantor who led the rite of unremembering. He carried the realm's one voice, and cannot set it down.",
+    "flavor_after": {
+      "atrel_lore_found": "The cantor who scaled Atrél's small rite past what Atrél could hold. He knew. He did it anyway."
+    }
   },
   "mountain_ogre": {
     "name": "Ridge Ravager",

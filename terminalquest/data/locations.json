@@ -40,7 +40,17 @@
     "encounters": [
       {"type": "combat", "enemies": ["goblin", "wolf", "bandit"], "pick": "random"},
       {"type": "combat", "enemies": ["pallid_stag"], "label": "⚔️  Challenge the Pallid Stag"},
-      {"type": "npc", "id": "old_halna", "label": "🪵 Speak with Old Halna"}
+      {"type": "npc", "id": "old_halna", "label": "🪵 Speak with Old Halna"},
+      {"type": "discovery", "id": "atrel_marker", "label": "📜 A stone marker by the road",
+       "lines": [
+         "📜 A short stone marker, half-toppled, by the forest road.",
+         "The inscription is in a script Mournhold no longer teaches.",
+         "Three syllables, three carvings — ATRÉL.",
+         "Below: 'In whose grace small griefs may be set down. The wood's festival, fourth moon.'",
+         "There has not been a fourth-moon festival in living memory.",
+         "Someone has scratched a name out beneath the inscription — and written it back in,",
+         "as if afraid the marker would stop knowing whose grief it once held."
+       ]}
     ]
   },
   "reach": {
@@ -160,6 +170,17 @@
          "scored over and over until the nib tore the paper and the ink ran dry.",
          "One line at the very end survives unmarked, in the census-clerk's own hand:",
          "'If no one is written down, then no one was left behind to starve.'"
+       ]},
+      {"type": "discovery", "id": "atrel_register", "label": "📜 A small registrar's book",
+       "lines": [
+         "📜 A pocket-book in a clerk's hand, hidden behind a Mourncross hearth-tile.",
+         "Not a census of the dead. A census of small forgettings.",
+         "'Mara Vell, her son's first cruelty, set down at Atrél's altar. Spring.'",
+         "'Old Karst, a slap given in error, set down at Atrél's altar. Summer.'",
+         "Page after page of small hurts named, dated, and lodged with the god Atrél",
+         "for safekeeping — each one tiny, each one chosen, each one a kindness.",
+         "The clerk's last entry, in a shaken hand: 'They are taking the rite away from him.'",
+         "'They mean to scale it past what a small god can carry. We must remember instead.'"
        ]}
     ]
   },
@@ -179,6 +200,7 @@
       "What was unremembered is being said again. The rite is being undone."
     ],
     "connections": ["mourncross", "mountain"],
+    "conditional_connections": ["last_altar"],
     "encounters": [
       {"type": "combat",
        "enemies": ["censer_shade", "reliquary_golem", "choirmaster_effigy"],
@@ -192,6 +214,17 @@
          "The celebrant's line is still legible across the spine: 'Let us, with one voice,'",
          "'unremember the winter of the sealed gates, and the holds we let go quiet.'",
          "The rite worked. A thing was forgotten. It did not, for that, cease to exist."
+       ]},
+      {"type": "discovery", "id": "atrel_side_altar", "label": "📿 A side-altar long unswept",
+       "lines": [
+         "📿 A small altar in the Choir's south aisle. Smaller than the main one.",
+         "Older. Predates the main altar by centuries. Atrél is named on the stone —",
+         "the syllables already half worn off, as is fitting for a god of forgetting.",
+         "Below the name, a smaller inscription, almost a footnote:",
+         "'Bring me only what you cannot carry. Bring me no kingdoms. Bring me no wars.'",
+         "Beside it: ash, where someone tried to burn the altar, and the altar refused to burn.",
+         "Whoever scaled the rite knew what they were doing. They knew where they got it from.",
+         "They knew Atrél could not hold what they meant to ask. They asked anyway."
        ]}
     ]
   },
@@ -307,6 +340,23 @@
          "'When the rite of unremembering is performed, this book will not be there for it.'",
          "'It is one of the things they cannot have. It is one of the things we kept.'"
        ]}
+    ]
+  },
+  "last_altar": {
+    "name": "The Last Altar of Atrél",
+    "kind": "zone",
+    "act": 3,
+    "recommended_level": 6,
+    "unlock_flag": "atrel_lore_found",
+    "intro": [
+      "📿 You step past the south aisle of the Choir.",
+      "The air changes. It is older here. It does not press.",
+      "An altar stands alone. Whatever is at the altar is also alone.",
+      "He turns his head when you enter — only that much. It is enough."
+    ],
+    "connections": ["choir"],
+    "encounters": [
+      {"type": "dialogue", "dialogue_id": "atrel", "label": "📿 Speak with Atrél"}
     ]
   },
   "pre_pall_shrine": {

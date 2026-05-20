@@ -75,15 +75,15 @@ def test_grave_appears_and_can_be_searched(tmp_path, content):
     chronicle.record(fallen_run, "fell", tmp_path)
     player = _player(content)
     gold_before = player.gold
-    # v0.9 forest with grave (no completion): 1 combat, 2 mini-boss, 3 NPC,
-    # 4 grave, 5-6 connections, 7 walk back, 8-11 utilities → grave picked = 4,
-    # post-grave menu has no grave: 1 combat, 2 mini-boss, 3 NPC, 4-5 conn,
-    # 6 walk back, 7-10 utilities → quit=10.
-    io = ScriptedIO(["2", "4", "10"])
+    # v0.10 forest with grave: 1 combat, 2 mini-boss, 3 NPC, 4 Atrél marker,
+    # 5 grave, 6-7 conn, 8 walk back, 9-12 util. Grave is option 5.
+    # After grave searched: same menu minus grave → 1-4 encounters, 5-6 conn,
+    # 7 walk back, 8-11 util → quit=11.
+    io = ScriptedIO(["2", "5", "11"])
     state = make_state(player, content, io, StubRandom(), chronicle_dir=tmp_path)
     locations.location_loop(state)
     assert "Half-buried" in io.text()
-    assert player.gold > gold_before  # scavenged the dead's coins
+    assert player.gold > gold_before
 
 
 def test_run_encounter_can_raise_a_hollowed(tmp_path, content):
@@ -141,11 +141,9 @@ def test_overlevel_travel_warns_and_can_turn_back(content):
 
 
 def test_travel_into_a_zone_fight_and_return(content):
-    # travel to Witherwood, win a fight, travel back to the Crossroads, quit.
-    # v0.9 forest menu (no NPC unlock yet): 1 combat, 2 mini-boss, 3 NPC,
-    # 4 to Crossroads, 5 to Reach, 6 walk back, 7-10 utilities → travel
-    # back to crossroads is "4".
-    io = ScriptedIO(["2", "1", "1", "4", "6"])
+    # v0.10 forest menu: 1 combat, 2 mini-boss, 3 NPC, 4 Atrél marker,
+    # 5 to Crossroads, 6 to Reach, 7 walk back, 8-11 util. Travel back is 5.
+    io = ScriptedIO(["2", "1", "1", "5", "6"])
     state = make_state(_strong_player(content), content, io, StubRandom())
     locations.location_loop(state)
     text = io.text()
@@ -346,25 +344,28 @@ def test_chained_encounter_restores_stamina_when_chain_breaks(content, monkeypat
 def test_fast_travel_returns_to_the_crossroads(content):
     """A zone offers 'Walk back to the Crossroads' that drops the player at the hub.
 
-    v0.9 forest with NPC: 1 fight, 2 mini-boss, 3 NPC, 4-5 conn, 6 walk back,
-    7-10 util. Crossroads after fast-travel: 1 Gravewatch, 2 Witherwood,
-    3 Return to Witherwood, 4 inspect, 5 stats, 6 save, 7 quit.
+    v0.10 forest: 1 fight, 2 mini-boss, 3 NPC, 4 Atrél marker (discovery),
+    5-6 conn, 7 walk back, 8-11 util. Walk back is now 7.
     """
-    io = ScriptedIO(["6", "7"])  # walk back (now option 6), then quit at Crossroads
+    io = ScriptedIO(["7", "7"])  # walk back (now option 7), then quit at Crossroads
     state = make_state(_player(content), content, io, StubRandom(),
                        current_location="forest")
     locations.location_loop(state)
     assert state.current_location == "crossroads"
     assert "Walk back to the Crossroads" in io.text()
-    assert "long way" in io.text()  # the descent-aware flavour line
-    assert state.flags.get("fast_travel_return") == "forest"  # round-trip token kept
+    assert "long way" in io.text()
+    assert state.flags.get("fast_travel_return") == "forest"
 
 
 def test_fast_travel_round_trip_returns_to_origin(content):
     """Fast travel out and back leaves the player at the zone they came from."""
-    # v0.9 forest: walk back is option 6. Then Return at Crossroads is option 3.
-    # Returning to forest (no NPC unlock): quit is option 10.
-    io = ScriptedIO(["6", "3", "10"])
+    # v0.10 forest: 1 fight, 2 mini-boss, 3 NPC, 4 Atrél marker, 5-6 conn,
+    # 7 walk back, 8-11 util. Walk back is option 7. After return, the marker
+    # was visited so it's filtered out — forest menu shrinks back to 10 items.
+    # Wait — actually no: the test goes from forest to Crossroads via fast
+    # travel WITHOUT touching the marker. So forest still has the marker on
+    # return. Walk back = 7, quit on return = 11.
+    io = ScriptedIO(["7", "3", "11"])
     state = make_state(_player(content), content, io, StubRandom(),
                        current_location="forest")
     locations.location_loop(state)
@@ -625,15 +626,15 @@ def test_warden_ending_increments_cleanse(tmp_path, content):
 def test_cleansed_intro_shows_after_first_completion(tmp_path, content):
     """After 1+ cleanses, the Witherwood intro switches to its cleansed variant.
 
-    v0.9 forest with NPC encounter: 1 combat, 2 mini-boss, 3 NPC, 4-5 conn,
-    6 walk back, 7-10 utilities → quit=10.
+    v0.10 forest with Atrél marker: 1 combat, 2 mini-boss, 3 NPC, 4 marker,
+    5-6 conn, 7 walk back, 8-11 utilities → quit=11.
     """
     from terminalquest import chronicle
     finished = make_state(_player(content), content, current_location="summit",
                           chronicle_dir=tmp_path)
     chronicle.record(finished, "warden", tmp_path)
     chronicle.add_cleanse(tmp_path)
-    io = ScriptedIO(["2", "10"])  # crossroads -> forest, then quit
+    io = ScriptedIO(["2", "11"])
     state = make_state(_player(content), content, io, StubRandom(),
                        chronicle_dir=tmp_path)
     locations.location_loop(state)
@@ -822,16 +823,108 @@ def test_npc_introduces_then_tracks_then_completes(tmp_path, content):
 def test_npc_unlock_opens_a_conditional_connection(tmp_path, content):
     """Once unlocked, a sub-zone appears as a travel option in the parent zone.
 
-    Forest menu with Hunter's Cache unlocked: 1 combat, 2 mini-boss, 3 NPC,
-    4 to Crossroads, 5 to Reach, 6 Hunter's Cache, 7 walk back, 8-11 utilities
-    → quit=11.
+    v0.10 forest menu with Hunter's Cache unlocked: 1 combat, 2 mini-boss,
+    3 NPC, 4 Atrél marker, 5 to Crossroads, 6 to Reach, 7 Hunter's Cache,
+    8 walk back, 9-12 utilities → quit=12.
     """
     player = _player(content)
-    state = make_state(player, content, ScriptedIO(["11"]), StubRandom(),
+    state = make_state(player, content, ScriptedIO(["12"]), StubRandom(),
                        current_location="forest", chronicle_dir=tmp_path)
     state.flags["unlocked_connections"] = ["hunters_cache"]
     locations.location_loop(state)
     assert "Hunter's Cache" in state.io.text()
+
+
+def test_atrel_lore_collection_sets_flag(content, tmp_path):
+    """Finding all three Atrél fragments sets the atrel_lore_found flag."""
+    state = make_state(_player(content), content, ScriptedIO(), StubRandom(),
+                       chronicle_dir=tmp_path)
+    for fragment_id in ("atrel_marker", "atrel_register", "atrel_side_altar"):
+        locations._run_discovery(state, {"id": fragment_id, "lines": ["test"]})
+    assert state.flags.get("atrel_lore_found") is True
+
+
+def test_atrel_lore_partial_does_not_set_flag(content, tmp_path):
+    """Only two of three fragments leaves the flag unset."""
+    state = make_state(_player(content), content, ScriptedIO(), StubRandom(),
+                       chronicle_dir=tmp_path)
+    for fragment_id in ("atrel_marker", "atrel_register"):
+        locations._run_discovery(state, {"id": fragment_id, "lines": ["test"]})
+    assert not state.flags.get("atrel_lore_found")
+
+
+def test_last_altar_unlocks_via_unlock_flag(content):
+    """The Last Altar zone gates by the atrel_lore_found flag (not via NPC)."""
+    state = make_state(_player(content), content, ScriptedIO(["1"]), StubRandom(),
+                       current_location="choir")
+    # Without the flag, the Last Altar is not in the menu.
+    loc = content.locations["choir"]
+    options = locations._build_options(state, loc, [])
+    labels = " ".join(label for label, _ in options)
+    assert "Last Altar" not in labels
+    # Set the flag and rebuild — now the Last Altar appears as travel option.
+    state.flags["atrel_lore_found"] = True
+    options = locations._build_options(state, loc, [])
+    labels = " ".join(label for label, _ in options)
+    assert "Last Altar" in labels
+
+
+def test_flavor_after_overrides_when_flag_set(content):
+    """An enemy with flavor_after picks the alternate line when its flag is True."""
+    from terminalquest.enemy import make_enemy
+    # No flag set → default flavor.
+    default = make_enemy("cantor_vael", content, state_flags={})
+    assert "carried the realm's one voice" in default.flavor
+    # Flag set → overlay applies.
+    overlaid = make_enemy("cantor_vael", content,
+                          state_flags={"atrel_lore_found": True})
+    assert "scaled Atrél's small rite" in overlaid.flavor
+
+
+def test_atrel_peace_ending_requires_offer(content, tmp_path):
+    """Atrél's Peace appears in the ending menu only when atrel_offered is True."""
+    from terminalquest import endings
+    player = _player(content)
+    state_a = make_state(player, content, ScriptedIO(), StubRandom(),
+                        chronicle_dir=tmp_path)
+    # Default state — Atrél's Peace not in available endings.
+    available = [e[0] for e in endings.available(state_a)]
+    assert "atrel_peace" not in available
+    # With atrel_offered flag, the ending becomes available.
+    state_a.flags["atrel_offered"] = True
+    available = [e[0] for e in endings.available(state_a)]
+    assert "atrel_peace" in available
+
+
+def test_dialogue_engine_walks_branches(content):
+    """The dialogue engine follows the chosen response's next pointer."""
+    from terminalquest import dialogue
+    state = make_state(_player(content), content, ScriptedIO(["1"]), StubRandom())
+    tree = {
+        "initial": {
+            "lines": ["start"],
+            "responses": [{"text": "go", "next": "second"}],
+        },
+        "second": {"lines": ["end"]},
+    }
+    final = dialogue.run_dialogue(state, tree)
+    assert final == "second"
+    text = state.io.text()
+    assert "start" in text and "end" in text
+
+
+def test_dialogue_sets_flag_on_choice(content):
+    """A response with sets_flag writes that key into state.flags."""
+    from terminalquest import dialogue
+    state = make_state(_player(content), content, ScriptedIO(["1"]), StubRandom())
+    tree = {
+        "initial": {
+            "lines": ["..."],
+            "responses": [{"text": "yes", "next": None, "sets_flag": "promised"}],
+        },
+    }
+    dialogue.run_dialogue(state, tree)
+    assert state.flags.get("promised") is True
 
 
 def test_scholar_pays_for_unseen_discoveries(tmp_path, content):
