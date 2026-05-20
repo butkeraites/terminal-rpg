@@ -338,16 +338,45 @@ def test_chained_encounter_restores_stamina_when_chain_breaks(content, monkeypat
 
 
 def test_fast_travel_returns_to_the_crossroads(content):
-    """A zone offers 'Walk back to the Crossroads' that drops the player at the hub."""
+    """A zone offers 'Walk back to the Crossroads' that drops the player at the hub.
+
+    The Crossroads then offers a paired 'Return to ...' option so the trip
+    is a true round trip — fast travel out, fast travel back.
+    """
     # At forest: 1 fight, 2 mini-boss, 3 to Crossroads, 4 to Reach,
     # 5 walk back, 6 inspect, 7 stats, 8 save, 9 quit.
-    io = ScriptedIO(["5", "6"])  # walk back, then quit at the Crossroads
+    # At Crossroads after fast-travel: 1 to Gravewatch, 2 to Forest,
+    # 3 Return to Witherwood (new), 4 inspect, 5 stats, 6 save, 7 quit.
+    io = ScriptedIO(["5", "7"])  # walk back, then quit at the Crossroads
     state = make_state(_player(content), content, io, StubRandom(),
                        current_location="forest")
     locations.location_loop(state)
     assert state.current_location == "crossroads"
     assert "Walk back to the Crossroads" in io.text()
     assert "long way" in io.text()  # the descent-aware flavour line
+    assert state.flags.get("fast_travel_return") == "forest"  # round-trip token kept
+
+
+def test_fast_travel_round_trip_returns_to_origin(content):
+    """Fast travel out and back leaves the player at the zone they came from."""
+    # Forest "5"=walk back → Crossroads "3"=Return to Witherwood → forest "9"=quit
+    io = ScriptedIO(["5", "3", "9"])
+    state = make_state(_player(content), content, io, StubRandom(),
+                       current_location="forest")
+    locations.location_loop(state)
+    assert state.current_location == "forest"
+    assert "Return to The Witherwood" in io.text()
+    assert "retrace the long road" in io.text()
+    # The return clears the flag — no orphan return option after a manual walk.
+    assert "fast_travel_return" not in state.flags
+
+
+def test_return_option_absent_until_fast_travel_used(content):
+    """A fresh run at the Crossroads has no 'Return to ...' option — nothing to return to yet."""
+    io = ScriptedIO(["6"])  # quit (still 6 — no return option offered)
+    state = make_state(_player(content), content, io, StubRandom())
+    locations.location_loop(state)
+    assert "Return to" not in io.text()
 
 
 def test_fast_travel_not_offered_at_the_crossroads(content):

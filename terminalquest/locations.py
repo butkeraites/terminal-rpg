@@ -426,6 +426,14 @@ def _build_options(state, loc, fallen):
     # outbound while letting the player shortcut the long walk home.
     if loc.get("kind") == "zone" and not loc.get("boss"):
         options.append(("🛤️  Walk back to the Crossroads", ("fast_travel", None)))
+    # At the Crossroads, if the player fast-travelled here from somewhere,
+    # offer a paired "Return to ..." so the round-trip isn't a long walk back.
+    return_target = state.flags.get("fast_travel_return")
+    if (state.current_location == "crossroads"
+            and return_target in content.locations):
+        target_name = content.locations[return_target]["name"]
+        options.append((f"🛤️  Return to {target_name}",
+                        ("fast_travel_return", return_target)))
     options.append(("🗡️  Inspect Weapon", ("weapon", None)))
     options.append(("View Stats", ("stats", None)))
     options.append(("Save Game", ("save", None)))
@@ -475,10 +483,19 @@ def location_loop(state):
             if try_travel(state, arg):
                 arrived = True
         elif kind == "fast_travel":
+            # Remember where we came from so the Crossroads can offer a return.
+            state.flags["fast_travel_return"] = state.current_location
             io.show_slow("\n🛤️  You leave the grey road behind and walk back "
                          "the long way to the Crossroads.")
             io.pause(1)
             state.current_location = "crossroads"
+            arrived = True
+        elif kind == "fast_travel_return":
+            target_name = content.locations[arg]["name"]
+            io.show_slow(f"\n🛤️  You retrace the long road back to {target_name}.")
+            io.pause(1)
+            state.flags.pop("fast_travel_return", None)
+            state.current_location = arg
             arrived = True
         elif kind == "weapon":
             _inspect_weapon(state)
