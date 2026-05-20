@@ -532,15 +532,17 @@ def test_pact_broker_hidden_on_fresh_chronicle(content, tmp_path):
 
 
 def test_pact_broker_visible_after_warden_completion(tmp_path, content):
-    """Once a Warden run is chronicled, NG+ services become visible at Gravewatch.
+    """Once a run is recorded as cleansed, NG+ services become visible at Gravewatch.
 
     With NG+ unlocked the two extra services push the menu down: Quit is
-    now at 13 (8 services + travel + 4 utilities).
+    now at 13 (8 services + travel + 4 utilities) — Survivor still hidden
+    until 3 cleanses.
     """
     from terminalquest import chronicle
     finished = make_state(_player(content), content, current_location="summit",
                           chronicle_dir=tmp_path)
     chronicle.record(finished, "warden", tmp_path)
+    chronicle.add_cleanse(tmp_path)  # the cleanse increment that gates NG+
     player = _player(content)
     io = ScriptedIO(["1", "13"])
     state = make_state(player, content, io, StubRandom(), chronicle_dir=tmp_path)
@@ -603,6 +605,105 @@ def test_class_consumable_applies_status_in_combat(content):
     assert result == "acted"
     assert status.has_status(warrior, "braced")
     assert "Warrior's Breath" not in warrior.consumables
+
+
+def test_warden_ending_increments_cleanse(tmp_path, content):
+    """Becoming the Warden is a cleanse — the realm has been freed once more."""
+    from terminalquest import chronicle
+    player = _strong_player(content)
+    player.level = 8
+    io = ScriptedIO(["4", "1", "1", "1"])  # to Summit, fight, attack, "be kept"
+    state = make_state(player, content, io, StubRandom(),
+                       current_location="mountain", chronicle_dir=tmp_path)
+    locations.location_loop(state)
+    assert chronicle.cleanses(tmp_path) == 1
+
+
+def test_cleansed_intro_shows_after_first_completion(tmp_path, content):
+    """After 1+ cleanses, the Witherwood intro switches to its cleansed variant.
+
+    Forest menu (no grave, no NG+ services since this isn't a settlement):
+    1 combat pool, 2 mini-boss, 3-4 connections, 5 walk back, 6-9 utilities.
+    """
+    from terminalquest import chronicle
+    finished = make_state(_player(content), content, current_location="summit",
+                          chronicle_dir=tmp_path)
+    chronicle.record(finished, "warden", tmp_path)
+    chronicle.add_cleanse(tmp_path)
+    io = ScriptedIO(["2", "9"])  # crossroads -> forest, then quit
+    state = make_state(_player(content), content, io, StubRandom(),
+                       chronicle_dir=tmp_path)
+    locations.location_loop(state)
+    text = io.text()
+    assert "Sunlight finds the lower branches" in text  # cleansed line
+    assert "given up the pretence of being alive" not in text  # default suppressed
+
+
+def test_purify_ending_unlocked_after_five_cleanses(tmp_path, content):
+    """Five cleanses unlock the Purify Mournhold ending at the Summit."""
+    from terminalquest import chronicle
+    for _ in range(5):
+        chronicle.add_cleanse(tmp_path)
+    player = _strong_player(content)
+    player.level = 8
+    # to Summit (4) -> fight (1) -> attack (1) -> ending menu -> Purify (3)
+    io = ScriptedIO(["4", "1", "1", "3"])
+    state = make_state(player, content, io, StubRandom(),
+                       current_location="mountain", chronicle_dir=tmp_path)
+    locations.location_loop(state)
+    assert chronicle.purified(tmp_path)
+    assert "PURIFIED" in io.text()
+
+
+def test_survivor_hidden_until_three_cleanses(tmp_path, content):
+    """The Survivor only opens shop after 3 cleanses are in the Chronicle."""
+    from terminalquest import chronicle
+    player = _player(content)
+    # Two cleanses — not enough.
+    chronicle.add_cleanse(tmp_path)
+    chronicle.add_cleanse(tmp_path)
+    # Going through the Gravewatch menu with 2 cleanses: NG+ services visible
+    # (pact + echo) but no Survivor yet. Quit is at the bottom.
+    io = ScriptedIO(["1", "13"])  # to Gravewatch (NG+ services visible), quit
+    state = make_state(player, content, io, StubRandom(), chronicle_dir=tmp_path)
+    locations.location_loop(state)
+    assert "Survivor" not in io.text()
+
+
+def test_companion_damage_scales_with_cleanses(tmp_path, content):
+    """A damage companion strikes harder per cleanse in the Chronicle."""
+    from terminalquest import chronicle, combat
+    from terminalquest.companion import make_companion
+    from terminalquest.enemy import make_enemy
+    chronicle.add_cleanse(tmp_path)  # +1 cleanse → +1 to companion power
+    chronicle.add_cleanse(tmp_path)  # +1 more
+    player = _player(content)
+    player.attack = 1
+    player.companion = make_companion(content, "bonesong_acolyte")  # base 8 power
+    enemy = make_enemy("goblin", content)
+    enemy.hp = 10  # base 8 wouldn't finish in one round; 8 + 2 cleanses = 10
+    state = make_state(player, content, ScriptedIO(["1"]), StubRandom(),
+                       chronicle_dir=tmp_path)
+    outcome = combat.run_combat(state, enemy)
+    assert outcome == "victory"
+    assert "cleansed road" in state.io.text()  # the +N hint message
+
+
+def test_cleanse_gated_quest_hidden_until_threshold(tmp_path, content):
+    """Higher-tier quests don't appear on the Board until the cleanse count meets them."""
+    from terminalquest import chronicle
+    player = _player(content)
+    # No cleanses → tier-1 (drowned_thresher_quiet, cleanse_required=1) hidden.
+    state = make_state(player, content, ScriptedIO(["4"]), StubRandom(),
+                       chronicle_dir=tmp_path)
+    locations.quest_board(state)
+    assert "Drowned Threshers" not in state.io.text()
+    # Add one cleanse — now the tier-1 quest appears.
+    chronicle.add_cleanse(tmp_path)
+    state2 = make_state(player, content, ScriptedIO(["5"]), StubRandom(),
+                       chronicle_dir=tmp_path)
+    locations.quest_board(state2)
+    assert "Drowned Threshers" in state2.io.text()
 
 
 def test_fast_travel_not_offered_at_the_crossroads(content):

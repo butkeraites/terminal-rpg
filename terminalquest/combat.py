@@ -29,6 +29,10 @@ CONSUMABLE_EFFECTS = {
     "Mage's Crystal":   {"stamina_full": True},
     "Ranger's Tonic":   {"heal": 60},
     "Cleric's Wafer":   {"heal_full": True},
+    # The Survivor's stock at Gravewatch (gated by cleanse count).
+    "Saint's Reliquary":     {"heal_full": True, "stamina_full": True},
+    "Bonesinger's Salt":     {"status": "braced", "status_turns": 5},
+    "Pall-Banishing Tonic":  {"heal": 200, "status": "evasive", "status_turns": 3},
 }
 
 # Legacy alias kept so the existing shop and tests can still read potion heals.
@@ -54,6 +58,7 @@ QUESTS = {
         "target_enemy": "wolf",
         "needed": 3,
         "reward_gold": 100,
+        "cleanse_required": 0,
         "flavor": "The wolves at the wood-edge have learned the taste of people. Thin them.",
     },
     "scavver_purge": {
@@ -61,6 +66,7 @@ QUESTS = {
         "target_enemy": "goblin",
         "needed": 4,
         "reward_gold": 80,
+        "cleanse_required": 0,
         "flavor": "They are crawling closer to the village fire each night.",
     },
     "bandit_hunt": {
@@ -68,7 +74,32 @@ QUESTS = {
         "target_enemy": "bandit",
         "needed": 3,
         "reward_gold": 150,
+        "cleanse_required": 0,
         "flavor": "Three farms have gone silent this month.",
+    },
+    "drowned_thresher_quiet": {
+        "name": "Lay the Drowned Threshers to Rest",
+        "target_enemy": "drowned_thresher",
+        "needed": 4,
+        "reward_gold": 250,
+        "cleanse_required": 1,
+        "flavor": "They still reap. Stop them and the Reach can be sown again.",
+    },
+    "magistrate_unmade": {
+        "name": "Unseat the Pall-Sworn Magistrates",
+        "target_enemy": "pall_magistrate",
+        "needed": 3,
+        "reward_gold": 400,
+        "cleanse_required": 2,
+        "flavor": "Mourncross will not be itself while they keep passing sentence.",
+    },
+    "warden_hunt": {
+        "name": "Hunt the Stone Sentinels",
+        "target_enemy": "stone_golem",
+        "needed": 3,
+        "reward_gold": 600,
+        "cleanse_required": 3,
+        "flavor": "They guard tombs whose names have worn off. Free them.",
     },
 }
 
@@ -145,27 +176,33 @@ def _apply_lifesteal(player, damage, io):
                 f"({player.hp}/{player.max_hp}).")
 
 
-def _companion_act(player, enemy, io):
+def _companion_act(state, enemy):
     """Run the companion's once-per-round action (if any). Spirit-aid, invulnerable.
 
     Damage companions hit the enemy directly (no defense, no crits). Heal
-    companions mend the player. Both fire after the player's turn and before
-    the enemy's, so a companion strike can finish a fight.
+    companions mend the player. Companion power scales with the Chronicle's
+    cleanse count — every cleansed run lends the spirits a bit more strength.
     """
+    from . import chronicle as _chronicle
+    player, io = state.player, state.io
     comp = player.companion
     if comp is None:
         return
+    bonus = _chronicle.cleanses(state.chronicle_dir)
+    power = comp.power + bonus
     if comp.kind == "damage":
-        dealt = min(comp.power, enemy.hp)
+        dealt = min(power, enemy.hp)
         enemy.hp -= dealt
-        io.show(f"\n🌀 {comp.name} strikes — {dealt} damage to {enemy.name}.")
+        scaling = f" (+{bonus} from the cleansed road)" if bonus > 0 else ""
+        io.show(f"\n🌀 {comp.name} strikes — {dealt} damage to {enemy.name}{scaling}.")
     elif comp.kind == "heal":
         if player.hp >= player.max_hp:
             return
         before = player.hp
-        player.heal(comp.power)
+        player.heal(power)
+        scaling = f" (+{bonus} from the cleansed road)" if bonus > 0 else ""
         io.show(f"\n💚 {comp.name} mends you — +{player.hp - before} HP "
-                f"({player.hp}/{player.max_hp}).")
+                f"({player.hp}/{player.max_hp}){scaling}.")
 
 
 def _fire_procs(player, enemy, dodged, crit, io):
@@ -578,7 +615,7 @@ def run_combat(state, enemy, *, refresh_after=True):
             break
 
         # --- companion turn (between player and enemy) ---
-        _companion_act(player, enemy, io)
+        _companion_act(state, enemy)
         if not enemy.is_alive():
             outcome = "victory"
             break

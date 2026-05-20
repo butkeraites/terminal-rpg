@@ -17,7 +17,7 @@
       "Its people do not ask your name. Names are for the dead."
     ],
     "connections": ["crossroads"],
-    "services": ["shop", "inn", "smith", "quartermaster", "pact_broker", "echo_trader", "night_hunt", "quest_board"]
+    "services": ["shop", "inn", "smith", "quartermaster", "pact_broker", "echo_trader", "night_hunt", "quest_board", "survivor"]
   },
   "forest": {
     "name": "The Witherwood",
@@ -28,6 +28,11 @@
       "🌲 The Witherwood, where the trees have given up the pretence of being alive.",
       "This is only the realm's edge; the grey blew in here first, and thinnest.",
       "The wood still half-remembers being green. It will not remember much longer."
+    ],
+    "intro_cleansed": [
+      "🌲 The Witherwood. Sunlight finds the lower branches again — thin, but it finds them.",
+      "The road runs straight where you remember it bending wrong.",
+      "The wood is starting to remember being green. Slowly. Slowly."
     ],
     "connections": ["crossroads", "reach"],
     "encounters": [
@@ -44,6 +49,11 @@
       "🌊 The Sodden Reach — the farmland the floodwater rose up to take back.",
       "This country fed a kingdom once. Now it drowns the grain it grows,",
       "again and again, like a thing trying to apologise and not knowing how."
+    ],
+    "intro_cleansed": [
+      "🌊 The Sodden Reach. The water has drawn back a little — you can see furrows again.",
+      "The grain that grows now does not drown. Not all of it.",
+      "Someone has begun to mend the dyke. Their tools are still here."
     ],
     "connections": ["forest", "drowned_holds"],
     "encounters": [
@@ -70,6 +80,11 @@
       "🌊 The Drowned Holds — the villages the Reach took down with it.",
       "The streets are still streets. The doors are still shut. The dead",
       "are still in the rooms behind them. The water is grief, kept liquid."
+    ],
+    "intro_cleansed": [
+      "🌊 The Drowned Holds. The water has receded from some of the lanes.",
+      "A few of the doors stand open now — the dead behind them have been laid down.",
+      "Names are scratched into the doorposts where there used to be only silence."
     ],
     "connections": ["reach", "cave"],
     "encounters": [
@@ -99,6 +114,11 @@
       "Everything the drowned country loses, it loses down through here.",
       "The Pall is the kingdom's own hunger. This is the kingdom's throat."
     ],
+    "intro_cleansed": [
+      "🕳️  The Gullet. The wound is closing. The cold air still rises, but less of it.",
+      "Where the throat used to drink, the throat is learning to swallow nothing.",
+      "Something has begun to grow at the mouth of the cave. Pale, thin — but green."
+    ],
     "connections": ["drowned_holds", "mourncross"],
     "encounters": [
       {"type": "combat", "enemies": ["giant_bat", "cave_troll", "dark_slime"], "pick": "random"},
@@ -114,6 +134,11 @@
       "🏛️  Mourncross, the capital — not burned, not broken, only emptied.",
       "Every door stands open. Every hearth is cold. Every name is gone.",
       "The city did not fall. It was forgotten, all in one breath, and obeyed."
+    ],
+    "intro_cleansed": [
+      "🏛️  Mourncross. A few of the hearths are warm. A few of the doors are shut.",
+      "Names are being written back into the doorposts — slowly, one at a time.",
+      "The city is being remembered. It is harder than the forgetting."
     ],
     "connections": ["cave", "choir"],
     "encounters": [
@@ -140,6 +165,11 @@
       "⛪ The Unanswered Choir — the cathedral where a kingdom knelt to forget.",
       "The rite was performed here, in full, and it was answered after a fashion.",
       "What knelt for absolution rose up as the Pall. It has been singing since."
+    ],
+    "intro_cleansed": [
+      "⛪ The Unanswered Choir. The hymn has gone quiet in the lower nave.",
+      "Someone has begun to read the names back from the lectern — slowly, aloud.",
+      "What was unremembered is being said again. The rite is being undone."
     ],
     "connections": ["mourncross", "mountain"],
     "encounters": [
@@ -168,6 +198,11 @@
       "This is the last ground that is still ground. What lived on this slope",
       "did not die so much as forget the difference, and go on climbing."
     ],
+    "intro_cleansed": [
+      "⛰️  The Ashen Climb. The fall is thinner — half ash, half something cleaner.",
+      "The penitents who climbed and forgot have started, here and there, to stop.",
+      "Some of them are sitting down. Some are remembering names that aren't theirs."
+    ],
     "connections": ["choir", "summit"],
     "encounters": [
       {"type": "combat", "enemies": ["mountain_ogre", "ice_wraith", "stone_golem"], "pick": "random"},
@@ -184,6 +219,11 @@
       "☁️  The Shrouded Summit. The Pall pours off the dark ahead like smoke off a pyre.",
       "This high, it has stopped pretending to be weather, or grief, or anything but hunger.",
       "Something waits in it that was a person once — who climbed here, and won."
+    ],
+    "intro_cleansed": [
+      "☁️  The Shrouded Summit. The Pall pours less heavy now — you can see further into it.",
+      "Something waits in it still. It is wearing the face of the last hero you fed it.",
+      "It is wearing many faces, now. They are all your own. They are all you have left it."
     ],
     "connections": ["mountain"],
     "encounters": [

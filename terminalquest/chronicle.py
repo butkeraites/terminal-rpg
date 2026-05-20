@@ -24,8 +24,9 @@ def _path(chronicle_dir):
 
 
 def _load_raw(chronicle_dir):
-    """Return the whole chronicle. Adds Echo currency and owned accessories
-    for the Reborn prestige system. Never raises.
+    """Return the whole chronicle. Adds Echo currency, owned accessories,
+    cleanse count, and a 'purified' flag for the late-game endings. Never
+    raises.
     """
     try:
         data = json.loads(_path(chronicle_dir).read_text(encoding="utf-8"))
@@ -33,14 +34,19 @@ def _load_raw(chronicle_dir):
         unlocks = data.get("unlocks", [])
         owned = data.get("owned_accessories", [])
         echoes = data.get("echoes", 0)
+        cleanses = data.get("cleanses", 0)
+        purified = data.get("purified", False)
         return {
             "entries": list(entries) if isinstance(entries, list) else [],
             "unlocks": list(unlocks) if isinstance(unlocks, list) else [],
             "owned_accessories": list(owned) if isinstance(owned, list) else [],
             "echoes": int(echoes) if isinstance(echoes, (int, float)) else 0,
+            "cleanses": int(cleanses) if isinstance(cleanses, (int, float)) else 0,
+            "purified": bool(purified),
         }
     except (OSError, json.JSONDecodeError, AttributeError, TypeError):
-        return {"entries": [], "unlocks": [], "owned_accessories": [], "echoes": 0}
+        return {"entries": [], "unlocks": [], "owned_accessories": [],
+                "echoes": 0, "cleanses": 0, "purified": False}
 
 
 def load(chronicle_dir=DEFAULT_DIR):
@@ -71,13 +77,16 @@ def _write(payload, chronicle_dir):
 
 
 def _save(raw, chronicle_dir):
-    """Atomically write the whole chronicle (entries + unlocks + Reborn store)."""
+    """Atomically write the whole chronicle (entries + unlocks + Reborn store
+    + the v0.7 progression layer)."""
     _write({
         "version": CHRONICLE_VERSION,
         "entries": raw["entries"],
         "unlocks": raw["unlocks"],
         "owned_accessories": raw["owned_accessories"],
         "echoes": raw["echoes"],
+        "cleanses": raw["cleanses"],
+        "purified": raw["purified"],
     }, chronicle_dir)
 
 
@@ -128,13 +137,11 @@ def wardens(entries):
 def has_completed_run(chronicle_dir=DEFAULT_DIR):
     """True if the Chronicle has a record of any completed boss run.
 
-    Either fate counts: a Warden ending (kept by the Pall) or a Reborn
-    ending (refused). Used to gate New Game Plus services like the
-    Pact-Broker behind 'beat the game at least once.'
+    Either fate counts: a Warden ending (kept by the Pall), a Reborn ending
+    (refused), or a Purify ending (the cycle ended). The cleanse counter
+    increments on every completion, so it is the canonical signal here.
     """
-    if echoes(chronicle_dir) > 0:
-        return True  # Reborn at least once
-    return any(e.get("fate") == "warden" for e in load(chronicle_dir))
+    return cleanses(chronicle_dir) > 0
 
 
 def echoes(chronicle_dir=DEFAULT_DIR):
@@ -170,3 +177,32 @@ def own_accessory(accessory_id, chronicle_dir=DEFAULT_DIR):
     if accessory_id not in raw["owned_accessories"]:
         raw["owned_accessories"].append(accessory_id)
         _save(raw, chronicle_dir)
+
+
+def cleanses(chronicle_dir=DEFAULT_DIR):
+    """How many completed runs have purged a measure of the Pall from the realm.
+
+    A 'cleanse' is any completed run — Warden or Reborn. Drives the v0.7
+    multi-run progression: per-zone intro variants, the Survivor NPC at
+    Gravewatch, scaling companions, gated quests, and the Purify ending.
+    """
+    return _load_raw(chronicle_dir)["cleanses"]
+
+
+def add_cleanse(chronicle_dir=DEFAULT_DIR):
+    """Record that another run has been completed. Called by both endings."""
+    raw = _load_raw(chronicle_dir)
+    raw["cleanses"] += 1
+    _save(raw, chronicle_dir)
+
+
+def purified(chronicle_dir=DEFAULT_DIR):
+    """True once the player has chosen the Purify Mournhold ending."""
+    return _load_raw(chronicle_dir)["purified"]
+
+
+def mark_purified(chronicle_dir=DEFAULT_DIR):
+    """Permanently mark this Chronicle as having seen the Purify ending."""
+    raw = _load_raw(chronicle_dir)
+    raw["purified"] = True
+    _save(raw, chronicle_dir)

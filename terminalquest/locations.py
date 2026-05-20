@@ -8,7 +8,7 @@ until the player dies, wins, or quits.
 from . import chronicle, saves
 from .accessory import make_accessory
 from .armor import make_armor
-from .combat import CLASS_CONSUMABLE, QUESTS, run_combat
+from .combat import CLASS_CONSUMABLE, QUESTS, _consumable_label, run_combat
 from .companion import make_companion
 from .enemy import make_enemy, make_hollowed, make_warden
 from .ui import hud, show_stats
@@ -29,6 +29,13 @@ WEAPON_DROP_CHANCE = 0.35
 NIGHT_HUNT_COST = 40
 NIGHT_HUNT_STAT_BOOST = 1.5  # enemy hp/atk multiplied by this for night hunts
 NIGHT_HUNT_REWARD_MULT = 2.5  # XP and gold rewards scale up the same way
+SURVIVOR_CLEANSES_REQUIRED = 3  # the Survivor NPC appears after this many cleanses
+
+SURVIVOR_STOCK = [
+    ("Saint's Reliquary",     800),
+    ("Bonesinger's Salt",     600),
+    ("Pall-Banishing Tonic", 1000),
+]
 
 _SERVICE_LABELS = {
     "shop": "🏪 Visit the Shop",
@@ -39,11 +46,13 @@ _SERVICE_LABELS = {
     "echo_trader": "🕯️  Visit the Echo Trader",
     "night_hunt": f"🌑 Hunt at Night ({NIGHT_HUNT_COST} gold)",
     "quest_board": "📜 Read the Quest Board",
+    "survivor": "🕊️  Speak with the Survivor",
 }
 
 REBORN_ECHO_BASE = 30  # baseline Echo for a Reborn — boosted by what was done
 REBORN_ECHO_PER_LEVEL = 3
 REBORN_ECHO_PER_UNLOCK = 5
+PURIFY_CLEANSES_REQUIRED = 5  # the realm needs to be cleansed this many times
 
 
 def _buy_potion(player, io, name, cost):
@@ -160,6 +169,38 @@ def _run_service(state, service):
         night_hunt(state)
     elif service == "quest_board":
         quest_board(state)
+    elif service == "survivor":
+        survivor(state)
+
+
+def survivor(state):
+    """The Gravewatch Survivor: a fighter who outlived the Pall, now selling relics."""
+    player, io = state.player, state.io
+    io.clear()
+    io.show_slow("🕊️  The Survivor — pale, scarred, still warm. She has fought it longer.\n")
+    while True:
+        io.show(hud(player))
+        for index, (name, cost) in enumerate(SURVIVOR_STOCK, start=1):
+            io.show(f"\n{index}. {name} ({cost} gold)")
+            io.show(f"   {_consumable_label(name)}")
+        leave_idx = len(SURVIVOR_STOCK) + 1
+        io.show(f"\n{leave_idx}. Leave")
+        choice = io.ask("\nWhat would you like? ")
+        if choice == str(leave_idx):
+            return
+        if not (choice.isdigit() and 1 <= int(choice) <= len(SURVIVOR_STOCK)):
+            io.show("\n❌ Invalid choice!")
+            io.pause(1)
+            continue
+        name, cost = SURVIVOR_STOCK[int(choice) - 1]
+        if player.gold < cost:
+            io.show("\n❌ Not enough gold!")
+            io.pause(1)
+            continue
+        player.gold -= cost
+        player.consumables.append(name)
+        io.show(f"\n✅ The Survivor presses the {name} into your hand.")
+        io.pause(1)
 
 
 def _quest_status(state, quest_id):
@@ -175,9 +216,16 @@ def _quest_status(state, quest_id):
 
 
 def quest_board(state):
-    """The Gravewatch quest board: pick up bounty quests, claim rewards on completion."""
+    """The Gravewatch quest board: pick up bounty quests, claim rewards on completion.
+
+    Higher-tier bounties are gated by cleanse count — the Board only pins a
+    new slip after each successful run, so deeper quests open as the realm
+    is cleansed.
+    """
     player, io = state.player, state.io
-    catalog = list(QUESTS.items())
+    cleanses = chronicle.cleanses(state.chronicle_dir)
+    catalog = [(qid, q) for qid, q in QUESTS.items()
+               if q.get("cleanse_required", 0) <= cleanses]
     io.clear()
     io.show_slow("📜 The Quest Board — slips of vellum pinned with rust nails.\n")
     while True:
@@ -688,12 +736,14 @@ def _run_summary(state):
 def _victory_screen(state):
     """The end screen: the Warden falls — and the player chooses their fate.
 
-    The default ending is to be kept by the Pall (chronicled as Warden, the
-    next Summit boss). Reborn is the prestige alternative: you refuse to be
-    kept, the Pall takes its toll (you lose this run's hero entirely), but
-    you carry away Echoes — the only coin that buys back what the Pall takes.
+    Two endings, with a third unlocked once the realm has been cleansed
+    PURIFY_CLEANSES_REQUIRED times. Warden = kept by the Pall (canon).
+    Reborn = refuse and earn Echoes (prestige). Purify = end the cycle
+    forever (mythic, gated).
     """
     player, io = state.player, state.io
+    cleanses = chronicle.cleanses(state.chronicle_dir)
+    can_purify = cleanses >= PURIFY_CLEANSES_REQUIRED
     io.clear()
     io.show_slow("The Shadow Warden comes apart like wet ash. The Pall, finding")
     io.show_slow("itself without a Warden, turns to the soul still standing on")
@@ -704,13 +754,23 @@ def _victory_screen(state):
     io.show("\nOr you can refuse it. The Pall does not let go for nothing.")
     io.show("It will take everything you have, except what the dead carry —")
     io.show("the Echoes of what you've done. With those, you can come back.")
+    if can_purify:
+        io.show("\nOr — for the first and last time — you can refuse the cycle itself.")
+        io.show("Five times the realm has been cleansed by your hand. The Pall is thin")
+        io.show("enough now to be unmade. You will not come back from this choice.")
     io.show("\n1. Be kept by the Pall  (end the run, become the Warden)")
     io.show("2. Reborn               (end this hero — earn Echoes — start again)")
+    if can_purify:
+        io.show("3. 🌅 Purify Mournhold  (end the cycle — the Pall is undone)")
     choice = io.ask("\nYour choice? ")
     if choice == "2":
         _reborn_screen(state)
         return
+    if choice == "3" and can_purify:
+        _purify_screen(state)
+        return
     chronicle.record(state, "warden", state.chronicle_dir)
+    chronicle.add_cleanse(state.chronicle_dir)
     io.clear()
     io.show("=" * 50)
     io.show("🥀  THE PALL KEEPS YOU")
@@ -731,6 +791,7 @@ def _reborn_screen(state):
                      + player.level * REBORN_ECHO_PER_LEVEL
                      + unlock_count * REBORN_ECHO_PER_UNLOCK)
     chronicle.add_echoes(echoes_earned, state.chronicle_dir)
+    chronicle.add_cleanse(state.chronicle_dir)
     # The Reborn hero is NOT chronicled as a Warden — they refused the Pall.
     io.clear()
     io.show_slow("You turn the Pall's reach aside. The Summit empties of you,")
@@ -747,6 +808,34 @@ def _reborn_screen(state):
     io.show("=" * 50)
     io.show("\nStart a new run from the title screen — visit the Echo Trader")
     io.show("at Gravewatch to spend what you earned.")
+    _run_summary(state)
+    io.show("\nThank you for playing Mournhold.")
+
+
+def _purify_screen(state):
+    """The mythic ending — the Pall is undone permanently."""
+    player, io = state.player, state.io
+    chronicle.mark_purified(state.chronicle_dir)
+    chronicle.add_cleanse(state.chronicle_dir)
+    io.clear()
+    io.show_slow("You do not let the Pall take you, and you do not refuse it,")
+    io.show_slow("and you do not climb back down. You stand still, and you")
+    io.show_slow("speak — every name the kingdom forgot, from the first sealed gate")
+    io.show_slow("to the last hold under the silt. You speak them all. Aloud. In order.\n")
+    io.pause(1)
+    io.show_slow("The Pall stops, the way a wound stops. The summit goes quiet,")
+    io.show_slow("the way a long-held breath goes quiet. The grey thins, and thins,")
+    io.show_slow("and is gone. The road behind you is bright. The road behind that")
+    io.show_slow("is bright. The kingdom remembers itself.\n")
+    io.pause(2)
+    io.show("=" * 50)
+    io.show("🌅  MOURNHOLD IS PURIFIED")
+    io.show(f"{player.name} the {player.class_name} — who said the names back.")
+    io.show("\nThe Pall is undone. The Warden is no more. The road is only road.")
+    io.show("Future climbers will find a kingdom, not a kingdom's grave.")
+    io.show("\nThe Chronicle remembers — you will see, on every next run,")
+    io.show("that Mournhold lies PURIFIED. The cycle is broken.")
+    io.show("=" * 50)
     _run_summary(state)
     io.show("\nThank you for playing Mournhold.")
 
@@ -843,15 +932,16 @@ def _inspect_weapon(state):
 
 
 def _service_is_visible(state, service):
-    """Some services are New Game Plus unlocks — hidden until the first run ends.
+    """Some services are New Game Plus unlocks — hidden until the kingdom is cleansed.
 
-    The Pact-Broker and the Echo Trader both deal in things you only acquire
-    after you've reached the Summit at least once. Hiding them on the first
-    run gives the brother-style discovery loop: beat the game, then a new
-    layer of services opens up.
+    The Pact-Broker and the Echo Trader appear after the first ending. The
+    Survivor (a deeper NG+ vendor) appears after the realm has been cleansed
+    SURVIVOR_CLEANSES_REQUIRED times.
     """
     if service in ("pact_broker", "echo_trader"):
         return chronicle.has_completed_run(state.chronicle_dir)
+    if service == "survivor":
+        return chronicle.cleanses(state.chronicle_dir) >= SURVIVOR_CLEANSES_REQUIRED
     return True
 
 
@@ -904,7 +994,13 @@ def location_loop(state):
         loc = content.locations[state.current_location]
         io.clear()
         if arrived:
-            for line in loc["intro"]:
+            # Cleansed intros (v0.7) show after the first completed run — the
+            # world begins to remember itself as the player keeps climbing.
+            intro_key = ("intro_cleansed"
+                         if chronicle.cleanses(state.chronicle_dir) >= 1
+                         and "intro_cleansed" in loc
+                         else "intro")
+            for line in loc[intro_key]:
                 io.show_slow(line)
             arrived = False
         io.show(f"\n📍 {loc['name']}")

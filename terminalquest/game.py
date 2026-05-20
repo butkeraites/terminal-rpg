@@ -134,11 +134,18 @@ def chronicle_screen(io, content, chronicle_dir):
     """Show the cross-run Chronicle: who fell, who was kept, what they unlocked."""
     entries = chronicle.load(chronicle_dir)
     held = chronicle.unlocked(chronicle_dir)
+    cleanses = chronicle.cleanses(chronicle_dir)
+    echoes = chronicle.echoes(chronicle_dir)
     io.clear()
     io.show("📖 The Chronicle of the Fallen\n")
     io.show(f"   {len(entries)} have walked the road into Mournhold.")
     io.show(f"   {len(chronicle.fallen(entries))} lie unquiet still; "
             f"{len(chronicle.wardens(entries))} broke the Pall and were kept by it.")
+    if cleanses:
+        suffix = " — Mournhold lies PURIFIED." if chronicle.purified(chronicle_dir) else ""
+        io.show(f"\n   Cleanses: {cleanses}{suffix}")
+    if echoes:
+        io.show(f"   Echoes: {echoes}")
     earned = [comp["name"]
               for slot in content.components.values()
               for comp in slot.values()
