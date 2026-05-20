@@ -849,6 +849,17 @@ def _run_discovery(state, encounter):
             io.show_slow("In the Pre-Pall Shrine, a folded square of vellum awaits.")
             io.show_slow("It is the map he left for the climber who would read enough.")
             io.pause(2)
+    # SQ8: Lost Verse fragments accumulate cross-run. Four found → the verse
+    # is known. The player can Sing it at the Last Altar of Atrél thereafter.
+    if discovery_id.startswith("lost_verse_"):
+        chronicle.add_lost_verse_fragment(discovery_id, state.chronicle_dir)
+        count = chronicle.lost_verse_fragments(state.chronicle_dir)
+        if count == 4 and not state.flags.get("lost_verse_known"):
+            state.flags["lost_verse_known"] = True
+            io.show_slow("\n🎼 Four lines. The whole verse, in your throat now.")
+            io.show_slow("It was the verse the kingdom would not sing.")
+            io.show_slow("At Atrél's altar, you will be able to sing it.")
+            io.pause(2)
     seen = set(state.flags["discoveries_seen"])
     if (set(ATREL_LORE_FRAGMENTS).issubset(seen)
             and not state.flags.get("atrel_lore_found")):
@@ -1516,6 +1527,46 @@ def _maybe_open_border(state):
         state.flags["border_open"] = True
 
 
+def _maybe_remember_verse(state):
+    """SQ8 — if all 4 Lost Verse fragments are already known cross-run,
+    a new character begins with the verse remembered. The flag enables the
+    Sing-the-Verse service at the Last Altar of Atrél.
+    """
+    if state.flags.get("lost_verse_known"):
+        return
+    if chronicle.lost_verse_fragments(state.chronicle_dir) >= 4:
+        state.flags["lost_verse_known"] = True
+
+
+def sing_the_verse(state):
+    """SQ8 — sing the Lost Verse at the Last Altar of Atrél.
+
+    Per-run reward: +1 to all stats (max_hp, attack, defense). Once sung in a
+    run, the option goes quiet — the Pall un-remembers each verse you sing.
+    Each new character climbs again carrying the verse in their throat.
+    """
+    player, io = state.player, state.io
+    io.clear()
+    io.show_slow("🎼 You stand at Atrél's altar and breathe in.")
+    io.show_slow("The verse is in your throat. It has been there all the climb.")
+    io.show_slow("You sing it. Not loudly. The altar is small. The verse is small.")
+    io.show("")
+    io.show_slow("  'We remember the holds. We remember the gates.'")
+    io.show_slow("  'We remember the names. We remember the rain.'")
+    io.show_slow("  'We remember the bread we did not give.'")
+    io.show_slow("  'We remember. We remember. We remember.'")
+    io.show("")
+    io.show_slow("Something in the altar settles. Atrél, perhaps, accepting it.")
+    io.show_slow("Something in you settles too — straighter, surer, kinder.")
+    player.max_hp += 5
+    player.hp = min(player.hp + 5, player.max_hp)
+    player.attack += 1
+    player.defense += 1
+    io.show(f"\n   +5 max HP  +1 attack  +1 defense  ({player.name} remembers)")
+    state.flags["lost_verse_sung"] = True
+    io.pause(2)
+
+
 def _service_is_visible(state, service):
     """Some services are New Game Plus unlocks — hidden until the kingdom is cleansed.
 
@@ -1602,6 +1653,11 @@ def _build_options(state, loc, fallen):
     if (state.current_location == "pre_pall_shrine"
             and state.flags.get("piranesi_map_unlocked")):
         options.append(("🪶 Read Piranesi's map", ("piranesi_map", None)))
+    # SQ8 — Sing the Lost Verse at the Last Altar of Atrél. Per-run, once.
+    if (state.current_location == "last_altar"
+            and state.flags.get("lost_verse_known")
+            and not state.flags.get("lost_verse_sung")):
+        options.append(("🎼 Sing the Lost Verse", ("sing_verse", None)))
     # At the Crossroads, if the player fast-travelled here from somewhere,
     # offer a paired "Return to ..." so the round-trip isn't a long walk back.
     return_target = state.flags.get("fast_travel_return")
@@ -1625,6 +1681,7 @@ def location_loop(state):
     wardens = chronicle.wardens(_entries)
     arrived = True
     _maybe_open_border(state)  # 2-cleanse signal that the world has neighbours
+    _maybe_remember_verse(state)  # SQ8: cross-run knowledge of the Lost Verse
     while player.is_alive():
         loc = content.locations[state.current_location]
         # SQ3: each arrival in a zone increments its per-run visit count.
@@ -1682,6 +1739,8 @@ def location_loop(state):
             _pet_the_cat(state)
         elif kind == "piranesi_map":
             _read_piranesi_map(state)
+        elif kind == "sing_verse":
+            sing_the_verse(state)
         elif kind == "fast_travel_return":
             target_name = content.locations[arg]["name"]
             io.show_slow(f"\n🛤️  You retrace the long road back to {target_name}.")

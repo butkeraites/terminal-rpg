@@ -39,6 +39,7 @@ def _load_raw(chronicle_dir):
         purified = data.get("purified", False)
         cat_pets = data.get("cat_pets", 0)
         piranesi_ids = data.get("piranesi_notes_seen_ids", [])
+        verse_ids = data.get("lost_verse_fragments_seen_ids", [])
         return {
             "entries": list(entries) if isinstance(entries, list) else [],
             "unlocks": list(unlocks) if isinstance(unlocks, list) else [],
@@ -52,12 +53,15 @@ def _load_raw(chronicle_dir):
                                         if isinstance(piranesi_ids, list) else []),
             "piranesi_notes_seen": (len(piranesi_ids)
                                     if isinstance(piranesi_ids, list) else 0),
+            "lost_verse_fragments_seen_ids": (list(verse_ids)
+                                              if isinstance(verse_ids, list) else []),
         }
     except (OSError, json.JSONDecodeError, AttributeError, TypeError):
         return {"entries": [], "unlocks": [], "owned_accessories": [],
                 "owned_pets": [], "echoes": 0, "cleanses": 0, "purified": False,
                 "cat_pets": 0, "piranesi_notes_seen_ids": [],
-                "piranesi_notes_seen": 0}
+                "piranesi_notes_seen": 0,
+                "lost_verse_fragments_seen_ids": []}
 
 
 def load(chronicle_dir=DEFAULT_DIR):
@@ -101,6 +105,8 @@ def _save(raw, chronicle_dir):
         "purified": raw["purified"],
         "cat_pets": raw["cat_pets"],
         "piranesi_notes_seen_ids": raw.get("piranesi_notes_seen_ids", []),
+        "lost_verse_fragments_seen_ids":
+            raw.get("lost_verse_fragments_seen_ids", []),
     }, chronicle_dir)
 
 
@@ -268,4 +274,23 @@ def add_piranesi_note(note_id, chronicle_dir=DEFAULT_DIR):
     if note_id not in seen:
         seen.append(note_id)
         raw["piranesi_notes_seen"] = len(seen)
+        _save(raw, chronicle_dir)
+
+
+def lost_verse_fragments(chronicle_dir=DEFAULT_DIR):
+    """How many fragments of the Lost Verse the player has read (cross-run).
+
+    SQ8 — the Lost Verse. There are four fragments scattered across the
+    deep zones. At 4 found, the verse is known; the player can Sing it at
+    the Last Altar of Atrél for a per-run +1 to all stats.
+    """
+    return len(_load_raw(chronicle_dir).get("lost_verse_fragments_seen_ids", []))
+
+
+def add_lost_verse_fragment(fragment_id, chronicle_dir=DEFAULT_DIR):
+    """Record that this fragment of the Lost Verse has been read. Idempotent."""
+    raw = _load_raw(chronicle_dir)
+    seen = raw.setdefault("lost_verse_fragments_seen_ids", [])
+    if fragment_id not in seen:
+        seen.append(fragment_id)
         _save(raw, chronicle_dir)

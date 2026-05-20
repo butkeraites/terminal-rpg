@@ -298,6 +298,15 @@
          "Older hand, on the floor by the column: 'I have tested this with eleven words.'",
          "'Ten of them pass. The word \"name\" does not. The column eats that one.'",
          "'I do not understand. I have written the eleven down. The list keeps me company.'"
+       ]},
+      {"type": "discovery", "id": "lost_verse_1", "label": "🎼 A torn page beneath the choirmaster's stall",
+       "lines": [
+         "🎼 A page torn from a hymnal, tucked beneath the choirmaster's stall.",
+         "The script is the rite's — the very rite that unremembered the kingdom.",
+         "And the verse, alone among the rite's verses, is a remembering:",
+         "       'We remember the holds. We remember the gates.'",
+         "Someone tore this page out before the rite was performed. They tore four pages.",
+         "This is one. Three more are somewhere. The verse was four lines."
        ]}
     ]
   },
@@ -613,7 +622,16 @@
     ],
     "connections": ["choir"],
     "encounters": [
-      {"type": "dialogue", "dialogue_id": "atrel", "label": "📿 Speak with Atrél"}
+      {"type": "dialogue", "dialogue_id": "atrel", "label": "📿 Speak with Atrél"},
+      {"type": "discovery", "id": "lost_verse_2", "label": "🎼 A page Atrél has been keeping",
+       "lines": [
+         "🎼 Atrél, without speaking, places a folded page on the altar between you.",
+         "It is older than the page you found in the Choir. Same rite. Same script.",
+         "But the words are in Atrél's hand — copied here for safekeeping, long ago.",
+         "       'We remember the names. We remember the rain.'",
+         "Beneath the line, in the smallest writing: 'I have kept this for whoever came back.'",
+         "'A god of forgetting cannot sing a remembering. Only one of you can. Find the others.'"
+       ]}
     ]
   },
   "pre_pall_shrine": {
@@ -646,6 +664,15 @@
          "Mournhold's archives know no Verren. No kingdom by that name has ever existed.",
          "The script is older than the language Mournhold was written in.",
          "Whatever Verren was, it was here first. And it ended."
+       ]},
+      {"type": "discovery", "id": "lost_verse_3", "label": "🎼 A line cut into the altar's underside",
+       "lines": [
+         "🎼 You kneel beneath the altar of the Pre-Pall Shrine and look up.",
+         "On the underside of the stone, where only the kneeling see, a line is cut.",
+         "The script is older than the tablet, older than the kingdom, older than the rite.",
+         "       'We remember the bread we did not give.'",
+         "Someone carved this here knowing the rite would come — and knowing the kneelers would find it.",
+         "Whoever it was, they had a long view, and a heavy one."
        ]}
     ]
   },
@@ -665,7 +692,16 @@
     ],
     "connections": ["pre_pall_shrine"],
     "encounters": [
-      {"type": "dialogue", "dialogue_id": "cael", "label": "▒  Speak with Cael"}
+      {"type": "dialogue", "dialogue_id": "cael", "label": "▒  Speak with Cael"},
+      {"type": "discovery", "id": "lost_verse_4", "label": "🎼 A line Cael's mouth still shapes",
+       "lines": [
+         "🎼 Cael's open mouth still shapes a word, even as the stone grows through it.",
+         "You lean close. You do not look at the stone. You look at the word.",
+         "It is the last line. The line they cut out of her so she would not finish the verse.",
+         "       'We remember. We remember. We remember.'",
+         "She has been holding the line in her open mouth for as long as she has been the seal.",
+         "She did not let them un-remember it. Now you have it. Now it can be sung."
+       ]}
     ]
   }
 }

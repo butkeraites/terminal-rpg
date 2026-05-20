@@ -1268,6 +1268,91 @@ def test_locations_have_ten_piranesi_notes_total(content):
     )
 
 
+def test_lost_verse_fragment_increments_chronicle_counter(content, tmp_path):
+    """SQ8 — reading a lost_verse_-prefixed discovery records it cross-run."""
+    from terminalquest import chronicle
+    state = make_state(_player(content), content, ScriptedIO(), StubRandom(),
+                       chronicle_dir=tmp_path)
+    assert chronicle.lost_verse_fragments(tmp_path) == 0
+    locations._run_discovery(state,
+        {"id": "lost_verse_1", "lines": ["a torn first line"]})
+    assert chronicle.lost_verse_fragments(tmp_path) == 1
+    # Idempotent.
+    locations._run_discovery(state,
+        {"id": "lost_verse_1", "lines": ["a torn first line"]})
+    assert chronicle.lost_verse_fragments(tmp_path) == 1
+
+
+def test_lost_verse_known_flag_set_at_fourth_fragment(content, tmp_path):
+    """SQ8 — the lost_verse_known flag sets when the player reads the 4th fragment."""
+    from terminalquest import chronicle
+    for fid in ("lost_verse_1", "lost_verse_2", "lost_verse_3"):
+        chronicle.add_lost_verse_fragment(fid, tmp_path)
+    state = make_state(_player(content), content, ScriptedIO(), StubRandom(),
+                       chronicle_dir=tmp_path)
+    assert not state.flags.get("lost_verse_known")
+    locations._run_discovery(state,
+        {"id": "lost_verse_4", "lines": ["the last line"]})
+    assert state.flags.get("lost_verse_known") is True
+
+
+def test_lost_verse_remembered_at_run_start_if_already_known(content, tmp_path):
+    """SQ8 — a new character begins remembering the verse if 4+ fragments were read."""
+    from terminalquest import chronicle
+    for fid in ("lost_verse_1", "lost_verse_2", "lost_verse_3", "lost_verse_4"):
+        chronicle.add_lost_verse_fragment(fid, tmp_path)
+    state = make_state(_player(content), content, ScriptedIO(), StubRandom(),
+                       chronicle_dir=tmp_path)
+    locations._maybe_remember_verse(state)
+    assert state.flags.get("lost_verse_known") is True
+
+
+def test_sing_verse_grants_stat_buff(content, tmp_path):
+    """SQ8 — singing the Lost Verse grants +5 max HP, +1 attack, +1 defense."""
+    player = _player(content)
+    mhp_before, atk_before, def_before = (
+        player.max_hp, player.attack, player.defense)
+    state = make_state(player, content, ScriptedIO(), StubRandom(),
+                       chronicle_dir=tmp_path)
+    locations.sing_the_verse(state)
+    assert player.max_hp == mhp_before + 5
+    assert player.attack == atk_before + 1
+    assert player.defense == def_before + 1
+    assert state.flags.get("lost_verse_sung") is True
+
+
+def test_sing_verse_option_appears_at_last_altar_when_known(content, tmp_path):
+    """SQ8 — the Sing option surfaces at Last Altar only with the verse known."""
+    state = make_state(_player(content), content, ScriptedIO(), StubRandom(),
+                       current_location="last_altar", chronicle_dir=tmp_path)
+    loc = content.locations["last_altar"]
+    labels = " ".join(label for label, _ in
+                      locations._build_options(state, loc, []))
+    assert "Sing the Lost Verse" not in labels
+    state.flags["lost_verse_known"] = True
+    labels = " ".join(label for label, _ in
+                      locations._build_options(state, loc, []))
+    assert "Sing the Lost Verse" in labels
+    # Once sung, the option vanishes for the rest of the run.
+    state.flags["lost_verse_sung"] = True
+    labels = " ".join(label for label, _ in
+                      locations._build_options(state, loc, []))
+    assert "Sing the Lost Verse" not in labels
+
+
+def test_locations_have_four_lost_verse_fragments(content):
+    """SQ8 — the world holds exactly four lost_verse_* discoveries."""
+    fragments = []
+    for loc_id, loc in content.locations.items():
+        for enc in loc.get("encounters", []):
+            if (enc.get("type") == "discovery"
+                    and enc.get("id", "").startswith("lost_verse_")):
+                fragments.append((loc_id, enc["id"]))
+    assert len(fragments) == 4, (
+        f"Expected 4 Lost Verse fragments, found {len(fragments)}: {fragments}"
+    )
+
+
 def test_dialogue_grants_consumable_on_choice(content):
     """A response with grants_consumable adds the named item to player.consumables."""
     from terminalquest import dialogue
