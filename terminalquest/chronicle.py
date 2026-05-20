@@ -115,6 +115,10 @@ def record(state, fate, chronicle_dir=DEFAULT_DIR):
 
     ``fate`` is 'fell' (died) or 'warden' (broke the Warden and was kept
     by the Pall as the next one). The write is atomic; failure is swallowed.
+
+    SQ9 — also snapshot a tiny slice of in-run flags so a later character
+    can take up a fallen one's unfinished work. ``npc_kills`` is the only
+    one we capture today; the schema is extensible.
     """
     raw = _load_raw(chronicle_dir)
     raw["entries"].append({
@@ -122,6 +126,9 @@ def record(state, fate, chronicle_dir=DEFAULT_DIR):
         "location": state.current_location,
         "seed": state.seed,
         "player": state.player.to_dict(),
+        "progress": {
+            "npc_kills": dict(state.flags.get("npc_kills", {})),
+        },
     })
     _save(raw, chronicle_dir)
 

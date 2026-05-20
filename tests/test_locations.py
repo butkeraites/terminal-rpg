@@ -1417,6 +1417,102 @@ def test_forgotten_thing_enemy_is_in_content(content):
     assert enemy.get("ai") == "enrager"
 
 
+def test_record_snapshots_npc_kill_progress(tmp_path, content):
+    """SQ9 — chronicle.record captures in-run npc_kills as ``progress``."""
+    from terminalquest import chronicle
+    state = make_state(_player(content), content, current_location="forest",
+                       chronicle_dir=tmp_path)
+    state.flags["npc_kills"] = {"wolf": 3}
+    chronicle.record(state, "fell", tmp_path)
+    entries = chronicle.load(tmp_path)
+    assert entries[-1]["progress"]["npc_kills"] == {"wolf": 3}
+
+
+def test_witnessed_dead_surfaces_for_unfinished_kill_quest(tmp_path, content):
+    """SQ9 — a fallen character with partial progress shows up in their NPC's zone."""
+    from terminalquest import chronicle
+    fallen_state = make_state(_player(content), content, current_location="forest",
+                              chronicle_dir=tmp_path)
+    fallen_state.flags["npc_kills"] = {"wolf": 3}
+    chronicle.record(fallen_state, "fell", tmp_path)
+    state = make_state(_player(content), content, ScriptedIO(), StubRandom(),
+                       current_location="forest", chronicle_dir=tmp_path)
+    fallen = chronicle.fallen(chronicle.load(tmp_path))
+    loc = content.locations["forest"]
+    labels = " ".join(label for label, _ in
+                      locations._build_options(state, loc, fallen))
+    assert "Honor" in labels and "3/5" in labels and "wolfs" in labels
+
+
+def test_witnessed_dead_absent_when_progress_is_zero(tmp_path, content):
+    """SQ9 — a fallen who never started the quest doesn't ghost the zone."""
+    from terminalquest import chronicle
+    fallen_state = make_state(_player(content), content, current_location="forest",
+                              chronicle_dir=tmp_path)
+    chronicle.record(fallen_state, "fell", tmp_path)  # no npc_kills set
+    state = make_state(_player(content), content, ScriptedIO(), StubRandom(),
+                       current_location="forest", chronicle_dir=tmp_path)
+    fallen = chronicle.fallen(chronicle.load(tmp_path))
+    loc = content.locations["forest"]
+    labels = " ".join(label for label, _ in
+                      locations._build_options(state, loc, fallen))
+    assert "Honor" not in labels
+
+
+def test_witnessed_dead_absent_when_quest_complete(tmp_path, content):
+    """SQ9 — a fallen who already finished doesn't show up either."""
+    from terminalquest import chronicle
+    fallen_state = make_state(_player(content), content, current_location="forest",
+                              chronicle_dir=tmp_path)
+    fallen_state.flags["npc_kills"] = {"wolf": 5}  # full threshold
+    chronicle.record(fallen_state, "fell", tmp_path)
+    state = make_state(_player(content), content, ScriptedIO(), StubRandom(),
+                       current_location="forest", chronicle_dir=tmp_path)
+    fallen = chronicle.fallen(chronicle.load(tmp_path))
+    loc = content.locations["forest"]
+    labels = " ".join(label for label, _ in
+                      locations._build_options(state, loc, fallen))
+    assert "Honor" not in labels
+
+
+def test_witnessed_dead_only_in_matching_zone(tmp_path, content):
+    """SQ9 — Halna's witnessed dead appears in the forest, not in the reach."""
+    from terminalquest import chronicle
+    fallen_state = make_state(_player(content), content, current_location="forest",
+                              chronicle_dir=tmp_path)
+    fallen_state.flags["npc_kills"] = {"wolf": 2}
+    chronicle.record(fallen_state, "fell", tmp_path)
+    fallen = chronicle.fallen(chronicle.load(tmp_path))
+    # The reach has a different NPC (weir engineer with thresher_reed trophy).
+    state = make_state(_player(content), content, ScriptedIO(), StubRandom(),
+                       current_location="reach", chronicle_dir=tmp_path)
+    loc = content.locations["reach"]
+    labels = " ".join(label for label, _ in
+                      locations._build_options(state, loc, fallen))
+    assert "Honor" not in labels
+
+
+def test_honor_the_dead_grants_kills_and_lays_to_rest(tmp_path, content):
+    """SQ9 — honoring transfers progress, marks resolved, and grants memorial gold."""
+    from terminalquest import chronicle
+    fallen_state = make_state(_player(content), content, current_location="forest",
+                              chronicle_dir=tmp_path)
+    fallen_state.flags["npc_kills"] = {"wolf": 4}
+    chronicle.record(fallen_state, "fell", tmp_path)
+    fallen = chronicle.fallen(chronicle.load(tmp_path))
+    player = _player(content)
+    gold_before = player.gold
+    state = make_state(player, content, ScriptedIO(), StubRandom(),
+                       current_location="forest", chronicle_dir=tmp_path)
+    witnessed = locations._witnessed_dead_here(state, fallen)[0]
+    locations._honor_the_dead(state, witnessed)
+    assert state.flags["npc_kills"]["wolf"] == 4
+    assert player.gold == gold_before + 80  # 4 * 20
+    # Re-load: the entry is now resolved, so fallen() filters it out.
+    still_fallen = chronicle.fallen(chronicle.load(tmp_path))
+    assert still_fallen == []
+
+
 def test_dialogue_grants_consumable_on_choice(content):
     """A response with grants_consumable adds the named item to player.consumables."""
     from terminalquest import dialogue

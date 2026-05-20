@@ -1489,6 +1489,67 @@ def _pet_the_cat(state):
     io.pause(2)
 
 
+def _witnessed_dead_here(state, fallen):
+    """SQ9 — find a fallen character with unfinished NPC kill-quest progress
+    in the CURRENT zone (matched by which NPC lives here).
+
+    Returns a list of ``(entry, npc_id, npc, partial, needed)`` tuples — usually
+    zero or one. ``partial`` is how many kills the dead one notched; ``needed``
+    is the threshold. Already-resolved entries are skipped.
+    """
+    loc = state.content.locations[state.current_location]
+    npcs_here = [e["id"] for e in loc.get("encounters", []) if e.get("type") == "npc"]
+    if not npcs_here:
+        return []
+    results = []
+    for entry in fallen:
+        if entry.get("resolved"):
+            continue
+        progress = entry.get("progress", {})
+        kills = progress.get("npc_kills", {}) if isinstance(progress, dict) else {}
+        if not kills:
+            continue
+        for npc_id in npcs_here:
+            npc = state.content.npcs.get(npc_id)
+            if not npc:
+                continue
+            target = npc.get("target_enemy")
+            if not target:
+                continue
+            partial = kills.get(target, 0)
+            needed = npc.get("needed", 0)
+            if 0 < partial < needed:
+                results.append((entry, npc_id, npc, partial, needed))
+                break  # one Witnessed Dead per fallen-zone pair is enough
+    return results
+
+
+def _honor_the_dead(state, witnessed):
+    """SQ9 — take up a fallen character's unfinished work.
+
+    Their kill-progress carries into your run as a head start; they are
+    laid to rest in the Chronicle; a small memorial gold reward is given.
+    """
+    entry, _npc_id, npc, partial, needed = witnessed
+    player, io = state.player, state.io
+    dead_name = entry.get("player", {}).get("name", "a stranger")
+    target = npc["target_enemy"]
+    io.clear()
+    io.show_slow(f"🕯️  '{dead_name} was here before you. They had counted "
+                 f"{partial}/{needed} of the {target}s'")
+    io.show_slow("'before the trees took them. Their tally is honest.'")
+    io.show_slow(f"'Take their work. Start where {dead_name} left off.'")
+    npc_kills = state.flags.setdefault("npc_kills", {})
+    npc_kills[target] = max(npc_kills.get(target, 0), partial)
+    memorial = 20 * partial
+    player.gold += memorial
+    io.show(f"\n   You take up {dead_name}'s work. Their {partial}/{needed} "
+            f"is now yours.")
+    io.show(f"   +{memorial} gold (memorial offering)")
+    chronicle.lay_to_rest(entry, state.chronicle_dir)
+    io.pause(2)
+
+
 def _read_piranesi_map(state):
     """SQ4 — read Piranesi's map.
 
@@ -1686,6 +1747,14 @@ def _build_options(state, loc, fallen):
             and state.flags.get("lost_verse_known")
             and not state.flags.get("lost_verse_sung")):
         options.append(("🎼 Sing the Lost Verse", ("sing_verse", None)))
+    # SQ9 — the Witnessed Dead. A presence in zones where a fallen had
+    # unfinished NPC-quest progress; offers to pass the work to you.
+    for witnessed in _witnessed_dead_here(state, fallen):
+        _entry, _npc_id, npc, partial, needed = witnessed
+        dead_name = witnessed[0].get("player", {}).get("name", "a stranger")
+        label = (f"🕯️  Honor {dead_name}'s work "
+                 f"({partial}/{needed} {npc['target_enemy']}s)")
+        options.append((label, ("honor", witnessed)))
     # At the Crossroads, if the player fast-travelled here from somewhere,
     # offer a paired "Return to ..." so the round-trip isn't a long walk back.
     return_target = state.flags.get("fast_travel_return")
@@ -1770,6 +1839,11 @@ def location_loop(state):
             _read_piranesi_map(state)
         elif kind == "sing_verse":
             sing_the_verse(state)
+        elif kind == "honor":
+            _honor_the_dead(state, arg)
+            # Re-load fallen so the just-laid-to-rest entry drops out.
+            _entries = chronicle.load(state.chronicle_dir)
+            fallen = chronicle.fallen(_entries)
         elif kind == "fast_travel_return":
             target_name = content.locations[arg]["name"]
             io.show_slow(f"\n🛤️  You retrace the long road back to {target_name}.")
