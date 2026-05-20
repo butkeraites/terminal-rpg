@@ -41,6 +41,7 @@ def _load_raw(chronicle_dir):
         piranesi_ids = data.get("piranesi_notes_seen_ids", [])
         verse_ids = data.get("lost_verse_fragments_seen_ids", [])
         read_ids = data.get("read_discovery_ids", [])
+        visits = data.get("gravewatch_visits", 0)
         return {
             "entries": list(entries) if isinstance(entries, list) else [],
             "unlocks": list(unlocks) if isinstance(unlocks, list) else [],
@@ -58,6 +59,8 @@ def _load_raw(chronicle_dir):
                                               if isinstance(verse_ids, list) else []),
             "read_discovery_ids": (list(read_ids)
                                    if isinstance(read_ids, list) else []),
+            "gravewatch_visits": (int(visits)
+                                  if isinstance(visits, (int, float)) else 0),
         }
     except (OSError, json.JSONDecodeError, AttributeError, TypeError):
         return {"entries": [], "unlocks": [], "owned_accessories": [],
@@ -65,7 +68,8 @@ def _load_raw(chronicle_dir):
                 "cat_pets": 0, "piranesi_notes_seen_ids": [],
                 "piranesi_notes_seen": 0,
                 "lost_verse_fragments_seen_ids": [],
-                "read_discovery_ids": []}
+                "read_discovery_ids": [],
+                "gravewatch_visits": 0}
 
 
 def load(chronicle_dir=DEFAULT_DIR):
@@ -112,6 +116,7 @@ def _save(raw, chronicle_dir):
         "lost_verse_fragments_seen_ids":
             raw.get("lost_verse_fragments_seen_ids", []),
         "read_discovery_ids": raw.get("read_discovery_ids", []),
+        "gravewatch_visits": raw.get("gravewatch_visits", 0),
     }, chronicle_dir)
 
 
@@ -325,6 +330,23 @@ def add_read_discovery(discovery_id, chronicle_dir=DEFAULT_DIR):
     if discovery_id not in seen:
         seen.append(discovery_id)
         _save(raw, chronicle_dir)
+
+
+def gravewatch_visits(chronicle_dir=DEFAULT_DIR):
+    """Cumulative arrivals at Gravewatch across all runs.
+
+    SQ6 — the Insomniac of Gravewatch. After 50 arrivals, someone in the
+    village has counted enough of them to know the player is the same
+    person, returning. They introduce themselves and open a door.
+    """
+    return _load_raw(chronicle_dir).get("gravewatch_visits", 0)
+
+
+def add_gravewatch_visit(chronicle_dir=DEFAULT_DIR):
+    """Record one more visit to Gravewatch."""
+    raw = _load_raw(chronicle_dir)
+    raw["gravewatch_visits"] = raw.get("gravewatch_visits", 0) + 1
+    _save(raw, chronicle_dir)
 
 
 def witherwood_only_falls(chronicle_dir=DEFAULT_DIR):

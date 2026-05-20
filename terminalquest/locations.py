@@ -55,11 +55,15 @@ _SERVICE_LABELS = {
     "hireling_hall": "🛡️  Hire a Sworn",
     "scholar": "📚 Speak with the Mournhold Scholar",
     "reader": "📖 Read with the Reader",
+    "insomniac": "🕯️  Sit with the Insomniac",
 }
 
 # SQ1 — The Reader Who Watches Back surfaces in Gravewatch after this many
 # unique lore discoveries have been read across all runs.
 READER_THRESHOLD = 25
+
+# SQ6 — The Insomniac of Gravewatch surfaces after this many cross-run visits.
+INSOMNIAC_THRESHOLD = 50
 
 SCHOLAR_PAYOUT = 75  # gold per unique lore discovery she records
 
@@ -193,6 +197,8 @@ def _run_service(state, service):
         scholar(state)
     elif service == "reader":
         reader(state)
+    elif service == "insomniac":
+        insomniac(state)
 
 
 def scholar(state):
@@ -1635,6 +1641,65 @@ def reader(state):
     io.pause(2)
 
 
+def insomniac(state):
+    """SQ6 — the Insomniac of Gravewatch.
+
+    Someone who couldn't sleep, so they kept count. After 50 cross-run
+    arrivals at Gravewatch, they introduce themselves and lead the player
+    down to a cellar that has been growing — three rooms of stuff the
+    village forgot. Once per run, on win, the player is the Counted.
+    """
+    player, io, content, rng = state.player, state.io, state.content, state.rng
+    if state.flags.get("the_counted"):
+        io.clear()
+        io.show_slow("🕯️  The Insomniac nods at you. 'I have counted you, today.'")
+        io.show_slow("'You came back. Most do not. Rest a while. The cellar will keep.'")
+        io.pause(2)
+        return
+    visits = chronicle.gravewatch_visits(state.chronicle_dir)
+    io.clear()
+    io.show_slow("🕯️  An old woman by the cold hearth. Lamp on her knee, not lit.")
+    io.show_slow("'I have not slept since the gates closed. I have counted instead.'")
+    io.show_slow(f"'You have come back to Gravewatch {visits} times. I know your step.'")
+    io.show_slow("'I know the way you stand at the door before you come in.'")
+    io.show_slow("'There is a cellar under this room. It is full of what we forgot.'")
+    io.show_slow("'I have been keeping a door for whoever was counted enough. Down.'")
+    io.pause(2)
+    # The descent — three escalating combats, no rest between, randomized.
+    descent_pool = ["wolf", "bandit", "goblin", "drowned_thresher", "silt_drowner",
+                    "gutter_wretch", "hollow_procession"]
+    sampled = rng.sample(descent_pool, k=3) if hasattr(rng, "sample") else descent_pool[:3]
+    io.show("")
+    io.show_slow("🪨 The stairs are deeper than the room above them ought to allow.")
+    io.show_slow("Three doors at the bottom. The Insomniac counts you in.")
+    io.pause(1)
+    from terminalquest import combat
+    from terminalquest.enemy import make_enemy
+    for i, enemy_id in enumerate(sampled, start=1):
+        io.show(f"\n— Door {i} of 3 —")
+        is_last = (i == len(sampled))
+        enemy = make_enemy(enemy_id, content, state.flags)
+        outcome = combat.run_combat(state, enemy, refresh_after=is_last)
+        if outcome != "victory":
+            io.show_slow("\n🕯️  The Insomniac is still there, when you come back up.")
+            io.show_slow("'Most of you do not finish. I do not count you less for it.'")
+            io.pause(2)
+            return
+    # All three down → grant the Counted reward.
+    bonus = max(5, visits // 10)
+    player.max_hp += bonus
+    player.hp = min(player.hp + bonus, player.max_hp)
+    state.flags["the_counted"] = True
+    chronicle.unlock("the_counted", state.chronicle_dir)
+    io.show("")
+    io.show_slow("🕯️  The Insomniac is at the top of the stairs when you come back.")
+    io.show_slow("She does not look up. She is counting again.")
+    io.show_slow("'You are one of the Counted, now. There are not many.'")
+    io.show_slow("'I will know your step better. Sleep, if you can.'")
+    io.show(f"\n   +{bonus} max HP — you are the Counted.")
+    io.pause(2)
+
+
 def _maybe_open_border(state):
     """The Border opens after 2 cleanses — Arc III's gating signal."""
     if state.flags.get("border_open"):
@@ -1714,6 +1779,10 @@ def _service_is_visible(state, service):
         # SQ1 — the Reader Who Watches Back surfaces once a completionist
         # threshold of cross-run lore reading has been crossed.
         return chronicle.discoveries_read(state.chronicle_dir) >= READER_THRESHOLD
+    if service == "insomniac":
+        # SQ6 — the Insomniac of Gravewatch surfaces after this many
+        # cross-run visits to the village.
+        return chronicle.gravewatch_visits(state.chronicle_dir) >= INSOMNIAC_THRESHOLD
     return True
 
 
@@ -1837,6 +1906,10 @@ def location_loop(state):
         if arrived and loc.get("kind") == "zone":
             visits = state.flags.setdefault("zone_visits", {})
             visits[state.current_location] = visits.get(state.current_location, 0) + 1
+        # SQ6: each arrival at Gravewatch increments a cross-run counter.
+        # At 50, the Insomniac surfaces in the village's service list.
+        if arrived and state.current_location == "village":
+            chronicle.add_gravewatch_visit(state.chronicle_dir)
         io.clear()
         if arrived:
             # Cleansed intros (v0.7) show after the first completed run — the
