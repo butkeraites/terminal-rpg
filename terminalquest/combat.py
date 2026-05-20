@@ -278,36 +278,76 @@ def _enemy_turn(enemy, player, io, rng):
     return "acted"
 
 
-def _choose_boon(player, io):
-    """Prompt the player to pick a level-up boon. Returns the boon id."""
-    boons = list(LEVEL_BOONS.items())
+def _choose_skill(player, learnable, content, io):
+    """Sub-menu for the 'Learn a new skill' boon. Returns an ability id or None."""
     while True:
-        io.show("\nChoose a boon:")
-        for index, (_boon_id, boon) in enumerate(boons, start=1):
-            io.show(f"{index}. {boon['name']} — {boon['blurb']}")
-        choice = io.ask("\nYour choice? ")
-        if choice.isdigit() and 1 <= int(choice) <= len(boons):
-            return boons[int(choice) - 1][0]
+        io.show("\n🎓 Skills you can learn:")
+        for index, ability_id in enumerate(learnable, start=1):
+            ability = content.abilities[ability_id]
+            io.show(f"{index}. {ability['name']} ({ability['stamina']} stamina) "
+                    f"- {ability['description']}")
+        io.show(f"{len(learnable) + 1}. Back")
+        choice = io.ask("\nWhich skill? ")
+        if choice == str(len(learnable) + 1):
+            return None
+        if choice.isdigit() and 1 <= int(choice) <= len(learnable):
+            return learnable[int(choice) - 1]
         io.show("\n❌ Invalid choice!")
 
 
-def _grant_rewards(player, enemy, io):
+def _choose_boon(player, content, io):
+    """Prompt the player to pick a level-up reward.
+
+    Returns ``('boon', boon_id)`` for a stat boon, or ``('learn', ability_id)``
+    for a newly-learned skill. A 4th option appears only when the player has
+    progression abilities unlocked by level but not yet learned.
+    """
+    boons = list(LEVEL_BOONS.items())
+    while True:
+        learnable = player.learnable_abilities(content)
+        io.show("\nChoose a boon:")
+        for index, (_boon_id, boon) in enumerate(boons, start=1):
+            io.show(f"{index}. {boon['name']} — {boon['blurb']}")
+        if learnable:
+            io.show(f"{len(boons) + 1}. 🎓 Learn a new skill")
+        choice = io.ask("\nYour choice? ")
+        if choice.isdigit():
+            idx = int(choice)
+            if 1 <= idx <= len(boons):
+                return ("boon", boons[idx - 1][0])
+            if learnable and idx == len(boons) + 1:
+                ability_id = _choose_skill(player, learnable, content, io)
+                if ability_id is not None:
+                    return ("learn", ability_id)
+                continue  # cancelled — re-show the boon menu
+        io.show("\n❌ Invalid choice!")
+
+
+def _grant_rewards(player, enemy, content, io):
     """Award XP and gold for a defeated enemy, with a boon per level gained."""
     io.show_slow(f"\n🎉 You defeated {enemy.name}!")
     io.show(f"Gained {enemy.xp_reward} XP and {enemy.gold_reward} gold!")
     player.gold += enemy.gold_reward
     for _ in range(player.gain_xp(enemy.xp_reward)):
         io.show_slow(f"\n🎉 LEVEL UP! You are now level {player.level}!")
-        player.apply_level_up(_choose_boon(player, io))
+        player.apply_baseline()
+        kind, value = _choose_boon(player, content, io)
+        if kind == "boon":
+            player.apply_boon(value)
+        else:  # 'learn'
+            player.learn_ability(value)
+            io.show(f"🎓 You have learned {content.abilities[value]['name']}!")
         io.show(f"HP: {player.max_hp} | Attack: {player.attack} | "
                 f"Defense: {player.defense} | Stamina: {player.max_stamina}")
 
 
-def run_combat(state, enemy):
+def run_combat(state, enemy, *, refresh_after=True):
     """Fight ``enemy`` to a conclusion.
 
     Returns one of: 'victory', 'defeat', 'fled', 'enemy_fled'.
-    Combat-only status effects are cleared and stamina restored on exit.
+    Combat-only status effects are cleared on exit. Stamina is restored to
+    full unless ``refresh_after=False`` — used by chained encounters where
+    the player has no rest between sub-fights.
     """
     player, content, io, rng = state.player, state.content, state.io, state.rng
     article = "" if enemy.unique else "A "
@@ -331,7 +371,12 @@ def run_combat(state, enemy):
         if not _resolve_start_of_turn(player, io):
             outcome = "defeat"
             break
+        stamina_before = player.stamina
         player.restore_stamina(STAMINA_PER_TURN)
+        gained = player.stamina - stamina_before
+        if gained > 0:
+            io.show(f"⚡ You catch your breath. (+{gained} stamina, "
+                    f"{player.stamina}/{player.max_stamina})")
         if stunned:
             io.show("\n💫 You are stunned and lose your turn!")
         else:
@@ -357,8 +402,9 @@ def run_combat(state, enemy):
             break
 
     if outcome == "victory":
-        _grant_rewards(player, enemy, io)
+        _grant_rewards(player, enemy, content, io)
 
     player.statuses.clear()
-    player.stamina = player.max_stamina
+    if refresh_after:
+        player.stamina = player.max_stamina
     return outcome

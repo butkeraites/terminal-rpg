@@ -242,3 +242,79 @@ def test_a_crit_in_a_turn_fires_the_weapon_proc(content):
     troll = make_enemy("cave_troll", content)  # tanky enough to survive the hit
     combat._player_turn(player, troll, content, ScriptedIO(["1"]), StubRandom(rnd=0.0))
     assert status.has_status(troll, "bleed")
+
+
+def test_run_combat_skips_stamina_restore_when_refresh_after_false(content):
+    """Chained sub-fights persist stamina: run_combat does not refill on exit."""
+    warrior = _player(content)
+    warrior.attack = 1000  # one-shot the goblin so the fight ends in one turn
+    warrior.stamina = 3
+    io = ScriptedIO(["2", "1"])  # use Power Strike (3 stamina)
+    state = make_state(warrior, content, io, StubRandom())
+    outcome = combat.run_combat(state, make_enemy("goblin", content), refresh_after=False)
+    assert outcome == "victory"
+    # +2 regen at start of turn brings stamina to 5, Power Strike spends 3 -> 2.
+    # With refresh_after=False, that drained state is preserved.
+    assert warrior.stamina == 2
+
+
+def test_run_combat_restores_stamina_by_default(content):
+    """The normal single-fight case still refills stamina at the end."""
+    warrior = _player(content)
+    warrior.attack = 1000
+    warrior.stamina = 0
+    io = ScriptedIO(["1"])  # basic attack
+    state = make_state(warrior, content, io, StubRandom())
+    combat.run_combat(state, make_enemy("goblin", content))
+    assert warrior.stamina == warrior.max_stamina
+
+
+def test_stamina_regen_is_announced_each_turn(content):
+    """Bug A fix: the +2/turn regen prints a message so the math is no longer hidden."""
+    warrior = _player(content)
+    warrior.stamina = 0  # drained, so regen has room to tick
+    goblin = make_enemy("goblin", content)
+    io = ScriptedIO(["1", "1", "1", "1"])  # attack until the goblin dies
+    state = make_state(warrior, content, io, StubRandom())
+    combat.run_combat(state, goblin)
+    assert "catch your breath" in io.text()
+
+
+def test_boon_menu_hides_skill_option_when_nothing_to_learn(content):
+    """A level-up below the first progression gate shows only the three boons."""
+    warrior = _player(content)
+    warrior.xp = warrior.xp_to_level - 1  # one XP shy of level 2
+    io = ScriptedIO(["1", "1", "1", "2"])  # 3 attacks, then boon 2 (Might)
+    state = make_state(warrior, content, io, StubRandom())
+    combat.run_combat(state, make_enemy("goblin", content))
+    assert warrior.level == 2  # below the lv-3 progression gate
+    assert "Learn a new skill" not in io.text()
+
+
+def test_boon_menu_offers_skill_when_progression_unlocks(content):
+    """Crossing into level 3 surfaces the 4th boon — a skill unlock."""
+    warrior = _player(content)
+    warrior.level = 2
+    warrior.xp = 0
+    warrior.xp_to_level = 30  # a goblin kill (30 XP) tips us to level 3
+    # 3 attacks to win, then boon 4 (Learn), then sub-menu pick 1
+    io = ScriptedIO(["1", "1", "1", "4", "1"])
+    state = make_state(warrior, content, io, StubRandom())
+    combat.run_combat(state, make_enemy("goblin", content))
+    assert warrior.level == 3
+    assert "sundering_strike" in warrior.abilities
+    assert "Learn a new skill" in io.text()
+
+
+def test_learning_a_skill_still_applies_baseline(content):
+    """Picking the 'Learn' boon grants baseline stats but skips the boon's bonus."""
+    warrior = _player(content)
+    warrior.level = 2
+    warrior.xp = 0
+    warrior.xp_to_level = 30
+    base_attack = warrior.attack
+    io = ScriptedIO(["1", "1", "1", "4", "1"])
+    state = make_state(warrior, content, io, StubRandom())
+    combat.run_combat(state, make_enemy("goblin", content))
+    # Baseline only: +2 attack, no Might/Vigor/Bulwark gain.
+    assert warrior.attack == base_attack + 2

@@ -291,3 +291,38 @@ def test_run_summary_reports_the_build_and_seed(content):
     text = io.text()
     assert "551234" in text
     assert "Gravewatch Cleaver" in text  # the warrior's starting weapon
+
+
+def test_chained_encounter_skips_refresh_between_sub_fights(content, monkeypatch):
+    """A multi-enemy combat encounter only refreshes stamina after the last fight.
+
+    Bug B fix: the Drowned Holds 'no rest between' label must be real — each
+    sub-fight up to (but not including) the last is run with refresh_after=False.
+    """
+    recorded = []
+
+    def fake_run_combat(state, enemy, *, refresh_after=True):
+        recorded.append(refresh_after)
+        return "victory"
+
+    monkeypatch.setattr(locations, "run_combat", fake_run_combat)
+    encounter = {"type": "combat", "enemies": ["goblin", "wolf", "bandit"]}
+    state = make_state(_strong_player(content), content, ScriptedIO(), StubRandom())
+    locations.run_encounter(state, encounter, [], [])
+    assert recorded == [False, False, True]
+
+
+def test_chained_encounter_restores_stamina_when_chain_breaks(content, monkeypatch):
+    """If the chain ends off-script (e.g. fled), stamina is restored anyway."""
+    def fake_run_combat(state, enemy, *, refresh_after=True):
+        # Simulate run_combat fleeing mid-chain without restoring stamina.
+        return "fled"
+
+    monkeypatch.setattr(locations, "run_combat", fake_run_combat)
+    player = _strong_player(content)
+    player.stamina = 1  # mimic the drained state run_combat would leave
+    encounter = {"type": "combat", "enemies": ["goblin", "wolf", "bandit"]}
+    state = make_state(player, content, ScriptedIO(), StubRandom())
+    locations.run_encounter(state, encounter, [], [])
+    # run_encounter must restore stamina even though refresh_after=False.
+    assert player.stamina == player.max_stamina

@@ -143,3 +143,29 @@ def test_validate_rejects_an_unknown_proc_status():
     some_core["proc"] = {"trigger": "on_hit", "status": "enlightenment", "turns": 1}
     with pytest.raises(ValueError):
         content.validate()
+
+
+def test_every_class_has_a_three_step_progression():
+    """Each class unlocks three new abilities across the climb (levels 3/5/7)."""
+    content = load_content()
+    for class_id, cls in content.classes.items():
+        progression = cls.get("progression")
+        assert progression and len(progression) == 3, class_id
+        for entry in progression:
+            assert entry["ability"] in content.abilities, (class_id, entry)
+            assert isinstance(entry["level"], int) and entry["level"] > 0
+
+
+def test_validate_rejects_unknown_progression_ability():
+    content = load_content()
+    content.classes["warrior"]["progression"].append(
+        {"ability": "wisdom_of_the_pall", "level": 4})
+    with pytest.raises(ValueError):
+        content.validate()
+
+
+def test_validate_rejects_a_non_positive_progression_level():
+    content = load_content()
+    content.classes["warrior"]["progression"][0]["level"] = 0
+    with pytest.raises(ValueError):
+        content.validate()

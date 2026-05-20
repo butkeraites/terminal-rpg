@@ -84,20 +84,47 @@ class Player(Combatant):
             levels += 1
         return levels
 
+    def apply_baseline(self):
+        """Apply one level's baseline stat gains. Restores HP and stamina."""
+        self.max_hp += LEVEL_BASELINE["max_hp"]
+        self.attack += LEVEL_BASELINE["attack"]
+        self.defense += LEVEL_BASELINE["defense"]
+        self.max_stamina += LEVEL_BASELINE["max_stamina"]
+        self.hp = self.max_hp
+        self.stamina = self.max_stamina
+
+    def apply_boon(self, boon_id):
+        """Apply one level-up boon's bonus stat gains. Restores HP and stamina."""
+        for stat, amount in LEVEL_BOONS[boon_id]["gains"].items():
+            if stat == "max_hp":
+                self.max_hp += amount
+            elif stat == "attack":
+                self.attack += amount
+            elif stat == "defense":
+                self.defense += amount
+            elif stat == "max_stamina":
+                self.max_stamina += amount
+        self.hp = self.max_hp
+        self.stamina = self.max_stamina
+
     def apply_level_up(self, boon_id):
         """Apply one level's baseline gains plus the chosen boon.
 
         Restores HP and stamina to full, as a level-up always has.
         """
-        gains = dict(LEVEL_BASELINE)
-        for stat, amount in LEVEL_BOONS[boon_id]["gains"].items():
-            gains[stat] += amount
-        self.max_hp += gains["max_hp"]
-        self.attack += gains["attack"]
-        self.defense += gains["defense"]
-        self.max_stamina += gains["max_stamina"]
-        self.hp = self.max_hp
-        self.stamina = self.max_stamina
+        self.apply_baseline()
+        self.apply_boon(boon_id)
+
+    def learn_ability(self, ability_id):
+        """Add a new ability to the player's known list (no-op if already known)."""
+        if ability_id not in self.abilities:
+            self.abilities.append(ability_id)
+
+    def learnable_abilities(self, content):
+        """Ability ids the player has unlocked by level but has not yet learned."""
+        progression = content.classes[self.class_id].get("progression", [])
+        return [entry["ability"] for entry in progression
+                if entry["level"] <= self.level and entry["ability"] not in self.abilities]
 
     def potion_count(self):
         return sum(self.consumables.count(name) for name in POTION_ITEMS)

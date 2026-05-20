@@ -72,5 +72,130 @@
     "kind": "heal",
     "power": 35,
     "description": "Channel light to restore 35 HP."
+  },
+  "sundering_strike": {
+    "name": "Sundering Strike",
+    "stamina": 4,
+    "kind": "attack",
+    "power": 1.5,
+    "status": "vulnerable",
+    "status_turns": 2,
+    "description": "A blow that opens a seam — the target takes more damage."
+  },
+  "stand_fast": {
+    "name": "Stand Fast",
+    "stamina": 3,
+    "kind": "buff",
+    "status": "braced",
+    "status_turns": 2,
+    "description": "Hold the line — braced against the next two blows."
+  },
+  "cleavers_wrath": {
+    "name": "Cleaver's Wrath",
+    "stamina": 5,
+    "kind": "attack",
+    "power": 1.9,
+    "status": "bleed",
+    "status_turns": 3,
+    "description": "A two-handed slam that leaves the target bleeding."
+  },
+  "tendon_slice": {
+    "name": "Tendon Slice",
+    "stamina": 3,
+    "kind": "attack",
+    "power": 1.1,
+    "status": "weak",
+    "status_turns": 2,
+    "description": "A precise cut that leaves the target weakened."
+  },
+  "smoke_pouch": {
+    "name": "Smoke Pouch",
+    "stamina": 3,
+    "kind": "buff",
+    "status": "evasive",
+    "status_turns": 3,
+    "description": "Burst a pouch of grey — evasive for three turns."
+  },
+  "killing_cut": {
+    "name": "Killing Cut",
+    "stamina": 5,
+    "kind": "attack",
+    "power": 2.2,
+    "description": "A killing strike between the ribs — 120% extra damage."
+  },
+  "hex": {
+    "name": "Hex",
+    "stamina": 3,
+    "kind": "debuff",
+    "status": "vulnerable",
+    "status_turns": 3,
+    "description": "Mark the target with a hex — they take more damage."
+  },
+  "frost_lance": {
+    "name": "Frost Lance",
+    "stamina": 4,
+    "kind": "attack",
+    "power": 1.5,
+    "status": "weak",
+    "status_turns": 2,
+    "description": "A lance of cold that saps the target's strength."
+  },
+  "inferno": {
+    "name": "Inferno",
+    "stamina": 6,
+    "kind": "attack",
+    "power": 2.0,
+    "status": "burn",
+    "status_turns": 4,
+    "description": "A pillar of fire — 100% extra damage, burning four turns."
+  },
+  "hamstring_shot": {
+    "name": "Hamstring Shot",
+    "stamina": 4,
+    "kind": "attack",
+    "power": 1.0,
+    "status": "stun",
+    "status_turns": 1,
+    "description": "A crippling shot that stuns the target for a turn."
+  },
+  "twin_shaft": {
+    "name": "Twin Shaft",
+    "stamina": 4,
+    "kind": "attack",
+    "power": 1.4,
+    "status": "bleed",
+    "status_turns": 3,
+    "description": "A pair of arrows that draw blood — 40% extra damage."
+  },
+  "quiet_shot": {
+    "name": "Quiet Shot",
+    "stamina": 6,
+    "kind": "attack",
+    "power": 2.3,
+    "description": "A shaft loosed in silence — 130% extra damage."
+  },
+  "word_of_stilling": {
+    "name": "Word of Stilling",
+    "stamina": 3,
+    "kind": "debuff",
+    "status": "stun",
+    "status_turns": 1,
+    "description": "Speak a word the target cannot remember — they freeze."
+  },
+  "saints_mercy": {
+    "name": "Saint's Mercy",
+    "stamina": 5,
+    "kind": "heal",
+    "power": 60,
+    "description": "Call down what little the saints have left — restore 60 HP."
+  },
+  "hymn_of_wrath": {
+    "name": "Hymn of Wrath",
+    "stamina": 6,
+    "kind": "attack",
+    "power": 1.8,
+    "status": "stun",
+    "status_turns": 1,
+    "description": "A hymn the choir cannot sing back — 80% extra damage, stuns."
   }
 }

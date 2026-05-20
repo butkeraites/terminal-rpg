@@ -182,9 +182,18 @@ def run_encounter(state, encounter, fallen, wardens):
 
     outcome = None
     enemy = None
-    for enemy in enemies:
-        outcome = run_combat(state, enemy)
+    last_index = len(enemies) - 1
+    for index, enemy in enumerate(enemies):
+        is_last = index == last_index
+        # Chained sub-fights share one breath: stamina persists between them,
+        # restored only after the last fight ends.
+        outcome = run_combat(state, enemy, refresh_after=is_last)
         if outcome != "victory":
+            # The chain ended off-script (fled, enemy fled, or defeat). For
+            # the survivable outcomes the tension is over — restore stamina
+            # here, since run_combat skipped it.
+            if not is_last and outcome != "defeat":
+                state.player.stamina = state.player.max_stamina
             break
 
     if outcome == "enemy_fled":

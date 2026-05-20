@@ -7,6 +7,11 @@
     "defense": 4,
     "max_stamina": 6,
     "abilities": ["power_strike", "shield_wall"],
+    "progression": [
+      {"ability": "sundering_strike", "level": 3},
+      {"ability": "stand_fast", "level": 5},
+      {"ability": "cleavers_wrath", "level": 7}
+    ],
     "inventory": ["Health Potion", "Health Potion", "Health Potion"],
     "weapon": {
       "name": "Gravewatch Cleaver",
@@ -22,6 +27,11 @@
     "defense": 2,
     "max_stamina": 6,
     "abilities": ["backstab", "quick_step"],
+    "progression": [
+      {"ability": "tendon_slice", "level": 3},
+      {"ability": "smoke_pouch", "level": 5},
+      {"ability": "killing_cut", "level": 7}
+    ],
     "inventory": ["Health Potion", "Health Potion"],
     "weapon": {
       "name": "Cutpurse's Dirk",
@@ -37,6 +47,11 @@
     "defense": 1,
     "max_stamina": 10,
     "abilities": ["fireball", "frost_armor"],
+    "progression": [
+      {"ability": "hex", "level": 3},
+      {"ability": "frost_lance", "level": 5},
+      {"ability": "inferno", "level": 7}
+    ],
     "inventory": ["Health Potion", "Health Potion"],
     "weapon": {
       "name": "Witherwood Stave",
@@ -52,6 +67,11 @@
     "defense": 3,
     "max_stamina": 7,
     "abilities": ["aimed_shot", "hunters_mark"],
+    "progression": [
+      {"ability": "hamstring_shot", "level": 3},
+      {"ability": "twin_shaft", "level": 5},
+      {"ability": "quiet_shot", "level": 7}
+    ],
     "inventory": ["Health Potion", "Health Potion"],
     "weapon": {
       "name": "Weir-Hunter's Bow",
@@ -67,6 +87,11 @@
     "defense": 2,
     "max_stamina": 8,
     "abilities": ["smite", "mend"],
+    "progression": [
+      {"ability": "word_of_stilling", "level": 3},
+      {"ability": "saints_mercy", "level": 5},
+      {"ability": "hymn_of_wrath", "level": 7}
+    ],
     "inventory": ["Health Potion", "Health Potion"],
     "weapon": {
       "name": "Bellward's Maul",

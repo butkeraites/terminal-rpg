@@ -83,3 +83,53 @@ def test_equipping_replaces_the_previous_weapon(warrior, content):
     strong = _weapon(content, head="ashen_greathead")
     warrior.equip_weapon(strong)
     assert warrior.attack == base_attack + strong.stats["attack"]
+
+
+def test_apply_baseline_grants_only_baseline_stats(warrior):
+    """The baseline split applies only the per-level baseline — no boon."""
+    attack = warrior.attack
+    warrior.apply_baseline()
+    assert warrior.attack == attack + LEVEL_BASELINE["attack"]
+
+
+def test_apply_boon_grants_only_the_boons_stats(warrior):
+    """Apply_boon alone grants only the boon — no baseline."""
+    attack = warrior.attack
+    warrior.apply_boon("might")
+    boon = LEVEL_BOONS["might"]["gains"]["attack"]
+    assert warrior.attack == attack + boon
+
+
+def test_learnable_abilities_locked_at_low_level(warrior, content):
+    """Below the first progression gate, nothing is learnable yet."""
+    assert warrior.level == 1
+    assert warrior.learnable_abilities(content) == []
+
+
+def test_learnable_abilities_unlock_at_their_level(warrior, content):
+    """Reaching a progression gate surfaces that ability as learnable."""
+    warrior.level = 3
+    assert "sundering_strike" in warrior.learnable_abilities(content)
+
+
+def test_learn_ability_appends_and_is_idempotent(warrior):
+    warrior.learn_ability("sundering_strike")
+    warrior.learn_ability("sundering_strike")  # second call is a no-op
+    assert warrior.abilities.count("sundering_strike") == 1
+
+
+def test_learnable_excludes_already_learned(warrior, content):
+    """A learned ability disappears from learnable; the next gate remains."""
+    warrior.level = 5
+    warrior.learn_ability("sundering_strike")
+    learnable = warrior.learnable_abilities(content)
+    assert "sundering_strike" not in learnable
+    assert "stand_fast" in learnable  # the level-5 unlock is still on offer
+
+
+def test_serialization_preserves_a_learned_skill(warrior):
+    """A learned ability survives a save/load round trip."""
+    warrior.level = 3
+    warrior.learn_ability("sundering_strike")
+    clone = Player.from_dict(warrior.to_dict())
+    assert "sundering_strike" in clone.abilities

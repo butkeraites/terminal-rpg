@@ -59,6 +59,19 @@ class Content:
                         f"class '{class_id}' starting weapon references "
                         f"unknown {slot} component '{cid}'"
                     )
+            for entry in cls.get("progression", []):
+                ability_id = entry.get("ability")
+                level = entry.get("level")
+                if ability_id not in self.abilities:
+                    raise ValueError(
+                        f"class '{class_id}' progression references unknown "
+                        f"ability '{ability_id}'"
+                    )
+                if not (isinstance(level, int) and level > 0):
+                    raise ValueError(
+                        f"class '{class_id}' progression entry for '{ability_id}' "
+                        f"has invalid level {level!r}"
+                    )
         for enemy_id, enemy in self.enemies.items():
             if enemy["ai"] not in _VALID_AI:
                 raise ValueError(
