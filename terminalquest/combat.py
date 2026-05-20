@@ -281,6 +281,21 @@ def _tick_pet_regen(player, io):
             f"({player.hp}/{player.max_hp}).")
 
 
+def _tick_cat_companion(state):
+    """SQ3 endgame — the recurring cat, once bonded at 100 pets, heals +1 HP
+    every round of combat. Invisible, persistent, unkillable.
+    """
+    if not state.flags.get("cat_companion"):
+        return
+    player, io = state.player, state.io
+    if player.hp >= player.max_hp:
+        return
+    before = player.hp
+    player.heal(1)
+    if player.hp > before:
+        io.show(f"🐈 The cat purrs against your ankle. +{player.hp - before} HP.")
+
+
 def _use_ability(player, enemy, ability, io, rng):
     """Apply a class ability's effect. Stamina is charged by the caller."""
     kind = ability["kind"]
@@ -677,6 +692,7 @@ def run_combat(state, enemy, *, refresh_after=True):
             io.show(f"⚡ You catch your breath. (+{gained} stamina, "
                     f"{player.stamina}/{player.max_stamina})")
         _tick_pet_regen(player, io)
+        _tick_cat_companion(state)
         if stunned:
             io.show("\n💫 You are stunned and lose your turn!")
         else:

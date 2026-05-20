@@ -1414,6 +1414,51 @@ def _inspect_weapon(state):
     io.pause(2)
 
 
+def _pet_the_cat(state):
+    """SQ3 — pet the recurring cat.
+
+    Small heal + stamina, increments the cross-run cat_pets counter. At
+    fixed thresholds (10/25/50/100), the cat says something. At 100, the
+    Chronicle marks cat_companion = True and the cat joins the player as
+    a permanent +1 HP/round combat presence.
+    """
+    player, io = state.player, state.io
+    chronicle.add_cat_pet(state.chronicle_dir)
+    count = chronicle.cat_pets(state.chronicle_dir)
+    player.heal(CAT_PET_HEAL)
+    player.restore_stamina(CAT_PET_STAMINA)
+    io.show("")
+    io.show_slow("🐈 The cat presses its head into your hand. You count "
+                 "the small bones in its skull.")
+    io.show(f"   +{CAT_PET_HEAL} HP  +{CAT_PET_STAMINA} stamina  "
+            f"(cat-pets so far: {count})")
+    if count == 10:
+        io.show_slow("\nThe cat looks at you. 'I have been counting your runs.'")
+        io.show_slow("'There are more than you remember.'")
+    elif count == 25:
+        # Name a fallen character if possible — it knows them.
+        fallen_entries = chronicle.fallen(chronicle.load(state.chronicle_dir))
+        if fallen_entries:
+            name = fallen_entries[0]["player"]["name"]
+            io.show_slow(f"\nThe cat says: 'I knew {name}. {name} fed me twice. "
+                         f"I have not forgotten {name}.'")
+        else:
+            io.show_slow("\nThe cat says: 'I knew the ones who died before you "
+                         "knew them. I have not forgotten.'")
+    elif count == 50:
+        io.show_slow("\nThe cat stands. Walks. You follow because you must.")
+        io.show_slow("In a small room you have never seen, every name from your "
+                     "Chronicle is on the wall.")
+        io.show_slow("'I remembered them so you would not have to remember all of them.'")
+    elif count == 100:
+        io.show_slow("\nThe cat curls against your ankle and does not leave.")
+        io.show_slow("It will walk with you, now. It will keep walking with you.")
+        io.show_slow("It will mend you, a little, every round you fight.")
+        io.show_slow("It will never die. The Pall does not know its name.")
+        state.flags["cat_companion"] = True
+    io.pause(2)
+
+
 def _maybe_open_border(state):
     """The Border opens after 2 cleanses — Arc III's gating signal."""
     if state.flags.get("border_open"):
@@ -1442,6 +1487,12 @@ def _service_is_visible(state, service):
     return True
 
 
+CAT_ZONE_VISITS_REQUIRED = 3  # SQ3: cat shows up in zones visited this many times this run
+CAT_PET_HEAL = 5
+CAT_PET_STAMINA = 1
+CAT_THRESHOLDS = (10, 25, 50, 100)
+
+
 def _build_options(state, loc, fallen):
     """Build the ordered list of ``(label, (kind, arg))`` menu entries.
 
@@ -1449,6 +1500,9 @@ def _build_options(state, loc, fallen):
     (state.flags['unlocked_services'], e.g. the Scholar) and connections
     unlocked by NPC quests (state.flags['unlocked_connections'] — sub-zones
     that join the location graph once their gating NPC is satisfied).
+
+    v0.15 adds the Recurring Cat: any kind=="zone" location visited
+    CAT_ZONE_VISITS_REQUIRED+ times this run gains a "Pet the cat" option.
     """
     player, content = state.player, state.content
     options = []
@@ -1488,6 +1542,12 @@ def _build_options(state, loc, fallen):
     # outbound while letting the player shortcut the long walk home.
     if loc.get("kind") == "zone" and not loc.get("boss"):
         options.append(("🛤️  Walk back to the Crossroads", ("fast_travel", None)))
+    # SQ3 — the Recurring Cat. After visiting the same zone enough times
+    # in one run, the cat starts being here. It doesn't fight; it sits.
+    visits = state.flags.get("zone_visits", {}).get(state.current_location, 0)
+    if (loc.get("kind") == "zone" and not loc.get("boss")
+            and visits >= CAT_ZONE_VISITS_REQUIRED):
+        options.append(("🐈 Pet the cat", ("cat_pet", None)))
     # At the Crossroads, if the player fast-travelled here from somewhere,
     # offer a paired "Return to ..." so the round-trip isn't a long walk back.
     return_target = state.flags.get("fast_travel_return")
@@ -1513,6 +1573,11 @@ def location_loop(state):
     _maybe_open_border(state)  # 2-cleanse signal that the world has neighbours
     while player.is_alive():
         loc = content.locations[state.current_location]
+        # SQ3: each arrival in a zone increments its per-run visit count.
+        # The cat surfaces in zones that have been visited often enough.
+        if arrived and loc.get("kind") == "zone":
+            visits = state.flags.setdefault("zone_visits", {})
+            visits[state.current_location] = visits.get(state.current_location, 0) + 1
         io.clear()
         if arrived:
             # Cleansed intros (v0.7) show after the first completed run — the
@@ -1559,6 +1624,8 @@ def location_loop(state):
             io.pause(1)
             state.current_location = "crossroads"
             arrived = True
+        elif kind == "cat_pet":
+            _pet_the_cat(state)
         elif kind == "fast_travel_return":
             target_name = content.locations[arg]["name"]
             io.show_slow(f"\n🛤️  You retrace the long road back to {target_name}.")

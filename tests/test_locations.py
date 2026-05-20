@@ -1134,6 +1134,60 @@ def test_speaking_through_stone_falls_back_in_ascii_mode():
     assert "::  I am Cael." in io.text()
 
 
+def test_cat_appears_after_three_zone_visits(content, tmp_path):
+    """SQ3 — the cat menu option surfaces in a zone visited 3+ times."""
+    state = make_state(_player(content), content, ScriptedIO(), StubRandom(),
+                       current_location="forest", chronicle_dir=tmp_path)
+    loc = content.locations["forest"]
+    state.flags["zone_visits"] = {"forest": 2}
+    options = locations._build_options(state, loc, [])
+    labels = " ".join(label for label, _ in options)
+    assert "Pet the cat" not in labels
+    state.flags["zone_visits"]["forest"] = 3
+    options = locations._build_options(state, loc, [])
+    labels = " ".join(label for label, _ in options)
+    assert "Pet the cat" in labels
+
+
+def test_pet_the_cat_increments_chronicle_counter(content, tmp_path):
+    """SQ3 — petting the cat persists across runs via chronicle.cat_pets."""
+    from terminalquest import chronicle
+    state = make_state(_player(content), content, ScriptedIO(), StubRandom(),
+                       current_location="forest", chronicle_dir=tmp_path)
+    assert chronicle.cat_pets(tmp_path) == 0
+    locations._pet_the_cat(state)
+    assert chronicle.cat_pets(tmp_path) == 1
+    locations._pet_the_cat(state)
+    assert chronicle.cat_pets(tmp_path) == 2
+
+
+def test_cat_companion_unlocks_at_one_hundred_pets(content, tmp_path):
+    """At 100 pets, the cat becomes a permanent +1 HP/round combat presence."""
+    from terminalquest import chronicle
+    # Pre-load the chronicle to 99 pets so this one bumps us to 100.
+    for _ in range(99):
+        chronicle.add_cat_pet(tmp_path)
+    state = make_state(_player(content), content, ScriptedIO(), StubRandom(),
+                       current_location="forest", chronicle_dir=tmp_path)
+    locations._pet_the_cat(state)
+    assert chronicle.cat_pets(tmp_path) == 100
+    assert state.flags.get("cat_companion") is True
+
+
+def test_cat_companion_heals_in_combat(content):
+    """Once cat_companion is flagged, the cat heals +1 HP every round."""
+    from terminalquest import combat
+    from terminalquest.enemy import make_enemy
+    warrior = _player(content)
+    warrior.hp = 50
+    warrior.attack = 1000  # one-shot for clean test
+    state = make_state(warrior, content, ScriptedIO(["1"]), StubRandom())
+    state.flags["cat_companion"] = True
+    combat.run_combat(state, make_enemy("goblin", content))
+    text = state.io.text()
+    assert "cat purrs" in text
+
+
 def test_dialogue_grants_consumable_on_choice(content):
     """A response with grants_consumable adds the named item to player.consumables."""
     from terminalquest import dialogue

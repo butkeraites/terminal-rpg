@@ -25,7 +25,7 @@ def _path(chronicle_dir):
 
 def _load_raw(chronicle_dir):
     """Return the whole chronicle. Adds Echo currency, owned accessories,
-    cleanse count, a 'purified' flag, and owned pets for the v0.8 system.
+    cleanse count, a 'purified' flag, owned pets, and side-quest counters.
     Never raises.
     """
     try:
@@ -37,6 +37,7 @@ def _load_raw(chronicle_dir):
         echoes = data.get("echoes", 0)
         cleanses = data.get("cleanses", 0)
         purified = data.get("purified", False)
+        cat_pets = data.get("cat_pets", 0)
         return {
             "entries": list(entries) if isinstance(entries, list) else [],
             "unlocks": list(unlocks) if isinstance(unlocks, list) else [],
@@ -45,10 +46,12 @@ def _load_raw(chronicle_dir):
             "echoes": int(echoes) if isinstance(echoes, (int, float)) else 0,
             "cleanses": int(cleanses) if isinstance(cleanses, (int, float)) else 0,
             "purified": bool(purified),
+            "cat_pets": int(cat_pets) if isinstance(cat_pets, (int, float)) else 0,
         }
     except (OSError, json.JSONDecodeError, AttributeError, TypeError):
         return {"entries": [], "unlocks": [], "owned_accessories": [],
-                "owned_pets": [], "echoes": 0, "cleanses": 0, "purified": False}
+                "owned_pets": [], "echoes": 0, "cleanses": 0, "purified": False,
+                "cat_pets": 0}
 
 
 def load(chronicle_dir=DEFAULT_DIR):
@@ -80,7 +83,7 @@ def _write(payload, chronicle_dir):
 
 def _save(raw, chronicle_dir):
     """Atomically write the whole chronicle (entries + unlocks + Reborn store
-    + the v0.7 progression layer + the v0.8 pet roster)."""
+    + the v0.7 progression layer + the v0.8 pet roster + side-quest counters)."""
     _write({
         "version": CHRONICLE_VERSION,
         "entries": raw["entries"],
@@ -90,6 +93,7 @@ def _save(raw, chronicle_dir):
         "echoes": raw["echoes"],
         "cleanses": raw["cleanses"],
         "purified": raw["purified"],
+        "cat_pets": raw["cat_pets"],
     }, chronicle_dir)
 
 
@@ -222,3 +226,19 @@ def own_pet(pet_id, chronicle_dir=DEFAULT_DIR):
     if pet_id not in raw["owned_pets"]:
         raw["owned_pets"].append(pet_id)
         _save(raw, chronicle_dir)
+
+
+def cat_pets(chronicle_dir=DEFAULT_DIR):
+    """How many times the player has petted the recurring cat (cross-run).
+
+    SQ3 — the cat thresholds are 10/25/50/100 pets. At 100 the cat becomes
+    a passive +1 HP/round companion that cannot die.
+    """
+    return _load_raw(chronicle_dir)["cat_pets"]
+
+
+def add_cat_pet(chronicle_dir=DEFAULT_DIR):
+    """Record one more cat-pet — used by the SQ3 menu action."""
+    raw = _load_raw(chronicle_dir)
+    raw["cat_pets"] += 1
+    _save(raw, chronicle_dir)
