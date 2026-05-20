@@ -33,6 +33,9 @@ CONSUMABLE_EFFECTS = {
     "Saint's Reliquary":     {"heal_full": True, "stamina_full": True},
     "Bonesinger's Salt":     {"status": "braced", "status_turns": 5},
     "Pall-Banishing Tonic":  {"heal": 200, "status": "evasive", "status_turns": 3},
+    # The Last Bread — gifted by Kerris in the Hidden Hold. Heal full + stamina full,
+    # AND wraps that effect in a small narrative: bread the gates couldn't stop.
+    "the Last Bread":        {"heal_full": True, "stamina_full": True},
 }
 
 # Legacy alias kept so the existing shop and tests can still read potion heals.

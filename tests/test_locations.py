@@ -1027,6 +1027,43 @@ def test_verren_discovery_sets_flag(content, tmp_path):
     assert state.flags.get("verren_found") is True
 
 
+def test_drowned_holds_petition_opens_hidden_hold(content, tmp_path):
+    """Reading the petition reveals the path north — Hidden Hold unlocks."""
+    state = make_state(_player(content), content, ScriptedIO(), StubRandom(),
+                       chronicle_dir=tmp_path)
+    locations._run_discovery(state, {"id": "drowned_holds_petition",
+                                     "lines": ["test"]})
+    assert state.flags.get("hidden_hold_found") is True
+
+
+def test_reckoning_ending_requires_talva_promise(content, tmp_path):
+    """The Reckoning ending hides until Tálva has been promised help."""
+    from terminalquest import endings
+    state = make_state(_player(content), content, ScriptedIO(), StubRandom(),
+                       chronicle_dir=tmp_path)
+    available = [e[0] for e in endings.available(state)]
+    assert "reckoning" not in available
+    state.flags["talva_asked"] = True
+    available = [e[0] for e in endings.available(state)]
+    assert "reckoning" in available
+
+
+def test_dialogue_grants_consumable_on_choice(content):
+    """A response with grants_consumable adds the named item to player.consumables."""
+    from terminalquest import dialogue
+    state = make_state(_player(content), content, ScriptedIO(["1"]), StubRandom())
+    tree = {
+        "initial": {
+            "lines": ["..."],
+            "responses": [
+                {"text": "take", "next": None, "grants_consumable": "the Last Bread"},
+            ],
+        },
+    }
+    dialogue.run_dialogue(state, tree)
+    assert "the Last Bread" in state.player.consumables
+
+
 def test_scholar_pays_for_unseen_discoveries(tmp_path, content):
     """The Mournhold Scholar pays SCHOLAR_PAYOUT per unrecorded discovery."""
     player = _player(content)

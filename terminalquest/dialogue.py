@@ -50,6 +50,9 @@ def run_dialogue(state, tree, start_node="initial"):
         chosen = responses[int(choice) - 1]
         if "sets_flag" in chosen:
             state.flags[chosen["sets_flag"]] = True
+        # A response may also grant a consumable (e.g. the Last Bread).
+        if "grants_consumable" in chosen:
+            state.player.consumables.append(chosen["grants_consumable"])
         current = chosen.get("next")
     return None
 

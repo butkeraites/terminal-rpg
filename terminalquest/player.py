@@ -24,7 +24,8 @@ LEVEL_BOONS = {
 # Inventory item names treated as usable healing potions (HUD potion counter).
 POTION_ITEMS = ("Health Potion", "Greater Potion", "Sovereign Potion",
                 "Pall-Drinker", "Warrior's Breath", "Rogue's Vial",
-                "Mage's Crystal", "Ranger's Tonic", "Cleric's Wafer")
+                "Mage's Crystal", "Ranger's Tonic", "Cleric's Wafer",
+                "the Last Bread")
 
 
 class Player(Combatant):

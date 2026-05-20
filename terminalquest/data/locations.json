@@ -36,7 +36,7 @@
       "The wood is starting to remember being green. Slowly. Slowly."
     ],
     "connections": ["crossroads", "reach"],
-    "conditional_connections": ["hunters_cache"],
+    "conditional_connections": ["hunters_cache", "hidden_hold"],
     "encounters": [
       {"type": "combat", "enemies": ["goblin", "wolf", "bandit"], "pick": "random"},
       {"type": "combat", "enemies": ["pallid_stag"], "label": "⚔️  Challenge the Pallid Stag"},
@@ -349,6 +349,27 @@
          "'When the rite of unremembering is performed, this book will not be there for it.'",
          "'It is one of the things they cannot have. It is one of the things we kept.'"
        ]}
+    ]
+  },
+  "hidden_hold": {
+    "name": "The Hidden Hold",
+    "kind": "zone",
+    "act": 1,
+    "recommended_level": 3,
+    "unlock_flag": "hidden_hold_found",
+    "intro": [
+      "🪜 You leave the Witherwood north, past where the road wants to take you.",
+      "A path. Older than the road. It does not appear on the maps Mournhold drew.",
+      "It bends down into a hollow. The hollow is full of smoke from cookfires.",
+      "There are people here. Three generations of them. None of them are from Mournhold.",
+      "All of them are from holds Mournhold sealed the gates against, three winters ago."
+    ],
+    "connections": ["forest"],
+    "encounters": [
+      {"type": "dialogue", "dialogue_id": "talva",   "label": "🗝️  Speak with Tálva, who leads here"},
+      {"type": "dialogue", "dialogue_id": "kerris",  "label": "🍞 Speak with Kerris, the baker"},
+      {"type": "dialogue", "dialogue_id": "ondrek",  "label": "⚒  Speak with Ondrek, who has questions"},
+      {"type": "dialogue", "dialogue_id": "small_un", "label": "🐦 Speak with the Small Un"}
     ]
   },
   "sealed_chamber": {

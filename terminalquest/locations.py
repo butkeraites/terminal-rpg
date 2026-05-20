@@ -797,6 +797,7 @@ _DISCOVERY_FLAGS = {
     "mourncross_scuffmarks": "sealed_chamber_found",
     "real_minutes": "read_real_minutes",
     "verren_fragment": "verren_found",
+    "drowned_holds_petition": "hidden_hold_found",  # reading the petition opens the way north
 }
 
 # The Bone Tomb requires the player to have done everything Mournhold can
@@ -1118,6 +1119,43 @@ def _reborn_screen(state):
     io.show("\nThank you for playing Mournhold.")
 
 
+def _reckoning_screen(state):
+    """The 8th ending — help Tálva. Mournhold is unmade for what it did to the holds.
+
+    Requires ``talva_asked`` flag — you promised Tálva at the Hidden Hold.
+    Records the Chronicle as 'reckoning'. Not a clean ending. Not meant to be.
+    """
+    player, io = state.player, state.io
+    chronicle.add_cleanse(state.chronicle_dir)
+    io.clear()
+    io.show_slow("You break the Warden. The Pall reaches.")
+    io.show_slow("You do not let it take you. You do not bring the rite back to Atrél.")
+    io.show_slow("You do not sit at Cael's feet. You walk down.")
+    io.show_slow("You walk down past the Pre-Pall Shrine. You take a hammer to the iron tablet.")
+    io.show_slow("The vow under the mountain breaks. The hunger comes up. It comes up steadily.\n")
+    io.pause(1)
+    io.show_slow("It eats Mournhold's name first. Then the names of every councilor who voted to seal.")
+    io.show_slow("Then the rite of unremembering, eaten by what the rite was meant to forget.")
+    io.show_slow("Then the holds that died inside the gates — but their names are safe.")
+    io.show_slow("Their names are at the Hidden Hold. Tálva has them. She kept them.\n")
+    io.pause(1)
+    io.show_slow("Mournhold is unwritten. The roads bend wrong again — but they bend toward the holds.")
+    io.show_slow("You walk down to the Hidden Hold. Tálva nods at you. Kerris bakes you a loaf.")
+    io.show_slow("Ondrek says nothing. The Small Un asks why your hands are shaking.")
+    io.show_slow("You stay. You become the kingdom's last historian. You write what was, and what wasn't.\n")
+    io.pause(2)
+    io.show("=" * 50)
+    io.show("⚖️  THE RECKONING")
+    io.show(f"{player.name} the {player.class_name} — who broke the kingdom that broke the holds.")
+    io.show("\nMournhold is unmade. The Pall is undone with it.")
+    io.show("Future climbers will find a country that ate itself, and a Hidden Hold that did not.")
+    io.show("Symmetry. The hardest thing the holds had left to ask for.")
+    io.show("\nThe Chronicle records: reckoning. The Pall is gone. So is the kingdom that fed it.")
+    io.show("=" * 50)
+    _run_summary(state)
+    io.show("\nThank you for playing Mournhold.")
+
+
 def _old_seal_screen(state):
     """The seventh ending — take Cael's place as the seal beneath the mountain.
 
@@ -1254,6 +1292,12 @@ endings.register(
     "🪨 Take Cael's place  (the oldest end — you become the seal)",
     _old_seal_screen,
     lambda s: s.flags.get("offered_old_seal", False),
+)
+endings.register(
+    "reckoning",
+    "⚖️  Honour Tálva's reckoning  (unmake Mournhold — the holds are kept)",
+    _reckoning_screen,
+    lambda s: s.flags.get("talva_asked", False),
 )
 
 

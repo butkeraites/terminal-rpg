@@ -1,4 +1,280 @@
 {
+  "talva": {
+    "initial": {
+      "lines": [
+        "A woman in her forties. Hard-eyed, not angry. She has counted you before you got close.",
+        "'I am Tálva. My great-grandmother sat on Mournhold's council and voted to open the gates.'",
+        "'They sealed her in a room for it. She wrote my line of the family on the wall before she died.'",
+        "'We came out of the holds Mournhold let starve. We have been here three generations.'",
+        "'I have a request. I will not pretend it is a kindness to you.'"
+      ],
+      "responses": [
+        {"text": "What is the request?", "next": "request"},
+        {"text": "How did you survive?", "next": "survived"},
+        {"text": "What do you want from Mournhold?", "next": "want"},
+        {"text": "(step back)", "next": null}
+      ]
+    },
+    "request": {
+      "lines": [
+        "'There is a shrine on the Climb. The first king's vow. The seal under the mountain.'",
+        "'I want it broken. Not repaired — broken. I want the hunger to take Mournhold's name.'",
+        "'I want them unremembered, the way they unremembered our holds.'",
+        "'You can climb. You can reach it. If you break the shrine, the kingdom that ate ours will be ate.'",
+        "'I will not lie and call it justice. It is symmetry. Symmetry is what we have left.'"
+      ],
+      "responses": [
+        {"text": "I'll think about it.",
+         "next": "thinking", "sets_flag": "talva_asked"},
+        {"text": "I won't help you do this.", "next": "refused"},
+        {"text": "Why not just live here?", "next": "live"}
+      ]
+    },
+    "survived": {
+      "lines": [
+        "'Children were passed under the gates the night before they sealed.'",
+        "'The mothers stayed inside. They knew there wouldn't be enough grain for the children too.'",
+        "'My great-grandmother's daughter — she was three weeks old — was one of the passed children.'",
+        "'She was raised by a Karst trader who happened to be near the gate that night.'",
+        "'There are forty-three of us, descended from that night. There were more. Mournhold's Pall has",
+        "'caught some of us, even out here. We do not forgive that.'"
+      ],
+      "responses": [
+        {"text": "What is the request?", "next": "request"},
+        {"text": "Why not just live here?", "next": "live"}
+      ]
+    },
+    "want": {
+      "lines": [
+        "'I want them to know what they did. They cannot know if they cannot remember.'",
+        "'I want the kingdom unmade. I want their name forgotten the way they forgot ours.'",
+        "'I do not want apologies. I do not want their gold. I do not want their grain.'",
+        "'I want symmetry.'"
+      ],
+      "responses": [
+        {"text": "And what becomes of the people of Mournhold?", "next": "people"},
+        {"text": "What is the request?", "next": "request"}
+      ]
+    },
+    "people": {
+      "lines": [
+        "She does not answer for a long time.",
+        "'The same as my great-grandmother. The same as my great-aunts. The same as the seventy-six',",
+        "'people in our family ledger who died inside the sealed gates without their names being said.'",
+        "'It is not a kind answer. I am not the kind one here. Kerris is. Ask him if you want kindness.'"
+      ],
+      "responses": [
+        {"text": "What is the request?", "next": "request"},
+        {"text": "(step back)", "next": null}
+      ]
+    },
+    "live": {
+      "lines": [
+        "'We do live. Three generations of us have lived. That is not the question.'",
+        "'The question is: what do we owe the kingdom that did this. The answer is: nothing.'",
+        "'The further question is: what does the kingdom owe us. The answer is: itself.'",
+        "'I am collecting on that debt.'"
+      ],
+      "responses": [
+        {"text": "I'll think about it.",
+         "next": "thinking", "sets_flag": "talva_asked"},
+        {"text": "I won't help you.", "next": "refused"}
+      ]
+    },
+    "thinking": {
+      "lines": [
+        "She nods. She does not press.",
+        "'Go up. Speak with the others before you decide. Kerris and Ondrek and the Small Un.'",
+        "'Then come back. I will not be hurt if you refuse. I am not waiting for you to decide.'",
+        "'I will find another climber if you walk away. There are climbers every year.'"
+      ],
+      "responses": [
+        {"text": "(leave)", "next": null}
+      ]
+    },
+    "refused": {
+      "lines": [
+        "She nods again. She is harder to surprise.",
+        "'Then go. Tell them, when you climb the road back, that we are here.'",
+        "'Tell them that we remember. Tell them that some of us would have unmade them.'",
+        "'It will not undo the gates. But Mournhold should know that the gates were never the end.'"
+      ],
+      "responses": [
+        {"text": "(leave)", "next": null}
+      ]
+    }
+  },
+  "kerris": {
+    "initial": {
+      "lines": [
+        "An old man at a small clay oven. He bakes one loaf a day, no more.",
+        "'I am Kerris. My grandmother was one of the children passed under the gates.'",
+        "'I keep her oven. I bake the way she taught me — one loaf, every day, no exceptions.'",
+        "'She made me promise. The bread she taught me how to bake was the bread her mother taught her.'",
+        "'It is the last bread that was baked in Brackmere before the gates closed.'",
+        "'I have one loaf today. I have kept one back, every day, for three years.'",
+        "'I do not know who I was keeping them for. I think it might be you.'"
+      ],
+      "responses": [
+        {"text": "Who was your grandmother?", "next": "grandmother"},
+        {"text": "Take the bread?",
+         "next": "take_bread",
+         "sets_flag": "received_last_bread",
+         "grants_consumable": "the Last Bread"},
+        {"text": "What do you think of Tálva's plan?", "next": "talva_plan"},
+        {"text": "(step back)", "next": null}
+      ]
+    },
+    "grandmother": {
+      "lines": [
+        "'Mira. She was three weeks old when the gates closed.'",
+        "'The Karst woman who carried her out called her Mira because it was the only name she liked.'",
+        "'When my grandmother was old enough to ask, she went back to Brackmere and looked.'",
+        "'There was no Brackmere. The records had been struck through. The hold was a flooded field.'",
+        "'She came home and bought the oven. She baked. She taught my mother. My mother taught me.'",
+        "'I bake every day. It is enough. It is what I was given.'"
+      ],
+      "responses": [
+        {"text": "Take the bread?",
+         "next": "take_bread",
+         "sets_flag": "received_last_bread",
+         "grants_consumable": "the Last Bread"},
+        {"text": "What do you think of Tálva's plan?", "next": "talva_plan"}
+      ]
+    },
+    "take_bread": {
+      "lines": [
+        "He wraps the loaf in cloth. The cloth is older than he is.",
+        "'Take it. Eat it when something needs eating that gold cannot fix.'",
+        "'It is not a magic bread. It is just bread. But it is bread that the gates did not stop.'",
+        "'That counts for something. Some day, it will count for you.'"
+      ],
+      "responses": [
+        {"text": "What about Tálva?", "next": "talva_plan"},
+        {"text": "(leave)", "next": null}
+      ]
+    },
+    "talva_plan": {
+      "lines": [
+        "He kneads dough for a long while before answering.",
+        "'I love Tálva. She is my cousin. She is right that Mournhold owes us a debt.'",
+        "'But I bake. I do not unbake. I have not lifted my hand to anyone in thirty years.'",
+        "'If you help her, do it for Mournhold, not for us. We do not need it done.'",
+        "'We have bread. We have the oven. We have my grandmother's name. That is enough.'",
+        "'Tell her, if you decide. Tell her gently. She has been carrying this since she was small.'"
+      ],
+      "responses": [
+        {"text": "(leave)", "next": null}
+      ]
+    }
+  },
+  "ondrek": {
+    "initial": {
+      "lines": [
+        "A man in his thirties, sharpening a knife with too much attention.",
+        "He looks up.",
+        "'You are Mournhold-born. I am not. I have one question. I want a real answer.'",
+        "'Do you think Tálva is right?'"
+      ],
+      "responses": [
+        {"text": "I don't know yet.", "next": "honest"},
+        {"text": "Yes — I'll help her.", "next": "yes"},
+        {"text": "No — I won't.", "next": "no"}
+      ]
+    },
+    "honest": {
+      "lines": [
+        "He nods. Slowly.",
+        "'Good. I am not sure either. I have been working through it for ten years.'",
+        "'I voted against Tálva's plan, the first time we met to discuss it. Eight years ago.'",
+        "'I voted against it the second time. Six years ago.'",
+        "'I have not been to the last three meetings. I think that means I have changed my vote.'",
+        "'But I cannot make myself say so out loud, to Tálva or to anyone.'",
+        "'That is what I wanted to tell you. Knowing what is right and being able to say it are different.'",
+        "'Whatever you decide, climb up and say it. Out loud. We owe each other at least that much.'"
+      ],
+      "responses": [
+        {"text": "(leave)", "next": null}
+      ]
+    },
+    "yes": {
+      "lines": [
+        "He nods. He sharpens the knife.",
+        "'Tálva will be glad. She will not say she is glad. But she will be.'",
+        "'You are doing something I have not been able to do for ten years. Good for you.'",
+        "'I am not sure it is right. I am sure it is loud. Make it loud.'"
+      ],
+      "responses": [
+        {"text": "(leave)", "next": null}
+      ]
+    },
+    "no": {
+      "lines": [
+        "He looks at the knife. He puts it down. He looks at you.",
+        "'I think you are wrong. I also think I have not been able to say that out loud.'",
+        "'You said it out loud. So I will too.'",
+        "'I think Tálva is right. I am going to her tonight. To tell her.'",
+        "'Thank you. I needed someone else to refuse first. I needed to know it would be said.'"
+      ],
+      "responses": [
+        {"text": "(leave)", "next": null}
+      ]
+    }
+  },
+  "small_un": {
+    "initial": {
+      "lines": [
+        "A child. Perhaps seven years old. They are eating something — a slice of bread.",
+        "They look at you with the absolute, total attention of small children.",
+        "'You are from up there.' They point up, toward Mournhold.",
+        "'Tálva says you are going to break it. Mama says you might not.'",
+        "'Mama says nobody knows.'"
+      ],
+      "responses": [
+        {"text": "What do you want?", "next": "want"},
+        {"text": "Who is your mama?", "next": "mama"},
+        {"text": "What did Tálva tell you?", "next": "tlold"},
+        {"text": "(step back)", "next": null}
+      ]
+    },
+    "want": {
+      "lines": [
+        "They consider. They keep eating.",
+        "'I want the bread to keep coming. I want Mama not to be angry all the time.'",
+        "'I want Tálva not to be sad.'",
+        "'I do not know if Mournhold being broken would do those.'",
+        "'I do not know what Mournhold is, very much. I have been there in dreams.'",
+        "'In dreams it is the place where you have to be afraid to be a child.'",
+        "'I would not want to live there. But I do not want it broken, either.'"
+      ],
+      "responses": [
+        {"text": "(leave)", "next": null}
+      ]
+    },
+    "mama": {
+      "lines": [
+        "'Mama is Yara. She is the one who bakes the bread when Kerris is too old to bake.'",
+        "'She is also the one who has to listen to Tálva when Tálva is being too much.'",
+        "'Mama says Tálva is right but Tálva is too loud.'",
+        "'Mama says you can be right and too loud at the same time.'"
+      ],
+      "responses": [
+        {"text": "(leave)", "next": null}
+      ]
+    },
+    "tlold": {
+      "lines": [
+        "'Tálva said that you are going to climb the mountain and break a shrine.'",
+        "'And then the kingdom will go away. I am supposed to be happy about that.'",
+        "'I am trying to be happy. It is hard. The kingdom never did anything to me — Tálva did not let it.'",
+        "'I do not know what it is like to be done something to by a kingdom.'",
+        "'I do not know if I should learn or not.'"
+      ],
+      "responses": [
+        {"text": "(leave)", "next": null}
+      ]
+    }
+  },
   "cael": {
     "initial": {
       "voice": "stone",
