@@ -111,21 +111,46 @@ def _name_the_fallen(io, content, entries):
     io.show_slow("It will keep yours the same way.\n")
 
 
+MIRROR_CLIMB_THRESHOLD = 3  # SQ5: distinct endings needed to unlock the Mirror Climb
+
+
 def create_character(content, io, chronicle_dir):
-    """Run new-game character creation and return a fresh Player."""
+    """Run new-game character creation and return (player, starting_flags).
+
+    SQ5 — if the Chronicle has at least ``MIRROR_CLIMB_THRESHOLD`` distinct
+    endings reached, the player is offered a Mirror Climb: the same world,
+    but the climb is the climb of someone who has done it as several others
+    already and remembers them all.
+    """
     name = io.ask("\nEnter your hero's name: ") or "Hero"
     class_id, class_def = choose_class(content, io)
     player = Player(name, class_id, class_def, content)
+    flags = {}
+    if len(chronicle.endings_seen(chronicle_dir)) >= MIRROR_CLIMB_THRESHOLD:
+        io.show("\n🪞 You have climbed Mournhold as several others. There is")
+        io.show("   a path back through your own steps. The Mirror Climb opens")
+        io.show("   the Summit's hardest ending — and only that one — to whoever")
+        io.show("   has paid for it as someone else.")
+        answer = io.ask("\nClimb the Mirror? [y/N] ").strip().lower()
+        if answer == "y":
+            flags["mirror_run"] = True
     io.clear()
-    io.show_slow(f"{player.name} the {player.class_name}.")
-    io.show_slow("The realm of Mournhold has been dying for three winters now.")
-    io.show_slow("The Pall came down off the heights and the land went grey behind it —")
-    io.show_slow("crops, then cattle, then people, all turned hollow and hungry.")
-    io.show_slow("You are no hero; the heroes died first. You are only still breathing —")
-    io.show_slow("and the last road that leads anywhere climbs toward the Pall's heart.\n")
+    if flags.get("mirror_run"):
+        io.show_slow(f"🪞 {player.name} the {player.class_name}. Again.")
+        io.show_slow("You have stood at the road's start before, under another name.")
+        io.show_slow("Mournhold does not know you are back. You know.")
+        io.show_slow("The Witherwood looks like itself. You look at it like an old")
+        io.show_slow("friend's face that does not, yet, recognise you.\n")
+    else:
+        io.show_slow(f"{player.name} the {player.class_name}.")
+        io.show_slow("The realm of Mournhold has been dying for three winters now.")
+        io.show_slow("The Pall came down off the heights and the land went grey behind it —")
+        io.show_slow("crops, then cattle, then people, all turned hollow and hungry.")
+        io.show_slow("You are no hero; the heroes died first. You are only still breathing —")
+        io.show_slow("and the last road that leads anywhere climbs toward the Pall's heart.\n")
     _name_the_fallen(io, content, chronicle.load(chronicle_dir))
     io.pause(2)
-    return player
+    return player, flags
 
 
 def load_menu(content, io, rng):
@@ -220,10 +245,11 @@ def run(io=None, content=None, rng=None, chronicle_dir=None, seed=None):
         choice = io.ask("\nYour choice? ")
 
         if choice == "1":
-            player = create_character(content, io, chronicle_dir)
+            player, starting_flags = create_character(content, io, chronicle_dir)
             io.show(f"\n🎲 This run is seeded: {seed}")
             location_loop(GameState(player, content, io, rng,
-                                    chronicle_dir=chronicle_dir, seed=seed))
+                                    chronicle_dir=chronicle_dir, seed=seed,
+                                    flags=starting_flags))
             return
         elif choice == "2":
             state = load_menu(content, io, rng)

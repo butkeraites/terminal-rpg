@@ -1642,6 +1642,41 @@ def test_caretaker_service_appears_at_threshold(tmp_path, content):
     assert "Caretaker" in labels
 
 
+def test_endings_seen_records_distinct_endings(tmp_path, content):
+    """SQ5 — chronicle.endings_seen tracks distinct ending ids reached."""
+    from terminalquest import chronicle
+    assert chronicle.endings_seen(tmp_path) == set()
+    chronicle.add_ending_seen("warden", tmp_path)
+    chronicle.add_ending_seen("warden", tmp_path)  # idempotent
+    chronicle.add_ending_seen("reborn", tmp_path)
+    chronicle.add_ending_seen("purify", tmp_path)
+    assert chronicle.endings_seen(tmp_path) == {"warden", "reborn", "purify"}
+
+
+def test_other_mournhold_ending_hidden_outside_mirror_run(tmp_path, content):
+    """SQ5 — The Other Mournhold ending is gated on mirror_run flag."""
+    from terminalquest import endings
+    state = make_state(_strong_player(content), content, ScriptedIO(), StubRandom(),
+                       chronicle_dir=tmp_path)
+    available_ids = [e[0] for e in endings.available(state)]
+    assert "other_mournhold" not in available_ids
+    state.flags["mirror_run"] = True
+    available_ids = [e[0] for e in endings.available(state)]
+    assert "other_mournhold" in available_ids
+
+
+def test_other_mournhold_ending_records_chronicle(tmp_path, content):
+    """SQ5 — choosing the Mirror ending records 'other_mournhold' + unlocks the trophy."""
+    from terminalquest import chronicle
+    player = _strong_player(content)
+    state = make_state(player, content, ScriptedIO(), StubRandom(),
+                       chronicle_dir=tmp_path)
+    locations._other_mournhold_screen(state)
+    assert "other_mournhold" in chronicle.endings_seen(tmp_path)
+    assert "the_other_mournhold" in chronicle.unlocked(tmp_path)
+    assert chronicle.purified(tmp_path) is True
+
+
 def test_caretaker_ending_records_chronicle_and_cleanse(tmp_path, content):
     """SQ2 — choosing the Caretaker records the fate + counts as a cleanse."""
     from terminalquest import chronicle

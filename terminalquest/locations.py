@@ -1125,6 +1125,7 @@ def _warden_screen(state):
     player, io = state.player, state.io
     chronicle.record(state, "warden", state.chronicle_dir)
     chronicle.add_cleanse(state.chronicle_dir)
+    chronicle.add_ending_seen("warden", state.chronicle_dir)
     io.clear()
     io.show("=" * 50)
     io.show("🥀  THE PALL KEEPS YOU")
@@ -1173,6 +1174,7 @@ def _reborn_screen(state):
                      + unlock_count * REBORN_ECHO_PER_UNLOCK)
     chronicle.add_echoes(echoes_earned, state.chronicle_dir)
     chronicle.add_cleanse(state.chronicle_dir)
+    chronicle.add_ending_seen("reborn", state.chronicle_dir)
     # The Reborn hero is NOT chronicled as a Warden — they refused the Pall.
     io.clear()
     io.show_slow("You turn the Pall's reach aside. The Summit empties of you,")
@@ -1202,6 +1204,7 @@ def _reckoning_screen(state):
     """
     player, io = state.player, state.io
     chronicle.add_cleanse(state.chronicle_dir)
+    chronicle.add_ending_seen("reckoning", state.chronicle_dir)
     io.clear()
     io.show_slow("You break the Warden. The Pall reaches.")
     io.show_slow("You do not let it take you. You do not bring the rite back to Atrél.")
@@ -1241,6 +1244,7 @@ def _old_seal_screen(state):
     player, io = state.player, state.io
     chronicle.mark_purified(state.chronicle_dir)  # the realm survives, after all
     chronicle.add_cleanse(state.chronicle_dir)
+    chronicle.add_ending_seen("old_seal", state.chronicle_dir)
     io.clear()
     io.show_slow("You break the Warden. The Pall reaches for you.")
     io.show_slow("You walk past its reaching. You walk down — past the Choir,")
@@ -1281,6 +1285,7 @@ def _atrel_peace_screen(state):
     player, io = state.player, state.io
     chronicle.mark_purified(state.chronicle_dir)
     chronicle.add_cleanse(state.chronicle_dir)
+    chronicle.add_ending_seen("atrel_peace", state.chronicle_dir)
     io.clear()
     io.show_slow("You do not climb back to the Summit to say the names.")
     io.show_slow("You climb back down. To the Choir. To the south aisle. To Atrél.")
@@ -1313,6 +1318,7 @@ def _purify_screen(state):
     player, io = state.player, state.io
     chronicle.mark_purified(state.chronicle_dir)
     chronicle.add_cleanse(state.chronicle_dir)
+    chronicle.add_ending_seen("purify", state.chronicle_dir)
     io.clear()
     io.show_slow("You do not let the Pall take you, and you do not refuse it,")
     io.show_slow("and you do not climb back down. You stand still, and you")
@@ -1332,6 +1338,53 @@ def _purify_screen(state):
     io.show("\nThe Chronicle remembers — you will see, on every next run,")
     io.show("that Mournhold lies PURIFIED. The cycle is broken.")
     _sister_realm_addendum(state, io)
+    io.show("=" * 50)
+    _run_summary(state)
+    io.show("\nThank you for playing Mournhold.")
+
+
+def _other_mournhold_screen(state):
+    """SQ5 — The Other Mournhold.
+
+    Only available in a Mirror Climb. The player, standing on a Summit
+    they have stood on as someone else many times, undoes the original
+    wrong: not the rite, not the famine, not the gates — the act of
+    forgetting itself, taken back to its first moment. The kingdom that
+    remembers is the kingdom that did not need a Pall.
+    """
+    player, io = state.player, state.io
+    chronicle.mark_purified(state.chronicle_dir)
+    chronicle.add_cleanse(state.chronicle_dir)
+    chronicle.add_ending_seen("other_mournhold", state.chronicle_dir)
+    chronicle.unlock("the_other_mournhold", state.chronicle_dir)
+    io.clear()
+    io.show_slow("You have stood at this Summit as someone else, several times.")
+    io.show_slow("You know what every ending costs. You have paid each cost yourself.")
+    io.show_slow("The Pall reaches; you do not let it reach you.")
+    io.show("")
+    io.show_slow("Instead you step back through your own steps, and the kingdom's.")
+    io.show_slow("Through the famine winter. Through the council vote. Through the rite.")
+    io.show_slow("You arrive in a chamber where the rite has not yet been said.")
+    io.show_slow("Twelve councilors at a long table. They have not voted.")
+    io.show_slow("They look up at you the way you have looked up at every grave.")
+    io.show("")
+    io.show_slow("You tell them what unremembering will become if they perform it.")
+    io.show_slow("You tell them about Atrél, who will be broken.")
+    io.show_slow("You tell them about Cael, who will swallow the last line and hold it for centuries.")
+    io.show_slow("You tell them about Tálva, who their grandchildren will not let in.")
+    io.show_slow("You tell them about Renan and Eldris and Paipel and every name you have seen.")
+    io.show("")
+    io.show_slow("They listen. They are afraid. They vote. The rite is not performed.")
+    io.show_slow("There is still a famine. There is still a hard winter. Many die.")
+    io.show_slow("But the holds are fed, and remembered, and the kingdom does not learn to forget.")
+    io.pause(2)
+    io.show("=" * 50)
+    io.show("🪞  THE OTHER MOURNHOLD")
+    io.show(f"{player.name} the {player.class_name} — who undid the first wrong.")
+    io.show("\nThis kingdom is not the kingdom you climbed in. It never grew a Pall,")
+    io.show("because it never forgot what it owed. Both the Pall and the climb")
+    io.show("never were. You remember them; you alone, here, do.")
+    io.show("\nThe Chronicle records: the_other_mournhold. The mirror ending.")
     io.show("=" * 50)
     _run_summary(state)
     io.show("\nThank you for playing Mournhold.")
@@ -1374,6 +1427,12 @@ endings.register(
     "⚖️  Honour Tálva's reckoning  (unmake Mournhold — the holds are kept)",
     _reckoning_screen,
     lambda s: s.flags.get("talva_asked", False),
+)
+endings.register(
+    "other_mournhold",
+    "🪞 The Other Mournhold  (undo the first wrong — only on a Mirror Climb)",
+    _other_mournhold_screen,
+    lambda s: s.flags.get("mirror_run", False),
 )
 
 
@@ -1687,6 +1746,7 @@ def caretaker(state):
     io.pause(2)
     chronicle.record(state, "caretaker", state.chronicle_dir)
     chronicle.add_cleanse(state.chronicle_dir)
+    chronicle.add_ending_seen("caretaker", state.chronicle_dir)
     state.flags["run_ended"] = True
 
 

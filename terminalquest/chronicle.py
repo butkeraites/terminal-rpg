@@ -43,6 +43,7 @@ def _load_raw(chronicle_dir):
         read_ids = data.get("read_discovery_ids", [])
         visits = data.get("gravewatch_visits", 0)
         kacts = data.get("kind_acts", 0)
+        endings = data.get("endings_seen_ids", [])
         return {
             "entries": list(entries) if isinstance(entries, list) else [],
             "unlocks": list(unlocks) if isinstance(unlocks, list) else [],
@@ -64,6 +65,8 @@ def _load_raw(chronicle_dir):
                                   if isinstance(visits, (int, float)) else 0),
             "kind_acts": (int(kacts)
                           if isinstance(kacts, (int, float)) else 0),
+            "endings_seen_ids": (list(endings)
+                                 if isinstance(endings, list) else []),
         }
     except (OSError, json.JSONDecodeError, AttributeError, TypeError):
         return {"entries": [], "unlocks": [], "owned_accessories": [],
@@ -73,7 +76,8 @@ def _load_raw(chronicle_dir):
                 "lost_verse_fragments_seen_ids": [],
                 "read_discovery_ids": [],
                 "gravewatch_visits": 0,
-                "kind_acts": 0}
+                "kind_acts": 0,
+                "endings_seen_ids": []}
 
 
 def load(chronicle_dir=DEFAULT_DIR):
@@ -122,6 +126,7 @@ def _save(raw, chronicle_dir):
         "read_discovery_ids": raw.get("read_discovery_ids", []),
         "gravewatch_visits": raw.get("gravewatch_visits", 0),
         "kind_acts": raw.get("kind_acts", 0),
+        "endings_seen_ids": raw.get("endings_seen_ids", []),
     }, chronicle_dir)
 
 
@@ -334,6 +339,25 @@ def add_read_discovery(discovery_id, chronicle_dir=DEFAULT_DIR):
     seen = raw.setdefault("read_discovery_ids", [])
     if discovery_id not in seen:
         seen.append(discovery_id)
+        _save(raw, chronicle_dir)
+
+
+def endings_seen(chronicle_dir=DEFAULT_DIR):
+    """Set of distinct ending ids the player has reached across runs.
+
+    SQ5 — the Mirror Run. After three distinct endings, character creation
+    offers a Mirror Climb — a parallel-Mournhold run that unlocks an extra
+    Summit ending: The Other Mournhold.
+    """
+    return set(_load_raw(chronicle_dir).get("endings_seen_ids", []))
+
+
+def add_ending_seen(ending_id, chronicle_dir=DEFAULT_DIR):
+    """Record that this ending has been reached at least once. Idempotent."""
+    raw = _load_raw(chronicle_dir)
+    seen = raw.setdefault("endings_seen_ids", [])
+    if ending_id not in seen:
+        seen.append(ending_id)
         _save(raw, chronicle_dir)
 
 
