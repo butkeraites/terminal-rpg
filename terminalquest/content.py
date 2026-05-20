@@ -13,7 +13,7 @@ from .weapon import WEAPON_SLOTS
 DATA_DIR = Path(__file__).parent / "data"
 
 _VALID_AI = {"aggressive", "defensive", "caster", "fleer", "relentless", "enrager"}
-_VALID_ENCOUNTER_TYPES = {"combat", "discovery"}
+_VALID_ENCOUNTER_TYPES = {"combat", "discovery", "npc"}
 _VALID_ACTS = {1, 2, 3}
 _VALID_STATS = {"attack", "defense", "max_hp", "max_stamina"}
 _VALID_PROC_TRIGGERS = {"on_hit", "on_crit"}
@@ -38,7 +38,7 @@ class Content:
     """An immutable bundle of all loaded game content."""
 
     def __init__(self, classes, abilities, enemies, locations, components, armor,
-                 companions, accessories, pets, hirelings):
+                 companions, accessories, pets, hirelings, npcs):
         self.classes = classes
         self.abilities = abilities
         self.enemies = enemies
@@ -49,6 +49,7 @@ class Content:
         self.accessories = accessories
         self.pets = pets
         self.hirelings = hirelings
+        self.npcs = npcs
 
     def validate(self):
         """Raise ValueError if the data files are internally inconsistent."""
@@ -123,10 +124,21 @@ class Content:
                             f"location '{loc_id}' discovery '{encounter['id']}' "
                             f"has no lines"
                         )
+                elif kind == "npc":
+                    if not encounter.get("id"):
+                        raise ValueError(
+                            f"location '{loc_id}' has an npc with no id"
+                        )
         self._check_reachable()
 
     def _check_reachable(self):
-        """Every location must be reachable from the crossroads."""
+        """Every location must be reachable from the crossroads.
+
+        Sub-zones that gate behind an NPC quest are listed in
+        ``conditional_connections`` on their parent — the reachability check
+        traverses both kinds of edges, since a v0.9 NPC unlock makes the
+        sub-zone reachable in-game.
+        """
         seen = set()
         frontier = ["crossroads"]
         while frontier:
@@ -134,7 +146,9 @@ class Content:
             if loc_id in seen:
                 continue
             seen.add(loc_id)
-            frontier.extend(self.locations[loc_id].get("connections", []))
+            loc = self.locations[loc_id]
+            frontier.extend(loc.get("connections", []))
+            frontier.extend(loc.get("conditional_connections", []))
         unreachable = set(self.locations) - seen
         if unreachable:
             raise ValueError(
@@ -183,6 +197,7 @@ def load_content():
         accessories=_load("accessories.json"),
         pets=_load("pets.json"),
         hirelings=_load("hirelings.json"),
+        npcs=_load("npcs.json"),
     )
     content.validate()
     return content

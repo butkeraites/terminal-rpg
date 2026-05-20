@@ -17,7 +17,8 @@
       "Its people do not ask your name. Names are for the dead."
     ],
     "connections": ["crossroads"],
-    "services": ["shop", "inn", "smith", "quartermaster", "pact_broker", "echo_trader", "night_hunt", "quest_board", "survivor", "beastmaster", "hireling_hall"]
+    "services": ["shop", "inn", "smith", "quartermaster", "pact_broker", "echo_trader", "night_hunt", "quest_board", "survivor", "beastmaster", "hireling_hall"],
+    "npc_services": ["scholar"]
   },
   "forest": {
     "name": "The Witherwood",
@@ -35,9 +36,11 @@
       "The wood is starting to remember being green. Slowly. Slowly."
     ],
     "connections": ["crossroads", "reach"],
+    "conditional_connections": ["hunters_cache"],
     "encounters": [
       {"type": "combat", "enemies": ["goblin", "wolf", "bandit"], "pick": "random"},
-      {"type": "combat", "enemies": ["pallid_stag"], "label": "⚔️  Challenge the Pallid Stag"}
+      {"type": "combat", "enemies": ["pallid_stag"], "label": "⚔️  Challenge the Pallid Stag"},
+      {"type": "npc", "id": "old_halna", "label": "🪵 Speak with Old Halna"}
     ]
   },
   "reach": {
@@ -56,11 +59,13 @@
       "Someone has begun to mend the dyke. Their tools are still here."
     ],
     "connections": ["forest", "drowned_holds"],
+    "conditional_connections": ["last_dyke"],
     "encounters": [
       {"type": "combat",
        "enemies": ["drowned_thresher", "silt_drowner", "bog_lurcher"],
        "label": "⚔️  Wade into the floodfields  (3 fights, no rest between)"},
       {"type": "combat", "enemies": ["last_reaper"], "label": "⚔️  Challenge the Last Reaper"},
+      {"type": "npc", "id": "weir_engineer", "label": "🔧 Speak with the Weir Engineer"},
       {"type": "discovery", "id": "reach_tally", "label": "📜 A weir-keeper's tally",
        "lines": [
          "📜 A weir-keeper's tally board, its chalk gone soft and grey with damp.",
@@ -141,11 +146,13 @@
       "The city is being remembered. It is harder than the forgetting."
     ],
     "connections": ["cave", "choir"],
+    "conditional_connections": ["burned_library"],
     "encounters": [
       {"type": "combat",
        "enemies": ["pall_magistrate", "hollow_procession", "gutter_wretch"],
        "pick": "random"},
       {"type": "combat", "enemies": ["hollow_bellward"], "label": "⚔️  Challenge the Hollow Bellward"},
+      {"type": "npc", "id": "lampkeeper", "label": "🕯️  Speak with the Lampkeeper"},
       {"type": "discovery", "id": "mourncross_census", "label": "📜 The last census of Mourncross",
        "lines": [
          "📜 The last census of Mourncross, bound in cracked grey leather.",
@@ -204,9 +211,11 @@
       "Some of them are sitting down. Some are remembering names that aren't theirs."
     ],
     "connections": ["choir", "summit"],
+    "conditional_connections": ["pre_pall_shrine"],
     "encounters": [
       {"type": "combat", "enemies": ["mountain_ogre", "ice_wraith", "stone_golem"], "pick": "random"},
-      {"type": "combat", "enemies": ["ashen_penitent"], "label": "⚔️  Challenge the Ashen Penitent"}
+      {"type": "combat", "enemies": ["ashen_penitent"], "label": "⚔️  Challenge the Ashen Penitent"},
+      {"type": "npc", "id": "old_penitent", "label": "🪨 Speak with the Old Penitent"}
     ]
   },
   "summit": {
@@ -228,6 +237,99 @@
     "connections": ["mountain"],
     "encounters": [
       {"type": "combat", "enemies": ["shadow_warden"], "boss": true}
+    ]
+  },
+  "hunters_cache": {
+    "name": "The Hunter's Cache",
+    "kind": "zone",
+    "act": 1,
+    "recommended_level": 2,
+    "intro": [
+      "🪵 The trail Halna cleared bends down to a hollowed pine.",
+      "Inside the hollow: a smaller fire than any wolf knows how to start.",
+      "Something is still here. It has heard you coming."
+    ],
+    "connections": ["forest"],
+    "encounters": [
+      {"type": "combat", "enemies": ["pack_lead"], "label": "⚔️  Face the Pack Lead"},
+      {"type": "discovery", "id": "hunters_cache_lore", "label": "📜 Halna's tally",
+       "lines": [
+         "📜 Halna's tally, carved into the wood by knife.",
+         "A column of marks — the wolves she has known by ear in the wood —",
+         "each line crossed out as the wolf went grey, and stopped knowing her,",
+         "and started knowing only the smell of people.",
+         "The last unmarked line at the bottom: 'I will keep counting. There are fewer now.'"
+       ]}
+    ]
+  },
+  "last_dyke": {
+    "name": "The Last Dyke",
+    "kind": "zone",
+    "act": 1,
+    "recommended_level": 3,
+    "intro": [
+      "🌊 The Engineer's bridge holds. Beyond it stands one dyke still upright.",
+      "It is the only thing on this side of the floodfields that the water has not taken.",
+      "Something stands on it. The water has not taken that, either."
+    ],
+    "connections": ["reach"],
+    "encounters": [
+      {"type": "combat", "enemies": ["dyke_warden"], "label": "⚔️  Face the Dyke Warden"},
+      {"type": "discovery", "id": "last_dyke_lore", "label": "📜 The closed-gate order",
+       "lines": [
+         "📜 A folded order, sealed with capital wax. The wax has held; the order has not.",
+         "'On the authority of the capital, the gates of the outer holds are to remain shut.',",
+         "'No grain is to be released. No water is to be released. No release of any kind.'",
+         "'The holds will hold themselves through the famine winter. The capital eats.'",
+         "Underneath, a forger's hand has tried — and failed — to add a single word: 'enough.'"
+       ]}
+    ]
+  },
+  "burned_library": {
+    "name": "The Burned Library",
+    "kind": "zone",
+    "act": 2,
+    "recommended_level": 5,
+    "intro": [
+      "🕯️  The Lampkeeper's light spills into the open library of Mourncross.",
+      "Half the shelves are ash. Half are not. The half that survived was the half they tried hardest to burn.",
+      "Something tends the surviving half. It has not let the rite finish."
+    ],
+    "connections": ["mourncross"],
+    "encounters": [
+      {"type": "combat", "enemies": ["library_warden"], "label": "⚔️  Face the Library Warden"},
+      {"type": "discovery", "id": "burned_library_lore", "label": "📜 The book that survived",
+       "lines": [
+         "📜 The one book the burning could not finish.",
+         "It is a record of names — the names the capital sealed the gates against, that winter.",
+         "Twenty-eight pages. Each page is one hold. Each hold's roll is finished.",
+         "At the back of the book, in a librarian's hand: 'I have hidden this in the fire.'",
+         "'When the rite of unremembering is performed, this book will not be there for it.'",
+         "'It is one of the things they cannot have. It is one of the things we kept.'"
+       ]}
+    ]
+  },
+  "pre_pall_shrine": {
+    "name": "The Pre-Pall Shrine",
+    "kind": "zone",
+    "act": 3,
+    "recommended_level": 7,
+    "intro": [
+      "🪨 Behind the Old Penitent, the rock opens onto a low room.",
+      "An altar with no Pall-marks on it. A flame the colour flame used to be.",
+      "Something stands at the altar, hands folded, waiting to be remembered."
+    ],
+    "connections": ["mountain"],
+    "encounters": [
+      {"type": "combat", "enemies": ["shrine_keeper"], "label": "⚔️  Face the Shrine Keeper"},
+      {"type": "discovery", "id": "pre_pall_shrine_lore", "label": "📜 The first vow",
+       "lines": [
+         "📜 An iron tablet. The marks on it are older than the rite of unremembering.",
+         "'We are the people of Mournhold. We will not forget our dead by name.',",
+         "'We will not seal our gates against our own. We will not let our holds go quiet.',",
+         "'We will eat last, when we eat at all, and we will say the names of the dead.'",
+         "Below: a name. The kingdom's first king. He kept the vow. Those who came after did not."
+       ]}
     ]
   }
 }

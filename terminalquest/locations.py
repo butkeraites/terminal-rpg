@@ -52,7 +52,10 @@ _SERVICE_LABELS = {
     "survivor": "🕊️  Speak with the Survivor",
     "beastmaster": "🐾 Visit the Beastmaster",
     "hireling_hall": "🛡️  Hire a Sworn",
+    "scholar": "📚 Speak with the Mournhold Scholar",
 }
+
+SCHOLAR_PAYOUT = 75  # gold per unique lore discovery she records
 
 REBORN_ECHO_BASE = 30  # baseline Echo for a Reborn — boosted by what was done
 REBORN_ECHO_PER_LEVEL = 3
@@ -180,6 +183,42 @@ def _run_service(state, service):
         beastmaster(state)
     elif service == "hireling_hall":
         hireling_hall(state)
+    elif service == "scholar":
+        scholar(state)
+
+
+def scholar(state):
+    """The Mournhold Scholar — unlocked by the Old Penitent NPC's quest.
+
+    Pays gold for every lore discovery the player has logged in their
+    state.flags['discoveries_seen'] list, AND for state.flags['scholar_paid']
+    tracks which ones she has already paid for so she doesn't double-pay.
+    """
+    player, io = state.player, state.io
+    seen = state.flags.get("discoveries_seen", [])
+    paid = state.flags.setdefault("scholar_paid", [])
+    unpaid = [d for d in seen if d not in paid]
+    io.clear()
+    io.show_slow("📚 The Mournhold Scholar settles at her desk, quill ready.\n")
+    io.show(hud(player))
+    if not unpaid:
+        io.show("\n'I have written down everything you have brought me. "
+                "Bring me more.'")
+        io.show("\n1. Leave")
+        io.ask("\nWhat would you like? ")
+        return
+    io.show(f"\nShe has not yet paid you for {len(unpaid)} of your discoveries.")
+    io.show(f"At {SCHOLAR_PAYOUT} gold each, she owes you "
+            f"{len(unpaid) * SCHOLAR_PAYOUT} gold.")
+    io.show("\n1. Hand them over and take payment")
+    io.show("2. Leave")
+    choice = io.ask("\nWhat would you like? ")
+    if choice == "1":
+        payout = len(unpaid) * SCHOLAR_PAYOUT
+        player.gold += payout
+        paid.extend(unpaid)
+        io.show_slow(f"\n📚 She takes the lot, and counts out {payout} gold.")
+        io.pause(1)
 
 
 def hireling_hall(state):
@@ -759,6 +798,61 @@ def _run_discovery(state, encounter):
     state.flags.setdefault("discoveries_seen", []).append(encounter["id"])
 
 
+def _npc_progress(state, npc):
+    """How close the player is to the NPC's quest threshold (0..needed)."""
+    if "target_enemy" in npc:
+        return state.flags.get("npc_kills", {}).get(npc["target_enemy"], 0)
+    if "target_trophy" in npc:
+        return state.player.trophies.get(npc["target_trophy"], 0)
+    return 0
+
+
+def _run_npc(state, encounter):
+    """Run the NPC interaction. Three states: offered, in_progress, complete.
+
+    Tracks state in state.flags['npcs_seen'] (offered+) and
+    state.flags['npcs_done'] (claimed). On completion, the unlocks_connection
+    flag and unlocks_service flag (if any) are set, persisting via save/load.
+    """
+    io, content = state.io, state.content
+    npc_id = encounter["id"]
+    npc = content.npcs[npc_id]
+    seen = state.flags.setdefault("npcs_seen", [])
+    done = state.flags.setdefault("npcs_done", [])
+    needed = npc["needed"]
+    progress = _npc_progress(state, npc)
+    io.clear()
+    if npc_id in done:
+        # Already claimed — small greeting, no quest re-offer.
+        io.show_slow(f"\n{npc['name']} nods at you. The road is open.")
+        io.pause(1)
+        return
+    if npc_id not in seen:
+        for line in npc["intro"]:
+            io.show_slow(line)
+        seen.append(npc_id)
+        io.pause(1)
+        return
+    if progress < needed:
+        for line in npc["in_progress"]:
+            io.show_slow(line)
+        target = npc.get("target_enemy") or npc.get("target_trophy")
+        io.show(f"\nProgress: {progress}/{needed} {target.replace('_', ' ')}.")
+        io.pause(1)
+        return
+    # Completion path.
+    for line in npc["complete"]:
+        io.show_slow(line)
+    if "target_trophy" in npc:
+        # Consume the spent trophies.
+        state.player.trophies[npc["target_trophy"]] -= needed
+    done.append(npc_id)
+    state.flags.setdefault("unlocked_connections", []).append(npc["unlocks_connection"])
+    if "unlocks_service" in npc:
+        state.flags.setdefault("unlocked_services", []).append(npc["unlocks_service"])
+    io.pause(2)
+
+
 def _offer_drop(state):
     """After a victory, maybe drop a salvaged weapon to equip or leave behind."""
     act = state.content.locations[state.current_location].get("act")
@@ -793,6 +887,9 @@ def run_encounter(state, encounter, fallen, wardens):
     """
     if encounter["type"] == "discovery":
         _run_discovery(state, encounter)
+        return None
+    if encounter["type"] == "npc":
+        _run_npc(state, encounter)
         return None
     io, rng, content = state.io, state.rng, state.content
     if encounter["type"] != "combat":
@@ -1113,13 +1210,24 @@ def _service_is_visible(state, service):
 
 
 def _build_options(state, loc, fallen):
-    """Build the ordered list of ``(label, (kind, arg))`` menu entries."""
+    """Build the ordered list of ``(label, (kind, arg))`` menu entries.
+
+    v0.9 adds two flag-driven extensions: services unlocked by NPC quests
+    (state.flags['unlocked_services'], e.g. the Scholar) and connections
+    unlocked by NPC quests (state.flags['unlocked_connections'] — sub-zones
+    that join the location graph once their gating NPC is satisfied).
+    """
     player, content = state.player, state.content
     options = []
     for service in loc.get("services", []):
         if not _service_is_visible(state, service):
             continue
         options.append((_SERVICE_LABELS[service], ("service", service)))
+    # Services unlocked by NPC quests appear at all locations where they belong.
+    for service in state.flags.get("unlocked_services", []):
+        if (service in _SERVICE_LABELS
+                and service in loc.get("npc_services", [])):
+            options.append((_SERVICE_LABELS[service], ("service", service)))
     for encounter in loc.get("encounters", []):
         if (encounter["type"] == "discovery"
                 and encounter["id"] in state.flags.get("discoveries_seen", [])):
@@ -1130,6 +1238,11 @@ def _build_options(state, loc, fallen):
     for dest_id in loc.get("connections", []):
         dest = content.locations[dest_id]
         options.append((_travel_label(dest, player), ("travel", dest_id)))
+    # Conditional connections — sub-zones the NPC quest opens up.
+    for dest_id in loc.get("conditional_connections", []):
+        if dest_id in state.flags.get("unlocked_connections", []):
+            dest = content.locations[dest_id]
+            options.append((_travel_label(dest, player), ("travel", dest_id)))
     # Fast travel back to the Crossroads — one-way, available from any zone
     # (not from hub/settlements, not from the Summit). Preserves the descent
     # outbound while letting the player shortcut the long walk home.

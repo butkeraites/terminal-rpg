@@ -118,12 +118,20 @@ def _maybe_drop_trophy(state, enemy):
 
 
 def _track_quest_kill(state, enemy):
-    """If the slain enemy matches an active quest's target, increment its tally."""
-    active = state.flags.get("active_quests", [])
-    progress = state.flags.setdefault("quest_progress", {})
+    """If the slain enemy matches an active quest or NPC target, increment tallies.
+
+    Two parallel counters: the Quest Board's per-bounty progress, and the
+    NPC's per-target kill count (state.flags['npc_kills']). The latter is
+    a single dict keyed by enemy_id so any NPC asking for kills of that
+    enemy reads the same total.
+    """
     target = getattr(enemy, "enemy_id", None)
     if target is None:
         return
+    npc_kills = state.flags.setdefault("npc_kills", {})
+    npc_kills[target] = npc_kills.get(target, 0) + 1
+    active = state.flags.get("active_quests", [])
+    progress = state.flags.setdefault("quest_progress", {})
     for quest_id in active:
         quest = QUESTS.get(quest_id)
         if quest and quest["target_enemy"] == target:

@@ -32,9 +32,9 @@ def test_location_loop_shows_recommended_levels(content):
 
 def test_boss_travel_locked_below_unlock_level(content):
     # at the Ashen Climb, a low-level hero tries the sealed Summit, then quits.
-    # Menu: 1 fight, 2 mini-boss, 3 Choir, 4 Summit, 5 walk back, 6 inspect,
-    # 7 stats, 8 save, 9 quit.
-    io = ScriptedIO(["4", "9"])
+    # v0.9 menu (mountain now has an NPC encounter): 1 fight, 2 mini-boss,
+    # 3 NPC, 4 to Choir, 5 to Summit, 6 walk back, 7-10 utilities → quit=10.
+    io = ScriptedIO(["5", "10"])
     locations.location_loop(make_state(_player(content), content, io, StubRandom(),
                                        current_location="mountain"))
     text = io.text()
@@ -45,10 +45,9 @@ def test_boss_travel_locked_below_unlock_level(content):
 def test_boss_victory_ends_the_game(content):
     player = _strong_player(content)
     player.level = 8  # the summit unlocks at level 8
-    # at the Ashen Climb: travel to the Summit -> challenge -> one-shot -> Warden ending
-    # The fourth "1" picks the canonical "Be kept by the Pall" outcome
-    # (Reborn is option "2" — see _victory_screen).
-    io = ScriptedIO(["4", "1", "1", "1"])
+    # v0.9: mountain has an NPC encounter, so travel-to-Summit is now option 5.
+    # ["5"]=Summit, ["1"]=fight, ["1"]=attack, ["1"]=Warden ending.
+    io = ScriptedIO(["5", "1", "1", "1"])
     locations.location_loop(make_state(player, content, io, StubRandom(),
                                        current_location="mountain"))
     text = io.text()
@@ -76,10 +75,11 @@ def test_grave_appears_and_can_be_searched(tmp_path, content):
     chronicle.record(fallen_run, "fell", tmp_path)
     player = _player(content)
     gold_before = player.gold
-    # crossroads "2"=Witherwood, forest "3"=search grave, forest "9"=quit.
-    # The grave option vanishes after searching it, so the post-search menu
-    # has no grave entry — Quit sits at 9, not 10.
-    io = ScriptedIO(["2", "3", "9"])
+    # v0.9 forest with grave (no completion): 1 combat, 2 mini-boss, 3 NPC,
+    # 4 grave, 5-6 connections, 7 walk back, 8-11 utilities → grave picked = 4,
+    # post-grave menu has no grave: 1 combat, 2 mini-boss, 3 NPC, 4-5 conn,
+    # 6 walk back, 7-10 utilities → quit=10.
+    io = ScriptedIO(["2", "4", "10"])
     state = make_state(player, content, io, StubRandom(), chronicle_dir=tmp_path)
     locations.location_loop(state)
     assert "Half-buried" in io.text()
@@ -129,8 +129,9 @@ def test_defeating_a_hollowed_lays_it_to_rest(tmp_path, content):
 
 def test_overlevel_travel_warns_and_can_turn_back(content):
     # level 1 at the Gullet vs Mourncross (recommended 4): warned -> turn back.
-    # Cave menu: 1 fight, 2 mini-boss, 3 Drowned Holds, 4 Mourncross,
-    # 5 walk back, 6 inspect, 7 stats, 8 save, 9 quit.
+    # Cave has no NPC encounter so its menu is unchanged from v0.7+:
+    # 1 fight, 2 mini-boss, 3 Drowned Holds, 4 Mourncross, 5 walk back,
+    # 6-9 utilities → quit=9.
     io = ScriptedIO(["4", "2", "9"])
     locations.location_loop(make_state(_player(content), content, io, StubRandom(),
                                        current_location="cave"))
@@ -140,8 +141,11 @@ def test_overlevel_travel_warns_and_can_turn_back(content):
 
 
 def test_travel_into_a_zone_fight_and_return(content):
-    # travel to the Witherwood, win a fight, travel back to the Crossroads, quit
-    io = ScriptedIO(["2", "1", "1", "3", "6"])
+    # travel to Witherwood, win a fight, travel back to the Crossroads, quit.
+    # v0.9 forest menu (no NPC unlock yet): 1 combat, 2 mini-boss, 3 NPC,
+    # 4 to Crossroads, 5 to Reach, 6 walk back, 7-10 utilities → travel
+    # back to crossroads is "4".
+    io = ScriptedIO(["2", "1", "1", "4", "6"])
     state = make_state(_strong_player(content), content, io, StubRandom())
     locations.location_loop(state)
     text = io.text()
@@ -342,14 +346,11 @@ def test_chained_encounter_restores_stamina_when_chain_breaks(content, monkeypat
 def test_fast_travel_returns_to_the_crossroads(content):
     """A zone offers 'Walk back to the Crossroads' that drops the player at the hub.
 
-    The Crossroads then offers a paired 'Return to ...' option so the trip
-    is a true round trip — fast travel out, fast travel back.
+    v0.9 forest with NPC: 1 fight, 2 mini-boss, 3 NPC, 4-5 conn, 6 walk back,
+    7-10 util. Crossroads after fast-travel: 1 Gravewatch, 2 Witherwood,
+    3 Return to Witherwood, 4 inspect, 5 stats, 6 save, 7 quit.
     """
-    # At forest: 1 fight, 2 mini-boss, 3 to Crossroads, 4 to Reach,
-    # 5 walk back, 6 inspect, 7 stats, 8 save, 9 quit.
-    # At Crossroads after fast-travel: 1 to Gravewatch, 2 to Forest,
-    # 3 Return to Witherwood (new), 4 inspect, 5 stats, 6 save, 7 quit.
-    io = ScriptedIO(["5", "7"])  # walk back, then quit at the Crossroads
+    io = ScriptedIO(["6", "7"])  # walk back (now option 6), then quit at Crossroads
     state = make_state(_player(content), content, io, StubRandom(),
                        current_location="forest")
     locations.location_loop(state)
@@ -361,15 +362,15 @@ def test_fast_travel_returns_to_the_crossroads(content):
 
 def test_fast_travel_round_trip_returns_to_origin(content):
     """Fast travel out and back leaves the player at the zone they came from."""
-    # Forest "5"=walk back → Crossroads "3"=Return to Witherwood → forest "9"=quit
-    io = ScriptedIO(["5", "3", "9"])
+    # v0.9 forest: walk back is option 6. Then Return at Crossroads is option 3.
+    # Returning to forest (no NPC unlock): quit is option 10.
+    io = ScriptedIO(["6", "3", "10"])
     state = make_state(_player(content), content, io, StubRandom(),
                        current_location="forest")
     locations.location_loop(state)
     assert state.current_location == "forest"
     assert "Return to The Witherwood" in io.text()
     assert "retrace the long road" in io.text()
-    # The return clears the flag — no orphan return option after a manual walk.
     assert "fast_travel_return" not in state.flags
 
 
@@ -487,8 +488,8 @@ def test_reborn_grants_echoes_and_skips_warden_record(content, tmp_path):
     from terminalquest import chronicle
     player = _strong_player(content)
     player.level = 8
-    # Travel to Summit (4), fight (1), attack (1), Reborn (2)
-    io = ScriptedIO(["4", "1", "1", "2"])
+    # v0.9: mountain's travel-to-Summit is at index 5 (after NPC encounter).
+    io = ScriptedIO(["5", "1", "1", "2"])
     state = make_state(player, content, io, StubRandom(),
                        current_location="mountain", chronicle_dir=tmp_path)
     locations.location_loop(state)
@@ -613,7 +614,8 @@ def test_warden_ending_increments_cleanse(tmp_path, content):
     from terminalquest import chronicle
     player = _strong_player(content)
     player.level = 8
-    io = ScriptedIO(["4", "1", "1", "1"])  # to Summit, fight, attack, "be kept"
+    # v0.9: Summit travel at mountain is option 5 (after NPC encounter).
+    io = ScriptedIO(["5", "1", "1", "1"])
     state = make_state(player, content, io, StubRandom(),
                        current_location="mountain", chronicle_dir=tmp_path)
     locations.location_loop(state)
@@ -623,21 +625,21 @@ def test_warden_ending_increments_cleanse(tmp_path, content):
 def test_cleansed_intro_shows_after_first_completion(tmp_path, content):
     """After 1+ cleanses, the Witherwood intro switches to its cleansed variant.
 
-    Forest menu (no grave, no NG+ services since this isn't a settlement):
-    1 combat pool, 2 mini-boss, 3-4 connections, 5 walk back, 6-9 utilities.
+    v0.9 forest with NPC encounter: 1 combat, 2 mini-boss, 3 NPC, 4-5 conn,
+    6 walk back, 7-10 utilities → quit=10.
     """
     from terminalquest import chronicle
     finished = make_state(_player(content), content, current_location="summit",
                           chronicle_dir=tmp_path)
     chronicle.record(finished, "warden", tmp_path)
     chronicle.add_cleanse(tmp_path)
-    io = ScriptedIO(["2", "9"])  # crossroads -> forest, then quit
+    io = ScriptedIO(["2", "10"])  # crossroads -> forest, then quit
     state = make_state(_player(content), content, io, StubRandom(),
                        chronicle_dir=tmp_path)
     locations.location_loop(state)
     text = io.text()
-    assert "Sunlight finds the lower branches" in text  # cleansed line
-    assert "given up the pretence of being alive" not in text  # default suppressed
+    assert "Sunlight finds the lower branches" in text
+    assert "given up the pretence of being alive" not in text
 
 
 def test_purify_ending_unlocked_after_five_cleanses(tmp_path, content):
@@ -647,8 +649,8 @@ def test_purify_ending_unlocked_after_five_cleanses(tmp_path, content):
         chronicle.add_cleanse(tmp_path)
     player = _strong_player(content)
     player.level = 8
-    # to Summit (4) -> fight (1) -> attack (1) -> ending menu -> Purify (3)
-    io = ScriptedIO(["4", "1", "1", "3"])
+    # v0.9: to Summit (5) -> fight (1) -> attack (1) -> ending menu -> Purify (3)
+    io = ScriptedIO(["5", "1", "1", "3"])
     state = make_state(player, content, io, StubRandom(),
                        current_location="mountain", chronicle_dir=tmp_path)
     locations.location_loop(state)
@@ -786,6 +788,62 @@ def test_hireling_intercepts_enemy_damage(content):
     assert player.hireling.hp < hire_hp_before
     assert player.hp == player_hp_before
     assert "takes the blow" in io.text()
+
+
+def test_npc_introduces_then_tracks_then_completes(tmp_path, content):
+    """An NPC encounter walks through intro → in_progress → complete states."""
+    player = _player(content)
+    encounter = {"type": "npc", "id": "old_halna"}
+    # 1st run: introduce.
+    state = make_state(player, content, ScriptedIO(), StubRandom(),
+                       chronicle_dir=tmp_path)
+    locations._run_npc(state, encounter)
+    assert "old_halna" in state.flags["npcs_seen"]
+    assert "old_halna" not in state.flags.get("npcs_done", [])
+    assert "wolves shut my trail" in state.io.text().lower()
+
+    # 2nd run with no kills: in_progress reminder.
+    state2 = make_state(player, content, ScriptedIO(), StubRandom(),
+                        chronicle_dir=tmp_path)
+    state2.flags["npcs_seen"] = ["old_halna"]
+    locations._run_npc(state2, encounter)
+    assert "Bring me five" in state2.io.text() or "Not yet" in state2.io.text()
+
+    # 3rd run with enough kills: completion.
+    state3 = make_state(player, content, ScriptedIO(), StubRandom(),
+                        chronicle_dir=tmp_path)
+    state3.flags["npcs_seen"] = ["old_halna"]
+    state3.flags["npc_kills"] = {"wolf": 5}
+    locations._run_npc(state3, encounter)
+    assert "old_halna" in state3.flags["npcs_done"]
+    assert "hunters_cache" in state3.flags["unlocked_connections"]
+
+
+def test_npc_unlock_opens_a_conditional_connection(tmp_path, content):
+    """Once unlocked, a sub-zone appears as a travel option in the parent zone.
+
+    Forest menu with Hunter's Cache unlocked: 1 combat, 2 mini-boss, 3 NPC,
+    4 to Crossroads, 5 to Reach, 6 Hunter's Cache, 7 walk back, 8-11 utilities
+    → quit=11.
+    """
+    player = _player(content)
+    state = make_state(player, content, ScriptedIO(["11"]), StubRandom(),
+                       current_location="forest", chronicle_dir=tmp_path)
+    state.flags["unlocked_connections"] = ["hunters_cache"]
+    locations.location_loop(state)
+    assert "Hunter's Cache" in state.io.text()
+
+
+def test_scholar_pays_for_unseen_discoveries(tmp_path, content):
+    """The Mournhold Scholar pays SCHOLAR_PAYOUT per unrecorded discovery."""
+    player = _player(content)
+    player.gold = 0
+    state = make_state(player, content, ScriptedIO(["1"]), StubRandom(),
+                       chronicle_dir=tmp_path)
+    state.flags["discoveries_seen"] = ["reach_tally", "mourncross_census"]
+    locations.scholar(state)
+    assert player.gold == 2 * locations.SCHOLAR_PAYOUT
+    assert state.flags["scholar_paid"] == ["reach_tally", "mourncross_census"]
 
 
 def test_dead_hireling_can_return_as_forsaken_sworn(tmp_path, content):

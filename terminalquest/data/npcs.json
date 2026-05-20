@@ -1,0 +1,78 @@
+{
+  "old_halna": {
+    "name": "Old Halna",
+    "intro": [
+      "A figure crouches by a fallen pine, knife working at sinew.",
+      "'You,' she says. 'Wolves shut my trail north. Thin them — five of them —',",
+      "'and I will move what's blocking your road.'"
+    ],
+    "in_progress": [
+      "Old Halna nods at the trail. 'Not yet. Bring me five wolves down.'"
+    ],
+    "complete": [
+      "Old Halna stands without a word, drags the carcass aside.",
+      "'The road runs to my old cache now. Take what's there.'"
+    ],
+    "target_enemy": "wolf",
+    "needed": 5,
+    "unlocks_connection": "hunters_cache"
+  },
+  "weir_engineer": {
+    "name": "the Weir Engineer",
+    "intro": [
+      "An old hand, mud to the elbow, hauling at a beam that won't move.",
+      "'The bridge ahead — the wood I need was carried off by the Threshers.',",
+      "'Bring me ten reeds from their backs and I'll rebuild what was lost.'"
+    ],
+    "in_progress": [
+      "The engineer nods at the broken bridge. 'Still need those reeds.'"
+    ],
+    "complete": [
+      "The engineer takes the reeds, lays them straight, weighs them down.",
+      "'The bridge holds. Walk it — there's an old dyke still standing on the other side.'"
+    ],
+    "target_trophy": "thresher_reed",
+    "needed": 10,
+    "unlocks_connection": "last_dyke"
+  },
+  "lampkeeper": {
+    "name": "the Lampkeeper",
+    "intro": [
+      "An old man with a dead lamp. He has been trying to light it for hours.",
+      "'The Pall-Sworn Magistrates keep the city dark. Bring me three of them put down',",
+      "'and the lamps of the north quarter will burn again — and what's there with them.'"
+    ],
+    "in_progress": [
+      "The lampkeeper turns the lamp over in his hands. 'Three magistrates. Bring them down.'"
+    ],
+    "complete": [
+      "The lampkeeper strikes the flint once. The lamp catches. Light spills north.",
+      "'The Burned Library stands open. Read what was not yet unremembered.'"
+    ],
+    "target_enemy": "pall_magistrate",
+    "needed": 3,
+    "unlocks_connection": "burned_library"
+  },
+  "old_penitent": {
+    "name": "the Old Penitent",
+    "intro": [
+      "A figure sits cross-legged on the grey rock, eyes closed. Their robe is ash and tatters.",
+      "'I have forgotten my own name. The Pall took it on this climb.',",
+      "'Bring me twenty scavver fangs — the small dead remember small things best —',",
+      "'and I will say my name aloud, and the shrine below will open.'"
+    ],
+    "in_progress": [
+      "The penitent does not open their eyes. 'Twenty fangs. The small dead first.'"
+    ],
+    "complete": [
+      "The penitent opens their eyes. Says one word — a name — and the wind goes still.",
+      "'The Pre-Pall Shrine remembers itself. So do I. Go down to it.'",
+      "Something opens in the rock behind them, and a Mournhold Scholar steps from it,",
+      "blinking. She follows you back to Gravewatch."
+    ],
+    "target_trophy": "scavver_fang",
+    "needed": 20,
+    "unlocks_connection": "pre_pall_shrine",
+    "unlocks_service": "scholar"
+  }
+}

@@ -320,5 +320,50 @@
     "unique": true,
     "ability": {"name": "Umbral Nova", "power": 1.7, "status": "weak", "status_turns": 2},
     "flavor": "The first to climb the Summit. The Pall did not kill it — it kept it."
+  },
+  "pack_lead": {
+    "name": "the Pack Lead",
+    "hp": 70,
+    "attack": 14,
+    "defense": 3,
+    "xp_reward": 80,
+    "gold_reward": 40,
+    "ai": "relentless",
+    "unique": true,
+    "flavor": "The wolf that learned a person's smell first, and taught the rest. It still smells like Halna's cabin."
+  },
+  "dyke_warden": {
+    "name": "the Dyke Warden",
+    "hp": 95,
+    "attack": 16,
+    "defense": 5,
+    "xp_reward": 110,
+    "gold_reward": 55,
+    "ai": "defensive",
+    "unique": true,
+    "flavor": "A capital-sworn engineer left to hold the gate against the holds. She is still holding it."
+  },
+  "library_warden": {
+    "name": "the Library Warden",
+    "hp": 160,
+    "attack": 20,
+    "defense": 6,
+    "xp_reward": 180,
+    "gold_reward": 90,
+    "ai": "caster",
+    "unique": true,
+    "ability": {"name": "Page-Burning", "power": 1.3, "status": "burn", "status_turns": 3},
+    "flavor": "A magistrate who tried to finish the burning, and could not. She has been trying since."
+  },
+  "shrine_keeper": {
+    "name": "the Shrine Keeper",
+    "hp": 220,
+    "attack": 26,
+    "defense": 8,
+    "xp_reward": 280,
+    "gold_reward": 140,
+    "ai": "enrager",
+    "unique": true,
+    "flavor": "The first king's last priest. He kept the vow alone for three winters before he forgot. Now he keeps the shrine."
   }
 }
