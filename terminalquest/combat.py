@@ -104,6 +104,19 @@ QUESTS = {
 }
 
 
+def _maybe_drop_trophy(state, enemy):
+    """Roll the trophy-drop chance and append the named trophy to player.trophies."""
+    trophy = state.content.enemies.get(getattr(enemy, "enemy_id", ""), {}).get("trophy")
+    if trophy is None:
+        return
+    if state.rng.random() >= TROPHY_DROP_CHANCE:
+        return
+    player = state.player
+    player.trophies[trophy] = player.trophies.get(trophy, 0) + 1
+    state.io.show(f"🪶 You take a {trophy.replace('_', ' ')} from the dead. "
+                  f"({player.trophies[trophy]} carried)")
+
+
 def _track_quest_kill(state, enemy):
     """If the slain enemy matches an active quest's target, increment its tally."""
     active = state.flags.get("active_quests", [])
@@ -139,6 +152,7 @@ ENRAGE_THRESHOLD = 0.5
 ENRAGE_ATTACK_GAIN = 2
 RELENTLESS_PERIOD = 3
 XP_OVERLEVEL_THRESHOLD = 2
+TROPHY_DROP_CHANCE = 0.25  # chance a defeated enemy yields its named trophy
 
 
 def _perform_attack(attacker, target, power, rng):
@@ -174,6 +188,20 @@ def _apply_lifesteal(player, damage, io):
     if player.hp > before:
         io.show(f"💉 {weapon.name} drinks deep — +{player.hp - before} HP "
                 f"({player.hp}/{player.max_hp}).")
+
+
+def _hireling_act(state, enemy):
+    """Run the hireling's once-per-round mend on the player (if hurt)."""
+    player, io = state.player, state.io
+    hire = player.hireling
+    if hire is None or not hire.is_alive():
+        return
+    if player.hp >= player.max_hp:
+        return
+    before = player.hp
+    player.heal(hire.heal_per_round)
+    io.show(f"\n🩹 {hire.name} mends you — +{player.hp - before} HP "
+            f"({player.hp}/{player.max_hp}).")
 
 
 def _companion_act(state, enemy):
@@ -227,6 +255,19 @@ def _resolve_start_of_turn(combatant, io):
     if dot:
         combatant.hp -= dot
     return combatant.is_alive()
+
+
+def _tick_pet_regen(player, io):
+    """Apply the equipped pet's per-round regen (Hearth Cat). No-op otherwise."""
+    pet = player.equipment.get("pet") if hasattr(player, "equipment") else None
+    if pet is None or not getattr(pet, "regen_per_round", 0):
+        return
+    if player.hp >= player.max_hp:
+        return
+    before = player.hp
+    player.heal(pet.regen_per_round)
+    io.show(f"❤️  {pet.name} mends you — +{player.hp - before} HP "
+            f"({player.hp}/{player.max_hp}).")
 
 
 def _use_ability(player, enemy, ability, io, rng):
@@ -391,7 +432,26 @@ def _enemy_cast(enemy, player, io, rng):
 
 
 def _enemy_strike(enemy, player, power, io, rng):
-    """Resolve a basic or heavy enemy attack."""
+    """Resolve a basic or heavy enemy attack.
+
+    If the player has a living hireling, the hireling intercepts the blow —
+    they take damage instead of the player. If the hireling dies as a result,
+    a state flag is set so the realm later spawns them as a Forsaken Sworn.
+    """
+    hireling = getattr(player, "hireling", None)
+    if hireling is not None and hireling.is_alive():
+        damage, dodged, crit = _perform_attack(enemy, hireling, power, rng)
+        if dodged:
+            io.show(f"\n💨 {hireling.name} ducks under {enemy.name}'s strike!")
+        elif crit:
+            io.show(f"\n💥 {enemy.name} crashes through {hireling.name}'s guard for "
+                    f"{damage} damage! ({hireling.hp}/{hireling.max_hp})")
+        else:
+            io.show(f"\n🛡️  {hireling.name} takes the blow — {damage} damage. "
+                    f"({hireling.hp}/{hireling.max_hp})")
+        if not hireling.is_alive():
+            io.show_slow(f"\n💀 {hireling.name} falls. They will not rise back up at your side.")
+        return
     damage, dodged, crit = _perform_attack(enemy, player, power, rng)
     if dodged:
         io.show(f"\n💨 You dodge {enemy.name}'s attack!")
@@ -554,6 +614,7 @@ def _grant_rewards(state, enemy):
         return
     io.show(f"Gained {enemy.xp_reward} XP and {enemy.gold_reward} gold!")
     player.gold += enemy.gold_reward
+    _maybe_drop_trophy(state, enemy)
     _track_quest_kill(state, enemy)
     for _ in range(player.gain_xp(enemy.xp_reward)):
         io.show_slow(f"\n🎉 LEVEL UP! You are now level {player.level}!")
@@ -604,6 +665,7 @@ def run_combat(state, enemy, *, refresh_after=True):
         if gained > 0:
             io.show(f"⚡ You catch your breath. (+{gained} stamina, "
                     f"{player.stamina}/{player.max_stamina})")
+        _tick_pet_regen(player, io)
         if stunned:
             io.show("\n💫 You are stunned and lose your turn!")
         else:
@@ -614,11 +676,12 @@ def run_combat(state, enemy, *, refresh_after=True):
             outcome = "victory"
             break
 
-        # --- companion turn (between player and enemy) ---
+        # --- companion + hireling turn (between player and enemy) ---
         _companion_act(state, enemy)
         if not enemy.is_alive():
             outcome = "victory"
             break
+        _hireling_act(state, enemy)
 
         # --- enemy turn ---
         enemy_stunned = status.has_status(enemy, "stun")
@@ -636,6 +699,12 @@ def run_combat(state, enemy, *, refresh_after=True):
 
     if outcome == "victory":
         _grant_rewards(state, enemy)
+
+    # Hireling cleanup: if they died this fight, drop them from the player
+    # and flag the state so future random encounters can spawn the Forsaken.
+    if player.hireling is not None and not player.hireling.is_alive():
+        state.flags["fallen_hireling"] = player.hireling.to_dict()
+        player.hireling = None
 
     player.statuses.clear()
     if refresh_after:

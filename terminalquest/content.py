@@ -38,7 +38,7 @@ class Content:
     """An immutable bundle of all loaded game content."""
 
     def __init__(self, classes, abilities, enemies, locations, components, armor,
-                 companions, accessories):
+                 companions, accessories, pets, hirelings):
         self.classes = classes
         self.abilities = abilities
         self.enemies = enemies
@@ -47,6 +47,8 @@ class Content:
         self.armor = armor
         self.companions = companions
         self.accessories = accessories
+        self.pets = pets
+        self.hirelings = hirelings
 
     def validate(self):
         """Raise ValueError if the data files are internally inconsistent."""
@@ -179,6 +181,8 @@ def load_content():
         armor=_load("armor.json"),
         companions=_load("companions.json"),
         accessories=_load("accessories.json"),
+        pets=_load("pets.json"),
+        hirelings=_load("hirelings.json"),
     )
     content.validate()
     return content

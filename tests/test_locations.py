@@ -534,9 +534,10 @@ def test_pact_broker_hidden_on_fresh_chronicle(content, tmp_path):
 def test_pact_broker_visible_after_warden_completion(tmp_path, content):
     """Once a run is recorded as cleansed, NG+ services become visible at Gravewatch.
 
-    With NG+ unlocked the two extra services push the menu down: Quit is
-    now at 13 (8 services + travel + 4 utilities) — Survivor still hidden
-    until 3 cleanses.
+    With NG+ unlocked the extra services push the menu down: 9 services
+    (shop, inn, smith, quartermaster, pact_broker, echo_trader, night_hunt,
+    quest_board, beastmaster — Survivor still locked, awaiting more cleanses)
+    + 1 connection + 4 utilities → Quit is at 14.
     """
     from terminalquest import chronicle
     finished = make_state(_player(content), content, current_location="summit",
@@ -544,7 +545,7 @@ def test_pact_broker_visible_after_warden_completion(tmp_path, content):
     chronicle.record(finished, "warden", tmp_path)
     chronicle.add_cleanse(tmp_path)  # the cleanse increment that gates NG+
     player = _player(content)
-    io = ScriptedIO(["1", "13"])
+    io = ScriptedIO(["1", "15"])  # 10 services + travel + 4 utilities → quit=15
     state = make_state(player, content, io, StubRandom(), chronicle_dir=tmp_path)
     locations.location_loop(state)
     text = io.text()
@@ -656,15 +657,17 @@ def test_purify_ending_unlocked_after_five_cleanses(tmp_path, content):
 
 
 def test_survivor_hidden_until_three_cleanses(tmp_path, content):
-    """The Survivor only opens shop after 3 cleanses are in the Chronicle."""
+    """The Survivor only opens shop after 3 cleanses are in the Chronicle.
+
+    Gravewatch menu with 2 cleanses: shop, inn, smith, quartermaster,
+    pact_broker, echo_trader, night_hunt, quest_board, beastmaster (9
+    services — Survivor still locked) + travel + 4 utilities → Quit at 14.
+    """
     from terminalquest import chronicle
     player = _player(content)
-    # Two cleanses — not enough.
     chronicle.add_cleanse(tmp_path)
     chronicle.add_cleanse(tmp_path)
-    # Going through the Gravewatch menu with 2 cleanses: NG+ services visible
-    # (pact + echo) but no Survivor yet. Quit is at the bottom.
-    io = ScriptedIO(["1", "13"])  # to Gravewatch (NG+ services visible), quit
+    io = ScriptedIO(["1", "15"])  # quit at 15 with beastmaster + hireling visible
     state = make_state(player, content, io, StubRandom(), chronicle_dir=tmp_path)
     locations.location_loop(state)
     assert "Survivor" not in io.text()
@@ -704,6 +707,102 @@ def test_cleanse_gated_quest_hidden_until_threshold(tmp_path, content):
                        chronicle_dir=tmp_path)
     locations.quest_board(state2)
     assert "Drowned Threshers" in state2.io.text()
+
+
+def test_beastmaster_hidden_before_first_completion(tmp_path, content):
+    """v0.8: Beastmaster only opens after a completion AND while not purified."""
+    player = _player(content)
+    io = ScriptedIO(["1", "11"])  # Gravewatch (6 default services + travel + 4 util = quit 11)
+    state = make_state(player, content, io, StubRandom(), chronicle_dir=tmp_path)
+    locations.location_loop(state)
+    assert "Beastmaster" not in io.text()
+
+
+def test_beastmaster_buys_a_pet_with_gold(tmp_path, content):
+    """The Beastmaster takes gold and equips the chosen pet."""
+    from terminalquest import chronicle
+    player = _player(content)
+    player.gold = 1000
+    # Catalog: 1 Ash-Hound Pup, 2 Bog Pricklehog, 3 Black Magpie, 4 Hearth Cat, 5 Leave
+    locations.beastmaster(make_state(player, content, ScriptedIO(["1", "5"]),
+                                     StubRandom(), chronicle_dir=tmp_path))
+    assert "ash_hound_pup" in chronicle.owned_pets(tmp_path)
+    assert player.equipment.get("pet") is not None
+    assert player.equipment["pet"].pet_id == "ash_hound_pup"
+    assert player.gold == 200  # 1000 - 800
+
+
+def test_beastmaster_trades_trophies_for_a_pet(tmp_path, content):
+    """50 wolf pelts buys the Ash-Hound Pup without spending gold."""
+    from terminalquest import chronicle
+    player = _player(content)
+    player.gold = 0
+    player.trophies = {"wolf_pelt": 50}
+    locations.beastmaster(make_state(player, content, ScriptedIO(["1", "5"]),
+                                     StubRandom(), chronicle_dir=tmp_path))
+    assert "ash_hound_pup" in chronicle.owned_pets(tmp_path)
+    assert player.trophies["wolf_pelt"] == 0  # consumed
+    assert player.gold == 0  # no gold spent
+
+
+def test_pet_stats_apply_when_equipped(content):
+    """Equipping the Ash-Hound Pup adds its +5 attack to the player."""
+    from terminalquest.pet import make_pet
+    player = _player(content)
+    base_atk = player.attack
+    player.equip_pet(make_pet(content, "ash_hound_pup"))
+    assert player.attack == base_atk + 5
+
+
+def test_trophy_drops_on_a_lucky_kill(content):
+    """A wolf kill drops a wolf pelt when the RNG falls inside the drop chance."""
+    from terminalquest import combat
+    from terminalquest.enemy import make_enemy
+    warrior = _player(content)
+    warrior.attack = 1000  # one-shot
+    state = make_state(warrior, content, ScriptedIO(["1"]), StubRandom(rnd=0.0))
+    combat.run_combat(state, make_enemy("wolf", content))
+    assert warrior.trophies.get("wolf_pelt", 0) >= 1
+
+
+def test_hireling_intercepts_enemy_damage(content):
+    """An enemy hit lands on the hireling first, sparing the player.
+
+    Tests _enemy_strike directly — that's the function the combat loop calls
+    whenever an enemy lands a basic or heavy blow, and the redirect lives in
+    that single helper.
+    """
+    from terminalquest import combat
+    from terminalquest.enemy import make_enemy
+    from terminalquest.hireling import make_hireling
+    from terminalquest.ui import ScriptedIO
+    player = _player(content)
+    player.hireling = make_hireling(content, "broken_squire")
+    hire_hp_before = player.hireling.hp
+    player_hp_before = player.hp
+    enemy = make_enemy("goblin", content)
+    io = ScriptedIO()
+    combat._enemy_strike(enemy, player, 1.0, io, StubRandom())
+    assert player.hireling.hp < hire_hp_before
+    assert player.hp == player_hp_before
+    assert "takes the blow" in io.text()
+
+
+def test_dead_hireling_can_return_as_forsaken_sworn(tmp_path, content):
+    """A dead hireling flagged in state.flags can spawn as an enemy in random encounters."""
+    state = make_state(_strong_player(content), content, ScriptedIO(),
+                       StubRandom(rnd=0.0))  # low rnd → forsaken roll succeeds
+    state.flags["fallen_hireling"] = {
+        "name": "the Broken Squire",
+        "max_hp": 80,
+        "defense": 4,
+    }
+    # _make_forsaken_sworn is what produces the Forsaken — invoke directly so
+    # we don't have to drive a full combat just to verify the spawn shape.
+    sworn = locations._make_forsaken_sworn(state.flags["fallen_hireling"])
+    assert "Forsaken" in sworn.name
+    assert sworn.ai == "relentless"
+    assert sworn.max_hp > 80  # 1.5x the hireling's max
 
 
 def test_fast_travel_not_offered_at_the_crossroads(content):

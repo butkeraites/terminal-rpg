@@ -7,6 +7,7 @@
     "xp_reward": 30,
     "gold_reward": 15,
     "ai": "aggressive",
+    "trophy": "scavver_fang",
     "flavor": "A starving thing that learned to walk upright when the food ran out."
   },
   "wolf": {
@@ -17,6 +18,7 @@
     "xp_reward": 25,
     "gold_reward": 10,
     "ai": "fleer",
+    "trophy": "wolf_pelt",
     "flavor": "Every rib shows through its hide. It has not eaten, and it has not died."
   },
   "bandit": {
@@ -48,6 +50,7 @@
     "xp_reward": 40,
     "gold_reward": 18,
     "ai": "aggressive",
+    "trophy": "thresher_reed",
     "flavor": "A field-hand who kept reaping after the floodwater closed over the rows."
   },
   "silt_drowner": {
@@ -144,6 +147,7 @@
     "xp_reward": 50,
     "gold_reward": 30,
     "ai": "fleer",
+    "trophy": "bat_wing",
     "flavor": "It roosts in the ribcages of the dead and drinks what pools there."
   },
   "cave_troll": {

@@ -11,6 +11,8 @@ from .armor import make_armor
 from .combat import CLASS_CONSUMABLE, QUESTS, _consumable_label, run_combat
 from .companion import make_companion
 from .enemy import make_enemy, make_hollowed, make_warden
+from .hireling import make_hireling
+from .pet import make_pet
 from .ui import hud, show_stats
 from .weapon import WEAPON_SLOTS, WEAPON_UPGRADES, roll_weapon
 
@@ -26,6 +28,7 @@ DEFENSE_UPGRADE_GOLD_PER_POINT = 14
 SIGNPOST_THRESHOLD = 2
 HOLLOWED_CHANCE = 0.25
 WEAPON_DROP_CHANCE = 0.35
+FORSAKEN_CHANCE = 0.15  # chance a random pool encounter spawns the fallen hireling instead
 NIGHT_HUNT_COST = 40
 NIGHT_HUNT_STAT_BOOST = 1.5  # enemy hp/atk multiplied by this for night hunts
 NIGHT_HUNT_REWARD_MULT = 2.5  # XP and gold rewards scale up the same way
@@ -47,6 +50,8 @@ _SERVICE_LABELS = {
     "night_hunt": f"🌑 Hunt at Night ({NIGHT_HUNT_COST} gold)",
     "quest_board": "📜 Read the Quest Board",
     "survivor": "🕊️  Speak with the Survivor",
+    "beastmaster": "🐾 Visit the Beastmaster",
+    "hireling_hall": "🛡️  Hire a Sworn",
 }
 
 REBORN_ECHO_BASE = 30  # baseline Echo for a Reborn — boosted by what was done
@@ -171,6 +176,138 @@ def _run_service(state, service):
         quest_board(state)
     elif service == "survivor":
         survivor(state)
+    elif service == "beastmaster":
+        beastmaster(state)
+    elif service == "hireling_hall":
+        hireling_hall(state)
+
+
+def hireling_hall(state):
+    """Hire a Sworn — a vulnerable ally that tanks blows in your place.
+
+    Only one hireling at a time. Hiring replaces any current one. Cost is
+    gold. If the hireling dies in combat they are gone for the rest of the
+    run and may return as a Forsaken Sworn in the random encounter pool.
+    """
+    player, content, io = state.player, state.content, state.io
+    catalog = list(content.hirelings.items())
+    io.clear()
+    io.show_slow("🛡️  The Hireling Hall: men and women without a banner to follow.\n")
+    while True:
+        io.show(hud(player))
+        if player.hireling is not None:
+            io.show(f"\nSworn to you: {player.hireling.name}")
+            io.show(f"  {player.hireling.summary()}")
+        else:
+            io.show("\nNo one walks at your side.")
+        for index, (hireling_id, entry) in enumerate(catalog, start=1):
+            tag = ""
+            if (player.hireling is not None
+                    and player.hireling.hireling_id == hireling_id):
+                tag = "  (already with you)"
+            io.show(f"\n{index}. {entry['name']} ({entry['cost']} gold){tag}")
+            io.show(f"   ❤️{entry['max_hp']} HP, 🛡️{entry['defense']} def, "
+                    f"heals you {entry['heal_per_round']}/round")
+            io.show(f"   {entry['flavor']}")
+        leave_idx = len(catalog) + 1
+        io.show(f"\n{leave_idx}. Leave")
+        choice = io.ask("\nWhat would you like? ")
+        if choice == str(leave_idx):
+            return
+        if not (choice.isdigit() and 1 <= int(choice) <= len(catalog)):
+            io.show("\n❌ Invalid choice!")
+            io.pause(1)
+            continue
+        hireling_id, entry = catalog[int(choice) - 1]
+        if (player.hireling is not None
+                and player.hireling.hireling_id == hireling_id):
+            io.show("\nThis one already walks at your side.")
+            io.pause(1)
+            continue
+        if player.gold < entry["cost"]:
+            io.show("\n❌ Not enough gold!")
+            io.pause(1)
+            continue
+        player.gold -= entry["cost"]
+        player.hireling = make_hireling(content, hireling_id)
+        io.show_slow(f"\n🛡️  {player.hireling.name} swears to walk with you.")
+        io.pause(1)
+
+
+def beastmaster(state):
+    """The Beastmaster: buy a pet for gold OR trade enemy trophies for one.
+
+    Pets are equipment in the new pet slot — bought once, owned forever
+    across runs via the Chronicle. The trophy path is the brother's
+    'impossible quest': hoard ~50 of a specific enemy's drops to claim the
+    pet thematically tied to that enemy.
+    """
+    player, content, io = state.player, state.content, state.io
+    catalog = list(content.pets.items())
+    io.clear()
+    io.show_slow("🐾 The Beastmaster's pen smells of grey rain and warm fur.\n")
+    while True:
+        owned = chronicle.owned_pets(state.chronicle_dir)
+        equipped = player.equipment.get("pet")
+        io.show(hud(player))
+        if player.trophies:
+            io.show("\nTrophies in your bag: " + ", ".join(
+                f"{n.replace('_', ' ')}×{c}" for n, c in player.trophies.items()))
+        io.show(f"\nWorn pet: {equipped.name if equipped else '(none)'}")
+        for index, (pet_id, entry) in enumerate(catalog, start=1):
+            is_owned = pet_id in owned
+            is_eq = equipped is not None and equipped.pet_id == pet_id
+            tag = "  ✓ equipped" if is_eq else ("  (owned)" if is_owned else "")
+            io.show(f"\n{index}. {entry['name']}{tag}")
+            stats_bits = [f"+{v} {k.replace('_', ' ')}"
+                          for k, v in entry.get("stats", {}).items()]
+            if entry.get("regen_per_round"):
+                stats_bits.append(f"+{entry['regen_per_round']} HP/round")
+            io.show(f"   {'  '.join(stats_bits) or '(no bonuses)'}")
+            if not is_owned:
+                trophy = entry["trophy"]
+                req = entry["trophy_required"]
+                have = player.trophies.get(trophy, 0)
+                io.show(f"   {entry['gold_cost']} gold  OR  "
+                        f"{req}×{trophy.replace('_', ' ')} ({have} carried)")
+        leave_idx = len(catalog) + 1
+        io.show(f"\n{leave_idx}. Leave")
+        choice = io.ask("\nWhat would you like? ")
+        if choice == str(leave_idx):
+            return
+        if not (choice.isdigit() and 1 <= int(choice) <= len(catalog)):
+            io.show("\n❌ Invalid choice!")
+            io.pause(1)
+            continue
+        pet_id, entry = catalog[int(choice) - 1]
+        if pet_id in owned:
+            # Equip / unequip toggle.
+            if equipped is not None and equipped.pet_id == pet_id:
+                player.unequip_pet()
+                io.show(f"\nYou release the {entry['name']} from your side.")
+            else:
+                player.equip_pet(make_pet(content, pet_id))
+                io.show(f"\nThe {entry['name']} comes to heel.")
+            io.pause(1)
+            continue
+        # Not owned — buy with gold OR trade trophies.
+        trophy = entry["trophy"]
+        have = player.trophies.get(trophy, 0)
+        if have >= entry["trophy_required"]:
+            io.show("\nYou pour the trophies onto the table. The Beastmaster nods.")
+            player.trophies[trophy] = have - entry["trophy_required"]
+        elif player.gold >= entry["gold_cost"]:
+            io.show("\nYou hand over the gold. The Beastmaster pockets it without counting.")
+            player.gold -= entry["gold_cost"]
+        else:
+            io.show(f"\n❌ Not enough gold AND not enough trophies "
+                    f"(need {entry['trophy_required']}, have {have}).")
+            io.pause(1)
+            continue
+        chronicle.own_pet(pet_id, state.chronicle_dir)
+        player.equip_pet(make_pet(content, pet_id))
+        io.show_slow(f"\n🐾 The {entry['name']} is yours now, and stays yours.")
+        io.pause(1)
 
 
 def survivor(state):
@@ -572,6 +709,26 @@ def smith(state):
         io.pause(1)
 
 
+def _make_forsaken_sworn(fallen_dict):
+    """Build a beefed-up enemy from a hireling's dying form. v0.8 mechanic.
+
+    A fallen hireling rises grimdark — same stats, but the Pall has sharpened
+    them. Returns an ``Enemy`` the combat loop accepts.
+    """
+    from .enemy import Enemy
+    return Enemy("forsaken_sworn", {
+        "name": f"the Forsaken {fallen_dict['name']}",
+        "hp": int(fallen_dict["max_hp"] * 1.5),
+        "attack": 14 + fallen_dict["defense"] * 2,
+        "defense": fallen_dict["defense"] + 2,
+        "xp_reward": 120,
+        "gold_reward": 60,
+        "ai": "relentless",
+        "flavor": ("They were yours. They are not anymore. They will say "
+                   "your name when they swing."),
+    })
+
+
 def _entry_act(state, entry):
     """The act of the zone where a Chronicle entry's character fell, or None."""
     loc = state.content.locations.get(entry.get("location", ""), {})
@@ -643,8 +800,12 @@ def run_encounter(state, encounter, fallen, wardens):
 
     candidates = _hollowed_candidates(state, fallen)
     hollowed_entry = None
+    fallen_hireling = state.flags.get("fallen_hireling")
     if encounter.get("boss") and wardens:
         enemies = [make_warden(wardens[-1], content)]
+    elif (encounter.get("pick") == "random" and fallen_hireling
+          and rng.random() < FORSAKEN_CHANCE):
+        enemies = [_make_forsaken_sworn(fallen_hireling)]
     elif (encounter.get("pick") == "random" and candidates
           and rng.random() < HOLLOWED_CHANCE):
         hollowed_entry = rng.choice(candidates)
@@ -942,6 +1103,12 @@ def _service_is_visible(state, service):
         return chronicle.has_completed_run(state.chronicle_dir)
     if service == "survivor":
         return chronicle.cleanses(state.chronicle_dir) >= SURVIVOR_CLEANSES_REQUIRED
+    if service in ("beastmaster", "hireling_hall"):
+        # Both pet + hireling unlock after the first run — but only while the
+        # realm remains un-purified. They are the brother's "if you choose not
+        # to save the world" rewards: the cycle continuing buys you more help.
+        return (chronicle.has_completed_run(state.chronicle_dir)
+                and not chronicle.purified(state.chronicle_dir))
     return True
 
 

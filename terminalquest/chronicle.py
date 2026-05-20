@@ -25,14 +25,15 @@ def _path(chronicle_dir):
 
 def _load_raw(chronicle_dir):
     """Return the whole chronicle. Adds Echo currency, owned accessories,
-    cleanse count, and a 'purified' flag for the late-game endings. Never
-    raises.
+    cleanse count, a 'purified' flag, and owned pets for the v0.8 system.
+    Never raises.
     """
     try:
         data = json.loads(_path(chronicle_dir).read_text(encoding="utf-8"))
         entries = data.get("entries", [])
         unlocks = data.get("unlocks", [])
         owned = data.get("owned_accessories", [])
+        owned_pets = data.get("owned_pets", [])
         echoes = data.get("echoes", 0)
         cleanses = data.get("cleanses", 0)
         purified = data.get("purified", False)
@@ -40,13 +41,14 @@ def _load_raw(chronicle_dir):
             "entries": list(entries) if isinstance(entries, list) else [],
             "unlocks": list(unlocks) if isinstance(unlocks, list) else [],
             "owned_accessories": list(owned) if isinstance(owned, list) else [],
+            "owned_pets": list(owned_pets) if isinstance(owned_pets, list) else [],
             "echoes": int(echoes) if isinstance(echoes, (int, float)) else 0,
             "cleanses": int(cleanses) if isinstance(cleanses, (int, float)) else 0,
             "purified": bool(purified),
         }
     except (OSError, json.JSONDecodeError, AttributeError, TypeError):
         return {"entries": [], "unlocks": [], "owned_accessories": [],
-                "echoes": 0, "cleanses": 0, "purified": False}
+                "owned_pets": [], "echoes": 0, "cleanses": 0, "purified": False}
 
 
 def load(chronicle_dir=DEFAULT_DIR):
@@ -78,12 +80,13 @@ def _write(payload, chronicle_dir):
 
 def _save(raw, chronicle_dir):
     """Atomically write the whole chronicle (entries + unlocks + Reborn store
-    + the v0.7 progression layer)."""
+    + the v0.7 progression layer + the v0.8 pet roster)."""
     _write({
         "version": CHRONICLE_VERSION,
         "entries": raw["entries"],
         "unlocks": raw["unlocks"],
         "owned_accessories": raw["owned_accessories"],
+        "owned_pets": raw["owned_pets"],
         "echoes": raw["echoes"],
         "cleanses": raw["cleanses"],
         "purified": raw["purified"],
@@ -206,3 +209,16 @@ def mark_purified(chronicle_dir=DEFAULT_DIR):
     raw = _load_raw(chronicle_dir)
     raw["purified"] = True
     _save(raw, chronicle_dir)
+
+
+def owned_pets(chronicle_dir=DEFAULT_DIR):
+    """Set of pet ids the player has bought (gold or trophy) across all runs."""
+    return set(_load_raw(chronicle_dir)["owned_pets"])
+
+
+def own_pet(pet_id, chronicle_dir=DEFAULT_DIR):
+    """Record that the player permanently owns this pet. Idempotent."""
+    raw = _load_raw(chronicle_dir)
+    if pet_id not in raw["owned_pets"]:
+        raw["owned_pets"].append(pet_id)
+        _save(raw, chronicle_dir)

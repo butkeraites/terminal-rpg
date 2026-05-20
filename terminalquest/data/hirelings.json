@@ -1,0 +1,26 @@
+{
+  "broken_squire": {
+    "name": "the Broken Squire",
+    "max_hp": 80,
+    "defense": 4,
+    "heal_per_round": 4,
+    "cost": 400,
+    "flavor": "A squire whose knight never came home from the Climb. He's been looking for one to follow ever since."
+  },
+  "weir_warden": {
+    "name": "a Weir Warden",
+    "max_hp": 120,
+    "defense": 6,
+    "heal_per_round": 6,
+    "cost": 700,
+    "flavor": "She kept the dykes at Brackmere when the gates were sealed. She knows the smell of forgetting and refuses it."
+  },
+  "ash_kin": {
+    "name": "Ash-Kin",
+    "max_hp": 60,
+    "defense": 3,
+    "heal_per_round": 10,
+    "cost": 500,
+    "flavor": "A penitent who turned back at the Climb and remembered. She mends faster than she dies."
+  }
+}

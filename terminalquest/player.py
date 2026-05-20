@@ -3,6 +3,8 @@ from .accessory import Accessory
 from .armor import Armor
 from .combatant import Combatant
 from .companion import Companion
+from .hireling import Hireling
+from .pet import Pet
 from .weapon import Weapon, make_weapon
 
 STARTING_GOLD = 50
@@ -49,6 +51,8 @@ class Player(Combatant):
         self.equipment = {}
         self.abilities = list(class_def["abilities"])
         self.companion = None  # bought once at Gravewatch; persists for the run
+        self.hireling = None   # paid combat ally; can die and stays dead this run
+        self.trophies = {}  # enemy-drop bag — keys map to entries in enemies.json
         starter = class_def["weapon"]
         self.equip_weapon(make_weapon(content, starter["components"], starter["name"]))
         self.hp = self.max_hp
@@ -121,6 +125,28 @@ class Player(Combatant):
             self.stamina = min(self.stamina, self.max_stamina)
         return accessory
 
+    def equip_pet(self, pet):
+        """Equip a pet (a 5th equipment slot), applying its passive bonuses.
+
+        Pets behave like accessories — stat contributions are tracked here
+        and removed on unequip. The per-round regen is read from the equipped
+        pet directly during combat.
+        """
+        self.unequip_pet()
+        self.equipment["pet"] = pet
+        for stat, amount in pet.stats.items():
+            setattr(self, stat, getattr(self, stat) + amount)
+
+    def unequip_pet(self):
+        """Remove and return the equipped pet, undoing its bonuses."""
+        pet = self.equipment.pop("pet", None)
+        if pet is not None:
+            for stat, amount in pet.stats.items():
+                setattr(self, stat, getattr(self, stat) - amount)
+            self.hp = min(self.hp, self.max_hp)
+            self.stamina = min(self.stamina, self.max_stamina)
+        return pet
+
     def gain_xp(self, amount):
         """Add XP and advance levels. Returns the number of levels gained.
 
@@ -191,6 +217,8 @@ class Player(Combatant):
         for slot in ("trinket", "ring"):
             if slot in self.equipment:
                 equipment[slot] = self.equipment[slot].to_dict()
+        if "pet" in self.equipment:
+            equipment["pet"] = self.equipment["pet"].to_dict()
         return {
             "name": self.name,
             "class_id": self.class_id,
@@ -211,6 +239,8 @@ class Player(Combatant):
             "equipment": equipment,
             "abilities": list(self.abilities),
             "companion": self.companion.to_dict() if self.companion else None,
+            "hireling": self.hireling.to_dict() if self.hireling else None,
+            "trophies": dict(self.trophies),
         }
 
     @classmethod
@@ -242,7 +272,12 @@ class Player(Combatant):
         for slot in ("trinket", "ring"):
             if slot in data["equipment"]:
                 player.equipment[slot] = Accessory.from_dict(data["equipment"][slot])
+        if "pet" in data["equipment"]:
+            player.equipment["pet"] = Pet.from_dict(data["equipment"]["pet"])
         player.abilities = list(data["abilities"])
         comp_data = data.get("companion")
         player.companion = Companion.from_dict(comp_data) if comp_data else None
+        hire_data = data.get("hireling")
+        player.hireling = Hireling.from_dict(hire_data) if hire_data else None
+        player.trophies = dict(data.get("trophies", {}))
         return player

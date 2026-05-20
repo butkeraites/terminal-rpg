@@ -1,0 +1,38 @@
+{
+  "ash_hound_pup": {
+    "name": "Ash-Hound Pup",
+    "stats": {"attack": 5},
+    "regen_per_round": 0,
+    "gold_cost": 800,
+    "trophy": "wolf_pelt",
+    "trophy_required": 50,
+    "flavor": "Whelp of the famine winter's hounds. Already knows the smell of grey."
+  },
+  "bog_pricklehog": {
+    "name": "Bog Pricklehog",
+    "stats": {"defense": 3},
+    "regen_per_round": 0,
+    "gold_cost": 800,
+    "trophy": "thresher_reed",
+    "trophy_required": 50,
+    "flavor": "Half quills, half mud, all hostility. The Reach made it small enough to sleep in your hood."
+  },
+  "black_magpie": {
+    "name": "Black Magpie",
+    "stats": {"crit_bonus": 0.08},
+    "regen_per_round": 0,
+    "gold_cost": 800,
+    "trophy": "bat_wing",
+    "trophy_required": 50,
+    "flavor": "She knows where to land the eye. She does not bring the eye back, only the place to land it."
+  },
+  "hearth_cat": {
+    "name": "Hearth Cat",
+    "stats": {},
+    "regen_per_round": 5,
+    "gold_cost": 800,
+    "trophy": "scavver_fang",
+    "trophy_required": 50,
+    "flavor": "Was warm in someone's lap once. Still wants to be, and remembers how to mend you to keep being."
+  }
+}
