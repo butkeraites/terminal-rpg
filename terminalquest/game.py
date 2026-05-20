@@ -114,6 +114,36 @@ def _name_the_fallen(io, content, entries):
 MIRROR_CLIMB_THRESHOLD = 3  # SQ5: distinct endings needed to unlock the Mirror Climb
 
 
+# v1.8 — One after-image per ending the player has reached, shown quietly on
+# the title screen. Mournhold remembers its own aftermaths between runs.
+_AFTER_IMAGES = {
+    "warden":
+        ("Someone climbed. Someone won. The Pall kept that climber too.",
+         "The Witherwood still has its wolves. The road still climbs."),
+    "reborn":
+        ("Someone climbed. Someone refused. The Echo Trader has new things",
+         "on her counter. They were made by hands that did not finish climbing."),
+    "purify":
+        ("The kingdom is named again. A child in what was Brackmere",
+         "learned to write her name this winter. She learned it from a Karst woman."),
+    "atrel_peace":
+        ("In the Choir's south aisle, a small altar holds a fresh flower every month.",
+         "Whoever leaves it does not know why. It is the right size for them."),
+    "old_seal":
+        ("Under the mountain, someone sits in stone. They are saying names.",
+         "Mournhold lives, and does not know it lives because of them."),
+    "reckoning":
+        ("Mournhold is unmade. The Hidden Hold is the only hold left.",
+         "They bake for travellers, who are sometimes strangers, who they let in."),
+    "caretaker":
+        ("Someone in Gravewatch keeps the small things now.",
+         "Climbers come back to a warm cup, set out before they ask."),
+    "other_mournhold":
+        ("Somewhere, in a kingdom that never grew a Pall, the gates open every morning.",
+         "A child carries water without knowing what they have been spared."),
+}
+
+
 def create_character(content, io, chronicle_dir):
     """Run new-game character creation and return (player, starting_flags).
 
@@ -242,6 +272,20 @@ def run(io=None, content=None, rng=None, chronicle_dir=None, seed=None):
     io.show_slow("⚔️  MOURNHOLD ⚔️", delay=0.05)
     io.show_slow("=" * 50)
     io.show(f"v{__version__}\n")
+
+    # v1.8 — show after-images for endings the player has reached. The
+    # kingdom remembers between runs; the title screen is where it speaks.
+    seen_endings = chronicle.endings_seen(chronicle_dir)
+    after_lines = [
+        lines for eid, lines in _AFTER_IMAGES.items() if eid in seen_endings
+    ]
+    if after_lines:
+        io.show("Mournhold remembers:")
+        for lines in after_lines:
+            io.show("")
+            for line in lines:
+                io.show_slow(f"  {line}", delay=0.01)
+        io.show("")
 
     while True:
         io.show("1. New Game")
