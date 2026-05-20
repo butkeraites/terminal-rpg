@@ -873,6 +873,25 @@
          "The script is older than the language Mournhold was written in.",
          "Whatever Verren was, it was here first. And it ended."
        ]},
+      {"type": "discovery", "id": "verren_counting_song", "label": "📜 A counting-song below the fragment, in the same older hand",
+       "lines": [
+         "📜 Below the VERREN inscription, almost lost in the moss, five lines.",
+         "Smaller. Carved by the same hand. Cael's father — Mournhold's first king —",
+         "must have set them down here on the night before she descended.",
+         "It is a counting-song. A child's rhyme. The only piece of Verren that survived.",
+         "He must have learned it as a boy. He must have known he was about to forget it.",
+         "",
+         "                   'One: the door is open.'",
+         "                   'Two: the bread is shared.'",
+         "                   'Three: the river is named.'",
+         "                   'Four: the dead are said.'",
+         "                   'Five: the door is opened again.'",
+         "",
+         "The five duties Verren taught its children. Mournhold inherited every one,",
+         "and broke every one, in order, in the seventh winter. The song does not say so.",
+         "The song is for children. It was for closing doors gently at the end of a day,",
+         "and opening them again in the morning. That is what it has always been for."
+       ]},
       {"type": "discovery", "id": "lost_verse_3", "label": "🎼 A line cut into the altar's underside",
        "lines": [
          "🎼 You kneel beneath the altar of the Pre-Pall Shrine and look up.",
