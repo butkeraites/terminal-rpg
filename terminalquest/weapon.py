@@ -4,20 +4,57 @@ A weapon is built from four interchangeable components — a head, a haft, a
 core and an inscription — defined in ``data/components.json``. Its resolved
 ``stats`` are the sum of those components' bonuses, and are applied to the
 wielder while the weapon is equipped (see ``Player.equip_weapon``).
+
+Each weapon may also receive a one-time ``upgrade`` from the Smith at
+Gravewatch. An upgrade grants an extra stat bonus and may also hook into
+combat — see ``WEAPON_UPGRADES``.
 """
 
 WEAPON_SLOTS = ("head", "haft", "core", "inscription")
 
 
+WEAPON_UPGRADES = {
+    "lifesteal": {
+        "name": "Lifedrinker",
+        "blurb": "Heals 15% of the damage you deal.",
+        "cost": 250,
+        "stat_bonus": {},  # the effect is a combat hook, not a flat stat
+    },
+    "sharpened": {
+        "name": "Sharpened",
+        "blurb": "+10% critical hit chance.",
+        "cost": 200,
+        "stat_bonus": {"crit_bonus": 0.10},
+    },
+    "reinforced": {
+        "name": "Reinforced",
+        "blurb": "+5 defense.",
+        "cost": 200,
+        "stat_bonus": {"defense": 5},
+    },
+    "hardened": {
+        "name": "Hardened",
+        "blurb": "+20 max HP.",
+        "cost": 200,
+        "stat_bonus": {"max_hp": 20},
+    },
+}
+
+
 class Weapon:
     """A weapon: a name, the four components it is built from, the resolved
-    stat bonuses it grants its wielder, and any combat procs it carries."""
+    stat bonuses it grants its wielder, and any combat procs it carries.
 
-    def __init__(self, name, components, stats, procs=None):
+    ``upgrade`` is one of the keys in ``WEAPON_UPGRADES`` once the Smith has
+    worked the weapon — None until then. A weapon can only be upgraded once.
+    """
+
+    def __init__(self, name, components, stats, procs=None, upgrade=None):
         self.name = name
         self.components = dict(components)
         self.stats = dict(stats)
         self.procs = list(procs or [])
+        self.upgrade = upgrade
 
     def summary(self):
         """A compact one-line description of the weapon's bonuses and procs."""
@@ -27,7 +64,15 @@ class Weapon:
                  if self.stats.get(s)]
         for proc in self.procs:
             parts.append(f"{proc['status']} on {proc['trigger'].replace('on_', '')}")
+        if self.upgrade:
+            parts.append(f"⚒ {WEAPON_UPGRADES[self.upgrade]['name']}")
         return "  ".join(parts) or "(no bonuses)"
+
+    def upgrade_stat_bonus(self):
+        """Stat bonuses contributed by the weapon's upgrade (empty if not upgraded)."""
+        if not self.upgrade:
+            return {}
+        return dict(WEAPON_UPGRADES[self.upgrade]["stat_bonus"])
 
     def to_dict(self):
         """Serialize to a plain dict for saving."""
@@ -36,13 +81,14 @@ class Weapon:
             "components": dict(self.components),
             "stats": dict(self.stats),
             "procs": list(self.procs),
+            "upgrade": self.upgrade,
         }
 
     @classmethod
     def from_dict(cls, data):
         """Rebuild a Weapon from a saved dict."""
         return cls(data["name"], data["components"], data["stats"],
-                   data.get("procs", []))
+                   data.get("procs", []), upgrade=data.get("upgrade"))
 
 
 def make_weapon(content, components, name):

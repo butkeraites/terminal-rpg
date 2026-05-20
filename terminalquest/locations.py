@@ -6,10 +6,13 @@ location, offers its services, encounters and travel routes, and runs
 until the player dies, wins, or quits.
 """
 from . import chronicle, saves
+from .accessory import make_accessory
+from .armor import make_armor
 from .combat import run_combat
+from .companion import make_companion
 from .enemy import make_enemy, make_hollowed, make_warden
 from .ui import hud, show_stats
-from .weapon import WEAPON_SLOTS, roll_weapon
+from .weapon import WEAPON_SLOTS, WEAPON_UPGRADES, roll_weapon
 
 INN_COST = 20
 POTION_COST = 30
@@ -27,7 +30,15 @@ WEAPON_DROP_CHANCE = 0.35
 _SERVICE_LABELS = {
     "shop": "🏪 Visit the Shop",
     "inn": f"😴 Rest at the Inn ({INN_COST} gold)",
+    "smith": "⚒  Visit the Smith",
+    "quartermaster": "🛡️  Visit the Quartermaster",
+    "pact_broker": "🐺 Visit the Pact-Broker",
+    "echo_trader": "🕯️  Visit the Echo Trader",
 }
+
+REBORN_ECHO_BASE = 30  # baseline Echo for a Reborn — boosted by what was done
+REBORN_ECHO_PER_LEVEL = 3
+REBORN_ECHO_PER_UNLOCK = 5
 
 
 def _buy_potion(player, io, name, cost):
@@ -132,6 +143,262 @@ def _run_service(state, service):
         shop(state)
     elif service == "inn":
         _rest_at_inn(state)
+    elif service == "smith":
+        smith(state)
+    elif service == "quartermaster":
+        quartermaster(state)
+    elif service == "pact_broker":
+        pact_broker(state)
+    elif service == "echo_trader":
+        echo_trader(state)
+
+
+def echo_trader(state):
+    """The Gravewatch Echo Trader: buy trinkets and rings with Echo currency.
+
+    Echo is earned only by completing the run and choosing Reborn — the
+    prestige loop. Bought accessories are permanently owned across all
+    future runs (stored in the Chronicle) and can be equipped here.
+    """
+    player, content, io = state.player, state.content, state.io
+    catalog = list(content.accessories.items())
+    io.clear()
+    io.show_slow("🕯️  The Echo Trader speaks softly. The dead can be heard, "
+                 "if you brought their coin.\n")
+    while True:
+        balance = chronicle.echoes(state.chronicle_dir)
+        owned = chronicle.owned_accessories(state.chronicle_dir)
+        equipped = {slot: player.equipment.get(slot)
+                    for slot in ("trinket", "ring")}
+        io.show(hud(player))
+        io.show(f"\n💀 Echoes: {balance}")
+        io.show(f"\nTrinket: {equipped['trinket'].name if equipped['trinket'] else '(none)'}")
+        io.show(f"Ring:    {equipped['ring'].name if equipped['ring'] else '(none)'}")
+        for index, (accessory_id, entry) in enumerate(catalog, start=1):
+            is_owned = accessory_id in owned
+            is_equipped = (equipped[entry["slot"]] is not None
+                           and equipped[entry["slot"]].accessory_id == accessory_id)
+            tag = "  ✓ equipped" if is_equipped else (
+                "  (owned)" if is_owned else f"  cost {entry['cost']} Echo")
+            stats_bits = [f"+{int(v * 100)}% {k.replace('_', ' ')}"
+                          if k in ("crit_bonus", "dodge_chance")
+                          else f"+{v} {k.replace('_', ' ')}"
+                          for k, v in entry.get("stats", {}).items()]
+            io.show(f"\n{index}. {entry['name']} [{entry['slot']}]{tag}")
+            io.show(f"   {'  '.join(stats_bits) or '(no bonuses)'}")
+        leave_idx = len(catalog) + 1
+        io.show(f"\n{leave_idx}. Leave")
+        choice = io.ask("\nWhat would you like? ")
+        if choice == str(leave_idx):
+            return
+        if not (choice.isdigit() and 1 <= int(choice) <= len(catalog)):
+            io.show("\n❌ Invalid choice!")
+            io.pause(1)
+            continue
+        accessory_id, entry = catalog[int(choice) - 1]
+        if accessory_id in owned:
+            # Owned — toggle equip/unequip.
+            slot = entry["slot"]
+            if (equipped[slot] is not None
+                    and equipped[slot].accessory_id == accessory_id):
+                player.unequip_accessory(slot)
+                io.show(f"\nYou take off the {entry['name']}.")
+            else:
+                player.equip_accessory(make_accessory(content, accessory_id))
+                io.show(f"\nYou put on the {entry['name']}.")
+            io.pause(1)
+            continue
+        # Not owned — try to buy with Echoes.
+        if balance < entry["cost"]:
+            io.show(f"\n💀 Not enough Echoes "
+                    f"(have {balance}, need {entry['cost']}).")
+            io.pause(1)
+            continue
+        chronicle.spend_echoes(entry["cost"], state.chronicle_dir)
+        chronicle.own_accessory(accessory_id, state.chronicle_dir)
+        player.equip_accessory(make_accessory(content, accessory_id))
+        io.show_slow(f"\n🕯️  The {entry['name']} is yours, and stays yours.")
+        io.pause(1)
+
+
+def pact_broker(state):
+    """The Gravewatch Pact-Broker: bind a spirit companion to your run.
+
+    A companion strikes (or mends) once per round after your turn. Only one
+    companion at a time — you must release the current one to bind another.
+    Persists for the run via state save/load.
+    """
+    player, content, io = state.player, state.content, state.io
+    catalog = list(content.companions.items())
+    io.clear()
+    io.show_slow("🐺 Welcome to the Pact-Broker.\n")
+    while True:
+        io.show(hud(player))
+        if player.companion is not None:
+            io.show(f"\nBound to you: {player.companion.name}")
+            io.show(f"  {player.companion.summary()}")
+        else:
+            io.show("\nNo spirit walks with you yet.")
+        for index, (companion_id, entry) in enumerate(catalog, start=1):
+            bound = (player.companion is not None
+                     and player.companion.companion_id == companion_id)
+            tag = "  (bound)" if bound else ""
+            effect = (f"strikes for {entry['power']}" if entry["kind"] == "damage"
+                      else f"mends {entry['power']} HP/turn")
+            io.show(f"\n{index}. {entry['name']} ({entry['cost']} gold){tag}")
+            io.show(f"   {effect}")
+        next_index = len(catalog) + 1
+        if player.companion is not None:
+            io.show(f"\n{next_index}. Release current companion")
+            io.show(f"{next_index + 1}. Leave")
+            leave_choice = str(next_index + 1)
+            release_choice = str(next_index)
+        else:
+            io.show(f"\n{next_index}. Leave")
+            leave_choice = str(next_index)
+            release_choice = None
+        choice = io.ask("\nWhat would you like? ")
+        if choice == leave_choice:
+            return
+        if release_choice is not None and choice == release_choice:
+            io.show_slow(f"\nYou release {player.companion.name}. The road "
+                         f"is yours alone again.")
+            player.companion = None
+            io.pause(1)
+            continue
+        if not (choice.isdigit() and 1 <= int(choice) <= len(catalog)):
+            io.show("\n❌ Invalid choice!")
+            io.pause(1)
+            continue
+        companion_id, entry = catalog[int(choice) - 1]
+        if (player.companion is not None
+                and player.companion.companion_id == companion_id):
+            io.show("\nThis spirit already walks with you.")
+            io.pause(1)
+            continue
+        if player.companion is not None:
+            io.show("\nRelease your current companion first.")
+            io.pause(1)
+            continue
+        if player.gold < entry["cost"]:
+            io.show("\n❌ Not enough gold!")
+            io.pause(1)
+            continue
+        player.gold -= entry["cost"]
+        player.companion = make_companion(content, companion_id)
+        io.show_slow(f"\n🐺 {player.companion.name} pledges to walk the road "
+                     f"with you.")
+        io.pause(1)
+
+
+def quartermaster(state):
+    """The Gravewatch quartermaster: buy armor pieces (defense + dodge chance).
+
+    Each piece is an alternative to the one you wear. Buying auto-equips the
+    new piece; the old armor is simply discarded — these are not collected,
+    only worn.
+    """
+    player, content, io = state.player, state.content, state.io
+    catalog = list(content.armor.items())
+    io.clear()
+    io.show_slow("🛡️  Welcome to the Quartermaster.\n")
+    while True:
+        current = player.equipment.get("armor")
+        io.show(hud(player))
+        if current is not None:
+            io.show(f"\nYou wear: {current.name}")
+            io.show(f"  {current.summary()}")
+        else:
+            io.show("\nYou wear no armor.")
+        for index, (armor_id, entry) in enumerate(catalog, start=1):
+            equipped = current is not None and current.armor_id == armor_id
+            tag = "  (equipped)" if equipped else ""
+            io.show(f"\n{index}. {entry['name']} ({entry['cost']} gold){tag}")
+            stats_bits = [f"+{v} {k.replace('_', ' ')}"
+                          for k, v in entry.get("stats", {}).items()]
+            dodge = entry.get("dodge_chance", 0)
+            if dodge:
+                stats_bits.append(f"{int(dodge * 100)}% dodge")
+            io.show(f"   {'  '.join(stats_bits) or '(no bonuses)'}")
+        io.show(f"\n{len(catalog) + 1}. Leave")
+        choice = io.ask("\nWhat would you like? ")
+        if choice == str(len(catalog) + 1):
+            return
+        if not (choice.isdigit() and 1 <= int(choice) <= len(catalog)):
+            io.show("\n❌ Invalid choice!")
+            io.pause(1)
+            continue
+        armor_id, entry = catalog[int(choice) - 1]
+        if current is not None and current.armor_id == armor_id:
+            io.show("\nYou already wear this piece.")
+            io.pause(1)
+            continue
+        if player.gold < entry["cost"]:
+            io.show("\n❌ Not enough gold!")
+            io.pause(1)
+            continue
+        player.gold -= entry["cost"]
+        player.equip_armor(make_armor(content, armor_id))
+        io.show_slow(f"\n🛡️  You buckle on the {entry['name']}.")
+        io.pause(1)
+
+
+def smith(state):
+    """The Gravewatch smith: enchant your weapon with one permanent upgrade.
+
+    Each weapon can only be upgraded once — the smith refuses to re-temper a
+    blade already touched. The player's currently-equipped weapon is the only
+    candidate; an upgrade is paid in gold and persists through save/load.
+    """
+    player, io = state.player, state.io
+    io.clear()
+    io.show_slow("⚒  Welcome to the Smith.\n")
+    while True:
+        weapon = player.equipment.get("weapon")
+        io.show(hud(player))
+        if weapon is None:
+            io.show("\nYou carry no weapon to temper.")
+            io.show("\n1. Leave")
+            io.ask("\nWhat would you like? ")
+            return
+        io.show(f"\nWeapon on the anvil: {weapon.name}")
+        io.show(f"  {weapon.summary()}")
+        if weapon.upgrade is not None:
+            io.show(f"\nThis weapon has already been worked "
+                    f"({WEAPON_UPGRADES[weapon.upgrade]['name']}).")
+            io.show("The smith refuses to temper it a second time.")
+            io.show("\n1. Leave")
+            choice = io.ask("\nWhat would you like? ")
+            if choice == "1":
+                return
+            io.show("\n❌ Invalid choice!")
+            continue
+        upgrades = list(WEAPON_UPGRADES.items())
+        for index, (_uid, upgrade) in enumerate(upgrades, start=1):
+            io.show(f"\n{index}. {upgrade['name']} ({upgrade['cost']} gold) "
+                    f"— {upgrade['blurb']}")
+        io.show(f"\n{len(upgrades) + 1}. Leave")
+        choice = io.ask("\nWhat would you like? ")
+        if choice == str(len(upgrades) + 1):
+            return
+        if not (choice.isdigit() and 1 <= int(choice) <= len(upgrades)):
+            io.show("\n❌ Invalid choice!")
+            io.pause(1)
+            continue
+        uid, upgrade = upgrades[int(choice) - 1]
+        if player.gold < upgrade["cost"]:
+            io.show("\n❌ Not enough gold!")
+            io.pause(1)
+            continue
+        # Re-equip to apply the upgrade's stat bonuses cleanly.
+        player.unequip_weapon()
+        weapon.upgrade = uid
+        player.equip_weapon(weapon)
+        player.gold -= upgrade["cost"]
+        io.show_slow(f"\n⚒  The smith works the {weapon.name} into the "
+                     f"{upgrade['name']}.")
+        io.show(f"   {weapon.summary()}")
+        io.pause(1)
 
 
 def _entry_act(state, entry):
@@ -296,20 +563,67 @@ def _run_summary(state):
 
 
 def _victory_screen(state):
-    """The end screen: the Warden falls, and the Pall keeps the victor."""
+    """The end screen: the Warden falls — and the player chooses their fate.
+
+    The default ending is to be kept by the Pall (chronicled as Warden, the
+    next Summit boss). Reborn is the prestige alternative: you refuse to be
+    kept, the Pall takes its toll (you lose this run's hero entirely), but
+    you carry away Echoes — the only coin that buys back what the Pall takes.
+    """
     player, io = state.player, state.io
+    io.clear()
+    io.show_slow("The Shadow Warden comes apart like wet ash. The Pall, finding")
+    io.show_slow("itself without a Warden, turns to the soul still standing on")
+    io.show_slow("the Summit. It reaches.\n")
+    io.pause(1)
+    io.show("You can let it take you, and become the next Warden — the one")
+    io.show("future climbers will have to break to free this place.")
+    io.show("\nOr you can refuse it. The Pall does not let go for nothing.")
+    io.show("It will take everything you have, except what the dead carry —")
+    io.show("the Echoes of what you've done. With those, you can come back.")
+    io.show("\n1. Be kept by the Pall  (end the run, become the Warden)")
+    io.show("2. Reborn               (end this hero — earn Echoes — start again)")
+    choice = io.ask("\nYour choice? ")
+    if choice == "2":
+        _reborn_screen(state)
+        return
     chronicle.record(state, "warden", state.chronicle_dir)
     io.clear()
-    io.show_slow("The Shadow Warden comes apart like wet ash — and the Pall,")
-    io.show_slow("finding itself without a Warden, turns to the soul still")
-    io.show_slow("standing on the Summit. It pours into you. You never feel it take.")
-    io.show("\n" + "=" * 50)
+    io.show("=" * 50)
     io.show("🥀  THE PALL KEEPS YOU")
     io.show(f"{player.name} the {player.class_name} — Warden of the Shrouded Summit")
     io.show("\nYou will not climb down. You will wait here, wearing your own")
     io.show("face, until the next soul reaches the Summit to break you —")
     io.show("as you broke the one before.")
     io.show("=" * 50)
+    _run_summary(state)
+    io.show("\nThank you for playing Mournhold.")
+
+
+def _reborn_screen(state):
+    """The Reborn ending — earn Echoes (Chronicle currency) and end this run."""
+    player, io = state.player, state.io
+    unlock_count = len(chronicle.unlocked(state.chronicle_dir))
+    echoes_earned = (REBORN_ECHO_BASE
+                     + player.level * REBORN_ECHO_PER_LEVEL
+                     + unlock_count * REBORN_ECHO_PER_UNLOCK)
+    chronicle.add_echoes(echoes_earned, state.chronicle_dir)
+    # The Reborn hero is NOT chronicled as a Warden — they refused the Pall.
+    io.clear()
+    io.show_slow("You turn the Pall's reach aside. The Summit empties of you,")
+    io.show_slow("the road empties of you, the kingdom forgets you — almost.")
+    io.show_slow("Only the Echoes follow you back. The dead remember coin.\n")
+    io.show("=" * 50)
+    io.show("💀  REBORN")
+    io.show(f"{player.name} the {player.class_name} — refused.")
+    io.show(f"\nEchoes earned this run: {echoes_earned}")
+    io.show(f"Echoes total: {chronicle.echoes(state.chronicle_dir)}")
+    owned = chronicle.owned_accessories(state.chronicle_dir)
+    if owned:
+        io.show(f"\nAccessories you carry across the dark: {len(owned)}")
+    io.show("=" * 50)
+    io.show("\nStart a new run from the title screen — visit the Echo Trader")
+    io.show("at Gravewatch to spend what you earned.")
     _run_summary(state)
     io.show("\nThank you for playing Mournhold.")
 

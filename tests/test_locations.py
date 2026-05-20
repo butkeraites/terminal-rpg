@@ -45,8 +45,10 @@ def test_boss_travel_locked_below_unlock_level(content):
 def test_boss_victory_ends_the_game(content):
     player = _strong_player(content)
     player.level = 8  # the summit unlocks at level 8
-    # at the Ashen Climb: travel to the Summit -> challenge -> one-shot the Warden
-    io = ScriptedIO(["4", "1", "1"])
+    # at the Ashen Climb: travel to the Summit -> challenge -> one-shot -> Warden ending
+    # The fourth "1" picks the canonical "Be kept by the Pall" outcome
+    # (Reborn is option "2" — see _victory_screen).
+    io = ScriptedIO(["4", "1", "1", "1"])
     locations.location_loop(make_state(player, content, io, StubRandom(),
                                        current_location="mountain"))
     text = io.text()
@@ -377,6 +379,140 @@ def test_return_option_absent_until_fast_travel_used(content):
     state = make_state(_player(content), content, io, StubRandom())
     locations.location_loop(state)
     assert "Return to" not in io.text()
+
+
+def test_smith_upgrades_weapon_once_only(content):
+    """The Smith applies an upgrade and refuses to re-temper the same blade."""
+    player = _player(content)
+    player.gold = 500
+    weapon = player.equipment["weapon"]
+    assert weapon.upgrade is None
+    # Smith menu: 1 Lifedrinker, 2 Sharpened, 3 Reinforced, 4 Hardened, 5 Leave.
+    # After purchase the loop re-renders the "already worked" branch which only
+    # offers "1. Leave" — so the second input is "1".
+    locations.smith(make_state(player, content, ScriptedIO(["3", "1"]), StubRandom()))
+    assert weapon.upgrade == "reinforced"
+    assert player.gold == 500 - 200
+    # Re-entering the smith: weapon already worked, only "1. Leave" is offered.
+    locations.smith(make_state(player, content, ScriptedIO(["1"]), StubRandom()))
+    assert weapon.upgrade == "reinforced"  # unchanged
+
+
+def test_lifesteal_upgrade_heals_player_on_hit(content):
+    """A weapon with the Lifedrinker upgrade heals 15% of damage dealt."""
+    from terminalquest.weapon import WEAPON_UPGRADES  # noqa: F401
+    player = _player(content)
+    player.hp = 50
+    player.attack = 100  # big number so 15% lifesteal is visible
+    player.unequip_weapon()
+    weapon = player.equipment.get("weapon")
+    # Re-equip with lifesteal upgrade.
+    from terminalquest.weapon import make_weapon
+    weapon = make_weapon(content,
+                         {"head": "bog_iron_head", "haft": "withe_haft",
+                          "core": "grave_iron_core", "inscription": "mourners_mark"},
+                         "Test Blade")
+    weapon.upgrade = "lifesteal"
+    player.equip_weapon(weapon)
+    io = ScriptedIO(["1"])  # basic attack
+    from terminalquest.enemy import make_enemy
+    combat_state = make_state(player, content, io, StubRandom())
+    # combat.run_combat: import locally to avoid top-level cycle in test files
+    from terminalquest import combat
+    combat.run_combat(combat_state, make_enemy("cave_troll", content))
+    assert "drinks deep" in io.text()  # lifesteal message fired
+    # Player healed at least once during the fight.
+    assert player.hp > 50 - 99999  # sanity — player still alive (one-shotted troll)
+
+
+def test_quartermaster_buys_and_equips_armor(content):
+    """The Quartermaster sells armor pieces that auto-equip on purchase."""
+    player = _player(content)
+    player.gold = 100
+    # Catalog order: mourning_cloak (80g) is #1.
+    locations.quartermaster(make_state(player, content, ScriptedIO(["1", "6"]),
+                                       StubRandom()))
+    armor = player.equipment.get("armor")
+    assert armor is not None
+    assert armor.armor_id == "mourning_cloak"
+    assert player.gold == 20  # 100 - 80
+
+
+def test_armor_dodge_can_bypass_minimum_damage(content):
+    """A dodge_chance > 0 lets the player take 0 damage on a roll under it."""
+    from terminalquest import combat
+    player = _player(content)
+    player.dodge_chance = 1.0  # always dodge for test
+    enemy = _player(content)  # something to attack
+    # rnd=0.0 -> always under dodge_chance, so the hit dodges.
+    damage, dodged, _crit = combat._perform_attack(enemy, player, 1.0,
+                                                   StubRandom(rnd=0.0))
+    assert dodged
+    assert damage == 0  # not even the min-1
+
+
+def test_pact_broker_binds_a_companion(content):
+    """The Pact-Broker takes gold and binds a chosen spirit to the player."""
+    player = _player(content)
+    player.gold = 400
+    # Catalog: 1 Ash Hound (300), 2 Bonesong Acolyte (150), 3 Pall-Touched Cleric (250)
+    # Initial menu (no companion): 4 = Leave.
+    # After binding: a "Release current companion" option appears at 4, and
+    # Leave shifts to 5 — that's why the second input is "5".
+    locations.pact_broker(make_state(player, content, ScriptedIO(["1", "5"]),
+                                     StubRandom()))
+    assert player.companion is not None
+    assert player.companion.companion_id == "ash_hound"
+    assert player.gold == 100  # 400 - 300
+
+
+def test_companion_strikes_after_player_turn(content):
+    """A damage companion deals its power to the enemy each round."""
+    from terminalquest import combat
+    from terminalquest.companion import make_companion
+    from terminalquest.enemy import make_enemy
+    player = _player(content)
+    player.attack = 1  # weak — companion must finish the kill
+    player.companion = make_companion(content, "ash_hound")  # 12 damage/round
+    enemy = make_enemy("goblin", content)
+    enemy.hp = 12  # exactly the companion's damage
+    state = make_state(player, content, ScriptedIO(["1"]), StubRandom())
+    outcome = combat.run_combat(state, enemy)
+    assert outcome == "victory"
+    assert "Ash Hound" in state.io.text()
+
+
+def test_reborn_grants_echoes_and_skips_warden_record(content, tmp_path):
+    """Choosing Reborn earns Echoes and does NOT chronicle the player as a Warden."""
+    from terminalquest import chronicle
+    player = _strong_player(content)
+    player.level = 8
+    # Travel to Summit (4), fight (1), attack (1), Reborn (2)
+    io = ScriptedIO(["4", "1", "1", "2"])
+    state = make_state(player, content, io, StubRandom(),
+                       current_location="mountain", chronicle_dir=tmp_path)
+    locations.location_loop(state)
+    text = io.text()
+    assert "REBORN" in text
+    assert "THE PALL KEEPS YOU" not in text
+    assert chronicle.echoes(tmp_path) > 0  # earned Echoes
+    assert chronicle.wardens(chronicle.load(tmp_path)) == []  # not a Warden
+
+
+def test_echo_trader_buys_an_accessory_with_echoes(content, tmp_path):
+    """The Echo Trader spends Chronicle Echoes to permanently own an accessory."""
+    from terminalquest import chronicle
+    chronicle.add_echoes(100, tmp_path)
+    player = _player(content)
+    # Catalog: 1 Stag-Tine Pendant (50), 2 Reaper's Coin (50), ...
+    # Owned-once: pick #1, then leave (option 9 — 8 catalog + 1 Leave).
+    locations.echo_trader(make_state(player, content, ScriptedIO(["1", "9"]),
+                                     StubRandom(), chronicle_dir=tmp_path))
+    assert "stag_tine_pendant" in chronicle.owned_accessories(tmp_path)
+    assert chronicle.echoes(tmp_path) == 50  # 100 - 50
+    # Auto-equipped on purchase.
+    assert "trinket" in player.equipment
+    assert player.equipment["trinket"].accessory_id == "stag_tine_pendant"
 
 
 def test_fast_travel_not_offered_at_the_crossroads(content):

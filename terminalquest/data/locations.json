@@ -17,7 +17,7 @@
       "Its people do not ask your name. Names are for the dead."
     ],
     "connections": ["crossroads"],
-    "services": ["shop", "inn"]
+    "services": ["shop", "inn", "smith", "quartermaster", "pact_broker", "echo_trader"]
   },
   "forest": {
     "name": "The Witherwood",

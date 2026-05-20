@@ -1,0 +1,58 @@
+{
+  "stag_tine_pendant": {
+    "name": "Stag-Tine Pendant",
+    "slot": "trinket",
+    "stats": {"attack": 5},
+    "cost": 50,
+    "flavor": "Carved from the Pallid Stag's antlers. The wood remembers being a man."
+  },
+  "reapers_coin": {
+    "name": "Reaper's Coin",
+    "slot": "trinket",
+    "stats": {"crit_bonus": 0.05},
+    "cost": 50,
+    "flavor": "Pried from a weir-keeper's tongue. He bit down on it as the flood came."
+  },
+  "hollowed_locket": {
+    "name": "Hollowed Locket",
+    "slot": "trinket",
+    "stats": {"max_hp": 25},
+    "cost": 40,
+    "flavor": "The Mourncross magistrate's locket. Empty — the portrait long worn through."
+  },
+  "mourners_knot": {
+    "name": "Mourner's Knot",
+    "slot": "trinket",
+    "stats": {"defense": 3},
+    "cost": 40,
+    "flavor": "A cord knotted forty-two times — once for each gate sealed against the holds."
+  },
+  "smiths_band": {
+    "name": "Smith's Band",
+    "slot": "ring",
+    "stats": {"attack": 3},
+    "cost": 30,
+    "flavor": "Red Beard's, half-melted from the heat of the last anvil he ever struck."
+  },
+  "bonesong_ring": {
+    "name": "Bonesong Ring",
+    "slot": "ring",
+    "stats": {"max_stamina": 2},
+    "cost": 40,
+    "flavor": "The hold-singer's signet. The hymn it bound is gone, but the air still hums."
+  },
+  "bellwards_iron_band": {
+    "name": "Bellward's Iron Band",
+    "slot": "ring",
+    "stats": {"defense": 3},
+    "cost": 30,
+    "flavor": "The Hollow Bellward wore it on his ringing arm. It still wants to ring."
+  },
+  "pall_touched_ring": {
+    "name": "Pall-Touched Ring",
+    "slot": "ring",
+    "stats": {"dodge_chance": 0.05},
+    "cost": 50,
+    "flavor": "A ring the Pall tasted and dropped. Hits read the wearer's name and forget it."
+  }
+}

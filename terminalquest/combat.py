@@ -28,15 +28,61 @@ XP_OVERLEVEL_THRESHOLD = 2
 
 
 def _perform_attack(attacker, target, power, rng):
-    """Resolve one attack. Returns ``(damage_dealt, dodged, crit)``."""
+    """Resolve one attack. Returns ``(damage_dealt, dodged, crit)``.
+
+    The attacker's ``crit_bonus`` (set by weapon upgrades like Sharpened) is
+    added to the base crit chance. The target's ``dodge_chance`` (set by
+    armor pieces) lets them avoid a hit entirely — bypassing the min-1 floor.
+    """
     if status.has_status(target, "evasive") and rng.random() < 0.5:
         return 0, True, False
+    # Armor-granted dodge: a clean miss with no damage at all.
+    dodge_chance = getattr(target, "dodge_chance", 0.0)
+    if dodge_chance > 0 and rng.random() < dodge_chance:
+        return 0, True, False
     raw = max(1, round(attacker.attack * power) + rng.randint(*ATTACK_VARIANCE))
-    crit = rng.random() < CRIT_CHANCE
+    crit_chance = CRIT_CHANCE + getattr(attacker, "crit_bonus", 0.0)
+    crit = rng.random() < crit_chance
     if crit:
         raw = round(raw * CRIT_MULTIPLIER)
     dealt = target.take_damage(raw, status.attack_multiplier(attacker))
     return dealt, False, crit
+
+
+def _apply_lifesteal(player, damage, io):
+    """If the equipped weapon is Lifedrinker, heal a fraction of the damage dealt."""
+    weapon = player.equipment.get("weapon")
+    if not weapon or weapon.upgrade != "lifesteal" or damage <= 0:
+        return
+    heal = max(1, int(damage * 0.15))
+    before = player.hp
+    player.heal(heal)
+    if player.hp > before:
+        io.show(f"💉 {weapon.name} drinks deep — +{player.hp - before} HP "
+                f"({player.hp}/{player.max_hp}).")
+
+
+def _companion_act(player, enemy, io):
+    """Run the companion's once-per-round action (if any). Spirit-aid, invulnerable.
+
+    Damage companions hit the enemy directly (no defense, no crits). Heal
+    companions mend the player. Both fire after the player's turn and before
+    the enemy's, so a companion strike can finish a fight.
+    """
+    comp = player.companion
+    if comp is None:
+        return
+    if comp.kind == "damage":
+        dealt = min(comp.power, enemy.hp)
+        enemy.hp -= dealt
+        io.show(f"\n🌀 {comp.name} strikes — {dealt} damage to {enemy.name}.")
+    elif comp.kind == "heal":
+        if player.hp >= player.max_hp:
+            return
+        before = player.hp
+        player.heal(comp.power)
+        io.show(f"\n💚 {comp.name} mends you — +{player.hp - before} HP "
+                f"({player.hp}/{player.max_hp}).")
 
 
 def _fire_procs(player, enemy, dodged, crit, io):
@@ -79,6 +125,7 @@ def _use_ability(player, enemy, ability, io, rng):
             status.apply_status(enemy, ability["status"], ability["status_turns"])
             io.show(f"   {enemy.name} is afflicted with {ability['status']}!")
         _fire_procs(player, enemy, dodged, crit, io)
+        _apply_lifesteal(player, damage, io)
     elif kind == "defend":
         status.apply_status(player, "braced", DEFEND_TURNS)
         io.show(f"🛡️  {ability['name']}! You brace against the next blow.")
@@ -141,6 +188,7 @@ def _player_turn(player, enemy, content, io, rng):
             else:
                 io.show(f"\n💥 You deal {damage} damage to {enemy.name}!")
             _fire_procs(player, enemy, dodged, crit, io)
+            _apply_lifesteal(player, damage, io)
             return "acted"
 
         if choice == "2":
@@ -411,6 +459,12 @@ def run_combat(state, enemy, *, refresh_after=True):
             if _player_turn(player, enemy, content, io, rng) == "fled":
                 outcome = "fled"
                 break
+        if not enemy.is_alive():
+            outcome = "victory"
+            break
+
+        # --- companion turn (between player and enemy) ---
+        _companion_act(player, enemy, io)
         if not enemy.is_alive():
             outcome = "victory"
             break

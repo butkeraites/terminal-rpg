@@ -1,0 +1,37 @@
+{
+  "mourning_cloak": {
+    "name": "Mourning Cloak",
+    "stats": {"defense": 3},
+    "dodge_chance": 0.05,
+    "cost": 80,
+    "flavor": "Black wool, threaded with the names the wearer no longer remembers."
+  },
+  "drowned_cuirass": {
+    "name": "Drowned Cuirass",
+    "stats": {"defense": 5, "max_hp": 20},
+    "dodge_chance": 0.05,
+    "cost": 200,
+    "flavor": "Pulled from a weir-keeper still buckled into it, fifteen winters under the silt."
+  },
+  "bonesong_vestment": {
+    "name": "Bonesong Vestment",
+    "stats": {"defense": 4, "max_hp": 50},
+    "dodge_chance": 0.08,
+    "cost": 300,
+    "flavor": "Hold-singer's robes. The hymn is stitched into the lining, and it still hums."
+  },
+  "pall_touched_mail": {
+    "name": "Pall-Touched Mail",
+    "stats": {"defense": 6, "max_hp": 10},
+    "dodge_chance": 0.15,
+    "cost": 350,
+    "flavor": "Links that the Pall has tasted and refused. Hits slide off it like water off slate."
+  },
+  "hollow_plate": {
+    "name": "Hollow Plate",
+    "stats": {"defense": 8, "max_hp": 30},
+    "dodge_chance": 0.10,
+    "cost": 450,
+    "flavor": "Plate of a Mourncross gate-warden. Empty inside. The dent on the breast is from a hammer."
+  }
+}

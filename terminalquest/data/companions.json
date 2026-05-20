@@ -1,0 +1,23 @@
+{
+  "ash_hound": {
+    "name": "the Ash Hound",
+    "kind": "damage",
+    "power": 12,
+    "cost": 300,
+    "flavor": "A hound that survived the famine winter by eating its kennel-mates. It remembers you."
+  },
+  "bonesong_acolyte": {
+    "name": "the Bonesong Acolyte",
+    "kind": "damage",
+    "power": 8,
+    "cost": 150,
+    "flavor": "A novice of the unanswered Choir. He still hums the wrath-hymn under his breath."
+  },
+  "pall_touched_cleric": {
+    "name": "the Pall-Touched Cleric",
+    "kind": "heal",
+    "power": 8,
+    "cost": 250,
+    "flavor": "She mends because she cannot remember not mending. The Pall left her this much."
+  }
+}

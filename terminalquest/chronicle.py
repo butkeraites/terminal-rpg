@@ -24,17 +24,23 @@ def _path(chronicle_dir):
 
 
 def _load_raw(chronicle_dir):
-    """Return the whole chronicle as ``{entries, unlocks}``. Never raises."""
+    """Return the whole chronicle. Adds Echo currency and owned accessories
+    for the Reborn prestige system. Never raises.
+    """
     try:
         data = json.loads(_path(chronicle_dir).read_text(encoding="utf-8"))
         entries = data.get("entries", [])
         unlocks = data.get("unlocks", [])
+        owned = data.get("owned_accessories", [])
+        echoes = data.get("echoes", 0)
         return {
             "entries": list(entries) if isinstance(entries, list) else [],
             "unlocks": list(unlocks) if isinstance(unlocks, list) else [],
+            "owned_accessories": list(owned) if isinstance(owned, list) else [],
+            "echoes": int(echoes) if isinstance(echoes, (int, float)) else 0,
         }
     except (OSError, json.JSONDecodeError, AttributeError, TypeError):
-        return {"entries": [], "unlocks": []}
+        return {"entries": [], "unlocks": [], "owned_accessories": [], "echoes": 0}
 
 
 def load(chronicle_dir=DEFAULT_DIR):
@@ -65,9 +71,14 @@ def _write(payload, chronicle_dir):
 
 
 def _save(raw, chronicle_dir):
-    """Atomically write the whole chronicle (``{entries, unlocks}``)."""
-    _write({"version": CHRONICLE_VERSION,
-            "entries": raw["entries"], "unlocks": raw["unlocks"]}, chronicle_dir)
+    """Atomically write the whole chronicle (entries + unlocks + Reborn store)."""
+    _write({
+        "version": CHRONICLE_VERSION,
+        "entries": raw["entries"],
+        "unlocks": raw["unlocks"],
+        "owned_accessories": raw["owned_accessories"],
+        "echoes": raw["echoes"],
+    }, chronicle_dir)
 
 
 def record(state, fate, chronicle_dir=DEFAULT_DIR):
@@ -112,3 +123,38 @@ def fallen(entries):
 def wardens(entries):
     """Characters the Pall kept — past victors, now the Shadow Warden."""
     return [e for e in entries if e.get("fate") == "warden"]
+
+
+def echoes(chronicle_dir=DEFAULT_DIR):
+    """The Echo currency balance (earned via Reborn, spent on accessories)."""
+    return _load_raw(chronicle_dir)["echoes"]
+
+
+def add_echoes(amount, chronicle_dir=DEFAULT_DIR):
+    """Grant Echo currency to the player. Used by the Reborn flow."""
+    raw = _load_raw(chronicle_dir)
+    raw["echoes"] += amount
+    _save(raw, chronicle_dir)
+
+
+def spend_echoes(amount, chronicle_dir=DEFAULT_DIR):
+    """Subtract Echo from the balance. Returns True if affordable, False otherwise."""
+    raw = _load_raw(chronicle_dir)
+    if raw["echoes"] < amount:
+        return False
+    raw["echoes"] -= amount
+    _save(raw, chronicle_dir)
+    return True
+
+
+def owned_accessories(chronicle_dir=DEFAULT_DIR):
+    """Set of accessory ids the player has permanently bought across all runs."""
+    return set(_load_raw(chronicle_dir)["owned_accessories"])
+
+
+def own_accessory(accessory_id, chronicle_dir=DEFAULT_DIR):
+    """Record that the player permanently owns this accessory. Idempotent."""
+    raw = _load_raw(chronicle_dir)
+    if accessory_id not in raw["owned_accessories"]:
+        raw["owned_accessories"].append(accessory_id)
+        _save(raw, chronicle_dir)

@@ -1,5 +1,8 @@
 """The player character and its progression logic."""
+from .accessory import Accessory
+from .armor import Armor
 from .combatant import Combatant
+from .companion import Companion
 from .weapon import Weapon, make_weapon
 
 STARTING_GOLD = 50
@@ -35,12 +38,15 @@ class Player(Combatant):
         self.defense = class_def["defense"]
         self.max_stamina = class_def["max_stamina"]
         self.stamina = self.max_stamina
+        self.crit_bonus = 0.0  # weapon upgrades (e.g. Sharpened) raise this
+        self.dodge_chance = 0.0  # armor pieces raise this
         self.gold = STARTING_GOLD
         self.xp = 0
         self.xp_to_level = STARTING_XP_TO_LEVEL
         self.consumables = list(class_def["inventory"])
         self.equipment = {}
         self.abilities = list(class_def["abilities"])
+        self.companion = None  # bought once at Gravewatch; persists for the run
         starter = class_def["weapon"]
         self.equip_weapon(make_weapon(content, starter["components"], starter["name"]))
         self.hp = self.max_hp
@@ -53,10 +59,17 @@ class Player(Combatant):
         self.stamina = min(self.max_stamina, self.stamina + amount)
 
     def equip_weapon(self, weapon):
-        """Equip ``weapon``, replacing any current one, and apply its stat bonuses."""
+        """Equip ``weapon``, replacing any current one, and apply its stat bonuses.
+
+        The weapon's component-stats and its one-time upgrade bonus are both
+        applied. Re-applying an upgrade (via re-equip) is a no-op because
+        ``upgrade_stat_bonus`` keys are added once per equip.
+        """
         self.unequip_weapon()
         self.equipment["weapon"] = weapon
         for stat, amount in weapon.stats.items():
+            setattr(self, stat, getattr(self, stat) + amount)
+        for stat, amount in weapon.upgrade_stat_bonus().items():
             setattr(self, stat, getattr(self, stat) + amount)
 
     def unequip_weapon(self):
@@ -65,9 +78,46 @@ class Player(Combatant):
         if weapon is not None:
             for stat, amount in weapon.stats.items():
                 setattr(self, stat, getattr(self, stat) - amount)
+            for stat, amount in weapon.upgrade_stat_bonus().items():
+                setattr(self, stat, getattr(self, stat) - amount)
             self.hp = min(self.hp, self.max_hp)
             self.stamina = min(self.stamina, self.max_stamina)
         return weapon
+
+    def equip_armor(self, armor):
+        """Equip ``armor``, replacing any current piece, and apply its bonuses."""
+        self.unequip_armor()
+        self.equipment["armor"] = armor
+        for stat, amount in armor.stats.items():
+            setattr(self, stat, getattr(self, stat) + amount)
+        self.dodge_chance += armor.dodge_chance
+
+    def unequip_armor(self):
+        """Remove and return the equipped armor, undoing its bonuses."""
+        armor = self.equipment.pop("armor", None)
+        if armor is not None:
+            for stat, amount in armor.stats.items():
+                setattr(self, stat, getattr(self, stat) - amount)
+            self.dodge_chance -= armor.dodge_chance
+            self.hp = min(self.hp, self.max_hp)
+        return armor
+
+    def equip_accessory(self, accessory):
+        """Equip a trinket or ring in its slot, applying its bonuses."""
+        self.unequip_accessory(accessory.slot)
+        self.equipment[accessory.slot] = accessory
+        for stat, amount in accessory.stats.items():
+            setattr(self, stat, getattr(self, stat) + amount)
+
+    def unequip_accessory(self, slot):
+        """Remove and return the accessory in ``slot`` (trinket|ring), undoing its bonuses."""
+        accessory = self.equipment.pop(slot, None)
+        if accessory is not None:
+            for stat, amount in accessory.stats.items():
+                setattr(self, stat, getattr(self, stat) - amount)
+            self.hp = min(self.hp, self.max_hp)
+            self.stamina = min(self.stamina, self.max_stamina)
+        return accessory
 
     def gain_xp(self, amount):
         """Add XP and advance levels. Returns the number of levels gained.
@@ -134,6 +184,11 @@ class Player(Combatant):
         equipment = {}
         if "weapon" in self.equipment:
             equipment["weapon"] = self.equipment["weapon"].to_dict()
+        if "armor" in self.equipment:
+            equipment["armor"] = self.equipment["armor"].to_dict()
+        for slot in ("trinket", "ring"):
+            if slot in self.equipment:
+                equipment[slot] = self.equipment[slot].to_dict()
         return {
             "name": self.name,
             "class_id": self.class_id,
@@ -145,12 +200,15 @@ class Player(Combatant):
             "defense": self.defense,
             "stamina": self.stamina,
             "max_stamina": self.max_stamina,
+            "crit_bonus": self.crit_bonus,
+            "dodge_chance": self.dodge_chance,
             "gold": self.gold,
             "xp": self.xp,
             "xp_to_level": self.xp_to_level,
             "consumables": list(self.consumables),
             "equipment": equipment,
             "abilities": list(self.abilities),
+            "companion": self.companion.to_dict() if self.companion else None,
         }
 
     @classmethod
@@ -168,6 +226,8 @@ class Player(Combatant):
         player.defense = data["defense"]
         player.stamina = data["stamina"]
         player.max_stamina = data["max_stamina"]
+        player.crit_bonus = data.get("crit_bonus", 0.0)  # older saves lack this
+        player.dodge_chance = data.get("dodge_chance", 0.0)
         player.gold = data["gold"]
         player.xp = data["xp"]
         player.xp_to_level = data["xp_to_level"]
@@ -175,5 +235,12 @@ class Player(Combatant):
         player.equipment = {}
         if "weapon" in data["equipment"]:
             player.equipment["weapon"] = Weapon.from_dict(data["equipment"]["weapon"])
+        if "armor" in data["equipment"]:
+            player.equipment["armor"] = Armor.from_dict(data["equipment"]["armor"])
+        for slot in ("trinket", "ring"):
+            if slot in data["equipment"]:
+                player.equipment[slot] = Accessory.from_dict(data["equipment"][slot])
         player.abilities = list(data["abilities"])
+        comp_data = data.get("companion")
+        player.companion = Companion.from_dict(comp_data) if comp_data else None
         return player
