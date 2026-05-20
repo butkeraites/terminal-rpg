@@ -3,12 +3,46 @@ import os
 import random
 import sys
 
-from . import __version__, chronicle, saves
+from . import __version__, chronicle, saves, settings
 from .content import load_content
 from .locations import location_loop
 from .player import Player
 from .state import GameState
 from .ui import GameIO
+
+
+def _emoji_smoke_test(io, prefs):
+    """First-launch test: can the user's terminal render an emoji glyph?
+
+    If they answer no, ascii_mode is set and persisted so every future
+    launch on this machine renders the game in bracket-text. Either way
+    the test only runs once — the flag emoji_test_done locks it.
+    """
+    if prefs["emoji_test_done"]:
+        return
+    print()
+    print("=" * 50)
+    print("Quick check before we start:")
+    print()
+    print("This is the sword character:  ⚔️")
+    print()
+    print("If you see a sword (or a small icon), say YES.")
+    print("If you see a blank square, '?', or anything other than a sword,")
+    print("say NO and the game will switch to text-only mode.")
+    try:
+        answer = input("\nDid you see a sword clearly? [Y/n] ").strip().lower()
+    except (EOFError, KeyboardInterrupt):
+        answer = "y"
+    if answer in ("n", "no", "nao", "não"):
+        prefs["ascii_mode"] = True
+        io.ascii_mode = True
+        print("\nSwitched to text-only mode. Emojis will render as [bracket-tags].")
+        print("You can re-run the test by deleting ~/.terminalquest/settings.json.")
+    else:
+        print("\nGreat. Continuing with the full glyphs.")
+    prefs["emoji_test_done"] = True
+    settings.save(prefs)
+    print("=" * 50)
 
 
 def _configure_console_for_unicode():
@@ -161,7 +195,10 @@ def chronicle_screen(io, content, chronicle_dir):
 
 def run(io=None, content=None, rng=None, chronicle_dir=None, seed=None):
     """Run the game from the title screen. Arguments are injectable for tests."""
-    io = io or GameIO()
+    if io is None:
+        prefs = settings.load()
+        io = GameIO(ascii_mode=prefs["ascii_mode"])
+        _emoji_smoke_test(io, prefs)
     content = content or load_content()
     if seed is None:
         seed = _new_seed()

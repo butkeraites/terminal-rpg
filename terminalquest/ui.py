@@ -2,24 +2,36 @@
 
 ``GameIO`` talks to a real terminal. ``ScriptedIO`` feeds canned input and
 captures output, letting the whole game loop run headless under pytest.
+
+``ascii_mode`` swaps every known emoji for an ASCII bracket-tag at output
+time — set by the first-launch smoke test for users whose terminals can't
+render emoji glyphs at all.
 """
 import sys
 import time
 
-from . import color, status
+from . import ascii_filter, color, status
 
 
 class GameIO:
     """Real-terminal input/output."""
 
-    def __init__(self, animate=True):
+    def __init__(self, animate=True, ascii_mode=False):
         self.animate = animate
+        self.ascii_mode = ascii_mode
+
+    def _filter(self, text):
+        """Strip emoji glyphs to ASCII bracket-tags when ascii_mode is on."""
+        if not self.ascii_mode:
+            return text
+        return ascii_filter.to_ascii(text)
 
     def show(self, text=""):
-        print(text)
+        print(self._filter(text))
 
     def show_slow(self, text, delay=0.02):
         """Print text character-by-character for dramatic effect."""
+        text = self._filter(text)
         if not self.animate:
             print(text)
             return
@@ -30,7 +42,7 @@ class GameIO:
         print()
 
     def ask(self, prompt):
-        return input(prompt).strip()
+        return input(self._filter(prompt)).strip()
 
     def pause(self, seconds=1.0):
         time.sleep(seconds)
@@ -45,7 +57,8 @@ class GameIO:
         through anyway. Each line is prefixed with ▒ and rendered slowly,
         with a fractional pause between characters — the stone modulates.
         """
-        prefix = "▒  "
+        text = self._filter(text)
+        prefix = "::  " if self.ascii_mode else "▒  "
         if not self.animate:
             print(prefix + text)
             return
@@ -61,19 +74,20 @@ class GameIO:
 class ScriptedIO(GameIO):
     """Test double: replays a list of inputs and records all output."""
 
-    def __init__(self, inputs=None):
-        super().__init__(animate=False)
+    def __init__(self, inputs=None, ascii_mode=False):
+        super().__init__(animate=False, ascii_mode=ascii_mode)
         self.inputs = list(inputs or [])
         self.output = []
 
     def show(self, text=""):
-        self.output.append(str(text))
+        self.output.append(self._filter(str(text)))
 
     def show_slow(self, text, delay=0.02):
-        self.output.append(str(text))
+        self.output.append(self._filter(str(text)))
 
     def show_through_stone(self, text):
-        self.output.append("▒  " + str(text))
+        prefix = "::  " if self.ascii_mode else "▒  "
+        self.output.append(prefix + self._filter(str(text)))
 
     def ask(self, prompt):
         if not self.inputs:

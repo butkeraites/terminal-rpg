@@ -1079,6 +1079,61 @@ def test_sister_realm_addendum_prints_when_allied(content, tmp_path):
     assert "bread moves both ways" in state.io.text()
 
 
+def test_ascii_filter_replaces_known_emojis():
+    """Every mapped emoji becomes its bracket-tag fallback."""
+    from terminalquest.ascii_filter import to_ascii
+    assert to_ascii("⚔️+6 atk") == "[atk]+6 atk"
+    assert to_ascii("🛡️+5 def") == "[def]+5 def"
+    assert to_ascii("plain text") == "plain text"
+    assert to_ascii("") == ""
+
+
+def test_ascii_filter_handles_combat_glyphs():
+    """Dynamic combat emojis (💥 💢 💨) translate to ASCII markers."""
+    from terminalquest.ascii_filter import to_ascii
+    out = to_ascii("💥 CRITICAL!  💢 hit  💨 dodge")
+    assert "💥" not in out
+    assert "**" in out
+    assert "!!" in out
+
+
+def test_gameio_ascii_mode_filters_output():
+    """ScriptedIO with ascii_mode=True records filtered text only."""
+    from terminalquest.ui import ScriptedIO
+    io = ScriptedIO(ascii_mode=True)
+    io.show("⚔️ attacks!")
+    assert "⚔️" not in io.text()
+    assert "[atk]" in io.text()
+
+
+def test_gameio_default_mode_preserves_emojis():
+    """ascii_mode=False is the default — emojis pass through."""
+    from terminalquest.ui import ScriptedIO
+    io = ScriptedIO()
+    io.show("⚔️ attacks!")
+    assert "⚔️" in io.text()
+
+
+def test_settings_round_trip(tmp_path):
+    """save/load round-trip preserves keys; missing files return defaults."""
+    from terminalquest import settings
+    # Default load on empty dir.
+    assert settings.load(tmp_path) == settings.DEFAULTS
+    # Save with custom flags and reload.
+    settings.save({"ascii_mode": True, "emoji_test_done": True}, tmp_path)
+    loaded = settings.load(tmp_path)
+    assert loaded["ascii_mode"] is True
+    assert loaded["emoji_test_done"] is True
+
+
+def test_speaking_through_stone_falls_back_in_ascii_mode():
+    """Cael's voice uses '::  ' instead of '▒' when ascii_mode is on."""
+    from terminalquest.ui import ScriptedIO
+    io = ScriptedIO(ascii_mode=True)
+    io.show_through_stone("I am Cael.")
+    assert "::  I am Cael." in io.text()
+
+
 def test_dialogue_grants_consumable_on_choice(content):
     """A response with grants_consumable adds the named item to player.consumables."""
     from terminalquest import dialogue
