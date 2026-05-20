@@ -1665,6 +1665,84 @@ def test_other_mournhold_ending_hidden_outside_mirror_run(tmp_path, content):
     assert "other_mournhold" in available_ids
 
 
+def _seed_all_sq_completions(tmp_path):
+    """Mark every SQ1-9 completion in the chronicle. Helper for SQ10 tests."""
+    from terminalquest import chronicle
+    for i in range(25):
+        chronicle.add_read_discovery(f"d{i}", tmp_path)              # SQ1
+    chronicle.add_ending_seen("caretaker", tmp_path)                  # SQ2
+    for _ in range(100):
+        chronicle.add_cat_pet(tmp_path)                                # SQ3
+    for i in range(10):
+        chronicle.add_piranesi_note(f"p{i}", tmp_path)                # SQ4
+    chronicle.add_ending_seen("other_mournhold", tmp_path)            # SQ5
+    chronicle.unlock("the_counted", tmp_path)                         # SQ6
+    chronicle.unlock("the_forgotten_thing", tmp_path)                 # SQ7
+    for i in range(4):
+        chronicle.add_lost_verse_fragment(f"v{i}", tmp_path)          # SQ8
+    chronicle.unlock("witness_honored", tmp_path)                     # SQ9
+
+
+def test_all_side_quests_done_only_when_all_nine_complete(tmp_path, content):
+    """SQ10 — the gate flips True only after every SQ1-9 condition is met."""
+    from terminalquest import chronicle
+    assert chronicle.all_side_quests_done(tmp_path) is False
+    _seed_all_sq_completions(tmp_path)
+    assert chronicle.all_side_quests_done(tmp_path) is True
+
+
+def test_first_line_option_hidden_until_all_sqs_done(tmp_path, content):
+    """SQ10 — the child appears at the Crossroads only after every SQ is done."""
+    state = make_state(_player(content), content, ScriptedIO(), StubRandom(),
+                       current_location="crossroads", chronicle_dir=tmp_path)
+    loc = content.locations["crossroads"]
+    labels = " ".join(label for label, _ in
+                      locations._build_options(state, loc, []))
+    assert "child" not in labels.lower()
+    _seed_all_sq_completions(tmp_path)
+    labels = " ".join(label for label, _ in
+                      locations._build_options(state, loc, []))
+    assert "child" in labels.lower()
+
+
+def test_first_line_option_disappears_after_writing(tmp_path, content):
+    """SQ10 — once the line is written, the child is no longer there."""
+    from terminalquest import chronicle
+    _seed_all_sq_completions(tmp_path)
+    chronicle.set_first_line("Be kind to the cat. It has been counting.", tmp_path)
+    state = make_state(_player(content), content, ScriptedIO(), StubRandom(),
+                       current_location="crossroads", chronicle_dir=tmp_path)
+    loc = content.locations["crossroads"]
+    labels = " ".join(label for label, _ in
+                      locations._build_options(state, loc, []))
+    assert "child" not in labels.lower()
+
+
+def test_writing_the_first_line_persists_in_chronicle(tmp_path, content):
+    """SQ10 — the player's written line is stored cross-run."""
+    from terminalquest import chronicle
+    _seed_all_sq_completions(tmp_path)
+    state = make_state(_player(content), content,
+                        ScriptedIO(["1", "The cat is the only one who remembers all of us."]),
+                        StubRandom(),
+                        current_location="crossroads", chronicle_dir=tmp_path)
+    locations._write_first_line(state)
+    assert chronicle.first_line(tmp_path) == (
+        "The cat is the only one who remembers all of us.")
+    assert "hidden_truth" in chronicle.endings_seen(tmp_path)
+
+
+def test_writing_first_line_can_be_refused(tmp_path, content):
+    """SQ10 — refusing the child leaves the first line blank for next time."""
+    from terminalquest import chronicle
+    _seed_all_sq_completions(tmp_path)
+    state = make_state(_player(content), content, ScriptedIO(["2"]),
+                        StubRandom(),
+                        current_location="crossroads", chronicle_dir=tmp_path)
+    locations._write_first_line(state)
+    assert chronicle.first_line(tmp_path) == ""
+
+
 def test_other_mournhold_ending_records_chronicle(tmp_path, content):
     """SQ5 — choosing the Mirror ending records 'other_mournhold' + unlocks the trophy."""
     from terminalquest import chronicle

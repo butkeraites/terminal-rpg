@@ -1632,6 +1632,7 @@ def _honor_the_dead(state, witnessed):
     io.show(f"   +{memorial} gold (memorial offering)")
     chronicle.lay_to_rest(entry, state.chronicle_dir)
     chronicle.add_kind_act(state.chronicle_dir)  # SQ2: honoring is kindness
+    chronicle.unlock("witness_honored", state.chronicle_dir)  # SQ9 completion mark
     io.pause(2)
 
 
@@ -1709,6 +1710,61 @@ def reader(state):
     state.flags["read_with_reader"] = True
     io.show(f"\n   +{bonus} max HP — the Reader has read you in.")
     io.pause(2)
+
+
+def _write_first_line(state):
+    """SQ10 — The Hidden Final Truth. A child at the Crossroads with a book.
+
+    Surfaces once every other side-quest has been completed across runs.
+    Speaking to the child lets the player write the first line of the
+    Chronicle — the line every future new character will read at the
+    moment of their creation, before anything else Mournhold can say.
+
+    The player can refuse; the option will be there the next time they
+    come back.
+    """
+    io = state.io
+    io.clear()
+    io.show_slow("📖 At the Crossroads, where there was no one before, there is a child.")
+    io.show_slow("They are perhaps eight winters old. They have a book in their lap.")
+    io.show_slow("It is the oldest thing in the kingdom, and the newest. It is the Chronicle.")
+    io.show("")
+    io.show_slow("'I have been keeping this for you,' the child says.")
+    io.show_slow("'You have read the names. You have sat with the cat. You have remembered the verse.'")
+    io.show_slow("'You have honoured a stranger's unfinished work. You have stood the climb")
+    io.show_slow("'as several others. You have done all the small kindnesses Mournhold knew of.'")
+    io.show("")
+    io.show_slow("They open the book to the first page. The page is blank.")
+    io.show_slow("'Someone has to write the first line. It will be the first line of")
+    io.show_slow("'every Chronicle from this one on. Every climber who comes after you")
+    io.show_slow("'will read it before they read anything else. Will you?'")
+    io.show("")
+    io.show("1. Yes — write the first line")
+    io.show("2. Not today")
+    choice = io.ask("\nYour choice? ").strip()
+    if choice != "1":
+        io.show_slow("\n'I will be here,' the child says. 'I have been here.'")
+        io.pause(2)
+        return
+    io.show("")
+    io.show_slow("The child hands you the book. The page is still blank.")
+    io.show_slow("Write the line for whoever comes after.")
+    line = io.ask("\n> ").strip()
+    if not line:
+        io.show_slow("\nYou hand the book back. 'Not yet,' you say. The child nods.")
+        io.pause(2)
+        return
+    chronicle.set_first_line(line, state.chronicle_dir)
+    chronicle.add_ending_seen("hidden_truth", state.chronicle_dir)
+    io.show("")
+    io.show_slow("The child reads what you have written. Then closes the book.")
+    io.show_slow("'It is in the book now. Every new climber will read it first.'")
+    io.show_slow("'It will be the first thing Mournhold says.'")
+    io.show("")
+    io.show_slow("                  — THE HIDDEN FINAL TRUTH —")
+    io.show_slow("       You wrote the first line. There is no climb left to do.")
+    io.show_slow("           Mournhold is yours, now. Be gentle with it.")
+    io.pause(3)
 
 
 def caretaker(state):
@@ -1980,6 +2036,13 @@ def _build_options(state, loc, fallen):
             and state.flags.get("lost_verse_known")
             and not state.flags.get("lost_verse_sung")):
         options.append(("🎼 Sing the Lost Verse", ("sing_verse", None)))
+    # SQ10 — A child at the Crossroads with a book, once every side-quest
+    # has been completed across runs and the first line has not been written.
+    if (state.current_location == "crossroads"
+            and chronicle.all_side_quests_done(state.chronicle_dir)
+            and not chronicle.first_line(state.chronicle_dir)):
+        options.append(("📖 A child stands at the Crossroads with a book",
+                        ("write_first_line", None)))
     # SQ9 — the Witnessed Dead. A presence in zones where a fallen had
     # unfinished NPC-quest progress; offers to pass the work to you.
     for witnessed in _witnessed_dead_here(state, fallen):
@@ -2079,6 +2142,8 @@ def location_loop(state):
             _read_piranesi_map(state)
         elif kind == "sing_verse":
             sing_the_verse(state)
+        elif kind == "write_first_line":
+            _write_first_line(state)
         elif kind == "honor":
             _honor_the_dead(state, arg)
             # Re-load fallen so the just-laid-to-rest entry drops out.

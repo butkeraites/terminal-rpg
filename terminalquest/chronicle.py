@@ -44,6 +44,7 @@ def _load_raw(chronicle_dir):
         visits = data.get("gravewatch_visits", 0)
         kacts = data.get("kind_acts", 0)
         endings = data.get("endings_seen_ids", [])
+        fline = data.get("first_line", "")
         return {
             "entries": list(entries) if isinstance(entries, list) else [],
             "unlocks": list(unlocks) if isinstance(unlocks, list) else [],
@@ -67,6 +68,7 @@ def _load_raw(chronicle_dir):
                           if isinstance(kacts, (int, float)) else 0),
             "endings_seen_ids": (list(endings)
                                  if isinstance(endings, list) else []),
+            "first_line": (str(fline) if isinstance(fline, str) else ""),
         }
     except (OSError, json.JSONDecodeError, AttributeError, TypeError):
         return {"entries": [], "unlocks": [], "owned_accessories": [],
@@ -77,7 +79,8 @@ def _load_raw(chronicle_dir):
                 "read_discovery_ids": [],
                 "gravewatch_visits": 0,
                 "kind_acts": 0,
-                "endings_seen_ids": []}
+                "endings_seen_ids": [],
+                "first_line": ""}
 
 
 def load(chronicle_dir=DEFAULT_DIR):
@@ -127,6 +130,7 @@ def _save(raw, chronicle_dir):
         "gravewatch_visits": raw.get("gravewatch_visits", 0),
         "kind_acts": raw.get("kind_acts", 0),
         "endings_seen_ids": raw.get("endings_seen_ids", []),
+        "first_line": raw.get("first_line", ""),
     }, chronicle_dir)
 
 
@@ -340,6 +344,49 @@ def add_read_discovery(discovery_id, chronicle_dir=DEFAULT_DIR):
     if discovery_id not in seen:
         seen.append(discovery_id)
         _save(raw, chronicle_dir)
+
+
+def first_line(chronicle_dir=DEFAULT_DIR):
+    """The line the player wrote at the Crossroads after SQ1-9 were complete.
+
+    SQ10 — The Hidden Final Truth. A child at the Crossroads carries a
+    book and asks the player to write its first line. Once written, every
+    new character begins their run by reading that line first.
+    """
+    return _load_raw(chronicle_dir).get("first_line", "")
+
+
+def set_first_line(line, chronicle_dir=DEFAULT_DIR):
+    """Write the first line of all future Chronicles. Idempotent — once set,
+    overwrites previously set value (the player can rewrite if they return).
+    """
+    raw = _load_raw(chronicle_dir)
+    raw["first_line"] = str(line).strip()
+    _save(raw, chronicle_dir)
+
+
+def all_side_quests_done(chronicle_dir=DEFAULT_DIR):
+    """True when every SQ1-9 unlock condition has been met across runs.
+
+    SQ10 — The Hidden Final Truth requires every side quest completed:
+    25 lore reads, Caretaker chosen, 100 cat pets, all 10 Piranesi notes,
+    the Mirror ending, the Insomniac descent, the Forgotten Thing defeated,
+    the full Lost Verse, and at least one Witnessed Dead honored.
+    """
+    raw = _load_raw(chronicle_dir)
+    seen_endings = set(raw.get("endings_seen_ids", []))
+    unlocks = set(raw.get("unlocks", []))
+    return (
+        len(raw.get("read_discovery_ids", [])) >= 25            # SQ1
+        and "caretaker" in seen_endings                          # SQ2
+        and raw.get("cat_pets", 0) >= 100                        # SQ3
+        and len(raw.get("piranesi_notes_seen_ids", [])) >= 10    # SQ4
+        and "other_mournhold" in seen_endings                    # SQ5
+        and "the_counted" in unlocks                             # SQ6
+        and "the_forgotten_thing" in unlocks                     # SQ7
+        and len(raw.get("lost_verse_fragments_seen_ids", [])) >= 4  # SQ8
+        and "witness_honored" in unlocks                         # SQ9
+    )
 
 
 def endings_seen(chronicle_dir=DEFAULT_DIR):

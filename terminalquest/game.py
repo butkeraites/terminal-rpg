@@ -135,6 +135,13 @@ def create_character(content, io, chronicle_dir):
         if answer == "y":
             flags["mirror_run"] = True
     io.clear()
+    first = chronicle.first_line(chronicle_dir)
+    if first:
+        # SQ10 — every new character begins by reading the line a past player
+        # wrote into the Chronicle's first page at the Crossroads.
+        io.show_slow(f"📖 {first}")
+        io.show("")
+        io.pause(1)
     if flags.get("mirror_run"):
         io.show_slow(f"🪞 {player.name} the {player.class_name}. Again.")
         io.show_slow("You have stood at the road's start before, under another name.")
