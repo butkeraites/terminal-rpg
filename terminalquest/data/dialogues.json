@@ -495,6 +495,7 @@
     }
   },
   "cael": {
+    "sets_flag_on_entry": "talked_to_cael",
     "initial": {
       "voice": "stone",
       "lines": [
@@ -510,7 +511,39 @@
         {"text": "What ate Verren?", "next": "hunger"},
         {"text": "Why are you the seal?", "next": "why_seal"},
         {"text": "Is there another way?", "next": "another"},
+        {"text": "Tell her about Atrél, in the Choir's south aisle.",
+         "next": "of_atrel",
+         "requires_flag": "talked_to_atrel"},
         {"text": "(step back)", "next": null}
+      ]
+    },
+    "of_atrel": {
+      "voice": "stone",
+      "lines": [
+        "Atrél.",
+        "I have not heard that name in centuries.",
+        "He held the small forgettings. I held the older one.",
+        "My father came down here on the night before I descended.",
+        "He sat at my feet and said three hundred names and then he said:",
+        "  'I am going to set one more thing down at Atrél's altar before I climb.'",
+        "  'It is that I have a daughter, and I am about to ask her to do this.'",
+        "I did not know, until now, that he did. Tell me what he looks like.",
+        "",
+        "(You tell her. A small old man whose work was taken away from him.)",
+        "",
+        "She is quiet for a long time. The stone she has become",
+        "is moving very slightly, around her open mouth.",
+        "",
+        "'Tell him,' Cael says, 'that I have been saying the names,'",
+        "'and that one of them, lately, has been his.'",
+        "'Tell him I will say his quietly until the seal is done.'",
+        "'Tell him: the daughter remembers. The kingdom forgot.'",
+        "'The daughter did not forget.'"
+      ],
+      "responses": [
+        {"text": "I will tell him.", "next": "initial",
+         "sets_flag": "cael_message_for_atrel"},
+        {"text": "(step back, quietly)", "next": null}
       ]
     },
     "hunger": {
@@ -635,6 +668,7 @@
     }
   },
   "atrel": {
+    "sets_flag_on_entry": "talked_to_atrel",
     "initial": {
       "lines": [
         "The figure at the altar is small. Smaller than the altar.",
@@ -649,7 +683,34 @@
         {"text": "What was the rite for?", "next": "rite"},
         {"text": "Who taught it to them?", "next": "taught"},
         {"text": "What did they do wrong?", "next": "scaled"},
-        {"text": "Why are you still here?", "next": "here"}
+        {"text": "Why are you still here?", "next": "here"},
+        {"text": "Tell him about Cael, under the mountain.",
+         "next": "of_cael",
+         "requires_flag": "talked_to_cael"}
+      ]
+    },
+    "of_cael": {
+      "lines": [
+        "Atrél listens. He does not speak for a long time.",
+        "When he does, it is quieter than before, the way one old keeper",
+        "speaks of another old keeper they have heard of, but never met.",
+        "",
+        "'She has been holding the hunger,' he says. 'I have been holding the griefs.'",
+        "'They are the same problem at different scales. Memory you cannot stop.'",
+        "'I knew the first king. He kept the vow above her. He kept it for me, too.'",
+        "'He used to come here, before he climbed back up to teach her the names.'",
+        "'He set down a grief at this altar — that he had a daughter, and he was'",
+        "'about to ask her to do the hardest thing his line had ever asked.'",
+        "'I took it. He climbed back up lighter for it.'",
+        "",
+        "'Tell her, when you go back down to her: a small god remembers her father,'",
+        "'and remembers that his last grief was her. Tell her her father did not,'",
+        "'in the end, forget that.'"
+      ],
+      "responses": [
+        {"text": "I will tell her.", "next": "initial",
+         "sets_flag": "atrel_message_for_cael"},
+        {"text": "Step back.", "next": "initial"}
       ]
     },
     "rite": {

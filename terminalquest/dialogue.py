@@ -26,8 +26,14 @@ def run_dialogue(state, tree, start_node="initial"):
     A node may carry ``voice: "stone"`` to render its lines through the
     speaking-through-stone formatting — used by Cael in v0.12 Arc V, where
     her mouth is filled with the seal she became.
+
+    v1.5 — a tree may carry ``sets_flag_on_entry`` (set the moment the
+    player begins the conversation) and responses may carry ``requires_flag``
+    (hidden unless that flag is set). Used by the Atrél↔Cael cross-dialogue.
     """
     io = state.io
+    if "sets_flag_on_entry" in tree:
+        state.flags[tree["sets_flag_on_entry"]] = True
     current = start_node
     while current is not None:
         node = tree.get(current)
@@ -37,7 +43,10 @@ def run_dialogue(state, tree, start_node="initial"):
         renderer = io.show_through_stone if voice == "stone" else io.show_slow
         for line in node.get("lines", []):
             renderer(line)
-        responses = node.get("responses", [])
+        responses = [
+            r for r in node.get("responses", [])
+            if "requires_flag" not in r or state.flags.get(r["requires_flag"])
+        ]
         if not responses:
             io.pause(2)
             return current
@@ -62,11 +71,15 @@ def validate_tree(tree, tree_id):
 
     Every node must have ``lines``. Every response's ``next`` must resolve
     to another node in the tree, or be None (terminal). ``initial`` must
-    exist.
+    exist. Tree-level scalar fields (``sets_flag_on_entry``) are skipped.
     """
     if "initial" not in tree:
         raise ValueError(f"dialogue '{tree_id}' has no 'initial' node")
+    # Tree-level scalar metadata (not a node) — skip during validation.
+    _TREE_LEVEL_KEYS = {"sets_flag_on_entry"}
     for node_id, node in tree.items():
+        if node_id in _TREE_LEVEL_KEYS:
+            continue
         if "lines" not in node or not isinstance(node["lines"], list):
             raise ValueError(
                 f"dialogue '{tree_id}' node '{node_id}' has no lines list")

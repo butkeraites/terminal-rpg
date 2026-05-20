@@ -993,6 +993,69 @@ def test_dialogue_sets_flag_on_choice(content):
     assert state.flags.get("promised") is True
 
 
+def test_dialogue_sets_flag_on_entry(content):
+    """v1.5 — a tree's sets_flag_on_entry fires the moment the dialogue starts."""
+    from terminalquest import dialogue
+    state = make_state(_player(content), content, ScriptedIO(["1"]), StubRandom())
+    tree = {
+        "sets_flag_on_entry": "spoke_to_them",
+        "initial": {
+            "lines": ["hello"],
+            "responses": [{"text": "leave", "next": None}],
+        },
+    }
+    dialogue.run_dialogue(state, tree)
+    assert state.flags.get("spoke_to_them") is True
+
+
+def test_dialogue_response_hidden_until_required_flag(content):
+    """v1.5 — a response with requires_flag is filtered out unless that flag is set."""
+    from terminalquest import dialogue
+    tree = {
+        "initial": {
+            "lines": ["hello"],
+            "responses": [
+                {"text": "default option", "next": None},
+                {"text": "secret option", "next": None,
+                 "requires_flag": "knows_secret"},
+            ],
+        },
+    }
+    # Without the flag — secret option is hidden, only "default option" visible.
+    io = ScriptedIO(["1"])  # picks index 1 of the *filtered* list
+    state = make_state(_player(content), content, io, StubRandom())
+    dialogue.run_dialogue(state, tree)
+    assert "default option" in io.text()
+    assert "secret option" not in io.text()
+
+    # With the flag — both options visible.
+    io = ScriptedIO(["2"])  # picks the secret option (now index 2)
+    state = make_state(_player(content), content, io, StubRandom())
+    state.flags["knows_secret"] = True
+    dialogue.run_dialogue(state, tree)
+    assert "secret option" in io.text()
+
+
+def test_atrel_dialogue_has_cael_branch_only_after_cael_talked(content):
+    """v1.5 — Atrél's tree exposes 'Tell him about Cael' only with talked_to_cael."""
+    atrel = content.dialogues["atrel"]
+    initial_responses = atrel["initial"]["responses"]
+    cael_branch = [r for r in initial_responses if "Cael" in r.get("text", "")]
+    assert len(cael_branch) == 1
+    assert cael_branch[0].get("requires_flag") == "talked_to_cael"
+    assert "of_cael" in atrel  # the response's target node exists
+
+
+def test_cael_dialogue_has_atrel_branch_only_after_atrel_talked(content):
+    """v1.5 — Cael's tree exposes 'Tell her about Atrél' only with talked_to_atrel."""
+    cael = content.dialogues["cael"]
+    initial_responses = cael["initial"]["responses"]
+    atrel_branch = [r for r in initial_responses if "Atrél" in r.get("text", "")]
+    assert len(atrel_branch) == 1
+    assert atrel_branch[0].get("requires_flag") == "talked_to_atrel"
+    assert "of_atrel" in cael
+
+
 def test_bone_tomb_requires_all_four_npc_quests_and_verren(content, tmp_path):
     """The Bone Tomb opens only after every NPC quest + Verren fragment."""
     state = make_state(_player(content), content, ScriptedIO(), StubRandom(),
