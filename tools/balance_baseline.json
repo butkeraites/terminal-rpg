@@ -4,10 +4,10 @@
   "runs": 300,
   "tolerance": 0.1,
   "careful_win_rate": {
-    "warrior": 0.993,
-    "rogue": 0.897,
-    "mage": 0.91,
-    "ranger": 0.98,
-    "cleric": 0.827
+    "warrior": 0.957,
+    "rogue": 0.753,
+    "mage": 0.737,
+    "ranger": 0.913,
+    "cleric": 0.56
   }
 }

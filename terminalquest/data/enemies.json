@@ -307,8 +307,8 @@
   },
   "shadow_warden": {
     "name": "Shadow Warden",
-    "hp": 330,
-    "attack": 31,
+    "hp": 360,
+    "attack": 33,
     "defense": 10,
     "xp_reward": 300,
     "gold_reward": 250,
