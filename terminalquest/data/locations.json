@@ -42,6 +42,22 @@
       {"type": "combat", "enemies": ["goblin", "wolf", "bandit"], "pick": "random"},
       {"type": "combat", "enemies": ["pallid_stag"], "label": "⚔️  Challenge the Pallid Stag"},
       {"type": "npc", "id": "old_halna", "label": "🪵 Speak with Old Halna"},
+      {"type": "discovery", "id": "piranesi_witherwood_stone", "label": "🪶 A stone someone has been writing on",
+       "lines": [
+         "🪶 A stone in the shape of a face. The face changes if you stand differently.",
+         "Someone — older script, careful hand — has written on the back of the stone:",
+         "'Today I sat with this stone for an hour. The face is most kind from the north.'",
+         "'I called the stone Old Halna's Father. I do not know if he was Old Halna's father.'",
+         "'Someone climbed past me while I sat. They did not see me. The stone did. The stone is kind.'"
+       ]},
+      {"type": "discovery", "id": "piranesi_witherwood_tree", "label": "🪶 A tree that has been climbed",
+       "lines": [
+         "🪶 The third tree from the road north has been climbed.",
+         "Small handprints in the moss, going up. The hand is mine, today.",
+         "Below, in the same older hand: 'I climbed this tree on the day I named the stone.'",
+         "'There is nothing at the top of this tree. I climbed it anyway. The view names you.'",
+         "Standing here, you can see Gravewatch's chimney smoke. You have not stood here before."
+       ]},
       {"type": "discovery", "id": "atrel_marker", "label": "📜 A stone marker by the road",
        "lines": [
          "📜 A short stone marker, half-toppled, by the forest road.",
@@ -77,6 +93,21 @@
        "label": "⚔️  Wade into the floodfields  (3 fights, no rest between)"},
       {"type": "combat", "enemies": ["last_reaper"], "label": "⚔️  Challenge the Last Reaper"},
       {"type": "npc", "id": "weir_engineer", "label": "🔧 Speak with the Weir Engineer"},
+      {"type": "discovery", "id": "piranesi_reach_furrow", "label": "🪶 A furrow that has been measured",
+       "lines": [
+         "🪶 A furrow that runs north-south. Six inches deeper than the others.",
+         "Someone has driven a marker stick at each end. Older hand: 'I measured this',",
+         "'on a day when the water was at the second mark. The depth makes the rain sit longer.'",
+         "'The rain that sits longer feeds the field longer. The farmer who dug this knew. I learn.'"
+       ]},
+      {"type": "discovery", "id": "piranesi_reach_birds", "label": "🪶 A column of bird-flight",
+       "lines": [
+         "🪶 Birds that come over the Reach pass through one specific column of air.",
+         "Always the same column. Not the same birds. The column.",
+         "Older hand, on a flat stone: 'I have watched the column for two days.'",
+         "'No bird passes outside it. Wind does not move it. The Reach has a road birds know.'",
+         "'I will not call this column anything. To name it would be to stop watching it.'"
+       ]},
       {"type": "discovery", "id": "reach_tally", "label": "📜 A weir-keeper's tally",
        "lines": [
          "📜 A weir-keeper's tally board, its chalk gone soft and grey with damp.",
@@ -117,6 +148,14 @@
          "'has been told the same word you tell us. We do not know the word.'",
          "'We only know what it does. Please. Please send it back.'",
          "It is signed with twenty-eight names. None of them are in the census."
+       ]},
+      {"type": "discovery", "id": "piranesi_holds_doorpost", "label": "🪶 A doorpost that has been re-marked",
+       "lines": [
+         "🪶 A doorpost on a lane that is still half a lane. Hand-high, a notch.",
+         "Above the notch, a name in chalk. The chalk is fresh — yesterday, maybe.",
+         "Older hand, scratched into the lintel: 'I have re-marked this doorpost for six visits.'",
+         "'The water comes and washes the name off. Someone comes after and writes it back.'",
+         "'I do not know who. I have not been here while they were. I am glad of them.'"
        ]}
     ]
   },
@@ -138,7 +177,15 @@
     "connections": ["drowned_holds", "mourncross"],
     "encounters": [
       {"type": "combat", "enemies": ["giant_bat", "cave_troll", "dark_slime"], "pick": "random"},
-      {"type": "combat", "enemies": ["maw_mother"], "label": "⚔️  Challenge the Maw-Mother"}
+      {"type": "combat", "enemies": ["maw_mother"], "label": "⚔️  Challenge the Maw-Mother"},
+      {"type": "discovery", "id": "piranesi_cave_stone", "label": "🪶 A stone where lichen will not grow",
+       "lines": [
+         "🪶 In the throat of the Gullet, a stone — wet, cold, in shadow — that has no lichen.",
+         "Every stone around it is mossed. This one, in the same wet, the same dark, is bare.",
+         "Older hand, on a flat slab beside it: 'I sat with this stone two days.'",
+         "'There is nothing different about it. I cannot tell why nothing grows on it.'",
+         "'I do not need to know. It is enough that the stone is not what it should be.'"
+       ]}
     ]
   },
   "mourncross": {
@@ -191,6 +238,14 @@
          "for safekeeping — each one tiny, each one chosen, each one a kindness.",
          "The clerk's last entry, in a shaken hand: 'They are taking the rite away from him.'",
          "'They mean to scale it past what a small god can carry. We must remember instead.'"
+       ]},
+      {"type": "discovery", "id": "piranesi_mourncross_square", "label": "🪶 A square that holds one hour of light",
+       "lines": [
+         "🪶 A small square between two empty houses. The walls are the wrong height.",
+         "Sunlight reaches the floor only between the eighth and ninth hour.",
+         "For that one hour, the square is bright. The rest of the day, none.",
+         "Older hand, scratched into a window-jamb: 'I sat here for that one hour, once.'",
+         "'Someone had set chairs. Five chairs. They are still here. I left them.'"
        ]}
     ]
   },
@@ -235,6 +290,14 @@
          "Beside it: ash, where someone tried to burn the altar, and the altar refused to burn.",
          "Whoever scaled the rite knew what they were doing. They knew where they got it from.",
          "They knew Atrél could not hold what they meant to ask. They asked anyway."
+       ]},
+      {"type": "discovery", "id": "piranesi_choir_column", "label": "🪶 A column where a whisper carries",
+       "lines": [
+         "🪶 In the south transept, one stone column — the third from the door.",
+         "Stand on the east side and whisper. The whisper reaches the west side undiminished.",
+         "Older hand, on the floor by the column: 'I have tested this with eleven words.'",
+         "'Ten of them pass. The word \"name\" does not. The column eats that one.'",
+         "'I do not understand. I have written the eleven down. The list keeps me company.'"
        ]}
     ]
   },
@@ -258,7 +321,15 @@
     "encounters": [
       {"type": "combat", "enemies": ["mountain_ogre", "ice_wraith", "stone_golem"], "pick": "random"},
       {"type": "combat", "enemies": ["ashen_penitent"], "label": "⚔️  Challenge the Ashen Penitent"},
-      {"type": "npc", "id": "old_penitent", "label": "🪨 Speak with the Old Penitent"}
+      {"type": "npc", "id": "old_penitent", "label": "🪨 Speak with the Old Penitent"},
+      {"type": "discovery", "id": "piranesi_mountain_bare_patch", "label": "🪶 A patch of slope where no ash falls",
+       "lines": [
+         "🪶 On the eastern face of the climb, a rectangle of slope that no ash reaches.",
+         "Not sheltered. Not wind-swept. The grey snow falls and the rectangle stays bare.",
+         "Older hand, on a wind-scoured stone nearby: 'I measured it. Six paces by nine.'",
+         "'I lay down inside it. Nothing happened. I got up, and walked on.'",
+         "'I think someone is buried under this. I think the mountain is leaving them be.'"
+       ]}
     ]
   },
   "summit": {
@@ -447,7 +518,15 @@
       {"type": "dialogue", "dialogue_id": "talva",   "label": "🗝️  Speak with Tálva, who leads here"},
       {"type": "dialogue", "dialogue_id": "kerris",  "label": "🍞 Speak with Kerris, the baker"},
       {"type": "dialogue", "dialogue_id": "ondrek",  "label": "⚒  Speak with Ondrek, who has questions"},
-      {"type": "dialogue", "dialogue_id": "small_un", "label": "🐦 Speak with the Small Un"}
+      {"type": "dialogue", "dialogue_id": "small_un", "label": "🐦 Speak with the Small Un"},
+      {"type": "discovery", "id": "piranesi_hold_path", "label": "🪶 A path worn between two doors",
+       "lines": [
+         "🪶 Between the baker's house and the small one, a path worn smooth by feet.",
+         "Three generations have walked between these two doors. The grass will not grow.",
+         "Older hand, scratched into the side of a water-butt: 'I have stood and watched.'",
+         "'In a day, the path is walked twenty-eight times. Most of them by the Small Un.'",
+         "'The Small Un does not know yet that the path is theirs. The path knows.'"
+       ]}
     ]
   },
   "sealed_chamber": {

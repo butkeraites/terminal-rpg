@@ -38,6 +38,7 @@ def _load_raw(chronicle_dir):
         cleanses = data.get("cleanses", 0)
         purified = data.get("purified", False)
         cat_pets = data.get("cat_pets", 0)
+        piranesi_ids = data.get("piranesi_notes_seen_ids", [])
         return {
             "entries": list(entries) if isinstance(entries, list) else [],
             "unlocks": list(unlocks) if isinstance(unlocks, list) else [],
@@ -47,11 +48,16 @@ def _load_raw(chronicle_dir):
             "cleanses": int(cleanses) if isinstance(cleanses, (int, float)) else 0,
             "purified": bool(purified),
             "cat_pets": int(cat_pets) if isinstance(cat_pets, (int, float)) else 0,
+            "piranesi_notes_seen_ids": (list(piranesi_ids)
+                                        if isinstance(piranesi_ids, list) else []),
+            "piranesi_notes_seen": (len(piranesi_ids)
+                                    if isinstance(piranesi_ids, list) else 0),
         }
     except (OSError, json.JSONDecodeError, AttributeError, TypeError):
         return {"entries": [], "unlocks": [], "owned_accessories": [],
                 "owned_pets": [], "echoes": 0, "cleanses": 0, "purified": False,
-                "cat_pets": 0}
+                "cat_pets": 0, "piranesi_notes_seen_ids": [],
+                "piranesi_notes_seen": 0}
 
 
 def load(chronicle_dir=DEFAULT_DIR):
@@ -94,6 +100,7 @@ def _save(raw, chronicle_dir):
         "cleanses": raw["cleanses"],
         "purified": raw["purified"],
         "cat_pets": raw["cat_pets"],
+        "piranesi_notes_seen_ids": raw.get("piranesi_notes_seen_ids", []),
     }, chronicle_dir)
 
 
@@ -242,3 +249,23 @@ def add_cat_pet(chronicle_dir=DEFAULT_DIR):
     raw = _load_raw(chronicle_dir)
     raw["cat_pets"] += 1
     _save(raw, chronicle_dir)
+
+
+def piranesi_notes(chronicle_dir=DEFAULT_DIR):
+    """How many of Piranesi's notes the player has found (cross-run).
+
+    SQ4 — Piranesi the Mapper. Notes are gentle observational discoveries
+    scattered across the kingdom. At 10 found, a map appears.
+    """
+    raw = _load_raw(chronicle_dir)
+    return raw.get("piranesi_notes_seen", 0)
+
+
+def add_piranesi_note(note_id, chronicle_dir=DEFAULT_DIR):
+    """Record that this specific Piranesi note has been read. Idempotent."""
+    raw = _load_raw(chronicle_dir)
+    seen = raw.setdefault("piranesi_notes_seen_ids", [])
+    if note_id not in seen:
+        seen.append(note_id)
+        raw["piranesi_notes_seen"] = len(seen)
+        _save(raw, chronicle_dir)

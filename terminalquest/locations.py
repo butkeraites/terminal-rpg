@@ -839,6 +839,16 @@ def _run_discovery(state, encounter):
     state.flags.setdefault("discoveries_seen", []).append(discovery_id)
     if discovery_id in _DISCOVERY_FLAGS:
         state.flags[_DISCOVERY_FLAGS[discovery_id]] = True
+    # SQ4: Piranesi notes accumulate cross-run via the Chronicle.
+    if discovery_id.startswith("piranesi_"):
+        chronicle.add_piranesi_note(discovery_id, state.chronicle_dir)
+        count = chronicle.piranesi_notes(state.chronicle_dir)
+        if count == 10 and not state.flags.get("piranesi_map_unlocked"):
+            state.flags["piranesi_map_unlocked"] = True
+            io.show_slow("\n🪶 You have read enough of Piranesi to know the hand.")
+            io.show_slow("In the Pre-Pall Shrine, a folded square of vellum awaits.")
+            io.show_slow("It is the map he left for the climber who would read enough.")
+            io.pause(2)
     seen = set(state.flags["discoveries_seen"])
     if (set(ATREL_LORE_FRAGMENTS).issubset(seen)
             and not state.flags.get("atrel_lore_found")):
@@ -1459,6 +1469,45 @@ def _pet_the_cat(state):
     io.pause(2)
 
 
+def _read_piranesi_map(state):
+    """SQ4 — read Piranesi's map.
+
+    Once every Piranesi note has been read (cross-run), a folded square of
+    vellum waits in the Pre-Pall Shrine. The map is a quiet hand-drawing of
+    the ten small things the watcher kept track of. It can be re-read.
+    """
+    io = state.io
+    io.clear()
+    io.show_slow("🪶 You unfold the vellum. The older hand. The same hand that wrote")
+    io.show_slow("on the stone, the lintel, the side of the water-butt, the column.")
+    io.show("")
+    io.show("                           .")
+    io.show("                          /|\\         the summit, which he did not draw")
+    io.show("                         / | \\")
+    io.show("                        /  *  \\       a patch of slope with no ash")
+    io.show("                       /   |   \\")
+    io.show("                      /  __|__  \\     a column that ate the word 'name'")
+    io.show("                     /  |     |  \\")
+    io.show("                    /   |  o  |   \\   a square that holds one hour of light")
+    io.show("                   /    |_____|    \\")
+    io.show("                  /        |        \\")
+    io.show("                 /     ___ * ___     \\  a stone with no lichen")
+    io.show("                /     /         \\     \\")
+    io.show("               /     /  *     *  \\    \\ a doorpost re-marked, a tally")
+    io.show("              /     /  *       *  \\    \\ a furrow, a column of birds")
+    io.show("             /     /     *           \\  \\ a tree climbed, a stone with a face")
+    io.show("            /     /                    \\  \\")
+    io.show("           /     /        ^             \\  \\ the hidden hold, a path")
+    io.show("          /_____/_________|________________\\__\\")
+    io.show("                          |")
+    io.show("                     the crossroads")
+    io.show("")
+    io.show_slow("Below the drawing, in a smaller, later hand — yours, you realise:")
+    io.show_slow("'I have walked this. I have seen what was kind. I have written it down.'")
+    io.show_slow("'I do not know who will read this. I am glad of them.'")
+    io.pause(2)
+
+
 def _maybe_open_border(state):
     """The Border opens after 2 cleanses — Arc III's gating signal."""
     if state.flags.get("border_open"):
@@ -1548,6 +1597,11 @@ def _build_options(state, loc, fallen):
     if (loc.get("kind") == "zone" and not loc.get("boss")
             and visits >= CAT_ZONE_VISITS_REQUIRED):
         options.append(("🐈 Pet the cat", ("cat_pet", None)))
+    # SQ4 — Piranesi's map. Once all 10 of his notes have been read
+    # cross-run, a folded square of vellum waits in the Pre-Pall Shrine.
+    if (state.current_location == "pre_pall_shrine"
+            and state.flags.get("piranesi_map_unlocked")):
+        options.append(("🪶 Read Piranesi's map", ("piranesi_map", None)))
     # At the Crossroads, if the player fast-travelled here from somewhere,
     # offer a paired "Return to ..." so the round-trip isn't a long walk back.
     return_target = state.flags.get("fast_travel_return")
@@ -1626,6 +1680,8 @@ def location_loop(state):
             arrived = True
         elif kind == "cat_pet":
             _pet_the_cat(state)
+        elif kind == "piranesi_map":
+            _read_piranesi_map(state)
         elif kind == "fast_travel_return":
             target_name = content.locations[arg]["name"]
             io.show_slow(f"\n🛤️  You retrace the long road back to {target_name}.")

@@ -32,9 +32,9 @@ def test_location_loop_shows_recommended_levels(content):
 
 def test_boss_travel_locked_below_unlock_level(content):
     # at the Ashen Climb, a low-level hero tries the sealed Summit, then quits.
-    # v0.9 menu (mountain now has an NPC encounter): 1 fight, 2 mini-boss,
-    # 3 NPC, 4 to Choir, 5 to Summit, 6 walk back, 7-10 utilities → quit=10.
-    io = ScriptedIO(["5", "10"])
+    # v0.16 mountain menu: 1 fight, 2 mini-boss, 3 NPC, 4 piranesi discovery,
+    # 5 to Choir, 6 to Summit, 7 walk back, 8-11 utilities → quit=11.
+    io = ScriptedIO(["6", "11"])
     locations.location_loop(make_state(_player(content), content, io, StubRandom(),
                                        current_location="mountain"))
     text = io.text()
@@ -45,9 +45,10 @@ def test_boss_travel_locked_below_unlock_level(content):
 def test_boss_victory_ends_the_game(content):
     player = _strong_player(content)
     player.level = 8  # the summit unlocks at level 8
-    # v0.9: mountain has an NPC encounter, so travel-to-Summit is now option 5.
-    # ["5"]=Summit, ["1"]=fight, ["1"]=attack, ["1"]=Warden ending.
-    io = ScriptedIO(["5", "1", "1", "1"])
+    # v0.16: mountain has an NPC encounter and a Piranesi discovery,
+    # so travel-to-Summit is now option 6.
+    # ["6"]=Summit, ["1"]=fight, ["1"]=attack, ["1"]=Warden ending.
+    io = ScriptedIO(["6", "1", "1", "1"])
     locations.location_loop(make_state(player, content, io, StubRandom(),
                                        current_location="mountain"))
     text = io.text()
@@ -75,11 +76,13 @@ def test_grave_appears_and_can_be_searched(tmp_path, content):
     chronicle.record(fallen_run, "fell", tmp_path)
     player = _player(content)
     gold_before = player.gold
-    # v0.10 forest with grave: 1 combat, 2 mini-boss, 3 NPC, 4 Atrél marker,
-    # 5 grave, 6-7 conn, 8 walk back, 9-12 util. Grave is option 5.
-    # After grave searched: same menu minus grave → 1-4 encounters, 5-6 conn,
-    # 7 walk back, 8-11 util → quit=11.
-    io = ScriptedIO(["2", "5", "11"])
+    # Start at crossroads → "2" travels to Witherwood (option 2 = forest).
+    # v0.16 forest with grave: 1 combat, 2 mini-boss, 3 NPC, 4-6 discoveries
+    # (2 Piranesi + Atrél marker), 7 grave, 8-9 conn, 10 walk back,
+    # 11-14 util → quit=14. Grave is option 7.
+    # After grave searched: same menu minus grave → 1-6 encounters, 7-8 conn,
+    # 9 walk back, 10-13 util → quit=13.
+    io = ScriptedIO(["2", "7", "13"])
     state = make_state(player, content, io, StubRandom(), chronicle_dir=tmp_path)
     locations.location_loop(state)
     assert "Half-buried" in io.text()
@@ -129,10 +132,10 @@ def test_defeating_a_hollowed_lays_it_to_rest(tmp_path, content):
 
 def test_overlevel_travel_warns_and_can_turn_back(content):
     # level 1 at the Gullet vs Mourncross (recommended 4): warned -> turn back.
-    # Cave has no NPC encounter so its menu is unchanged from v0.7+:
-    # 1 fight, 2 mini-boss, 3 Drowned Holds, 4 Mourncross, 5 walk back,
-    # 6-9 utilities → quit=9.
-    io = ScriptedIO(["4", "2", "9"])
+    # v0.16 cave menu: 1 fight, 2 mini-boss, 3 Piranesi discovery,
+    # 4 Drowned Holds, 5 Mourncross, 6 walk back, 7-10 util → quit=10.
+    # "5" travel to Mourncross → warned, "2" turn back, "10" quit.
+    io = ScriptedIO(["5", "2", "10"])
     locations.location_loop(make_state(_player(content), content, io, StubRandom(),
                                        current_location="cave"))
     text = io.text()
@@ -141,9 +144,10 @@ def test_overlevel_travel_warns_and_can_turn_back(content):
 
 
 def test_travel_into_a_zone_fight_and_return(content):
-    # v0.10 forest menu: 1 combat, 2 mini-boss, 3 NPC, 4 Atrél marker,
-    # 5 to Crossroads, 6 to Reach, 7 walk back, 8-11 util. Travel back is 5.
-    io = ScriptedIO(["2", "1", "1", "5", "6"])
+    # v0.16 forest menu: 1 combat, 2 mini-boss, 3 NPC, 4-6 discoveries
+    # (2 Piranesi + Atrél marker), 7 to Crossroads, 8 to Reach,
+    # 9 walk back, 10-13 util. Travel back is 7.
+    io = ScriptedIO(["2", "1", "1", "7", "6"])
     state = make_state(_strong_player(content), content, io, StubRandom())
     locations.location_loop(state)
     text = io.text()
@@ -176,7 +180,7 @@ def test_discovery_reveals_lore_once_and_is_marked_seen(content):
     state = make_state(_player(content), content, io, StubRandom(),
                        current_location="reach")
     discovery = next(e for e in content.locations["reach"]["encounters"]
-                     if e["type"] == "discovery")
+                     if e["type"] == "discovery" and e["id"] == "reach_tally")
     assert locations.run_encounter(state, discovery, [], []) is None
     assert discovery["id"] in state.flags["discoveries_seen"]
     assert "weir-keeper" in io.text()
@@ -344,10 +348,12 @@ def test_chained_encounter_restores_stamina_when_chain_breaks(content, monkeypat
 def test_fast_travel_returns_to_the_crossroads(content):
     """A zone offers 'Walk back to the Crossroads' that drops the player at the hub.
 
-    v0.10 forest: 1 fight, 2 mini-boss, 3 NPC, 4 Atrél marker (discovery),
-    5-6 conn, 7 walk back, 8-11 util. Walk back is now 7.
+    v0.16 forest: 1 fight, 2 mini-boss, 3 NPC, 4-6 discoveries (2 Piranesi +
+    Atrél), 7-8 conn, 9 walk back, 10-13 util. Walk back is 9.
+    After walk-back, Crossroads also shows a "Return to The Witherwood"
+    fast-travel option, so menu becomes 7 items → quit = 7.
     """
-    io = ScriptedIO(["7", "7"])  # walk back (now option 7), then quit at Crossroads
+    io = ScriptedIO(["9", "7"])  # walk back (option 9), then quit at Crossroads
     state = make_state(_player(content), content, io, StubRandom(),
                        current_location="forest")
     locations.location_loop(state)
@@ -359,13 +365,13 @@ def test_fast_travel_returns_to_the_crossroads(content):
 
 def test_fast_travel_round_trip_returns_to_origin(content):
     """Fast travel out and back leaves the player at the zone they came from."""
-    # v0.10 forest: 1 fight, 2 mini-boss, 3 NPC, 4 Atrél marker, 5-6 conn,
-    # 7 walk back, 8-11 util. Walk back is option 7. After return, the marker
-    # was visited so it's filtered out — forest menu shrinks back to 10 items.
-    # Wait — actually no: the test goes from forest to Crossroads via fast
-    # travel WITHOUT touching the marker. So forest still has the marker on
-    # return. Walk back = 7, quit on return = 11.
-    io = ScriptedIO(["7", "3", "11"])
+    # v0.16 forest: 1 fight, 2 mini-boss, 3 NPC, 4-6 discoveries, 7-8 conn,
+    # 9 walk back, 10-13 util. Walk back is 9.
+    # At Crossroads with fast_travel_return set: 1 to Gravewatch, 2 to Forest,
+    # 3 Return to Forest, 4-7 util. Return is 3.
+    # After return: forest menu of 13 items (Piranesi discoveries are
+    # one-time but un-touched here) → quit=13.
+    io = ScriptedIO(["9", "3", "13"])
     state = make_state(_player(content), content, io, StubRandom(),
                        current_location="forest")
     locations.location_loop(state)
@@ -489,8 +495,9 @@ def test_reborn_grants_echoes_and_skips_warden_record(content, tmp_path):
     from terminalquest import chronicle
     player = _strong_player(content)
     player.level = 8
-    # v0.9: mountain's travel-to-Summit is at index 5 (after NPC encounter).
-    io = ScriptedIO(["5", "1", "1", "2"])
+    # v0.16: mountain has fight, mini-boss, NPC, Piranesi discovery, then
+    # travel to Choir (5), Summit (6). Travel-to-Summit is now index 6.
+    io = ScriptedIO(["6", "1", "1", "2"])
     state = make_state(player, content, io, StubRandom(),
                        current_location="mountain", chronicle_dir=tmp_path)
     locations.location_loop(state)
@@ -615,8 +622,8 @@ def test_warden_ending_increments_cleanse(tmp_path, content):
     from terminalquest import chronicle
     player = _strong_player(content)
     player.level = 8
-    # v0.9: Summit travel at mountain is option 5 (after NPC encounter).
-    io = ScriptedIO(["5", "1", "1", "1"])
+    # v0.16: mountain Summit travel is now option 6 (Piranesi discovery added).
+    io = ScriptedIO(["6", "1", "1", "1"])
     state = make_state(player, content, io, StubRandom(),
                        current_location="mountain", chronicle_dir=tmp_path)
     locations.location_loop(state)
@@ -626,15 +633,15 @@ def test_warden_ending_increments_cleanse(tmp_path, content):
 def test_cleansed_intro_shows_after_first_completion(tmp_path, content):
     """After 1+ cleanses, the Witherwood intro switches to its cleansed variant.
 
-    v0.10 forest with Atrél marker: 1 combat, 2 mini-boss, 3 NPC, 4 marker,
-    5-6 conn, 7 walk back, 8-11 utilities → quit=11.
+    v0.16 forest: 1 combat, 2 mini-boss, 3 NPC, 4-6 discoveries (2 Piranesi
+    + Atrél marker), 7-8 conn, 9 walk back, 10-13 util → quit=13.
     """
     from terminalquest import chronicle
     finished = make_state(_player(content), content, current_location="summit",
                           chronicle_dir=tmp_path)
     chronicle.record(finished, "warden", tmp_path)
     chronicle.add_cleanse(tmp_path)
-    io = ScriptedIO(["2", "11"])
+    io = ScriptedIO(["2", "13"])
     state = make_state(_player(content), content, io, StubRandom(),
                        chronicle_dir=tmp_path)
     locations.location_loop(state)
@@ -650,8 +657,8 @@ def test_purify_ending_unlocked_after_five_cleanses(tmp_path, content):
         chronicle.add_cleanse(tmp_path)
     player = _strong_player(content)
     player.level = 8
-    # v0.9: to Summit (5) -> fight (1) -> attack (1) -> ending menu -> Purify (3)
-    io = ScriptedIO(["5", "1", "1", "3"])
+    # v0.16: to Summit (6) -> fight (1) -> attack (1) -> ending menu -> Purify (3)
+    io = ScriptedIO(["6", "1", "1", "3"])
     state = make_state(player, content, io, StubRandom(),
                        current_location="mountain", chronicle_dir=tmp_path)
     locations.location_loop(state)
@@ -823,12 +830,12 @@ def test_npc_introduces_then_tracks_then_completes(tmp_path, content):
 def test_npc_unlock_opens_a_conditional_connection(tmp_path, content):
     """Once unlocked, a sub-zone appears as a travel option in the parent zone.
 
-    v0.10 forest menu with Hunter's Cache unlocked: 1 combat, 2 mini-boss,
-    3 NPC, 4 Atrél marker, 5 to Crossroads, 6 to Reach, 7 Hunter's Cache,
-    8 walk back, 9-12 utilities → quit=12.
+    v0.16 forest menu with Hunter's Cache unlocked: 1 combat, 2 mini-boss,
+    3 NPC, 4-6 discoveries (2 Piranesi + Atrél), 7 to Crossroads, 8 to Reach,
+    9 Hunter's Cache, 10 walk back, 11-14 util → quit=14.
     """
     player = _player(content)
-    state = make_state(player, content, ScriptedIO(["12"]), StubRandom(),
+    state = make_state(player, content, ScriptedIO(["14"]), StubRandom(),
                        current_location="forest", chronicle_dir=tmp_path)
     state.flags["unlocked_connections"] = ["hunters_cache"]
     locations.location_loop(state)
@@ -1186,6 +1193,79 @@ def test_cat_companion_heals_in_combat(content):
     combat.run_combat(state, make_enemy("goblin", content))
     text = state.io.text()
     assert "cat purrs" in text
+
+
+def test_piranesi_note_increments_chronicle_counter(content, tmp_path):
+    """SQ4 — reading a Piranesi-prefixed discovery records it in the Chronicle."""
+    from terminalquest import chronicle
+    state = make_state(_player(content), content, ScriptedIO(), StubRandom(),
+                       chronicle_dir=tmp_path)
+    assert chronicle.piranesi_notes(tmp_path) == 0
+    locations._run_discovery(state,
+        {"id": "piranesi_witherwood_stone", "lines": ["a stone with a face"]})
+    assert chronicle.piranesi_notes(tmp_path) == 1
+    # Re-reading the same note is idempotent.
+    locations._run_discovery(state,
+        {"id": "piranesi_witherwood_stone", "lines": ["a stone with a face"]})
+    assert chronicle.piranesi_notes(tmp_path) == 1
+    # A different Piranesi note bumps the count.
+    locations._run_discovery(state,
+        {"id": "piranesi_reach_furrow", "lines": ["a measured furrow"]})
+    assert chronicle.piranesi_notes(tmp_path) == 2
+
+
+def test_piranesi_map_unlocks_at_ten_notes(content, tmp_path):
+    """SQ4 — at 10 Piranesi notes read, the piranesi_map_unlocked flag is set."""
+    from terminalquest import chronicle
+    # Pre-load 9 notes; reading a 10th flips the flag in this run.
+    for i in range(9):
+        chronicle.add_piranesi_note(f"piranesi_seed_{i}", tmp_path)
+    assert chronicle.piranesi_notes(tmp_path) == 9
+    state = make_state(_player(content), content, ScriptedIO(), StubRandom(),
+                       chronicle_dir=tmp_path)
+    assert not state.flags.get("piranesi_map_unlocked")
+    locations._run_discovery(state,
+        {"id": "piranesi_choir_column", "lines": ["a column that ate a word"]})
+    assert chronicle.piranesi_notes(tmp_path) == 10
+    assert state.flags.get("piranesi_map_unlocked") is True
+
+
+def test_piranesi_map_option_appears_in_pre_pall_shrine(content, tmp_path):
+    """SQ4 — once unlocked, the Pre-Pall Shrine offers 'Read Piranesi's map'."""
+    state = make_state(_player(content), content, ScriptedIO(), StubRandom(),
+                       current_location="pre_pall_shrine", chronicle_dir=tmp_path)
+    loc = content.locations["pre_pall_shrine"]
+    labels = " ".join(label for label, _ in
+                      locations._build_options(state, loc, []))
+    assert "Piranesi's map" not in labels
+    state.flags["piranesi_map_unlocked"] = True
+    labels = " ".join(label for label, _ in
+                      locations._build_options(state, loc, []))
+    assert "Piranesi's map" in labels
+
+
+def test_piranesi_map_option_absent_in_other_zones(content, tmp_path):
+    """SQ4 — even with the flag set, the map only surfaces at the Pre-Pall Shrine."""
+    state = make_state(_player(content), content, ScriptedIO(), StubRandom(),
+                       current_location="forest", chronicle_dir=tmp_path)
+    state.flags["piranesi_map_unlocked"] = True
+    loc = content.locations["forest"]
+    labels = " ".join(label for label, _ in
+                      locations._build_options(state, loc, []))
+    assert "Piranesi's map" not in labels
+
+
+def test_locations_have_ten_piranesi_notes_total(content):
+    """SQ4 — the world holds exactly 10 Piranesi notes, distributed across zones."""
+    notes = []
+    for loc_id, loc in content.locations.items():
+        for enc in loc.get("encounters", []):
+            if (enc.get("type") == "discovery"
+                    and enc.get("id", "").startswith("piranesi_")):
+                notes.append((loc_id, enc["id"]))
+    assert len(notes) == 10, (
+        f"Expected 10 Piranesi notes, found {len(notes)}: {notes}"
+    )
 
 
 def test_dialogue_grants_consumable_on_choice(content):
