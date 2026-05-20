@@ -41,6 +41,11 @@
     "encounters": [
       {"type": "combat", "enemies": ["goblin", "wolf", "bandit"], "pick": "random"},
       {"type": "combat", "enemies": ["pallid_stag"], "label": "⚔️  Challenge the Pallid Stag"},
+      {"type": "combat", "enemies": ["the_forgotten_thing"],
+       "label": "🌳 Face the Thing the Pall Forgot",
+       "id": "forgotten_thing_fight",
+       "requires_flag": "forgotten_thing_awake",
+       "denied_flag": "forgotten_thing_defeated"},
       {"type": "npc", "id": "old_halna", "label": "🪵 Speak with Old Halna"},
       {"type": "discovery", "id": "piranesi_witherwood_stone", "label": "🪶 A stone someone has been writing on",
        "lines": [

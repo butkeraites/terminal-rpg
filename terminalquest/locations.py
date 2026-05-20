@@ -1019,6 +1019,15 @@ def run_encounter(state, encounter, fallen, wardens):
                      f"them again — you have given them that much.")
     if outcome == "victory" and enemy is not None and enemy.unique:
         chronicle.unlock(enemy.enemy_id, state.chronicle_dir)
+    # SQ7 — defeating the Forgotten Thing marks it remembered.
+    # The flag is per-run (cannot be re-fought in this character's run);
+    # the Chronicle unlock above persists the trophy across characters.
+    if (outcome == "victory" and encounter.get("id") == "forgotten_thing_fight"):
+        state.flags["forgotten_thing_defeated"] = True
+        io.show("")
+        io.show_slow("🌳 The Forgotten Thing is named, by you alone, in this run.")
+        io.show_slow("It will not be there again. It does not need to be.")
+        io.pause(2)
     if outcome == "victory" and not encounter.get("boss"):
         _offer_drop(state)
     if encounter.get("boss") and outcome == "victory":
@@ -1527,6 +1536,16 @@ def _maybe_open_border(state):
         state.flags["border_open"] = True
 
 
+def _maybe_wake_forgotten_thing(state):
+    """SQ7 — five characters have died in Witherwood. The thing the Pall
+    forgot has been there all along. In this run, it surfaces.
+    """
+    if state.flags.get("forgotten_thing_awake"):
+        return
+    if chronicle.witherwood_only_falls(state.chronicle_dir) >= 5:
+        state.flags["forgotten_thing_awake"] = True
+
+
 def _maybe_remember_verse(state):
     """SQ8 — if all 4 Lost Verse fragments are already known cross-run,
     a new character begins with the verse remembered. The flag enables the
@@ -1619,6 +1638,15 @@ def _build_options(state, loc, fallen):
         if (encounter["type"] == "discovery"
                 and encounter["id"] in state.flags.get("discoveries_seen", [])):
             continue
+        # Optional flag gating: an encounter can require a state flag to
+        # appear (requires_flag) and/or be removed by a different flag
+        # (denied_flag). Used by SQ7's one-time Forgotten Thing fight.
+        rflag = encounter.get("requires_flag")
+        if rflag and not state.flags.get(rflag):
+            continue
+        dflag = encounter.get("denied_flag")
+        if dflag and state.flags.get(dflag):
+            continue
         options.append((_encounter_label(encounter, content), ("encounter", encounter)))
     if _grave_here(state, loc, fallen):
         options.append(("🪦 Search a grave", ("grave", None)))
@@ -1682,6 +1710,7 @@ def location_loop(state):
     arrived = True
     _maybe_open_border(state)  # 2-cleanse signal that the world has neighbours
     _maybe_remember_verse(state)  # SQ8: cross-run knowledge of the Lost Verse
+    _maybe_wake_forgotten_thing(state)  # SQ7: the Boss the Pall Forgot
     while player.is_alive():
         loc = content.locations[state.current_location]
         # SQ3: each arrival in a zone increments its per-run visit count.

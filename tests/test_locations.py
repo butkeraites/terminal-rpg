@@ -1353,6 +1353,70 @@ def test_locations_have_four_lost_verse_fragments(content):
     )
 
 
+def test_witherwood_only_falls_counts_forest_deaths(tmp_path, content):
+    """SQ7 — chronicle.witherwood_only_falls counts entries that fell in forest."""
+    from terminalquest import chronicle
+    assert chronicle.witherwood_only_falls(tmp_path) == 0
+    # Three characters died in the forest.
+    for _ in range(3):
+        state = make_state(_player(content), content, current_location="forest",
+                           chronicle_dir=tmp_path)
+        chronicle.record(state, "fell", tmp_path)
+    # Two died elsewhere.
+    for loc in ("reach", "cave"):
+        state = make_state(_player(content), content, current_location=loc,
+                           chronicle_dir=tmp_path)
+        chronicle.record(state, "fell", tmp_path)
+    assert chronicle.witherwood_only_falls(tmp_path) == 3
+
+
+def test_forgotten_thing_hidden_by_default(content, tmp_path):
+    """SQ7 — the Forgotten Thing encounter is not in the menu until awoken."""
+    state = make_state(_player(content), content, ScriptedIO(), StubRandom(),
+                       current_location="forest", chronicle_dir=tmp_path)
+    loc = content.locations["forest"]
+    labels = " ".join(label for label, _ in
+                      locations._build_options(state, loc, []))
+    assert "Forgot" not in labels
+
+
+def test_forgotten_thing_appears_after_five_forest_falls(content, tmp_path):
+    """SQ7 — five characters fallen in the forest wakes the Forgotten Thing."""
+    from terminalquest import chronicle
+    for _ in range(5):
+        s = make_state(_player(content), content, current_location="forest",
+                       chronicle_dir=tmp_path)
+        chronicle.record(s, "fell", tmp_path)
+    state = make_state(_player(content), content, ScriptedIO(), StubRandom(),
+                       current_location="forest", chronicle_dir=tmp_path)
+    locations._maybe_wake_forgotten_thing(state)
+    assert state.flags.get("forgotten_thing_awake") is True
+    loc = content.locations["forest"]
+    labels = " ".join(label for label, _ in
+                      locations._build_options(state, loc, []))
+    assert "Forgot" in labels
+
+
+def test_forgotten_thing_disappears_after_defeat(content, tmp_path):
+    """SQ7 — once defeated this run, the encounter no longer surfaces."""
+    state = make_state(_player(content), content, ScriptedIO(), StubRandom(),
+                       current_location="forest", chronicle_dir=tmp_path)
+    state.flags["forgotten_thing_awake"] = True
+    state.flags["forgotten_thing_defeated"] = True
+    loc = content.locations["forest"]
+    labels = " ".join(label for label, _ in
+                      locations._build_options(state, loc, []))
+    assert "Forgot" not in labels
+
+
+def test_forgotten_thing_enemy_is_in_content(content):
+    """SQ7 — the_forgotten_thing exists in the enemies registry as unique."""
+    assert "the_forgotten_thing" in content.enemies
+    enemy = content.enemies["the_forgotten_thing"]
+    assert enemy.get("unique") is True
+    assert enemy.get("ai") == "enrager"
+
+
 def test_dialogue_grants_consumable_on_choice(content):
     """A response with grants_consumable adds the named item to player.consumables."""
     from terminalquest import dialogue

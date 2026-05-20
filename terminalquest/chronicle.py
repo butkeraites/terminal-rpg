@@ -294,3 +294,18 @@ def add_lost_verse_fragment(fragment_id, chronicle_dir=DEFAULT_DIR):
     if fragment_id not in seen:
         seen.append(fragment_id)
         _save(raw, chronicle_dir)
+
+
+def witherwood_only_falls(chronicle_dir=DEFAULT_DIR):
+    """How many past characters died without leaving the Witherwood.
+
+    SQ7 — the Boss the Pall Forgot. A creature so completely forgotten by
+    the Pall that the Pall does not know it is there. It waits in the
+    Witherwood for whoever has buried enough characters there to see it.
+    Threshold: five falls in the forest. The boss surfaces in run six.
+    """
+    entries = _load_raw(chronicle_dir).get("entries", [])
+    return sum(1 for e in entries
+               if isinstance(e, dict)
+               and e.get("fate") == "fell"
+               and e.get("location") == "forest")

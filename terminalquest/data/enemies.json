@@ -403,5 +403,16 @@
     "unique": true,
     "ability": {"name": "Strike from the Record", "power": 1.4, "status": "vulnerable", "status_turns": 3},
     "flavor": "A faceless burocrat who keeps the Margrave's monument tidy by deleting the names of the unprofitable dead."
+  },
+  "the_forgotten_thing": {
+    "name": "the Forgotten Thing",
+    "hp": 90,
+    "attack": 12,
+    "defense": 5,
+    "xp_reward": 200,
+    "gold_reward": 90,
+    "ai": "enrager",
+    "unique": true,
+    "flavor": "Something the Pall did not finish forgetting. It has been in the Witherwood since before the rite. It has watched everyone you have buried here. It is small. It is patient. It knows your name and will not say it."
   }
 }
