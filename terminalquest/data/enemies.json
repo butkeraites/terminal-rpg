@@ -368,5 +368,17 @@
     "ai": "enrager",
     "unique": true,
     "flavor": "The first king's last priest. He kept the vow alone for three winters before he forgot. Now he keeps the shrine."
+  },
+  "the_chairman": {
+    "name": "The Chairman",
+    "hp": 250,
+    "attack": 22,
+    "defense": 8,
+    "xp_reward": 220,
+    "gold_reward": 130,
+    "ai": "defensive",
+    "unique": true,
+    "ability": {"name": "Order of the Chair", "power": 1.2, "status": "stun", "status_turns": 1},
+    "flavor": "He chaired the vote. He recorded it correctly, by his lights. He has not left the chamber since."
   }
 }

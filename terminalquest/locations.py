@@ -791,9 +791,19 @@ def _hollowed_candidates(state, fallen):
 
 ATREL_LORE_FRAGMENTS = ("atrel_marker", "atrel_register", "atrel_side_altar")
 
+# Some discoveries set named state flags as a side effect — used by arcs to
+# unlock conditional connections, ending variants, or recontextualization.
+_DISCOVERY_FLAGS = {
+    "mourncross_scuffmarks": "sealed_chamber_found",
+    "real_minutes": "read_real_minutes",
+}
+
 
 def _run_discovery(state, encounter):
     """Reveal a one-time lore fragment, then mark it found in ``state.flags``.
+
+    A discovery may also set named flags (see ``_DISCOVERY_FLAGS``) used by
+    later arcs to unlock zones or overlay endings.
 
     Atrél's three fragments collectively set ``atrel_lore_found`` when all
     three are seen — gating the Last Altar zone and overlaying Cantor Vael's
@@ -804,7 +814,10 @@ def _run_discovery(state, encounter):
     for line in encounter["lines"]:
         io.show_slow(line)
     io.pause(2)
-    state.flags.setdefault("discoveries_seen", []).append(encounter["id"])
+    discovery_id = encounter["id"]
+    state.flags.setdefault("discoveries_seen", []).append(discovery_id)
+    if discovery_id in _DISCOVERY_FLAGS:
+        state.flags[_DISCOVERY_FLAGS[discovery_id]] = True
     seen = set(state.flags["discoveries_seen"])
     if (set(ATREL_LORE_FRAGMENTS).issubset(seen)
             and not state.flags.get("atrel_lore_found")):
@@ -1027,7 +1040,12 @@ def _victory_screen(state):
 
 
 def _warden_screen(state):
-    """The canonical ending: the Pall keeps the victor as the next Warden."""
+    """The canonical ending: the Pall keeps the victor as the next Warden.
+
+    If the player has read the Real Minutes (Arc I), the ending names the
+    full council vote — they are the seventh to keep this place, fully
+    informed of what they inherit.
+    """
     player, io = state.player, state.io
     chronicle.record(state, "warden", state.chronicle_dir)
     chronicle.add_cleanse(state.chronicle_dir)
@@ -1038,6 +1056,13 @@ def _warden_screen(state):
     io.show("\nYou will not climb down. You will wait here, wearing your own")
     io.show("face, until the next soul reaches the Summit to break you —")
     io.show("as you broke the one before.")
+    if state.flags.get("read_real_minutes"):
+        io.show("")
+        io.show("You know the names of the six who voted to seal the gates.")
+        io.show("You know the names of the five who voted to open them, and were silenced.")
+        io.show("You know which side the Chairman sat on, and what he did to the five.")
+        io.show("You knew all of this and you let the Pall take you anyway.")
+        io.show("You are the seventh to keep this place. You are the first to keep it knowing.")
     io.show("=" * 50)
     _run_summary(state)
     io.show("\nThank you for playing Mournhold.")

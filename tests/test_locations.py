@@ -913,6 +913,62 @@ def test_dialogue_engine_walks_branches(content):
     assert "start" in text and "end" in text
 
 
+def test_scuffmarks_discovery_unlocks_sealed_chamber(content, tmp_path):
+    """Reading the scuff-marks discovery sets sealed_chamber_found flag."""
+    state = make_state(_player(content), content, ScriptedIO(), StubRandom(),
+                       chronicle_dir=tmp_path)
+    locations._run_discovery(state, {"id": "mourncross_scuffmarks",
+                                     "lines": ["test"]})
+    assert state.flags.get("sealed_chamber_found") is True
+
+
+def test_sealed_chamber_unlocks_via_flag(content):
+    """The Sealed Chamber appears in Mourncross travel options once unlocked."""
+    state = make_state(_player(content), content, ScriptedIO(), StubRandom(),
+                       current_location="mourncross")
+    loc = content.locations["mourncross"]
+    # Without the flag, the Sealed Chamber is hidden.
+    options = locations._build_options(state, loc, [])
+    labels = " ".join(label for label, _ in options)
+    assert "Sealed Chamber" not in labels
+    # With the flag, it appears as a travel option.
+    state.flags["sealed_chamber_found"] = True
+    options = locations._build_options(state, loc, [])
+    labels = " ".join(label for label, _ in options)
+    assert "Sealed Chamber" in labels
+
+
+def test_real_minutes_discovery_sets_flag(content, tmp_path):
+    """Reading the Real Minutes sets read_real_minutes — gates Warden variant."""
+    state = make_state(_player(content), content, ScriptedIO(), StubRandom(),
+                       chronicle_dir=tmp_path)
+    locations._run_discovery(state, {"id": "real_minutes",
+                                     "lines": ["test"]})
+    assert state.flags.get("read_real_minutes") is True
+
+
+def test_warden_ending_adds_seventh_paragraph_when_minutes_read(content, tmp_path):
+    """If the player read the Real Minutes, the Warden ending names them as the seventh."""
+    player = _player(content)
+    state = make_state(player, content, ScriptedIO(), StubRandom(),
+                       chronicle_dir=tmp_path)
+    state.flags["read_real_minutes"] = True
+    locations._warden_screen(state)
+    text = state.io.text()
+    assert "seventh to keep this place" in text
+    assert "five who voted to open" in text
+
+
+def test_warden_ending_omits_seventh_paragraph_by_default(content, tmp_path):
+    """A player who never reads the Real Minutes sees the original ending."""
+    player = _player(content)
+    state = make_state(player, content, ScriptedIO(), StubRandom(),
+                       chronicle_dir=tmp_path)
+    locations._warden_screen(state)
+    text = state.io.text()
+    assert "seventh to keep this place" not in text
+
+
 def test_dialogue_sets_flag_on_choice(content):
     """A response with sets_flag writes that key into state.flags."""
     from terminalquest import dialogue

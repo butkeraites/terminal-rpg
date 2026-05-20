@@ -156,13 +156,22 @@
       "The city is being remembered. It is harder than the forgetting."
     ],
     "connections": ["cave", "choir"],
-    "conditional_connections": ["burned_library"],
+    "conditional_connections": ["burned_library", "sealed_chamber"],
     "encounters": [
       {"type": "combat",
        "enemies": ["pall_magistrate", "hollow_procession", "gutter_wretch"],
        "pick": "random"},
       {"type": "combat", "enemies": ["hollow_bellward"], "label": "⚔️  Challenge the Hollow Bellward"},
       {"type": "npc", "id": "lampkeeper", "label": "🕯️  Speak with the Lampkeeper"},
+      {"type": "discovery", "id": "mourncross_scuffmarks", "label": "🪨 Scuff-marks behind the throne",
+       "lines": [
+         "🪨 The audience hall of Mourncross is empty. The throne is empty.",
+         "Behind the throne, in the dust on the floor, scuff-marks.",
+         "Not from feet. From a heavy door dragged back, and dragged back into place.",
+         "The marks are old. They lead to a stretch of wall that does not sound like wall.",
+         "Someone — recently — has been brushing the dust over them. The brushing is amateurish.",
+         "It is as if whoever does it has not been outside the hall in a long time."
+       ]},
       {"type": "discovery", "id": "mourncross_census", "label": "📜 The last census of Mourncross",
        "lines": [
          "📜 The last census of Mourncross, bound in cracked grey leather.",
@@ -340,6 +349,76 @@
          "'When the rite of unremembering is performed, this book will not be there for it.'",
          "'It is one of the things they cannot have. It is one of the things we kept.'"
        ]}
+    ]
+  },
+  "sealed_chamber": {
+    "name": "The Sealed Chamber",
+    "kind": "zone",
+    "act": 2,
+    "recommended_level": 5,
+    "unlock_flag": "sealed_chamber_found",
+    "intro": [
+      "🪨 The dragged door gives. Inside: a small room with one chair, and ten chairs around it.",
+      "Five of the ten are turned over. Their occupants — what's left of them — are on the floor.",
+      "On the walls behind the five overturned chairs, scratched into stone with knives, are five names.",
+      "Below each name, a line. They wrote, before they died, the things they wanted remembered.",
+      "At the head of the room, in the chair that did not fall, something still sits.",
+      "It is recording. It has been recording for many winters."
+    ],
+    "connections": ["mourncross"],
+    "encounters": [
+      {"type": "discovery", "id": "grave_ena",    "label": "🪦 The wall behind Magistrate Ena's chair",
+       "lines": [
+         "🪦 MAGISTRATE ENA — voted to open the gates.",
+         "Below the name, in a hand that grew steadier as the air ran out:",
+         "'I voted to open. Remember this when you forget me with the rest.'",
+         "'I am not afraid of being dead. I am afraid of being unwritten.'"
+       ]},
+      {"type": "discovery", "id": "grave_halsen", "label": "🪦 The wall behind Councilor Halsen's chair",
+       "lines": [
+         "🪦 COUNCILOR HALSEN — voted to open the gates.",
+         "Below the name: 'I have four daughters in Brackmere. The gate is between us.'",
+         "'I would have walked the grain there myself. They would not let me leave the chamber.'",
+         "'My daughters' names are: Lis, Marra, Eda, Cren. Say them. Say them.'"
+       ]},
+      {"type": "discovery", "id": "grave_veldis", "label": "🪦 The wall behind Steward Veldis's chair",
+       "lines": [
+         "🪦 STEWARD VELDIS — voted to open the gates.",
+         "Below the name, in older script — Veldis kept the rites:",
+         "'This rite they are preparing is not a rite. It is theft from a small god.'",
+         "'Atrél will break under it. What breaks out of him will be worse than the gates.'",
+         "'I have written this so that someone, climbing later, knows where to look.'"
+       ]},
+      {"type": "discovery", "id": "grave_gile",   "label": "🪦 The wall behind Recordkeeper Gile's chair",
+       "lines": [
+         "🪦 RECORDKEEPER GILE — voted to open the gates.",
+         "Below the name: 'The minutes I keep are not the minutes they will keep.'",
+         "'Mine are under the third floorboard in the room of records. They are true.'",
+         "'I knew this would happen when I voted. I voted anyway. Find them.'"
+       ]},
+      {"type": "discovery", "id": "grave_younger_talva", "label": "🪦 The wall behind the Younger Tálva's chair",
+       "lines": [
+         "🪦 THE YOUNGER TÁLVA — voted to open the gates.",
+         "Below the name, in the smallest hand: 'I am twenty-three years old.'",
+         "'I am the youngest councilor and the only woman from the outer holds in the chamber.'",
+         "'They will say after this that no hold-born voice spoke for the holds.'",
+         "'I am speaking. My family will keep speaking. We will not be the ones who forget.'"
+       ]},
+      {"type": "discovery", "id": "real_minutes", "label": "📜 The Real Minutes (Gile's hidden record)",
+       "lines": [
+         "📜 A bound sheaf, three handspans thick, hidden in the rotted floorboards.",
+         "The cover reads: 'MINUTES OF THE COUNCIL OF SEVENTH WINTER. ACTUAL.'",
+         "Inside, in Gile's hand, every speech of the final session is transcribed.",
+         "The vote: six to seal, five to open. The six are named:",
+         "Chairman Korst. Magistrate Daile. Councilor Vurr. High Speaker Pell.",
+         "Steward Renaud. The Cantor Vael.",
+         "The five who voted to open are named on the chamber walls.",
+         "After the vote, the minutes record: 'The five were not permitted to leave the chamber.'",
+         "'They were not permitted to write to their families. The door was sealed by the Chairman.'",
+         "'The Chairman remained inside to ensure the door was not opened from within.'",
+         "'The chamber has not been opened since.'"
+       ]},
+      {"type": "combat", "enemies": ["the_chairman"], "label": "⚔️  Confront the Chairman"}
     ]
   },
   "last_altar": {
