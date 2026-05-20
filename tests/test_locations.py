@@ -103,6 +103,27 @@ def test_run_encounter_can_raise_a_hollowed(tmp_path, content):
     assert "Hollow" in state.io.text()
 
 
+def test_hollowed_speaks_one_line_of_persistence_before_combat(tmp_path, content):
+    """v1.6 — a rising Hollowed speaks one line as themselves before the fight.
+
+    The bank of voices is parameterised on the past character's name, class,
+    and the zone they fell in. The line should contain at least the name.
+    """
+    victim = Player("Eldris", "rogue", content.classes["rogue"], content)
+    fallen_run = make_state(victim, content, current_location="forest",
+                            chronicle_dir=tmp_path)
+    chronicle.record(fallen_run, "fell", tmp_path)
+    fallen = chronicle.fallen(chronicle.load(tmp_path))
+    state = make_state(_strong_player(content), content, ScriptedIO(["1", "2"]),
+                       StubRandom(rnd=0.0), current_location="forest",
+                       chronicle_dir=tmp_path)
+    encounter = content.locations["forest"]["encounters"][0]
+    locations.run_encounter(state, encounter, fallen, [])
+    text = state.io.text()
+    # At least one of the bank lines contains the past character's name.
+    assert "Eldris" in text
+
+
 def test_summit_boss_is_the_last_warden(tmp_path, content):
     """Once a hero has won, the Summit boss wears their name."""
     victor = Player("Kara", "mage", content.classes["mage"], content)

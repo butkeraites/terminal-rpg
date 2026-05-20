@@ -1002,6 +1002,33 @@ def run_encounter(state, encounter, fallen, wardens):
 
     candidates = _hollowed_candidates(state, fallen)
     hollowed_entry = None
+
+    def _voice_the_hollowed(entry):
+        """Print one line of the rising character's persistence — the last
+        moment of them, before the Pall fully takes their face for the fight.
+        """
+        p = entry["player"]
+        zone_id = entry.get("location", "")
+        place = content.locations.get(zone_id, {}).get("name", "the grey")
+        name, class_name = p["name"], p["class_name"]
+        bank = (
+            (f"'I am... I was {name}. The {class_name}. I fell at {place}.'",
+             "'I almost made it. Don't make me almost make it again.'"),
+            ("'I know you. Stand still. Stand still and I will know.'",
+             f"'I am {name}. The {class_name}. I am {name}.'"),
+            ("'Don't lay me down yet. I have not finished it.'",
+             f"'I have not finished. I am {name}, and I have not finished.'"),
+            ("(They lift their hand. They put it down again, slowly.)",
+             f"'I was {name}. {place} took me. The Pall kept what was left.'"),
+            ("'Did I leave anything? My pack — did anyone take it?'",
+             f"'I was {name} the {class_name}. Tell them I made it this far.'"),
+        )
+        lines = bank[rng.randint(0, len(bank) - 1) % len(bank)]
+        io.show("")
+        for line in lines:
+            io.show_slow(line)
+        io.pause(1)
+
     fallen_hireling = state.flags.get("fallen_hireling")
     if encounter.get("boss") and wardens:
         enemies = [make_warden(wardens[-1], content)]
@@ -1011,6 +1038,7 @@ def run_encounter(state, encounter, fallen, wardens):
     elif (encounter.get("pick") == "random" and candidates
           and rng.random() < HOLLOWED_CHANCE):
         hollowed_entry = rng.choice(candidates)
+        _voice_the_hollowed(hollowed_entry)
         enemies = [make_hollowed(hollowed_entry)]
     elif encounter.get("pick") == "random":
         enemies = [make_enemy(rng.choice(encounter["enemies"]),
