@@ -1599,6 +1599,62 @@ def test_insomniac_descent_grants_the_counted_on_victory(tmp_path, content):
     assert player.max_hp > mhp_before
 
 
+def test_kind_act_counter_accumulates(tmp_path, content):
+    """SQ2 — each small kindness increments the cross-run counter."""
+    from terminalquest import chronicle
+    assert chronicle.kind_acts(tmp_path) == 0
+    chronicle.add_kind_act(tmp_path)
+    chronicle.add_kind_act(tmp_path)
+    chronicle.add_kind_act(tmp_path)
+    assert chronicle.kind_acts(tmp_path) == 3
+
+
+def test_discovery_counts_as_kind_act(tmp_path, content):
+    """SQ2 — reading a discovery bumps the kind_acts counter."""
+    from terminalquest import chronicle
+    state = make_state(_player(content), content, ScriptedIO(), StubRandom(),
+                       chronicle_dir=tmp_path)
+    before = chronicle.kind_acts(tmp_path)
+    locations._run_discovery(state, {"id": "reach_tally", "lines": ["t"]})
+    assert chronicle.kind_acts(tmp_path) == before + 1
+
+
+def test_caretaker_service_hidden_below_threshold(tmp_path, content):
+    """SQ2 — the Caretaker is not in Gravewatch's menu before 40 kindnesses."""
+    state = make_state(_player(content), content, ScriptedIO(), StubRandom(),
+                       current_location="village", chronicle_dir=tmp_path)
+    loc = content.locations["village"]
+    labels = " ".join(label for label, _ in
+                      locations._build_options(state, loc, []))
+    assert "Caretaker" not in labels
+
+
+def test_caretaker_service_appears_at_threshold(tmp_path, content):
+    """SQ2 — at 40 cross-run kindnesses, the Caretaker is in Gravewatch."""
+    from terminalquest import chronicle
+    for _ in range(locations.CARETAKER_THRESHOLD):
+        chronicle.add_kind_act(tmp_path)
+    state = make_state(_player(content), content, ScriptedIO(), StubRandom(),
+                       current_location="village", chronicle_dir=tmp_path)
+    loc = content.locations["village"]
+    labels = " ".join(label for label, _ in
+                      locations._build_options(state, loc, []))
+    assert "Caretaker" in labels
+
+
+def test_caretaker_ending_records_chronicle_and_cleanse(tmp_path, content):
+    """SQ2 — choosing the Caretaker records the fate + counts as a cleanse."""
+    from terminalquest import chronicle
+    cleanses_before = chronicle.cleanses(tmp_path)
+    state = make_state(_player(content), content, ScriptedIO(), StubRandom(),
+                       current_location="village", chronicle_dir=tmp_path)
+    locations.caretaker(state)
+    assert state.flags.get("run_ended") is True
+    assert chronicle.cleanses(tmp_path) == cleanses_before + 1
+    fates = [e.get("fate") for e in chronicle.load(tmp_path)]
+    assert "caretaker" in fates
+
+
 def test_insomniac_is_once_per_run(tmp_path, content):
     """SQ6 — re-visiting after the Counted reward gives a quiet acknowledgement only."""
     from terminalquest import chronicle

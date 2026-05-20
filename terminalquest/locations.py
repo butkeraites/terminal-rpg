@@ -56,6 +56,7 @@ _SERVICE_LABELS = {
     "scholar": "📚 Speak with the Mournhold Scholar",
     "reader": "📖 Read with the Reader",
     "insomniac": "🕯️  Sit with the Insomniac",
+    "caretaker": "🌹 Become the Caretaker",
 }
 
 # SQ1 — The Reader Who Watches Back surfaces in Gravewatch after this many
@@ -64,6 +65,9 @@ READER_THRESHOLD = 25
 
 # SQ6 — The Insomniac of Gravewatch surfaces after this many cross-run visits.
 INSOMNIAC_THRESHOLD = 50
+
+# SQ2 — The Caretaker ending surfaces after this many small kindnesses.
+CARETAKER_THRESHOLD = 40
 
 SCHOLAR_PAYOUT = 75  # gold per unique lore discovery she records
 
@@ -199,6 +203,8 @@ def _run_service(state, service):
         reader(state)
     elif service == "insomniac":
         insomniac(state)
+    elif service == "caretaker":
+        caretaker(state)
 
 
 def scholar(state):
@@ -852,6 +858,8 @@ def _run_discovery(state, encounter):
     state.flags.setdefault("discoveries_seen", []).append(discovery_id)
     # SQ1 — every discovery the player reads is also recorded cross-run.
     chronicle.add_read_discovery(discovery_id, state.chronicle_dir)
+    # SQ2 — reading lore is one of the small kindnesses.
+    chronicle.add_kind_act(state.chronicle_dir)
     if discovery_id in _DISCOVERY_FLAGS:
         state.flags[_DISCOVERY_FLAGS[discovery_id]] = True
     # SQ4: Piranesi notes accumulate cross-run via the Chronicle.
@@ -1029,6 +1037,7 @@ def run_encounter(state, encounter, fallen, wardens):
         state.current_location = "crossroads"
     if hollowed_entry is not None and outcome == "victory":
         chronicle.lay_to_rest(hollowed_entry, state.chronicle_dir)
+        chronicle.add_kind_act(state.chronicle_dir)  # SQ2: laying-to-rest is kindness
         name = hollowed_entry["player"]["name"]
         io.show_slow(f"\n🕯️  {name} is still, at last. The Pall will not raise "
                      f"them again — you have given them that much.")
@@ -1469,6 +1478,7 @@ def _pet_the_cat(state):
     """
     player, io = state.player, state.io
     chronicle.add_cat_pet(state.chronicle_dir)
+    chronicle.add_kind_act(state.chronicle_dir)  # SQ2: a kindness
     count = chronicle.cat_pets(state.chronicle_dir)
     player.heal(CAT_PET_HEAL)
     player.restore_stamina(CAT_PET_STAMINA)
@@ -1562,6 +1572,7 @@ def _honor_the_dead(state, witnessed):
             f"is now yours.")
     io.show(f"   +{memorial} gold (memorial offering)")
     chronicle.lay_to_rest(entry, state.chronicle_dir)
+    chronicle.add_kind_act(state.chronicle_dir)  # SQ2: honoring is kindness
     io.pause(2)
 
 
@@ -1639,6 +1650,44 @@ def reader(state):
     state.flags["read_with_reader"] = True
     io.show(f"\n   +{bonus} max HP — the Reader has read you in.")
     io.pause(2)
+
+
+def caretaker(state):
+    """SQ2 — The Long Daily Ritual. The Caretaker ending.
+
+    Surfaces in Gravewatch only after the player has accumulated 40 small
+    kindnesses across all runs (discoveries read, cats petted, Hollowed
+    laid to rest, fallen honored, verses sung).
+
+    Choosing this ending ends the run differently: the player does not
+    climb. They become the keeper of the kingdom's small kindnesses,
+    here in Gravewatch — naming the dead, setting flowers at the graves,
+    feeding the cat. The world keeps ending. They keep doing this.
+
+    Recorded as a Caretaker fate in the Chronicle; counts as a cleanse.
+    """
+    io = state.io
+    acts = chronicle.kind_acts(state.chronicle_dir)
+    io.clear()
+    io.show_slow("🌹 You sit down in Gravewatch's hall and do not stand up again.")
+    io.show_slow("There is a basket of small flowers by the door. There always was.")
+    io.show_slow(f"You have done {acts} small kindnesses in this kingdom — read")
+    io.show_slow("its names back, knelt by its stones, fed its cat, sung its verse.")
+    io.show("")
+    io.show_slow("The climb is for others. Most of them will not finish it.")
+    io.show_slow("The kingdom needs both — a climber, and someone here for them")
+    io.show_slow("when they come back down. Or do not come back. You will be that one.")
+    io.show("")
+    io.show_slow("The cat finds your lap. The Insomniac, if she is here, nods.")
+    io.show_slow("Someone has left a fresh lamp by the basket. You light it.")
+    io.show("")
+    io.show_slow("                  — THE CARETAKER —")
+    io.show_slow("    You did not climb. You stayed, and you kept the small things.")
+    io.show_slow("        Mournhold is harder to forget, while you are here.")
+    io.pause(2)
+    chronicle.record(state, "caretaker", state.chronicle_dir)
+    chronicle.add_cleanse(state.chronicle_dir)
+    state.flags["run_ended"] = True
 
 
 def insomniac(state):
@@ -1755,6 +1804,7 @@ def sing_the_verse(state):
     player.defense += 1
     io.show(f"\n   +5 max HP  +1 attack  +1 defense  ({player.name} remembers)")
     state.flags["lost_verse_sung"] = True
+    chronicle.add_kind_act(state.chronicle_dir)  # SQ2: singing is kindness
     io.pause(2)
 
 
@@ -1783,6 +1833,10 @@ def _service_is_visible(state, service):
         # SQ6 — the Insomniac of Gravewatch surfaces after this many
         # cross-run visits to the village.
         return chronicle.gravewatch_visits(state.chronicle_dir) >= INSOMNIAC_THRESHOLD
+    if service == "caretaker":
+        # SQ2 — the Caretaker ending surfaces once enough kindnesses
+        # have been done across all runs.
+        return chronicle.kind_acts(state.chronicle_dir) >= CARETAKER_THRESHOLD
     return True
 
 
@@ -1935,6 +1989,9 @@ def location_loop(state):
 
         if kind == "service":
             _run_service(state, arg)
+            # SQ2: the Caretaker service ends the run on its own terms.
+            if state.flags.get("run_ended"):
+                return
         elif kind == "encounter":
             here = state.current_location
             outcome = run_encounter(state, arg, fallen, wardens)

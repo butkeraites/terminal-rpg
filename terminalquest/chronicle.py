@@ -42,6 +42,7 @@ def _load_raw(chronicle_dir):
         verse_ids = data.get("lost_verse_fragments_seen_ids", [])
         read_ids = data.get("read_discovery_ids", [])
         visits = data.get("gravewatch_visits", 0)
+        kacts = data.get("kind_acts", 0)
         return {
             "entries": list(entries) if isinstance(entries, list) else [],
             "unlocks": list(unlocks) if isinstance(unlocks, list) else [],
@@ -61,6 +62,8 @@ def _load_raw(chronicle_dir):
                                    if isinstance(read_ids, list) else []),
             "gravewatch_visits": (int(visits)
                                   if isinstance(visits, (int, float)) else 0),
+            "kind_acts": (int(kacts)
+                          if isinstance(kacts, (int, float)) else 0),
         }
     except (OSError, json.JSONDecodeError, AttributeError, TypeError):
         return {"entries": [], "unlocks": [], "owned_accessories": [],
@@ -69,7 +72,8 @@ def _load_raw(chronicle_dir):
                 "piranesi_notes_seen": 0,
                 "lost_verse_fragments_seen_ids": [],
                 "read_discovery_ids": [],
-                "gravewatch_visits": 0}
+                "gravewatch_visits": 0,
+                "kind_acts": 0}
 
 
 def load(chronicle_dir=DEFAULT_DIR):
@@ -117,6 +121,7 @@ def _save(raw, chronicle_dir):
             raw.get("lost_verse_fragments_seen_ids", []),
         "read_discovery_ids": raw.get("read_discovery_ids", []),
         "gravewatch_visits": raw.get("gravewatch_visits", 0),
+        "kind_acts": raw.get("kind_acts", 0),
     }, chronicle_dir)
 
 
@@ -330,6 +335,25 @@ def add_read_discovery(discovery_id, chronicle_dir=DEFAULT_DIR):
     if discovery_id not in seen:
         seen.append(discovery_id)
         _save(raw, chronicle_dir)
+
+
+def kind_acts(chronicle_dir=DEFAULT_DIR):
+    """Cumulative count of small kindnesses across all runs.
+
+    SQ2 — The Long Daily Ritual. Each act of attention — a discovery read,
+    a cat petted, a grave searched, a fallen one honored, a verse sung —
+    increments this counter. At 40, the Caretaker ending unlocks: the
+    player chooses not to climb at all, and instead becomes the keeper
+    of the kingdom's small kindnesses.
+    """
+    return _load_raw(chronicle_dir).get("kind_acts", 0)
+
+
+def add_kind_act(chronicle_dir=DEFAULT_DIR):
+    """Record one more small act of kindness."""
+    raw = _load_raw(chronicle_dir)
+    raw["kind_acts"] = raw.get("kind_acts", 0) + 1
+    _save(raw, chronicle_dir)
 
 
 def gravewatch_visits(chronicle_dir=DEFAULT_DIR):
