@@ -1,4 +1,223 @@
 {
+  "karst_emissary": {
+    "initial": {
+      "lines": [
+        "An old woman in salt-stained robes. She does not stand when you arrive.",
+        "'I am the emissary of Karst-by-the-Sea. We sent grain. Mournhold returned it sealed.'",
+        "'My queen closed our gates after that. Not in anger. In economy of grief.'",
+        "'We have been watching the Pall reach our border. It has not crossed yet. It will.'",
+        "'I am here to ask you one question. The answer will not change what we do.'"
+      ],
+      "responses": [
+        {"text": "Ask.", "next": "ask"},
+        {"text": "Why are you here if it won't change anything?", "next": "why"},
+        {"text": "(step back)", "next": null}
+      ]
+    },
+    "ask": {
+      "lines": [
+        "'When you reach the Summit and break the Warden — what do you choose?'",
+        "'If you let the Pall keep you, Karst stays closed. We have decided.'",
+        "'If you refuse, we open. Slowly. With a long winter to teach the merchants how not to forget.'",
+        "'I am asking which you intend, so we can ready the gates either way.'"
+      ],
+      "responses": [
+        {"text": "I'll refuse the Pall.",
+         "next": "refuse", "sets_flag": "allied_karst"},
+        {"text": "I'll be kept by it.", "next": "kept"},
+        {"text": "I haven't decided yet.", "next": "undecided"}
+      ]
+    },
+    "why": {
+      "lines": [
+        "'Because I have grandchildren in Karst. They asked me to ask. They are afraid.'",
+        "'They have heard the Pall move at night. They wanted me to come and SEE who would break it.'",
+        "'They are children. I am not going to tell them you said anything I wouldn't want them to know.'",
+        "'But you should know that they sent me. The grandchildren of the merchants who sent the grain.'"
+      ],
+      "responses": [
+        {"text": "Ask your question.", "next": "ask"}
+      ]
+    },
+    "refuse": {
+      "lines": [
+        "'Then we will open. Slowly. The bread will move both ways across the border again.'",
+        "'It will take a generation. Karst has long memory. But the gates will open.'",
+        "'Thank you. My grandchildren will be glad. They will not know to be glad of you specifically.'",
+        "'I will not tell them your name. You will not be in our histories. That is the price we charge.'"
+      ],
+      "responses": [
+        {"text": "(leave)", "next": null}
+      ]
+    },
+    "kept": {
+      "lines": [
+        "'Then we stay closed. I will tell the children. They will be afraid. I am afraid for them.'",
+        "'You are choosing the kingdom that returned our grain sealed. That is your right.'",
+        "'I do not curse you. I do not have time. Go to the Summit. We will be here, watching.'"
+      ],
+      "responses": [
+        {"text": "(leave)", "next": null}
+      ]
+    },
+    "undecided": {
+      "lines": [
+        "She nods. She has seen indecision before.",
+        "'Then go and decide. Come back if you wish to talk again. I am here for some time.'",
+        "'Karst can wait. We have waited three winters. We can wait the time it takes you to choose.'"
+      ],
+      "responses": [
+        {"text": "(leave)", "next": null}
+      ]
+    }
+  },
+  "wynne_emissary": {
+    "initial": {
+      "lines": [
+        "A man in muddy practical armour. He is digging a small grave. He looks up.",
+        "'I am here unofficially. Wynne does not admit any of this happened.'",
+        "'We sent two thousand. The Pall took them. The Pall took the Captain who led them.'",
+        "'She is still here, walking the slope. She still believes she is on a relief march.'",
+        "'I am here to bury what I can find of the two thousand. I find about six a year.'",
+        "'I have a request. It is also unofficial.'"
+      ],
+      "responses": [
+        {"text": "What is the request?", "next": "request"},
+        {"text": "Why doesn't Wynne admit it?", "next": "admit"},
+        {"text": "(step back)", "next": null}
+      ]
+    },
+    "request": {
+      "lines": [
+        "'Put the Captain down. She does not deserve to keep walking.'",
+        "'She is not the Pall's. She is ours. She believed in us. We failed her.'",
+        "'If you can lay her to rest — without the Pall taking what is left of her —'",
+        "'I will tell Wynne, off-record. Wynne will open its gates to Karst, off-record.'",
+        "'A chain begins. None of it will be on the official ledgers. It will still be a chain.'"
+      ],
+      "responses": [
+        {"text": "I'll put her down.",
+         "next": "agreed", "sets_flag": "allied_wynne"},
+        {"text": "Wynne should admit it openly.", "next": "openly"},
+        {"text": "(step back)", "next": null}
+      ]
+    },
+    "admit": {
+      "lines": [
+        "'Because two thousand families would learn how their soldiers died.'",
+        "'And those families would burn Wynne's chancellery to the ground.'",
+        "'And rightly. Our Chancellor knew the Pall was contagious before the army crossed.'",
+        "'He sent them anyway. He thought a victory would distract from a famine he caused.'",
+        "'I cannot fix any of that. I can bury what I find. Will you help.'"
+      ],
+      "responses": [
+        {"text": "I'll put the Captain down.",
+         "next": "agreed", "sets_flag": "allied_wynne"},
+        {"text": "(step back)", "next": null}
+      ]
+    },
+    "openly": {
+      "lines": [
+        "'Yes. They should. They will not. That is not what we are here to discuss.'",
+        "'I am here to bury soldiers. You are here to choose what to break. Can you help me bury one.'",
+        "'Or can you not. I will keep digging either way.'"
+      ],
+      "responses": [
+        {"text": "I'll help. I'll put her down.",
+         "next": "agreed", "sets_flag": "allied_wynne"},
+        {"text": "Not today.", "next": "not_today"}
+      ]
+    },
+    "agreed": {
+      "lines": [
+        "'Thank you. She is up the slope. She is waving her sword at trees.'",
+        "'When you put her down, do it kindly. She believed she was relieving a starving people.'",
+        "'She still does, somewhere. The Pall is over that part of her too thinly to drown the belief.'",
+        "'After. Come back. I will have something for you to carry back to Karst, and to Mournhold both.'"
+      ],
+      "responses": [
+        {"text": "(leave)", "next": null}
+      ]
+    },
+    "not_today": {
+      "lines": [
+        "'Another day, then. I will be here. The graves are slow work.'"
+      ],
+      "responses": [
+        {"text": "(leave)", "next": null}
+      ]
+    }
+  },
+  "margrave_emissary": {
+    "initial": {
+      "lines": [
+        "A small clean man in a clean cloak. He smiles when you arrive. Genuinely.",
+        "'Welcome to the Margrave's border-monument! It is open to all visitors. Refreshments inside.'",
+        "'My master sends his regards. He has been very moved by the Mournhold tragedy.'",
+        "'He authored the relief-camp model that fed three thousand refugees in the second winter.'",
+        "'For a modest fee, of course, but at a competitive rate compared to outright starvation.'",
+        "'How may I welcome you on the Margrave's behalf today?'"
+      ],
+      "responses": [
+        {"text": "The three bodies outside?", "next": "bodies"},
+        {"text": "What's the fee?", "next": "fee"},
+        {"text": "Why did your Censor try to kill me?", "next": "censor"},
+        {"text": "(step back)", "next": null}
+      ]
+    },
+    "bodies": {
+      "lines": [
+        "His smile does not waver. It does not have to.",
+        "'A regrettable but predictable consequence of the relief-camp model.'",
+        "'Refugees without funds cannot be accommodated. The Margrave is not a charity.'",
+        "'Their names are removed from the camp ledger upon expiration. This keeps our records clean.'",
+        "'The Censor handles removal. We find clean records improve donor confidence considerably.'"
+      ],
+      "responses": [
+        {"text": "I'll oppose the Margrave.", "next": "opposed"},
+        {"text": "The fee?", "next": "fee"},
+        {"text": "(step back)", "next": null}
+      ]
+    },
+    "fee": {
+      "lines": [
+        "'A tenth of any assets in the camp at the time of arrival.'",
+        "'For a refugee from Mournhold, this typically meant: a wedding ring. A boot. A child's tooth-charm.'",
+        "'These items go to the Margrave's collection. He keeps them in a display case at the residence.'",
+        "'It is a moving display. I have visited it. I recommend it sincerely.'"
+      ],
+      "responses": [
+        {"text": "I'll oppose the Margrave.", "next": "opposed"},
+        {"text": "(step back)", "next": null}
+      ]
+    },
+    "censor": {
+      "lines": [
+        "He looks surprised. He shouldn't have. He cleans his cuff.",
+        "'The Censor is empowered to remove all evidence of unprofitable visitors from the monument.'",
+        "'You are not unprofitable, of course. We have nothing here to gain from you. So our apologies.'",
+        "'If you would like to be added to the monument's record of distinguished visitors —'",
+        "'For a fee — we can ensure your name appears on the relief plaque, posthumously or otherwise.'"
+      ],
+      "responses": [
+        {"text": "I'll oppose the Margrave.", "next": "opposed"},
+        {"text": "(step back)", "next": null}
+      ]
+    },
+    "opposed": {
+      "lines": [
+        "He nods. Cleanly. The smile becomes thinner. Not absent. Just thinner.",
+        "'A philosophical disagreement is the Margrave's prerogative to receive.'",
+        "'You may inform Karst and Wynne, if you wish, that you have lodged opposition.'",
+        "'It will not change the relief-camp model. It will, however, embarrass us in their newsletters.'",
+        "'That has its own value. I will note your name as having declined the plaque arrangement.'",
+        "'Thank you for visiting. Please do not return without a fee.'"
+      ],
+      "responses": [
+        {"text": "(leave)", "next": null, "sets_flag": "opposed_margrave"}
+      ]
+    }
+  },
   "talva": {
     "initial": {
       "lines": [

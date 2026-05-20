@@ -7,7 +7,8 @@
       "One way bends back to Gravewatch, and the single fire it has left lit.",
       "The other climbs grey into the dying kingdom, and it does not bend back."
     ],
-    "connections": ["village", "forest"]
+    "connections": ["village", "forest"],
+    "conditional_connections": ["the_border"]
   },
   "village": {
     "name": "Gravewatch",
@@ -349,6 +350,83 @@
          "'When the rite of unremembering is performed, this book will not be there for it.'",
          "'It is one of the things they cannot have. It is one of the things we kept.'"
        ]}
+    ]
+  },
+  "the_border": {
+    "name": "The Border",
+    "kind": "zone",
+    "act": 3,
+    "recommended_level": 6,
+    "unlock_flag": "border_open",
+    "intro": [
+      "🌐 The Crossroads' east turn is one Mournhold's maps used to label OUTSIDE.",
+      "Across it: three sister realms that watched Mournhold die.",
+      "They have been watching the Pall the whole three winters, from their own borders.",
+      "Each of them did something different with what they saw."
+    ],
+    "connections": ["crossroads"],
+    "conditional_connections": ["karst_outpost", "wynne_camp", "margrave_monument"]
+  },
+  "karst_outpost": {
+    "name": "The Karst Outpost",
+    "kind": "zone",
+    "act": 3,
+    "recommended_level": 5,
+    "unlock_flag": "border_open",
+    "intro": [
+      "🌊 The outpost sits on the cliff above the sea. It is small. It is built.",
+      "Karst-by-the-Sea sent grain when Mournhold's gates closed. Mournhold returned it sealed.",
+      "Karst closed its own gates after that. The outpost is what's left of the open hand."
+    ],
+    "connections": ["the_border"],
+    "encounters": [
+      {"type": "dialogue", "dialogue_id": "karst_emissary", "label": "🌊 Speak with the Karst Emissary"},
+      {"type": "discovery", "id": "karst_grain", "label": "📜 The returned grain-manifest",
+       "lines": [
+         "📜 A grain-manifest, sealed twice. Once by Karst's queen, once by Mournhold's chair.",
+         "Karst sent four hundred bushels. The Mournhold seal reads: REFUSED.",
+         "Underneath, in Mournhold's chair-clerk's hand: 'The capital does not require alms.'",
+         "Karst's queen wrote on the wrapping when it returned: 'It was not for the capital.'",
+         "'It was for the holds. They will not receive it now. We will close our own gates.'",
+         "'Mournhold will eat its own. Let it. We will not be the next who eats us.'"
+       ]}
+    ]
+  },
+  "wynne_camp": {
+    "name": "The Silent Camp of Wynne",
+    "kind": "zone",
+    "act": 3,
+    "recommended_level": 7,
+    "unlock_flag": "border_open",
+    "intro": [
+      "🌲 A column of pine, snapped off neatly six feet up — every tree on this slope.",
+      "Wynne-of-Pines sent an army when Mournhold's gates closed. Two thousand soldiers.",
+      "The army crossed the Border. The army did not return. The Pall took them whole.",
+      "Wynne has never officially admitted the loss. Their emissary is here unofficially."
+    ],
+    "connections": ["the_border"],
+    "encounters": [
+      {"type": "dialogue", "dialogue_id": "wynne_emissary", "label": "🌲 Speak with the Wynne Emissary"},
+      {"type": "combat", "enemies": ["devoured_captain"], "label": "⚔️  Face the Devoured Captain"}
+    ]
+  },
+  "margrave_monument": {
+    "name": "The Margrave's Monument",
+    "kind": "zone",
+    "act": 3,
+    "recommended_level": 6,
+    "unlock_flag": "border_open",
+    "intro": [
+      "🏛️  A polished stone monument, taller than any tree, on the Margrave's side of the border.",
+      "It is inscribed: TO THE MERCIFUL MARGRAVE, WHO FED THE REFUGEES OF MOURNHOLD.",
+      "Below it, in smaller letters: AT MARKET RATE.",
+      "Around it, three refugee bodies who didn't have the market rate. Recently dead.",
+      "Recently. Three winters since the gates. They keep dying recently."
+    ],
+    "connections": ["the_border"],
+    "encounters": [
+      {"type": "dialogue", "dialogue_id": "margrave_emissary", "label": "🏛️  Speak with the Margrave's Emissary"},
+      {"type": "combat", "enemies": ["margrave_censor"], "label": "⚔️  Face the Margrave's Censor"}
     ]
   },
   "hidden_hold": {

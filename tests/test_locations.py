@@ -1048,6 +1048,37 @@ def test_reckoning_ending_requires_talva_promise(content, tmp_path):
     assert "reckoning" in available
 
 
+def test_border_opens_after_two_cleanses(tmp_path, content):
+    """The Border (Arc III) unlocks once the Chronicle records 2+ cleanses."""
+    from terminalquest import chronicle
+    chronicle.add_cleanse(tmp_path)
+    chronicle.add_cleanse(tmp_path)
+    state = make_state(_player(content), content, ScriptedIO(), StubRandom(),
+                       chronicle_dir=tmp_path)
+    locations._maybe_open_border(state)
+    assert state.flags.get("border_open") is True
+
+
+def test_border_stays_closed_under_two_cleanses(tmp_path, content):
+    """One cleanse is not enough — the Border stays unaware of you."""
+    from terminalquest import chronicle
+    chronicle.add_cleanse(tmp_path)
+    state = make_state(_player(content), content, ScriptedIO(), StubRandom(),
+                       chronicle_dir=tmp_path)
+    locations._maybe_open_border(state)
+    assert not state.flags.get("border_open")
+
+
+def test_sister_realm_addendum_prints_when_allied(content, tmp_path):
+    """Endings with allied_karst etc. print the cross-realm closing paragraph."""
+    state = make_state(_player(content), content, ScriptedIO(), StubRandom(),
+                       chronicle_dir=tmp_path)
+    state.flags["allied_karst"] = True
+    locations._sister_realm_addendum(state, state.io)
+    assert "Karst" in state.io.text()
+    assert "bread moves both ways" in state.io.text()
+
+
 def test_dialogue_grants_consumable_on_choice(content):
     """A response with grants_consumable adds the named item to player.consumables."""
     from terminalquest import dialogue

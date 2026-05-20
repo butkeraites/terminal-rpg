@@ -1090,6 +1090,26 @@ def _warden_screen(state):
     io.show("\nThank you for playing Mournhold.")
 
 
+def _sister_realm_addendum(state, io):
+    """Print a closing paragraph naming the sister-realm alliance, if any.
+
+    v0.14 adds these flavour-only addenda — they do not alter the Chronicle.
+    They confirm to the player that what they did at the Border carried.
+    """
+    if state.flags.get("allied_karst"):
+        io.show("")
+        io.show("In Karst, the bread moves both ways across the border again,")
+        io.show("slowly, with a long winter to teach the merchants not to forget.")
+    if state.flags.get("allied_wynne"):
+        io.show("")
+        io.show("In Wynne, the Devoured Captain lies in a grave with her name on it.")
+        io.show("The Chancellor's chancellery burns the year after. No one is surprised.")
+    if state.flags.get("opposed_margrave"):
+        io.show("")
+        io.show("In the Margrave's lands, three names are added to the relief plaque")
+        io.show("for free — by a Censor who has begun to understand what it is.")
+
+
 def _reborn_screen(state):
     """The Reborn ending — earn Echoes (Chronicle currency) and end this run."""
     player, io = state.player, state.io
@@ -1112,6 +1132,7 @@ def _reborn_screen(state):
     owned = chronicle.owned_accessories(state.chronicle_dir)
     if owned:
         io.show(f"\nAccessories you carry across the dark: {len(owned)}")
+    _sister_realm_addendum(state, io)
     io.show("=" * 50)
     io.show("\nStart a new run from the title screen — visit the Echo Trader")
     io.show("at Gravewatch to spend what you earned.")
@@ -1256,6 +1277,7 @@ def _purify_screen(state):
     io.show("Future climbers will find a kingdom, not a kingdom's grave.")
     io.show("\nThe Chronicle remembers — you will see, on every next run,")
     io.show("that Mournhold lies PURIFIED. The cycle is broken.")
+    _sister_realm_addendum(state, io)
     io.show("=" * 50)
     _run_summary(state)
     io.show("\nThank you for playing Mournhold.")
@@ -1392,6 +1414,14 @@ def _inspect_weapon(state):
     io.pause(2)
 
 
+def _maybe_open_border(state):
+    """The Border opens after 2 cleanses — Arc III's gating signal."""
+    if state.flags.get("border_open"):
+        return
+    if chronicle.cleanses(state.chronicle_dir) >= 2:
+        state.flags["border_open"] = True
+
+
 def _service_is_visible(state, service):
     """Some services are New Game Plus unlocks — hidden until the kingdom is cleansed.
 
@@ -1480,6 +1510,7 @@ def location_loop(state):
     fallen = chronicle.fallen(_entries)
     wardens = chronicle.wardens(_entries)
     arrived = True
+    _maybe_open_border(state)  # 2-cleanse signal that the world has neighbours
     while player.is_alive():
         loc = content.locations[state.current_location]
         io.clear()
