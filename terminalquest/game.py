@@ -1,5 +1,7 @@
 """Game bootstrap: title screen, character creation, and the entry point."""
+import os
 import random
+import sys
 
 from . import __version__, chronicle, saves
 from .content import load_content
@@ -7,6 +9,29 @@ from .locations import location_loop
 from .player import Player
 from .state import GameState
 from .ui import GameIO
+
+
+def _configure_console_for_unicode():
+    """Make the terminal render the game's emoji glyphs.
+
+    Windows cmd.exe defaults to a legacy code page (cp1252/cp437) that cannot
+    encode emoji bytes — the encoder substitutes them with '?'. We force UTF-8
+    on stdout/stderr, and on Windows also switch the console code page to 65001
+    (UTF-8). Font support is a separate concern: if the terminal font lacks an
+    emoji glyph, the user will see a tofu box rather than a '?' — readable and
+    obviously a font issue, not garbled output.
+    """
+    if hasattr(sys.stdout, "reconfigure"):
+        try:
+            sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+            sys.stderr.reconfigure(encoding="utf-8", errors="replace")
+        except (AttributeError, OSError):
+            pass
+    if sys.platform == "win32":
+        try:
+            os.system("chcp 65001 > nul")
+        except OSError:
+            pass
 
 
 def _new_seed():
@@ -175,6 +200,7 @@ def run(io=None, content=None, rng=None, chronicle_dir=None, seed=None):
 
 
 def main():
+    _configure_console_for_unicode()
     run()
 
 

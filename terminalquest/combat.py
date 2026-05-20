@@ -16,12 +16,15 @@ CRIT_CHANCE = 0.15
 CRIT_MULTIPLIER = 1.8
 STAMINA_PER_TURN = 2
 FLEE_CHANCE = 0.5
-POTION_HEAL = {"Health Potion": 40, "Greater Potion": 80}
+POTION_HEAL = {"Health Potion": 40, "Greater Potion": 80,
+               "Sovereign Potion": 160, "Pall-Drinker": 250}
+POTION_RESTORES_STAMINA = {"Pall-Drinker"}
 DEFEND_TURNS = 1
 HEAVY_BLOW_POWER = 2.0
 ENRAGE_THRESHOLD = 0.5
 ENRAGE_ATTACK_GAIN = 2
 RELENTLESS_PERIOD = 3
+XP_OVERLEVEL_THRESHOLD = 2
 
 
 def _perform_attack(attacker, target, power, rng):
@@ -172,6 +175,10 @@ def _player_turn(player, enemy, content, io, rng):
             player.heal(heal)
             io.show(f"\n💚 You drink a {potion} and restore {heal} HP "
                     f"({player.hp}/{player.max_hp}).")
+            if potion in POTION_RESTORES_STAMINA:
+                player.stamina = player.max_stamina
+                io.show(f"⚡ Your stamina surges back to {player.stamina}/"
+                        f"{player.max_stamina}.")
             return "acted"
 
         if choice == "4":
@@ -323,9 +330,30 @@ def _choose_boon(player, content, io):
         io.show("\n❌ Invalid choice!")
 
 
-def _grant_rewards(player, enemy, content, io):
-    """Award XP and gold for a defeated enemy, with a boon per level gained."""
+def _is_overleveled(state):
+    """True if the player has out-grown the current zone's XP table.
+
+    A soft cap, not a gate: over-leveled fights still award gold, but the
+    player can no longer XP-farm a low-tier zone into demigod status.
+    """
+    zone = state.content.locations.get(state.current_location, {})
+    rec = zone.get("recommended_level")
+    return rec is not None and state.player.level > rec + XP_OVERLEVEL_THRESHOLD
+
+
+def _grant_rewards(state, enemy):
+    """Award XP and gold for a defeated enemy, with a boon per level gained.
+
+    Over-leveled fights award gold only — no XP, no boon menu, with a clear
+    message so the player understands the soft cap.
+    """
+    player, content, io = state.player, state.content, state.io
     io.show_slow(f"\n🎉 You defeated {enemy.name}!")
+    if _is_overleveled(state):
+        io.show(f"This place has nothing left to teach you. "
+                f"Gained {enemy.gold_reward} gold (no XP).")
+        player.gold += enemy.gold_reward
+        return
     io.show(f"Gained {enemy.xp_reward} XP and {enemy.gold_reward} gold!")
     player.gold += enemy.gold_reward
     for _ in range(player.gain_xp(enemy.xp_reward)):
@@ -402,7 +430,7 @@ def run_combat(state, enemy, *, refresh_after=True):
             break
 
     if outcome == "victory":
-        _grant_rewards(player, enemy, content, io)
+        _grant_rewards(state, enemy)
 
     player.statuses.clear()
     if refresh_after:

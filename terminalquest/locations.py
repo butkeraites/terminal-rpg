@@ -14,6 +14,10 @@ from .weapon import WEAPON_SLOTS, roll_weapon
 INN_COST = 20
 POTION_COST = 30
 GREATER_POTION_COST = 70
+SOVEREIGN_POTION_COST = 200
+PALL_DRINKER_COST = 500
+SOVEREIGN_UNLOCK_CHAMPIONS = 1
+PALL_DRINKER_UNLOCK_CHAMPIONS = 3
 ATTACK_UPGRADE_GOLD_PER_POINT = 8
 DEFENSE_UPGRADE_GOLD_PER_POINT = 14
 SIGNPOST_THRESHOLD = 2
@@ -26,6 +30,24 @@ _SERVICE_LABELS = {
 }
 
 
+def _buy_potion(player, io, name, cost):
+    """Common path for a 'spend gold, gain one consumable' shop transaction."""
+    if player.gold >= cost:
+        player.gold -= cost
+        player.consumables.append(name)
+        io.show(f"\n✅ Bought a {name}!")
+    else:
+        io.show("\n❌ Not enough gold!")
+
+
+def _potion_label(name, cost, unlocked, need, have):
+    """One menu line for a potion, locked or unlocked."""
+    if unlocked:
+        return f"{name} ({cost} gold)"
+    return (f"🔒 {name} ({cost} gold) — defeat {need} region champion"
+            f"{'s' if need != 1 else ''} to unlock (now: {have})")
+
+
 def shop(state):
     player, io = state.player, state.io
     io.clear()
@@ -33,43 +55,57 @@ def shop(state):
     while True:
         atk_cost = player.attack * ATTACK_UPGRADE_GOLD_PER_POINT
         def_cost = player.defense * DEFENSE_UPGRADE_GOLD_PER_POINT
+        champions = len(chronicle.unlocked(state.chronicle_dir))
+        sovereign_unlocked = champions >= SOVEREIGN_UNLOCK_CHAMPIONS
+        pall_unlocked = champions >= PALL_DRINKER_UNLOCK_CHAMPIONS
         io.show(hud(player))
         io.show(f"\n1. Health Potion ({POTION_COST} gold)")
         io.show(f"2. Greater Potion ({GREATER_POTION_COST} gold)")
-        io.show(f"3. Upgrade Attack (+5 attack, {atk_cost} gold)")
-        io.show(f"4. Upgrade Defense (+3 defense, {def_cost} gold)")
-        io.show("5. Leave Shop")
+        io.show("3. " + _potion_label("Sovereign Potion", SOVEREIGN_POTION_COST,
+                                      sovereign_unlocked,
+                                      SOVEREIGN_UNLOCK_CHAMPIONS, champions))
+        io.show("4. " + _potion_label("Pall-Drinker", PALL_DRINKER_COST,
+                                      pall_unlocked,
+                                      PALL_DRINKER_UNLOCK_CHAMPIONS, champions))
+        io.show(f"5. Upgrade Attack (+5 attack, {atk_cost} gold)")
+        io.show(f"6. Upgrade Defense (+3 defense, {def_cost} gold)")
+        io.show("7. Leave Shop")
         choice = io.ask("\nWhat would you like? ")
 
         if choice == "1":
-            if player.gold >= POTION_COST:
-                player.gold -= POTION_COST
-                player.consumables.append("Health Potion")
-                io.show("\n✅ Bought a Health Potion!")
-            else:
-                io.show("\n❌ Not enough gold!")
+            _buy_potion(player, io, "Health Potion", POTION_COST)
         elif choice == "2":
-            if player.gold >= GREATER_POTION_COST:
-                player.gold -= GREATER_POTION_COST
-                player.consumables.append("Greater Potion")
-                io.show("\n✅ Bought a Greater Potion!")
-            else:
-                io.show("\n❌ Not enough gold!")
+            _buy_potion(player, io, "Greater Potion", GREATER_POTION_COST)
         elif choice == "3":
+            if not sovereign_unlocked:
+                io.show(f"\n🔒 Sovereign Potion stays locked until "
+                        f"{SOVEREIGN_UNLOCK_CHAMPIONS} region champion"
+                        f"{'s have' if SOVEREIGN_UNLOCK_CHAMPIONS != 1 else ' has'}"
+                        f" fallen to you.")
+            else:
+                _buy_potion(player, io, "Sovereign Potion", SOVEREIGN_POTION_COST)
+        elif choice == "4":
+            if not pall_unlocked:
+                io.show(f"\n🔒 The Pall-Drinker stays locked until "
+                        f"{PALL_DRINKER_UNLOCK_CHAMPIONS} region champions "
+                        f"have fallen to you.")
+            else:
+                _buy_potion(player, io, "Pall-Drinker", PALL_DRINKER_COST)
+        elif choice == "5":
             if player.gold >= atk_cost:
                 player.gold -= atk_cost
                 player.attack += 5
                 io.show(f"\n✅ Attack increased to {player.attack}!")
             else:
                 io.show("\n❌ Not enough gold!")
-        elif choice == "4":
+        elif choice == "6":
             if player.gold >= def_cost:
                 player.gold -= def_cost
                 player.defense += 3
                 io.show(f"\n✅ Defense increased to {player.defense}!")
             else:
                 io.show("\n❌ Not enough gold!")
-        elif choice == "5":
+        elif choice == "7":
             return
         else:
             io.show("\n❌ Invalid choice!")
@@ -385,6 +421,11 @@ def _build_options(state, loc, fallen):
     for dest_id in loc.get("connections", []):
         dest = content.locations[dest_id]
         options.append((_travel_label(dest, player), ("travel", dest_id)))
+    # Fast travel back to the Crossroads — one-way, available from any zone
+    # (not from hub/settlements, not from the Summit). Preserves the descent
+    # outbound while letting the player shortcut the long walk home.
+    if loc.get("kind") == "zone" and not loc.get("boss"):
+        options.append(("🛤️  Walk back to the Crossroads", ("fast_travel", None)))
     options.append(("🗡️  Inspect Weapon", ("weapon", None)))
     options.append(("View Stats", ("stats", None)))
     options.append(("Save Game", ("save", None)))
@@ -433,6 +474,12 @@ def location_loop(state):
         elif kind == "travel":
             if try_travel(state, arg):
                 arrived = True
+        elif kind == "fast_travel":
+            io.show_slow("\n🛤️  You leave the grey road behind and walk back "
+                         "the long way to the Crossroads.")
+            io.pause(1)
+            state.current_location = "crossroads"
+            arrived = True
         elif kind == "weapon":
             _inspect_weapon(state)
         elif kind == "stats":

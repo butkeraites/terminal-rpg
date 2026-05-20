@@ -318,3 +318,44 @@ def test_learning_a_skill_still_applies_baseline(content):
     combat.run_combat(state, make_enemy("goblin", content))
     # Baseline only: +2 attack, no Might/Vigor/Bulwark gain.
     assert warrior.attack == base_attack + 2
+
+
+def test_overleveled_kill_awards_gold_only(content):
+    """A player far above a zone's recommended level no longer gets XP from it."""
+    warrior = _player(content)
+    warrior.level = 20  # the Witherwood (recommended 1) has nothing left to teach
+    warrior.attack = 1000  # one-shot
+    xp_before = warrior.xp
+    gold_before = warrior.gold
+    io = ScriptedIO(["1"])  # one attack ends it
+    state = make_state(warrior, content, io, StubRandom(), current_location="forest")
+    combat.run_combat(state, make_enemy("goblin", content))
+    assert warrior.xp == xp_before  # no XP
+    assert warrior.gold > gold_before  # gold still drops
+    assert "nothing left to teach you" in io.text()
+
+
+def test_at_level_kill_grants_xp_normally(content):
+    """Within the over-level threshold, XP flows as before."""
+    warrior = _player(content)
+    warrior.level = 1  # bang on the Witherwood's recommended level
+    warrior.attack = 1000
+    xp_before = warrior.xp
+    io = ScriptedIO(["1"])
+    state = make_state(warrior, content, io, StubRandom(), current_location="forest")
+    combat.run_combat(state, make_enemy("goblin", content))
+    assert warrior.xp > xp_before  # XP awarded
+
+
+def test_pall_drinker_restores_full_stamina(content):
+    """The Pall-Drinker tops HP and stamina back to full in one drink."""
+    warrior = _player(content)
+    warrior.hp = 10
+    warrior.stamina = 0
+    warrior.consumables = ["Pall-Drinker"]
+    result = combat._player_turn(warrior, make_enemy("goblin", content), content,
+                                 ScriptedIO(["3"]), StubRandom())
+    assert result == "acted"
+    assert warrior.hp == warrior.max_hp  # huge heal caps at max
+    assert warrior.stamina == warrior.max_stamina
+    assert "Pall-Drinker" not in warrior.consumables

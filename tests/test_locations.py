@@ -31,8 +31,10 @@ def test_location_loop_shows_recommended_levels(content):
 
 
 def test_boss_travel_locked_below_unlock_level(content):
-    # at the Ashen Climb, a low-level hero tries the sealed Summit, then quits
-    io = ScriptedIO(["4", "8"])
+    # at the Ashen Climb, a low-level hero tries the sealed Summit, then quits.
+    # Menu: 1 fight, 2 mini-boss, 3 Choir, 4 Summit, 5 walk back, 6 inspect,
+    # 7 stats, 8 save, 9 quit.
+    io = ScriptedIO(["4", "9"])
     locations.location_loop(make_state(_player(content), content, io, StubRandom(),
                                        current_location="mountain"))
     text = io.text()
@@ -72,7 +74,10 @@ def test_grave_appears_and_can_be_searched(tmp_path, content):
     chronicle.record(fallen_run, "fell", tmp_path)
     player = _player(content)
     gold_before = player.gold
-    io = ScriptedIO(["2", "3", "8"])  # crossroads -> forest, search grave, quit
+    # crossroads "2"=Witherwood, forest "3"=search grave, forest "9"=quit.
+    # The grave option vanishes after searching it, so the post-search menu
+    # has no grave entry — Quit sits at 9, not 10.
+    io = ScriptedIO(["2", "3", "9"])
     state = make_state(player, content, io, StubRandom(), chronicle_dir=tmp_path)
     locations.location_loop(state)
     assert "Half-buried" in io.text()
@@ -121,8 +126,10 @@ def test_defeating_a_hollowed_lays_it_to_rest(tmp_path, content):
 
 
 def test_overlevel_travel_warns_and_can_turn_back(content):
-    # level 1 at the Gullet vs Mourncross (recommended 4): warned -> turn back
-    io = ScriptedIO(["4", "2", "8"])
+    # level 1 at the Gullet vs Mourncross (recommended 4): warned -> turn back.
+    # Cave menu: 1 fight, 2 mini-boss, 3 Drowned Holds, 4 Mourncross,
+    # 5 walk back, 6 inspect, 7 stats, 8 save, 9 quit.
+    io = ScriptedIO(["4", "2", "9"])
     locations.location_loop(make_state(_player(content), content, io, StubRandom(),
                                        current_location="cave"))
     text = io.text()
@@ -142,18 +149,20 @@ def test_travel_into_a_zone_fight_and_return(content):
 
 
 def test_shop_buys_greater_potion(content):
+    """Shop menu: 1 Health, 2 Greater, 3 Sovereign🔒, 4 Pall🔒, 5 Atk, 6 Def, 7 Leave."""
     player = _player(content)
     player.gold = 100
-    locations.shop(make_state(player, content, ScriptedIO(["2", "5"]), StubRandom()))
+    locations.shop(make_state(player, content, ScriptedIO(["2", "7"]), StubRandom()))
     assert "Greater Potion" in player.consumables
     assert player.gold == 100 - GREATER_POTION_COST
 
 
-def test_shop_attack_upgrade_renumbered_to_option_three(content):
+def test_shop_attack_upgrade_at_option_five(content):
+    """The +5 Attack upgrade is now option 5 (tier-locked potions occupy 3-4)."""
     player = _player(content)
     player.gold = 200
     starting_attack = player.attack
-    locations.shop(make_state(player, content, ScriptedIO(["3", "5"]), StubRandom()))
+    locations.shop(make_state(player, content, ScriptedIO(["5", "7"]), StubRandom()))
     assert player.attack == starting_attack + 5
 
 
@@ -326,3 +335,68 @@ def test_chained_encounter_restores_stamina_when_chain_breaks(content, monkeypat
     locations.run_encounter(state, encounter, [], [])
     # run_encounter must restore stamina even though refresh_after=False.
     assert player.stamina == player.max_stamina
+
+
+def test_fast_travel_returns_to_the_crossroads(content):
+    """A zone offers 'Walk back to the Crossroads' that drops the player at the hub."""
+    # At forest: 1 fight, 2 mini-boss, 3 to Crossroads, 4 to Reach,
+    # 5 walk back, 6 inspect, 7 stats, 8 save, 9 quit.
+    io = ScriptedIO(["5", "6"])  # walk back, then quit at the Crossroads
+    state = make_state(_player(content), content, io, StubRandom(),
+                       current_location="forest")
+    locations.location_loop(state)
+    assert state.current_location == "crossroads"
+    assert "Walk back to the Crossroads" in io.text()
+    assert "long way" in io.text()  # the descent-aware flavour line
+
+
+def test_fast_travel_not_offered_at_the_crossroads(content):
+    """The hub itself doesn't offer fast travel — there's nowhere to walk back from."""
+    io = ScriptedIO(["6"])  # quit (option 6 at the Crossroads — no fast-travel slot)
+    state = make_state(_player(content), content, io, StubRandom())
+    locations.location_loop(state)
+    assert "Walk back to the Crossroads" not in io.text()
+
+
+def test_fast_travel_not_offered_at_the_summit(content):
+    """The Summit is a boss area; fast travel must not let the player skip the fight."""
+    player = _strong_player(content)
+    player.level = 8
+    # Summit options: 1 boss fight, 2 travel to Climb, 3 inspect, 4 stats,
+    # 5 save, 6 quit. No fast-travel slot.
+    io = ScriptedIO(["6"])  # quit
+    state = make_state(player, content, io, StubRandom(), current_location="summit")
+    locations.location_loop(state)
+    assert "Walk back to the Crossroads" not in io.text()
+
+
+def test_shop_offers_sovereign_potion_only_after_a_champion_falls(tmp_path, content):
+    """Sovereign Potion stays locked in the shop until 1 mini-boss is in the Chronicle."""
+    player = _player(content)
+    player.gold = 1000
+    # No champions yet — buying option 3 hits the lock message.
+    locations.shop(make_state(player, content, ScriptedIO(["3", "7"]),
+                              StubRandom(), chronicle_dir=tmp_path))
+    assert "Sovereign Potion" not in player.consumables
+
+    # Unlock by chronicling a champion (Pallid Stag), then re-enter the shop.
+    chronicle.unlock("pallid_stag", tmp_path)
+    locations.shop(make_state(player, content, ScriptedIO(["3", "7"]),
+                              StubRandom(), chronicle_dir=tmp_path))
+    assert "Sovereign Potion" in player.consumables
+
+
+def test_shop_offers_pall_drinker_after_three_champions_fall(tmp_path, content):
+    """The Pall-Drinker stays locked until three mini-bosses are in the Chronicle."""
+    player = _player(content)
+    player.gold = 1000
+    for token in ("pallid_stag", "last_reaper"):  # only two — Pall-Drinker still locked
+        chronicle.unlock(token, tmp_path)
+    locations.shop(make_state(player, content, ScriptedIO(["4", "7"]),
+                              StubRandom(), chronicle_dir=tmp_path))
+    assert "Pall-Drinker" not in player.consumables
+
+    chronicle.unlock("red_beard", tmp_path)  # third champion — unlocks Pall-Drinker
+    locations.shop(make_state(player, content, ScriptedIO(["4", "7"]),
+                              StubRandom(), chronicle_dir=tmp_path))
+    assert "Pall-Drinker" in player.consumables
