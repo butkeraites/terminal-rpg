@@ -77,6 +77,17 @@ ASCII_FALLBACKS = (
     ("🎉", "[!]"),
     ("📖", "[book]"),
     ("💫", "[stun]"),
+    ("⚠️", "[!]"), ("⚠", "[!]"),
+    ("💾", "[save]"),
+    ("🗡️", "[sword]"), ("🗡", "[sword]"),
+    ("🔧", "[tool]"),
+    # Combat verbs
+    ("🏃", "[flee]"),
+    ("😡", "[rage]"),
+    # SQ content (v0.15+ side quests)
+    ("🪶", "[note]"),    # SQ4 Piranesi
+    ("🎼", "[verse]"),   # SQ8 Lost Verse
+    ("🌳", "[tree]"),    # SQ7 Forgotten Thing
 )
 
 
