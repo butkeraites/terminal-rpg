@@ -809,6 +809,164 @@ def test_quest_board_renders_trophy_target_in_progress_tag(content, tmp_path):
     assert "2/5" in rendered
 
 
+# --- Phase-1 Batch-3: chain gates ----------------------------------------
+#
+# Quests with requires_quest are hidden from the board until their
+# prereqs are in completed_quests. Quests with denies_quest are hidden
+# permanently once any denying prereq has been claimed (branching
+# chains). When a claim opens follow-up quests, the board emits a
+# *new slip pinned* notification so the player doesn't have to leave
+# and re-enter to find it.
+
+def test_chain_step_hidden_until_prereq_claimed(content, tmp_path):
+    """A quest with requires_quest does not appear on the board until satisfied."""
+    content.quests["step_a"] = {
+        "name": "First Step",
+        "target_enemy": "wolf",
+        "needed": 1,
+        "reward_gold": 10,
+        "cleanse_required": 0,
+        "flavor": "Begin the chain.",
+    }
+    content.quests["step_b"] = {
+        "name": "Second Step",
+        "target_enemy": "wolf",
+        "needed": 1,
+        "reward_gold": 20,
+        "cleanse_required": 0,
+        "requires_quest": ["step_a"],
+        "flavor": "Only after step_a.",
+    }
+    player = _player(content)
+    io = ScriptedIO(["99"])  # Leave; number chosen high enough to always match
+    state = make_state(player, content, io, StubRandom(),
+                       chronicle_dir=tmp_path)
+    # Run quest_board; ScriptedIO will raise once it runs out.
+    try:
+        # Use the actual leave option — find it dynamically by inspecting
+        # render after first show. Easier: just catch the assertion.
+        locations.quest_board(state)
+    except AssertionError:
+        pass
+    rendered = "\n".join(io.output)
+    assert "First Step" in rendered
+    assert "Second Step" not in rendered  # gated until step_a is claimed
+
+
+def test_chain_step_visible_after_prereq_claimed(content, tmp_path):
+    """Once requires_quest is satisfied, the follow-up appears on the board."""
+    content.quests["chain_a"] = {
+        "name": "Chain A",
+        "target_enemy": "wolf",
+        "needed": 1,
+        "reward_gold": 10,
+        "cleanse_required": 0,
+        "flavor": "A.",
+    }
+    content.quests["chain_b"] = {
+        "name": "Chain B",
+        "target_enemy": "wolf",
+        "needed": 1,
+        "reward_gold": 20,
+        "cleanse_required": 0,
+        "requires_quest": ["chain_a"],
+        "flavor": "B, after A.",
+    }
+    player = _player(content)
+    state = make_state(player, content, ScriptedIO(["99"]), StubRandom(),
+                       chronicle_dir=tmp_path)
+    state.flags.setdefault("completed_quests", []).append("chain_a")
+    try:
+        locations.quest_board(state)
+    except AssertionError:
+        pass
+    rendered = "\n".join(state.io.output)
+    assert "Chain B" in rendered
+
+
+def test_denies_quest_hides_alternative_branch(content, tmp_path):
+    """If you've claimed a quest that denies a sibling, the sibling is gone."""
+    content.quests["fork_left"] = {
+        "name": "Left Fork",
+        "target_enemy": "wolf",
+        "needed": 1,
+        "reward_gold": 10,
+        "cleanse_required": 0,
+        "flavor": "Take the left road.",
+    }
+    content.quests["fork_right"] = {
+        "name": "Right Fork",
+        "target_enemy": "wolf",
+        "needed": 1,
+        "reward_gold": 10,
+        "cleanse_required": 0,
+        "denies_quest": ["fork_left"],
+        "flavor": "Take the right road.",
+    }
+    player = _player(content)
+    state = make_state(player, content, ScriptedIO(["99"]), StubRandom(),
+                       chronicle_dir=tmp_path)
+    state.flags.setdefault("completed_quests", []).append("fork_left")
+    try:
+        locations.quest_board(state)
+    except AssertionError:
+        pass
+    rendered = "\n".join(state.io.output)
+    assert "Left Fork" in rendered  # claimed, but still listed as 'done'
+    assert "Right Fork" not in rendered  # permanently denied
+
+
+def test_chain_claim_emits_new_slip_pinned_notification(content, tmp_path):
+    """Claiming a chain step that opens a follow-up emits *A new slip is pinned*."""
+    from terminalquest import combat
+    from terminalquest.enemy import make_enemy
+    content.quests["openerq"] = {
+        "name": "Opening Step",
+        "target_enemy": "wolf",
+        "needed": 1,
+        "reward_gold": 10,
+        "cleanse_required": 0,
+        "flavor": "Just one wolf.",
+    }
+    content.quests["followupq"] = {
+        "name": "The Follow-Up",
+        "target_enemy": "wolf",
+        "needed": 1,
+        "reward_gold": 50,
+        "cleanse_required": 0,
+        "requires_quest": ["openerq"],
+        "flavor": "Only after the opener.",
+    }
+    player = _player(content)
+    player.attack = 1000  # one-shot
+    # Find the opener's slot in the visible catalog (cleanse 0, sorted by
+    # quests.json insertion order — our test quests are last).
+    catalog_pre = [q for q, info in content.quests.items()
+                   if info.get("cleanse_required", 0) <= 0
+                   and not info.get("requires_quest")
+                   and not info.get("denies_quest")]
+    opener_index = catalog_pre.index("openerq") + 1
+    leave_pre = len(catalog_pre) + 1
+    # 1) Take opener; 2) leave; 3) (after combat) re-enter and claim
+    state = make_state(player, content,
+                       ScriptedIO([str(opener_index), str(leave_pre)]),
+                       StubRandom(rnd=0.99),
+                       chronicle_dir=tmp_path)
+    locations.quest_board(state)
+    assert "openerq" in state.flags["active_quests"]
+    # Kill the wolf so the opener becomes completable.
+    state.io = ScriptedIO(["1"])
+    combat.run_combat(state, make_enemy("wolf", content))
+    assert state.flags["quest_progress"]["openerq"] == 1
+    # Re-open board; opener is still position opener_index because no chain
+    # follow-up is visible yet. Claim the opener; then leave.
+    state.io = ScriptedIO([str(opener_index), str(leave_pre + 1)])
+    locations.quest_board(state)
+    rendered = "\n".join(state.io.output)
+    assert "openerq" in state.flags["completed_quests"]
+    assert "A new slip is pinned: The Follow-Up" in rendered
+
+
 def test_class_consumable_applies_status_in_combat(content):
     """Drinking Warrior's Breath grants the player the braced status."""
     from terminalquest import combat, status

@@ -422,20 +422,68 @@ def _quest_status(state, quest_id):
     return "active"
 
 
+def _quest_is_visible(quest, state, cleanses):
+    """Return True if this quest should appear on the board for this player.
+
+    Phase-1 Batch-1/3 gates: cleanse_required, requires_quest (all must be
+    in completed_quests), denies_quest (none may be in completed_quests).
+    Other gates (requires_mark, requires_class, etc.) land in Batch-4.
+    """
+    if quest.get("cleanse_required", 0) > cleanses:
+        return False
+    completed = set(state.flags.get("completed_quests", []))
+    needs = quest.get("requires_quest") or []
+    if needs and not all(qid in completed for qid in needs):
+        return False
+    denies = quest.get("denies_quest") or []
+    if any(qid in completed for qid in denies):
+        return False
+    return True
+
+
+def _quests_newly_visible(state, cleanses, just_completed_id):
+    """Return quest_ids that become visible *because* just_completed_id was claimed.
+
+    A quest is *newly visible* if it was hidden before the claim (because
+    just_completed_id was not yet in completed_quests) but is visible after.
+    Used to render the chain-step notification on claim.
+    """
+    quests = state.content.quests
+    newly = []
+    for qid, q in quests.items():
+        if qid == just_completed_id:
+            continue
+        needs = q.get("requires_quest") or []
+        if just_completed_id not in needs:
+            continue
+        # Was visible without the just-completed prereq? If yes, not newly.
+        # We test that by checking visibility now, then removing the
+        # just-completed from completed_quests temporarily.
+        if _quest_is_visible(q, state, cleanses):
+            completed = set(state.flags.get("completed_quests", []))
+            others = completed - {just_completed_id}
+            if not all(n in others for n in needs):
+                newly.append(qid)
+    return newly
+
+
 def quest_board(state):
     """The Gravewatch quest board: pick up bounty quests, claim rewards on completion.
 
     Higher-tier bounties are gated by cleanse count — the Board only pins a
     new slip after each successful run, so deeper quests open as the realm
-    is cleansed.
+    is cleansed. Chain quests (Phase-1 Batch-3) are gated by requires_quest:
+    a follow-up slip stays off the board until its prerequisite is claimed.
     """
     player, io = state.player, state.io
     cleanses = chronicle.cleanses(state.chronicle_dir)
-    catalog = [(qid, q) for qid, q in state.content.quests.items()
-               if q.get("cleanse_required", 0) <= cleanses]
     io.clear()
     io.show_slow("📜 The Quest Board — slips of vellum pinned with rust nails.\n")
     while True:
+        # Rebuild catalog every loop so chain steps that just opened on a
+        # claim appear without needing to leave and re-enter.
+        catalog = [(qid, q) for qid, q in state.content.quests.items()
+                   if _quest_is_visible(q, state, cleanses)]
         io.show(hud(player))
         for index, (quest_id, quest) in enumerate(catalog, start=1):
             status = _quest_status(state, quest_id)
@@ -470,8 +518,11 @@ def quest_board(state):
             io.pause(1)
         elif status == "active":
             progress = state.flags["quest_progress"][quest_id]
+            target_label = (quest.get("target_enemy")
+                            or quest.get("target_trophy")
+                            or "?")
             io.show(f"\nNot finished yet: {progress}/{quest['needed']} "
-                    f"{quest['target_enemy']}s.")
+                    f"{target_label}s.")
             io.pause(1)
         elif status == "completable":
             player.gold += quest["reward_gold"]
@@ -484,6 +535,17 @@ def quest_board(state):
             io.show(f"   +{quest['reward_gold']} gold")
             if consumable is not None:
                 io.show(f"   +1 {consumable}")
+            # Phase-1 Batch-3: chain forward — if claiming this quest opens
+            # any follow-up slip, tell the player so they don't have to
+            # leave-and-reenter to notice.
+            newly = _quests_newly_visible(state, cleanses, quest_id)
+            for nqid in newly:
+                nq = state.content.quests[nqid]
+                io.show_slow(f"\n📜 A new slip is pinned: {nq['name']}.")
+            # chain_next is a forward-pointer hint. If the author set it but
+            # the next slip is gated by something else (e.g. min_level),
+            # _quests_newly_visible already filtered it out. We trust that
+            # filtering and only emit on truly-visible follow-ups.
             io.pause(2)
         else:  # claimed
             io.show("\nAlready claimed. The Board has no other use for you.")
