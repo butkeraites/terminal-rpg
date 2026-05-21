@@ -242,10 +242,10 @@ def test_defeating_a_hollowed_lays_it_to_rest(tmp_path, content):
 
 def test_overlevel_travel_warns_and_can_turn_back(content):
     # level 1 at the Gullet vs Mourncross (recommended 4): warned -> turn back.
-    # v0.16 cave menu: 1 fight, 2 mini-boss, 3 Piranesi discovery,
-    # 4 Drowned Holds, 5 Mourncross, 6 walk back, 7-10 util → quit=10.
-    # "5" travel to Mourncross → warned, "2" turn back, "10" quit.
-    io = ScriptedIO(["5", "2", "10"])
+    # v1.21 cave menu: 1 fight, 2 mini-boss, 3 Piranesi, 4 gullet_alcove,
+    # 5 Drowned Holds, 6 Mourncross, 7 walk back, 8-11 util → quit=11.
+    # "6" travel to Mourncross → warned, "2" turn back, "11" quit.
+    io = ScriptedIO(["6", "2", "11"])
     locations.location_loop(make_state(_player(content), content, io, StubRandom(),
                                        current_location="cave"))
     text = io.text()
