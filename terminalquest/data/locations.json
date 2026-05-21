@@ -1526,6 +1526,27 @@
          "Older hand, scratched into the side of a water-butt: 'I have stood and watched.'",
          "'In a day, the path is walked twenty-eight times. Most of them by the Small Un.'",
          "'The Small Un does not know yet that the path is theirs. The path knows.'"
+       ]},
+      {"type": "discovery", "id": "ondreks_spoon", "label": "📜 A small carved wooden spoon on Ondrek's shelf",
+       "lines": [
+         "📜 Above Ondrek's bench, on a shelf made from a single split log, a small wooden spoon.",
+         "The bowl is too small for an adult's mouth. The handle is the right size for a small hand.",
+         "Both ends are worn smooth. Both have been chewed on. By a child, decades ago. Many times.",
+         "",
+         "The carving on the handle is a tiny scene of three figures and a tree. They are holding hands.",
+         "The carver was careful and slow. A mother's hand. She knew she had to make this fast",
+         "and chose to make it carefully instead. There were not many other choices left.",
+         "",
+         "Below the shelf, in Ondrek's hand, a small folded paper. Recent. Brown ink.",
+         "",
+         "  'My mother carved this for me the night before she carried me to the wall.'",
+         "  'She was eighteen. I was three. We had been three days without bread.'",
+         "  'The wall was low at the river. She lifted me over. She did not come over with me.'",
+         "",
+         "  'The trader on the other side — Karst, salt in her clothes — took me from her.'",
+         "  'I have been told the trader's name was Tace. I do not remember Tace.'",
+         "  'I do not remember my mother. I remember this spoon. I have not eaten with it.'",
+         "  'It is not for eating with. It is for being here. It is here. — Ondrek.'"
        ]}
     ]
   },
