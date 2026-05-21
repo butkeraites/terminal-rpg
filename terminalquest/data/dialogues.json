@@ -520,7 +520,45 @@
         {"text": "Tell her you read down the column of seals behind her.",
          "next": "of_column",
          "requires_flag": "read_column_of_seals"},
+        {"text": "Tell her what the Pall wrote in the rite-book.",
+         "next": "of_pall_words",
+         "requires_flag": "read_palls_words"},
         {"text": "(step back)", "next": null}
+      ]
+    },
+    "of_pall_words": {
+      "voice": "stone",
+      "lines": [
+        "You tell her. You read it to her. She does not interrupt.",
+        "",
+        "When you are done, the stone where her mouth is grinds against itself.",
+        "She is, in some way, beginning to weep without tears. Stone weeps.",
+        "It is a slow, almost geological motion. You wait. She is taking time.",
+        "",
+        "'I did not know,' she says. 'I have been the seal between us for —'",
+        "'(she does not finish the year.)'",
+        "",
+        "'I have been the wall between the kingdom and what came out of the rite.'",
+        "'I have not known what came out of the rite. I held it. I have not heard it.'",
+        "'I would not have heard it through stone, even if it had spoken.'",
+        "",
+        "'It said: I did not ask for this.'",
+        "",
+        "'It said: I would like to lie down.'",
+        "",
+        "'It said the same things I have been saying. Quietly. Under stone.'",
+        "'I have been quiet because the stone made me quiet. It has been quiet'",
+        "'because there is no one above to hear it. We have been quiet at each'",
+        "'other for centuries. We have been the same quiet. I did not know.'",
+        "",
+        "'Thank you for telling me. I am — for the first time in I do not know how'",
+        "'long — less alone in here. I have something to think about. I will think.'",
+        "'Go climb if you are going to climb. I will be here. I will be — somewhere'",
+        "'in this stone — thinking about a tired thing the size of a kingdom.'",
+        "'I have been one of them. I did not know I had a sibling. I am sorry I did not.'"
+      ],
+      "responses": [
+        {"text": "(step back, quietly)", "next": "initial"}
       ]
     },
     "of_column": {

@@ -826,6 +826,7 @@ _DISCOVERY_FLAGS = {
     "small_uns_drawing": "read_small_uns_drawing",  # gates the Small Un's second drawing
     "atrel_original_rite": "read_atrel_folio",  # unlocks Atrél's "of_renaud" branch
     "bone_tomb_column_of_seals": "read_column_of_seals",  # unlocks Cael's "of_column" branch
+    "palls_only_words": "read_palls_words",  # unlocks Cael's "of_pall_words" branch
 }
 
 # The Bone Tomb requires the player to have done everything Mournhold can

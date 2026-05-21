@@ -1230,6 +1230,22 @@ def test_cael_column_branch_gated_on_reading_the_column(content, tmp_path):
     assert state.flags.get("read_column_of_seals") is True
 
 
+def test_cael_pall_words_branch_gated_on_reading_palls_page(content, tmp_path):
+    """v1.39 — Cael's 'of_pall_words' branch surfaces only after the Pall's page is read."""
+    cael = content.dialogues["cael"]
+    initial_responses = cael["initial"]["responses"]
+    pall_branch = [r for r in initial_responses if "Pall wrote" in r.get("text", "")]
+    assert len(pall_branch) == 1
+    assert pall_branch[0].get("requires_flag") == "read_palls_words"
+    assert "of_pall_words" in cael
+    # Reading the Pall's page sets the flag.
+    state = make_state(_player(content), content, ScriptedIO(), StubRandom(),
+                       chronicle_dir=tmp_path)
+    assert not state.flags.get("read_palls_words")
+    locations._run_discovery(state, {"id": "palls_only_words", "lines": ["..."]})
+    assert state.flags.get("read_palls_words") is True
+
+
 def test_bone_tomb_requires_all_four_npc_quests_and_verren(content, tmp_path):
     """The Bone Tomb opens only after every NPC quest + Verren fragment."""
     state = make_state(_player(content), content, ScriptedIO(), StubRandom(),
