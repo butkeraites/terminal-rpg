@@ -3239,5 +3239,202 @@
     ],
     "reward_chronicle_line": "Once they had once become the Warden, the Summit ground was softer for them; two stone-golems fell easier under the new step.",
     "flavor": "Across runs, the Warden ending marks you. The Summit ground is softer for your step. Two stone-golems. They fall easier."
+  },
+  "reborn_witherwood_younger_bandit": {
+    "name": "A Bandit a Previous You Could Not Take",
+    "target_enemy": "bandit",
+    "needed": 1,
+    "reward_gold": 350,
+    "cleanse_required": 0,
+    "requires_flag": "is_reborn",
+    "flavor": "A bandit your previous self could not take stands in the wood. The new you is older. Take him.",
+    "reward_chronicle_line": "They returned for a bandit a previous one of them had fled from. The bandit fell to the older self."
+  },
+  "reborn_witherwood_pack_lead": {
+    "name": "A Pack a Previous You Had Run From",
+    "target_enemy": "pack_lead",
+    "needed": 1,
+    "reward_gold": 700,
+    "cleanse_required": 1,
+    "requires_flag": "is_reborn",
+    "flavor": "The pack lead at the Hunter's Cache once chased a previous you out. The new you walks back in.",
+    "reward_marks": [
+      "the_witherwood_remembered_a_younger_step"
+    ],
+    "reward_chronicle_line": "The Hunter's Cache pack lead remembered the previous self's scent, and ended at the new self's hand."
+  },
+  "reborn_witherwood_giantbat": {
+    "name": "A Bat Your Previous Self Set Aside",
+    "target_enemy": "giant_bat",
+    "needed": 1,
+    "reward_gold": 250,
+    "cleanse_required": 0,
+    "requires_flag": "is_reborn",
+    "flavor": "A carrion bat the previous you nearly killed but spared. The new you finishes the work."
+  },
+  "reborn_reach_silt_drowner": {
+    "name": "A Drowner Who Remembers the Previous You",
+    "target_enemy": "silt_drowner",
+    "needed": 1,
+    "reward_gold": 400,
+    "cleanse_required": 1,
+    "requires_flag": "is_reborn",
+    "flavor": "A silt-drowner who almost took the previous you down. The new you is still standing. End it.",
+    "reward_marks": [
+      "reach_water_remembered_your_face"
+    ]
+  },
+  "reborn_reach_thresher": {
+    "name": "A Thresher Standing on the Previous You's Field",
+    "target_enemy": "drowned_thresher",
+    "needed": 1,
+    "reward_gold": 500,
+    "cleanse_required": 2,
+    "requires_flag": "is_reborn",
+    "flavor": "A thresher stands on the field the previous you tried to seed. End the thresher. The field will be remembered.",
+    "reward_chronicle_line": "A previous one of them had once tried to seed a Reach field; the thresher that stood there now stands no longer."
+  },
+  "reborn_holds_red_beard_carved": {
+    "name": "A Red Beard Who Carved the Previous You's Name",
+    "target_enemy": "red_beard",
+    "needed": 1,
+    "reward_gold": 700,
+    "cleanse_required": 2,
+    "requires_flag": "is_reborn",
+    "flavor": "A Red Beard who had carved your previous self's name into the holds' doorpost. End him. The name stays carved.",
+    "reward_marks": [
+      "holds_you_added_a_name_to_a_post"
+    ],
+    "reward_chronicle_line": "A Red Beard had carved a previous one of them into a doorpost. The new self returned and ended the carver."
+  },
+  "reborn_holds_doorshut": {
+    "name": "A Doorshut Who Shut a Door on the Previous You",
+    "target_enemy": "doorshut",
+    "needed": 1,
+    "reward_gold": 500,
+    "cleanse_required": 1,
+    "requires_flag": "is_reborn",
+    "flavor": "A doorshut who once shut a door on the previous you. End it. The door will open."
+  },
+  "reborn_gullet_troll_carried_kettle": {
+    "name": "A Troll Who Took a Kettle the Previous You Carried",
+    "target_enemy": "cave_troll",
+    "needed": 1,
+    "reward_gold": 700,
+    "cleanse_required": 2,
+    "requires_flag": "is_reborn",
+    "flavor": "The kettle the previous you carried is in a troll's hand. End the troll. The kettle will be a kettle again.",
+    "reward_marks": [
+      "gullet_you_helped_carry_a_kettle"
+    ]
+  },
+  "reborn_gullet_slime_lost_word": {
+    "name": "A Slime Carrying a Word the Previous You Lost",
+    "target_enemy": "dark_slime",
+    "needed": 1,
+    "reward_gold": 500,
+    "cleanse_required": 2,
+    "requires_flag": "is_reborn",
+    "flavor": "A slime absorbed a word the previous you spoke into the Gullet. End it. The word will come back."
+  },
+  "reborn_gullet_bat_button_pair": {
+    "name": "A Bat Carrying the Previous You's Button Pair",
+    "target_enemy": "giant_bat",
+    "needed": 1,
+    "reward_gold": 400,
+    "cleanse_required": 2,
+    "requires_flag": "is_reborn",
+    "flavor": "A bat carries the previous you's button pair on a thread. End the bat. The buttons stay paired.",
+    "reward_marks": [
+      "gullet_found_a_button_pair"
+    ]
+  },
+  "reborn_mourn_magistrate_judged": {
+    "name": "A Magistrate Who Judged a Previous You",
+    "target_enemy": "pall_magistrate",
+    "needed": 1,
+    "reward_gold": 800,
+    "cleanse_required": 3,
+    "requires_flag": "is_reborn",
+    "flavor": "A magistrate had judged a previous you. End him. The judgment will be overturned.",
+    "reward_chronicle_line": "A previous one of them had been judged by a Pall-Magistrate in Mourncross. The new self returned, and the verdict reversed."
+  },
+  "reborn_mourn_procession_wore_clothes": {
+    "name": "A Procession Wearing a Previous You's Coat",
+    "target_enemy": "hollow_procession",
+    "needed": 1,
+    "reward_gold": 600,
+    "cleanse_required": 3,
+    "requires_flag": "is_reborn",
+    "flavor": "One of the hollow procession wears a coat the previous you had owned. End them. The coat will be put away properly.",
+    "reward_marks": [
+      "mourncross_a_window_had_a_face_at_it_for_one_count"
+    ]
+  },
+  "reborn_mourn_wretch_at_the_grave": {
+    "name": "A Wretch at a Previous You's Grave",
+    "target_enemy": "gutter_wretch",
+    "needed": 1,
+    "reward_gold": 400,
+    "cleanse_required": 3,
+    "requires_flag": "is_reborn",
+    "flavor": "A wretch squats at the grave of a previous you. End it. The grave will be quiet."
+  },
+  "reborn_choir_effigy_sang_for_you": {
+    "name": "An Effigy That Sang for a Previous You",
+    "target_enemy": "choirmaster_effigy",
+    "needed": 1,
+    "reward_gold": 1000,
+    "cleanse_required": 4,
+    "requires_flag": "is_reborn",
+    "flavor": "An effigy in the Choir sang for the previous you's funeral. End the effigy. The funeral will be over.",
+    "reward_marks": [
+      "choir_almost_completed_the_rite"
+    ],
+    "reward_chronicle_line": "An effigy had once sung at a previous one of them's funeral; the new self ended the singer."
+  },
+  "reborn_choir_censer_carried_breath": {
+    "name": "A Censer Carrying a Previous You's Last Breath",
+    "target_enemy": "censer_shade",
+    "needed": 1,
+    "reward_gold": 600,
+    "cleanse_required": 4,
+    "requires_flag": "is_reborn",
+    "flavor": "A censer-shade carries the previous you's last breath in its smoke. End the shade. The breath will dissipate properly."
+  },
+  "reborn_climb_penitent_handprint_above": {
+    "name": "A Penitent Whose Handprint Was Below the Previous You's",
+    "target_enemy": "ashen_penitent",
+    "needed": 1,
+    "reward_gold": 1300,
+    "cleanse_required": 5,
+    "requires_flag": "is_reborn",
+    "flavor": "A Penitent's handprint sits under the previous you's. He resents the ordering. End him. The handprints will settle.",
+    "reward_marks": [
+      "penitent_handprint_under_yours"
+    ],
+    "reward_chronicle_line": "A Penitent had set his handprint below a previous one of them's. The new self ended the Penitent. The handprints stayed."
+  },
+  "reborn_climb_wraith_was_climber": {
+    "name": "A Wraith Who Climbed With a Previous You",
+    "target_enemy": "ice_wraith",
+    "needed": 1,
+    "reward_gold": 700,
+    "cleanse_required": 4,
+    "requires_flag": "is_reborn",
+    "flavor": "An ice-wraith was a climber once who climbed with a previous you. End the wraith. The climber will rest."
+  },
+  "reborn_summit_warden_knew_old_step": {
+    "name": "The Summit Warden Knew the Previous You's Step",
+    "target_enemy": "shadow_warden",
+    "needed": 1,
+    "reward_gold": 1800,
+    "cleanse_required": 5,
+    "requires_flag": "is_reborn",
+    "flavor": "The Summit Warden recognizes the previous you's step in the new you's stride. End the Warden. The step will be your own only.",
+    "reward_marks": [
+      "summit_warden_old_step_remembered_you"
+    ],
+    "reward_chronicle_line": "The Shadow Warden had recognized the previous one of them's step in the new self's stride; the new self ended the Warden, and the step was theirs alone."
   }
 }
