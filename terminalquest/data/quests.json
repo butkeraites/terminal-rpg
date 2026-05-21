@@ -472,5 +472,208 @@
     ],
     "reward_chronicle_line": "A previous one of them had planted a grain in Hólvar Reach, and when they came back, the field gave it back to them.",
     "flavor": "A previous you planted a grain here, the year before the drowning. One thresher holds the place. Take it. The grain is still there."
+  },
+  "dark_slimes_in_the_throat": {
+    "name": "Dark Slimes in the Throat",
+    "target_enemy": "dark_slime",
+    "needed": 6,
+    "reward_gold": 300,
+    "cleanse_required": 2,
+    "flavor": "Six of the slimes cling to the gullet wall and grow when no one is looking. Six is the number the older miners chose."
+  },
+  "cave_trolls_at_the_chokepoint": {
+    "name": "Cave-Trolls at the Chokepoint",
+    "target_enemy": "cave_troll",
+    "needed": 3,
+    "reward_gold": 400,
+    "cleanse_required": 2,
+    "flavor": "Three trolls keep the chokepoint. Three of them, and a kingdom's worth of grain might still be brought through."
+  },
+  "giant_bats_at_dusk": {
+    "name": "Giant Bats at Dusk",
+    "target_enemy": "giant_bat",
+    "needed": 8,
+    "reward_gold": 250,
+    "cleanse_required": 2,
+    "flavor": "The carrion bats come out at dusk in eights. Take eight. The gullet will breathe one count quieter."
+  },
+  "the_maw_mother_must_starve": {
+    "name": "The Maw-Mother Must Starve",
+    "target_enemy": "maw_mother",
+    "needed": 1,
+    "reward_gold": 800,
+    "cleanse_required": 3,
+    "reward_chronicle_line": "They walked the Gullet to make the Maw-Mother go hungry, and she did.",
+    "flavor": "The kingdom fed her once. She has not eaten since. End it."
+  },
+  "bat_wings_for_the_choirs_powder": {
+    "name": "Bat-Wings for the Choir's Powder",
+    "target_trophy": "bat_wing",
+    "needed": 12,
+    "reward_gold": 400,
+    "cleanse_required": 2,
+    "reward_consumables": [
+      "The Last Bread",
+      "The Last Bread"
+    ],
+    "flavor": "The Choir's old powder needs twelve. The Gullet has them. Bring."
+  },
+  "maw_a_read_the_ledger": {
+    "name": "The Maw-Mother's Names — Read the Ledger",
+    "target_enemy": "giant_bat",
+    "needed": 3,
+    "reward_gold": 200,
+    "cleanse_required": 0,
+    "requires_discovery": [
+      "maw_mothers_ledger"
+    ],
+    "chain_next": "maw_b_find_the_throat",
+    "flavor": "The ledger names three bats she sent to find her food. Three of them. The Maw-Mother will know who reads."
+  },
+  "maw_b_find_the_throat": {
+    "name": "The Maw-Mother's Names — Find Her Throat",
+    "target_enemy": "dark_slime",
+    "needed": 4,
+    "reward_gold": 300,
+    "cleanse_required": 0,
+    "requires_quest": [
+      "maw_a_read_the_ledger"
+    ],
+    "chain_next": "maw_c_unname_her",
+    "flavor": "Four slimes line the throat she swallows through. After them, the way to her is clear."
+  },
+  "maw_c_unname_her": {
+    "name": "The Maw-Mother's Names — Unname Her",
+    "target_enemy": "maw_mother",
+    "needed": 1,
+    "reward_gold": 700,
+    "cleanse_required": 0,
+    "requires_quest": [
+      "maw_b_find_the_throat"
+    ],
+    "reward_chronicle_line": "They walked the Gullet's throat and unnamed the Maw-Mother — the kingdom had three names for her, and the climber took all three.",
+    "reward_marks": [
+      "gullet_mawmother_braced_for_you"
+    ],
+    "flavor": "The Maw-Mother. One blow at a time, the three names come off her. Then she will be only herself, and only briefly."
+  },
+  "after_you_dropped_a_word": {
+    "name": "After You Dropped a Word",
+    "target_enemy": "cave_troll",
+    "needed": 1,
+    "reward_gold": 350,
+    "cleanse_required": 2,
+    "requires_mark": "gullet_dropped_a_word_into_the_throat",
+    "reward_marks": [
+      "gullet_breathed_your_name"
+    ],
+    "flavor": "Once you dropped a word into the throat, the throat learned it. Now one troll wears it on his teeth. Take the troll. Take the word."
+  },
+  "after_the_kettle": {
+    "name": "After You Helped Carry the Kettle",
+    "target_enemy": "dark_slime",
+    "needed": 2,
+    "reward_gold": 250,
+    "cleanse_required": 2,
+    "requires_mark": "gullet_you_helped_carry_a_kettle",
+    "reward_consumables": [
+      "The Last Bread"
+    ],
+    "flavor": "You carried a kettle for an older hand once. The slimes remember the smell. Two of them. The older hand will set a thing aside."
+  },
+  "status_cleared_in_the_gullet": {
+    "name": "Walk Clean from the Slime-Pit",
+    "target_enemy": "dark_slime",
+    "completion_condition": "status_cleared",
+    "needed": 2,
+    "reward_gold": 300,
+    "cleanse_required": 2,
+    "flavor": "Two slimes, and when you walk out, no status clings to you. The Gullet measures who came through it clean."
+  },
+  "no_potions_in_the_gullet": {
+    "name": "No Potions in the Gullet",
+    "target_enemy": "cave_troll",
+    "completion_condition": "no_potions_in_zone",
+    "needed": 2,
+    "reward_gold": 400,
+    "cleanse_required": 2,
+    "flavor": "Two trolls. No potion crossed your lips while you were in the Gullet. The old miners did it this way to spare the supply."
+  },
+  "hidden_gullet_first_breath": {
+    "name": "The Gullet Took Your First Breath",
+    "target_enemy": "giant_bat",
+    "needed": 1,
+    "reward_gold": 200,
+    "cleanse_required": 0,
+    "hidden": true,
+    "trigger_action": {
+      "type": "zone_visited",
+      "params": {
+        "zone_id": "cave"
+      }
+    },
+    "reward_marks": [
+      "gullet_breathed_your_name"
+    ],
+    "flavor": "The first time you breathed in the Gullet, one bat answered. It has been keeping the breath. Take it."
+  },
+  "hidden_lost_verse_in_the_throat": {
+    "name": "The Lost Verse in the Throat",
+    "target_enemy": "dark_slime",
+    "needed": 1,
+    "reward_gold": 300,
+    "cleanse_required": 0,
+    "hidden": true,
+    "trigger_action": {
+      "type": "flag_set",
+      "params": {
+        "flag_name": "lost_verse_known"
+      }
+    },
+    "reward_chronicle_line": "Once they knew the lost verse, the Gullet's first slime sang it back to them — and they ended the singing.",
+    "flavor": "Once you know the lost verse, one slime in the Gullet hums it. Take the slime. The verse is yours alone again."
+  },
+  "warriors_choke_three": {
+    "name": "The Warrior's Three at the Choke",
+    "target_enemy": "cave_troll",
+    "needed": 3,
+    "reward_gold": 500,
+    "cleanse_required": 2,
+    "requires_class": [
+      "warrior"
+    ],
+    "reward_consumables": [
+      "The Last Bread"
+    ],
+    "flavor": "Only a warrior holds the chokepoint long enough. Three trolls. The kingdom's old guard did it this way for one hundred winters."
+  },
+  "rogues_quiet_six_bats": {
+    "name": "The Rogue's Quiet Six",
+    "target_enemy": "giant_bat",
+    "needed": 6,
+    "reward_gold": 300,
+    "cleanse_required": 2,
+    "requires_class": [
+      "rogue"
+    ],
+    "reward_marks": [
+      "gullet_did_not_take_what_was_yours"
+    ],
+    "flavor": "Six bats, and not one of them sees you before you take it. Only a rogue moves through the gullet that quietly."
+  },
+  "after_atrel_peace_in_the_gullet": {
+    "name": "After Atrél's Peace, the Gullet Remembers",
+    "target_enemy": "maw_mother",
+    "needed": 1,
+    "reward_gold": 600,
+    "cleanse_required": 2,
+    "requires_ending": [
+      "atrel_peace"
+    ],
+    "reward_marks": [
+      "gullet_mawmother_braced_for_you"
+    ],
+    "reward_chronicle_line": "After they had once made Atrél's Peace, the Gullet's Maw-Mother knew them on sight, and braced. They took her anyway.",
+    "flavor": "Across runs, Atrél's Peace marks you. The Maw-Mother knows you from before the peace. She braces, this time. End her anyway."
   }
 }
