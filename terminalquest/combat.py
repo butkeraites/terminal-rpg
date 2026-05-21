@@ -111,6 +111,10 @@ def _track_quest_kill(state, enemy):
     Quests with ``target_trophy`` instead of ``target_enemy`` are handled
     by ``_track_quest_trophy`` from inside ``_maybe_drop_trophy`` — see
     Phase-1 Batch-2 in docs/QUESTS.md.
+
+    Quests with ``completion_condition`` (Phase-1 Batch-6) are handled by
+    ``_track_quest_condition``, which is called from _grant_rewards after
+    this function.
     """
     target = getattr(enemy, "enemy_id", None)
     if target is None:
@@ -122,11 +126,73 @@ def _track_quest_kill(state, enemy):
     quests = state.content.quests
     for quest_id in active:
         quest = quests.get(quest_id)
-        if quest and quest.get("target_enemy") == target:
+        if not quest:
+            continue
+        # A quest with a completion_condition is handled by
+        # _track_quest_condition; skip here so we don't double-tick.
+        if quest.get("completion_condition"):
+            continue
+        if quest.get("target_enemy") == target:
             progress[quest_id] = progress.get(quest_id, 0) + 1
             if progress[quest_id] == quest["needed"]:
                 state.io.show(f"\n📜 {quest['name']} — complete. "
                               f"Return to the Quest Board to claim your reward.")
+
+
+def _init_combat_conditions(state):
+    """Reset the per-fight condition tracker before run_combat starts.
+
+    Phase-1 Batch-6: Conditional Combat quests (docs/QUESTS.md) declare a
+    ``completion_condition`` keyed by one of the entries in
+    ``content.VALID_COMPLETION_CONDITIONS``. Each condition's truth at
+    the *end of combat* is the gate. The infrastructure starts every
+    known condition at True and the in-combat hooks flip them to False
+    when violated. Conditions not yet implemented stay False so quests
+    using them remain unfillable (the design intent: ship predicates as
+    we ship the conditions they describe).
+    """
+    # IMPLEMENTED in Batch-6: these three start at True and can be flipped.
+    # Future batches will add more predicates. Conditions absent from this
+    # dict default to False from .get() — quests gated on unimplemented
+    # conditions are uncompletable, which is correct.
+    state.flags["combat_conditions"] = {
+        "no_stun_during_fight": True,
+        "no_hireling_death": True,
+        "killed_in_one_round": True,
+    }
+    state.flags["_combat_round"] = 1
+
+
+def _track_quest_condition(state, enemy):
+    """Tick conditional-combat quests whose ``completion_condition`` held this fight.
+
+    Pairs with ``_track_quest_kill``: a quest with both ``target_enemy``
+    AND ``completion_condition`` requires both to be satisfied; a quest
+    with only ``completion_condition`` ticks on any victory where the
+    condition is true. ``target_trophy`` + ``completion_condition`` is
+    not yet supported — only enemy-kill conditional quests in this batch.
+    """
+    target = getattr(enemy, "enemy_id", None)
+    active = state.flags.get("active_quests", [])
+    progress = state.flags.setdefault("quest_progress", {})
+    conditions = state.flags.get("combat_conditions") or {}
+    quests = state.content.quests
+    for quest_id in active:
+        quest = quests.get(quest_id)
+        if not quest:
+            continue
+        cc = quest.get("completion_condition")
+        if not cc:
+            continue
+        if not conditions.get(cc):
+            continue
+        te = quest.get("target_enemy")
+        if te is not None and te != target:
+            continue
+        progress[quest_id] = progress.get(quest_id, 0) + 1
+        if progress[quest_id] == quest["needed"]:
+            state.io.show(f"\n📜 {quest['name']} — complete. "
+                          f"Return to the Quest Board to claim your reward.")
 
 
 def _consumable_label(name):
@@ -652,6 +718,10 @@ def run_combat(state, enemy, *, refresh_after=True):
     Combat-only status effects are cleared on exit. Stamina is restored to
     full unless ``refresh_after=False`` — used by chained encounters where
     the player has no rest between sub-fights.
+
+    Phase-1 Batch-6: at the start of the fight, ``_init_combat_conditions``
+    resets the per-fight tracker; conditional-combat quests read it after
+    ``_grant_rewards`` via ``_track_quest_condition``.
     """
     player, content, io, rng = state.player, state.content, state.io, state.rng
     article = "" if enemy.unique else "A "
@@ -659,8 +729,14 @@ def run_combat(state, enemy, *, refresh_after=True):
     if enemy.flavor:
         io.show_slow(enemy.flavor)
 
+    _init_combat_conditions(state)
     outcome = None
     while outcome is None:
+        # Round counter for the 'killed_in_one_round' condition. We tick
+        # at the top of each iteration; round 2 means we've already had
+        # a full round 1 without finishing the enemy.
+        if state.flags.get("_combat_round", 1) >= 2:
+            state.flags["combat_conditions"]["killed_in_one_round"] = False
         io.show(f"\n{player.name}: {player.hp}/{player.max_hp} HP | "
                 f"⚡{player.stamina}/{player.max_stamina} | "
                 f"⚔️{player.attack} 🛡️{player.defense}")
@@ -672,6 +748,9 @@ def run_combat(state, enemy, *, refresh_after=True):
 
         # --- player turn ---
         stunned = status.has_status(player, "stun")
+        if stunned:
+            # Phase-1 Batch-6: player got stunned at any point — condition fails.
+            state.flags["combat_conditions"]["no_stun_during_fight"] = False
         if not _resolve_start_of_turn(player, io):
             outcome = "defeat"
             break
@@ -713,9 +792,25 @@ def run_combat(state, enemy, *, refresh_after=True):
         if not player.is_alive():
             outcome = "defeat"
             break
+        # Round complete — increment counter for the killed_in_one_round
+        # condition.
+        state.flags["_combat_round"] = state.flags.get("_combat_round", 1) + 1
+
+    # Phase-1 Batch-6: detect hireling death BEFORE the quest engine reads
+    # conditions. A hireling that fell this fight violates no_hireling_death,
+    # so a quest gated on that condition must NOT tick.
+    hireling_died = (player.hireling is not None
+                     and not player.hireling.is_alive())
+    if hireling_died:
+        state.flags.setdefault("combat_conditions", {})[
+            "no_hireling_death"] = False
 
     if outcome == "victory":
         _grant_rewards(state, enemy)
+        # Phase-1 Batch-6: tick conditional-combat quests after the kill is
+        # recorded. _track_quest_kill (inside _grant_rewards) skips quests
+        # with completion_condition so we don't double-tick here.
+        _track_quest_condition(state, enemy)
         # v1.51 — clean wins are a fire site. The kingdom marks survivors.
         marks.roll_at(state, "combat_victory")
         # v1.51 — survived a close call (limped through under 30% HP).
@@ -725,7 +820,7 @@ def run_combat(state, enemy, *, refresh_after=True):
 
     # Hireling cleanup: if they died this fight, drop them from the player
     # and flag the state so future random encounters can spawn the Forsaken.
-    if player.hireling is not None and not player.hireling.is_alive():
+    if hireling_died:
         state.flags["fallen_hireling"] = player.hireling.to_dict()
         player.hireling = None
 

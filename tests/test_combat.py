@@ -383,3 +383,101 @@ def test_pall_drinker_restores_full_stamina(content):
     assert warrior.hp == warrior.max_hp  # huge heal caps at max
     assert warrior.stamina == warrior.max_stamina
     assert "Pall-Drinker" not in warrior.consumables
+
+
+# --- Phase-1 Batch-6: completion conditions -------------------------------
+#
+# Conditional Combat quests use a completion_condition keyed by one of the
+# entries in content.VALID_COMPLETION_CONDITIONS. The condition's value at
+# end of combat is consulted in _track_quest_condition. Batch-6 ships three
+# predicates: no_stun_during_fight, no_hireling_death, killed_in_one_round.
+# More predicates land in subsequent batches.
+
+def test_init_combat_conditions_starts_all_true(content):
+    """Per-fight condition tracker starts every implemented predicate True."""
+    warrior = _player(content)
+    state = make_state(warrior, content, ScriptedIO(), StubRandom())
+    combat._init_combat_conditions(state)
+    cc = state.flags["combat_conditions"]
+    assert cc["no_stun_during_fight"] is True
+    assert cc["no_hireling_death"] is True
+    assert cc["killed_in_one_round"] is True
+    assert state.flags["_combat_round"] == 1
+
+
+def test_conditional_quest_ticks_on_clean_one_round_kill(content):
+    """A quest with completion_condition='killed_in_one_round' ticks on a quick kill."""
+    content.quests["one_round_q"] = {
+        "name": "One-Round Wonder",
+        "target_enemy": "wolf",
+        "completion_condition": "killed_in_one_round",
+        "needed": 1,
+        "reward_gold": 50,
+        "cleanse_required": 0,
+        "flavor": "Take a wolf in one round.",
+    }
+    warrior = _player(content)
+    warrior.attack = 1000  # one-shot
+    state = make_state(warrior, content, ScriptedIO(["1"]), StubRandom())
+    state.flags["active_quests"] = ["one_round_q"]
+    combat.run_combat(state, make_enemy("wolf", content))
+    assert state.flags["quest_progress"]["one_round_q"] == 1
+
+
+def test_conditional_quest_combined_with_target_enemy(content):
+    """A quest with both target_enemy and completion_condition needs both true."""
+    content.quests["clean_wolf_q"] = {
+        "name": "Clean Wolf Take",
+        "target_enemy": "wolf",
+        "completion_condition": "killed_in_one_round",
+        "needed": 1,
+        "reward_gold": 50,
+        "cleanse_required": 0,
+        "flavor": "Wolf, one round.",
+    }
+    warrior = _player(content)
+    warrior.attack = 1000
+    # Wrong target (goblin) — should not tick even if condition holds.
+    state = make_state(warrior, content, ScriptedIO(["1"]), StubRandom())
+    state.flags["active_quests"] = ["clean_wolf_q"]
+    combat.run_combat(state, make_enemy("goblin", content))
+    assert state.flags["quest_progress"].get("clean_wolf_q", 0) == 0
+
+
+def test_conditional_quest_without_target_enemy_ticks_on_any_kill(content):
+    """A pure-condition quest (no target_enemy) ticks on any qualifying kill."""
+    content.quests["any_one_round_q"] = {
+        "name": "Any Quick Kill",
+        "completion_condition": "killed_in_one_round",
+        "needed": 1,
+        "reward_gold": 50,
+        "cleanse_required": 0,
+        "flavor": "Anything, one round.",
+    }
+    warrior = _player(content)
+    warrior.attack = 1000
+    state = make_state(warrior, content, ScriptedIO(["1"]), StubRandom())
+    state.flags["active_quests"] = ["any_one_round_q"]
+    combat.run_combat(state, make_enemy("goblin", content))
+    assert state.flags["quest_progress"]["any_one_round_q"] == 1
+
+
+def test_track_quest_kill_skips_quests_with_completion_condition(content):
+    """A quest with both target_enemy and completion_condition doesn't double-tick."""
+    content.quests["dual_q"] = {
+        "name": "Dual Mode",
+        "target_enemy": "wolf",
+        "completion_condition": "killed_in_one_round",
+        "needed": 2,  # Need 2 — single kill should only tick once.
+        "reward_gold": 50,
+        "cleanse_required": 0,
+        "flavor": "Test no double-tick.",
+    }
+    warrior = _player(content)
+    warrior.attack = 1000
+    state = make_state(warrior, content, ScriptedIO(["1"]), StubRandom())
+    state.flags["active_quests"] = ["dual_q"]
+    combat.run_combat(state, make_enemy("wolf", content))
+    # Only +1 (from _track_quest_condition), not +2 (would mean both
+    # _track_quest_kill AND _track_quest_condition ticked).
+    assert state.flags["quest_progress"]["dual_q"] == 1
