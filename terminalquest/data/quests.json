@@ -9551,5 +9551,320 @@
     "cleanse_required": 0,
     "requires_mark": "weapon_handle_smoothed_to_your_thumb",
     "flavor": "Your weapon's handle smoothed to your thumb. Three bandits on the road had been counting on the splinters. End them."
+  },
+  "dd_blank_page_yours": {
+    "name": "After a Blank Page Was Meant for You",
+    "target_enemy": "library_warden",
+    "needed": 1,
+    "reward_gold": 800,
+    "cleanse_required": 3,
+    "requires_mark": "discovery_a_blank_page_was_meant_for_you_to_write",
+    "flavor": "A blank page in the Burned Library was meant for you to write on. A library-warden wanted to use it himself. End him."
+  },
+  "dd_clerks_doodle": {
+    "name": "After a Clerk's Doodle Was Your Face",
+    "target_enemy": "library_warden",
+    "needed": 1,
+    "reward_gold": 700,
+    "cleanse_required": 3,
+    "requires_mark": "discovery_a_clerks_doodle_was_your_face",
+    "flavor": "A clerk's doodle in the margin was your face. A library-warden had been considering tearing the margin. End him."
+  },
+  "dd_diagram_changed": {
+    "name": "After a Diagram Changed Position",
+    "target_enemy": "reliquary_golem",
+    "needed": 1,
+    "reward_gold": 1100,
+    "cleanse_required": 4,
+    "requires_mark": "discovery_a_diagram_changed_position_on_the_page",
+    "flavor": "A diagram changed position on the page when you weren't looking. A reliquary golem in the Choir had been the diagram's keeper. End it."
+  },
+  "dd_glyph_chapter": {
+    "name": "After a Glyph Appeared at the Chapter Break",
+    "target_enemy": "library_warden",
+    "needed": 1,
+    "reward_gold": 700,
+    "cleanse_required": 3,
+    "requires_mark": "discovery_a_glyph_appeared_at_the_chapter_break",
+    "flavor": "A glyph appeared at a chapter break when you turned the page. A library-warden had been keeping the chapters seamless. End him."
+  },
+  "dd_page_torn_safety": {
+    "name": "After a Page Was Torn Out for Safety",
+    "target_enemy": "library_warden",
+    "needed": 1,
+    "reward_gold": 800,
+    "cleanse_required": 3,
+    "requires_mark": "discovery_a_page_had_been_torn_out_for_safety",
+    "flavor": "A page had been torn out for safety — yours. A library-warden had noticed the gap. End him. The page stays out."
+  },
+  "dd_page_rearranged": {
+    "name": "After a Page Rearranged Under Your Eye",
+    "target_enemy": "censer_shade",
+    "needed": 2,
+    "reward_gold": 600,
+    "cleanse_required": 4,
+    "requires_mark": "discovery_a_page_re_arranged_under_your_eye",
+    "flavor": "A page rearranged its paragraphs under your eye. Two censer-shades had been the rearrangers. End them."
+  },
+  "dd_page_smelled_kitchen": {
+    "name": "After a Page Smelled of a Kitchen",
+    "target_enemy": "library_warden",
+    "needed": 1,
+    "reward_gold": 600,
+    "cleanse_required": 3,
+    "requires_mark": "discovery_a_page_smelled_of_a_kitchen",
+    "flavor": "A page in the Burned Library smelled of a kitchen — a particular one. A library-warden noticed the warming smell. End him."
+  },
+  "dd_paragraph_letter": {
+    "name": "After a Paragraph Was a Letter to You",
+    "target_enemy": "library_warden",
+    "needed": 1,
+    "reward_gold": 900,
+    "cleanse_required": 3,
+    "requires_mark": "discovery_a_paragraph_was_a_letter_to_you",
+    "flavor": "A paragraph in a book turned out to be a letter to you. A library-warden had been holding the letter. End him.",
+    "reward_chronicle_line": "A paragraph had been a letter; the library-warden who had been holding it back fell to the climber's hand."
+  },
+  "dd_paragraph_old_tongue": {
+    "name": "After a Paragraph Was in the Old Tongue",
+    "target_enemy": "shrine_keeper",
+    "needed": 1,
+    "reward_gold": 1100,
+    "cleanse_required": 4,
+    "requires_mark": "discovery_a_paragraph_was_in_the_old_tongue",
+    "flavor": "A paragraph in the Pre-Pall Shrine's text was in the old tongue. The Shrine Keeper had been keeping the tongue dead. End him."
+  },
+  "dd_pressed_flower": {
+    "name": "After a Pressed Flower Fell Out",
+    "target_enemy": "bandit",
+    "needed": 2,
+    "reward_gold": 350,
+    "cleanse_required": 0,
+    "requires_mark": "discovery_a_pressed_flower_fell_out",
+    "flavor": "A pressed flower fell out of a book at Gravewatch. Two bandits had noticed the petals. End them. The flower goes back in."
+  },
+  "dd_lost_friend": {
+    "name": "After You Lost a Friend Who Did Not Come",
+    "target_enemy": "hollow_procession",
+    "needed": 1,
+    "reward_gold": 600,
+    "cleanse_required": 3,
+    "requires_mark": "lost_a_friend_who_did_not_come_to_meet_you",
+    "flavor": "A friend did not come to meet you once. One of the procession had been keeping the friend back. End it. The friend will come next time."
+  },
+  "dd_lost_small_song": {
+    "name": "After You Lost a Small Song",
+    "target_enemy": "censer_shade",
+    "needed": 2,
+    "reward_gold": 600,
+    "cleanse_required": 4,
+    "requires_mark": "lost_a_small_song",
+    "flavor": "You lost a small song you knew. Two censer-shades had been carrying it as smoke. End them. The song comes back, slowly."
+  },
+  "dd_lost_taste_food": {
+    "name": "After You Lost the Taste for a Food",
+    "target_enemy": "bandit",
+    "needed": 2,
+    "reward_gold": 400,
+    "cleanse_required": 0,
+    "requires_mark": "lost_a_taste_for_a_food_you_liked",
+    "flavor": "You lost the taste for a food you used to love. Two bandits on the road had noticed the smaller portions. End them."
+  },
+  "dd_lost_year": {
+    "name": "After You Lost One Full Year of Yourself",
+    "target_enemy": "shadow_warden",
+    "needed": 1,
+    "reward_gold": 2200,
+    "cleanse_required": 5,
+    "requires_mark": "lost_one_full_year_of_yourself",
+    "flavor": "You lost one full year of yourself across runs. The Shadow Warden knows the year. End him. The year comes back, mostly.",
+    "reward_chronicle_line": "A climber had lost a full year of herself; the Shadow Warden ended for the keeping of it."
+  },
+  "dd_lost_face_friend": {
+    "name": "After You Lost the Face of a Friend",
+    "target_enemy": "bonesong",
+    "needed": 1,
+    "reward_gold": 600,
+    "cleanse_required": 1,
+    "requires_mark": "lost_the_face_of_the_friend_who_loved_you_most",
+    "flavor": "You lost the face of the friend who loved you most. A bonesong in the Holds had absorbed the face. End it."
+  },
+  "dd_lost_mothers_bread": {
+    "name": "After You Lost the Taste of Your Mother's Bread",
+    "target_enemy": "drowned_thresher",
+    "needed": 2,
+    "reward_gold": 500,
+    "cleanse_required": 1,
+    "requires_mark": "lost_the_taste_of_your_mothers_bread",
+    "flavor": "You lost the taste of your mother's bread. Two threshers in the Reach had been the bread's flour. End them."
+  },
+  "nd_chose_keep_going": {
+    "name": "After You Chose to Keep Going",
+    "target_enemy": "ashen_penitent",
+    "needed": 1,
+    "reward_gold": 1300,
+    "cleanse_required": 5,
+    "requires_mark": "near_death_chose_to_keep_going",
+    "flavor": "Once you chose to keep going at near-death. A Penitent above the snow-line had wanted the choosing to be otherwise. End him."
+  },
+  "nd_dropped_word": {
+    "name": "After Near-Death Dropped a Word",
+    "target_enemy": "bonesong",
+    "needed": 1,
+    "reward_gold": 500,
+    "cleanse_required": 1,
+    "requires_mark": "near_death_dropped_a_word",
+    "flavor": "Near-death dropped a word from you. A bonesong in the Holds had been the catching basket. End it. The word returns."
+  },
+  "nd_pall_breathed": {
+    "name": "After You Heard the Pall Breathe at Near-Death",
+    "target_enemy": "shadow_warden",
+    "needed": 1,
+    "reward_gold": 2300,
+    "cleanse_required": 5,
+    "requires_mark": "near_death_heard_the_pall_breathe",
+    "flavor": "Near-death let you hear the Pall breathe. The Shadow Warden was the exhalation. End him.",
+    "reward_marks": [
+      "summit_pall_paused_for_you"
+    ]
+  },
+  "nd_kept_quiet": {
+    "name": "After Near-Death Kept You Quiet",
+    "target_enemy": "censer_shade",
+    "needed": 3,
+    "reward_gold": 700,
+    "cleanse_required": 4,
+    "requires_mark": "near_death_kept_yourself_quiet",
+    "flavor": "Near-death kept you quiet for a count. Three censer-shades had tried to make you cry out. End them."
+  },
+  "nd_saw_grandmother": {
+    "name": "After You Saw Your Grandmother",
+    "target_enemy": "hollow_procession",
+    "needed": 1,
+    "reward_gold": 700,
+    "cleanse_required": 3,
+    "requires_mark": "near_death_saw_your_grandmother",
+    "flavor": "Near-death let you see your grandmother for one count. One of the procession had been keeping her. End it.",
+    "reward_chronicle_line": "A climber had seen their grandmother at near-death; the procession-keeper fell to the seeing."
+  },
+  "vl_bell_for_living": {
+    "name": "After a Bell Was Rung for a Living One",
+    "target_enemy": "hollow_bellward",
+    "needed": 1,
+    "reward_gold": 1300,
+    "cleanse_required": 3,
+    "requires_mark": "village_a_bell_was_rung_for_a_living_one",
+    "flavor": "A bell at Gravewatch was rung for a living one — for you. The Hollow Bellward in Mourncross heard the wrong bell. End her."
+  },
+  "vl_child_asked_name": {
+    "name": "After a Child Asked Your Name",
+    "target_enemy": "bandit",
+    "needed": 2,
+    "reward_gold": 300,
+    "cleanse_required": 0,
+    "requires_mark": "village_a_child_asked_your_name",
+    "flavor": "A child at Gravewatch asked your name. Two bandits on the road had wanted the child not to ask. End them."
+  },
+  "vl_dead_friend_window": {
+    "name": "After a Dead Friend Was at the Window",
+    "target_enemy": "hollow_procession",
+    "needed": 1,
+    "reward_gold": 800,
+    "cleanse_required": 3,
+    "requires_mark": "village_a_dead_friend_was_at_the_window",
+    "flavor": "A dead friend was at the Gravewatch window for one count. One of the procession had been the friend's keeper. End it."
+  },
+  "vl_gravedigger_nod": {
+    "name": "After a Gravedigger Nodded at You",
+    "target_enemy": "bandit",
+    "needed": 2,
+    "reward_gold": 350,
+    "cleanse_required": 0,
+    "requires_mark": "village_a_gravedigger_nodded_at_you",
+    "flavor": "A gravedigger at Gravewatch nodded at you. Two bandits had been watching the gravedigger's eyes. End them."
+  },
+  "vl_widow_pebble": {
+    "name": "After a Widow Pressed a Pebble Into Your Hand",
+    "target_enemy": "pall_magistrate",
+    "needed": 1,
+    "reward_gold": 700,
+    "cleanse_required": 3,
+    "requires_mark": "village_a_widow_pressed_a_pebble_into_your_hand",
+    "flavor": "A widow pressed a pebble into your hand at Gravewatch. A magistrate in Mourncross had been waiting for the giving. End him."
+  },
+  "ln_carry_kingdom": {
+    "name": "After You Learned to Carry the Kingdom",
+    "target_enemy": "shadow_warden",
+    "needed": 1,
+    "reward_gold": 2400,
+    "cleanse_required": 5,
+    "requires_mark": "learned_to_carry_the_kingdom",
+    "flavor": "You learned to carry the kingdom. The Shadow Warden tests the carry. End him.",
+    "reward_marks": [
+      "summit_warden_old_step_remembered_you"
+    ]
+  },
+  "ln_carry_two_griefs": {
+    "name": "After You Learned to Carry Two Griefs at Once",
+    "target_enemy": "censer_shade",
+    "needed": 3,
+    "reward_gold": 800,
+    "cleanse_required": 4,
+    "requires_mark": "learned_to_carry_two_griefs_at_once",
+    "flavor": "You learned to carry two griefs at once. Three censer-shades had hoped the carrying drop one. End them."
+  },
+  "ln_count_pause": {
+    "name": "After You Learned to Count the Pause Between Blows",
+    "target_enemy": "ashen_penitent",
+    "needed": 1,
+    "reward_gold": 1200,
+    "cleanse_required": 4,
+    "requires_mark": "learned_to_count_the_pause_between_blows",
+    "flavor": "You learned to count the pause between blows. A Penitent above the snowline had counted differently. End him in the right pause."
+  },
+  "ln_pity_enemy": {
+    "name": "After You Learned to Pity an Enemy Without Letting Them Live",
+    "target_enemy": "bandit",
+    "needed": 4,
+    "reward_gold": 600,
+    "cleanse_required": 1,
+    "requires_mark": "learned_to_pity_an_enemy_without_letting_them_live",
+    "flavor": "You learned to pity without letting live. Four bandits on the road tested the pity. End them. The pity holds."
+  },
+  "am_dent_overnight": {
+    "name": "After Your Armor Got a Dent Overnight",
+    "target_enemy": "bog_lurcher",
+    "needed": 2,
+    "reward_gold": 600,
+    "cleanse_required": 2,
+    "requires_mark": "armor_a_dent_appeared_overnight",
+    "flavor": "A dent appeared in your armor overnight. Two bog-lurchers in the Reach had been the night-strikers. End them."
+  },
+  "am_strap_loose_good": {
+    "name": "After a Strap Came Loose at a Good Moment",
+    "target_enemy": "wolf",
+    "needed": 3,
+    "reward_gold": 400,
+    "cleanse_required": 0,
+    "requires_mark": "armor_a_strap_came_loose_at_a_good_moment",
+    "flavor": "An armor strap came loose at a good moment. Three wolves had counted on the tighter armor. End them."
+  },
+  "am_buckle_widow_eye": {
+    "name": "After a Buckle Caught a Widow's Eye",
+    "target_enemy": "pall_magistrate",
+    "needed": 1,
+    "reward_gold": 700,
+    "cleanse_required": 3,
+    "requires_mark": "armor_buckle_caught_a_widows_eye",
+    "flavor": "Your armor buckle caught a widow's eye in Mourncross. A magistrate noted the catching. End him."
+  },
+  "am_warm_in_cold": {
+    "name": "After Your Armor Kept You Warm in a Cold Zone",
+    "target_enemy": "ice_wraith",
+    "needed": 3,
+    "reward_gold": 700,
+    "cleanse_required": 4,
+    "requires_mark": "armor_kept_you_warm_in_a_cold_zone",
+    "flavor": "Your armor kept you warm in a cold zone. Three ice-wraiths had hoped the cold reach you. End them."
   }
 }
