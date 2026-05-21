@@ -10352,5 +10352,329 @@
     "cleanse_required": 5,
     "requires_mark": "ending_warden_the_chronicle_kept_a_line_open_for_warden",
     "flavor": "The Chronicle still kept a line open. The new Warden read the line a second time. End him."
+  },
+  "yo_breathed_grey": {
+    "name": "After You Breathed in Grey Too Deep",
+    "target_enemy": "censer_shade",
+    "needed": 3,
+    "reward_gold": 700,
+    "cleanse_required": 4,
+    "requires_mark": "you_breathed_in_grey_too_deep",
+    "flavor": "You breathed in grey too deep once. Three censer-shades knew the grey. End them."
+  },
+  "yo_thread_drawing": {
+    "name": "After You Carry the Small One's Drawing",
+    "target_enemy": "wolf",
+    "needed": 2,
+    "reward_gold": 350,
+    "cleanse_required": 0,
+    "requires_mark": "you_carry_a_thread_of_the_small_uns_drawing",
+    "flavor": "You carry a thread of the Small One's drawing. Two wolves of the wood smelled the paper. End them."
+  },
+  "yo_defended": {
+    "name": "After You Defended When You Should Have Swung",
+    "target_enemy": "ashen_penitent",
+    "needed": 1,
+    "reward_gold": 1100,
+    "cleanse_required": 4,
+    "requires_mark": "you_defended_when_you_should_have_swung",
+    "flavor": "You defended when you should have swung. A Penitent above the snowline was ready for the swing. End him."
+  },
+  "yo_not_sleep": {
+    "name": "After You Did Not Sleep After a Fight",
+    "target_enemy": "wolf",
+    "needed": 4,
+    "reward_gold": 500,
+    "cleanse_required": 0,
+    "requires_mark": "you_did_not_sleep_after",
+    "flavor": "You did not sleep after a fight. Four wolves of the wood had been waiting for the sleep. End them."
+  },
+  "yo_steady_hand": {
+    "name": "After You Finished With a Steady Hand",
+    "target_enemy": "bandit",
+    "needed": 3,
+    "reward_gold": 400,
+    "cleanse_required": 0,
+    "requires_mark": "you_finished_a_fight_with_a_steady_hand",
+    "flavor": "You finished a fight with a steady hand. Three bandits had counted on a shake. End them."
+  },
+  "yo_forgot_lamp": {
+    "name": "After You Forgot the Word for Lamp",
+    "target_enemy": "library_warden",
+    "needed": 1,
+    "reward_gold": 700,
+    "cleanse_required": 3,
+    "requires_mark": "you_forgot_the_word_for_lamp",
+    "flavor": "You forgot the word for lamp. A library-warden held the word. End him."
+  },
+  "yo_heard_kess": {
+    "name": "After You Heard Cael Say Kess",
+    "target_enemy": "shrine_keeper",
+    "needed": 1,
+    "reward_gold": 1100,
+    "cleanse_required": 4,
+    "requires_mark": "you_heard_cael_say_kess",
+    "flavor": "Cael said 'kess' for you. The Pre-Pall Shrine Keeper had wanted the word un-said. End him."
+  },
+  "yo_held_breath": {
+    "name": "After You Held Your Breath Too Long",
+    "target_enemy": "ice_wraith",
+    "needed": 3,
+    "reward_gold": 800,
+    "cleanse_required": 4,
+    "requires_mark": "you_held_your_breath_too_long",
+    "flavor": "You held your breath too long once. Three ice-wraiths had been counting. End them."
+  },
+  "th_bell_no_finds": {
+    "name": "After the Bell No Longer Finds You",
+    "target_enemy": "hollow_bellward",
+    "needed": 1,
+    "reward_gold": 1400,
+    "cleanse_required": 3,
+    "requires_mark": "the_bell_no_longer_finds_you",
+    "flavor": "The bell of Mourncross no longer finds you. The Hollow Bellward keeps trying. End her."
+  },
+  "th_cat_closer": {
+    "name": "After the Cat Sits Closer",
+    "target_enemy": "wolf",
+    "needed": 2,
+    "reward_gold": 300,
+    "cleanse_required": 0,
+    "requires_mark": "the_cat_now_sits_closer",
+    "flavor": "The hearth-cat sits closer to you now. Two wolves of the wood had been the previous closeness. End them."
+  },
+  "th_chronicle_keeper": {
+    "name": "After the Chronicle Made You Its Keeper",
+    "target_enemy": "shadow_warden",
+    "needed": 1,
+    "reward_gold": 2400,
+    "cleanse_required": 5,
+    "requires_mark": "the_chronicle_made_you_its_keeper",
+    "flavor": "The Chronicle made you its keeper. The Shadow Warden tests the keeping. End him."
+  },
+  "th_fire_warmer": {
+    "name": "After the Fire Was Warmer for You",
+    "target_enemy": "ice_wraith",
+    "needed": 3,
+    "reward_gold": 700,
+    "cleanse_required": 4,
+    "requires_mark": "the_fire_was_warmer_for_you",
+    "flavor": "The fire at Gravewatch was warmer for you. Three ice-wraiths had counted on cold hearth. End them."
+  },
+  "th_lowered_eyes": {
+    "name": "After Someone Lowered Their Eyes at You",
+    "target_enemy": "bandit",
+    "needed": 2,
+    "reward_gold": 400,
+    "cleanse_required": 0,
+    "requires_mark": "the_first_time_someone_lowered_their_eyes_at_you",
+    "flavor": "Someone lowered their eyes at you for the first time. Two bandits had not. End them."
+  },
+  "th_hireling_meal": {
+    "name": "After the Hireling Kept a Meal for the Companion",
+    "target_enemy": "drowned_thresher",
+    "needed": 2,
+    "reward_gold": 500,
+    "cleanse_required": 1,
+    "requires_mark": "the_hireling_kept_a_meal_for_your_companion",
+    "flavor": "The hireling kept a meal for the companion. Two threshers in the Reach had been the missed catch. End them."
+  },
+  "th_innkeeper_first_name": {
+    "name": "After the Innkeeper Called You by Your First Name",
+    "target_enemy": "bandit",
+    "needed": 3,
+    "reward_gold": 400,
+    "cleanse_required": 0,
+    "requires_mark": "the_innkeeper_called_you_by_your_first_name",
+    "flavor": "The innkeeper called you by your first name. Three bandits had wanted you anonymous. End them."
+  },
+  "a_door_remembered": {
+    "name": "After a Door Remembered You",
+    "target_enemy": "doorshut",
+    "needed": 2,
+    "reward_gold": 500,
+    "cleanse_required": 1,
+    "requires_mark": "a_door_you_passed_remembered_you",
+    "flavor": "A door you passed remembered you. Two doorshuts in the Holds had hoped to close on the memory. End them."
+  },
+  "a_first_scar": {
+    "name": "After a First Scar Settled In",
+    "target_enemy": "wolf",
+    "needed": 2,
+    "reward_gold": 350,
+    "cleanse_required": 0,
+    "requires_mark": "a_first_scar_settled_into_your_skin",
+    "flavor": "A first scar settled into your skin. Two wolves of the wood had given the scar. End them."
+  },
+  "a_god_page": {
+    "name": "After a God Marked a Page About You",
+    "target_enemy": "library_warden",
+    "needed": 1,
+    "reward_gold": 1000,
+    "cleanse_required": 3,
+    "requires_mark": "a_god_marked_a_page_about_you",
+    "flavor": "A god marked a page in the Burned Library about you. A warden tried to scratch it. End him."
+  },
+  "sv_ceremonial": {
+    "name": "After Saving Felt Ceremonial",
+    "target_enemy": "censer_shade",
+    "needed": 2,
+    "reward_gold": 700,
+    "cleanse_required": 4,
+    "requires_mark": "save_the_saving_itself_felt_ceremonial",
+    "flavor": "Saving felt ceremonial once. Two censer-shades had heard the silence in it. End them."
+  },
+  "sv_no_dream": {
+    "name": "After You Did Not Dream at All",
+    "target_enemy": "wolf",
+    "needed": 3,
+    "reward_gold": 400,
+    "cleanse_required": 0,
+    "requires_mark": "save_you_did_not_dream_at_all",
+    "flavor": "You did not dream at all that night. Three wolves had been waiting in dreams. End them."
+  },
+  "sv_not_save_hurt": {
+    "name": "After You Did Not Save the Part That Hurt",
+    "target_enemy": "bonesong",
+    "needed": 1,
+    "reward_gold": 500,
+    "cleanse_required": 1,
+    "requires_mark": "save_you_did_not_save_the_part_that_hurt",
+    "flavor": "You did not save the part that hurt. A bonesong absorbed the part. End it."
+  },
+  "sv_dream_house_lived": {
+    "name": "After You Dreamt of a House You Used to Live In",
+    "target_enemy": "pall_magistrate",
+    "needed": 1,
+    "reward_gold": 700,
+    "cleanse_required": 3,
+    "requires_mark": "save_you_dreamt_of_a_house_you_used_to_live_in",
+    "flavor": "You dreamt of a house you used to live in. A magistrate had judged the house. End him."
+  },
+  "sv_dream_atrels_face": {
+    "name": "After You Dreamt of Atrél's First Face",
+    "target_enemy": "choirmaster_effigy",
+    "needed": 1,
+    "reward_gold": 800,
+    "cleanse_required": 4,
+    "requires_mark": "save_you_dreamt_of_atrels_first_face",
+    "flavor": "You dreamt of Atrél's first face. An effigy held the second. End it."
+  },
+  "sv_kingdom_breathing": {
+    "name": "After You Dreamt of the Kingdom Breathing",
+    "target_enemy": "shadow_warden",
+    "needed": 1,
+    "reward_gold": 2200,
+    "cleanse_required": 5,
+    "requires_mark": "save_you_dreamt_of_the_kingdom_breathing",
+    "flavor": "You dreamt of the kingdom breathing. The Shadow Warden was the held breath. End him."
+  },
+  "sv_dream_child_might": {
+    "name": "After You Dreamt of a Child You Might Have Had",
+    "target_enemy": "hollow_procession",
+    "needed": 1,
+    "reward_gold": 700,
+    "cleanse_required": 3,
+    "requires_mark": "save_you_dreamt_of_a_child_you_might_have_had",
+    "flavor": "You dreamt of a child you might have had. One of the procession knew the child's name. End it."
+  },
+  "sv_companion_first_watch": {
+    "name": "After the Companion Kept First Watch at the Save",
+    "target_enemy": "bandit",
+    "needed": 2,
+    "reward_gold": 350,
+    "cleanse_required": 0,
+    "requires_mark": "save_a_companion_kept_first_watch",
+    "flavor": "The companion kept first watch at the save place. Two bandits had hoped to test the watch. End them."
+  },
+  "ft_breath_steam_pall": {
+    "name": "After Breath Steamed the Pall Easier",
+    "target_enemy": "ice_wraith",
+    "needed": 4,
+    "reward_gold": 800,
+    "cleanse_required": 4,
+    "requires_mark": "ending_warden_your_breath_steamed_the_pall_air_easier",
+    "flavor": "Your breath steamed the Pall easier across runs. Four ice-wraiths above the snowline took offense. End them."
+  },
+  "ft_understood_role": {
+    "name": "After You Understood the Role Was Waiting",
+    "target_enemy": "shadow_warden",
+    "needed": 1,
+    "reward_gold": 2400,
+    "cleanse_required": 5,
+    "requires_mark": "ending_warden_you_understood_the_role_was_waiting",
+    "flavor": "Across runs, you understood the keeper-role was waiting. The new Warden didn't. End him."
+  },
+  "ft_lampkeeper_warden_ii": {
+    "name": "After the Lampkeeper Called You Warden III",
+    "target_enemy": "shadow_warden",
+    "needed": 1,
+    "reward_gold": 2300,
+    "cleanse_required": 5,
+    "requires_mark": "ending_warden_a_lampkeeper_called_you_warden",
+    "flavor": "A Lampkeeper called you Warden a third time. The new Warden could not be called the same. End him."
+  },
+  "ft_keeper_song_complete": {
+    "name": "After the Keeper-Song Was Complete",
+    "target_enemy": "ashen_penitent",
+    "needed": 1,
+    "reward_gold": 1500,
+    "cleanse_required": 5,
+    "requires_mark": "ending_warden_a_keeper_song_started_to_form_in_you",
+    "flavor": "The keeper-song completed. A Penitent above the snowline hummed it last. End him."
+  },
+  "ft_chronicle_line_filled": {
+    "name": "After You Filled the Chronicle's Warden Line",
+    "target_enemy": "shadow_warden",
+    "needed": 1,
+    "reward_gold": 2500,
+    "cleanse_required": 5,
+    "requires_mark": "ending_warden_the_chronicle_kept_a_line_open_for_warden",
+    "flavor": "You filled the Chronicle's open line at last. The new Warden could not read it. End him."
+  },
+  "ft_lampkeeper_road_walk": {
+    "name": "After the Lampkeeper Set a Lamp for Your Walk Back",
+    "target_enemy": "wolf",
+    "needed": 4,
+    "reward_gold": 500,
+    "cleanse_required": 0,
+    "requires_mark": "lamp2_gave_you_oil_for_the_climb",
+    "flavor": "The Lampkeeper set a lamp for your walk back. Four wolves had been the wall against return. End them."
+  },
+  "a_grave_warmed_back": {
+    "name": "After a Grave Warmed Your Back",
+    "target_enemy": "hollow_procession",
+    "needed": 1,
+    "reward_gold": 600,
+    "cleanse_required": 3,
+    "requires_mark": "a_grave_at_your_back_warmed_you",
+    "flavor": "A grave warmed your back at Mourncross. One of the procession noticed the heat. End it."
+  },
+  "a_gravewatch_grave_anon": {
+    "name": "After a Grave Was Dug for No One in Particular",
+    "target_enemy": "bandit",
+    "needed": 2,
+    "reward_gold": 400,
+    "cleanse_required": 0,
+    "requires_mark": "a_grave_in_gravewatch_was_dug_for_no_one_in_particular",
+    "flavor": "A grave at Gravewatch was dug for no one in particular. Two bandits on the road had hoped to fill it. End them."
+  },
+  "a_hollowed_no_attack": {
+    "name": "After a Hollowed Did Not Attack You Today",
+    "target_enemy": "hollow_procession",
+    "needed": 2,
+    "reward_gold": 700,
+    "cleanse_required": 3,
+    "requires_mark": "a_hollowed_did_not_attack_you_today",
+    "flavor": "A Hollowed did not attack you today. Two of the procession knew the holding back. End them."
+  },
+  "a_smaller_grief_off": {
+    "name": "After a Smaller Grief Came Off You",
+    "target_enemy": "drowned_thresher",
+    "needed": 2,
+    "reward_gold": 500,
+    "cleanse_required": 1,
+    "requires_mark": "a_smaller_grief_came_off_you",
+    "flavor": "A smaller grief came off you. Two threshers had been the grief's silt. End them."
   }
 }
