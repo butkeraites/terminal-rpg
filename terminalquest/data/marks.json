@@ -6527,5 +6527,1144 @@
       "blessing back. Soundlessly. The way the silenced bless. You stood the whole night with it.",
       "  (+3 Max HP, permanently — a blessing returned by one who was forbidden to speak.)"
     ]
+  },
+  "stag_antler_caught_your_sleeve": {
+    "category": "found",
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "location": [
+        "forest"
+      ],
+      "min_visits": 2,
+      "chance": 0.18
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "stag_antler_thread"
+    },
+    "lines": [
+      "At the end, an antler-tine caught a thread of your sleeve. You pulled away. The thread",
+      "stayed on the antler. The thread is still there. You can think of it sometimes. It",
+      "steadies you. The Pallid Stag was a deer once. The deer remembers being a deer for you.",
+      "  (+1 Defense, permanently — a thread you left in something that used to be a deer.)"
+    ]
+  },
+  "stag_breath_was_almost_grass": {
+    "category": "half_truth",
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "location": [
+        "forest"
+      ],
+      "min_visits": 2,
+      "chance": 0.15
+    },
+    "effect": {
+      "flag": "stag_grass_breath"
+    },
+    "lines": [
+      "When the Stag breathed near you, in the bad moment, the breath smelled — for one count",
+      "— of cold grass. The grass it ate when it was a fawn. You smelled it. Nobody else did.",
+      "Nobody you can ask. You are the only one who knows what the Stag was, before. That is enough."
+    ]
+  },
+  "stag_killing_blow_landed_kind": {
+    "category": "promise_kept",
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "location": [
+        "forest"
+      ],
+      "min_visits": 2,
+      "chance": 0.14
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 1,
+      "flag": "stag_kind_blow"
+    },
+    "lines": [
+      "The last blow you struck the Stag was kinder than you intended. You aimed for the",
+      "throat. Your hand turned the cut at the last moment so the breath went out clean. The",
+      "Stag thanked you with its breathing out. You will not forget the way it thanked.",
+      "  (+1 Max HP, permanently — a kindness given at the end, kept by both of you.)"
+    ]
+  },
+  "stag_taught_you_the_pause": {
+    "category": "mind",
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "location": [
+        "forest"
+      ],
+      "min_visits": 2,
+      "chance": 0.16
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "stag_pause"
+    },
+    "lines": [
+      "It telegraphed twice before the heavy. You learned to defend on the second wind-up,",
+      "not the first. Your body remembered. Your body will remember the pattern against",
+      "every telegraphed thing from now on. The Stag was a teacher. You learned. You can.",
+      "  (+1 Defense, permanently — a pause the Stag taught you in the rhythm of its grief.)"
+    ]
+  },
+  "stag_did_not_run_when_it_should_have": {
+    "category": "broken",
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "location": [
+        "forest"
+      ],
+      "min_visits": 2,
+      "chance": 0.13
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": -1,
+      "flag": "stag_chose_to_stay"
+    },
+    "lines": [
+      "Halfway through the fight there was a moment the Stag could have run. It did not. It",
+      "had decided to die there. With you. You finished it. You don't know whether that was",
+      "kindness or you. Either way, you carry the choice now. The choice has a small weight.",
+      "  (-1 Max HP, permanently — a choice you took that was not yours to take.)"
+    ]
+  },
+  "reaper_scythe_traced_your_jaw": {
+    "category": "body",
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "location": [
+        "reach"
+      ],
+      "min_visits": 2,
+      "chance": 0.18
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": -1,
+      "flag": "reaper_jaw_scar"
+    },
+    "lines": [
+      "The Reaper's scythe came across your jaw before you knew the blow had started. A line",
+      "of cold on your chin. Not a scar you can see in still water. A scar your jaw knows is",
+      "there. The Reaper drowned the fields. The Reaper has now also taken a thread of you.",
+      "  (-1 Max HP, permanently — a line traced by what drowned the kingdom.)"
+    ]
+  },
+  "reaper_blade_almost_recognized_you": {
+    "category": "half_truth",
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "location": [
+        "reach"
+      ],
+      "min_visits": 2,
+      "chance": 0.13
+    },
+    "effect": {
+      "flag": "reaper_blade_paused"
+    },
+    "lines": [
+      "Mid-swing, for one beat, the Reaper paused — looked at you — as if it had thought you",
+      "were someone else. Then it swung. The pause was real. The Reaper's grandchild, if it",
+      "had one, would have looked like you. You will not say this to anyone. You know it."
+    ]
+  },
+  "reaper_named_a_grain_for_you": {
+    "category": "promise_kept",
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "location": [
+        "reach"
+      ],
+      "min_visits": 2,
+      "chance": 0.14
+    },
+    "effect": {
+      "stat": "max_stamina",
+      "delta": 1,
+      "flag": "reaper_grain"
+    },
+    "lines": [
+      "When it fell, the Reaper said one word — the name of a grain. The first grain the",
+      "fields lost when the floodgate was shut. You did not know the name. You know it now.",
+      "You will not say it. The grain hears its name even when it is not said. It will grow again.",
+      "  (+1 Max Stamina, permanently — a grain named at the death of the one who drowned it.)"
+    ]
+  },
+  "reaper_keys_at_the_belt": {
+    "category": "found",
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "location": [
+        "reach"
+      ],
+      "min_visits": 2,
+      "chance": 0.15
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "reaper_keys"
+    },
+    "lines": [
+      "At its belt were the keys to the floodgates of the Sodden Reach. Rust-welded. Useless",
+      "now — the gates are open. You took one anyway. The key fits in your pocket as if it",
+      "had always belonged. The Reaper would not have minded. The keys are with someone again.",
+      "  (+1 Defense, permanently — a key that knows it has come home with someone who will keep it.)"
+    ]
+  },
+  "reaper_water_did_not_answer": {
+    "category": "promise_broken",
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "location": [
+        "reach"
+      ],
+      "min_visits": 2,
+      "chance": 0.12
+    },
+    "effect": {
+      "flag": "reaper_water_silent"
+    },
+    "lines": [
+      "When the Reaper went down, the water in the weir, today, did not stir for him. It",
+      "should have. It used to know him. It did not even ripple. The water is done with the",
+      "Reaper. The fields are not. You walked back across them slower than you came in."
+    ]
+  },
+  "mother_braced_for_you_too_late": {
+    "category": "found",
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "location": [
+        "cave"
+      ],
+      "min_visits": 2,
+      "chance": 0.15
+    },
+    "effect": {
+      "stat": "attack",
+      "delta": 1,
+      "flag": "mother_brace_late"
+    },
+    "lines": [
+      "She braced. She always braced. Tonight, the brace came late — half a beat. You landed",
+      "the blow in the half-beat. You did not deserve that half-beat. You took it. Your hand",
+      "has a new confidence in finding a half-beat. It will find them in other things now.",
+      "  (+1 Attack, permanently — a half-beat the Maw-Mother gave you, knowingly.)"
+    ]
+  },
+  "mother_called_a_name_that_was_not_yours": {
+    "category": "half_truth",
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "location": [
+        "cave"
+      ],
+      "min_visits": 2,
+      "chance": 0.13
+    },
+    "effect": {
+      "flag": "mother_named_a_child"
+    },
+    "lines": [
+      "Mid-fight she called a name. Not yours. A child's name — soft, full of vowels. She had",
+      "had one. She had eaten and forgotten the one she had. The name came up again because of",
+      "you. The Pall would have prevented it. The Pall failed. She named her child. You won."
+    ]
+  },
+  "mother_let_you_have_the_last_breath": {
+    "category": "promise_kept",
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "location": [
+        "cave"
+      ],
+      "min_visits": 2,
+      "chance": 0.14
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 2,
+      "flag": "mother_gave_breath"
+    },
+    "lines": [
+      "At the very end she had air enough for one more blow. She used it to breathe out, not",
+      "to swing. The breath came toward you — warm, quiet. She gave you the room. You took",
+      "the breath in. You will have an extra count of breath, from now on, when you need it.",
+      "  (+2 Max HP, permanently — a breath given by a mother who chose to give it.)"
+    ]
+  },
+  "mother_hands_were_still_kind": {
+    "category": "mind",
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "location": [
+        "cave"
+      ],
+      "min_visits": 2,
+      "chance": 0.13
+    },
+    "effect": {
+      "flag": "mother_hands_kind"
+    },
+    "lines": [
+      "When she went down her hands curled in toward her chest — the way a mother's hands",
+      "curl when she has just put a child down. You saw it. The Maw-Mother had been a mother,",
+      "had been, had been. Her hands remembered last. You will dream of those hands. You can bear it."
+    ]
+  },
+  "mother_appetite_came_into_you": {
+    "category": "broken",
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "location": [
+        "cave"
+      ],
+      "min_visits": 2,
+      "chance": 0.11
+    },
+    "effect": {
+      "stat": "max_stamina",
+      "delta": -1,
+      "flag": "mother_appetite"
+    },
+    "lines": [
+      "When she went, a thin appetite she had been carrying — the Pall's appetite, given a",
+      "mother-shape — looked for a new place to go. It went, in part, into you. Not all of",
+      "it. A thread. The thread is in you now. You will eat a little more. You will eat slower.",
+      "  (-1 Max Stamina, permanently — a thread of appetite the Pall could not let die.)"
+    ]
+  },
+  "bellward_bell_rang_for_you": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "location": [
+        "mourncross"
+      ],
+      "min_visits": 2,
+      "chance": 0.15
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "bellward_bell_for_you"
+    },
+    "lines": [
+      "When the Bellward fell, the bell at the south door of Mourncross rang once. Not by",
+      "any hand. Once, and a long count of silence. The bell rang for the Bellward. It also",
+      "rang for you — you were the one who had freed it from its keeper. You stood straighter.",
+      "  (+1 Defense, permanently — a single ring of a long-silent bell, given to you also.)"
+    ]
+  },
+  "bellward_son_eron_will_know": {
+    "category": "promise_kept",
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "location": [
+        "mourncross"
+      ],
+      "min_visits": 2,
+      "chance": 0.14
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 2,
+      "flag": "eron_will_know"
+    },
+    "lines": [
+      "The Bellward was Eron's father. You knew this. The Bellward did not, anymore. When he",
+      "fell, you said, quietly, *Eron asks after you.* The Bellward's face went, for one count,",
+      "less hollow. Whatever bound him slackened. You did that. Eron will know one day.",
+      "  (+2 Max HP, permanently — a sentence given to a hollow man who had a son.)"
+    ]
+  },
+  "bellward_robe_caught_in_your_buckle": {
+    "category": "body",
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "location": [
+        "mourncross"
+      ],
+      "min_visits": 2,
+      "chance": 0.13
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": -1,
+      "flag": "bellward_robe_caught"
+    },
+    "lines": [
+      "A corner of his robe caught in your buckle when he fell. You tore it free. A small strip",
+      "of black cloth still in your buckle now. It will not come out. You stopped trying after",
+      "the second night. The cloth has decided to come with you. It weighs almost nothing.",
+      "  (-1 Max HP, permanently — a strip of a hollow man's robe, riding on your belt.)"
+    ]
+  },
+  "bellward_second_phase_was_a_father": {
+    "category": "half_truth",
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "location": [
+        "mourncross"
+      ],
+      "min_visits": 2,
+      "chance": 0.12
+    },
+    "effect": {
+      "flag": "bellward_father_phase"
+    },
+    "lines": [
+      "Below half he flipped — heavy, telegraphed strikes, the kind a father teaches a son to",
+      "block. He was teaching, then. Mid-fight. He was teaching the blocks he should have",
+      "taught Eron, and didn't, because he had been hollowed before he could. You learned."
+    ]
+  },
+  "bellward_rope_in_your_palm": {
+    "category": "found",
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "location": [
+        "mourncross"
+      ],
+      "min_visits": 2,
+      "chance": 0.14
+    },
+    "effect": {
+      "stat": "max_stamina",
+      "delta": 1,
+      "flag": "bellward_rope"
+    },
+    "lines": [
+      "Wound around his wrist was a short length of bell-rope. You took it. It rests in your",
+      "palm when you make a fist around it. Whoever holds the rope holds, faintly, the bell.",
+      "The bell rings differently for you now, when you pass under it. The town has noticed.",
+      "  (+1 Max Stamina, permanently — a length of rope that knows the bell it came from.)"
+    ]
+  },
+  "vael_did_not_sing_at_the_end": {
+    "category": "found",
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "location": [
+        "choir"
+      ],
+      "min_visits": 2,
+      "chance": 0.14
+    },
+    "effect": {
+      "stat": "attack",
+      "delta": 1,
+      "flag": "vael_silent_end"
+    },
+    "lines": [
+      "Cantor Vael led the rite that unremembered the kingdom. At the end of the fight tonight",
+      "Vael did not sing. Vael had nothing left to un-sing with. Vael's mouth was open. Nothing",
+      "came out. The silence into which the rite had spoken was Vael's, last, alone. You won there.",
+      "  (+1 Attack, permanently — a victory at the throat of the one who unremembered.)"
+    ]
+  },
+  "vael_a_word_came_back_into_the_air": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "location": [
+        "choir"
+      ],
+      "min_visits": 2,
+      "chance": 0.13
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 2,
+      "flag": "vael_returned_word"
+    },
+    "lines": [
+      "When Vael fell, one of the words the rite had taken — a single, common word, a word",
+      "for *bread* in the old tongue — came back into the air of the Choir. You heard it. You",
+      "could not have known it before. You know it now. The world has its bread back, by one word.",
+      "  (+2 Max HP, permanently — a word the kingdom had lost, returned by your hand.)"
+    ]
+  },
+  "vael_priest_robe_burned_dry": {
+    "category": "broken",
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "location": [
+        "choir"
+      ],
+      "min_visits": 2,
+      "chance": 0.12
+    },
+    "effect": {
+      "stat": "max_stamina",
+      "delta": -1,
+      "flag": "vael_robe_burned"
+    },
+    "lines": [
+      "When Vael went down the priest's robe went brittle — burned dry, but no fire. The robe",
+      "had been older than was right. The age came out of it. Some of the age, in coming out,",
+      "passed through you on its way to nowhere. You felt the years go through. You are tired.",
+      "  (-1 Max Stamina, permanently — an age that passed through you on its way out of a robe.)"
+    ]
+  },
+  "vael_kept_the_third_line_for_you": {
+    "category": "promise_kept",
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "location": [
+        "choir"
+      ],
+      "min_visits": 2,
+      "requires_flag": "lost_verse_known",
+      "chance": 0.13
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 3,
+      "flag": "vael_kept_third"
+    },
+    "lines": [
+      "Because you carried the third line of the Verse into the Choir, Vael — at the end —",
+      "did not unsing it. Vael could have. Vael did not. Vael, the un-singer, kept one line",
+      "for you. For your line. You will keep the line longer for that. Vael held back. So did you.",
+      "  (+3 Max HP, permanently — a verse kept by the un-singer at the end of the un-singer.)"
+    ]
+  },
+  "vael_your_name_almost_left": {
+    "category": "half_truth",
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "location": [
+        "choir"
+      ],
+      "min_visits": 2,
+      "chance": 0.11
+    },
+    "effect": {
+      "flag": "name_almost_unsung"
+    },
+    "lines": [
+      "In the worst beat Vael's gaze touched your face and you felt — for one count — your own",
+      "name begin to leave you. Like a thread being pulled out from inside. You held on. The",
+      "name stayed. Some of the thread is still loose. You will tuck it back in. You will know."
+    ]
+  },
+  "penitent_handprint_under_yours": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "location": [
+        "mountain"
+      ],
+      "min_visits": 2,
+      "chance": 0.15
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "penitent_handprint"
+    },
+    "lines": [
+      "On the stone where the Penitent fell, you put your hand to steady yourself, and your",
+      "palm fit, exactly, into a handprint that was already there. Theirs. The first climber's.",
+      "Hand under hand. Two of you, briefly, in the same place. You stood up taller after.",
+      "  (+1 Defense, permanently — a handprint your palm fit into, knowing whose it was.)"
+    ]
+  },
+  "penitent_relentless_taught_you_to_endure": {
+    "category": "mind",
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "location": [
+        "mountain"
+      ],
+      "min_visits": 2,
+      "chance": 0.14
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 1,
+      "flag": "penitent_endurance"
+    },
+    "lines": [
+      "Every third turn they struck. You learned to endure those turns. You learned not to",
+      "trade. You learned to outlast a thing that did not tire. You can outlast more, now. You",
+      "will. The Penitent had been the first to turn back. The Penitent, in death, gave you the climb.",
+      "  (+1 Max HP, permanently — an endurance the Penitent taught you in their relentlessness.)"
+    ]
+  },
+  "penitent_turning_back_was_an_option": {
+    "category": "half_truth",
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "location": [
+        "mountain"
+      ],
+      "min_visits": 2,
+      "chance": 0.13
+    },
+    "effect": {
+      "flag": "penitent_option_seen"
+    },
+    "lines": [
+      "Mid-fight you saw — clearly, briefly — the choice the Penitent had made. The first climber",
+      "who turned back. The same choice was there in front of you. You could turn back. You",
+      "did not. The choice has not gone away. The choice will be there at the Summit, too."
+    ]
+  },
+  "penitent_named_the_summit_for_you": {
+    "category": "promise_kept",
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "location": [
+        "mountain"
+      ],
+      "min_visits": 2,
+      "chance": 0.13
+    },
+    "effect": {
+      "flag": "penitent_named_summit"
+    },
+    "lines": [
+      "Before they went down, the Penitent said — quietly — the older name of the Summit. The",
+      "name the kingdom used before the rite. The name you have known and not known. You took",
+      "the name into you. You will not say it aloud yet. But you will, when it matters most."
+    ]
+  },
+  "penitent_ash_on_your_tongue": {
+    "category": "body",
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "location": [
+        "mountain"
+      ],
+      "min_visits": 2,
+      "chance": 0.13
+    },
+    "effect": {
+      "stat": "max_stamina",
+      "delta": -1,
+      "flag": "penitent_ash"
+    },
+    "lines": [
+      "When they fell, a flake of the ash that had been their skin came across your mouth.",
+      "You swallowed without meaning to. The ash went down. It is in you now — a small portion",
+      "of someone who once turned back. You will be a little slower to turn back. And to breathe.",
+      "  (-1 Max Stamina, permanently — a flake of the first turning-back, taken into your body.)"
+    ]
+  },
+  "warden_step_fit_your_boot": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "location": [
+        "summit"
+      ],
+      "min_level": 7,
+      "chance": 0.15
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "warden_step_match"
+    },
+    "lines": [
+      "Before the final beat the Warden — the previous Warden, your last victor — set their",
+      "foot down. Your foot, on its mirror-step, landed in the print they had left. Hand under",
+      "hand. Foot under foot. They had wanted the cycle to end here, with someone like you.",
+      "  (+1 Defense, permanently — the Warden's footing taught to yours, beat by beat.)"
+    ]
+  },
+  "warden_passed_you_the_keeping": {
+    "category": "promise_kept",
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "location": [
+        "summit"
+      ],
+      "min_level": 7,
+      "chance": 0.13
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 3,
+      "flag": "warden_passed_keeping"
+    },
+    "lines": [
+      "When they fell, the Warden — without speaking, the Pall takes the speech — looked at",
+      "you and the keeping passed. They had carried the weight. They could put it down. You",
+      "would carry it. They thanked you with the breath they had left. You thanked them back.",
+      "  (+3 Max HP, permanently — a keeping handed to you, hand to hand, at the Summit.)"
+    ]
+  },
+  "warden_pall_did_not_take_your_name": {
+    "category": "found",
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "location": [
+        "summit"
+      ],
+      "min_level": 7,
+      "chance": 0.12
+    },
+    "effect": {
+      "flag": "pall_did_not_take_name"
+    },
+    "lines": [
+      "The Pall reached for your name at the end. It was its right. It did not take it. Not",
+      "yet. Some part of the Pall — a part that had been the kingdom, that had been kind —",
+      "left your name for you to keep, this run. The next Warden will not get the same mercy."
+    ]
+  },
+  "warden_their_last_thought_was_yours": {
+    "category": "half_truth",
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "location": [
+        "summit"
+      ],
+      "min_level": 7,
+      "chance": 0.11
+    },
+    "effect": {
+      "flag": "warden_thought_for_you"
+    },
+    "lines": [
+      "In the last beat you and the Warden shared, briefly, one thought. You don't know whose",
+      "it was. It was the thought of a small light at the bottom of a staircase. You will see",
+      "that light, in dreams, for the rest of this run. It was a kindness. It was also a goodbye."
+    ]
+  },
+  "warden_one_climbing_breath_was_yours": {
+    "category": "broken",
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "location": [
+        "summit"
+      ],
+      "min_level": 7,
+      "chance": 0.12
+    },
+    "effect": {
+      "stat": "max_stamina",
+      "delta": -1,
+      "flag": "warden_breath_traded"
+    },
+    "lines": [
+      "At the end of it, the Warden's breath and yours were the same breath, for one count.",
+      "Not a kiss. A trade. One of yours went into them. They took it down with them. You will",
+      "be short of one breath from now on. They will not be short of any. You can carry the loss.",
+      "  (-1 Max Stamina, permanently — a breath traded with the Warden at the kingdom's roof.)"
+    ]
+  },
+  "dyke_held_the_water_back_for_you": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "location": [
+        "last_dyke"
+      ],
+      "min_visits": 1,
+      "chance": 0.16
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "dyke_held_water"
+    },
+    "lines": [
+      "When the Dyke Warden went down, the water behind the dyke they had kept did not, today,",
+      "come over. It paused. As if out of respect. You walked across the dyke dry-footed. The",
+      "water remembered the Warden who had held it back. The water now, briefly, knows your face.",
+      "  (+1 Defense, permanently — a water that learned to wait, for once, in your honour.)"
+    ]
+  },
+  "dyke_lantern_caught_your_eye": {
+    "category": "found",
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "location": [
+        "last_dyke"
+      ],
+      "chance": 0.14
+    },
+    "effect": {
+      "stat": "max_stamina",
+      "delta": 1,
+      "flag": "dyke_lantern"
+    },
+    "lines": [
+      "On the dyke-keeper's belt was a small lantern, the kind that does not, properly, go",
+      "out in wind. You took it. It rides on yours now. You will not need to light it. It is",
+      "lit. It will be lit. The dyke-keepers' lanterns are like that. The keeper let you have it.",
+      "  (+1 Max Stamina, permanently — a lantern that does not go out, taken in trust.)"
+    ]
+  },
+  "dyke_warden_almost_let_you_through": {
+    "category": "half_truth",
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "location": [
+        "last_dyke"
+      ],
+      "chance": 0.12
+    },
+    "effect": {
+      "flag": "dyke_warden_paused"
+    },
+    "lines": [
+      "Mid-fight there was one beat where they could have let you pass. They almost did. They",
+      "remembered their post in the next count. The post was the point of them. They came back",
+      "to it. You finished the fight. You will think about that beat. You can carry it."
+    ]
+  },
+  "dyke_a_name_carved_on_the_stone": {
+    "category": "promise_kept",
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "location": [
+        "last_dyke"
+      ],
+      "min_visits": 1,
+      "chance": 0.13
+    },
+    "effect": {
+      "flag": "dyke_name_carved"
+    },
+    "lines": [
+      "After, you knelt at the post and with your knife — or with the edge of one of theirs —",
+      "scored a single letter into the stone of the dyke. Their first initial. Someone will,",
+      "one day, ask whose. There will be someone to tell. You stood up. You went on."
+    ]
+  },
+  "dyke_cold_water_in_your_boots": {
+    "category": "body",
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "location": [
+        "last_dyke"
+      ],
+      "chance": 0.13
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": -1,
+      "flag": "dyke_cold_water"
+    },
+    "lines": [
+      "When the Warden fell, the water — held back so long — got a finger between the stones",
+      "and into your boot. Just a finger of it. But cold. Cold the way held water is, when it",
+      "has been held a long time. Your foot is colder now than the other. It will stay.",
+      "  (-1 Max HP, permanently — a finger of long-held water that decided to come with you.)"
+    ]
+  },
+  "library_warden_a_page_came_loose_for_you": {
+    "category": "found",
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "location": [
+        "burned_library"
+      ],
+      "chance": 0.15
+    },
+    "effect": {
+      "stat": "attack",
+      "delta": 1,
+      "flag": "library_loose_page"
+    },
+    "lines": [
+      "When the Library Warden fell, a single page came loose from one of the heaped books and",
+      "spiraled down onto you. You caught it. You will not be able to read it — the ink is",
+      "gone, the paper is cold — but it is folded in your coat now. Pages take to their readers.",
+      "  (+1 Attack, permanently — a page the Library let go to you, alone.)"
+    ]
+  },
+  "library_warden_silence_after": {
+    "category": "mind",
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "location": [
+        "burned_library"
+      ],
+      "chance": 0.14
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "library_silence"
+    },
+    "lines": [
+      "When the Warden went down, the burned hall became — for one long count — perfectly",
+      "quiet. The ash stopped settling. The wind in the broken windows stopped. The Library",
+      "held silence for its keeper. You held silence with it. You stand quieter from now on.",
+      "  (+1 Defense, permanently — a quiet given to you by a place that had been loud once.)"
+    ]
+  },
+  "library_warden_ink_on_their_collar": {
+    "category": "half_truth",
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "location": [
+        "burned_library"
+      ],
+      "chance": 0.12
+    },
+    "effect": {
+      "flag": "library_warden_clerk"
+    },
+    "lines": [
+      "There was ink on the Warden's collar — fresh, the day's ink, not the burn's ink. They",
+      "had still been writing. Whatever they had been writing, the Pall took it. You know they",
+      "were writing. The room knows. The room will keep going on for a long time without them."
+    ]
+  },
+  "library_warden_a_name_kept_for_a_book": {
+    "category": "promise_kept",
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "location": [
+        "burned_library"
+      ],
+      "min_visits": 1,
+      "chance": 0.12
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 1,
+      "flag": "library_name_for_book"
+    },
+    "lines": [
+      "After, you knelt and laid one of the unburned pages over the Warden's eyes. You said",
+      "the name of the book you had borrowed last, in their hearing, as a kindness. They could",
+      "not have heard. The book heard. The book will keep the borrowing on the shelf for you.",
+      "  (+1 Max HP, permanently — a borrowing the Library has decided to keep open for you.)"
+    ]
+  },
+  "library_warden_ash_in_the_fold_of_your_coat": {
+    "category": "body",
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "location": [
+        "burned_library"
+      ],
+      "chance": 0.13
+    },
+    "effect": {
+      "stat": "max_stamina",
+      "delta": -1,
+      "flag": "library_ash_in_coat"
+    },
+    "lines": [
+      "Library ash got into the fold of your coat tonight. It is fine — finer than wood-ash.",
+      "It will not come out. It rides with you now. Every time you put the coat on, you will",
+      "be putting on a part of the Library. You did not ask for it. You will not refuse it.",
+      "  (-1 Max Stamina, permanently — a small weight of burned pages, kept by your coat.)"
+    ]
+  },
+  "forgotten_remembered_you_first": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "min_level": 5,
+      "requires_flag": "forgotten_thing_defeated",
+      "chance": 0.16
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 2,
+      "flag": "forgotten_remembered_you"
+    },
+    "lines": [
+      "The Forgotten Thing — the one the Pall had unremembered so completely it became its",
+      "own unremembering — looked at you, at the end, and was the first thing to remember you.",
+      "Even before you remembered yourself for the day. You felt the remembering land. You stood up.",
+      "  (+2 Max HP, permanently — a remembering given to you by the most forgotten thing in the kingdom.)"
+    ]
+  },
+  "forgotten_gave_you_back_a_word": {
+    "category": "found",
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "min_level": 5,
+      "requires_flag": "forgotten_thing_defeated",
+      "chance": 0.13
+    },
+    "effect": {
+      "stat": "attack",
+      "delta": 1,
+      "flag": "forgotten_returned_word"
+    },
+    "lines": [
+      "When it fell, the Forgotten Thing — which had been a word, before it had been a thing —",
+      "gave the word back. To you. You don't know which word. You will, sometimes, use it",
+      "without knowing. People will look at you. They will recognize it. You will not.",
+      "  (+1 Attack, permanently — a word given to you by the thing that had been a word.)"
+    ]
+  },
+  "forgotten_thing_left_a_silhouette": {
+    "category": "half_truth",
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "min_level": 5,
+      "requires_flag": "forgotten_thing_defeated",
+      "chance": 0.12
+    },
+    "effect": {
+      "flag": "forgotten_silhouette_in_you"
+    },
+    "lines": [
+      "When the Thing went, its silhouette — the shape of what nobody could remember — was for",
+      "one count visible, against the wall, like a shadow against a lamp. You saw it. You",
+      "did not know its shape. You will, very rarely, see that shape again in unrelated places."
+    ]
+  },
+  "forgotten_took_a_thread_with_it": {
+    "category": "broken",
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "min_level": 5,
+      "requires_flag": "forgotten_thing_defeated",
+      "chance": 0.11
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": -1,
+      "flag": "forgotten_took_thread"
+    },
+    "lines": [
+      "On its way out the Thing took a thread of you — not a memory, exactly, more a small",
+      "habit of yours, the way you used to clear your throat before speaking. You don't clear",
+      "your throat anymore. You did not notice when you stopped. You won't get it back. It went.",
+      "  (-1 Max HP, permanently — a small habit of yours, taken by the thing on its way out.)"
+    ]
+  },
+  "forgotten_left_you_to_tell": {
+    "category": "promise_kept",
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "min_level": 5,
+      "requires_flag": "forgotten_thing_defeated",
+      "chance": 0.13
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "forgotten_left_you_to_tell"
+    },
+    "lines": [
+      "It died, and the kingdom — for a count — did not yet know it had died. Because it had",
+      "been forgotten. The kingdom would not, ever, know it had died unless you told. You will.",
+      "You will, in pieces. You stood straighter, with the telling waiting in you, ready.",
+      "  (+1 Defense, permanently — a telling you are carrying for a kingdom that cannot ask.)"
+    ]
   }
 }
