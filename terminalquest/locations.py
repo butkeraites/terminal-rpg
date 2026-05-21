@@ -2188,6 +2188,11 @@ def _print_background_presences(state):
         if chronicle.kind_acts(cdir) >= CARETAKER_THRESHOLD:
             io.show_slow("  (A basket of small flowers is set by the door, "
                          "fresh today.)")
+        # v1.50 — once the player has left a line in the hearth-keeper's book,
+        # the book is open on the corner of the hearth when you arrive.
+        if chronicle.hearth_lines(cdir):
+            io.show_slow("  (The leather book is open on the corner of the "
+                         "hearth. Someone has been writing in it again.)")
     elif loc_id == "pre_pall_shrine":
         if state.flags.get("piranesi_map_unlocked"):
             io.show_slow("  (Piranesi's vellum is folded on the altar where "
