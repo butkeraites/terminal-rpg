@@ -1279,6 +1279,159 @@ def test_apply_quest_rewards_helper_tolerates_unknown_marks(content, tmp_path):
     assert "this_mark_does_not_exist" not in (player.marks or [])
 
 
+# --- Phase-1 Batch-9: board UI categorization -----------------------------
+
+def test_quest_category_bounty_for_plain_kill(content):
+    """A plain target_enemy quest with only cleanse_required is a Bounty."""
+    plain = {
+        "name": "Plain Kill",
+        "target_enemy": "wolf",
+        "needed": 3,
+        "reward_gold": 100,
+        "cleanse_required": 0,
+    }
+    assert locations._quest_category(plain) == "bounty"
+
+
+def test_quest_category_chain_for_requires_quest(content):
+    """A quest with requires_quest is categorized as Chain."""
+    chained = {
+        "name": "Second Step",
+        "target_enemy": "wolf",
+        "needed": 1,
+        "reward_gold": 50,
+        "cleanse_required": 0,
+        "requires_quest": ["first_step"],
+    }
+    assert locations._quest_category(chained) == "chain"
+
+
+def test_quest_category_chain_wins_over_special(content):
+    """A quest that is BOTH chain and special is filed as Chain.
+
+    Chain is more structurally distinctive; the UI should surface the
+    chain-membership first, with the special-content cue secondary.
+    """
+    both = {
+        "name": "Special Chain",
+        "target_enemy": "wolf",
+        "needed": 1,
+        "reward_gold": 50,
+        "cleanse_required": 0,
+        "requires_quest": ["prereq"],
+        "requires_class": ["cleric"],
+    }
+    assert locations._quest_category(both) == "chain"
+
+
+def test_quest_category_special_for_mark_gated(content):
+    """A quest gated by a mark is categorized as Special."""
+    if not content.marks:
+        pytest.skip("marks pool empty")
+    real_mark = next(iter(content.marks))
+    special = {
+        "name": "Mark Gated",
+        "target_enemy": "wolf",
+        "needed": 1,
+        "reward_gold": 50,
+        "cleanse_required": 0,
+        "requires_mark": real_mark,
+    }
+    assert locations._quest_category(special) == "special"
+
+
+def test_quest_category_special_for_condition_or_ending(content):
+    """completion_condition AND requires_ending each route to Special."""
+    cc_only = {
+        "name": "Cond",
+        "completion_condition": "killed_in_one_round",
+        "needed": 1,
+        "reward_gold": 10,
+        "cleanse_required": 0,
+    }
+    assert locations._quest_category(cc_only) == "special"
+    ending_gated = {
+        "name": "After Peace",
+        "target_enemy": "wolf",
+        "needed": 1,
+        "reward_gold": 50,
+        "cleanse_required": 0,
+        "requires_ending": ["atrel_peace"],
+    }
+    assert locations._quest_category(ending_gated) == "special"
+
+
+def test_board_renders_category_headers_in_order(content, tmp_path):
+    """The board UI shows Bounties → Chains → Special headers in order."""
+    # Inject one of each category.
+    content.quests["alpha_bounty"] = _hidden_test_quest(name="Alpha Bounty")
+    content.quests["alpha_chain"] = _hidden_test_quest(
+        name="Alpha Chain", requires_quest=["alpha_bounty"])
+    content.quests["alpha_special"] = _hidden_test_quest(
+        name="Alpha Special", requires_class=["warrior"])
+    player = _player(content)
+    # Mark alpha_bounty completed so the chain step is visible.
+    state = make_state(player, content, ScriptedIO(["999"]), StubRandom(),
+                       chronicle_dir=tmp_path)
+    state.flags["completed_quests"] = ["alpha_bounty"]
+    try:
+        locations.quest_board(state)
+    except AssertionError:
+        pass
+    rendered = "\n".join(state.io.output)
+    # Headers present.
+    assert "── Bounties ──" in rendered
+    assert "── Chains ──" in rendered
+    assert "── Special ──" in rendered
+    # And in the expected order.
+    pos_bounty = rendered.index("── Bounties ──")
+    pos_chain = rendered.index("── Chains ──")
+    pos_special = rendered.index("── Special ──")
+    assert pos_bounty < pos_chain < pos_special
+
+
+def test_board_skips_empty_category_headers(content, tmp_path):
+    """A category with no visible quests has no header."""
+    # Add only a chain quest. No new bounty, no new special.
+    content.quests["solo_chain"] = _hidden_test_quest(
+        name="Solo Chain", requires_quest=["wolf_cull"])
+    player = _player(content)
+    state = make_state(player, content, ScriptedIO(["999"]), StubRandom(),
+                       chronicle_dir=tmp_path)
+    state.flags["completed_quests"] = ["wolf_cull"]
+    try:
+        locations.quest_board(state)
+    except AssertionError:
+        pass
+    rendered = "\n".join(state.io.output)
+    # There are still default bounties visible — Bounties header should show.
+    assert "── Bounties ──" in rendered
+    # The chain step is visible — Chains header should show.
+    assert "── Chains ──" in rendered
+    # No special quest visible — Special header should NOT show.
+    assert "── Special ──" not in rendered
+
+
+def test_board_numbering_stays_sequential_across_categories(content, tmp_path):
+    """A user-typed number maps to a quest regardless of category boundaries."""
+    content.quests["zz_chain"] = _hidden_test_quest(
+        name="Z Chain", requires_quest=["wolf_cull"])
+    player = _player(content)
+    state = make_state(player, content, ScriptedIO(["99"]), StubRandom(),
+                       chronicle_dir=tmp_path)
+    state.flags["completed_quests"] = ["wolf_cull"]
+    try:
+        locations.quest_board(state)
+    except AssertionError:
+        pass
+    rendered = "\n".join(state.io.output)
+    # The chain quest's number must come AFTER the bounty numbers.
+    # Default bounties at cleanse>=0: wolf_cull, scavver_purge, bandit_hunt
+    # (3 visible). Bounties get numbers 1..3 (wolf_cull shows as [done]
+    # since it's completed). Chain gets number 4 (in Chains section).
+    assert "4. Z Chain" in rendered or "5. Z Chain" in rendered
+
+
 def test_chain_claim_emits_new_slip_pinned_notification(content, tmp_path):
     """Claiming a chain step that opens a follow-up emits *A new slip is pinned*."""
     from terminalquest import combat

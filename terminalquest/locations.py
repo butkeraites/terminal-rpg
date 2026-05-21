@@ -486,6 +486,78 @@ def scan_hidden_quest_triggers(state):
     return [qid for qid, _ in triggered_now]
 
 
+# --- Phase-1 Batch-9: board UI categorization -----------------------------
+#
+# A flat catalog works fine for the 6 cleanse-gated bounties. At the
+# 2000-quest design horizon, players need visual grouping to navigate.
+# The board now groups visible quests into three buckets — Bounties,
+# Chains, Special — with headers above each, while the numbering stays
+# sequential across the whole list (player UX unchanged: pick a number).
+
+_QUEST_CATEGORY_ORDER = ("bounty", "chain", "special")
+_QUEST_CATEGORY_HEADERS = {
+    "bounty":  "── Bounties ──",
+    "chain":   "── Chains ──",
+    "special": "── Special ──",
+}
+
+
+def _quest_category(quest):
+    """Return one of 'bounty' / 'chain' / 'special' for the board UI.
+
+    Heuristic:
+      * 'chain'   — has any chain-shape field (requires_quest, denies_quest,
+                    or chain_next).
+      * 'special' — has any "rare-condition" gate or unusual completion:
+                    requires_mark(s), requires_class, requires_ending,
+                    requires_discovery, requires_chronicle_entry,
+                    completion_condition, or any reward_* field beyond
+                    the default gold+consumable.
+      * 'bounty'  — everything else (the cleanse-gated kill/trophy basics).
+
+    A quest can match multiple heuristics; the FIRST match wins in
+    chain → special → bounty order. This is deliberate: chains are
+    structurally distinctive; specials are *content*-distinctive;
+    bounties are the rest.
+    """
+    if (quest.get("requires_quest")
+            or quest.get("denies_quest")
+            or quest.get("chain_next")):
+        return "chain"
+    if (quest.get("requires_mark")
+            or quest.get("requires_marks")
+            or quest.get("requires_class")
+            or quest.get("requires_ending")
+            or quest.get("requires_discovery")
+            or quest.get("requires_chronicle_entry")
+            or quest.get("completion_condition")
+            or quest.get("reward_consumables")
+            or quest.get("reward_marks")
+            or quest.get("reward_chronicle_line")
+            or quest.get("reward_ending_unlock")):
+        return "special"
+    return "bounty"
+
+
+def _group_catalog_by_category(catalog):
+    """Order ``catalog`` (list of (qid, quest)) by category.
+
+    Within each category, original ordering is preserved.
+    Returns a list of (category_label, qid, quest) tuples in display order.
+    """
+    by_cat = {cat: [] for cat in _QUEST_CATEGORY_ORDER}
+    for qid, quest in catalog:
+        by_cat[_quest_category(quest)].append((qid, quest))
+    rows = []
+    for cat in _QUEST_CATEGORY_ORDER:
+        if not by_cat[cat]:
+            continue
+        rows.append(("__header__", cat, None))
+        for qid, quest in by_cat[cat]:
+            rows.append((cat, qid, quest))
+    return rows
+
+
 def _apply_quest_rewards(state, quest):
     """Phase-1 Batch-8: dispatch every reward_* field on a just-claimed quest.
 
@@ -642,8 +714,21 @@ def quest_board(state):
         # claim appear without needing to leave and re-enter.
         catalog = [(qid, q) for qid, q in state.content.quests.items()
                    if _quest_is_visible(q, state, cleanses)]
+        # Phase-1 Batch-9: group the catalog by category for navigation at
+        # the 2000-quest horizon. Numbering stays sequential across the
+        # whole list — `selectable` is the index→(qid, quest) mapping the
+        # input parser uses.
+        grouped = _group_catalog_by_category(catalog)
+        selectable = []  # [(qid, quest), ...] in display order
         io.show(hud(player))
-        for index, (quest_id, quest) in enumerate(catalog, start=1):
+        for row in grouped:
+            if row[0] == "__header__":
+                _cat = row[1]
+                io.show(f"\n{_QUEST_CATEGORY_HEADERS[_cat]}")
+                continue
+            _cat, quest_id, quest = row
+            selectable.append((quest_id, quest))
+            index = len(selectable)
             status = _quest_status(state, quest_id)
             progress = state.flags.get("quest_progress", {}).get(quest_id, 0)
             # Phase-1 Batch-2: trophy-target quests display their trophy
@@ -659,15 +744,15 @@ def quest_board(state):
             }[status]
             io.show(f"\n{index}. {quest['name']}  {tag}")
             io.show(f"   {quest.get('flavor', '')}")
-        io.show(f"\n{len(catalog) + 1}. Leave")
+        io.show(f"\n{len(selectable) + 1}. Leave")
         choice = io.ask("\nWhat would you like? ")
-        if choice == str(len(catalog) + 1):
+        if choice == str(len(selectable) + 1):
             return
-        if not (choice.isdigit() and 1 <= int(choice) <= len(catalog)):
+        if not (choice.isdigit() and 1 <= int(choice) <= len(selectable)):
             io.show("\n❌ Invalid choice!")
             io.pause(1)
             continue
-        quest_id, quest = catalog[int(choice) - 1]
+        quest_id, quest = selectable[int(choice) - 1]
         status = _quest_status(state, quest_id)
         if status == "available":
             state.flags.setdefault("active_quests", []).append(quest_id)
