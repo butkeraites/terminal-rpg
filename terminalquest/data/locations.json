@@ -759,6 +759,33 @@
     "connections": ["the_border"],
     "encounters": [
       {"type": "dialogue", "dialogue_id": "wynne_emissary", "label": "🌲 Speak with the Wynne Emissary"},
+      {"type": "discovery", "id": "crens_kit", "label": "📜 A relief-corps kit-bag, half-buried (Cren)",
+       "lines": [
+         "📜 Half-buried where a tree once stood, a relief-corps kit-bag.",
+         "Wynne stitching, Wynne canvas — and one personal page tucked at the bottom,",
+         "wrapped in oilskin against the rain. The page is in a Brackmere hand.",
+         "",
+         "  'I am Cren. I am the youngest of Councilor Halsen's four daughters.'",
+         "  'My sisters are Lis, Marra, Eda. I do not know where they are.'",
+         "  'I was carried out of Brackmere by a baker's wife the day the gates closed.'",
+         "  'She brought me to a Wynne village. I grew up there. I married a forester.'",
+         "  'When Wynne's call came for the relief expedition, I asked to go.'",
+         "  'The Captain said women did not march. I said: I have a niece in Mournhold.'",
+         "  'I do not know how to spell her name yet, because she is too young to write.'",
+         "  'But she has my hold's name in her mouth and I do not.'",
+         "  'I am going to walk to where my sisters were.'",
+         "  'I will write again from the Border. If I do not, my husband knows.'",
+         "",
+         "The page ends there. The kit-bag has been here a long time. Cren did not",
+         "write again from the Border. Her husband, who knew, told someone in Wynne,",
+         "who told someone in Karst, who told the trader who told the Hidden Hold.",
+         "",
+         "Cren was the fourth daughter. Lis lived to write her own page in the Hold.",
+         "Eda lived to die of fever in the Reach. Marra never made it out of Brackmere.",
+         "Cren walked back toward Mournhold to find them. She did not arrive.",
+         "Halsen's four daughters now have four answers. The page in the Hidden Hold",
+         "can be added to. Someone, in time, will."
+       ]},
       {"type": "combat", "enemies": ["devoured_captain"], "label": "⚔️  Face the Devoured Captain"}
     ]
   },
