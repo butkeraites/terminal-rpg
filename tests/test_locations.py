@@ -32,9 +32,9 @@ def test_location_loop_shows_recommended_levels(content):
 
 def test_boss_travel_locked_below_unlock_level(content):
     # at the Ashen Climb, a low-level hero tries the sealed Summit, then quits.
-    # v0.16 mountain menu: 1 fight, 2 mini-boss, 3 NPC, 4 piranesi discovery,
-    # 5 to Choir, 6 to Summit, 7 walk back, 8-11 utilities → quit=11.
-    io = ScriptedIO(["6", "11"])
+    # v1.19 mountain menu: 1 fight, 2 mini-boss, 3 NPC, 4 piranesi, 5 climbers_stone,
+    # 6 to Choir, 7 to Summit, 8 walk back, 9-12 utilities → quit=12.
+    io = ScriptedIO(["7", "12"])
     locations.location_loop(make_state(_player(content), content, io, StubRandom(),
                                        current_location="mountain"))
     text = io.text()
@@ -45,10 +45,10 @@ def test_boss_travel_locked_below_unlock_level(content):
 def test_boss_victory_ends_the_game(content):
     player = _strong_player(content)
     player.level = 8  # the summit unlocks at level 8
-    # v0.16: mountain has an NPC encounter and a Piranesi discovery,
-    # so travel-to-Summit is now option 6.
-    # ["6"]=Summit, ["1"]=fight, ["1"]=attack, ["1"]=Warden ending.
-    io = ScriptedIO(["6", "1", "1", "1"])
+    # v1.19: mountain now has 2 discoveries (Piranesi + climbers_stone),
+    # so travel-to-Summit is option 7.
+    # ["7"]=Summit, ["1"]=fight, ["1"]=attack, ["1"]=Warden ending.
+    io = ScriptedIO(["7", "1", "1", "1"])
     locations.location_loop(make_state(player, content, io, StubRandom(),
                                        current_location="mountain"))
     text = io.text()
@@ -608,9 +608,9 @@ def test_reborn_grants_echoes_and_skips_warden_record(content, tmp_path):
     from terminalquest import chronicle
     player = _strong_player(content)
     player.level = 8
-    # v0.16: mountain has fight, mini-boss, NPC, Piranesi discovery, then
-    # travel to Choir (5), Summit (6). Travel-to-Summit is now index 6.
-    io = ScriptedIO(["6", "1", "1", "2"])
+    # v1.19: mountain has fight, mini-boss, NPC, 2 discoveries (Piranesi +
+    # climbers_stone), then to Choir (6), Summit (7). Travel-to-Summit is index 7.
+    io = ScriptedIO(["7", "1", "1", "2"])
     state = make_state(player, content, io, StubRandom(),
                        current_location="mountain", chronicle_dir=tmp_path)
     locations.location_loop(state)
@@ -732,8 +732,8 @@ def test_warden_ending_increments_cleanse(tmp_path, content):
     from terminalquest import chronicle
     player = _strong_player(content)
     player.level = 8
-    # v0.16: mountain Summit travel is now option 6 (Piranesi discovery added).
-    io = ScriptedIO(["6", "1", "1", "1"])
+    # v1.19: mountain Summit travel is option 7 (climbers_stone discovery added).
+    io = ScriptedIO(["7", "1", "1", "1"])
     state = make_state(player, content, io, StubRandom(),
                        current_location="mountain", chronicle_dir=tmp_path)
     locations.location_loop(state)
@@ -767,8 +767,8 @@ def test_purify_ending_unlocked_after_five_cleanses(tmp_path, content):
         chronicle.add_cleanse(tmp_path)
     player = _strong_player(content)
     player.level = 8
-    # v0.16: to Summit (6) -> fight (1) -> attack (1) -> ending menu -> Purify (3)
-    io = ScriptedIO(["6", "1", "1", "3"])
+    # v1.19: to Summit (7) -> fight (1) -> attack (1) -> ending menu -> Purify (3)
+    io = ScriptedIO(["7", "1", "1", "3"])
     state = make_state(player, content, io, StubRandom(),
                        current_location="mountain", chronicle_dir=tmp_path)
     locations.location_loop(state)
