@@ -1095,6 +1095,103 @@ def test_quest_visibility_requires_discovery_list_all_or_nothing(content, tmp_pa
         content, player, tmp_path, discoveries_seen=["frag_a", "frag_b"])
 
 
+# --- Phase-1 Batch-7: hidden quest triggers --------------------------------
+
+def test_hidden_quest_pins_when_zone_visited(content, tmp_path):
+    """A hidden quest with trigger zone_visited pins when scanner runs in that zone."""
+    content.quests["zone_pinned"] = _hidden_test_quest(
+        name="The Bench-Eater",
+        hidden=True,
+        trigger_action={"type": "zone_visited", "params": {"zone_id": "reach"}})
+    player = _player(content)
+    state = make_state(player, content, ScriptedIO(), StubRandom(),
+                       chronicle_dir=tmp_path)
+    # Not at reach — scanner doesn't pin.
+    state.current_location = "forest"
+    pinned = locations.scan_hidden_quest_triggers(state)
+    assert pinned == []
+    assert "zone_pinned" not in state.flags.get("active_quests", [])
+    # At reach — scanner pins.
+    state.current_location = "reach"
+    pinned = locations.scan_hidden_quest_triggers(state)
+    assert pinned == ["zone_pinned"]
+    assert "zone_pinned" in state.flags["active_quests"]
+
+
+def test_hidden_quest_pins_when_mark_fired(content, tmp_path):
+    """A hidden quest with trigger mark_fired pins when the named mark is on the player."""
+    if not content.marks:
+        pytest.skip("marks pool empty")
+    real_mark = next(iter(content.marks))
+    content.quests["mark_triggered_q"] = _hidden_test_quest(
+        name="The Turning-Back Woman",
+        hidden=True,
+        trigger_action={"type": "mark_fired",
+                        "params": {"mark_id": real_mark}})
+    player = _player(content)
+    state = make_state(player, content, ScriptedIO(), StubRandom(),
+                       chronicle_dir=tmp_path)
+    # No mark — scanner doesn't pin.
+    assert locations.scan_hidden_quest_triggers(state) == []
+    # Add the mark — scanner pins.
+    player.marks.append(real_mark)
+    pinned = locations.scan_hidden_quest_triggers(state)
+    assert "mark_triggered_q" in pinned
+
+
+def test_hidden_quest_pins_when_flag_set(content, tmp_path):
+    """A hidden quest with trigger flag_set pins when the named flag is truthy."""
+    content.quests["flag_triggered_q"] = _hidden_test_quest(
+        name="The Bell Returns",
+        hidden=True,
+        trigger_action={"type": "flag_set",
+                        "params": {"flag_name": "lost_verse_known"}})
+    player = _player(content)
+    state = make_state(player, content, ScriptedIO(), StubRandom(),
+                       chronicle_dir=tmp_path)
+    assert locations.scan_hidden_quest_triggers(state) == []
+    state.flags["lost_verse_known"] = True
+    pinned = locations.scan_hidden_quest_triggers(state)
+    assert "flag_triggered_q" in pinned
+
+
+def test_hidden_quest_pin_is_idempotent(content, tmp_path):
+    """A hidden quest pinned once is not re-pinned on subsequent scans."""
+    content.quests["once_pinned_q"] = _hidden_test_quest(
+        name="One-Shot",
+        hidden=True,
+        trigger_action={"type": "zone_visited",
+                        "params": {"zone_id": "reach"}})
+    player = _player(content)
+    state = make_state(player, content, ScriptedIO(), StubRandom(),
+                       chronicle_dir=tmp_path)
+    state.current_location = "reach"
+    assert locations.scan_hidden_quest_triggers(state) == ["once_pinned_q"]
+    # Second scan — already in active_quests, no re-pin.
+    assert locations.scan_hidden_quest_triggers(state) == []
+    # And only one copy in active_quests.
+    assert state.flags["active_quests"].count("once_pinned_q") == 1
+
+
+def test_hidden_quest_not_on_board_even_after_pin(content, tmp_path):
+    """Hidden quests stay off the board catalog even once pinned/active."""
+    content.quests["off_board_q"] = _hidden_test_quest(
+        name="Off-Board",
+        hidden=True,
+        trigger_action={"type": "flag_set",
+                        "params": {"flag_name": "demo_flag"}})
+    player = _player(content)
+    state = make_state(player, content, ScriptedIO(["99"]), StubRandom(),
+                       chronicle_dir=tmp_path)
+    state.flags["demo_flag"] = True
+    locations.scan_hidden_quest_triggers(state)
+    assert "off_board_q" in state.flags["active_quests"]
+    # _board_render uses quest_board() which calls _quest_is_visible —
+    # hidden:true short-circuits to invisible.
+    rendered = _board_render(content, player, tmp_path, **state.flags)
+    assert "Off-Board" not in rendered
+
+
 def test_chain_claim_emits_new_slip_pinned_notification(content, tmp_path):
     """Claiming a chain step that opens a follow-up emits *A new slip is pinned*."""
     from terminalquest import combat

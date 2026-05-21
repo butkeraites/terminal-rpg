@@ -422,6 +422,70 @@ def _quest_status(state, quest_id):
     return "active"
 
 
+# --- Phase-1 Batch-7: hidden quest triggers ------------------------------
+#
+# Hidden quests live in content.quests with ``hidden: true`` and a
+# ``trigger_action: {type, params}``. They never appear on the board until
+# the trigger fires. When it does, the quest is auto-pinned to active_quests
+# and a small notification shows. The scanner runs at zone_arrival (inside
+# try_travel) and save_action (inside _save_menu).
+
+def _hidden_quest_trigger_holds(state, trigger):
+    """Return True if the given trigger predicate currently holds.
+
+    Vocabulary shipping in Batch-7 (more types will be added in future
+    batches as their hooks become non-invasive to wire):
+
+      - ``zone_visited``   {zone_id} — player is currently in this zone
+      - ``mark_fired``     {mark_id} — this mark is in player.marks
+      - ``flag_set``       {flag_name} — state.flags[flag_name] is truthy
+
+    Unknown trigger types never fire; the schema validator doesn't enforce
+    the vocabulary yet (so authoring batches stay flexible), but the
+    runtime is conservative.
+    """
+    if not trigger:
+        return False
+    ttype = trigger.get("type")
+    params = trigger.get("params") or {}
+    if ttype == "zone_visited":
+        return state.current_location == params.get("zone_id")
+    if ttype == "mark_fired":
+        return params.get("mark_id") in (getattr(state.player, "marks", []) or [])
+    if ttype == "flag_set":
+        return bool(state.flags.get(params.get("flag_name")))
+    return False
+
+
+def scan_hidden_quest_triggers(state):
+    """Pin hidden quests whose trigger has fired. Idempotent.
+
+    Called at zone_arrival and save_action. A quest already in
+    active_quests or completed_quests is skipped — the scan only ever
+    promotes a NEW hidden quest from invisible-and-untriggered to
+    pinned-and-active.
+    """
+    quests = state.content.quests
+    active = state.flags.get("active_quests", []) or []
+    completed = state.flags.get("completed_quests", []) or []
+    triggered_now = []
+    for qid, quest in quests.items():
+        if not quest.get("hidden"):
+            continue
+        if qid in active or qid in completed:
+            continue
+        if _hidden_quest_trigger_holds(state, quest.get("trigger_action") or {}):
+            state.flags.setdefault("active_quests", []).append(qid)
+            state.flags.setdefault("quest_progress", {}).setdefault(qid, 0)
+            triggered_now.append((qid, quest))
+    for _qid, quest in triggered_now:
+        state.io.show_slow(
+            f"\n📜 A slip appears in your hand: {quest['name']}.")
+        if quest.get("flavor"):
+            state.io.show(f"   {quest['flavor']}")
+    return [qid for qid, _ in triggered_now]
+
+
 def _quest_is_visible(quest, state, cleanses):
     """Return True if this quest should appear on the board for this player.
 
@@ -1274,6 +1338,8 @@ def try_travel(state, dest_id):
                 io.pause(1)
                 return False
     state.current_location = dest_id
+    # Phase-1 Batch-7: arrival into a new zone may trigger a hidden quest.
+    scan_hidden_quest_triggers(state)
     return True
 
 
@@ -1640,6 +1706,8 @@ def _save_menu(state):
         io.show(f"\n💾 Game saved to slot {choice}.")
         # v1.51 — saving is a fire site. Atrél is the kingdom's audit log.
         marks.roll_at(state, "save_action")
+        # Phase-1 Batch-7: the saving sometimes reveals a slip.
+        scan_hidden_quest_triggers(state)
     elif choice != "4":
         io.show("\n❌ Invalid choice!")
     io.pause(1)
