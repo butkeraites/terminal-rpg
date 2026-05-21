@@ -18446,5 +18446,1200 @@
       "Mournhold, last a long time. They learn to be glad of readers. This book was glad of you.",
       "  (+1 Max HP, permanently — a book whose own thanks landed in you at the closing of its last page.)"
     ]
+  },
+  "halna2_kept_a_cut_in_your_size": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "min_visits": 4,
+      "chance": 0.13
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 1,
+      "flag": "halna2_size_cut"
+    },
+    "lines": [
+      "Tonight Halna at her stall had cut a piece of meat to your specific size — your hands",
+      "open wide, the kingdom's old measure. She knows your hands. The cut is yours. The cut",
+      "fits. You took it. You ate it. You ate exactly enough. She had been watching your eating.",
+      "  (+1 Max HP, permanently — a cut Halna sized to your hands without your asking.)"
+    ]
+  },
+  "halna2_called_you_kid_by_mistake": {
+    "category": "half_truth",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "min_visits": 5,
+      "chance": 0.11
+    },
+    "effect": {
+      "flag": "halna2_kid"
+    },
+    "lines": [
+      "Tonight Halna, in passing, called you *kid* — the way she would call her own. She did",
+      "not correct herself. She did not, you think, notice she had. You did. You did not say.",
+      "You will, in the rest of this run, be *kid* to her without either of you naming it."
+    ]
+  },
+  "halna2_let_you_help_unload": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "min_visits": 5,
+      "chance": 0.11
+    },
+    "effect": {
+      "stat": "max_stamina",
+      "delta": 1,
+      "flag": "halna2_unload"
+    },
+    "lines": [
+      "Tonight Halna let you help unload — the morning carts, the carcasses, the dry work.",
+      "She does not let anyone. You carried two sides of mutton in for her. Your shoulders",
+      "ached. They ache the right way. You are, in some small kingdom-old sense, of her household.",
+      "  (+1 Max Stamina, permanently — shoulder-strength a butcher's daughter taught you to use.)"
+    ]
+  },
+  "halna2_told_you_her_sisters_name": {
+    "category": "promise_kept",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "min_visits": 6,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 2,
+      "flag": "halna2_sister_name"
+    },
+    "lines": [
+      "Tonight Halna, between customers, told you the name of her sister. The one who didn't",
+      "come back. She had not said the name to anyone in a long time. You said the name back.",
+      "She nodded once. Did not look at you for the count it took to settle. You both kept the count.",
+      "  (+2 Max HP, permanently — Halna's sister's name said aloud between you twice.)"
+    ]
+  },
+  "halna2_gave_you_an_apron_when_you_helped": {
+    "category": "found",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "min_visits": 6,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "halna2_apron"
+    },
+    "lines": [
+      "Tonight Halna handed you an apron — old, stained the colour of dried blood, the kind",
+      "the kingdom's old butchers wore. *Yours,* she said. You did not protest. You put it on.",
+      "You wore it the whole day at her stall. You take it with you now. Folded, in your pack.",
+      "  (+1 Defense, permanently — a butcher's old apron Halna handed you and called yours.)"
+    ]
+  },
+  "helka2_taught_you_to_read_the_river": {
+    "category": "mind",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "reach"
+      ],
+      "min_visits": 4,
+      "chance": 0.12
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "helka2_river_read"
+    },
+    "lines": [
+      "Tonight at Helka's bench she taught you, sitting beside you, how to read the river. The",
+      "colours of it. Which mean shallow, which mean a hidden bench, which mean the kingdom's",
+      "old drowned still under. You will read the river from now on. Your eye will know.",
+      "  (+1 Defense, permanently — Helka's river-reading lesson at the bench, kept by your eye.)"
+    ]
+  },
+  "helka2_made_you_a_belt_buckle": {
+    "category": "found",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "reach"
+      ],
+      "min_visits": 5,
+      "chance": 0.11
+    },
+    "effect": {
+      "stat": "attack",
+      "delta": 1,
+      "flag": "helka2_buckle"
+    },
+    "lines": [
+      "Tonight Helka, between counts of looking at the water, handed you a small bronze",
+      "buckle she had made — bone-and-bronze, the kingdom's old way, the kind you cannot buy",
+      "anywhere. You put it on your belt. The buckle holds. The buckle will not break.",
+      "  (+1 Attack, permanently — a bone-and-bronze buckle Helka made you that does not break.)"
+    ]
+  },
+  "helka2_told_you_what_drowned_means": {
+    "category": "mind",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "reach"
+      ],
+      "min_visits": 5,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 1,
+      "flag": "helka2_drowned_means"
+    },
+    "lines": [
+      "Tonight Helka told you what *drowned* means in the kingdom's old tongue — not what your",
+      "tongue means, but what hers. The word is older. The word means *given back to the water.*",
+      "Not lost. Given back. The Reach is full of given-back people. You will think of them differently.",
+      "  (+1 Max HP, permanently — Helka's old-tongue meaning of *drowned* kept whole in you.)"
+    ]
+  },
+  "helka2_let_you_sit_on_her_bench_alone": {
+    "category": "promise_kept",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "reach"
+      ],
+      "min_visits": 5,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "helka2_alone_bench"
+    },
+    "lines": [
+      "Tonight Helka, for the first time, did not sit on her bench. *You take it tonight,*",
+      "she said. She had work elsewhere. You sat the bench out. The bench was hers and now,",
+      "tonight, was yours. You read the water as she had taught you. You stood up. The bench is yours.",
+      "  (+1 Defense, permanently — Helka's bench given to you for one evening to sit alone.)"
+    ]
+  },
+  "helka2_called_you_to_a_drowning": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "reach"
+      ],
+      "min_visits": 6,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 1,
+      "flag": "helka2_drowning_call"
+    },
+    "lines": [
+      "Tonight Helka, from her bench, called you over — pointed at a particular shape in the",
+      "water. *Someone is going back,* she said. The kingdom's old way of saying. You both",
+      "watched the going-back. You did not speak. You stood together. The water carried them along.",
+      "  (+1 Max HP, permanently — a going-back you witnessed with Helka at the bench, in silence.)"
+    ]
+  },
+  "lamp2_let_you_light_a_lamp": {
+    "category": "promise_kept",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "crossroads"
+      ],
+      "min_visits": 4,
+      "chance": 0.12
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "lamp2_let_you_light"
+    },
+    "lines": [
+      "Tonight the lampkeeper, at dusk, handed you the lighter and let you light one of the",
+      "Crossroads lamps. The first one. You lit it. The flame caught. The lamp will, from",
+      "now on, lean toward you when you arrive. You have, in a small way, joined the lamps.",
+      "  (+1 Defense, permanently — a Crossroads lamp you lit at the lampkeeper's giving of the light.)"
+    ]
+  },
+  "lamp2_told_you_which_lamp_remembers_who": {
+    "category": "mind",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "crossroads"
+      ],
+      "min_visits": 5,
+      "chance": 0.1
+    },
+    "effect": {
+      "flag": "lamp2_lamp_assignments"
+    },
+    "lines": [
+      "Tonight the lampkeeper, walking the row with you, told you which of the Crossroads",
+      "lamps remembers which old climber. Each lamp keeps one. You walked the row. You learned",
+      "the assignments. You will, in passing, salute the lamps for the climbers they hold."
+    ]
+  },
+  "lamp2_gave_you_oil_for_the_climb": {
+    "category": "found",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "crossroads"
+      ],
+      "min_visits": 5,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "max_stamina",
+      "delta": 1,
+      "flag": "lamp2_oil_climb"
+    },
+    "lines": [
+      "Tonight the lampkeeper handed you a small flask of lamp-oil — the kingdom's old kind,",
+      "the slow-burning kind. *For the bad night,* she said. The flask is in your pack. The",
+      "oil will, when you need it, light you a lamp where no lamp had been. You will not waste it.",
+      "  (+1 Max Stamina, permanently — a flask of slow lamp-oil the lampkeeper gave you for the bad night.)"
+    ]
+  },
+  "lamp2_told_you_her_first_name": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "crossroads"
+      ],
+      "min_visits": 6,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 1,
+      "flag": "lamp2_first_name"
+    },
+    "lines": [
+      "Tonight the lampkeeper, lighting the last lamp of the row, told you her first name. Not",
+      "*lampkeeper.* The one her mother used. You said it back. She blinked. *Yes,* she said.",
+      "You will use it sparingly. You will use it when you say goodnight, the last time you come to the row.",
+      "  (+1 Max HP, permanently — the lampkeeper's first name, given to you in trust.)"
+    ]
+  },
+  "lamp2_walked_you_back_at_the_late_count": {
+    "category": "promise_kept",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "crossroads"
+      ],
+      "min_visits": 5,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "lamp2_walked_back"
+    },
+    "lines": [
+      "Tonight, leaving the Crossroads late, the lampkeeper walked you back along the lamp-row",
+      "until the next zone. She did not need to. She did. You walked under the lit lamps. The",
+      "kingdom's old escort. You said thank you at the end. She nodded. The next escort will be quieter.",
+      "  (+1 Defense, permanently — a late-count escort along the lamp-row by the lampkeeper.)"
+    ]
+  },
+  "pen2_let_you_sit_at_her_table": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "min_visits": 5,
+      "chance": 0.11
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 1,
+      "flag": "pen2_table"
+    },
+    "lines": [
+      "Tonight the Survivor, who has fought the Pall longer than you, let you sit at her",
+      "table. She does not let anyone. You sat. You did not speak. She did not speak. You both",
+      "ate. The eating-together at her table is, in the kingdom, an old gesture of acknowledged kin.",
+      "  (+1 Max HP, permanently — the Survivor's table-acceptance, the once.)"
+    ]
+  },
+  "pen2_taught_you_the_brace_against_the_pall": {
+    "category": "mind",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "min_visits": 5,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "pen2_pall_brace"
+    },
+    "lines": [
+      "Tonight the Survivor, between drinks, taught you the small bracing — a tightening of",
+      "the chin, a planting of the boot — that the Pall does not, properly, get past. She has",
+      "kept herself sane with it for years. You will brace this way from now on. The Pall will note it.",
+      "  (+1 Defense, permanently — a Pall-bracing manner taught by the only one who outlasted it as long.)"
+    ]
+  },
+  "pen2_named_a_husband": {
+    "category": "promise_kept",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "min_visits": 6,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 2,
+      "flag": "pen2_husband_name"
+    },
+    "lines": [
+      "Tonight the Survivor, after a long count of silence, named her husband. The one the",
+      "Pall took twenty years ago. She said it once. The name held in the air a count. Then",
+      "she did not say it again. You will not say it. You will carry it. So will she.",
+      "  (+2 Max HP, permanently — the Survivor's husband's name held in the air between you the once.)"
+    ]
+  },
+  "pen2_let_you_use_her_old_blade": {
+    "category": "found",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "min_visits": 6,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "attack",
+      "delta": 1,
+      "flag": "pen2_old_blade"
+    },
+    "lines": [
+      "Tonight the Survivor took down, from above her fire, the old blade she had carried in",
+      "her own climbing. She let you handle it. You felt its weight. You handed it back. She",
+      "smiled. *It would still cut for you,* she said. The blade chose you, briefly. You stood straighter.",
+      "  (+1 Attack, permanently — the Survivor's old blade weighed in your hand, briefly chosen by it.)"
+    ]
+  },
+  "talva2_let_you_into_the_inner_room": {
+    "category": "promise_kept",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "hidden_hold"
+      ],
+      "min_visits": 4,
+      "chance": 0.12
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "talva2_inner_room"
+    },
+    "lines": [
+      "Tonight Tálva let you into the inner room of the Hidden Hold — the room with the names",
+      "of the starved on its walls. You walked the wall. You said one of the names aloud. Tálva",
+      "did not interrupt. You walked back out. You will be welcome in the room from now on.",
+      "  (+1 Defense, permanently — the Hidden Hold's inner room opened to you by Tálva's hand.)"
+    ]
+  },
+  "talva2_told_you_about_the_winter": {
+    "category": "mind",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "hidden_hold"
+      ],
+      "min_visits": 5,
+      "chance": 0.11
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 1,
+      "flag": "talva2_winter"
+    },
+    "lines": [
+      "Tonight Tálva told you about the winter — the famine winter, the one the capital sealed",
+      "the gates for. She told it slow. She told the parts the kingdom does not, anymore, want",
+      "told. You listened the whole count. The winter is in you now. You will carry it forward.",
+      "  (+1 Max HP, permanently — the famine-winter as Tálva told it, kept whole in you.)"
+    ]
+  },
+  "talva2_handed_you_a_small_bread": {
+    "category": "found",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "hidden_hold"
+      ],
+      "min_visits": 5,
+      "chance": 0.11
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 1,
+      "flag": "talva2_small_bread"
+    },
+    "lines": [
+      "Tonight Tálva, before you left, pressed a small loaf into your hand. *For the Reckoning,*",
+      "she said. *Give it to whoever needs it most.* You took the bread. It rides in your pack.",
+      "You will know who when you see them. You will give the bread. You will not eat it yourself.",
+      "  (+1 Max HP, permanently — a Reckoning-bread Tálva pressed into your hand for someone else.)"
+    ]
+  },
+  "talva2_called_you_kin": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "hidden_hold"
+      ],
+      "min_visits": 6,
+      "chance": 0.11
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 2,
+      "flag": "talva2_kin"
+    },
+    "lines": [
+      "Tonight Tálva, in passing, called you *kin*. Not friend. Not climber. Kin. The kingdom's",
+      "old word, the heavy one, the one that means *we are of the same starving.* You did not",
+      "correct her. You stood up at the word. You will carry it. She nodded. She had decided.",
+      "  (+2 Max HP, permanently — Tálva's *kin* word given to you, the heaviest of the kingdom's bonds.)"
+    ]
+  },
+  "talva2_taught_you_the_count_of_the_starved": {
+    "category": "promise_kept",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "hidden_hold"
+      ],
+      "min_visits": 6,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "talva2_count_taught"
+    },
+    "lines": [
+      "Tonight Tálva taught you the count — the exact count — of the starved at the gates of",
+      "the capital that winter. The number is in you now. It is a small heavy thing. You will,",
+      "when the Reckoning comes, say the number. The number will, when said, take.",
+      "  (+1 Defense, permanently — the exact count of the famine-winter starved, kept in you for the Reckoning.)"
+    ]
+  },
+  "talva2_sat_with_you_in_silence": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "hidden_hold"
+      ],
+      "min_visits": 5,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "max_stamina",
+      "delta": 1,
+      "flag": "talva2_silence"
+    },
+    "lines": [
+      "Tonight Tálva sat with you in silence for a long count. Neither of you spoke. The hold",
+      "around you was quiet. The kingdom was quiet. You both kept the silence as if it were",
+      "a small prayer. It was. You will, from now on, hold silences longer. So will she.",
+      "  (+1 Max Stamina, permanently — a long silence held with Tálva that taught your lungs patience.)"
+    ]
+  },
+  "cael2_taught_you_to_speak_through_dust": {
+    "category": "mind",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "bone_tomb"
+      ],
+      "min_visits": 5,
+      "chance": 0.11
+    },
+    "effect": {
+      "stat": "attack",
+      "delta": 1,
+      "flag": "cael2_dust_speak"
+    },
+    "lines": [
+      "Tonight Cael — through the wall — taught you to speak through dust as well as through",
+      "stone. The kingdom's older priests did this. You spoke a sentence into the dust at the",
+      "third wall. The dust held it. The dust will hold what you say to it from now on.",
+      "  (+1 Attack, permanently — Cael's speak-through-dust lesson, kept by your throat.)"
+    ]
+  },
+  "cael2_let_you_lay_a_palm_on_the_old_seal": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "bone_tomb"
+      ],
+      "min_visits": 5,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "cael2_palm_seal"
+    },
+    "lines": [
+      "Tonight Cael — through the wall — said you could lay your palm on the old seal. The",
+      "seal that nobody lays a palm on. You laid your palm. The seal was warm. The seal had",
+      "been waiting for the next hand. You did not press it. You took your palm back. The warmth stayed.",
+      "  (+1 Defense, permanently — your palm on the old seal of the kingdom, briefly, by Cael's permission.)"
+    ]
+  },
+  "cael2_told_you_who_was_in_the_third_wall": {
+    "category": "found",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "bone_tomb"
+      ],
+      "min_visits": 6,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 1,
+      "flag": "cael2_third_wall_name"
+    },
+    "lines": [
+      "Tonight Cael told you, through the stone, the name of the priest in the third wall. The",
+      "priest who had refused the rite. The name was new to you. You said the name back through",
+      "the stone. The stone took it. The priest, you think, was glad. You both stood quiet.",
+      "  (+1 Max HP, permanently — the third-wall priest's name said back through stone by you.)"
+    ]
+  },
+  "cael2_thanked_you_for_coming": {
+    "category": "promise_kept",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "bone_tomb"
+      ],
+      "min_visits": 6,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 1,
+      "flag": "cael2_thanked"
+    },
+    "lines": [
+      "Tonight Cael, before you left, thanked you. *For coming. Again. Not all of them come",
+      "again.* The kingdom's old courtesy. You said *of course.* Cael, through the stone, was",
+      "quiet a count. You both kept the quiet. You will come back again. You both know.",
+      "  (+1 Max HP, permanently — Cael's thanks for coming back, given through stone in the old way.)"
+    ]
+  },
+  "atrel2_let_you_blow_out_the_candle": {
+    "category": "promise_kept",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "last_altar"
+      ],
+      "min_visits": 5,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "atrel2_blow_candle"
+    },
+    "lines": [
+      "Tonight Atrél, at the end of your visit, let you blow out the altar candle. Nobody blows",
+      "out Atrél's candle. You blew. The candle went. The smoke went up in a thin straight line.",
+      "Atrél thanked you with a tilt of their head. The candle will be lit, by you, next visit.",
+      "  (+1 Defense, permanently — Atrél's candle blown out by your breath, the once.)"
+    ]
+  },
+  "atrel2_taught_you_the_unkneel": {
+    "category": "mind",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "last_altar"
+      ],
+      "min_visits": 6,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "max_stamina",
+      "delta": 1,
+      "flag": "atrel2_unkneel"
+    },
+    "lines": [
+      "Tonight Atrél taught you the *un-kneel* — the way the kingdom's old priests stand up",
+      "from a long kneeling without losing the steadiness of the kneel. You stood up the new",
+      "way. Your knees thanked you. You will, from now on, stand up steadier from your sittings.",
+      "  (+1 Max Stamina, permanently — Atrél's un-kneel taught your knees a steadier rising.)"
+    ]
+  },
+  "atrel2_left_a_lantern_lit_for_your_walk": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "last_altar"
+      ],
+      "min_visits": 6,
+      "chance": 0.09
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 1,
+      "flag": "atrel2_lantern"
+    },
+    "lines": [
+      "Tonight, leaving the altar, you saw — at the path's first bend — a small lantern. Lit.",
+      "Atrél had walked, after you left, to set it for you. You walked back to thank them.",
+      "They had already returned to the altar. You walked the lit path. The lantern was you.",
+      "  (+1 Max HP, permanently — a lantern Atrél set on your walking-path between altar and the road.)"
+    ]
+  },
+  "hearth2_set_a_chair_by_the_fire_for_you": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "min_visits": 5,
+      "chance": 0.11
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 1,
+      "flag": "hearth2_chair_fire"
+    },
+    "lines": [
+      "Tonight the hearth-keeper had set a chair — yours, the one with the worn arm — by the",
+      "inn's fire. The exact arc that would catch the heat best. You sat. The fire warmed you",
+      "for the night. You will, from now on, sit in that chair. The chair has decided about you.",
+      "  (+1 Max HP, permanently — a chair set in the best arc of the fire by the hearth-keeper's hand.)"
+    ]
+  },
+  "hearth2_kept_a_breakfast_for_you": {
+    "category": "found",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "min_visits": 5,
+      "chance": 0.11
+    },
+    "effect": {
+      "stat": "max_stamina",
+      "delta": 1,
+      "flag": "hearth2_breakfast"
+    },
+    "lines": [
+      "Tonight in the morning, the hearth-keeper had — even though you slept late — kept",
+      "breakfast for you under a cloth. The eggs were still warm. The bread was buttered. She",
+      "did not, in the end, charge you for the lateness. *Eat,* she said. You ate. You went on.",
+      "  (+1 Max Stamina, permanently — a breakfast kept warm for your late waking by the inn-keeper.)"
+    ]
+  },
+  "hearth2_told_you_about_the_winter_at_gravewatch": {
+    "category": "mind",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "min_visits": 6,
+      "chance": 0.09
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 1,
+      "flag": "hearth2_winter_gravewatch"
+    },
+    "lines": [
+      "Tonight the hearth-keeper told you about the winter she had at Gravewatch when she was",
+      "small — long before the Pall, before the rite. The town had been a town. Children had",
+      "played in the square. You listened. The town's older life is in you now. You stood up easier.",
+      "  (+1 Max HP, permanently — the hearth-keeper's old-Gravewatch winter, given to you in a telling.)"
+    ]
+  },
+  "hearth2_gave_you_a_room_for_free_one_night": {
+    "category": "promise_kept",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "min_visits": 6,
+      "chance": 0.09
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "hearth2_free_room"
+    },
+    "lines": [
+      "Tonight the hearth-keeper, between counts of looking at you — bruised, tired — did not",
+      "take your coin. *On the house,* she said. *Tonight only.* You did not protest. You slept",
+      "without paying for the bed. The bed was warmer for the not-paying. You will, in some way, repay.",
+      "  (+1 Defense, permanently — a free night at the inn given to you out of the hearth-keeper's eye for tiredness.)"
+    ]
+  },
+  "reader2_loaned_you_a_book": {
+    "category": "found",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "min_visits": 4,
+      "chance": 0.12
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 1,
+      "flag": "reader2_loaned_book"
+    },
+    "lines": [
+      "Tonight the Reader — who watches back, who reads — loaned you a small book from their",
+      "stack. *Bring it back when you can,* they said. *Or don't.* You took it. You read it",
+      "between zones. You will, in fact, bring it back. The Reader will be glad of the bringing.",
+      "  (+1 Max HP, permanently — a book loaned to you by the Reader without security of return.)"
+    ]
+  },
+  "reader2_read_aloud_for_you": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "min_visits": 5,
+      "chance": 0.11
+    },
+    "effect": {
+      "stat": "max_stamina",
+      "delta": 1,
+      "flag": "reader2_aloud"
+    },
+    "lines": [
+      "Tonight the Reader read aloud to you for an hour — a passage they had wanted to share,",
+      "a thing they thought you would want to hear. You sat through the whole hour. You did",
+      "not speak. The Reader closed the book. You both kept the silence after. You stood up steadier.",
+      "  (+1 Max Stamina, permanently — an hour of being read aloud to by the Reader, kept in you.)"
+    ]
+  },
+  "reader2_corrected_your_pronunciation_of_an_old_word": {
+    "category": "mind",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "min_visits": 5,
+      "chance": 0.11
+    },
+    "effect": {
+      "stat": "attack",
+      "delta": 1,
+      "flag": "reader2_pronunciation"
+    },
+    "lines": [
+      "Tonight the Reader corrected your pronunciation of an old-tongue word you had used. Not",
+      "unkindly. *Like this,* they said. You said it again. The new way was right. The word",
+      "will, from now on, be said the way the Reader said it. You will sound less of an outsider.",
+      "  (+1 Attack, permanently — an old-tongue pronunciation the Reader corrected for you, kept.)"
+    ]
+  },
+  "reader2_told_you_what_they_were_reading": {
+    "category": "promise_kept",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "min_visits": 5,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 1,
+      "flag": "reader2_telling"
+    },
+    "lines": [
+      "Tonight the Reader told you what they had been reading all month. The Reader does not,",
+      "properly, say. They said tonight. You listened. The book was old, the topic specific.",
+      "You said you would, when you could, read it too. They smiled. They knew you would not.",
+      "  (+1 Max HP, permanently — the Reader telling you what they read, the once, between counts of silence.)"
+    ]
+  },
+  "reader2_let_you_use_their_marginalia": {
+    "category": "found",
+    "trigger": {
+      "at": [
+        "discovery_read"
+      ],
+      "min_visits": 6,
+      "min_level": 5,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "reader2_marginalia"
+    },
+    "lines": [
+      "Tonight reading in a discovery you saw, in the margin, the Reader's hand — small, neat,",
+      "the small Y at the foot of every comment. They had been here before you. They had left",
+      "their notes for the next reader. The next reader was you. You read the margin first.",
+      "  (+1 Defense, permanently — the Reader's marginalia in a discovery-book left for the next reader.)"
+    ]
+  },
+  "reader2_let_you_see_them_cry_at_a_page": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "min_visits": 6,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 2,
+      "flag": "reader2_cry"
+    },
+    "lines": [
+      "Tonight the Reader, mid-page, let a single tear fall onto the book. They did not wipe",
+      "it. They did not, in the end, hide it from you. You did not, in the end, look away. The",
+      "Reader has decided you are someone in front of whom they can, briefly, cry. You stood with them.",
+      "  (+2 Max HP, permanently — the Reader allowing themselves, in front of you, to cry at a page.)"
+    ]
+  },
+  "insom2_let_you_walk_with_him": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "min_visits": 4,
+      "chance": 0.11
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 1,
+      "flag": "insom2_walk"
+    },
+    "lines": [
+      "Tonight the Insomniac let you walk Gravewatch's third-watch with him. The streets at",
+      "the dead hour. You walked the whole route. You did not speak. He did not speak. The",
+      "town kept its quiet. You stood up easier afterwards. You will walk with him again.",
+      "  (+1 Max HP, permanently — a third-watch walk shared with the Insomniac in proper silence.)"
+    ]
+  },
+  "insom2_told_you_what_he_counts": {
+    "category": "mind",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "min_visits": 5,
+      "chance": 0.11
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "insom2_counts"
+    },
+    "lines": [
+      "Tonight the Insomniac told you what he counts — the small things he keeps numbered to",
+      "keep himself in the world. He counts the lamps. He counts the doorposts. He counts the",
+      "cats. You will, you suspect, start counting things too. The counting will help. You will count.",
+      "  (+1 Defense, permanently — the Insomniac's counting-method taught to you for the bad nights.)"
+    ]
+  },
+  "insom2_kept_a_seat_open_for_you_at_three": {
+    "category": "promise_kept",
+    "trigger": {
+      "at": [
+        "save_action"
+      ],
+      "location": [
+        "village"
+      ],
+      "min_visits": 5,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "max_stamina",
+      "delta": 1,
+      "flag": "insom2_three_seat"
+    },
+    "lines": [
+      "Tonight at the third hour, awake at the saving-place, you came down to the inn's empty",
+      "room and the Insomniac had — without saying — kept a chair across from him. You sat. He",
+      "did not look up from his book. You sat the count out. You both, in your way, slept after.",
+      "  (+1 Max Stamina, permanently — a chair kept across from the Insomniac for whoever could not sleep.)"
+    ]
+  },
+  "insom2_gave_you_his_small_blanket": {
+    "category": "found",
+    "trigger": {
+      "at": [
+        "save_action"
+      ],
+      "location": [
+        "village"
+      ],
+      "min_visits": 6,
+      "chance": 0.09
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 1,
+      "flag": "insom2_blanket"
+    },
+    "lines": [
+      "Tonight the Insomniac, finding you cold at the saving-hour, handed you the small thin",
+      "blanket he carries with him on his walks. *I don't sleep,* he said. *You should.* You",
+      "took the blanket. You slept under it. It is in your pack now. You will give it back, eventually.",
+      "  (+1 Max HP, permanently — the Insomniac's walking-blanket given to you for the night.)"
+    ]
+  },
+  "insom2_called_you_a_fellow_walker": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "min_visits": 6,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 1,
+      "flag": "insom2_fellow"
+    },
+    "lines": [
+      "Tonight the Insomniac, parting on the corner before dawn, called you *fellow walker.* The",
+      "kingdom's old name for someone who keeps watch through the bad hours. He had decided",
+      "you were one. You did not protest. You will, you suspect, keep more watches now. So will he.",
+      "  (+1 Max HP, permanently — the Insomniac's *fellow walker* given to you in the kingdom's old usage.)"
+    ]
+  },
+  "smith2_let_you_strike_the_anvil_once": {
+    "category": "promise_kept",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "min_visits": 5,
+      "requires_flag": "smith_upgraded",
+      "chance": 0.11
+    },
+    "effect": {
+      "stat": "attack",
+      "delta": 1,
+      "flag": "smith2_anvil_strike"
+    },
+    "lines": [
+      "Tonight the smith — Halna's daughter — let you swing her hammer once at the anvil. Just",
+      "one strike. She watched the strike. *Better than I thought,* she said. The hammer rang",
+      "the right ring. Your hand will remember the swing. You will, from now on, swing truer.",
+      "  (+1 Attack, permanently — one strike at the smith's anvil that the smith decided was good.)"
+    ]
+  },
+  "smith2_told_you_about_her_first_blade": {
+    "category": "mind",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "min_visits": 6,
+      "requires_flag": "smith_upgraded",
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 1,
+      "flag": "smith2_first_blade"
+    },
+    "lines": [
+      "Tonight the smith told you about the first blade she ever made — the small one, the",
+      "child's knife, the one her mother kept. The blade is in Halna's stall, still. You had",
+      "not noticed. You will look for it next time. Halna will not, you think, mind that you know.",
+      "  (+1 Max HP, permanently — the smith's first-blade story and where it now lives, kept by you.)"
+    ]
+  },
+  "smith2_kept_a_pair_of_horseshoe_nails_for_you": {
+    "category": "found",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "min_visits": 5,
+      "requires_flag": "smith_upgraded",
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "smith2_horseshoe_nails"
+    },
+    "lines": [
+      "Tonight the smith, between counts of the forge, handed you a small leather pouch with",
+      "two horseshoe nails in it. *For luck,* she said. The kingdom's old way. You took the",
+      "pouch. The nails are in your pocket. They will, in the bad hour, be there to hold.",
+      "  (+1 Defense, permanently — two horseshoe nails the smith gave you for luck in the kingdom's old way.)"
+    ]
   }
 }
