@@ -1192,6 +1192,93 @@ def test_hidden_quest_not_on_board_even_after_pin(content, tmp_path):
     assert "Off-Board" not in rendered
 
 
+# --- Phase-1 Batch-8: reward writers --------------------------------------
+
+def _claim_quest_and_run_rewards(content, tmp_path, quest_extras):
+    """Helper: stage a one-kill-needed quest with given extra reward fields,
+    progress it to completable, then claim and return (state, player)."""
+    from terminalquest import combat
+    from terminalquest.enemy import make_enemy
+    content.quests["reward_test_q"] = dict(
+        _hidden_test_quest(
+            name="Reward Test",
+            target_enemy="wolf",
+            needed=1,
+            reward_gold=10,
+        ),
+        **quest_extras,
+    )
+    player = _player(content)
+    player.attack = 1000  # one-shot
+    state = make_state(player, content, ScriptedIO(["1"]), StubRandom(),
+                       chronicle_dir=tmp_path)
+    state.flags["active_quests"] = ["reward_test_q"]
+    combat.run_combat(state, make_enemy("wolf", content))
+    # Find the quest's index in the board catalog and claim it.
+    # Easier: invoke quest_board with the index of the new quest.
+    visible = [q for q in content.quests if locations._quest_is_visible(
+        content.quests[q], state, 0)]
+    qidx = visible.index("reward_test_q") + 1
+    leave = len(visible) + 1
+    state.io = ScriptedIO([str(qidx), str(leave)])
+    locations.quest_board(state)
+    return state, player
+
+
+def test_quest_reward_consumables_added_to_inventory(content, tmp_path):
+    """reward_consumables: each named consumable is appended to player.consumables."""
+    state, player = _claim_quest_and_run_rewards(
+        content, tmp_path,
+        {"reward_consumables": ["The Last Bread", "Pall-Drinker"]})
+    assert "The Last Bread" in player.consumables
+    assert "Pall-Drinker" in player.consumables
+
+
+def test_quest_reward_marks_fired_on_claim(content, tmp_path):
+    """reward_marks: each named mark is fired (added to player.marks)."""
+    if not content.marks:
+        pytest.skip("marks pool empty")
+    real_mark = next(iter(content.marks))
+    state, player = _claim_quest_and_run_rewards(
+        content, tmp_path, {"reward_marks": [real_mark]})
+    assert real_mark in player.marks
+
+
+def test_quest_reward_chronicle_line_stored_for_later(content, tmp_path):
+    """reward_chronicle_line: stored in state.flags['quest_chronicle_lines']
+    (Batch-10 wires these into the player's Chronicle entry on fall/Warden)."""
+    state, player = _claim_quest_and_run_rewards(
+        content, tmp_path,
+        {"reward_chronicle_line": "They proved the schema worked."})
+    lines = state.flags.get("quest_chronicle_lines", [])
+    assert "They proved the schema worked." in lines
+
+
+def test_quest_reward_ending_unlock_writes_to_chronicle(content, tmp_path):
+    """reward_ending_unlock: ending_id is added to chronicle.unlocks."""
+    from terminalquest import chronicle as _chronicle
+    state, player = _claim_quest_and_run_rewards(
+        content, tmp_path,
+        {"reward_ending_unlock": "demo_unlock_token"})
+    assert "demo_unlock_token" in _chronicle.unlocked(tmp_path)
+
+
+def test_apply_quest_rewards_helper_tolerates_unknown_marks(content, tmp_path):
+    """A reward_marks entry that names an unknown mark is silently skipped.
+
+    The schema validator already rejects unknown mark refs at load time,
+    so this is defensive — the runtime should not crash if a mismatched
+    quest somehow ends up in the pool.
+    """
+    player = _player(content)
+    state = make_state(player, content, ScriptedIO(), StubRandom(),
+                       chronicle_dir=tmp_path)
+    quest = {"reward_marks": ["this_mark_does_not_exist"]}
+    locations._apply_quest_rewards(state, quest)  # must not raise
+    # Nothing was added to player.marks.
+    assert "this_mark_does_not_exist" not in (player.marks or [])
+
+
 def test_chain_claim_emits_new_slip_pinned_notification(content, tmp_path):
     """Claiming a chain step that opens a follow-up emits *A new slip is pinned*."""
     from terminalquest import combat

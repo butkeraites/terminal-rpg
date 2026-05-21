@@ -486,6 +486,48 @@ def scan_hidden_quest_triggers(state):
     return [qid for qid, _ in triggered_now]
 
 
+def _apply_quest_rewards(state, quest):
+    """Phase-1 Batch-8: dispatch every reward_* field on a just-claimed quest.
+
+    The default reward — ``reward_gold`` + a class-themed consumable — is
+    applied inline in ``quest_board()`` so the existing 6 bounties retain
+    their exact behaviour. This function adds the optional reward fields:
+
+      * ``reward_consumables`` — append each named consumable to player.consumables
+      * ``reward_marks``       — fire each named mark (engine: marks.fire_mark)
+      * ``reward_chronicle_line`` — display the line now AND store it for
+                                    Batch-10 to write into the player's
+                                    Chronicle entry on fall / Warden.
+      * ``reward_ending_unlock`` — append the ending id to chronicle.unlocks
+
+    Order: consumables, marks, chronicle_line, ending_unlock. The order
+    is intentional so a mark that, say, sets a flag is fired before the
+    Chronicle line is composed.
+    """
+    io = state.io
+    # 1) Consumables
+    for cons in (quest.get("reward_consumables") or []):
+        state.player.consumables.append(cons)
+        io.show(f"   +1 {cons}")
+    # 2) Marks
+    for mark_id in (quest.get("reward_marks") or []):
+        mark = state.content.marks.get(mark_id)
+        if mark is None:
+            continue
+        # fire_mark prints its own narrative; we don't double-announce.
+        marks.fire_mark(state, mark)
+    # 3) Chronicle line — store for later, also show now.
+    line = quest.get("reward_chronicle_line")
+    if line:
+        state.flags.setdefault("quest_chronicle_lines", []).append(line)
+        io.show(f"   ✒ Chronicle: {line}")
+    # 4) Ending unlock
+    ending = quest.get("reward_ending_unlock")
+    if ending:
+        chronicle.unlock(ending, state.chronicle_dir)
+        io.show(f"   ✦ A path opens: {ending}")
+
+
 def _quest_is_visible(quest, state, cleanses):
     """Return True if this quest should appear on the board for this player.
 
@@ -651,6 +693,10 @@ def quest_board(state):
             io.show(f"   +{quest['reward_gold']} gold")
             if consumable is not None:
                 io.show(f"   +1 {consumable}")
+            # Phase-1 Batch-8: optional reward fields (consumables, marks,
+            # chronicle line, ending unlock). Default reward stays inline
+            # above; this dispatches the extended schema.
+            _apply_quest_rewards(state, quest)
             # Phase-1 Batch-3: chain forward — if claiming this quest opens
             # any follow-up slip, tell the player so they don't have to
             # leave-and-reenter to notice.
