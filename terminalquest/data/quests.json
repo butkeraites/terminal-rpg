@@ -2103,5 +2103,208 @@
       "holds_recognized_your_grief"
     ],
     "flavor": "The insomniac's tally counts you among the climbers who did not sleep this winter. Two bandits believe it. End them."
+  },
+  "after_witherwood_tree": {
+    "name": "After Piranesi's Witherwood Tree",
+    "target_enemy": "wolf",
+    "needed": 2,
+    "reward_gold": 200,
+    "cleanse_required": 0,
+    "requires_discovery": [
+      "piranesi_witherwood_tree"
+    ],
+    "reward_marks": [
+      "the_witherwood_remembered_a_younger_step"
+    ],
+    "flavor": "Piranesi's drawing of the tree marks two wolves that pace around it. End them. The tree will not be paced again."
+  },
+  "after_atrel_marker_wood": {
+    "name": "After Atrél's Marker in the Wood",
+    "target_enemy": "bandit",
+    "needed": 3,
+    "reward_gold": 250,
+    "cleanse_required": 0,
+    "requires_discovery": [
+      "atrel_marker"
+    ],
+    "reward_marks": [
+      "the_wood_held_its_breath_for_you"
+    ],
+    "flavor": "Atrél's marker names three bandits who passed it without kneeling. End them. The marker will get a kneeling later."
+  },
+  "stag_a_first_meeting": {
+    "name": "The Pallid Stag — First Meeting",
+    "target_enemy": "wolf",
+    "needed": 2,
+    "reward_gold": 200,
+    "cleanse_required": 0,
+    "chain_next": "stag_b_second_meeting",
+    "flavor": "Two wolves pace at the clearing where the Stag will appear. End them. The clearing will be ready for a first meeting."
+  },
+  "stag_b_second_meeting": {
+    "name": "The Pallid Stag — Second Meeting",
+    "target_enemy": "goblin",
+    "needed": 3,
+    "reward_gold": 350,
+    "cleanse_required": 0,
+    "requires_quest": [
+      "stag_a_first_meeting"
+    ],
+    "chain_next": "stag_c_third_meeting",
+    "flavor": "Three goblins keep the clearing from settling. End them. The Stag will return for a second meeting."
+  },
+  "stag_c_third_meeting": {
+    "name": "The Pallid Stag — Third Meeting",
+    "target_enemy": "pallid_stag",
+    "needed": 1,
+    "reward_gold": 1000,
+    "cleanse_required": 1,
+    "requires_quest": [
+      "stag_b_second_meeting"
+    ],
+    "reward_chronicle_line": "They met the Pallid Stag three times in the Witherwood. The third meeting was a teaching, not a fight, and yet they took it.",
+    "reward_marks": [
+      "the_wood_held_its_breath_for_you"
+    ],
+    "flavor": "The Stag has come back for the third time. The third meeting is a teaching. Take the teaching. Take the Stag."
+  },
+  "after_wolf_knows_scent": {
+    "name": "After the Wolf Knew Your Scent",
+    "target_enemy": "wolf",
+    "needed": 3,
+    "reward_gold": 350,
+    "cleanse_required": 1,
+    "requires_mark": "wolf_knows_your_scent",
+    "reward_marks": [
+      "the_witherwood_remembered_a_younger_step"
+    ],
+    "flavor": "Once a wolf knew your scent. Three of the pack now share it. End them. The scent will be yours alone again."
+  },
+  "after_held_its_breath": {
+    "name": "After the Wood Held Its Breath",
+    "target_enemy": "bandit",
+    "needed": 2,
+    "reward_gold": 400,
+    "cleanse_required": 0,
+    "requires_mark": "the_wood_held_its_breath_for_you",
+    "reward_chronicle_line": "Once the Witherwood had held its breath for them; they returned and ended two bandits the wood would have wished to keep quiet.",
+    "flavor": "The wood held its breath for you. Two bandits broke the holding. End them. The wood will breathe again."
+  },
+  "after_forgot_pine": {
+    "name": "After You Forgot the Smell of Pine",
+    "target_enemy": "giant_bat",
+    "needed": 3,
+    "reward_gold": 300,
+    "cleanse_required": 0,
+    "requires_mark": "forgot_smell_of_pine",
+    "reward_consumables": [
+      "The Last Bread"
+    ],
+    "flavor": "You forgot the smell of pine for a count. Three carrion bats remember the count. End them. The pine will smell again."
+  },
+  "after_remembered_younger_step": {
+    "name": "After the Wood Remembered a Younger Step",
+    "target_enemy": "wolf",
+    "needed": 1,
+    "reward_gold": 250,
+    "cleanse_required": 0,
+    "requires_mark": "the_witherwood_remembered_a_younger_step",
+    "reward_chronicle_line": "Once the Witherwood had remembered their younger step; they returned and ended the wolf that had taken note.",
+    "flavor": "The wood remembered your younger step. One wolf took notes. End it. The notes will be yours."
+  },
+  "wood_no_healing_received": {
+    "name": "The Climber Who Refused Healing in the Wood",
+    "target_enemy": "wolf",
+    "completion_condition": "no_healing_received",
+    "needed": 2,
+    "reward_gold": 350,
+    "cleanse_required": 1,
+    "flavor": "Two wolves. No healing received in either fight. The wood's old climbers walked this way until they could not."
+  },
+  "wood_killed_after_dodging": {
+    "name": "End Them After the Dodge",
+    "target_enemy": "bandit",
+    "completion_condition": "killed_after_dodging",
+    "needed": 2,
+    "reward_gold": 400,
+    "cleanse_required": 1,
+    "flavor": "Two bandits. Each killing blow lands on a turn after you dodged. The old rangers did it this way."
+  },
+  "wood_pet_assisted": {
+    "name": "Let the Pet Bring the Goblin Down",
+    "target_enemy": "goblin",
+    "completion_condition": "pet_assisted",
+    "needed": 3,
+    "reward_gold": 400,
+    "cleanse_required": 1,
+    "flavor": "Three goblins. Your pet lands the blow on each that brings them under half hp. The pet learns its name from doing."
+  },
+  "wood_killed_with_thrown": {
+    "name": "Thrown, Not Swung",
+    "target_enemy": "wolf",
+    "completion_condition": "killed_with_thrown",
+    "needed": 1,
+    "reward_gold": 300,
+    "cleanse_required": 1,
+    "flavor": "A wolf. Killed with a thrown weapon. The wood's old climbers did it this way for the wolves they had no quarrel with."
+  },
+  "hidden_atrel_marker_seen": {
+    "name": "After Atrél's Marker, the Wood Sends Three",
+    "target_enemy": "goblin",
+    "needed": 3,
+    "reward_gold": 350,
+    "cleanse_required": 0,
+    "hidden": true,
+    "trigger_action": {
+      "type": "flag_set",
+      "params": {
+        "flag_name": "atrel_marker_seen"
+      }
+    },
+    "reward_marks": [
+      "the_wood_held_its_breath_for_you"
+    ],
+    "flavor": "Once Atrél's marker is known to you, three goblins of the wood appear who had seen Atrél once and walked away unchanged. End them. The wood will be one count quieter."
+  },
+  "rangers_quiet_wolves": {
+    "name": "The Ranger's Quiet Wolves",
+    "target_enemy": "wolf",
+    "needed": 5,
+    "reward_gold": 450,
+    "cleanse_required": 0,
+    "requires_class": [
+      "ranger"
+    ],
+    "reward_marks": [
+      "ranger_a_wolf_let_you_sleep"
+    ],
+    "flavor": "Five wolves. Each one taken without the rest of the pack hearing. Only a ranger walks the wood quiet enough."
+  },
+  "rogues_silent_six": {
+    "name": "The Rogue's Silent Six",
+    "target_enemy": "bandit",
+    "needed": 6,
+    "reward_gold": 500,
+    "cleanse_required": 1,
+    "requires_class": [
+      "rogue"
+    ],
+    "reward_consumables": [
+      "The Last Bread"
+    ],
+    "flavor": "Six bandits. None see you coming. Only a rogue can take six of them without the wood's birds picking up the change."
+  },
+  "reborn_younger_step": {
+    "name": "A Previous You Walked Here Younger",
+    "target_enemy": "wolf",
+    "needed": 1,
+    "reward_gold": 350,
+    "cleanse_required": 0,
+    "requires_flag": "is_reborn",
+    "reward_marks": [
+      "the_witherwood_remembered_a_younger_step"
+    ],
+    "reward_chronicle_line": "A previous one of them had walked the Witherwood younger. The wood remembered the gait. The new self ended the wolf the old self had run from.",
+    "flavor": "A previous you walked here younger and faster. One wolf the previous you ran from is still there. End it."
   }
 }

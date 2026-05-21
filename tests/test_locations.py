@@ -1259,11 +1259,11 @@ def _claim_quest_and_run_rewards(content, tmp_path, quest_extras):
     state.flags["active_quests"] = ["reward_test_q"]
     combat.run_combat(state, make_enemy("wolf", content))
     # Find the quest's index in the board catalog and claim it.
-    # Easier: invoke quest_board with the index of the new quest.
-    visible = [q for q in content.quests if locations._quest_is_visible(
-        content.quests[q], state, 0)]
-    qidx = visible.index("reward_test_q") + 1
-    leave = len(visible) + 1
+    # The board groups by category, so use the same _visible_quest_order
+    # helper the rest of the suite uses — otherwise the flat-vs-grouped
+    # mismatch breaks the test as more authored specials land.
+    qidx = _quest_pick_index(state, "reward_test_q")
+    leave = _leave_index(state)
     state.io = ScriptedIO([str(qidx), str(leave)])
     locations.quest_board(state)
     return state, player
@@ -1279,13 +1279,25 @@ def test_quest_reward_consumables_added_to_inventory(content, tmp_path):
 
 
 def test_quest_reward_marks_fired_on_claim(content, tmp_path):
-    """reward_marks: each named mark is fired (added to player.marks)."""
+    """reward_marks: each named mark is fired (added to player.marks).
+
+    Pick a mark that does NOT gate any other quest, so firing it doesn't
+    cause the board to grow mid-claim and shift the leave-option index.
+    The pool has ~1000 marks but ~20 are used as requires_mark / requires_
+    marks; we want one of the other ~980.
+    """
     if not content.marks:
         pytest.skip("marks pool empty")
-    real_mark = next(iter(content.marks))
+    gating = set()
+    for q in content.quests.values():
+        if q.get("requires_mark"):
+            gating.add(q["requires_mark"])
+        for m in q.get("requires_marks") or []:
+            gating.add(m)
+    safe_mark = next(m for m in content.marks if m not in gating)
     state, player = _claim_quest_and_run_rewards(
-        content, tmp_path, {"reward_marks": [real_mark]})
-    assert real_mark in player.marks
+        content, tmp_path, {"reward_marks": [safe_mark]})
+    assert safe_mark in player.marks
 
 
 def test_quest_reward_chronicle_line_stored_for_later(content, tmp_path):
