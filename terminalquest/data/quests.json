@@ -2672,5 +2672,201 @@
     ],
     "reward_chronicle_line": "Once they had made Atrél's Peace, the Maw-Mother was quieter by one count when she fell, and they could hear themselves think.",
     "flavor": "Across runs, Atrél's Peace marks you. The Maw-Mother is quieter by one count for you. End her. The quiet remains."
+  },
+  "after_rope_in_palm": {
+    "name": "After the Bellward's Rope Was in Your Palm",
+    "target_enemy": "hollow_bellward",
+    "needed": 1,
+    "reward_gold": 900,
+    "cleanse_required": 3,
+    "requires_mark": "bellward_rope_in_your_palm",
+    "reward_marks": [
+      "bellward_bell_rang_for_you"
+    ],
+    "reward_chronicle_line": "Once the Bellward's rope had been in their palm, they returned and ended the Bellward who had handed it to them.",
+    "flavor": "The Bellward's rope passed through your palm once. He knows. Return. End him. The rope stays unrung after."
+  },
+  "after_capital_air": {
+    "name": "After You Breathed the Capital Air",
+    "target_enemy": "pall_magistrate",
+    "needed": 2,
+    "reward_gold": 500,
+    "cleanse_required": 3,
+    "requires_mark": "mourncross_breathed_the_capital_air",
+    "reward_marks": [
+      "mourncross_the_capital_air_smelled_of_a_kitchen"
+    ],
+    "flavor": "You breathed Mourncross's air. Two magistrates notice the breath. End them. The air will be one count cleaner."
+  },
+  "after_one_hour_of_light": {
+    "name": "After Your One Hour of Light",
+    "target_enemy": "hollow_procession",
+    "needed": 3,
+    "reward_gold": 600,
+    "cleanse_required": 3,
+    "requires_mark": "mourncross_one_hour_of_light",
+    "reward_marks": [
+      "mourncross_lamp_lit_briefly"
+    ],
+    "flavor": "Mourncross gave you one hour of light. Three of the procession walked through it. End them. The hour will return."
+  },
+  "after_door_opened_count": {
+    "name": "After a Door Opened for a Count",
+    "target_enemy": "gutter_wretch",
+    "needed": 2,
+    "reward_gold": 350,
+    "cleanse_required": 3,
+    "requires_mark": "mourncross_a_door_opened_for_a_count",
+    "reward_marks": [
+      "mourncross_open_door_closed"
+    ],
+    "flavor": "A door opened for one count for you in Mourncross. Two wretches stepped through after. End them. The door will close properly."
+  },
+  "after_unnamed_grave_called": {
+    "name": "After an Unnamed Grave Called Your Name",
+    "target_enemy": "hollow_bellward",
+    "needed": 1,
+    "reward_gold": 1100,
+    "cleanse_required": 3,
+    "requires_mark": "mourncross_an_unnamed_grave_called_your_name",
+    "reward_chronicle_line": "Once an unnamed grave in Mourncross had called their name, they returned and ended the Bellward who had once made the grave unnamable.",
+    "flavor": "An unnamed grave called your name once. The Bellward heard the calling. End her. The grave will know one name now."
+  },
+  "after_chairman_looked": {
+    "name": "After the Chairman Looked at You",
+    "target_enemy": "pall_magistrate",
+    "needed": 1,
+    "reward_gold": 700,
+    "cleanse_required": 4,
+    "requires_mark": "mourncross_chairman_looked_at_you",
+    "reward_marks": [
+      "mourncross_an_old_council_member_nodded_at_you"
+    ],
+    "flavor": "The Chairman looked at you. A magistrate witnessed the look. End the magistrate. The Chairman's look will become a memory."
+  },
+  "after_open_door_closed": {
+    "name": "After the Open Door Closed",
+    "target_enemy": "hollow_procession",
+    "needed": 1,
+    "reward_gold": 500,
+    "cleanse_required": 3,
+    "requires_mark": "mourncross_open_door_closed",
+    "reward_marks": [
+      "mourncross_your_step_woke_a_room"
+    ],
+    "flavor": "An open door in Mourncross closed behind you. A procession of one walks past it. End the one. The door will not need to close again."
+  },
+  "rope_a_hear_the_bell": {
+    "name": "The Bellward's Rope — Hear the Bell",
+    "target_enemy": "hollow_procession",
+    "needed": 2,
+    "reward_gold": 350,
+    "cleanse_required": 0,
+    "requires_discovery": [
+      "bellwards_card"
+    ],
+    "chain_next": "rope_b_grasp_the_rope",
+    "flavor": "Two of the procession ring the bell at first light. End them. The bell will fall silent for one morning."
+  },
+  "rope_b_grasp_the_rope": {
+    "name": "The Bellward's Rope — Grasp the Rope",
+    "target_enemy": "pall_magistrate",
+    "needed": 1,
+    "reward_gold": 500,
+    "cleanse_required": 0,
+    "requires_quest": [
+      "rope_a_hear_the_bell"
+    ],
+    "chain_next": "rope_c_close_the_belfry",
+    "reward_marks": [
+      "bellward_rope_in_your_palm"
+    ],
+    "flavor": "A magistrate guards the belfry door. End him. Take the rope. The Bellward will feel it leaving."
+  },
+  "rope_c_close_the_belfry": {
+    "name": "The Bellward's Rope — Close the Belfry",
+    "target_enemy": "hollow_bellward",
+    "needed": 1,
+    "reward_gold": 1200,
+    "cleanse_required": 0,
+    "requires_quest": [
+      "rope_b_grasp_the_rope"
+    ],
+    "reward_chronicle_line": "They climbed to the Mourncross belfry, took the Bellward's rope, and ended the Bellward herself with it in their other hand.",
+    "reward_marks": [
+      "the_bell_at_mourncross_remembered_your_name"
+    ],
+    "flavor": "The Bellward waits at the belfry. End her. The bell knows your name now. Close the belfry. It will not open again."
+  },
+  "mourn_status_cleared": {
+    "name": "Walk Clean from the Hollow Procession",
+    "target_enemy": "hollow_procession",
+    "completion_condition": "status_cleared",
+    "needed": 3,
+    "reward_gold": 500,
+    "cleanse_required": 3,
+    "flavor": "Three of the procession. When you walk out, no status clings to you. Mourncross measures who came through clean."
+  },
+  "mourn_no_damage_magistrate": {
+    "name": "Untouched Through the Magistrate's Court",
+    "target_enemy": "pall_magistrate",
+    "completion_condition": "no_damage_taken",
+    "needed": 1,
+    "reward_gold": 700,
+    "cleanse_required": 3,
+    "flavor": "A magistrate. End him without a scratch. The capital's old guards did it this way to prove they were not afraid."
+  },
+  "mourn_no_abilities_wretch": {
+    "name": "Three Wretches, Honest Steel",
+    "target_enemy": "gutter_wretch",
+    "completion_condition": "used_no_abilities",
+    "needed": 3,
+    "reward_gold": 500,
+    "cleanse_required": 3,
+    "flavor": "Three wretches. No ability used in any fight. Honest steel, the way the capital's first gutter-clearers worked."
+  },
+  "hidden_window_face_count": {
+    "name": "A Face Was at the Window for One Count",
+    "target_enemy": "gutter_wretch",
+    "needed": 1,
+    "reward_gold": 300,
+    "cleanse_required": 0,
+    "hidden": true,
+    "trigger_action": {
+      "type": "zone_visited",
+      "params": {
+        "zone_id": "mourncross"
+      }
+    },
+    "reward_marks": [
+      "mourncross_a_window_had_a_face_at_it_for_one_count"
+    ],
+    "flavor": "Your first step in Mourncross — a face was at a window for exactly one count, then gone. A wretch saw it too. End it."
+  },
+  "rangers_silent_streets": {
+    "name": "The Ranger's Silent Streets",
+    "target_enemy": "hollow_procession",
+    "needed": 5,
+    "reward_gold": 600,
+    "cleanse_required": 3,
+    "requires_class": [
+      "ranger"
+    ],
+    "reward_marks": [
+      "mourncross_did_not_leave_the_flower"
+    ],
+    "flavor": "Five of the procession, none of them aware. Only a ranger moves through Mourncross's streets that quietly."
+  },
+  "after_old_seal_capital_less_hollow": {
+    "name": "After the Old Seal, the Capital Is Less Hollow",
+    "target_enemy": "hollow_procession",
+    "needed": 5,
+    "reward_gold": 1100,
+    "cleanse_required": 3,
+    "requires_ending": [
+      "old_seal"
+    ],
+    "reward_chronicle_line": "Once they had once made The Old Seal, Mourncross was less hollow by one count for them, and five of the procession ended easier.",
+    "flavor": "Across runs, The Old Seal marks you. The procession is less hollow by one count for you. Five of them. End them easier."
   }
 }
