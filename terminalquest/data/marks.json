@@ -19641,5 +19641,2001 @@
       "pouch. The nails are in your pocket. They will, in the bad hour, be there to hold.",
       "  (+1 Defense, permanently — two horseshoe nails the smith gave you for luck in the kingdom's old way.)"
     ]
+  },
+  "border_karst_lookout_remembered_you": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "karst_outpost"
+      ],
+      "min_visits": 2,
+      "chance": 0.13
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "karst_lookout_remembered"
+    },
+    "lines": [
+      "Tonight at the Karst Outpost — long abandoned — the lookout-post had, since your last",
+      "visit, accumulated a small shelf of pebbles. Travellers leave them in the kingdom's old",
+      "way to mark *I was here.* The shelf had recognized your previous pebble. It welcomed you.",
+      "  (+1 Defense, permanently — a Karst lookout-shelf welcoming you back with the old pebble-mark.)"
+    ]
+  },
+  "border_karst_a_kettle_was_still_warm": {
+    "category": "half_truth",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "karst_outpost"
+      ],
+      "chance": 0.11
+    },
+    "effect": {
+      "flag": "karst_kettle_warm"
+    },
+    "lines": [
+      "Tonight at the Karst Outpost the small kettle by the empty hearth was, when you put",
+      "your palm to it, warm. Recently. There had been somebody. They had gone. They had not",
+      "wanted to be seen. The kingdom's borderlands keep their walkers. You walked through."
+    ]
+  },
+  "border_karst_signpost_pointed_back_home": {
+    "category": "lost",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "karst_outpost"
+      ],
+      "min_visits": 2,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": -1,
+      "flag": "karst_signpost_home"
+    },
+    "lines": [
+      "Tonight at the Karst Outpost the signpost had, on its fourth arm, the name of a town",
+      "you used to live in. The town does not exist anymore. The signpost still points. You",
+      "did not walk that way. You walked on. The signpost will keep pointing, for the next walker.",
+      "  (-1 Max HP, permanently — a signpost arm pointing to a town that does not exist anymore.)"
+    ]
+  },
+  "border_karst_an_old_emissary_token": {
+    "category": "found",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "karst_outpost"
+      ],
+      "min_visits": 2,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "max_stamina",
+      "delta": 1,
+      "flag": "karst_emissary_token"
+    },
+    "lines": [
+      "Tonight at the Karst you found, in the dust, a small bronze token — an emissary's mark",
+      "from one of the sister realms. The realm's name on it is one the kingdom has begun to",
+      "forget. You took the token. It rides in your pocket. The realm will know its mark is with someone.",
+      "  (+1 Max Stamina, permanently — a sister realm's emissary-token kept in your pocket against forgetting.)"
+    ]
+  },
+  "border_karst_a_bird_circled_three_times": {
+    "category": "mind",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "karst_outpost"
+      ],
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "karst_bird_circled"
+    },
+    "lines": [
+      "Tonight at the Karst a bird — large, wings spread wide — circled three times over the",
+      "outpost as you arrived. The kingdom's old way of marking a particular visitor. The bird",
+      "went. You looked after it. The next traveller will know to expect you, on some count.",
+      "  (+1 Defense, permanently — a three-circling bird marking your arrival at the Karst in the old way.)"
+    ]
+  },
+  "border_karst_a_chair_was_set_facing_yours": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "karst_outpost"
+      ],
+      "min_visits": 3,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 1,
+      "flag": "karst_chair_facing"
+    },
+    "lines": [
+      "Tonight at the Karst there was, at the empty table, a chair set facing yours. You sat",
+      "in your chair. The opposite chair stayed empty. You both — you and the empty chair —",
+      "kept the count. The Karst, by its old courtesy, had set you a conversation-partner.",
+      "  (+1 Max HP, permanently — a Karst chair set facing yours that kept its count empty in your honour.)"
+    ]
+  },
+  "border_wynne_a_cooking_fire_stayed_warm_for_you": {
+    "category": "found",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "wynne_camp"
+      ],
+      "chance": 0.12
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 1,
+      "flag": "wynne_fire_warm"
+    },
+    "lines": [
+      "Tonight at Wynne's camp the cooking fire — long cold, you would have thought — had a",
+      "single warm coal at the bottom. You blew. The coal caught. You had a small fire by the",
+      "time you needed it. Wynne would have been glad. The kingdom kept the coal for you.",
+      "  (+1 Max HP, permanently — a single warm coal at Wynne's camp the kingdom kept against your need.)"
+    ]
+  },
+  "border_wynne_a_message_was_carved_in_the_post": {
+    "category": "mind",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "wynne_camp"
+      ],
+      "min_visits": 2,
+      "chance": 0.11
+    },
+    "effect": {
+      "stat": "attack",
+      "delta": 1,
+      "flag": "wynne_post_carved"
+    },
+    "lines": [
+      "Tonight at Wynne's the central post had — newly, since you were last here — a small",
+      "carved message: *the road south is still open.* You did not need the road south. You",
+      "noted it. You will, in some future, need it. The carver will be glad of the saving.",
+      "  (+1 Attack, permanently — a carved message at Wynne's about the still-open south road.)"
+    ]
+  },
+  "border_wynne_a_song_carried_on_the_wind": {
+    "category": "half_truth",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "wynne_camp"
+      ],
+      "chance": 0.1
+    },
+    "effect": {
+      "flag": "wynne_song_on_wind"
+    },
+    "lines": [
+      "Tonight at Wynne's, between counts, you heard — distantly, on the wind from the south —",
+      "a song you almost knew. The sister realm sings it. You stood listening until the wind",
+      "shifted. The song was gone. You will remember the shape of it. You will not remember the words."
+    ]
+  },
+  "border_wynne_a_friend_camped_here_once": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "wynne_camp"
+      ],
+      "min_visits": 3,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 2,
+      "flag": "wynne_friend_camped"
+    },
+    "lines": [
+      "Tonight at Wynne's you noticed, in the corner where someone had clearly slept, a small",
+      "carving you recognized. A friend's mark. They had camped here once. Years ago. You did",
+      "not know they had come this far. They had. You knelt at the corner. You said their name.",
+      "  (+2 Max HP, permanently — a friend's old camp-mark at Wynne's that you recognized and named.)"
+    ]
+  },
+  "border_wynne_an_arrowhead_in_the_post": {
+    "category": "found",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "wynne_camp"
+      ],
+      "min_visits": 2,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "wynne_arrowhead"
+    },
+    "lines": [
+      "Tonight at Wynne's the central post had a small arrowhead lodged in it — not the",
+      "kingdom's make. A sister realm's. You worked it out with your knife. You took it. It",
+      "rides in your pocket. The arrowhead remembers a hand that drew the bow that put it there.",
+      "  (+1 Defense, permanently — a sister realm's arrowhead worked from Wynne's post into your pocket.)"
+    ]
+  },
+  "border_wynne_an_emissary_left_a_letter_for_you": {
+    "category": "promise_kept",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "wynne_camp"
+      ],
+      "min_visits": 3,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 1,
+      "flag": "wynne_emissary_letter"
+    },
+    "lines": [
+      "Tonight at Wynne's, tucked under a stone, there was a small folded letter — to you, by",
+      "name. From an emissary you had spoken with three runs ago. *We watch your road,* it",
+      "said. *Walk well.* You folded it. You kept it. The emissary is in this with you, still.",
+      "  (+1 Max HP, permanently — a sister-realm emissary's letter to you, kept in your pack.)"
+    ]
+  },
+  "border_margrave_seal_kept_warm_under_your_palm": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "margrave_monument"
+      ],
+      "min_visits": 2,
+      "chance": 0.12
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "margrave_seal_warm"
+    },
+    "lines": [
+      "Tonight at the Margrave's monument the old seal — the carved one, the kingdom's old",
+      "writ — was warm under your palm. The seal had been keeping itself warm. The seal had",
+      "decided about you. The writ, in the seal's memory, is, for one count, honored again.",
+      "  (+1 Defense, permanently — the Margrave's seal warm under your palm, honoring an old writ.)"
+    ]
+  },
+  "border_margrave_a_petition_was_left_for_you_to_judge": {
+    "category": "promise_kept",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "margrave_monument"
+      ],
+      "min_visits": 3,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 1,
+      "flag": "margrave_petition_judge"
+    },
+    "lines": [
+      "Tonight at the monument there was — folded, tucked into the wreath — a petition. The",
+      "old form. Addressed *to the next who comes.* You read it. You did not have the power",
+      "to grant. You did not have the power to refuse. You read it. The reading was, in itself, the answer.",
+      "  (+1 Max HP, permanently — a petition left at the Margrave's monument for whoever next came; you read it.)"
+    ]
+  },
+  "border_margrave_a_dead_lord_thanked_you": {
+    "category": "half_truth",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "margrave_monument"
+      ],
+      "min_visits": 3,
+      "chance": 0.09
+    },
+    "effect": {
+      "flag": "margrave_lord_thanked"
+    },
+    "lines": [
+      "Tonight at the monument, kneeling, you felt — for one count — a hand on your shoulder.",
+      "Old. Heavy. The kind of hand that knows the weight of a writ. The dead Margrave was,",
+      "briefly, with you. The hand thanked you. You did not turn. The hand withdrew. You stood."
+    ]
+  },
+  "border_margrave_the_stone_softened_to_your_kneel": {
+    "category": "body",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "margrave_monument"
+      ],
+      "min_visits": 2,
+      "chance": 0.11
+    },
+    "effect": {
+      "stat": "max_stamina",
+      "delta": 1,
+      "flag": "margrave_stone_softened"
+    },
+    "lines": [
+      "Tonight at the monument the stone where you knelt — between the dais and the wreath —",
+      "had, by the time you stood, softened slightly. The stone has been kneeling-stone for a",
+      "long count. It has, in this run, decided you are kin to its kneelers. The stone remembers.",
+      "  (+1 Max Stamina, permanently — a kneeling-stone at the Margrave's monument that softened for you.)"
+    ]
+  },
+  "border_margrave_an_old_writ_was_in_your_pocket": {
+    "category": "found",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "margrave_monument"
+      ],
+      "min_visits": 3,
+      "chance": 0.09
+    },
+    "effect": {
+      "stat": "attack",
+      "delta": 1,
+      "flag": "margrave_old_writ"
+    },
+    "lines": [
+      "Tonight at the monument, in the wreath of withered flowers, you found a small folded",
+      "paper. Old. The Margrave's writ — one of the originals. Faded. You read it. You did not",
+      "leave it back. The writ rides in your pocket. The kingdom may, one day, need it produced.",
+      "  (+1 Attack, permanently — an original Margrave's writ kept in your pocket against the kingdom's need.)"
+    ]
+  },
+  "border_margrave_a_bell_rang_when_you_left": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "margrave_monument"
+      ],
+      "min_visits": 3,
+      "chance": 0.09
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 1,
+      "flag": "margrave_bell_left"
+    },
+    "lines": [
+      "Tonight leaving the monument, the bell — the small one, the kind that rings when a",
+      "writ-bearer departs — rang once. There was no one to ring it. The bell rang for you.",
+      "The Margrave's monument has decided you are, in some sense it kept, a bearer. You walked.",
+      "  (+1 Max HP, permanently — the Margrave's bell rung once at your leaving by no hand.)"
+    ]
+  },
+  "hollowed_first_kill_did_not_settle_well": {
+    "category": "broken",
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "min_level": 4,
+      "chance": 0.12
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": -1,
+      "flag": "first_hollowed_kill"
+    },
+    "lines": [
+      "Tonight you killed a Hollowed who had, you understood late, been somebody. The kill",
+      "did not settle well. You laid them out. You said the small words. The kingdom thanked",
+      "you. You did not feel thanked. You will feel less thanked from now on by such kills.",
+      "  (-1 Max HP, permanently — a Hollowed kill that did not, in the end, settle in you well.)"
+    ]
+  },
+  "hollowed_kept_a_button_from_their_coat": {
+    "category": "found",
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "min_level": 4,
+      "chance": 0.11
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "hollowed_button_kept"
+    },
+    "lines": [
+      "Tonight, after killing a Hollowed, you knelt and took one button from their coat. The",
+      "kingdom's old courtesy — to remember the dead by something they had worn. The button",
+      "rides in your pocket. You will, when you can, give it to someone who knew them.",
+      "  (+1 Defense, permanently — a Hollowed's coat-button kept by you to give back, when you can, to a knower.)"
+    ]
+  },
+  "hollowed_a_familiar_face_was_under_the_hollow": {
+    "category": "broken",
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "min_level": 5,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": -2,
+      "flag": "hollowed_familiar_face"
+    },
+    "lines": [
+      "Tonight, after the Hollowed went down, you saw the face under the hollow. You knew",
+      "the face. A neighbour from before the kingdom. Not someone you'd ever spoken to. Someone",
+      "you had passed every day. You closed their eyes. You walked on. The face will stay.",
+      "  (-2 Max HP, permanently — a familiar face under a Hollowed's hollow that you, tonight, recognized.)"
+    ]
+  },
+  "hollowed_breath_taught_you_a_count": {
+    "category": "mind",
+    "trigger": {
+      "at": [
+        "combat_low_hp"
+      ],
+      "min_level": 5,
+      "chance": 0.11
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "hollowed_count_taught"
+    },
+    "lines": [
+      "Mid-fight tonight a Hollowed's breath synced with yours — for three counts. The count",
+      "they breathe in. You learned it. You can, from now on, breathe in their count. The",
+      "Hollowed will, when you do, be less hostile to you. You will, when you do, be calmer.",
+      "  (+1 Defense, permanently — a Hollowed's breath-count taught to your lungs in a fight.)"
+    ]
+  },
+  "hollowed_called_you_a_name_that_was_not_yours": {
+    "category": "half_truth",
+    "trigger": {
+      "at": [
+        "combat_low_hp"
+      ],
+      "min_level": 5,
+      "chance": 0.1
+    },
+    "effect": {
+      "flag": "hollowed_wrong_name"
+    },
+    "lines": [
+      "Tonight in the worst beat the Hollowed called you a name — not yours. The name was",
+      "someone they had loved. You finished the fight. You laid them out. You said the name",
+      "they had called you, back to them, before walking on. The kingdom may have heard you."
+    ]
+  },
+  "hollowed_let_you_pass_when_you_were_humming": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "min_level": 5,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "max_stamina",
+      "delta": 1,
+      "flag": "hollowed_let_humming"
+    },
+    "lines": [
+      "Tonight you walked past a Hollowed humming the kingdom's old funeral-tune. They lowered",
+      "their hand. They let you pass. The funeral-tune is the kingdom's old way of saying *I",
+      "have already laid one of yours out.* You had. The Hollowed had decided to honor it.",
+      "  (+1 Max Stamina, permanently — a Hollowed letting you pass because you were humming their old tune.)"
+    ]
+  },
+  "hollowed_traded_a_blow_for_a_word": {
+    "category": "promise_kept",
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "min_level": 6,
+      "chance": 0.09
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 1,
+      "flag": "hollowed_traded"
+    },
+    "lines": [
+      "Tonight, mid-fight, you traded a blow for a word — landed the strike but said, in the",
+      "landing, the kingdom's old word for *forgive.* The Hollowed went quieter. The fight",
+      "shorter. You can, you understand, trade blows for words. The kingdom honours the trade.",
+      "  (+1 Max HP, permanently — a blow you landed that you accompanied with the word *forgive.*)"
+    ]
+  },
+  "hollowed_kept_their_hands_open_when_they_died": {
+    "category": "mind",
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "min_level": 5,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 1,
+      "flag": "hollowed_hands_open"
+    },
+    "lines": [
+      "Tonight when the Hollowed went down their hands, instead of curling, opened. Palms up.",
+      "The kingdom's old gesture of *I have nothing left to take.* You closed their eyes. You",
+      "did not close the hands. You let the palms stay up. The kingdom saw. The kingdom kept the gesture.",
+      "  (+1 Max HP, permanently — a Hollowed's open palms at death that you let stay up.)"
+    ]
+  },
+  "hollowed_had_been_a_child_once": {
+    "category": "broken",
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "min_level": 5,
+      "chance": 0.09
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": -1,
+      "flag": "hollowed_was_child"
+    },
+    "lines": [
+      "Tonight the Hollowed you killed had — by the size of their hands, the smallness of the",
+      "feet — been a child once. Not now. Their body had grown. The Hollow had kept the child-",
+      "sized hands. You did not, in the end, eat that night. You stood the long count out.",
+      "  (-1 Max HP, permanently — a Hollowed whose child-sized hands you noticed only after laying them out.)"
+    ]
+  },
+  "hollowed_breath_was_warmer_than_yours": {
+    "category": "half_truth",
+    "trigger": {
+      "at": [
+        "combat_low_hp"
+      ],
+      "min_level": 5,
+      "chance": 0.09
+    },
+    "effect": {
+      "flag": "hollowed_warmer_breath"
+    },
+    "lines": [
+      "Tonight close-fighting a Hollowed, their breath against your face was — for one count —",
+      "warmer than yours. The Hollow had something living in it still. You did not, in the",
+      "end, kill them. You sidestepped. They left. You stood. The kingdom does not, always, want killing."
+    ]
+  },
+  "hollowed_an_old_friend_under_the_hood": {
+    "category": "lost",
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "min_level": 6,
+      "chance": 0.09
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": -1,
+      "flag": "hollowed_old_friend"
+    },
+    "lines": [
+      "Tonight under the hood of the Hollowed you laid out was a friend. An old one. Your",
+      "own. You did not, before tonight, know they had fallen. You did not, before tonight,",
+      "know they had risen. You sat with the body the long count. You said the name. You went on.",
+      "  (-1 Max HP, permanently — an old friend whose Hollow-rising you discovered tonight by killing them.)"
+    ]
+  },
+  "hollowed_sang_a_lullaby_as_they_died": {
+    "category": "broken",
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "min_level": 5,
+      "chance": 0.08
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": -1,
+      "flag": "hollowed_lullaby"
+    },
+    "lines": [
+      "Tonight the Hollowed, as they died, sang — softly, in the kingdom's old tongue — a",
+      "lullaby. They had been, before being Hollowed, a parent. The lullaby was theirs. They",
+      "finished the verse before they went. You knew the verse. You could not, in the end, sleep.",
+      "  (-1 Max HP, permanently — a Hollowed's lullaby sung at their dying that took some of your sleep.)"
+    ]
+  },
+  "hollowed_was_carrying_a_book": {
+    "category": "found",
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "min_level": 6,
+      "chance": 0.09
+    },
+    "effect": {
+      "stat": "attack",
+      "delta": 1,
+      "flag": "hollowed_carried_book"
+    },
+    "lines": [
+      "Tonight the Hollowed you killed was carrying — under their coat — a small book. You",
+      "took it. You opened it. It was theirs, from when they were a person. They had loved",
+      "the book. You will read it. You will, in some way, keep loving it for them.",
+      "  (+1 Attack, permanently — a Hollowed's book taken from their body to read and keep for them.)"
+    ]
+  },
+  "hollowed_kingdom_breathed_out_when_you_laid_them_to_rest": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "min_level": 6,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "kingdom_breathed_out"
+    },
+    "lines": [
+      "Tonight when you finished the laying-out — palms folded, eyes closed, the small words —",
+      "the kingdom around you breathed out. You felt the breathing-out. It was, for the kingdom,",
+      "a small relief. You did, in this one, the work properly. The kingdom thanked you in air.",
+      "  (+1 Defense, permanently — the kingdom breathing out at one of your properly-laid Hollowed.)"
+    ]
+  },
+  "hollowed_walked_with_you_a_short_way_after": {
+    "category": "half_truth",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "min_level": 7,
+      "chance": 0.09
+    },
+    "effect": {
+      "flag": "hollowed_walked_with"
+    },
+    "lines": [
+      "Tonight a Hollowed walked beside you for a short count — not threatening. As an old",
+      "companion does. Did not speak. Did not, properly, exist. You walked together. Then it",
+      "lifted a hand and went. The Hollowed had decided to escort you for one stretch of road."
+    ]
+  },
+  "daily_a_market_vendor_called_your_order": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "min_visits": 4,
+      "chance": 0.12
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 1,
+      "flag": "market_vendor_order"
+    },
+    "lines": [
+      "Tonight in Gravewatch's market a vendor — you had not, before, particularly spoken to",
+      "— called your usual order as you approached. *Two of the dark loaves, no?* You said",
+      "yes. The vendor had noted what you buy. You have a usual order. You are part of the market.",
+      "  (+1 Max HP, permanently — a market vendor who has memorized your order without your asking.)"
+    ]
+  },
+  "daily_a_kettle_whistled_on_a_passing_hearth": {
+    "category": "found",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "max_stamina",
+      "delta": 1,
+      "flag": "kettle_whistled"
+    },
+    "lines": [
+      "Tonight in Gravewatch a kettle — somewhere, on someone's hearth — whistled as you",
+      "walked past their door. The kingdom is still doing its small daily things. You walked",
+      "on warmed by the sound. You will, you suspect, set a kettle of your own going one of these nights.",
+      "  (+1 Max Stamina, permanently — a kettle's whistle on someone's hearth that warmed you in passing.)"
+    ]
+  },
+  "daily_dawn_came_in_clean_at_gravewatch": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "save_action"
+      ],
+      "location": [
+        "village"
+      ],
+      "min_visits": 4,
+      "chance": 0.11
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 1,
+      "flag": "dawn_clean"
+    },
+    "lines": [
+      "Tonight at the saving, before dawn, you sat at the window and the dawn came in clean.",
+      "Cleaner than it has been since you came. The kingdom is still capable of clean dawns.",
+      "You stood up under the dawn. You will, you suspect, look at more dawns from now on.",
+      "  (+1 Max HP, permanently — a clean dawn watched at Gravewatch's window in proper attention.)"
+    ]
+  },
+  "daily_a_dog_barked_in_friendly_recognition": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "min_visits": 4,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "dog_friendly_bark"
+    },
+    "lines": [
+      "Tonight in Gravewatch a dog you have walked past many times — old, half-blind, the kind",
+      "that sleeps in the second alley — barked. Not in alarm. In recognition. The dog has",
+      "decided you are friend. You crouched. You scratched the ridge of fur. You said good-dog.",
+      "  (+1 Defense, permanently — a Gravewatch dog's friendly recognition of your step.)"
+    ]
+  },
+  "daily_a_market_song_was_the_old_song": {
+    "category": "mind",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "min_visits": 5,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "attack",
+      "delta": 1,
+      "flag": "market_old_song"
+    },
+    "lines": [
+      "Tonight in the market a vendor was singing the kingdom's old song — the one from before",
+      "the rite, the one that was supposed to be forgotten. The song is, in small ways, coming",
+      "back into the market. The kingdom is, in small ways, remembering. You walked listening.",
+      "  (+1 Attack, permanently — the kingdom's old song sung in the market by a vendor who knew it.)"
+    ]
+  },
+  "daily_someone_offered_you_a_seat_on_the_bench": {
+    "category": "promise_kept",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "min_visits": 4,
+      "chance": 0.11
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 1,
+      "flag": "bench_seat_offered"
+    },
+    "lines": [
+      "Tonight on the second bench in Gravewatch's square an old one shifted over and patted",
+      "the empty space beside them. The kingdom's old way. You sat. You did not speak. They",
+      "did not speak. You both watched the square. They stood up first. The seat is, now, yours.",
+      "  (+1 Max HP, permanently — a seat on the Gravewatch bench offered to you in the old way.)"
+    ]
+  },
+  "daily_a_baker_kept_yesterdays_bread_for_birds": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "min_visits": 4,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "max_stamina",
+      "delta": 1,
+      "flag": "baker_bread_birds"
+    },
+    "lines": [
+      "Tonight you saw the Gravewatch baker, at the back of the shop, scattering yesterday's",
+      "bread for the birds. The kingdom keeps small kindnesses. You stood at the corner",
+      "watching. The baker saw. They scattered a little extra. The kingdom feeds itself in pieces.",
+      "  (+1 Max Stamina, permanently — a baker's scattering for birds in the kingdom's small mercies.)"
+    ]
+  },
+  "daily_a_market_haggle_ended_in_laughter": {
+    "category": "found",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "min_visits": 5,
+      "chance": 0.1
+    },
+    "effect": {
+      "flag": "haggle_laughter"
+    },
+    "lines": [
+      "Tonight in the market a vendor and a customer haggled — long, in the kingdom's old",
+      "ritual — and the haggle ended in laughter. Honest laughter. The kingdom is, today,",
+      "capable of laughter. You watched the laughing. You did not, in the end, buy anything yourself."
+    ]
+  },
+  "daily_a_rope_was_loaned_for_carrying": {
+    "category": "found",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "min_visits": 4,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "max_stamina",
+      "delta": 1,
+      "flag": "rope_loaned"
+    },
+    "lines": [
+      "Tonight at the market a stranger handed you a length of rope to help with a load you",
+      "were carrying. *Bring it back when you can,* they said. You used it. You brought it back.",
+      "The stranger smiled. You will, in some future, do the same for someone else's load.",
+      "  (+1 Max Stamina, permanently — a rope loaned by a stranger for carrying, returned with thanks.)"
+    ]
+  },
+  "daily_a_chimney_swept_clean": {
+    "category": "half_truth",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "min_visits": 5,
+      "chance": 0.09
+    },
+    "effect": {
+      "flag": "chimney_swept"
+    },
+    "lines": [
+      "Tonight a chimney in Gravewatch — long unused, the house empty — had been swept. The",
+      "soot was on the cobbles. Someone had decided. The empty house may have someone in it",
+      "by week's end. The kingdom is filling back in by small acts. You walked on heartened."
+    ]
+  },
+  "daily_a_neighbour_planted_a_bulb": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "min_visits": 4,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 1,
+      "flag": "bulb_planted"
+    },
+    "lines": [
+      "Tonight in a small front garden in Gravewatch a neighbour was planting a bulb. The",
+      "kingdom plants bulbs again. The bulb will come up in spring. You will not, in this",
+      "run, see it. You will, you tell yourself, come back for the bloom. The kingdom is hoping again.",
+      "  (+1 Max HP, permanently — a bulb planted in front of a Gravewatch house that will bloom after you.)"
+    ]
+  },
+  "daily_a_window_was_open_to_let_in_air": {
+    "category": "found",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "min_visits": 4,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "max_stamina",
+      "delta": 1,
+      "flag": "window_open_air"
+    },
+    "lines": [
+      "Tonight a window in Gravewatch — the kind that has been closed for fear since the Pall —",
+      "was open. The keeper was, briefly, letting in air. The air on the cobbles smelled, for a",
+      "count, of indoors. The kingdom is, in small ways, opening back up. You stood and breathed.",
+      "  (+1 Max Stamina, permanently — a window opened to let in air, the kingdom's small reopening.)"
+    ]
+  },
+  "daily_a_door_was_left_unlocked_in_trust": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "min_visits": 5,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "door_unlocked_trust"
+    },
+    "lines": [
+      "Tonight in Gravewatch a door — a house you had not, before, particularly noticed — was",
+      "left unlocked. The keeper had not pulled it shut behind them. The neighbours had not,",
+      "you can see, alarmed about it. The kingdom is trusting again. Doors are, again, doors.",
+      "  (+1 Defense, permanently — a door left unlocked in Gravewatch in the kingdom's returning trust.)"
+    ]
+  },
+  "daily_a_clothes_line_was_set_again": {
+    "category": "found",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "min_visits": 4,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 1,
+      "flag": "clothes_line"
+    },
+    "lines": [
+      "Tonight in Gravewatch's back yard a clothes-line was up — pinned with washing. The",
+      "kingdom is washing again. The wet linen drips on the cobbles. The smell of clean soap.",
+      "You walked under the line. The shape of clean shirts above you. The kingdom is doing its life.",
+      "  (+1 Max HP, permanently — a clothes-line strung in a Gravewatch back yard with clean washing on it.)"
+    ]
+  },
+  "daily_a_child_threw_a_stick_for_a_dog": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "min_visits": 4,
+      "chance": 0.11
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 1,
+      "flag": "child_stick_dog"
+    },
+    "lines": [
+      "Tonight in the alley a child was throwing a stick for a dog. The kingdom plays again.",
+      "The child was small. The dog was old. They were a complete world for the count of the",
+      "playing. You walked through their game on the cobbles. They did not, properly, notice you.",
+      "  (+1 Max HP, permanently — a child and a dog at stick-throwing in a Gravewatch alley.)"
+    ]
+  },
+  "children_a_child_offered_you_a_pebble": {
+    "category": "found",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "min_visits": 4,
+      "chance": 0.12
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 1,
+      "flag": "child_pebble"
+    },
+    "lines": [
+      "Tonight a child in Gravewatch's square offered you a pebble. Particular. Polished. The",
+      "kingdom's children are precise about their gifts. You took the pebble. You thanked them",
+      "properly. The pebble rides in your pocket. The child is, somewhere, holding onto the giving.",
+      "  (+1 Max HP, permanently — a pebble a child gave you, precise about the giving.)"
+    ]
+  },
+  "children_two_children_were_playing_a_game_you_knew": {
+    "category": "mind",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "min_visits": 4,
+      "chance": 0.11
+    },
+    "effect": {
+      "stat": "max_stamina",
+      "delta": 1,
+      "flag": "children_game_known"
+    },
+    "lines": [
+      "Tonight two children were playing a game on the cobbles — clapping hands, chanting,",
+      "the rhyme the kingdom's children used to chant. You knew the rhyme. You had played it.",
+      "You stood watching. They did not see you. The rhyme is coming back. The kingdom remembers.",
+      "  (+1 Max Stamina, permanently — the kingdom's children's clapping rhyme that you remembered watching.)"
+    ]
+  },
+  "children_a_child_taught_you_a_new_word": {
+    "category": "promise_kept",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "min_visits": 5,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "attack",
+      "delta": 1,
+      "flag": "child_taught_word"
+    },
+    "lines": [
+      "Tonight a child taught you — solemnly, carefully — a new word they had invented. The",
+      "word means *cold-feeling-warm.* You said it back. They corrected your pronunciation.",
+      "You learned the word properly. The word is yours now too. The kingdom's children make new words.",
+      "  (+1 Attack, permanently — a child-invented word for *cold-feeling-warm* taught to you carefully.)"
+    ]
+  },
+  "children_a_child_sat_at_your_side_a_count": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "min_visits": 5,
+      "chance": 0.11
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 1,
+      "flag": "child_sat_beside"
+    },
+    "lines": [
+      "Tonight a child — small, the kind that walks up to strangers without asking — sat on",
+      "the bench next to you for a long count. They did not speak. You did not speak. You",
+      "watched the square together. They got up and ran off. The kingdom's small acceptance.",
+      "  (+1 Max HP, permanently — a child's small unspoken sit-beside-you, the once.)"
+    ]
+  },
+  "children_a_child_asked_about_your_scar": {
+    "category": "half_truth",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "min_visits": 5,
+      "chance": 0.1
+    },
+    "effect": {
+      "flag": "child_scar"
+    },
+    "lines": [
+      "Tonight a child asked, frankly, about the scar on your hand. *Where did you get it?*",
+      "You did not, in the end, say. You said *climbing.* The child accepted *climbing.* They",
+      "had wanted, you think, an honest answer. You will, when they are older, tell them honestly."
+    ]
+  },
+  "children_a_child_drew_a_picture_of_you": {
+    "category": "found",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "min_visits": 6,
+      "chance": 0.09
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 2,
+      "flag": "child_drew_picture"
+    },
+    "lines": [
+      "Tonight at the inn, slipped under your door, a folded piece of paper. A child's drawing.",
+      "You. With your blade. Standing on the Crossroads. The drawing was careful. The drawing",
+      "was hopeful. You folded it carefully into your pack. You will not, in this run, lose it.",
+      "  (+2 Max HP, permanently — a child's drawing of you with your blade, folded into your pack.)"
+    ]
+  },
+  "children_a_child_was_singing_the_old_lullaby": {
+    "category": "mind",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "min_visits": 5,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 1,
+      "flag": "child_lullaby"
+    },
+    "lines": [
+      "Tonight a child sang — quietly, to themselves, on a doorstep — the kingdom's old",
+      "lullaby. The Pall took the lullabies. This child has one back. You stood at the corner",
+      "listening to the end of the verse. The child did not see you. The lullaby took. The kingdom is healing.",
+      "  (+1 Max HP, permanently — the kingdom's old lullaby sung by a child on a doorstep, returning.)"
+    ]
+  },
+  "children_a_child_gave_you_their_seat_at_a_table": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "min_visits": 5,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 1,
+      "flag": "child_gave_seat"
+    },
+    "lines": [
+      "Tonight at the inn, the table being full, a child stood up — without being asked — and",
+      "let you have their seat. The kingdom's old courtesy. You did not, in the end, take it.",
+      "You sat on the floor. The child sat on your knee. You ate together. The inn was full of laughing.",
+      "  (+1 Max HP, permanently — a child standing to give you a seat that you ended up sharing on the floor.)"
+    ]
+  },
+  "children_a_child_named_a_star_for_you": {
+    "category": "promise_kept",
+    "trigger": {
+      "at": [
+        "save_action"
+      ],
+      "location": [
+        "village"
+      ],
+      "min_visits": 6,
+      "chance": 0.09
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 2,
+      "flag": "child_named_star"
+    },
+    "lines": [
+      "Tonight at the inn a child pointed, out the window, at one of the brighter stars. *That",
+      "one is yours,* they said. They had decided. The kingdom's children sometimes decide such",
+      "things. The star is yours. You said *thank you* to the child. The star will be yours always.",
+      "  (+2 Max HP, permanently — a star a child decided was yours, named for you against the kingdom's sky.)"
+    ]
+  },
+  "children_a_child_handed_you_a_warm_pastry": {
+    "category": "found",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "min_visits": 4,
+      "chance": 0.11
+    },
+    "effect": {
+      "stat": "max_stamina",
+      "delta": 1,
+      "flag": "child_pastry"
+    },
+    "lines": [
+      "Tonight in the square a child — sent on an errand, you think — handed you a small warm",
+      "pastry. *Mother said,* they said. You ate it. It was good. You said thank-you to the",
+      "child for the mother. The child ran off. The mother, somewhere, smiled when the child returned.",
+      "  (+1 Max Stamina, permanently — a warm pastry handed to you by a child sent on an errand.)"
+    ]
+  },
+  "children_a_child_walked_part_of_your_path_with_you": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village",
+        "crossroads"
+      ],
+      "min_visits": 5,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "child_walked_path"
+    },
+    "lines": [
+      "Tonight at the Crossroads a child — they were going to Gravewatch with a small basket —",
+      "walked the first part of your path with you. They asked you which star was yours. You",
+      "showed them. They nodded approval. They split off at the gate. The road will keep them safe.",
+      "  (+1 Defense, permanently — a child who walked part of your path and asked which star was yours.)"
+    ]
+  },
+  "children_a_child_promised_to_be_a_climber_too": {
+    "category": "promise_kept",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "min_visits": 6,
+      "chance": 0.09
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 2,
+      "flag": "child_will_climb"
+    },
+    "lines": [
+      "Tonight a child, watching you sharpen your blade on the inn's bench, said quietly, *I",
+      "am going to climb too, when I am bigger.* They were small. They were serious. You did",
+      "not, in the end, tell them what the climb was. You said *good.* They smiled. They will.",
+      "  (+2 Max HP, permanently — a child's promise to climb when they are bigger, said in seriousness.)"
+    ]
+  },
+  "road_a_milestone_recognized_your_step": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "min_level": 4,
+      "chance": 0.11
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "road_milestone_step"
+    },
+    "lines": [
+      "Tonight, walking between zones, you passed a milestone that — when your foot landed",
+      "next to it — gave, faintly, a thrum through the stone. The milestone recognized your",
+      "step. The road has begun to know you, foot by foot. The other milestones will follow.",
+      "  (+1 Defense, permanently — a milestone between zones that thrummed at your step in recognition.)"
+    ]
+  },
+  "road_a_traveller_passed_in_silent_nod": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "min_level": 4,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 1,
+      "flag": "road_silent_nod"
+    },
+    "lines": [
+      "Tonight on the road between zones a traveller passed you the other way. You nodded.",
+      "They nodded. Neither of you spoke. The kingdom's old courtesy of the road. You did not",
+      "see their face under the hood. They did not see yours. The nod was the whole thing.",
+      "  (+1 Max HP, permanently — a silent nod exchanged with a hooded traveller on the road between zones.)"
+    ]
+  },
+  "road_a_wayside_shrine_warmed_a_step": {
+    "category": "found",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "min_level": 4,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "max_stamina",
+      "delta": 1,
+      "flag": "wayside_shrine_warm"
+    },
+    "lines": [
+      "Tonight on the road there was a small wayside shrine — Atrél's, of the road, the old",
+      "wayside one. You did not stop. The ground a pace before the shrine warmed under your",
+      "boot anyway. Atrél, even at the wayside, knew you were passing. You walked on heartened.",
+      "  (+1 Max Stamina, permanently — a wayside Atrél-shrine warming the road for your step in passing.)"
+    ]
+  },
+  "road_a_mile_was_shorter_than_it_had_been": {
+    "category": "body",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "min_level": 5,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "max_stamina",
+      "delta": 1,
+      "flag": "road_shorter"
+    },
+    "lines": [
+      "Tonight a stretch of road between zones — one you have walked many times — was, by",
+      "your reckoning, shorter than it has been. Not the road. You. Your body has, over the",
+      "run, become a better walker of it. From now on, every mile of the kingdom is, for you, shorter.",
+      "  (+1 Max Stamina, permanently — a road become shorter under feet that have walked it many times.)"
+    ]
+  },
+  "road_an_old_horseshoe_was_in_the_dust": {
+    "category": "found",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "min_level": 4,
+      "chance": 0.09
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "road_horseshoe"
+    },
+    "lines": [
+      "Tonight on the road you found an old horseshoe — half-buried, the iron rusted, the",
+      "kingdom's old kind. You pried it out. You nailed it, that night, above the inn-door at",
+      "your next stop. The innkeeper saw. She did not, in the end, take it down. It is there.",
+      "  (+1 Defense, permanently — an old horseshoe nailed above an inn-door by your hand, kingdom-style.)"
+    ]
+  },
+  "road_a_stream_under_a_bridge_thanked_you": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "min_level": 5,
+      "chance": 0.09
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 1,
+      "flag": "stream_thanked"
+    },
+    "lines": [
+      "Tonight crossing a bridge between zones the stream below — the small one, the kind",
+      "that the kingdom keeps fed with rain — gave a faint sound. Thanks, in its way. You had,",
+      "in some run, helped clear a snag from its bend. The stream remembered. You walked on.",
+      "  (+1 Max HP, permanently — a small stream under a bridge thanking you for an old kindness you don't remember.)"
+    ]
+  },
+  "road_dust_kept_your_footprint_a_count_too_long": {
+    "category": "half_truth",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "min_level": 5,
+      "chance": 0.09
+    },
+    "effect": {
+      "flag": "road_print_lingered"
+    },
+    "lines": [
+      "Tonight on the road you noticed, looking back, that your footprint in the dust had not",
+      "yet, in the count it usually does, blown out. The wind was strong. The print was still",
+      "there. The kingdom has decided to remember your particular step on this stretch. Just this stretch."
+    ]
+  },
+  "road_a_lamp_came_on_at_your_arrival": {
+    "category": "found",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "min_level": 4,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "max_stamina",
+      "delta": 1,
+      "flag": "road_lamp_arrival"
+    },
+    "lines": [
+      "Tonight arriving at a wayside post at dusk the small lantern there came on as you",
+      "stepped past. There was no hand. The lantern, in the kingdom's old way, lit itself for",
+      "a walker who had been at it a long time. The lantern recognized your kind. You walked on lit.",
+      "  (+1 Max Stamina, permanently — a wayside lantern that lit itself at your dusk-arrival.)"
+    ]
+  },
+  "road_an_old_song_walked_the_distance_with_you": {
+    "category": "mind",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "min_level": 5,
+      "chance": 0.09
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 1,
+      "flag": "road_old_song_walked"
+    },
+    "lines": [
+      "Tonight, walking between zones, you found yourself humming the whole way — the kingdom's",
+      "old walking-song, the one the long-roads merchants used to use. The song carried you",
+      "the whole distance. You did not tire as much. The song will walk with you again.",
+      "  (+1 Max HP, permanently — the kingdom's old long-roads walking-song that carried you a whole distance.)"
+    ]
+  },
+  "road_a_blackbird_lit_your_way_at_dusk": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "min_level": 5,
+      "chance": 0.09
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "blackbird_dusk"
+    },
+    "lines": [
+      "Tonight at dusk a blackbird — small, sharp-eyed — flew with you, branch to branch, for",
+      "the last half-hour of your walking. Lit your way, in the kingdom's old way of saying.",
+      "The kingdom's old birds did this for the kingdom's old travellers. You walked accompanied.",
+      "  (+1 Defense, permanently — a blackbird that lit your way at dusk in the kingdom's old manner.)"
+    ]
+  },
+  "pall_farewell_set_your_step_facing_summit": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "min_level": 9,
+      "chance": 0.13
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "pall_farewell_step"
+    },
+    "lines": [
+      "Tonight the Pall — without your turning — set your foot facing the Summit. Not pushed.",
+      "Set. Your foot, when you next set it down, fell facing up the mountain. The Pall is",
+      "saying goodbye to the climber. The Pall is welcoming you to the role. You did not refuse.",
+      "  (+1 Defense, permanently — the Pall setting your foot to face the Summit in welcome.)"
+    ]
+  },
+  "pall_farewell_said_goodbye_to_your_old_self": {
+    "category": "promise_kept",
+    "trigger": {
+      "at": [
+        "save_action"
+      ],
+      "min_level": 9,
+      "chance": 0.11
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 2,
+      "flag": "pall_goodbye_old_self"
+    },
+    "lines": [
+      "Tonight at the saving-place the Pall, briefly, sat with you and said goodbye — through",
+      "no words — to the version of you who first came into Mournhold. That you is gone now.",
+      "The Pall thanked them on your behalf. You stood under the thanks. You will not be that you again.",
+      "  (+2 Max HP, permanently — the Pall's farewell to the version of you who first walked in.)"
+    ]
+  },
+  "pall_farewell_returned_a_small_kindness": {
+    "category": "found",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "min_level": 9,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 1,
+      "flag": "pall_returned_kindness"
+    },
+    "lines": [
+      "Tonight the Pall — out of the small accounting it has been keeping — returned one of",
+      "your kindnesses to you. A particular one. The small thing you did for the widow on the",
+      "second street, that you had thought forgotten. The Pall returned it. The widow, somewhere, smiled.",
+      "  (+1 Max HP, permanently — a kindness of yours the Pall returned, with interest, in farewell.)"
+    ]
+  },
+  "pall_farewell_breath_synced_one_last_time": {
+    "category": "mind",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "min_level": 9,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "max_stamina",
+      "delta": 1,
+      "flag": "pall_breath_synced"
+    },
+    "lines": [
+      "Tonight your breath, for a long count, synced — fully — with the Pall's. Inhale together.",
+      "Exhale together. You felt the kingdom breathe with the rhythm. The Pall does this only",
+      "for whom it has chosen. The rhythm has been chosen for. You walked on at the kingdom's pace.",
+      "  (+1 Max Stamina, permanently — a long-count breath-sync with the Pall, the kingdom's own breathing.)"
+    ]
+  },
+  "pall_farewell_taught_you_the_first_word_of_keeping": {
+    "category": "mind",
+    "trigger": {
+      "at": [
+        "save_action"
+      ],
+      "min_level": 9,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "attack",
+      "delta": 1,
+      "flag": "pall_first_word_keeping"
+    },
+    "lines": [
+      "Tonight at the saving-place the Pall, without speaking, taught you the first word of",
+      "the keeping — the word a Warden says, the first day, to begin the work. You will say",
+      "it when you arrive. Your throat already knows. The word will, when said, take properly.",
+      "  (+1 Attack, permanently — the first word of the keeping that the Pall taught your throat.)"
+    ]
+  },
+  "pall_farewell_returned_your_first_grey_hair_unbent": {
+    "category": "found",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "min_level": 9,
+      "chance": 0.09
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 1,
+      "flag": "pall_returned_grey"
+    },
+    "lines": [
+      "Tonight you found, in the morning, the first grey hair you got on this run — the one",
+      "the kingdom gave you back at the first level-up — laid neatly on your pillow. Not in",
+      "your hair anymore. Returned. The Pall took the grey back. The kingdom does not, anymore, need it.",
+      "  (+1 Max HP, permanently — your first grey hair returned by the Pall, laid neatly on your pillow.)"
+    ]
+  },
+  "pall_farewell_let_you_hold_one_of_its_memories": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "save_action"
+      ],
+      "min_level": 9,
+      "chance": 0.09
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 3,
+      "flag": "pall_held_memory"
+    },
+    "lines": [
+      "Tonight at the saving-place the Pall let you hold, briefly, one of its memories. A child",
+      "in a kitchen, holding a small loaf, on the morning before the famine. You held the",
+      "memory for one count. You gave it back. The Pall took it back. You walked the rest changed.",
+      "  (+3 Max HP, permanently — one of the Pall's own memories briefly held in your hand and returned.)"
+    ]
+  },
+  "pall_farewell_made_your_companion_easier": {
+    "category": "promise_kept",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "requires_flag": "has_companion",
+      "min_level": 9,
+      "chance": 0.09
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 1,
+      "flag": "pall_companion_easier"
+    },
+    "lines": [
+      "Tonight the Pall — looking at your companion at your side — made the carrying easier",
+      "for them. They walked taller after. They had not, you noticed, been tired in the count",
+      "you usually expected. The Pall did this as a small gift to a companion of its successor.",
+      "  (+1 Max HP, permanently — the Pall easing your companion's carrying in farewell to your climbing-pair.)"
+    ]
+  },
+  "pall_farewell_named_you_warden_aloud_in_your_head": {
+    "category": "half_truth",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "min_level": 9,
+      "chance": 0.09
+    },
+    "effect": {
+      "flag": "pall_named_warden"
+    },
+    "lines": [
+      "Tonight the Pall, in your head, said your name and *Warden* together — for the first",
+      "time, aloud inside you. You did not protest. The name and the title together felt",
+      "correct. You will, when you arrive at the Summit, say the pairing aloud to the wind."
+    ]
+  },
+  "pall_farewell_let_you_keep_one_thing_it_had_taken": {
+    "category": "promise_kept",
+    "trigger": {
+      "at": [
+        "save_action"
+      ],
+      "min_level": 9,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 2,
+      "flag": "pall_kept_one_thing"
+    },
+    "lines": [
+      "Tonight the Pall, in farewell, asked you to choose one thing it had taken from you in",
+      "the run — a face, a word, a kitchen-smell — and you could have it back. You chose. The",
+      "Pall returned it. The kingdom watched. The choosing is yours. The kept thing is yours, fully.",
+      "  (+2 Max HP, permanently — one taken thing returned to you by the Pall at your choice, in farewell.)"
+    ]
+  },
+  "music_a_low_hum_carried_the_zone_with_you": {
+    "category": "mind",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "min_level": 4,
+      "chance": 0.11
+    },
+    "effect": {
+      "stat": "max_stamina",
+      "delta": 1,
+      "flag": "music_low_hum"
+    },
+    "lines": [
+      "Tonight, walking, a low hum — yours, almost without your noticing — carried you the",
+      "whole zone. The hum was the kingdom's old walking-hum. Your body learned it without",
+      "your asking. From now on, in the bad zones, you will hum it. It will carry you again.",
+      "  (+1 Max Stamina, permanently — a low walking-hum the body learned that carries you across zones.)"
+    ]
+  },
+  "music_a_silence_landed_correctly": {
+    "category": "mind",
+    "trigger": {
+      "at": [
+        "save_action"
+      ],
+      "min_level": 5,
+      "chance": 0.11
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "silence_landed"
+    },
+    "lines": [
+      "Tonight at the saving-place you held a silence — long, particular, the right kind. The",
+      "silence landed correctly in the room. Some silences don't. This one did. You stood up",
+      "afterwards in the silence's shape. You will, from now on, hold the right silences in their right ways.",
+      "  (+1 Defense, permanently — a silence held correctly at the saving, that the kingdom honoured.)"
+    ]
+  },
+  "music_the_choir_air_was_thinner_for_a_song": {
+    "category": "half_truth",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "choir"
+      ],
+      "min_visits": 3,
+      "chance": 0.1
+    },
+    "effect": {
+      "flag": "choir_air_thinner"
+    },
+    "lines": [
+      "Tonight in the Choir the air was thinner — not by much, but noticeably. The kingdom's",
+      "old song was, in the wings, being half-sung by someone. You did not see by whom. The",
+      "song never arrived. You walked through the thinning. Air came back when you left."
+    ]
+  },
+  "music_a_kettle_song_steadied_you": {
+    "category": "body",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "min_visits": 4,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 1,
+      "flag": "kettle_song_steadied"
+    },
+    "lines": [
+      "Tonight at the inn the kettle on the hearth sang, in its small whistled way, a melody",
+      "that — by coincidence or design — was the kingdom's old hearth-song. You sat by the",
+      "kettle until it cooled. The hearth-song steadied something in you. You can carry it now.",
+      "  (+1 Max HP, permanently — a kettle whistling the kingdom's old hearth-song that steadied something in you.)"
+    ]
+  },
+  "music_an_unsung_verse_came_back": {
+    "category": "found",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "requires_flag": "lost_verse_known",
+      "min_level": 5,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "attack",
+      "delta": 1,
+      "flag": "unsung_came_back"
+    },
+    "lines": [
+      "Tonight an unsung verse of the kingdom's old Verse — one you had been carrying since",
+      "you found the lost line — came back, briefly, into the air around you. You sang it",
+      "under your breath. The verse took. The kingdom is, in pieces, getting back its songs.",
+      "  (+1 Attack, permanently — an unsung verse of the kingdom's old Verse returned briefly into the air with you.)"
+    ]
+  },
+  "music_a_widow_was_humming_again": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "min_visits": 5,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 1,
+      "flag": "widow_humming"
+    },
+    "lines": [
+      "Tonight you walked past the widow on the second bench in Gravewatch — the one who has",
+      "not, in your time here, hummed — and she was humming. Quietly. The kingdom's old song.",
+      "She is starting to. The kingdom is starting to. You walked on hopeful. You stood up easier.",
+      "  (+1 Max HP, permanently — a widow who had not been humming, today humming the kingdom's old song.)"
+    ]
+  },
+  "music_a_bell_rang_for_no_specific_reason": {
+    "category": "half_truth",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "min_visits": 5,
+      "chance": 0.09
+    },
+    "effect": {
+      "flag": "bell_no_reason"
+    },
+    "lines": [
+      "Tonight a bell rang in Gravewatch — for no reason. Not the hour. Not a death. A bell.",
+      "The keeper, you suspect, had wanted to. The kingdom's bells used to ring for joy",
+      "sometimes. This was, you think, one of those. You walked listening until it stopped."
+    ]
+  },
+  "music_silence_after_a_kill_was_a_kindness": {
+    "category": "mind",
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "min_level": 5,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "silence_after_kill_kind"
+    },
+    "lines": [
+      "Tonight after a kill the silence — that comes between the last strike and the body",
+      "going still — was, for once, kind. Not heavy. Open. You stood the count out. You said",
+      "the small words. You walked on. The silence had decided to be a friend to you tonight.",
+      "  (+1 Defense, permanently — a kind silence after a kill that decided to be a friend to you.)"
+    ]
+  },
+  "music_you_finally_sang_aloud": {
+    "category": "promise_kept",
+    "trigger": {
+      "at": [
+        "save_action"
+      ],
+      "min_level": 6,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 1,
+      "flag": "finally_sang"
+    },
+    "lines": [
+      "Tonight at the saving-place, alone, you finally sang aloud — for the first time in this",
+      "run. A small song. Not the kingdom's. Your own, from before. Your voice held. You sang",
+      "the whole song through. You did not, in the end, cry. You went to sleep singing the chorus.",
+      "  (+1 Max HP, permanently — a song of yours from before the kingdom that you, tonight, finally sang aloud.)"
+    ]
+  },
+  "music_the_kingdom_made_a_long_sustained_note": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "save_action"
+      ],
+      "min_level": 8,
+      "chance": 0.09
+    },
+    "effect": {
+      "stat": "max_stamina",
+      "delta": 1,
+      "flag": "kingdom_sustained_note"
+    },
+    "lines": [
+      "Tonight at the saving-place the kingdom — the whole of it, every zone, the whole length",
+      "of the journey — made one long sustained note. You heard it in the air. The note held",
+      "for a long count. The kingdom can, you understand, sing. The note ended. You slept after.",
+      "  (+1 Max Stamina, permanently — one long sustained note of the kingdom singing held in the air at the saving.)"
+    ]
   }
 }
