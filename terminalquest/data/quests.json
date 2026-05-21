@@ -6700,5 +6700,407 @@
     "requires_mark": "wynne_camp_kettle_was_still_warm",
     "flavor": "The Wynne kettle was still warm. The Devoured Captain remembered drinking from it. End him. The kettle stays warm.",
     "reward_chronicle_line": "The Wynne kettle had stayed warm for them across runs; the Devoured Captain ended, and the kettle held its heat."
+  },
+  "cr3_climb_save_dream": {
+    "name": "After You Dreamt of Finishing the Climb Well",
+    "target_enemy": "ashen_penitent",
+    "needed": 1,
+    "reward_gold": 1100,
+    "cleanse_required": 4,
+    "requires_mark": "save_you_dreamt_of_finishing_the_climb_well",
+    "flavor": "You dreamt of finishing the climb well after a save. A Penitent above the snowline knew the dream. End him.",
+    "reward_marks": [
+      "summit_ground_was_softer_than_you_thought"
+    ]
+  },
+  "cr3_climb_pall_farewell": {
+    "name": "After the Pall Said Farewell with Your Step Facing Summit",
+    "target_enemy": "shadow_warden",
+    "needed": 1,
+    "reward_gold": 2400,
+    "cleanse_required": 5,
+    "requires_mark": "pall_farewell_set_your_step_facing_summit",
+    "flavor": "The Pall said farewell with your step facing the Summit. The Shadow Warden took the farewell as introduction. End him.",
+    "reward_chronicle_line": "The Pall had set their step facing the Summit at farewell; the Shadow Warden ended for the introduction."
+  },
+  "cr3_climb_pall_chair": {
+    "name": "After the Pall Marked a Chair at the Summit",
+    "target_enemy": "shadow_warden",
+    "needed": 1,
+    "reward_gold": 2500,
+    "cleanse_required": 5,
+    "requires_mark": "pall_marked_a_chair_at_the_summit_for_you",
+    "flavor": "A chair at the Summit was marked for you. The Shadow Warden sat in the chair until you arrived. End him.",
+    "reward_marks": [
+      "summit_warden_old_step_remembered_you"
+    ]
+  },
+  "cr3_climb_pall_introduced_wind": {
+    "name": "After the Pall Introduced You to the Summit Wind",
+    "target_enemy": "ice_wraith",
+    "needed": 3,
+    "reward_gold": 900,
+    "cleanse_required": 4,
+    "requires_mark": "pall_introduced_you_to_the_summit_wind",
+    "flavor": "The Pall introduced you to the Summit wind once. Three ice-wraiths had been there during the introduction. End them."
+  },
+  "cr3_climb_summit_smaller_self": {
+    "name": "After the Summit Kept Your Smaller Self",
+    "target_enemy": "ashen_penitent",
+    "needed": 1,
+    "reward_gold": 1300,
+    "cleanse_required": 5,
+    "requires_mark": "summit_kept_your_smaller_self",
+    "flavor": "The Summit kept the smaller version of you. A Penitent on the upper stone met the smaller you. End him. The smaller you stays kept.",
+    "reward_chronicle_line": "The Summit had kept the smaller version of them; the Penitent on the upper stone met the smaller self and ended at it."
+  },
+  "cr3_climb_warden_one_breath": {
+    "name": "After One Climbing Breath Was Yours",
+    "target_enemy": "ashen_penitent",
+    "needed": 2,
+    "reward_gold": 1100,
+    "cleanse_required": 4,
+    "requires_mark": "warden_one_climbing_breath_was_yours",
+    "flavor": "Once a climbing breath belonged to you alone. Two Penitents above the snowline want a share. End them. The breath stays yours."
+  },
+  "cr3_reach_water_drink": {
+    "name": "After You Drank from the Reach's Last Drinking",
+    "target_enemy": "last_reaper",
+    "needed": 1,
+    "reward_gold": 1000,
+    "cleanse_required": 2,
+    "requires_mark": "reach_promised_the_field_a_grain",
+    "flavor": "Once you promised the Reach a grain. The Last Reaper remembered the promise. End him. The grain stays planted."
+  },
+  "cr3_reach_did_not_promise": {
+    "name": "After You Refused the Reach a Grain",
+    "target_enemy": "drowned_thresher",
+    "needed": 3,
+    "reward_gold": 700,
+    "cleanse_required": 2,
+    "requires_mark": "reach_did_not_promise_the_field",
+    "flavor": "Once you refused the Reach a grain. Three threshers had hoped you would. End them. The refusal stays a refusal."
+  },
+  "cr3_reach_step_remembered": {
+    "name": "After the Reach Remembered Your Step II",
+    "target_enemy": "bog_lurcher",
+    "needed": 2,
+    "reward_gold": 600,
+    "cleanse_required": 2,
+    "requires_mark": "the_reach_remembers_your_step",
+    "flavor": "The Reach remembered your step. Two lurchers walked in the kept step. End them. The Reach will keep the step."
+  },
+  "cr3_reach_almost_drowned": {
+    "name": "After You Almost Drowned in the Reach II",
+    "target_enemy": "silt_drowner",
+    "needed": 4,
+    "reward_gold": 700,
+    "cleanse_required": 1,
+    "requires_mark": "reach_you_almost_drowned",
+    "flavor": "You almost drowned in the Reach. Four silt-drowners knew the almost-ness. End them. The drowning stays almost."
+  },
+  "cr3_reach_song_loved": {
+    "name": "After the Reach Drowned a Song II",
+    "target_enemy": "drowned_thresher",
+    "needed": 2,
+    "reward_gold": 600,
+    "cleanse_required": 2,
+    "requires_mark": "reach_drowned_a_song_you_loved",
+    "flavor": "A song you loved drowned in the Reach. Two threshers hum it still. End them. The song will be quiet."
+  },
+  "cr3_burned_library_lore_seen": {
+    "name": "After You Read the Burned Library's Lore",
+    "target_enemy": "library_warden",
+    "needed": 2,
+    "reward_gold": 600,
+    "cleanse_required": 3,
+    "requires_discovery": [
+      "burned_library_lore"
+    ],
+    "reward_chronicle_line": "Once they had read the Burned Library's lore, two of its wardens could not keep the lore from them; both fell at the climber's hand.",
+    "flavor": "Once you have read the Burned Library's lore, two wardens guard the second page. End them. The lore stays known."
+  },
+  "cr3_pre_pall_shrine_lore": {
+    "name": "After You Read the Pre-Pall Shrine's Lore",
+    "target_enemy": "shrine_keeper",
+    "needed": 1,
+    "reward_gold": 1100,
+    "cleanse_required": 4,
+    "requires_discovery": [
+      "pre_pall_shrine_lore"
+    ],
+    "reward_marks": [
+      "children_a_child_promised_to_be_a_climber_too"
+    ],
+    "flavor": "Once you have read the Pre-Pall Shrine's lore, the Keeper knows that you know. End him. The pre-Pall stays pre-Pall."
+  },
+  "cr3_verren_counting_song": {
+    "name": "After You Heard Verren's Counting Song",
+    "target_enemy": "shrine_keeper",
+    "needed": 1,
+    "reward_gold": 1000,
+    "cleanse_required": 4,
+    "requires_discovery": [
+      "verren_counting_song"
+    ],
+    "flavor": "Verren's counting song is in your head. The Shrine Keeper wants the song silent. End him. The song keeps counting."
+  },
+  "cr3_lost_verse_3": {
+    "name": "After You Knew the Third Lost Verse",
+    "target_enemy": "censer_shade",
+    "needed": 3,
+    "reward_gold": 800,
+    "cleanse_required": 4,
+    "requires_discovery": [
+      "lost_verse_3"
+    ],
+    "reward_marks": [
+      "choir_kept_the_third_line"
+    ],
+    "flavor": "Once you know the third lost verse, three censer-shades in the Choir carry it. End them. The verse stays known."
+  },
+  "cr3_pallid_stag_no_damage": {
+    "name": "The Pallid Stag, Untouched",
+    "target_enemy": "pallid_stag",
+    "completion_condition": "no_damage_taken",
+    "needed": 1,
+    "reward_gold": 1300,
+    "cleanse_required": 2,
+    "flavor": "The Pallid Stag, ended without a scratch on you. The Witherwood's old climbers wrote this kind of kill into songs."
+  },
+  "cr3_chairman_one_round": {
+    "name": "The Chairman in a Single Round",
+    "target_enemy": "the_chairman",
+    "completion_condition": "killed_in_one_round",
+    "needed": 1,
+    "reward_gold": 1500,
+    "cleanse_required": 4,
+    "flavor": "The Chairman, ended in one round. The Sealed Chamber will not have time to re-seal."
+  },
+  "cr3_devoured_named_at_death": {
+    "name": "Name the Devoured Captain at Death",
+    "target_enemy": "devoured_captain",
+    "completion_condition": "named_them_at_death",
+    "needed": 1,
+    "reward_gold": 1200,
+    "cleanse_required": 4,
+    "flavor": "Speak the Devoured Captain's old name as the killing blow lands. He may have forgotten it; you have not."
+  },
+  "chain2_forager_a_a_loaf": {
+    "name": "The Forager's Path — A Loaf",
+    "target_enemy": "forager_boy",
+    "needed": 2,
+    "reward_gold": 200,
+    "cleanse_required": 1,
+    "chain_next": "chain2_forager_b_a_shoe",
+    "flavor": "Two forager boys ate the loaf you set out. End them. The next loaf will be a real one."
+  },
+  "chain2_forager_b_a_shoe": {
+    "name": "The Forager's Path — A Shoe",
+    "target_enemy": "forager_boy",
+    "needed": 1,
+    "reward_gold": 300,
+    "cleanse_required": 1,
+    "requires_quest": [
+      "chain2_forager_a_a_loaf"
+    ],
+    "chain_next": "chain2_forager_c_a_word",
+    "flavor": "A forager boy is wearing your shoe. End him. The shoe will come back to your foot."
+  },
+  "chain2_forager_c_a_word": {
+    "name": "The Forager's Path — A Word",
+    "target_enemy": "forager_boy",
+    "needed": 1,
+    "reward_gold": 500,
+    "cleanse_required": 1,
+    "requires_quest": [
+      "chain2_forager_b_a_shoe"
+    ],
+    "chain_next": "chain2_forager_d_a_name",
+    "reward_marks": [
+      "holds_eron_almost_spoke"
+    ],
+    "flavor": "A forager boy almost speaks a word. End him. The word will be in the air after, briefly."
+  },
+  "chain2_forager_d_a_name": {
+    "name": "The Forager's Path — A Name",
+    "target_enemy": "forager_boy",
+    "needed": 1,
+    "reward_gold": 800,
+    "cleanse_required": 2,
+    "requires_quest": [
+      "chain2_forager_c_a_word"
+    ],
+    "reward_chronicle_line": "They walked the Forager's Path through the Drowned Holds — loaf, shoe, word, name — and the last forager boy spoke the name before falling. It was a Brackmere name.",
+    "reward_marks": [
+      "holds_you_forgot_a_grandmother"
+    ],
+    "flavor": "The last forager boy at the end of the path. He speaks a name before you take him. The name is the kingdom's."
+  },
+  "chain2_lamp_a_oil_for_climb": {
+    "name": "The Last Lamp — Oil for the Climb",
+    "target_enemy": "bandit",
+    "needed": 2,
+    "reward_gold": 250,
+    "cleanse_required": 0,
+    "chain_next": "chain2_lamp_b_at_the_pool",
+    "flavor": "The Lampkeeper gives you oil for the climb. Two bandits had tried to take it. End them. The oil stays."
+  },
+  "chain2_lamp_b_at_the_pool": {
+    "name": "The Last Lamp — At the Reach's Pool",
+    "target_enemy": "silt_drowner",
+    "needed": 2,
+    "reward_gold": 400,
+    "cleanse_required": 1,
+    "requires_quest": [
+      "chain2_lamp_a_oil_for_climb"
+    ],
+    "chain_next": "chain2_lamp_c_in_the_gullet",
+    "flavor": "Two silt-drowners at the Reach's pool tried to put out the lamp. End them. The lamp burns through the silt."
+  },
+  "chain2_lamp_c_in_the_gullet": {
+    "name": "The Last Lamp — In the Gullet",
+    "target_enemy": "dark_slime",
+    "needed": 3,
+    "reward_gold": 500,
+    "cleanse_required": 2,
+    "requires_quest": [
+      "chain2_lamp_b_at_the_pool"
+    ],
+    "chain_next": "chain2_lamp_d_at_the_summit",
+    "reward_marks": [
+      "lamp2_gave_you_oil_for_the_climb"
+    ],
+    "flavor": "Three slimes in the Gullet wanted the oil. End them. The lamp keeps its light through the throat."
+  },
+  "chain2_lamp_d_at_the_summit": {
+    "name": "The Last Lamp — At the Summit",
+    "target_enemy": "shadow_warden",
+    "needed": 1,
+    "reward_gold": 2000,
+    "cleanse_required": 5,
+    "requires_quest": [
+      "chain2_lamp_c_in_the_gullet"
+    ],
+    "reward_chronicle_line": "They carried the Lampkeeper's oil from Gravewatch to the Summit, lit the lamp at the upper stone, and ended the Shadow Warden by the lamp's light. The Lampkeeper had been right to give it.",
+    "reward_marks": [
+      "ending_warden_a_lampkeeper_called_you_warden"
+    ],
+    "flavor": "The Summit. Light the lamp. End the Warden by its light. The Lampkeeper at Gravewatch will know it was used."
+  },
+  "chain2_doors_a_widow": {
+    "name": "The Three Doorposts — The Widow's",
+    "target_enemy": "doorshut",
+    "needed": 1,
+    "reward_gold": 400,
+    "cleanse_required": 1,
+    "chain_next": "chain2_doors_b_father",
+    "flavor": "A doorshut stands at a widow's old doorpost. End it. The widow's name will stay carved."
+  },
+  "chain2_doors_b_father": {
+    "name": "The Three Doorposts — The Father's",
+    "target_enemy": "doorshut",
+    "needed": 1,
+    "reward_gold": 500,
+    "cleanse_required": 1,
+    "requires_quest": [
+      "chain2_doors_a_widow"
+    ],
+    "chain_next": "chain2_doors_c_child",
+    "flavor": "A doorshut at a father's old doorpost. End it. The father will not be the one shutting the door any more."
+  },
+  "chain2_doors_c_child": {
+    "name": "The Three Doorposts — The Child's",
+    "target_enemy": "doorshut",
+    "needed": 1,
+    "reward_gold": 600,
+    "cleanse_required": 1,
+    "requires_quest": [
+      "chain2_doors_b_father"
+    ],
+    "chain_next": "chain2_doors_d_kingdom",
+    "reward_marks": [
+      "holds_you_added_a_name_to_a_post"
+    ],
+    "flavor": "A doorshut at a child's old doorpost. End it. The child will be named on the post when you carve."
+  },
+  "chain2_doors_d_kingdom": {
+    "name": "The Three Doorposts — The Kingdom's",
+    "target_enemy": "the_chairman",
+    "needed": 1,
+    "reward_gold": 1400,
+    "cleanse_required": 3,
+    "requires_quest": [
+      "chain2_doors_c_child"
+    ],
+    "reward_chronicle_line": "They named three doorposts in the Drowned Holds — widow, father, child — and at the Sealed Chamber they ended the Chairman who had once decided the doorposts would be empty.",
+    "reward_marks": [
+      "holds_doorpost_remembered_a_name"
+    ],
+    "flavor": "The Sealed Chamber. The Chairman who decided the doorposts should be empty. End him. The doorposts will stay named."
+  },
+  "chain2_after_hunters_cache_collars": {
+    "name": "After You Matched the Hunter's Cache Collars",
+    "target_enemy": "pack_lead",
+    "needed": 1,
+    "reward_gold": 700,
+    "cleanse_required": 1,
+    "requires_discovery": [
+      "hunters_cache_collars"
+    ],
+    "reward_marks": [
+      "the_witherwood_remembered_a_younger_step"
+    ],
+    "flavor": "Once you have matched the Hunter's Cache collars, the pack lead knows. End him. The collars will be the pack's own."
+  },
+  "chain2_after_atrels_register": {
+    "name": "After You Read the Atrél Register",
+    "target_enemy": "hollow_procession",
+    "needed": 2,
+    "reward_gold": 500,
+    "cleanse_required": 3,
+    "requires_discovery": [
+      "atrel_register"
+    ],
+    "flavor": "Atrél's register names two of the procession. End them. The register will know."
+  },
+  "chain2_after_palls_words": {
+    "name": "After You Read the Pall's Only Words II",
+    "target_enemy": "reliquary_golem",
+    "needed": 2,
+    "reward_gold": 800,
+    "cleanse_required": 4,
+    "requires_discovery": [
+      "palls_only_words"
+    ],
+    "reward_marks": [
+      "choir_pillar_ate_your_word"
+    ],
+    "flavor": "The Pall's only words are known to you. Two reliquary golems keep their record. End them. The words stay yours."
+  },
+  "chain2_after_red_beards_haft_ii": {
+    "name": "After Red Beard's Haft, Again",
+    "target_enemy": "red_beard",
+    "needed": 2,
+    "reward_gold": 600,
+    "cleanse_required": 2,
+    "requires_discovery": [
+      "red_beards_hammer_haft"
+    ],
+    "flavor": "Red Beard's haft is still in the doorpost. Two more of his kind walk the road. End them. The haft will stay where it sits."
+  },
+  "chain2_after_engineer_plans_ii": {
+    "name": "After the Engineer's Plans, the Bog Lurchers Knew",
+    "target_enemy": "bog_lurcher",
+    "needed": 3,
+    "reward_gold": 700,
+    "cleanse_required": 2,
+    "requires_discovery": [
+      "engineers_plans"
+    ],
+    "reward_marks": [
+      "reach_promised_the_field_a_grain"
+    ],
+    "flavor": "The Engineer's plans named three lurchers as breaches in his weir. End them. The plans will hold."
   }
 }
