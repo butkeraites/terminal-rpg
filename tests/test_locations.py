@@ -1060,6 +1060,41 @@ def test_quest_visibility_gates_compose(content, tmp_path):
                                         ready_for_it=True)
 
 
+# --- Phase-1 Batch-5: discovery gate -------------------------------------
+
+def test_quest_visibility_requires_discovery(content, tmp_path):
+    """requires_discovery hides a quest until the player reads a lore fragment.
+
+    Discovery-gated quests are the kingdom's reward for reading. Until the
+    named discovery_id is in state.flags['discoveries_seen'], the quest
+    does not appear on the board.
+    """
+    content.quests["after_reading_q"] = _hidden_test_quest(
+        name="After the Reading",
+        requires_discovery=["burned_ledger_p17"])
+    player = _player(content)
+    # No reading yet — invisible.
+    assert "After the Reading" not in _board_render(content, player, tmp_path)
+    # After reading the fragment, it appears.
+    rendered = _board_render(content, player, tmp_path,
+                              discoveries_seen=["burned_ledger_p17"])
+    assert "After the Reading" in rendered
+
+
+def test_quest_visibility_requires_discovery_list_all_or_nothing(content, tmp_path):
+    """requires_discovery is ALL-required — partial reading is not enough."""
+    content.quests["after_both_q"] = _hidden_test_quest(
+        name="After Both",
+        requires_discovery=["frag_a", "frag_b"])
+    player = _player(content)
+    # Only one — invisible.
+    assert "After Both" not in _board_render(
+        content, player, tmp_path, discoveries_seen=["frag_a"])
+    # Both — visible.
+    assert "After Both" in _board_render(
+        content, player, tmp_path, discoveries_seen=["frag_a", "frag_b"])
+
+
 def test_chain_claim_emits_new_slip_pinned_notification(content, tmp_path):
     """Claiming a chain step that opens a follow-up emits *A new slip is pinned*."""
     from terminalquest import combat

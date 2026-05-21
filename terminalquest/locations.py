@@ -481,6 +481,15 @@ def _quest_is_visible(quest, state, cleanses):
         if not all(eid in seen for eid in endings_needed):
             return False
 
+    # Discovery gate (Batch-5) — state.flags['discoveries_seen'] tracks which
+    # lore fragments the player has read this run. Discovery-gated quests
+    # appear once the prerequisite reading has happened.
+    discoveries_needed = quest.get("requires_discovery") or []
+    if discoveries_needed:
+        seen = set(state.flags.get("discoveries_seen", []))
+        if not all(did in seen for did in discoveries_needed):
+            return False
+
     return True
 
 
