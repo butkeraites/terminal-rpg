@@ -823,6 +823,7 @@ _DISCOVERY_FLAGS = {
     "verren_fragment": "verren_found",
     "drowned_holds_petition": "hidden_hold_found",  # reading the petition opens the way north
     "first_kings_pommel": "read_garren_pommel",  # unlocks Cael's memory of her father
+    "small_uns_drawing": "read_small_uns_drawing",  # gates the Small Un's second drawing
 }
 
 # The Bone Tomb requires the player to have done everything Mournhold can

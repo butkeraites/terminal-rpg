@@ -1183,6 +1183,20 @@ def test_pommel_discovery_sets_garren_flag(tmp_path, content):
     assert state.flags.get("read_garren_pommel") is True
 
 
+def test_small_uns_second_drawing_gated_on_first(content, tmp_path):
+    """v1.18 — the Small Un's second drawing only appears after the first is read."""
+    hold = content.locations["hidden_hold"]
+    second = next(e for e in hold["encounters"]
+                  if e.get("id") == "small_uns_second_drawing")
+    assert second.get("requires_flag") == "read_small_uns_drawing"
+    # Reading the first drawing sets the flag that unlocks the second.
+    state = make_state(_player(content), content, ScriptedIO(), StubRandom(),
+                       chronicle_dir=tmp_path)
+    assert not state.flags.get("read_small_uns_drawing")
+    locations._run_discovery(state, {"id": "small_uns_drawing", "lines": ["..."]})
+    assert state.flags.get("read_small_uns_drawing") is True
+
+
 def test_bone_tomb_requires_all_four_npc_quests_and_verren(content, tmp_path):
     """The Bone Tomb opens only after every NPC quest + Verren fragment."""
     state = make_state(_player(content), content, ScriptedIO(), StubRandom(),
