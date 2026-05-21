@@ -155,6 +155,14 @@ def record(state, fate, chronicle_dir=DEFAULT_DIR, last_words=""):
 
     v1.16 — optional ``last_words`` are a single line the dying character
     chose to leave; surfaced at their grave and in the Hollowed's voice.
+
+    Phase-1 Batch-10 (Quests campaign) — also capture the character's
+    quest history:
+      * ``completed_quests``  — list of quest_ids claimed across the run.
+      * ``quest_chronicle_lines`` — lines accumulated from
+                                    ``reward_chronicle_line`` rewards.
+    Both make the Chronicle entry the durable record of the character's
+    quest-walk; cross-run viewers and future-character flavor can read them.
     """
     raw = _load_raw(chronicle_dir)
     entry = {
@@ -168,6 +176,13 @@ def record(state, fate, chronicle_dir=DEFAULT_DIR, last_words=""):
     }
     if last_words:
         entry["last_words"] = last_words
+    # Phase-1 Batch-10: durable quest record on the character's entry.
+    quest_completed = list(state.flags.get("completed_quests") or [])
+    if quest_completed:
+        entry["completed_quests"] = quest_completed
+    quest_lines = list(state.flags.get("quest_chronicle_lines") or [])
+    if quest_lines:
+        entry["quest_chronicle_lines"] = quest_lines
     raw["entries"].append(entry)
     _save(raw, chronicle_dir)
 

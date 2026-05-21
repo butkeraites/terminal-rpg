@@ -84,3 +84,42 @@ def test_unlocks_and_entries_coexist(tmp_path, content, warrior):
     chronicle.unlock("maw_mother", tmp_path)
     assert chronicle.unlocked(tmp_path) == {"pallid_stag", "maw_mother"}
     assert len(chronicle.load(tmp_path)) == 1
+
+
+# --- Phase-1 Batch-10: quest history on the Chronicle entry --------------
+
+def test_record_includes_completed_quests(tmp_path, content, warrior):
+    """A character's completed_quests are written into the Chronicle entry."""
+    state = make_state(warrior, content, chronicle_dir=tmp_path)
+    state.flags["completed_quests"] = ["wolf_cull", "scavver_purge"]
+    chronicle.record(state, "fell", tmp_path)
+    entry = chronicle.load(tmp_path)[0]
+    assert entry["completed_quests"] == ["wolf_cull", "scavver_purge"]
+
+
+def test_record_includes_quest_chronicle_lines(tmp_path, content, warrior):
+    """reward_chronicle_line lines are persisted on the Chronicle entry."""
+    state = make_state(warrior, content, chronicle_dir=tmp_path)
+    state.flags["quest_chronicle_lines"] = [
+        "They added a name to the doorpost.",
+        "They walked the dyke in proper silence.",
+    ]
+    chronicle.record(state, "warden", tmp_path)
+    entry = chronicle.load(tmp_path)[0]
+    assert entry["quest_chronicle_lines"] == [
+        "They added a name to the doorpost.",
+        "They walked the dyke in proper silence.",
+    ]
+
+
+def test_record_omits_quest_fields_when_empty(tmp_path, content, warrior):
+    """A character with no quest history doesn't carry empty quest fields.
+
+    Keeps Chronicle entries compact for the 99% of characters who fall
+    early and complete nothing.
+    """
+    state = make_state(warrior, content, chronicle_dir=tmp_path)
+    chronicle.record(state, "fell", tmp_path)
+    entry = chronicle.load(tmp_path)[0]
+    assert "completed_quests" not in entry
+    assert "quest_chronicle_lines" not in entry
