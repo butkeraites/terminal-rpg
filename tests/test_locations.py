@@ -1215,6 +1215,22 @@ def test_atrel_renaud_branch_gated_on_reading_the_folio(content, tmp_path):
     assert state.flags.get("read_atrel_folio") is True
 
 
+def test_cael_column_branch_gated_on_reading_the_column(content, tmp_path):
+    """v1.31 — Cael's 'of_column' branch surfaces only after the column is read."""
+    cael = content.dialogues["cael"]
+    initial_responses = cael["initial"]["responses"]
+    column_branch = [r for r in initial_responses if "column" in r.get("text", "")]
+    assert len(column_branch) == 1
+    assert column_branch[0].get("requires_flag") == "read_column_of_seals"
+    assert "of_column" in cael
+    # Reading the column sets the flag.
+    state = make_state(_player(content), content, ScriptedIO(), StubRandom(),
+                       chronicle_dir=tmp_path)
+    assert not state.flags.get("read_column_of_seals")
+    locations._run_discovery(state, {"id": "bone_tomb_column_of_seals", "lines": ["..."]})
+    assert state.flags.get("read_column_of_seals") is True
+
+
 def test_bone_tomb_requires_all_four_npc_quests_and_verren(content, tmp_path):
     """The Bone Tomb opens only after every NPC quest + Verren fragment."""
     state = make_state(_player(content), content, ScriptedIO(), StubRandom(),

@@ -517,7 +517,52 @@
         {"text": "Tell her you found her father's pommel — Garren, first of the holds.",
          "next": "of_garren",
          "requires_flag": "read_garren_pommel"},
+        {"text": "Tell her you read down the column of seals behind her.",
+         "next": "of_column",
+         "requires_flag": "read_column_of_seals"},
         {"text": "(step back)", "next": null}
+      ]
+    },
+    "of_column": {
+      "voice": "stone",
+      "lines": [
+        "You read down. Good.",
+        "",
+        "I did not know all of them. I knew Kess. Kess was my older sister.",
+        "She came down for what we both thought was Verren-hunger renewed.",
+        "She was wrong about the renewed part. The hunger was already there.",
+        "She held it for sixteen winters. Then she was done. Then I came down.",
+        "",
+        "I carved her name above mine when I sat down. The chisel was already there.",
+        "It is always there. The first seal left it. We have all used the same chisel.",
+        "We sharpen it. We re-sharpen it. The handle is the smoothest thing in this room.",
+        "",
+        "I did not know Thene. Thene was Kess's predecessor. Kess carved Thene above her own.",
+        "I knew the name. I knew nothing about her. That is the way the line tends to work.",
+        "Each of us knows the one who came right before us, sometimes. Each of us knows",
+        "the one who comes after, sometimes. The rest is just the names.",
+        "",
+        "The Unnamed — the one whose marks stop — I do not know what happened. Mar carved Iria.",
+        "Mar did not carve the Unnamed. The Unnamed was supposed to carve Mar, and did not finish.",
+        "I think the Unnamed lost her sense of language somewhere in her years of holding.",
+        "She wrote Mar's first letter and then could not remember letters anymore.",
+        "Mar sat down anyway. Mar did not need a name to seat herself. Mar did the work.",
+        "",
+        "The line is older than language. The line outlasts knowing the language.",
+        "",
+        "If you read all the way down to NO-NAME — yes. That was the first.",
+        "We do not have her name. We have only the absence of one. The first seal did not",
+        "name herself. She left no name to carve. I think she meant it. I think she meant",
+        "the line to be a thing that did not need naming. She thought we would not need to count.",
+        "",
+        "She was wrong. We need to count. We need the names.",
+        "",
+        "I have done my best with that. I am sorry, NO-NAME.",
+        "I have carved KESS and you will carve KESS and CAEL — both — for me, when you sit."
+      ],
+      "responses": [
+        {"text": "I have not said I will sit yet.", "next": "another"},
+        {"text": "(step back, quiet)", "next": "initial"}
       ]
     },
     "of_garren": {

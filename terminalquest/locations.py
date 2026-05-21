@@ -825,6 +825,7 @@ _DISCOVERY_FLAGS = {
     "first_kings_pommel": "read_garren_pommel",  # unlocks Cael's memory of her father
     "small_uns_drawing": "read_small_uns_drawing",  # gates the Small Un's second drawing
     "atrel_original_rite": "read_atrel_folio",  # unlocks Atrél's "of_renaud" branch
+    "bone_tomb_column_of_seals": "read_column_of_seals",  # unlocks Cael's "of_column" branch
 }
 
 # The Bone Tomb requires the player to have done everything Mournhold can
