@@ -3436,5 +3436,239 @@
       "summit_warden_old_step_remembered_you"
     ],
     "reward_chronicle_line": "The Shadow Warden had recognized the previous one of them's step in the new self's stride; the new self ended the Warden, and the step was theirs alone."
+  },
+  "warrior_mourn_gate": {
+    "name": "The Warrior's Gate at Mourncross",
+    "target_enemy": "pall_magistrate",
+    "needed": 4,
+    "reward_gold": 700,
+    "cleanse_required": 3,
+    "requires_class": [
+      "warrior"
+    ],
+    "flavor": "Four magistrates at the capital's gate. A warrior holds the gate long enough that they all come, one by one. End them.",
+    "reward_chronicle_line": "A warrior held Mourncross's gate alone until four magistrates had fallen at it."
+  },
+  "warrior_reach_line_hold": {
+    "name": "The Warrior's Line at the Reach",
+    "target_enemy": "bog_lurcher",
+    "needed": 3,
+    "reward_gold": 500,
+    "cleanse_required": 2,
+    "requires_class": [
+      "warrior"
+    ],
+    "flavor": "Three Lurchers come at the line a warrior holds at the Reach's edge. End them. The line will not break this winter."
+  },
+  "warrior_summit_step": {
+    "name": "The Warrior's Step at the Summit",
+    "target_enemy": "stone_golem",
+    "needed": 1,
+    "reward_gold": 1200,
+    "cleanse_required": 5,
+    "requires_class": [
+      "warrior"
+    ],
+    "flavor": "The last narrow step before the Summit. A stone-golem keeps it. Only a warrior weighs enough to convince the step to hold both.",
+    "reward_marks": [
+      "summit_ground_was_softer_than_you_thought"
+    ]
+  },
+  "warrior_climb_wall_iii": {
+    "name": "The Warrior's Wall on the Climb",
+    "target_enemy": "mountain_ogre",
+    "needed": 5,
+    "reward_gold": 800,
+    "cleanse_required": 4,
+    "requires_class": [
+      "warrior"
+    ],
+    "flavor": "Five ogres on the bare ridge. A warrior holds the wall against the wind and the ogres both."
+  },
+  "rogue_witherwood_ambush": {
+    "name": "The Rogue's Ambush in the Wood",
+    "target_enemy": "bandit",
+    "needed": 4,
+    "reward_gold": 400,
+    "cleanse_required": 0,
+    "requires_class": [
+      "rogue"
+    ],
+    "flavor": "Four bandits in a tight clearing. A rogue takes all four before any one notices the others falling.",
+    "reward_marks": [
+      "the_wood_held_its_breath_for_you"
+    ]
+  },
+  "rogue_choir_silent_steal": {
+    "name": "The Rogue's Silent Steal at the Choir",
+    "target_enemy": "reliquary_golem",
+    "needed": 1,
+    "reward_gold": 900,
+    "cleanse_required": 4,
+    "requires_class": [
+      "rogue"
+    ],
+    "flavor": "A reliquary golem holds something a rogue is meant to take. End the golem in one strike. Take the thing. Leave with no sound.",
+    "reward_marks": [
+      "choir_atrel_held_your_grief_briefly"
+    ]
+  },
+  "rogue_holds_quiet_five": {
+    "name": "The Rogue's Quiet Five at the Holds",
+    "target_enemy": "doorshut",
+    "needed": 5,
+    "reward_gold": 450,
+    "cleanse_required": 1,
+    "requires_class": [
+      "rogue"
+    ],
+    "flavor": "Five doorshuts. Each one taken before the others know. The Holds' old guards lived this way once. A rogue carries the way."
+  },
+  "mage_choir_altar_burn": {
+    "name": "The Mage's Altar-Burn at the Choir",
+    "target_enemy": "censer_shade",
+    "needed": 4,
+    "reward_gold": 700,
+    "cleanse_required": 4,
+    "requires_class": [
+      "mage"
+    ],
+    "flavor": "Four censer-shades. A mage's counter-burn ends each one without letting any of them rejoin the smoke.",
+    "reward_marks": [
+      "music_the_choir_air_was_thinner_for_a_song"
+    ]
+  },
+  "mage_summit_name_wind": {
+    "name": "The Mage's Name to the Summit Wind",
+    "target_enemy": "ice_wraith",
+    "needed": 3,
+    "reward_gold": 800,
+    "cleanse_required": 4,
+    "requires_class": [
+      "mage"
+    ],
+    "flavor": "Three ice-wraiths. A mage speaks each one's name to the Summit wind as they fall. The wind will carry them.",
+    "reward_marks": [
+      "summit_you_named_someone_to_the_wind"
+    ]
+  },
+  "mage_reach_quiet_song": {
+    "name": "The Mage's Quiet Song at the Reach",
+    "target_enemy": "silt_drowner",
+    "needed": 4,
+    "reward_gold": 600,
+    "cleanse_required": 1,
+    "requires_class": [
+      "mage"
+    ],
+    "flavor": "Four silt-drowners. A mage's quiet song breaks each of their harmonics. The Reach hears the breaking and is quieter.",
+    "reward_marks": [
+      "reach_drowned_a_song_you_loved"
+    ]
+  },
+  "ranger_climb_pathfinder": {
+    "name": "The Ranger's Pathfinder on the Climb",
+    "target_enemy": "stone_golem",
+    "needed": 1,
+    "reward_gold": 900,
+    "cleanse_required": 5,
+    "requires_class": [
+      "ranger"
+    ],
+    "flavor": "A stone-golem holds the path. A ranger reads the path the climbers-before-the-climb made, and ends the golem on it.",
+    "reward_marks": [
+      "the_climb_marked_your_lungs"
+    ]
+  },
+  "ranger_witherwood_trail": {
+    "name": "The Ranger's Trail in the Wood",
+    "target_enemy": "wolf",
+    "needed": 6,
+    "reward_gold": 500,
+    "cleanse_required": 0,
+    "requires_class": [
+      "ranger"
+    ],
+    "flavor": "Six wolves. A ranger follows their pack-trail one by one, taking each without the others doubling back.",
+    "reward_marks": [
+      "the_wood_held_its_breath_for_you"
+    ]
+  },
+  "ranger_reach_dry_foot_ii": {
+    "name": "The Ranger's Dry Foot II",
+    "target_enemy": "drowned_thresher",
+    "needed": 4,
+    "reward_gold": 600,
+    "cleanse_required": 2,
+    "requires_class": [
+      "ranger"
+    ],
+    "flavor": "Four threshers, ended with a ranger's foot dry through every fight. Twice as hard as the first time. The Reach respects the doubling.",
+    "reward_marks": [
+      "reach_taught_you_to_wade"
+    ]
+  },
+  "ranger_holds_tracker": {
+    "name": "The Ranger's Tracker at the Holds",
+    "target_enemy": "forager_boy",
+    "needed": 3,
+    "reward_gold": 500,
+    "cleanse_required": 1,
+    "requires_class": [
+      "ranger"
+    ],
+    "flavor": "Three forager boys. A ranger tracks them through the holds' silent houses. Each one ends when the ranger chooses.",
+    "reward_chronicle_line": "A ranger tracked three forager boys through the Drowned Holds, the way the kingdom's old hunters had taught."
+  },
+  "cleric_mourn_funeral": {
+    "name": "The Cleric's Funeral at Mourncross",
+    "target_enemy": "hollow_procession",
+    "needed": 5,
+    "reward_gold": 800,
+    "cleanse_required": 3,
+    "requires_class": [
+      "cleric"
+    ],
+    "flavor": "Five of the procession. A cleric gives each one the funeral the kingdom owed them. They lay properly down after.",
+    "reward_chronicle_line": "A cleric gave five of Mourncross's hollow procession the funeral the kingdom had never given."
+  },
+  "cleric_choir_grief_lift": {
+    "name": "The Cleric's Grief-Lift at the Choir",
+    "target_enemy": "choirmaster_effigy",
+    "needed": 2,
+    "reward_gold": 700,
+    "cleanse_required": 4,
+    "requires_class": [
+      "cleric"
+    ],
+    "flavor": "Two effigies. A cleric lifts the grief each one is meant to carry, and the effigy stops singing.",
+    "reward_marks": [
+      "choir_set_a_grief_at_atrels_side_altar"
+    ]
+  },
+  "cleric_climb_last_rites": {
+    "name": "The Cleric's Last Rites on the Climb",
+    "target_enemy": "ice_wraith",
+    "needed": 4,
+    "reward_gold": 700,
+    "cleanse_required": 4,
+    "requires_class": [
+      "cleric"
+    ],
+    "flavor": "Four ice-wraiths. A cleric gives last rites to each one. They rest after, the way they had been waiting to."
+  },
+  "cleric_holds_bless_bonesongs": {
+    "name": "The Cleric's Blessing for the Bonesongs",
+    "target_enemy": "bonesong",
+    "needed": 5,
+    "reward_gold": 500,
+    "cleanse_required": 1,
+    "requires_class": [
+      "cleric"
+    ],
+    "flavor": "Five bonesongs. A cleric blesses each one to silence. The Holds are quieter for it.",
+    "reward_marks": [
+      "holds_recognized_your_grief"
+    ]
   }
 }
