@@ -892,5 +892,208 @@
     ],
     "reward_chronicle_line": "A cleric walked Mourncross and gave seven of the procession a funeral. The kingdom's old clerics would have done the same.",
     "flavor": "Seven of the procession. A cleric's hand is the only hand that lays them down so they stay laid."
+  },
+  "choirmaster_effigies_three": {
+    "name": "Three Choirmaster Effigies",
+    "target_enemy": "choirmaster_effigy",
+    "needed": 3,
+    "reward_gold": 600,
+    "cleanse_required": 4,
+    "flavor": "Three of the effigies still raise the choir each morning. End the raising. The morning will be quiet."
+  },
+  "reliquary_golems_two": {
+    "name": "The Reliquary Golems Will Yield",
+    "target_enemy": "reliquary_golem",
+    "needed": 2,
+    "reward_gold": 700,
+    "cleanse_required": 4,
+    "flavor": "Two of the golems hold the choir's relics. Take the holders. The relics belong to no one and that is right."
+  },
+  "censer_shades_five": {
+    "name": "Five Censer-Shades for the Smoke",
+    "target_enemy": "censer_shade",
+    "needed": 5,
+    "reward_gold": 500,
+    "cleanse_required": 4,
+    "flavor": "Five censer-shades fill the choir with smoke that will not settle. End them. The air will be air."
+  },
+  "cantor_vael_must_close_his_mouth": {
+    "name": "Cantor Vael Must Close His Mouth",
+    "target_enemy": "cantor_vael",
+    "needed": 1,
+    "reward_gold": 1100,
+    "cleanse_required": 4,
+    "reward_chronicle_line": "They walked the Unanswered Choir and closed the mouth of Cantor Vael, who had been singing the rite of unremembering without pause since the kingdom forgot itself.",
+    "flavor": "He has been singing the rite since the kingdom forgot itself. He has not eaten. He has not slept. End the singing."
+  },
+  "mouth_a_read_the_rite": {
+    "name": "The Mouth That Will Not Close — Read the Rite",
+    "target_enemy": "censer_shade",
+    "needed": 2,
+    "reward_gold": 300,
+    "cleanse_required": 0,
+    "requires_discovery": [
+      "choir_rite"
+    ],
+    "chain_next": "mouth_b_learn_the_lost_verse",
+    "flavor": "The rite is on the wall, half-burned. Two censer-shades guard the legible half. Read what you can. Take the shades."
+  },
+  "mouth_b_learn_the_lost_verse": {
+    "name": "The Mouth That Will Not Close — The Lost Verse",
+    "target_enemy": "choirmaster_effigy",
+    "needed": 1,
+    "reward_gold": 500,
+    "cleanse_required": 0,
+    "requires_quest": [
+      "mouth_a_read_the_rite"
+    ],
+    "requires_discovery": [
+      "lost_verse_1"
+    ],
+    "chain_next": "mouth_c_pall_speaks",
+    "reward_marks": [
+      "choir_kept_the_third_line"
+    ],
+    "flavor": "The lost verse is the third line of the rite. An effigy still sings it. Take the effigy. The third line will be yours."
+  },
+  "mouth_c_pall_speaks": {
+    "name": "The Mouth That Will Not Close — The Pall Speaks",
+    "target_enemy": "reliquary_golem",
+    "needed": 1,
+    "reward_gold": 700,
+    "cleanse_required": 0,
+    "requires_quest": [
+      "mouth_b_learn_the_lost_verse"
+    ],
+    "requires_discovery": [
+      "the_pall_speaks"
+    ],
+    "chain_next": "mouth_d_close_the_mouth",
+    "flavor": "A golem keeps the reliquary that holds the Pall's only words. Take the golem. Read what the Pall has said only once."
+  },
+  "mouth_d_close_the_mouth": {
+    "name": "The Mouth That Will Not Close — Close It",
+    "target_enemy": "cantor_vael",
+    "needed": 1,
+    "reward_gold": 1500,
+    "cleanse_required": 0,
+    "requires_quest": [
+      "mouth_c_pall_speaks"
+    ],
+    "reward_chronicle_line": "They knew the rite, the lost verse, and the Pall's only words; they closed Cantor Vael's mouth and the kingdom heard the third line for the first time in a hundred winters.",
+    "reward_marks": [
+      "choir_you_unsung_your_name"
+    ],
+    "flavor": "You know the rite. You know the lost verse. You know what the Pall has said. Close the Cantor's mouth. Sing the third line back at him. The kingdom will hear it once more."
+  },
+  "palls_only_words_taken": {
+    "name": "The Words the Pall Has Spoken",
+    "target_enemy": "reliquary_golem",
+    "needed": 1,
+    "reward_gold": 600,
+    "cleanse_required": 4,
+    "requires_discovery": [
+      "palls_only_words"
+    ],
+    "reward_marks": [
+      "choir_pillar_ate_your_word"
+    ],
+    "flavor": "A golem keeps the reliquary that holds the Pall's only spoken words. Take it. The words are not for the Pall to keep."
+  },
+  "cantors_last_sermon_heard": {
+    "name": "The Cantor's Last Sermon",
+    "target_enemy": "censer_shade",
+    "needed": 3,
+    "reward_gold": 400,
+    "cleanse_required": 4,
+    "requires_discovery": [
+      "cantor_last_sermon"
+    ],
+    "reward_consumables": [
+      "The Last Bread"
+    ],
+    "flavor": "Three censer-shades carry the smoke of the Cantor's last sermon. Take them. The smoke can dissipate."
+  },
+  "atrels_reply_taken_quietly": {
+    "name": "Atrél's Reply, Taken Quietly",
+    "target_enemy": "choirmaster_effigy",
+    "needed": 1,
+    "reward_gold": 350,
+    "cleanse_required": 4,
+    "requires_discovery": [
+      "atrel_reply_to_pall"
+    ],
+    "reward_marks": [
+      "choir_atrel_held_your_grief_briefly"
+    ],
+    "flavor": "An effigy still mocks Atrél's reply to the Pall. Take it. Atrél will have her quiet, briefly."
+  },
+  "choir_no_damage_taken_cantor_phase_one": {
+    "name": "Untouched in the Choir's First Verse",
+    "target_enemy": "choirmaster_effigy",
+    "completion_condition": "no_damage_taken",
+    "needed": 2,
+    "reward_gold": 500,
+    "cleanse_required": 4,
+    "flavor": "Two effigies, and no harm comes to you in either fight. The Pall hates an untouched climber."
+  },
+  "choir_critical_killing_blow": {
+    "name": "End Three with the Single Critical Blow",
+    "target_enemy": "censer_shade",
+    "completion_condition": "critical_killing_blow",
+    "needed": 3,
+    "reward_gold": 600,
+    "cleanse_required": 4,
+    "flavor": "Three censer-shades, and the killing blow on each is a crit. The kingdom's old grandmasters did it this way."
+  },
+  "choir_kept_full_stamina": {
+    "name": "Walk the Choir with Breath Kept",
+    "target_enemy": "reliquary_golem",
+    "completion_condition": "kept_full_stamina",
+    "needed": 1,
+    "reward_gold": 550,
+    "cleanse_required": 4,
+    "flavor": "A reliquary golem. End it without spending a single point of your breath. The kingdom's old monks did it this way."
+  },
+  "choir_both_warmth_and_recognition": {
+    "name": "The Choir Warmed and the Cantor Recognized You",
+    "target_enemy": "cantor_vael",
+    "needed": 1,
+    "reward_gold": 1000,
+    "cleanse_required": 4,
+    "requires_marks": [
+      "choir_warmed_for_you",
+      "choir_cantor_recognized_your_step"
+    ],
+    "reward_chronicle_line": "Once the Choir had warmed for them and the Cantor had recognized their step, they took the Cantor anyway — and he died warm.",
+    "flavor": "The Choir has warmed for you. The Cantor has recognized your step. Both marks. End him anyway. He dies warm."
+  },
+  "after_purify_in_the_choir": {
+    "name": "After the Purify, the Choir Sings Lower",
+    "target_enemy": "cantor_vael",
+    "needed": 1,
+    "reward_gold": 1200,
+    "cleanse_required": 4,
+    "requires_ending": [
+      "purify"
+    ],
+    "reward_marks": [
+      "choir_almost_completed_the_rite"
+    ],
+    "flavor": "Once a previous you had purified Mournhold. The Cantor sings lower for you, in apology. End him anyway."
+  },
+  "after_atrel_peace_at_the_side_altar": {
+    "name": "After Atrél's Peace, Set a Grief at the Side Altar",
+    "target_enemy": "choirmaster_effigy",
+    "needed": 1,
+    "reward_gold": 700,
+    "cleanse_required": 4,
+    "requires_ending": [
+      "atrel_peace"
+    ],
+    "reward_marks": [
+      "choir_set_a_grief_at_atrels_side_altar"
+    ],
+    "flavor": "Once you have made Atrél's Peace, the side altar accepts a grief. An effigy guards the altar. End it. Set the grief."
   }
 }
