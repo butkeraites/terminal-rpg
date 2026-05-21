@@ -297,6 +297,7 @@ def hireling_hall(state):
             continue
         player.gold -= entry["cost"]
         player.hireling = make_hireling(content, hireling_id)
+        state.flags["has_hireling"] = True
         io.show_slow(f"\n🛡️  {player.hireling.name} swears to walk with you.")
         io.pause(1)
 
@@ -373,6 +374,8 @@ def beastmaster(state):
             continue
         chronicle.own_pet(pet_id, state.chronicle_dir)
         player.equip_pet(make_pet(content, pet_id))
+        state.flags["has_pet"] = True
+        state.flags[f"has_pet_{pet_id}"] = True
         io.show_slow(f"\n🐾 The {entry['name']} is yours now, and stays yours.")
         io.pause(1)
 
@@ -661,6 +664,7 @@ def pact_broker(state):
             continue
         player.gold -= entry["cost"]
         player.companion = make_companion(content, companion_id)
+        state.flags["has_companion"] = True
         io.show_slow(f"\n🐺 {player.companion.name} pledges to walk the road "
                      f"with you.")
         io.pause(1)

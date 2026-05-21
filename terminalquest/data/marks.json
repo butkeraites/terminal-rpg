@@ -9798,5 +9798,1093 @@
       "The kingdom has many. You added one pebble to one. The pebble will stay. So will the gesture.",
       "  (+1 Max HP, permanently — a pebble set on an unnamed marker by your hand.)"
     ]
+  },
+  "companion_kept_first_watch_for_you": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "save_action"
+      ],
+      "requires_flag": "has_companion",
+      "chance": 0.16
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 2,
+      "flag": "companion_first_watch"
+    },
+    "lines": [
+      "Tonight at the save, your companion took the first watch without being asked. Sat",
+      "with their back to your shoulder. Did not sleep. You slept full. The first watch is",
+      "the watch where the bad dreams come. They took yours. You will be steadier from now on.",
+      "  (+2 Max HP, permanently — a first watch taken on your behalf, in silence.)"
+    ]
+  },
+  "companion_remembered_your_old_name": {
+    "category": "mind",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "requires_flag": "has_companion",
+      "min_visits": 2,
+      "chance": 0.13
+    },
+    "effect": {
+      "flag": "companion_old_name"
+    },
+    "lines": [
+      "Tonight, between zones, your companion said your old name — the one before you came to",
+      "Mournhold, the one you had not told them. You did not ask how. They had pieced it",
+      "together. They will not say it again unless you ask. They wanted you to know they knew."
+    ]
+  },
+  "companion_ate_first_for_you": {
+    "category": "found",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "requires_flag": "has_companion",
+      "chance": 0.13
+    },
+    "effect": {
+      "stat": "max_stamina",
+      "delta": 1,
+      "flag": "companion_ate_first"
+    },
+    "lines": [
+      "At the inn tonight your companion sat with you and, for the first time, took the first",
+      "bite from the shared bowl. They had always waited before. Tonight they did not. The",
+      "trust between you has, today, become a thing that does not need to be asked for.",
+      "  (+1 Max Stamina, permanently — a small trust given by an eat-first that was kept.)"
+    ]
+  },
+  "companion_did_not_come_back_from_the_lookout": {
+    "category": "promise_broken",
+    "trigger": {
+      "at": [
+        "combat_low_hp"
+      ],
+      "requires_flag": "has_companion",
+      "chance": 0.12
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": -1,
+      "flag": "companion_lookout_late"
+    },
+    "lines": [
+      "In the worst beat of the fight your companion was supposed to be at the lookout. They",
+      "had been. Then they had not been. You went down without their watch on you. They came",
+      "back after. They had a good reason. The reason did not, today, make the fight any easier.",
+      "  (-1 Max HP, permanently — a moment your companion's eye was not on you.)"
+    ]
+  },
+  "companion_shared_a_dream_with_you": {
+    "category": "half_truth",
+    "trigger": {
+      "at": [
+        "save_action"
+      ],
+      "requires_flag": "has_companion",
+      "min_visits": 2,
+      "chance": 0.11
+    },
+    "effect": {
+      "flag": "shared_dream"
+    },
+    "lines": [
+      "Tonight, sleeping next to your companion at the saving-place, you and they had the",
+      "same dream. You woke at the same count. You looked at each other. Neither of you said",
+      "the dream aloud. You both knew the dream had been about the Summit. Neither of you said."
+    ]
+  },
+  "companion_learned_to_keep_silent_with_you": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "requires_flag": "has_companion",
+      "min_visits": 3,
+      "chance": 0.13
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "companion_silence"
+    },
+    "lines": [
+      "Tonight your companion has learned, fully, to walk beside you in silence — the long,",
+      "comfortable silence of two who have stopped needing to fill it. You walked the whole",
+      "zone in this silence. Older travellers, seeing you, will lower their voices in respect.",
+      "  (+1 Defense, permanently — a silence two of you have made together, walkable.)"
+    ]
+  },
+  "companion_taught_you_to_sleep_lighter": {
+    "category": "body",
+    "trigger": {
+      "at": [
+        "save_action"
+      ],
+      "requires_flag": "has_companion",
+      "chance": 0.12
+    },
+    "effect": {
+      "stat": "max_stamina",
+      "delta": -1,
+      "flag": "companion_lighter_sleep"
+    },
+    "lines": [
+      "Travelling with your companion, you have learned to sleep more lightly. You wake at",
+      "the smaller sounds. You are quicker on your feet, quicker to be ready. You are also",
+      "tireder. The lighter sleep is a habit you cannot turn off. It will travel with you.",
+      "  (-1 Max Stamina, permanently — a lighter sleep that travel together has taught you.)"
+    ]
+  },
+  "companion_carried_part_of_your_grief": {
+    "category": "promise_kept",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "requires_flag": "has_companion",
+      "min_visits": 2,
+      "chance": 0.13
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 2,
+      "flag": "companion_grief"
+    },
+    "lines": [
+      "Tonight, walking, your companion — without comment — took one of your griefs out of",
+      "your hand and carried it for an hour while you breathed. They gave it back. It weighed",
+      "the same. But you breathed. They had carried things before. They knew how. So do you.",
+      "  (+2 Max HP, permanently — a grief held by another for a count you needed.)"
+    ]
+  },
+  "companion_almost_left_at_the_branching": {
+    "category": "broken",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "crossroads"
+      ],
+      "requires_flag": "has_companion",
+      "min_visits": 2,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": -1,
+      "flag": "companion_almost_left"
+    },
+    "lines": [
+      "At the Crossroads tonight your companion stopped at the branching and, for one count,",
+      "their feet were facing the road back. Not the road forward. You both felt it. They",
+      "chose to come. You did not ask. The choice was, tonight, real. They could have gone.",
+      "  (-1 Max HP, permanently — a leaving your companion considered, openly, at a crossroads.)"
+    ]
+  },
+  "companion_named_a_star_for_you": {
+    "category": "found",
+    "trigger": {
+      "at": [
+        "save_action"
+      ],
+      "requires_flag": "has_companion",
+      "min_visits": 3,
+      "chance": 0.12
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 1,
+      "flag": "companion_named_star"
+    },
+    "lines": [
+      "Tonight at the saving-place your companion, sleepless, pointed at one of the higher",
+      "stars and gave it your name. The star, by morning, had moved one count. They will use",
+      "the star to find you in the dark from now on. They said the name only to you. You kept it.",
+      "  (+1 Max HP, permanently — a star with your name on it, given by your companion.)"
+    ]
+  },
+  "companion_lost_a_glove_for_you": {
+    "category": "lost",
+    "trigger": {
+      "at": [
+        "combat_low_hp"
+      ],
+      "requires_flag": "has_companion",
+      "chance": 0.12
+    },
+    "effect": {
+      "flag": "companion_glove_lost"
+    },
+    "lines": [
+      "In the bad moment, your companion threw a glove between you and a strike — to draw the",
+      "eye, to make a noise. The glove worked. The glove is gone. You walked on with one of",
+      "theirs in your pocket. They did not ask for it back. The pocket-glove will be a comfort."
+    ]
+  },
+  "companion_walked_you_through_a_panic": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "combat_low_hp"
+      ],
+      "requires_flag": "has_companion",
+      "chance": 0.14
+    },
+    "effect": {
+      "stat": "max_stamina",
+      "delta": 1,
+      "flag": "companion_panic"
+    },
+    "lines": [
+      "At the very worst of it tonight you began to panic. The breath went short. Your",
+      "companion, without speaking, took your forearm — gently — and breathed with you for",
+      "four counts. The panic settled. The fight finished. You will breathe with them again.",
+      "  (+1 Max Stamina, permanently — a panic walked through with someone's hand on your arm.)"
+    ]
+  },
+  "companion_told_you_one_of_their_griefs": {
+    "category": "promise_kept",
+    "trigger": {
+      "at": [
+        "save_action"
+      ],
+      "requires_flag": "has_companion",
+      "min_visits": 3,
+      "chance": 0.12
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 2,
+      "flag": "companion_grief_told"
+    },
+    "lines": [
+      "Tonight, at the saving-place, your companion — slowly, with long pauses — told you one",
+      "of their griefs. The kind they had never said aloud. You did not interrupt. They told",
+      "the whole grief. You said *thank you*. They said *I know*. You both slept easy after.",
+      "  (+2 Max HP, permanently — a grief shared in trust, the both ways.)"
+    ]
+  },
+  "companion_taught_you_a_song_from_their_homeland": {
+    "category": "found",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "requires_flag": "has_companion",
+      "min_visits": 4,
+      "chance": 0.11
+    },
+    "effect": {
+      "stat": "attack",
+      "delta": 1,
+      "flag": "companion_homeland_song"
+    },
+    "lines": [
+      "Walking tonight, your companion taught you a song from their homeland — not Mournhold's,",
+      "elsewhere — in the language they had not, before, used with you. You learned the song.",
+      "It is short. You will sing it under your breath in the bad moments. It will help you swing.",
+      "  (+1 Attack, permanently — a homeland-song from your companion, taught and kept.)"
+    ]
+  },
+  "companion_told_you_their_first_name": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "save_action"
+      ],
+      "requires_flag": "has_companion",
+      "min_visits": 5,
+      "chance": 0.11
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "companion_first_name"
+    },
+    "lines": [
+      "Tonight your companion told you their first name — the soft one, the one from before",
+      "they were anything, the one their mother had used. They had not said it in a long",
+      "count. They said it to you. You said it back. They smiled. You will use it sparingly.",
+      "  (+1 Defense, permanently — a first name given to you in trust by your companion.)"
+    ]
+  },
+  "pet_ash_hound_warmed_your_boots": {
+    "category": "found",
+    "trigger": {
+      "at": [
+        "save_action"
+      ],
+      "requires_flag": "has_pet_ash_hound_pup",
+      "chance": 0.15
+    },
+    "effect": {
+      "stat": "max_stamina",
+      "delta": 1,
+      "flag": "ash_hound_warmed"
+    },
+    "lines": [
+      "The Ash-Hound Pup curled at your feet last night and you woke with your boots warm.",
+      "The pup is small. The pup has put their whole body into the warming. You scratched the",
+      "ridge between their ears. They sighed. You will go further today on the warmer feet.",
+      "  (+1 Max Stamina, permanently — boots warmed all night by a small grey body.)"
+    ]
+  },
+  "pet_ash_hound_killed_for_you": {
+    "category": "body",
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "requires_flag": "has_pet_ash_hound_pup",
+      "chance": 0.13
+    },
+    "effect": {
+      "stat": "attack",
+      "delta": 1,
+      "flag": "ash_hound_killed"
+    },
+    "lines": [
+      "In the worst beat tonight the Ash-Hound Pup — too small to be doing this — went for an",
+      "ankle, hard, and the ankle gave. The fight turned. The Pup is older now in their head,",
+      "by one fight. You are too. You stand straighter knowing what they will do for you.",
+      "  (+1 Attack, permanently — a kill the Pup is going to remember and you will remember theirs.)"
+    ]
+  },
+  "pet_ash_hound_followed_your_grief": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "requires_flag": "has_pet_ash_hound_pup",
+      "min_visits": 2,
+      "chance": 0.12
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 1,
+      "flag": "ash_hound_grief"
+    },
+    "lines": [
+      "The Pup, today, walked closer than usual — at the side of you with the small grief in",
+      "it, not the side with the sword. They knew which side. You did not show them. They",
+      "knew. They will walk that side as long as the grief is there. You scratched the ear.",
+      "  (+1 Max HP, permanently — a small body keeping pace with your grief-side.)"
+    ]
+  },
+  "pet_ash_hound_named_your_step": {
+    "category": "promise_kept",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "requires_flag": "has_pet_ash_hound_pup",
+      "min_visits": 3,
+      "chance": 0.12
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "ash_hound_named_step"
+    },
+    "lines": [
+      "The Pup, tonight, knew your step in the dark. You came back from a saving-pause and",
+      "they did not bark, did not even raise their head — they thumped their tail once. You",
+      "are theirs by step. They are yours by name. The grey kingdom knows you both, now.",
+      "  (+1 Defense, permanently — a small grey body that names your step without seeing you.)"
+    ]
+  },
+  "pet_pricklehog_left_a_spine_in_a_thrown_thing": {
+    "category": "found",
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "requires_flag": "has_pet_bog_pricklehog",
+      "chance": 0.14
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "pricklehog_spine"
+    },
+    "lines": [
+      "Tonight, when an enemy lunged, the Pricklehog rolled — small and round, very fast — and",
+      "the enemy's grab came up with a spine in the palm. The grab broke. You finished. The",
+      "Pricklehog uncurled, satisfied. They will share a spine more often now. You will protect them.",
+      "  (+1 Defense, permanently — a spine in someone's palm, given by your small kept thing.)"
+    ]
+  },
+  "pet_pricklehog_warmed_a_kitchen_for_you": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "requires_flag": "has_pet_bog_pricklehog",
+      "chance": 0.12
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 1,
+      "flag": "pricklehog_kitchen"
+    },
+    "lines": [
+      "Tonight at Gravewatch's inn the Pricklehog sat on the hearth-stone and the kitchen",
+      "warmed around them — a little. They make small hearths. The cook gave them a crust.",
+      "You sat closer. You ate. You were a small household around the small fire for one count.",
+      "  (+1 Max HP, permanently — a small hearth made warm by a creature that did not need to.)"
+    ]
+  },
+  "pet_pricklehog_did_not_curl_at_your_step": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "requires_flag": "has_pet_bog_pricklehog",
+      "min_visits": 2,
+      "chance": 0.12
+    },
+    "effect": {
+      "stat": "max_stamina",
+      "delta": 1,
+      "flag": "pricklehog_step"
+    },
+    "lines": [
+      "Pricklehogs curl up at strange footsteps. The Pricklehog, today, did not curl at yours.",
+      "Did not flinch. Walked past your boot, snuffed at it, walked on. You have stopped being",
+      "the kind of stranger they hide from. You are now safer in their world. You both are.",
+      "  (+1 Max Stamina, permanently — a kind of safety in your step a wild thing has decided on.)"
+    ]
+  },
+  "pet_pricklehog_kept_a_mouse_away": {
+    "category": "promise_kept",
+    "trigger": {
+      "at": [
+        "save_action"
+      ],
+      "requires_flag": "has_pet_bog_pricklehog",
+      "chance": 0.11
+    },
+    "effect": {
+      "flag": "pricklehog_mouse"
+    },
+    "lines": [
+      "Tonight at the saving-place a mouse came near your sleeping head and the Pricklehog —",
+      "without rising — clicked their teeth twice. The mouse went. You slept on. You did not",
+      "know. You know now. You will be quieter waking, on the small chance the mouse comes back."
+    ]
+  },
+  "pet_magpie_dropped_a_button_in_your_palm": {
+    "category": "found",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "requires_flag": "has_pet_black_magpie",
+      "chance": 0.14
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 1,
+      "flag": "magpie_button"
+    },
+    "lines": [
+      "Tonight the Magpie landed on your shoulder and, instead of begging, dropped a small",
+      "bone button into your cupped palm. They had been carrying it. They had decided you",
+      "should have it. The button is old. It is yours now. It matches one of yours. They saw.",
+      "  (+1 Max HP, permanently — a button matched to one of yours by a magpie's careful eye.)"
+    ]
+  },
+  "pet_magpie_warned_you_at_the_worst_beat": {
+    "category": "body",
+    "trigger": {
+      "at": [
+        "combat_low_hp"
+      ],
+      "requires_flag": "has_pet_black_magpie",
+      "chance": 0.13
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "magpie_warn"
+    },
+    "lines": [
+      "At the bad beat tonight the Magpie cried out — once, sharp, the cry magpies have for",
+      "*danger behind you* — and you turned in time. The strike went past you. The Magpie",
+      "is exhausted. You fed them, after. They have decided to keep you alive a little longer.",
+      "  (+1 Defense, permanently — a single warning-cry given to you at the right beat.)"
+    ]
+  },
+  "pet_magpie_stole_for_you": {
+    "category": "broken",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "requires_flag": "has_pet_black_magpie",
+      "chance": 0.11
+    },
+    "effect": {
+      "flag": "magpie_stole"
+    },
+    "lines": [
+      "Tonight in Gravewatch the Magpie — for you, you think — took a small ring from a sill.",
+      "Brought it to you. You returned it, quietly, to the sill. The Magpie does not understand.",
+      "You stroked their head. You did not punish. They will, you think, try again. You will return again."
+    ]
+  },
+  "pet_magpie_said_a_word": {
+    "category": "half_truth",
+    "trigger": {
+      "at": [
+        "save_action"
+      ],
+      "requires_flag": "has_pet_black_magpie",
+      "min_visits": 3,
+      "chance": 0.1
+    },
+    "effect": {
+      "flag": "magpie_word"
+    },
+    "lines": [
+      "Tonight at the saving-place the Magpie said — clearly, in your voice — one word. Your",
+      "name. The way you would say it if you were greeting yourself. They have been listening",
+      "longer than you knew. You said *yes*. They tilted their head. They are very pleased."
+    ]
+  },
+  "pet_hearth_cat_sat_at_the_door_for_your_return": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "requires_flag": "has_pet_hearth_cat",
+      "chance": 0.14
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 1,
+      "flag": "hearth_cat_at_door"
+    },
+    "lines": [
+      "Tonight at Gravewatch the Hearth Cat had been at the inn's door, sitting, the whole",
+      "afternoon. Innkeeper says. Waiting. When you came in, the Cat did not run. They blinked",
+      "at you. Slowly. The Cat is, of all the kept things, the one that has decided you are home.",
+      "  (+1 Max HP, permanently — a Cat that decided you were the one being waited for.)"
+    ]
+  },
+  "pet_hearth_cat_curled_at_a_grief": {
+    "category": "promise_kept",
+    "trigger": {
+      "at": [
+        "save_action"
+      ],
+      "requires_flag": "has_pet_hearth_cat",
+      "min_visits": 2,
+      "chance": 0.13
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 1,
+      "flag": "hearth_cat_grief"
+    },
+    "lines": [
+      "Tonight at the saving-place the Hearth Cat — who usually keeps two paces from sleeping",
+      "people — came up to your chest, where one of your griefs lives, and curled on it. The",
+      "grief went a little softer under the warm weight. The Cat purred. You stayed still.",
+      "  (+1 Max HP, permanently — a warm weight on a grief that needed it, given freely.)"
+    ]
+  },
+  "pet_hearth_cat_taught_you_to_take_an_hour_off": {
+    "category": "mind",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "requires_flag": "has_pet_hearth_cat",
+      "min_visits": 3,
+      "chance": 0.12
+    },
+    "effect": {
+      "stat": "max_stamina",
+      "delta": 1,
+      "flag": "hearth_cat_hour"
+    },
+    "lines": [
+      "Travelling with the Hearth Cat, you have learned to do nothing for an hour at a time.",
+      "Not waste an hour. Sit. Watch the light. The Cat models it. You have come round to it.",
+      "An hour of doing nothing is, you now understand, one of the things the kingdom needed of you.",
+      "  (+1 Max Stamina, permanently — an hour of doing nothing that the Cat has shown you to value.)"
+    ]
+  },
+  "pet_hearth_cat_brought_you_a_mouse": {
+    "category": "found",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "requires_flag": "has_pet_hearth_cat",
+      "min_visits": 2,
+      "chance": 0.11
+    },
+    "effect": {
+      "flag": "hearth_cat_mouse"
+    },
+    "lines": [
+      "The Hearth Cat brought you a mouse this morning. Set it neatly on the doorstep. You",
+      "thanked them properly. You buried the mouse. The Cat watched you do it. They were not",
+      "offended. They had given a gift. You had received it with the respect of the receiving."
+    ]
+  },
+  "hireling_walked_at_your_blind_side": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "requires_flag": "has_hireling",
+      "chance": 0.16
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "hireling_blind_side"
+    },
+    "lines": [
+      "Tonight, in the fight, your hireling stayed at your blind side — the one your sword-",
+      "arm has trouble watching. They had been doing this for several fights. You noticed,",
+      "tonight, that they had been doing it. They are paid. They had decided to do this anyway.",
+      "  (+1 Defense, permanently — a blind side watched by paid hands who chose to keep watching.)"
+    ]
+  },
+  "hireling_told_you_their_real_name": {
+    "category": "promise_kept",
+    "trigger": {
+      "at": [
+        "save_action"
+      ],
+      "requires_flag": "has_hireling",
+      "min_visits": 3,
+      "chance": 0.13
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 2,
+      "flag": "hireling_real_name"
+    },
+    "lines": [
+      "Tonight at the saving-place your hireling told you their real name. Not the name you",
+      "hired them under. The one their family used. They asked you to use it. You did. You",
+      "will. They are not just a hireling anymore. Hirelings do not, properly, tell you this.",
+      "  (+2 Max HP, permanently — a real name given to you by someone you had only hired.)"
+    ]
+  },
+  "hireling_argued_a_route_with_you": {
+    "category": "mind",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "requires_flag": "has_hireling",
+      "min_visits": 2,
+      "chance": 0.12
+    },
+    "effect": {
+      "stat": "max_stamina",
+      "delta": 1,
+      "flag": "hireling_argued_route"
+    },
+    "lines": [
+      "Tonight your hireling argued a route with you — quietly, but firmly. Their route was",
+      "better. You took it. They had been a small-roads scout once, somewhere, before. You",
+      "had not asked. They had not said. Their experience is now part of how you travel.",
+      "  (+1 Max Stamina, permanently — a route taught by experience your hireling had not advertised.)"
+    ]
+  },
+  "hireling_brought_their_kit_into_your_camp": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "save_action"
+      ],
+      "requires_flag": "has_hireling",
+      "min_visits": 2,
+      "chance": 0.13
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 1,
+      "flag": "hireling_kit"
+    },
+    "lines": [
+      "Tonight at the saving-place your hireling brought their whole kit out — the small",
+      "cooking-pot, the tinder, the second blanket — and set it down by yours. As if it were",
+      "yours together. You did not say. They did not say. The camp is one camp now, not two.",
+      "  (+1 Max HP, permanently — a kit brought to share by someone who was, last week, hired.)"
+    ]
+  },
+  "hireling_took_a_blow_meant_for_you": {
+    "category": "promise_kept",
+    "trigger": {
+      "at": [
+        "combat_low_hp"
+      ],
+      "requires_flag": "has_hireling",
+      "chance": 0.15
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "hireling_took_blow"
+    },
+    "lines": [
+      "At the worst of it tonight a heavy strike came for you. Your hireling stepped in and",
+      "the strike landed on their shield-arm instead. The arm is fine. The arm will ache.",
+      "They did not have to. They had decided, somewhere quietly, to. You will not forget it.",
+      "  (+1 Defense, permanently — a blow taken on your behalf by hands paid for less.)"
+    ]
+  },
+  "hireling_taught_you_a_grip": {
+    "category": "found",
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "requires_flag": "has_hireling",
+      "min_visits": 2,
+      "chance": 0.12
+    },
+    "effect": {
+      "stat": "attack",
+      "delta": 1,
+      "flag": "hireling_grip"
+    },
+    "lines": [
+      "Tonight between fights your hireling showed you a grip — for the weapon you carry,",
+      "the way to hold it that keeps the wrist from bruising on the second swing. A small",
+      "thing. A career. You learned it. Your wrist will be steadier. You will fight longer.",
+      "  (+1 Attack, permanently — a grip taught by someone whose career was the grip.)"
+    ]
+  },
+  "hireling_almost_left_at_a_bad_pay_count": {
+    "category": "promise_broken",
+    "trigger": {
+      "at": [
+        "save_action"
+      ],
+      "requires_flag": "has_hireling",
+      "min_visits": 4,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": -1,
+      "flag": "hireling_almost_left"
+    },
+    "lines": [
+      "Tonight at the saving-place there was a count — a long pause — where your hireling",
+      "looked at the gold-line of the count and looked at you and considered whether the pay",
+      "was worth it. They stayed. You both knew. They could have gone. They didn't. You felt it.",
+      "  (-1 Max HP, permanently — a count where someone considered leaving you for the money.)"
+    ]
+  },
+  "hireling_drank_with_you_for_the_first_time": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "requires_flag": "has_hireling",
+      "min_visits": 3,
+      "chance": 0.12
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 1,
+      "flag": "hireling_drank"
+    },
+    "lines": [
+      "Tonight at the Gravewatch inn your hireling sat at your table and drank a small ale",
+      "with you. They had refused, before. Tonight, no. Tonight they sat. You did not toast.",
+      "You drank in companionable silence. They went to sleep first. You watched the door for them.",
+      "  (+1 Max HP, permanently — a small ale shared in silence by someone who had refused before.)"
+    ]
+  },
+  "hireling_left_their_pendant_in_your_pack": {
+    "category": "lost",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "requires_flag": "fallen_hireling",
+      "chance": 0.18
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 1,
+      "flag": "fallen_hireling_pendant"
+    },
+    "lines": [
+      "Tonight, going through your pack at a zone-arrival, you found a small pendant — wood,",
+      "worn smooth, on a leather thong. Your fallen hireling's. They had put it in your pack",
+      "in the hour before the bad fight. They had known. The pendant rides with you now.",
+      "  (+1 Max HP, permanently — a pendant put into your pack by hands that knew they were going.)"
+    ]
+  },
+  "fallen_hireling_was_recognized_at_an_inn": {
+    "category": "half_truth",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "requires_flag": "fallen_hireling",
+      "chance": 0.13
+    },
+    "effect": {
+      "flag": "fallen_hireling_recognized"
+    },
+    "lines": [
+      "Tonight in Gravewatch's inn an old fighter at the next table looked at the empty chair",
+      "beside you, where your fallen hireling used to sit, and said, quietly, *Ah.* Just *Ah.*",
+      "They had known your hireling. They poured a small drink. They left. You sat the count out."
+    ]
+  },
+  "fallen_hireling_taught_you_to_eat_alone_after": {
+    "category": "mind",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "requires_flag": "fallen_hireling",
+      "min_visits": 2,
+      "chance": 0.13
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "ate_alone_after"
+    },
+    "lines": [
+      "You have learned, since your hireling fell, to eat alone in a manner that is not lonely.",
+      "Their absence is a presence now. You leave a little room on the bench. The room is",
+      "company. You did not know this could work. It is working. You stand straighter after meals.",
+      "  (+1 Defense, permanently — a way of eating alone you learned from someone who is not eating with you.)"
+    ]
+  },
+  "fallen_hireling_blood_is_on_your_buckle": {
+    "category": "body",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "requires_flag": "fallen_hireling",
+      "chance": 0.12
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": -1,
+      "flag": "blood_on_buckle"
+    },
+    "lines": [
+      "Tonight you noticed a small dark mark on your belt-buckle that you had not cleaned off.",
+      "Your hireling's. From the bad fight. It will not come off — you have tried. It is now",
+      "part of the buckle. You will carry the mark for the rest of this run. You can carry it.",
+      "  (-1 Max HP, permanently — a stain that would not lift, kept on the gear of the living.)"
+    ]
+  },
+  "fallen_hireling_was_added_to_the_chronicle": {
+    "category": "promise_kept",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "requires_flag": "fallen_hireling",
+      "min_visits": 2,
+      "chance": 0.13
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "fallen_hireling_chronicled"
+    },
+    "lines": [
+      "Tonight in the Chronicle room at Gravewatch you saw a fresh line — added since you last",
+      "looked. Your hireling's name. Their date. *Walked beside [you].* Whoever keeps the",
+      "Chronicle had heard. They had added the line for you. You stood at it a long count.",
+      "  (+1 Defense, permanently — a name in the Chronicle for the one who walked beside you and fell.)"
+    ]
+  },
+  "a_hired_one_came_to_you_remembering_them": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "requires_flag": "fallen_hireling",
+      "min_visits": 3,
+      "chance": 0.12
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 2,
+      "flag": "hired_one_remembered"
+    },
+    "lines": [
+      "Tonight at the hireling-hall a new one — younger, leaner — came to you and said, *I",
+      "knew them.* The fallen one. They had worked one job together, a year before, in a",
+      "town you have not been to. They wanted you to know. They sat with you. You both kept the count.",
+      "  (+2 Max HP, permanently — a stranger who knew your dead and came to tell you.)"
+    ]
+  },
+  "all_three_walked_with_you_today": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "requires_flag": "has_companion",
+      "min_visits": 2,
+      "chance": 0.14
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 2,
+      "flag": "all_three_walking"
+    },
+    "lines": [
+      "Tonight, walking — companion at one side, hireling at the other, the pet ahead — you",
+      "had the count of a small family. You did not say. None of them said. The kingdom",
+      "noted. You stood up taller for the rest of the day. You were not, tonight, alone.",
+      "  (+2 Max HP, permanently — a small family on the road, the once, by your own gathering.)"
+    ]
+  },
+  "the_pet_chose_your_companion_to_lean_against": {
+    "category": "found",
+    "trigger": {
+      "at": [
+        "save_action"
+      ],
+      "requires_flag": "has_pet",
+      "chance": 0.12
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 1,
+      "flag": "pet_chose_companion"
+    },
+    "lines": [
+      "Tonight at the saving-place the pet — who usually picks you — chose your companion's",
+      "knee to lean against. Your companion went still, as if afraid to disturb. You smiled.",
+      "Your companion smiled back. The pet has decided about the household. The household is held.",
+      "  (+1 Max HP, permanently — a pet's small choice, in trust, of someone else in your household.)"
+    ]
+  },
+  "the_hireling_kept_a_meal_for_your_companion": {
+    "category": "promise_kept",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "requires_flag": "has_hireling",
+      "min_visits": 2,
+      "chance": 0.11
+    },
+    "effect": {
+      "stat": "max_stamina",
+      "delta": 1,
+      "flag": "hireling_kept_meal"
+    },
+    "lines": [
+      "Tonight at the inn your hireling kept a meal warm under a cloth for your companion, who",
+      "was late back. The hireling did not, properly, like your companion. They had decided",
+      "to keep the meal anyway. Your household has, between its members, made a small truce.",
+      "  (+1 Max Stamina, permanently — a meal kept warm by hands that didn't have to.)"
+    ]
+  },
+  "the_three_of_you_kept_the_same_silence": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "requires_flag": "has_companion",
+      "min_visits": 4,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "shared_silence"
+    },
+    "lines": [
+      "Tonight you, your companion, and the pet kept the same silence for a long count of the",
+      "walking. Not a tense silence. The good kind. The kind that means everyone is fine. The",
+      "pet's ears were forward. Nobody spoke. The road took you all gently. You will keep the silence.",
+      "  (+1 Defense, permanently — a shared silence that nobody had to break.)"
+    ]
+  },
+  "you_named_yourself_the_keeper_of_the_household": {
+    "category": "promise_kept",
+    "trigger": {
+      "at": [
+        "save_action"
+      ],
+      "requires_flag": "has_companion",
+      "min_visits": 5,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "household_keeper"
+    },
+    "lines": [
+      "Tonight at the saving-place, looking at your companion, the hireling, the pet — at all",
+      "the ones who walk with you now — you understood, fully, that you are the keeper of",
+      "this household. The keeping had landed on you. You agreed to it. You set it on yourself.",
+      "  (+1 Defense, permanently — an agreement to be the keeper of the household you have gathered.)"
+    ]
   }
 }
