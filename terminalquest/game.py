@@ -328,15 +328,17 @@ def run(io=None, content=None, rng=None, chronicle_dir=None, seed=None):
 def main():
     _configure_console_for_unicode()
     run()
-    # On Windows, a PyInstaller --onefile binary closes its console window
-    # the moment the Python process exits — so the final screen (victory,
-    # Reborn, defeat summary) flashes by unread. Hold the window open until
-    # the player presses Enter. macOS/Linux terminals don't have this problem.
-    if sys.platform == "win32":
-        try:
-            input("\nPress Enter to close.")
-        except (EOFError, KeyboardInterrupt):
-            pass
+    # Hold the window open so the final screen (victory, Reborn, defeat
+    # summary, the title-screen Farewell, or the world-map "Thanks for
+    # playing!") doesn't flash by unread. This matters on Windows
+    # PyInstaller binaries (whose console closes on exit) and on any
+    # platform where the user launched the game via a double-click
+    # wrapper rather than from an interactive shell — interactive-shell
+    # users just press Enter once and the program ends.
+    try:
+        input("\nPress Enter to close.")
+    except (EOFError, KeyboardInterrupt):
+        pass
 
 
 if __name__ == "__main__":
