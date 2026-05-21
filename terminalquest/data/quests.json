@@ -9215,5 +9215,341 @@
     "requires_class": [
       "warrior"
     ]
+  },
+  "rh_blade_grip_before": {
+    "name": "After a Blade Remembered a Grip Before Yours",
+    "target_enemy": "ashen_penitent",
+    "needed": 1,
+    "reward_gold": 1300,
+    "cleanse_required": 5,
+    "requires_mark": "reborn_a_blade_remembered_a_grip_before_yours",
+    "flavor": "A blade remembered the grip of a previous you. A Penitent above the snowline knew both grips. End him.",
+    "reward_marks": [
+      "penitent_handprint_under_yours"
+    ]
+  },
+  "rh_button_road_dust": {
+    "name": "After a Button in the Road Dust Was Yours",
+    "target_enemy": "bandit",
+    "needed": 2,
+    "reward_gold": 350,
+    "cleanse_required": 0,
+    "requires_mark": "reborn_a_button_in_the_road_dust_was_yours",
+    "flavor": "A button in the road dust was a previous you's. Two bandits had picked it up. End them. The button goes back into your pocket."
+  },
+  "rh_grave_warm": {
+    "name": "After a Grave Was Warm for You",
+    "target_enemy": "hollow_procession",
+    "needed": 1,
+    "reward_gold": 800,
+    "cleanse_required": 3,
+    "requires_mark": "reborn_a_grave_was_warm_for_you",
+    "flavor": "A grave in Mourncross was warm for you on arrival — a previous self had been laid there briefly. One of the procession had been keeping the warmth. End it. The grave will be still."
+  },
+  "rh_grove_carved_name": {
+    "name": "After a Grove Held a Carved Name",
+    "target_enemy": "wolf",
+    "needed": 2,
+    "reward_gold": 400,
+    "cleanse_required": 0,
+    "requires_mark": "reborn_a_grove_held_a_carved_name",
+    "flavor": "A grove in the Witherwood held a name a previous you had carved. Two wolves of the wood had been the readers of it. End them."
+  },
+  "rh_hollowed_held_hand": {
+    "name": "After a Hollowed Held Your Hand a Count",
+    "target_enemy": "hollow_procession",
+    "needed": 1,
+    "reward_gold": 700,
+    "cleanse_required": 3,
+    "requires_mark": "reborn_a_hollowed_held_your_hand_for_a_count",
+    "flavor": "A Hollowed in Mourncross held your hand for one count — a previous self had once known the Hollowed. One of the procession ended at the holding.",
+    "reward_chronicle_line": "A Hollowed had held the climber's hand for one count, across runs; the procession-witness fell to the touch."
+  },
+  "rh_hollowed_carved_message": {
+    "name": "After a Hollowed Carved a Message in a Tree",
+    "target_enemy": "wolf",
+    "needed": 3,
+    "reward_gold": 500,
+    "cleanse_required": 0,
+    "requires_mark": "reborn_a_hollowed_left_a_message_carved_in_a_tree",
+    "flavor": "A Hollowed left a message carved in a tree across runs. Three wolves had been reading the carving. End them. The carving holds."
+  },
+  "rh_hollowed_token": {
+    "name": "After a Hollowed Left a Token",
+    "target_enemy": "bandit",
+    "needed": 2,
+    "reward_gold": 400,
+    "cleanse_required": 0,
+    "requires_mark": "reborn_a_hollowed_left_a_token_for_you",
+    "flavor": "A Hollowed left a token for you across runs. Two bandits had picked it up first. End them. The token finds your pocket."
+  },
+  "rh_hollowed_recognized": {
+    "name": "After a Hollowed Recognized Your Walk",
+    "target_enemy": "hollow_procession",
+    "needed": 1,
+    "reward_gold": 700,
+    "cleanse_required": 3,
+    "requires_mark": "reborn_a_hollowed_recognized_your_walk",
+    "flavor": "A Hollowed in Mourncross recognized your walk. One of the procession tried to mimic it. End it."
+  },
+  "rh_hollowed_in_your_shape": {
+    "name": "After a Hollowed Walked in Your Shape",
+    "target_enemy": "hollow_bellward",
+    "needed": 1,
+    "reward_gold": 1200,
+    "cleanse_required": 3,
+    "requires_mark": "reborn_a_hollowed_walked_in_your_shape",
+    "flavor": "A Hollowed walked in your shape briefly. The Hollow Bellward took the shape as the bell's caller. End her."
+  },
+  "rh_locked_box_yours": {
+    "name": "After a Locked Box at the Inn Was Yours",
+    "target_enemy": "bandit",
+    "needed": 1,
+    "reward_gold": 400,
+    "cleanse_required": 0,
+    "requires_mark": "reborn_a_locked_box_at_the_inn_was_yours",
+    "flavor": "A locked box at the inn turned out to be yours — a previous self's. A bandit had hoped to open it. End him."
+  },
+  "rh_hireling_walked_before_ii": {
+    "name": "Reborn: A Hireling Recognized You II",
+    "target_enemy": "wolf",
+    "needed": 2,
+    "reward_gold": 400,
+    "cleanse_required": 0,
+    "requires_mark": "reborn_a_hireling_who_walked_with_you_before",
+    "flavor": "A hireling who walked with a previous you recognized your gait twice. Two wolves of the wood had been the doubled witnesses. End them."
+  },
+  "rh_atrel_remembered_grief": {
+    "name": "Reborn: Atrél Remembered a Grief II",
+    "target_enemy": "choirmaster_effigy",
+    "needed": 2,
+    "reward_gold": 700,
+    "cleanse_required": 4,
+    "requires_mark": "reborn_atrel_remembered_a_grief_you_set_aside",
+    "flavor": "Atrél remembered, across runs, a grief a previous you had set aside. Two effigies had been keeping the grief instead. End them."
+  },
+  "rh_hollowed_familiar_face": {
+    "name": "After a Familiar Face Was Under the Hollow",
+    "target_enemy": "hollow_procession",
+    "needed": 1,
+    "reward_gold": 800,
+    "cleanse_required": 3,
+    "requires_mark": "hollowed_a_familiar_face_was_under_the_hollow",
+    "flavor": "A familiar face was under one of the Hollowed in Mourncross. End the procession-member. The face will be the face."
+  },
+  "rh_hollowed_old_friend": {
+    "name": "After an Old Friend Was Under the Hood",
+    "target_enemy": "hollow_procession",
+    "needed": 1,
+    "reward_gold": 900,
+    "cleanse_required": 3,
+    "requires_mark": "hollowed_an_old_friend_under_the_hood",
+    "flavor": "An old friend of yours was under a Hollowed's hood. End them. The friend will be the friend.",
+    "reward_chronicle_line": "An old friend's face had been under a Hollowed's hood; the climber ended the Hollowed and recognized the friend."
+  },
+  "rh_hollowed_breath_count": {
+    "name": "After a Hollowed's Breath Taught You a Count",
+    "target_enemy": "hollow_procession",
+    "needed": 2,
+    "reward_gold": 600,
+    "cleanse_required": 3,
+    "requires_mark": "hollowed_breath_taught_you_a_count",
+    "flavor": "A Hollowed's breath taught you a count once. Two of the procession still keep the count. End them."
+  },
+  "rh_hollowed_first_kill_unsettled": {
+    "name": "After Your First Hollowed Kill Did Not Settle",
+    "target_enemy": "hollow_procession",
+    "needed": 1,
+    "reward_gold": 700,
+    "cleanse_required": 3,
+    "requires_mark": "hollowed_first_kill_did_not_settle_well",
+    "flavor": "Your first Hollowed kill did not settle in you. One of the procession felt the unsettlement. End it. The kill settles after."
+  },
+  "rh_hollowed_child_once": {
+    "name": "After a Hollowed Had Been a Child Once",
+    "target_enemy": "hollow_procession",
+    "needed": 1,
+    "reward_gold": 700,
+    "cleanse_required": 3,
+    "requires_mark": "hollowed_had_been_a_child_once",
+    "flavor": "A Hollowed had been a child once. One of the procession knew the child's name. End it. The name stays in the kingdom."
+  },
+  "rh_hollowed_kingdom_breathed": {
+    "name": "After the Kingdom Breathed Out at the Laying-to-Rest",
+    "target_enemy": "hollow_bellward",
+    "needed": 1,
+    "reward_gold": 1100,
+    "cleanse_required": 3,
+    "requires_mark": "hollowed_kingdom_breathed_out_when_you_laid_them_to_rest",
+    "flavor": "The kingdom breathed out when you laid a Hollowed to rest. The Hollow Bellward felt the breath as a bell's silence. End her.",
+    "reward_marks": [
+      "bellward_bell_rang_for_you"
+    ]
+  },
+  "bt_uncle_remembered": {
+    "name": "After a Dead Uncle Remembered You",
+    "target_enemy": "shrine_keeper",
+    "needed": 1,
+    "reward_gold": 1200,
+    "cleanse_required": 4,
+    "requires_mark": "bone_tomb_a_dead_uncle_remembered_you",
+    "flavor": "A dead uncle's voice in the Bone Tomb remembered you. The Pre-Pall Shrine Keeper had been trying to crowd the voice out. End him."
+  },
+  "bt_old_word_stone": {
+    "name": "After an Old Word Came Out of the Stone",
+    "target_enemy": "library_warden",
+    "needed": 1,
+    "reward_gold": 800,
+    "cleanse_required": 3,
+    "requires_mark": "bone_tomb_an_old_word_came_out_of_the_stone",
+    "flavor": "An old word came out of the Bone Tomb's stone for you. A library-warden in the Burned Library had been hoping to lose the word. End him."
+  },
+  "bt_cael_dialled_voice": {
+    "name": "After Cael Dialled Their Voice for You",
+    "target_enemy": "shrine_keeper",
+    "needed": 1,
+    "reward_gold": 1100,
+    "cleanse_required": 4,
+    "requires_mark": "bone_tomb_cael_dialed_their_voice_for_you",
+    "flavor": "Cael at the Bone Tomb dialled their voice down so you could hear. The Shrine Keeper had wanted to drown them. End him. Cael keeps speaking."
+  },
+  "bt_cael_spoke_name": {
+    "name": "After Cael Spoke Your Name Into Stone",
+    "target_enemy": "reliquary_golem",
+    "needed": 1,
+    "reward_gold": 1300,
+    "cleanse_required": 4,
+    "requires_mark": "bone_tomb_cael_spoke_your_name_into_stone",
+    "flavor": "Cael spoke your name into the Bone Tomb's stone. A reliquary golem in the Choir had been keeping the name elsewhere. End it.",
+    "reward_marks": [
+      "choir_kept_the_third_line"
+    ]
+  },
+  "bt_held_palm_grave": {
+    "name": "After You Held Your Palm to a Grave",
+    "target_enemy": "hollow_procession",
+    "needed": 2,
+    "reward_gold": 700,
+    "cleanse_required": 3,
+    "requires_mark": "bone_tomb_held_your_palm_to_the_grave",
+    "flavor": "You held your palm to a grave in the Bone Tomb. Two of the procession in Mourncross had felt the warm hand. End them."
+  },
+  "bt_older_dead_laughed": {
+    "name": "After the Older Dead Laughed at You",
+    "target_enemy": "bonesong",
+    "needed": 3,
+    "reward_gold": 600,
+    "cleanse_required": 1,
+    "requires_mark": "bone_tomb_older_dead_laughed_at_you",
+    "flavor": "The older dead in the Bone Tomb laughed at you, kindly. Three bone-songs in the Holds had been mid-song. End them."
+  },
+  "cr2_cart_with_dead": {
+    "name": "After a Cart Passed With the Dead",
+    "target_enemy": "hollow_procession",
+    "needed": 2,
+    "reward_gold": 600,
+    "cleanse_required": 3,
+    "requires_mark": "crossroads_a_cart_passed_with_the_dead",
+    "flavor": "A cart with the dead passed at the Crossroads while you stood there. Two of the procession had been walking behind. End them."
+  },
+  "cr2_dog_to_branching": {
+    "name": "After a Dog Followed You to the Branching",
+    "target_enemy": "wolf",
+    "needed": 4,
+    "reward_gold": 500,
+    "cleanse_required": 0,
+    "requires_mark": "crossroads_a_dog_followed_you_to_the_branching",
+    "flavor": "A village dog followed you to the Crossroads branching. Four wolves of the wood took offense at the dog. End them."
+  },
+  "cr2_grave_third_branch": {
+    "name": "After a Grave at the Third Branch",
+    "target_enemy": "wolf",
+    "needed": 2,
+    "reward_gold": 400,
+    "cleanse_required": 0,
+    "requires_mark": "crossroads_a_grave_at_the_third_branch",
+    "flavor": "A grave was at the third branch of the Crossroads. Two wolves had been considering the dirt. End them."
+  },
+  "cr2_song_throat": {
+    "name": "After a Song Caught in Your Throat",
+    "target_enemy": "censer_shade",
+    "needed": 2,
+    "reward_gold": 600,
+    "cleanse_required": 4,
+    "requires_mark": "crossroads_a_song_caught_in_your_throat",
+    "flavor": "A song caught in your throat at the Crossroads. Two censer-shades in the Choir wanted the unsung song. End them."
+  },
+  "cr2_step_behind_not_yours": {
+    "name": "After a Step Behind You Was Not Yours",
+    "target_enemy": "ashen_penitent",
+    "needed": 1,
+    "reward_gold": 1100,
+    "cleanse_required": 4,
+    "requires_mark": "crossroads_a_step_behind_you_was_not_yours",
+    "flavor": "A step behind you at the Crossroads was not yours. A Penitent above the snowline had been the step-maker. End him."
+  },
+  "cr2_old_one_blessed": {
+    "name": "After an Old One Blessed You in Passing",
+    "target_enemy": "bandit",
+    "needed": 2,
+    "reward_gold": 350,
+    "cleanse_required": 0,
+    "requires_mark": "crossroads_an_old_one_blessed_you_in_passing",
+    "flavor": "An old one blessed you in passing at the Crossroads. Two bandits had noticed the blessing. End them. The blessing stays."
+  },
+  "wp_balanced_itself": {
+    "name": "After Your Weapon Balanced Itself",
+    "target_enemy": "stone_golem",
+    "needed": 1,
+    "reward_gold": 1300,
+    "cleanse_required": 5,
+    "requires_mark": "weapon_balanced_itself",
+    "flavor": "Your weapon balanced itself in the hand once. A stone-golem above the snowline noticed the balance. End him."
+  },
+  "wp_carried_song_summit": {
+    "name": "After Your Weapon Carried a Song to the Summit",
+    "target_enemy": "shadow_warden",
+    "needed": 1,
+    "reward_gold": 2300,
+    "cleanse_required": 5,
+    "requires_mark": "weapon_carried_a_song_to_the_summit",
+    "flavor": "Your weapon carried a song to the Summit once. The Shadow Warden knew the song. End him.",
+    "reward_chronicle_line": "A weapon had carried a song to the Summit; the Shadow Warden fell to the song in the weapon's seam."
+  },
+  "wp_didnt_strike_thing_before": {
+    "name": "After Your Weapon Did Not Strike a Thing It Had Struck Before",
+    "target_enemy": "ashen_penitent",
+    "needed": 1,
+    "reward_gold": 1100,
+    "cleanse_required": 4,
+    "requires_mark": "weapon_did_not_strike_a_thing_it_had_struck_before",
+    "flavor": "Your weapon refused to strike something it had struck before. A Penitent above the snowline had been the previous strike. End him."
+  },
+  "wp_grew_edge": {
+    "name": "After Your Weapon Grew an Edge",
+    "target_enemy": "cave_troll",
+    "needed": 2,
+    "reward_gold": 800,
+    "cleanse_required": 2,
+    "requires_mark": "weapon_grew_an_edge_you_did_not_grind",
+    "flavor": "Your weapon grew an edge you did not grind. Two cave-trolls in the Gullet tested the edge. End them."
+  },
+  "wp_grip_warmed": {
+    "name": "After Your Weapon's Grip Warmed",
+    "target_enemy": "drowned_thresher",
+    "needed": 3,
+    "reward_gold": 600,
+    "cleanse_required": 1,
+    "requires_mark": "weapon_grip_warmed_to_your_hand",
+    "flavor": "Your weapon's grip warmed to your hand. Three threshers in the Reach noticed the warmth. End them."
+  },
+  "wp_handle_smoothed": {
+    "name": "After Your Weapon's Handle Smoothed to Your Thumb",
+    "target_enemy": "bandit",
+    "needed": 3,
+    "reward_gold": 400,
+    "cleanse_required": 0,
+    "requires_mark": "weapon_handle_smoothed_to_your_thumb",
+    "flavor": "Your weapon's handle smoothed to your thumb. Three bandits on the road had been counting on the splinters. End them."
   }
 }
