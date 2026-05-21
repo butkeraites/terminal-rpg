@@ -7102,5 +7102,391 @@
       "reach_promised_the_field_a_grain"
     ],
     "flavor": "The Engineer's plans named three lurchers as breaches in his weir. End them. The plans will hold."
+  },
+  "co_after_companion_first_name": {
+    "name": "After the Companion Told You Their First Name",
+    "target_enemy": "bandit",
+    "needed": 3,
+    "reward_gold": 350,
+    "cleanse_required": 0,
+    "requires_mark": "companion_told_you_their_first_name",
+    "flavor": "Your sworn told you their first name. Three bandits had hoped to learn it without permission. End them. The name stays a gift."
+  },
+  "co_after_companion_grief": {
+    "name": "After the Companion Carried Part of Your Grief",
+    "target_enemy": "hollow_procession",
+    "needed": 2,
+    "reward_gold": 600,
+    "cleanse_required": 3,
+    "requires_mark": "companion_carried_part_of_your_grief",
+    "flavor": "Your sworn carried part of your grief for a while. Two of the procession noticed the lighter step. End them. The grief stays split."
+  },
+  "co_after_first_watch": {
+    "name": "After the Companion Kept First Watch",
+    "target_enemy": "wolf",
+    "needed": 4,
+    "reward_gold": 400,
+    "cleanse_required": 0,
+    "requires_mark": "companion_kept_first_watch_for_you",
+    "flavor": "Your sworn kept first watch while you slept. Four wolves of the wood had hoped to test the sleep. End them. The watch holds."
+  },
+  "co_after_ate_first": {
+    "name": "After the Companion Ate First for You",
+    "target_enemy": "bandit",
+    "needed": 2,
+    "reward_gold": 300,
+    "cleanse_required": 0,
+    "requires_mark": "companion_ate_first_for_you",
+    "flavor": "Your sworn ate first to check the food. Two bandits had poisoned it. End them. The food stays safe.",
+    "reward_chronicle_line": "A sworn ate first to check the food; two bandits who had poisoned it ended for the checking."
+  },
+  "co_after_old_name": {
+    "name": "After the Companion Remembered Your Old Name",
+    "target_enemy": "pall_magistrate",
+    "needed": 1,
+    "reward_gold": 700,
+    "cleanse_required": 3,
+    "requires_mark": "companion_remembered_your_old_name",
+    "flavor": "Your sworn remembered the name you used to go by. A magistrate in Mourncross had crossed that name out. End him. The name comes back."
+  },
+  "co_after_named_star": {
+    "name": "After the Companion Named a Star for You",
+    "target_enemy": "ice_wraith",
+    "needed": 2,
+    "reward_gold": 600,
+    "cleanse_required": 4,
+    "requires_mark": "companion_named_a_star_for_you",
+    "flavor": "Your sworn named a star for you. Two ice-wraiths above the snowline had been competing for the name. End them. The star stays yours."
+  },
+  "co_after_shared_dream": {
+    "name": "After the Companion Shared a Dream",
+    "target_enemy": "censer_shade",
+    "needed": 2,
+    "reward_gold": 500,
+    "cleanse_required": 4,
+    "requires_mark": "companion_shared_a_dream_with_you",
+    "flavor": "Your sworn shared a dream with you. Two censer-shades carried smoke from it. End them. The dream stays between you."
+  },
+  "co_after_sleep_lighter": {
+    "name": "After the Companion Taught You to Sleep Lighter",
+    "target_enemy": "giant_bat",
+    "needed": 3,
+    "reward_gold": 400,
+    "cleanse_required": 1,
+    "requires_mark": "companion_taught_you_to_sleep_lighter",
+    "flavor": "Your sworn taught you to sleep lighter. Three carrion bats noticed the change. End them. The lighter sleep stays."
+  },
+  "co_after_homeland_song": {
+    "name": "After the Companion Taught You a Homeland Song",
+    "target_enemy": "drowned_thresher",
+    "needed": 3,
+    "reward_gold": 500,
+    "cleanse_required": 1,
+    "requires_mark": "companion_taught_you_a_song_from_their_homeland",
+    "flavor": "Your sworn taught you a song from their homeland. Three threshers in the Reach hummed it back wrong. End them. The song will be sung right."
+  },
+  "co_after_one_grief": {
+    "name": "After the Companion Told You One of Their Griefs",
+    "target_enemy": "red_beard",
+    "needed": 1,
+    "reward_gold": 700,
+    "cleanse_required": 2,
+    "requires_mark": "companion_told_you_one_of_their_griefs",
+    "flavor": "Your sworn told you one of their griefs. A Red Beard in the Holds had been the source of it. End him.",
+    "reward_marks": [
+      "holds_recognized_your_grief"
+    ]
+  },
+  "co_after_learned_silent": {
+    "name": "After the Companion Learned to Keep Silent",
+    "target_enemy": "bandit",
+    "needed": 4,
+    "reward_gold": 450,
+    "cleanse_required": 0,
+    "requires_mark": "companion_learned_to_keep_silent_with_you",
+    "flavor": "Your sworn learned to keep silent with you. Four bandits had hoped to overhear something. End them. The silence holds."
+  },
+  "co_after_almost_left": {
+    "name": "After the Companion Almost Left at the Branching",
+    "target_enemy": "wolf",
+    "needed": 1,
+    "reward_gold": 800,
+    "cleanse_required": 1,
+    "requires_mark": "companion_almost_left_at_the_branching",
+    "flavor": "Your sworn almost left at the branching path. One wolf had been the argument's witness. End it. The companion stays.",
+    "reward_chronicle_line": "A sworn had almost left at the branching path; one wolf had been the witness. The wolf fell, and the sworn stayed."
+  },
+  "co_after_lost_glove": {
+    "name": "After the Companion Lost a Glove",
+    "target_enemy": "silt_drowner",
+    "needed": 2,
+    "reward_gold": 500,
+    "cleanse_required": 1,
+    "requires_mark": "companion_lost_a_glove_for_you",
+    "flavor": "Your sworn lost a glove fetching something for you. Two silt-drowners wear it now. End them. The glove will be a pair again."
+  },
+  "co_after_not_back_lookout": {
+    "name": "After the Companion Did Not Come Back from the Lookout",
+    "target_enemy": "ashen_penitent",
+    "needed": 1,
+    "reward_gold": 1500,
+    "cleanse_required": 5,
+    "requires_mark": "companion_did_not_come_back_from_the_lookout",
+    "flavor": "A previous sworn did not come back from the lookout. A Penitent above the snowline had been the lookout's last sight. End him.",
+    "reward_chronicle_line": "A previous sworn had not returned from the lookout; the Penitent who had been the last thing they saw fell to the next climber."
+  },
+  "co_after_petal_bone_tomb": {
+    "name": "After Someone Added a Petal at the Bone Tomb",
+    "target_enemy": "shrine_keeper",
+    "needed": 1,
+    "reward_gold": 1100,
+    "cleanse_required": 4,
+    "requires_mark": "bone_tomb_someone_added_a_petal",
+    "flavor": "Someone added a petal at the Bone Tomb for a name you'd carved. The Pre-Pall Shrine Keeper knew the giver. End him."
+  },
+  "co_after_hireling_named_a_storm": {
+    "name": "After the Companion Named a Star — In the Storm",
+    "target_enemy": "ice_wraith",
+    "needed": 4,
+    "reward_gold": 800,
+    "cleanse_required": 4,
+    "requires_mark": "companion_named_a_star_for_you",
+    "flavor": "Your sworn named the star again, in a storm. Four wraiths thought the naming was bravado. End them. The naming was just remembering."
+  },
+  "co_after_pet_pricklehog": {
+    "name": "After the Pricklehog Left a Spine",
+    "target_enemy": "bandit",
+    "needed": 3,
+    "reward_gold": 350,
+    "cleanse_required": 0,
+    "requires_mark": "pet_pricklehog_left_a_spine_in_a_thrown_thing",
+    "flavor": "The pricklehog left a spine in a thrown thing. Three bandits had been the throwers. End them. The pricklehog will throw something back next."
+  },
+  "co_after_carried_kettle_companion": {
+    "name": "After the Sworn Carried a Kettle with You",
+    "target_enemy": "cave_troll",
+    "needed": 2,
+    "reward_gold": 700,
+    "cleanse_required": 2,
+    "requires_mark": "gullet_you_helped_carry_a_kettle",
+    "flavor": "Once you and a sworn carried a kettle. Two trolls in the Gullet had remembered the weight. End them. The kettle stays where it sits."
+  },
+  "c2_warrior_held_breath": {
+    "name": "The Warrior's Held Breath at the Pall",
+    "target_enemy": "shadow_warden",
+    "needed": 1,
+    "reward_gold": 2200,
+    "cleanse_required": 5,
+    "requires_class": [
+      "warrior"
+    ],
+    "flavor": "The Shadow Warden tests the warrior's held breath. Hold it through the fight. End him in the holding.",
+    "reward_marks": [
+      "summit_ground_was_softer_than_you_thought"
+    ],
+    "completion_condition": "no_damage_taken"
+  },
+  "c2_warrior_brace_against_braced": {
+    "name": "The Warrior's Brace Against the Braced",
+    "target_enemy": "maw_mother",
+    "needed": 1,
+    "reward_gold": 1800,
+    "cleanse_required": 3,
+    "requires_class": [
+      "warrior"
+    ],
+    "flavor": "The Maw-Mother braces. Only a warrior holds against the bracing. End her in the brace."
+  },
+  "c2_warrior_unmoved_by_relentless": {
+    "name": "The Warrior's Unmoved Step",
+    "target_enemy": "ashen_penitent",
+    "needed": 1,
+    "reward_gold": 1500,
+    "cleanse_required": 5,
+    "requires_class": [
+      "warrior"
+    ],
+    "flavor": "A Penitent's relentless attack. Only a warrior's feet stay where they were. End him from the same square.",
+    "completion_condition": "no_stun_during_fight"
+  },
+  "c2_warrior_late_line": {
+    "name": "The Warrior's Line Held Through the Late Hour",
+    "target_enemy": "pall_magistrate",
+    "needed": 4,
+    "reward_gold": 800,
+    "cleanse_required": 3,
+    "requires_class": [
+      "warrior"
+    ],
+    "flavor": "Four magistrates in Mourncross. The warrior holds the gate against all four — one by one — without leaving the line."
+  },
+  "c2_rogue_unseen_through_choir": {
+    "name": "The Rogue's Unseen Walk Through the Choir",
+    "target_enemy": "censer_shade",
+    "needed": 5,
+    "reward_gold": 700,
+    "cleanse_required": 4,
+    "requires_class": [
+      "rogue"
+    ],
+    "flavor": "Five censer-shades in the Choir. None of them see the rogue until they fall. The Choir's smoke barely moves.",
+    "completion_condition": "first_strike_yours"
+  },
+  "c2_rogue_crit_at_dusk": {
+    "name": "The Rogue's Crit at Dusk",
+    "target_enemy": "bandit",
+    "needed": 3,
+    "reward_gold": 600,
+    "cleanse_required": 1,
+    "requires_class": [
+      "rogue"
+    ],
+    "flavor": "Three bandits at dusk. Each killing blow is a critical hit — the rogue's signature.",
+    "completion_condition": "critical_killing_blow"
+  },
+  "c2_rogue_through_doorshuts": {
+    "name": "The Rogue Through the Doorshuts",
+    "target_enemy": "doorshut",
+    "needed": 6,
+    "reward_gold": 600,
+    "cleanse_required": 2,
+    "requires_class": [
+      "rogue"
+    ],
+    "flavor": "Six doorshuts in the Drowned Holds. The rogue walks past each one before it closes. End them all."
+  },
+  "c2_mage_unsing_the_cantor": {
+    "name": "The Mage's Unsinging of the Cantor",
+    "target_enemy": "cantor_vael",
+    "needed": 1,
+    "reward_gold": 2400,
+    "cleanse_required": 5,
+    "requires_class": [
+      "mage"
+    ],
+    "flavor": "Cantor Vael in the cleansed kingdom. Only a mage can unsing him properly. End him in the unsinging.",
+    "reward_marks": [
+      "choir_you_unsung_your_name"
+    ],
+    "reward_chronicle_line": "A mage unsang Cantor Vael in the cleansed kingdom; the Choir's air was thinner for the rest of the season."
+  },
+  "c2_mage_lamp_lit_for_a_climber": {
+    "name": "The Mage's Lamp Lit for Someone Who Was Not There",
+    "target_enemy": "library_warden",
+    "needed": 1,
+    "reward_gold": 700,
+    "cleanse_required": 3,
+    "requires_class": [
+      "mage"
+    ],
+    "flavor": "A lamp lit itself at Gravewatch for a climber who was not there. A library-warden had been keeping the lamp from lighting. End him."
+  },
+  "c2_mage_silt_drowner_pitch": {
+    "name": "The Mage's Pitch Against the Silt-Drowner",
+    "target_enemy": "silt_drowner",
+    "needed": 4,
+    "reward_gold": 600,
+    "cleanse_required": 1,
+    "requires_class": [
+      "mage"
+    ],
+    "flavor": "Four silt-drowners. The mage's pitch breaks each one's harmonic. The Reach hears the breaking."
+  },
+  "c2_mage_after_lamp_unsaid": {
+    "name": "After the Lamp Lit Without You Saying II",
+    "target_enemy": "shrine_keeper",
+    "needed": 1,
+    "reward_gold": 1300,
+    "cleanse_required": 4,
+    "requires_class": [
+      "mage"
+    ],
+    "flavor": "A second lamp lit without you saying. The Pre-Pall Shrine Keeper had been the one keeping it dark. End him.",
+    "requires_mark": "mage_a_lamp_lit_without_you_saying"
+  },
+  "c2_ranger_silent_six_revisit": {
+    "name": "The Ranger's Silent Six II",
+    "target_enemy": "wolf",
+    "needed": 6,
+    "reward_gold": 600,
+    "cleanse_required": 1,
+    "requires_class": [
+      "ranger"
+    ],
+    "flavor": "Six wolves. The ranger takes them all without the rest of the pack hearing. The wood's old hunters did it this way through winter."
+  },
+  "c2_ranger_carrion_clean": {
+    "name": "The Ranger's Clean Walk Through Carrion",
+    "target_enemy": "giant_bat",
+    "needed": 5,
+    "reward_gold": 500,
+    "cleanse_required": 1,
+    "requires_class": [
+      "ranger"
+    ],
+    "flavor": "Five carrion bats above the Witherwood. The ranger ends each one without touching the carrion below. The Witherwood respects clean feet."
+  },
+  "c2_ranger_trail_through_climb": {
+    "name": "The Ranger's Trail Through the Climb",
+    "target_enemy": "ice_wraith",
+    "needed": 4,
+    "reward_gold": 800,
+    "cleanse_required": 4,
+    "requires_class": [
+      "ranger"
+    ],
+    "flavor": "Four ice-wraiths above the snowline. The ranger traces the trail their previous selves walked, and ends each one at a precise spot.",
+    "reward_marks": [
+      "the_climb_marked_your_lungs"
+    ]
+  },
+  "c2_ranger_after_wolf_let_sleep": {
+    "name": "The Ranger, After a Wolf Let Them Sleep II",
+    "target_enemy": "wolf",
+    "needed": 5,
+    "reward_gold": 700,
+    "cleanse_required": 1,
+    "requires_class": [
+      "ranger"
+    ],
+    "flavor": "A wolf let you sleep once. Five of its kin are reconsidering the letting. End them. The first wolf will know.",
+    "requires_mark": "ranger_a_wolf_let_you_sleep"
+  },
+  "c2_cleric_funeral_for_a_warden": {
+    "name": "The Cleric's Funeral for the Shadow Warden",
+    "target_enemy": "shadow_warden",
+    "needed": 1,
+    "reward_gold": 2500,
+    "cleanse_required": 5,
+    "requires_class": [
+      "cleric"
+    ],
+    "flavor": "The Shadow Warden at the cleansed Summit. Only a cleric can give him a proper funeral. End him in the giving.",
+    "reward_chronicle_line": "A cleric gave the Shadow Warden a proper funeral at the cleansed Summit; the Pall paused longer than usual."
+  },
+  "c2_cleric_blessing_the_holds": {
+    "name": "The Cleric's Blessing for the Holds",
+    "target_enemy": "bonesong",
+    "needed": 8,
+    "reward_gold": 700,
+    "cleanse_required": 2,
+    "requires_class": [
+      "cleric"
+    ],
+    "flavor": "Eight bonesongs in the Drowned Holds. The cleric blesses each one to silence. The Holds will be one count quieter."
+  },
+  "c2_cleric_lay_down_the_chairman": {
+    "name": "The Cleric Lays the Chairman Down",
+    "target_enemy": "the_chairman",
+    "needed": 1,
+    "reward_gold": 1700,
+    "cleanse_required": 3,
+    "requires_class": [
+      "cleric"
+    ],
+    "flavor": "The Chairman in the Sealed Chamber. Only a cleric's hand lays him down properly. End him in the laying-down.",
+    "reward_marks": [
+      "mourncross_an_unnamed_grave_called_your_name"
+    ]
   }
 }
