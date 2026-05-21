@@ -1124,6 +1124,26 @@ def test_cael_dialogue_has_atrel_branch_only_after_atrel_talked(content):
     assert "of_atrel" in cael
 
 
+def test_cael_dialogue_has_garren_branch_only_after_pommel_read(content):
+    """v1.12 — Cael's tree exposes 'Tell her you found his pommel' only after
+    the first_kings_pommel discovery has been read."""
+    cael = content.dialogues["cael"]
+    initial_responses = cael["initial"]["responses"]
+    garren_branch = [r for r in initial_responses if "Garren" in r.get("text", "")]
+    assert len(garren_branch) == 1
+    assert garren_branch[0].get("requires_flag") == "read_garren_pommel"
+    assert "of_garren" in cael
+
+
+def test_pommel_discovery_sets_garren_flag(tmp_path, content):
+    """v1.12 — reading the first_kings_pommel discovery sets read_garren_pommel."""
+    state = make_state(_player(content), content, ScriptedIO(), StubRandom(),
+                       chronicle_dir=tmp_path)
+    assert not state.flags.get("read_garren_pommel")
+    locations._run_discovery(state, {"id": "first_kings_pommel", "lines": ["..."]})
+    assert state.flags.get("read_garren_pommel") is True
+
+
 def test_bone_tomb_requires_all_four_npc_quests_and_verren(content, tmp_path):
     """The Bone Tomb opens only after every NPC quest + Verren fragment."""
     state = make_state(_player(content), content, ScriptedIO(), StubRandom(),

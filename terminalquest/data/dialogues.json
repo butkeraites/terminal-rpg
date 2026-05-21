@@ -514,7 +514,39 @@
         {"text": "Tell her about Atrél, in the Choir's south aisle.",
          "next": "of_atrel",
          "requires_flag": "talked_to_atrel"},
+        {"text": "Tell her you found her father's pommel — Garren, first of the holds.",
+         "next": "of_garren",
+         "requires_flag": "read_garren_pommel"},
         {"text": "(step back)", "next": null}
+      ]
+    },
+    "of_garren": {
+      "voice": "stone",
+      "lines": [
+        "Garren.",
+        "It has been a long time since anyone has said his name aloud here.",
+        "I have been saying it, but I am the seal, and the seal does not count as aloud.",
+        "",
+        "He was a hold-keeper before he was a king. He told me that, the night",
+        "before I came down. He said: 'Cael. The kingdom we built is a hold",
+        "made larger. Do not let them forget it was a hold first.'",
+        "",
+        "He had a pommel he carried — brass, worn smooth, from his father's sword.",
+        "He set it into the altar of the shrine the day he wrote the vow.",
+        "He said: 'I am setting this down so that whoever comes after, if they",
+        "kneel low enough, will see I was small once. Kings should be reminded.'",
+        "",
+        "You found it. He thought you would. He always thought a stranger would.",
+        "",
+        "Tell him, when you sit down with the climbers who come after you:",
+        "tell them his name was Garren, and that he was a hold-keeper.",
+        "Tell them his daughter has been saying his name under the mountain",
+        "for longer than the kingdom has had words for the years. She is still saying it."
+      ],
+      "responses": [
+        {"text": "I will tell them.", "next": "initial",
+         "sets_flag": "cael_message_about_garren"},
+        {"text": "(step back, quietly)", "next": null}
       ]
     },
     "of_atrel": {
