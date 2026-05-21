@@ -4862,5 +4862,213 @@
     "requires_mark": "summit_you_left_a_button_at_the_step",
     "reward_chronicle_line": "Once they had left a button at the Summit step, the Penitent at the upper stone could not refuse them. They ended him.",
     "flavor": "Once you left a button at the Summit step. The Penitent knows the gesture. End him. The button stays."
+  },
+  "hc2_pack_lead_in_one_round": {
+    "name": "The Pack Lead in a Single Round",
+    "target_enemy": "pack_lead",
+    "completion_condition": "killed_in_one_round",
+    "needed": 1,
+    "reward_gold": 800,
+    "cleanse_required": 1,
+    "flavor": "End the pack lead in one round. The cache will open quieter than it has ever opened. The wolves in the wood will hear the quiet."
+  },
+  "hc2_pack_lead_no_damage": {
+    "name": "Untouched by the Pack Lead",
+    "target_enemy": "pack_lead",
+    "completion_condition": "no_damage_taken",
+    "needed": 1,
+    "reward_gold": 900,
+    "cleanse_required": 1,
+    "reward_chronicle_line": "They ended the Hunter's Cache pack lead without a tooth in them. Halna's tally got a final unmarked line, struck through clean.",
+    "flavor": "The pack lead, ended without a tooth landing on you. Halna will see no blood on you when you walk back. She will not say so."
+  },
+  "hc2_pack_lead_no_abilities": {
+    "name": "Halna's Way — Plain Steel at the Cache",
+    "target_enemy": "pack_lead",
+    "completion_condition": "used_no_abilities",
+    "needed": 1,
+    "reward_gold": 700,
+    "cleanse_required": 1,
+    "flavor": "End the pack lead with no ability spent. Halna's father did it this way the first time, and she did it this way the second time."
+  },
+  "hc2_after_cache_strap_for_you": {
+    "name": "After the Cache Set a Strap Aside for You",
+    "target_enemy": "pack_lead",
+    "needed": 1,
+    "reward_gold": 750,
+    "cleanse_required": 1,
+    "requires_mark": "hunters_cache_strap_for_you",
+    "reward_consumables": [
+      "The Last Bread"
+    ],
+    "flavor": "The cache has set a strap aside for your wrist. The pack lead smells the new wrist on the next visit. End him. The strap stays."
+  },
+  "hc2_after_cache_button_pairs": {
+    "name": "After the Cache Returned Your Father's Button",
+    "target_enemy": "pack_lead",
+    "needed": 1,
+    "reward_gold": 850,
+    "cleanse_required": 1,
+    "requires_mark": "hunters_cache_button_pairs_yours",
+    "reward_chronicle_line": "The cache had returned a button of their father's; they wore it into the fight, and the pack lead ended at the second nail.",
+    "flavor": "You carry a button your father lost when you were small. The pack lead can smell the older coat on you. End him. The button stays."
+  },
+  "hc2_ranger_pack_lead_quiet_kill": {
+    "name": "A Ranger's Kill at the Hunter's Cache",
+    "target_enemy": "pack_lead",
+    "completion_condition": "first_strike_yours",
+    "needed": 1,
+    "reward_gold": 800,
+    "cleanse_required": 1,
+    "requires_class": [
+      "ranger"
+    ],
+    "flavor": "The cache was a ranger's place before it was a wolf's. End the pack lead with the first strike yours. Halna will know the shape."
+  },
+  "hc2_warrior_pack_lead_head_on": {
+    "name": "A Warrior's Fight at the Cache",
+    "target_enemy": "pack_lead",
+    "completion_condition": "no_healing_received",
+    "needed": 1,
+    "reward_gold": 750,
+    "cleanse_required": 1,
+    "requires_class": [
+      "warrior"
+    ],
+    "flavor": "A warrior's fight at the cache. No poultice spent, no draught swallowed. End him on the blood you brought in. Halna will count."
+  },
+  "hc2_reborn_cache_tally": {
+    "name": "An Unmarked Line on Halna's Tally",
+    "target_enemy": "pack_lead",
+    "needed": 1,
+    "reward_gold": 750,
+    "cleanse_required": 0,
+    "requires_flag": "is_reborn",
+    "requires_discovery": [
+      "hunters_cache_lore"
+    ],
+    "reward_chronicle_line": "A previous one of them had read Halna's tally; the new self came back and ended the pack lead, and the last unmarked line was crossed.",
+    "flavor": "A previous you read Halna's tally and did not finish the count. The new you finishes. End the pack lead. The last line crosses out."
+  },
+  "hc2_after_halnas_stag": {
+    "name": "After You Saw Halna's Stag",
+    "target_enemy": "pack_lead",
+    "needed": 1,
+    "reward_gold": 650,
+    "cleanse_required": 1,
+    "requires_discovery": [
+      "halnas_stag"
+    ],
+    "reward_consumables": [
+      "The Last Bread"
+    ],
+    "flavor": "You have seen Halna's drawing of the stag she let walk. The pack lead at the cache has not been let walk. End him. The drawing stays."
+  },
+  "hc2_dyke_warden_in_one_round_after_paused": {
+    "name": "A Single Round, After She Almost Let You Through",
+    "target_enemy": "dyke_warden",
+    "completion_condition": "killed_in_one_round",
+    "needed": 1,
+    "reward_gold": 950,
+    "cleanse_required": 2,
+    "requires_mark": "dyke_warden_almost_let_you_through",
+    "reward_chronicle_line": "She had almost let them through, once. They returned and ended her in a single round. The post she had kept stayed kept in the silence.",
+    "flavor": "Once she almost let you through. Now end her in a single round. The post she kept will be quieter than she kept it."
+  },
+  "hc2_dyke_warden_no_damage": {
+    "name": "Untouched at the Last Dyke",
+    "target_enemy": "dyke_warden",
+    "completion_condition": "no_damage_taken",
+    "needed": 1,
+    "reward_gold": 1000,
+    "cleanse_required": 2,
+    "flavor": "The dyke-warden, ended without a finger on you. The held water behind her will not get a finger on you either. The boots stay dry."
+  },
+  "hc2_dyke_warden_no_abilities": {
+    "name": "The Capital Way — Plain Steel at the Dyke",
+    "target_enemy": "dyke_warden",
+    "completion_condition": "used_no_abilities",
+    "needed": 1,
+    "reward_gold": 800,
+    "cleanse_required": 2,
+    "flavor": "The capital-sworn engineers fought with what their hands knew. End her with no ability spent. The capital's way ends with her."
+  },
+  "hc2_after_dyke_held_water": {
+    "name": "After the Water Paused for You",
+    "target_enemy": "dyke_warden",
+    "needed": 1,
+    "reward_gold": 900,
+    "cleanse_required": 2,
+    "requires_mark": "dyke_held_the_water_back_for_you",
+    "reward_consumables": [
+      "The Last Bread"
+    ],
+    "flavor": "The water has paused for you, once. End the warden again. The water will pause again. The dyke remembers the dry foot it gave you."
+  },
+  "hc2_after_dyke_name_carved": {
+    "name": "After You Carved a Name on the Dyke",
+    "target_enemy": "dyke_warden",
+    "needed": 1,
+    "reward_gold": 850,
+    "cleanse_required": 2,
+    "requires_mark": "dyke_a_name_carved_on_the_stone",
+    "reward_chronicle_line": "Once they had carved a warden's initial into the dyke stone, the next warden's letter went under the first. Two letters. Both kept.",
+    "flavor": "You have carved one warden's initial into the dyke. Carve the next under it. End her. Two letters now, both kept by the stone."
+  },
+  "hc2_reborn_dyke_closed_gate_order": {
+    "name": "A Closed-Gate Order a Previous You Could Not Forge",
+    "target_enemy": "dyke_warden",
+    "needed": 1,
+    "reward_gold": 850,
+    "cleanse_required": 1,
+    "requires_flag": "is_reborn",
+    "requires_discovery": [
+      "last_dyke_lore"
+    ],
+    "reward_chronicle_line": "A previous one of them had read the closed-gate order and could not forge the word 'enough'. The new self ended the warden instead.",
+    "flavor": "A previous you read the closed-gate order and could not add 'enough'. The new you ends the warden who held it. The forging is moot now."
+  },
+  "hc2_warden_ending_dyke_recognizes": {
+    "name": "After the Warden, the Dyke Recognizes a Keeper",
+    "target_enemy": "dyke_warden",
+    "needed": 1,
+    "reward_gold": 1000,
+    "cleanse_required": 2,
+    "requires_ending": [
+      "warden"
+    ],
+    "reward_marks": [
+      "ending_warden_a_keeper_song_started_to_form_in_you"
+    ],
+    "reward_chronicle_line": "Once they had become the Warden, the dyke-warden recognised the keeper-mark on them and gave one nod before the fight; the fight ended.",
+    "flavor": "Across runs, you have been the Warden. The dyke-warden recognises the keeper-mark on you. She nods once. End her. The post is yours after."
+  },
+  "hc2_dyke_chain_a_read_the_order": {
+    "name": "The Last Dyke — Read the Closed-Gate Order",
+    "target_enemy": "dyke_warden",
+    "needed": 1,
+    "reward_gold": 500,
+    "cleanse_required": 1,
+    "requires_discovery": [
+      "last_dyke_lore"
+    ],
+    "chain_next": "hc2_dyke_chain_b_one_round",
+    "flavor": "The closed-gate order has been read. End the warden who held it. The chain of holding will be shorter by one warden."
+  },
+  "hc2_dyke_chain_b_one_round": {
+    "name": "The Last Dyke — End Her in a Single Round",
+    "target_enemy": "dyke_warden",
+    "completion_condition": "killed_in_one_round",
+    "needed": 1,
+    "reward_gold": 1000,
+    "cleanse_required": 2,
+    "requires_quest": [
+      "hc2_dyke_chain_a_read_the_order"
+    ],
+    "reward_chronicle_line": "Once they had read the order, they ended the warden in a single round. The capital's writ stopped being read at the dyke.",
+    "reward_consumables": [
+      "The Last Bread"
+    ],
+    "flavor": "You have read the order. End the warden in a single round. The capital's hand stops at the dyke today. The water will know."
   }
 }
