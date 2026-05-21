@@ -718,6 +718,7 @@ def quartermaster(state):
             continue
         player.gold -= entry["cost"]
         player.equip_armor(make_armor(content, armor_id))
+        state.flags["armor_bought"] = True
         io.show_slow(f"\n🛡️  You buckle on the {entry['name']}.")
         io.pause(1)
 
@@ -774,6 +775,7 @@ def smith(state):
         weapon.upgrade = uid
         player.equip_weapon(weapon)
         player.gold -= upgrade["cost"]
+        state.flags["smith_upgraded"] = True
         io.show_slow(f"\n⚒  The smith works the {weapon.name} into the "
                      f"{upgrade['name']}.")
         io.show(f"   {weapon.summary()}")

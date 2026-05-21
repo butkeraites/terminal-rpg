@@ -10886,5 +10886,1095 @@
       "this household. The keeping had landed on you. You agreed to it. You set it on yourself.",
       "  (+1 Defense, permanently — an agreement to be the keeper of the household you have gathered.)"
     ]
+  },
+  "smith_kept_a_smudge_of_temper_on_the_grip": {
+    "category": "found",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "requires_flag": "smith_upgraded",
+      "min_visits": 2,
+      "chance": 0.13
+    },
+    "effect": {
+      "stat": "attack",
+      "delta": 1,
+      "flag": "smith_smudge"
+    },
+    "lines": [
+      "On your weapon's grip, where the smith's thumb rested while she worked, there is a",
+      "small dark smudge of her temper-oil — old, set in. You did not wipe it off. It steadies",
+      "your hand against the grip in a way you can feel. The smith's thumbprint, kept.",
+      "  (+1 Attack, permanently — the smith's thumb, kept on your weapon's grip.)"
+    ]
+  },
+  "smith_held_your_weapon_too_long": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "requires_flag": "smith_upgraded",
+      "min_visits": 2,
+      "chance": 0.12
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "smith_held_long"
+    },
+    "lines": [
+      "Today the smith handed your weapon back to you after the upgrade and — between her",
+      "hands and yours — she held it one count too long. As if reluctant. As if the work she",
+      "had done was for someone she wanted to send out armoured. You thanked her quietly.",
+      "  (+1 Defense, permanently — a weapon handed back with one count of held intent.)"
+    ]
+  },
+  "smith_named_a_blade_by_a_name_that_was_not_yours": {
+    "category": "half_truth",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "requires_flag": "smith_upgraded",
+      "min_visits": 3,
+      "chance": 0.11
+    },
+    "effect": {
+      "flag": "smith_named_blade"
+    },
+    "lines": [
+      "Today the smith, polishing your weapon between strikes of the hammer, called it by a",
+      "name. Not the name you had given it. Not yours. A woman's name. The smith blushed when",
+      "she noticed you had heard. She did not explain. The weapon answers to both names now."
+    ]
+  },
+  "smith_a_spark_lit_for_you": {
+    "category": "found",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "requires_flag": "smith_upgraded",
+      "chance": 0.12
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 1,
+      "flag": "smith_spark"
+    },
+    "lines": [
+      "Walking through the smith's yard today, a single spark from the forge flew up and out",
+      "the door past your ear. Warm. Brief. Yours, the smith said, smiling at the air. You",
+      "shook your head. She shrugged. The forge has its preferences. The spark was yours.",
+      "  (+1 Max HP, permanently — a spark from a forge that decided about you.)"
+    ]
+  },
+  "smith_taught_you_to_lay_your_weapon_down_at_the_door": {
+    "category": "mind",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "requires_flag": "smith_upgraded",
+      "min_visits": 3,
+      "chance": 0.12
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "lay_down_at_door"
+    },
+    "lines": [
+      "Today the smith — between the work — taught you, with a small gesture, to lay your",
+      "weapon down at the door when you come into a house. The kingdom does not, anymore.",
+      "She does. You will, now. It is a small dignity. The dignity will steady your shoulders.",
+      "  (+1 Defense, permanently — a manner taught by the smith that will steady you in doorways.)"
+    ]
+  },
+  "smith_kept_your_old_handle": {
+    "category": "lost",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "requires_flag": "smith_upgraded",
+      "min_visits": 3,
+      "chance": 0.1
+    },
+    "effect": {
+      "flag": "smith_kept_handle"
+    },
+    "lines": [
+      "Today, going past the smith's, you saw — high on a shelf — the handle she had stripped",
+      "from your weapon when she upgraded it. She had kept the wood. You did not ask why.",
+      "She had kept it for you, in case you wanted it. You did not ask for it back. It stays there."
+    ]
+  },
+  "smith_blessed_a_strike_for_you": {
+    "category": "promise_kept",
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "requires_flag": "smith_upgraded",
+      "chance": 0.12
+    },
+    "effect": {
+      "stat": "attack",
+      "delta": 1,
+      "flag": "smith_blessed_strike"
+    },
+    "lines": [
+      "Tonight, in the fight, your weapon swung true on a strike that should have gone wide.",
+      "Out of the strike came, faintly, a sound — the ring of the smith's hammer on the anvil.",
+      "She had laid a small blessing on the weapon. The strike landed. The blessing was real.",
+      "  (+1 Attack, permanently — a smith's blessing kept in the weapon, spent on one good strike.)"
+    ]
+  },
+  "smith_marked_the_pommel_for_recognition": {
+    "category": "found",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "requires_flag": "smith_upgraded",
+      "min_visits": 4,
+      "chance": 0.11
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "pommel_mark"
+    },
+    "lines": [
+      "The smith, today, asked for the weapon back briefly — to mark the pommel with the small",
+      "Gravewatch stamp that says *I made this.* It is on the pommel now. Older fighters will",
+      "see it. They will know. They will not test you. The stamp will travel with you.",
+      "  (+1 Defense, permanently — a Gravewatch stamp on your pommel, recognized by those who know.)"
+    ]
+  },
+  "smith_a_weapon_remembered_a_grip": {
+    "category": "half_truth",
+    "trigger": {
+      "at": [
+        "combat_low_hp"
+      ],
+      "requires_flag": "smith_upgraded",
+      "chance": 0.11
+    },
+    "effect": {
+      "flag": "weapon_remembered_grip"
+    },
+    "lines": [
+      "At the worst beat tonight the weapon, in your hand, tightened — as if for one count",
+      "it had been held by another hand that had held it harder. The smith had had it. So had",
+      "the one before her. Each of them, in the bad beat, made room for you. You stood."
+    ]
+  },
+  "smith_taught_you_to_clean_after_a_kill": {
+    "category": "mind",
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "requires_flag": "smith_upgraded",
+      "min_visits": 2,
+      "chance": 0.13
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "smith_taught_clean"
+    },
+    "lines": [
+      "Tonight after the fight, you cleaned the weapon the way the smith had shown you —",
+      "twice on each side, oil from the wrist of your other hand, breath blown along the edge.",
+      "Slower than you used to. Better. Your weapon will dull less. Your hand will be steadier.",
+      "  (+1 Defense, permanently — a cleaning-ritual the smith taught you that you now keep.)"
+    ]
+  },
+  "smith_a_long_one_was_left_for_you": {
+    "category": "found",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "requires_flag": "smith_upgraded",
+      "min_visits": 4,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "max_stamina",
+      "delta": 1,
+      "flag": "smith_long_blade"
+    },
+    "lines": [
+      "On the smith's bench today there was a long blade — too long for you, made for someone",
+      "taller. The smith said it had been there a year. Said somebody had ordered it, never",
+      "come back. Said the order had been for you. You did not take it. You stood by it a count.",
+      "  (+1 Max Stamina, permanently — a blade you did not take, made for the size of you, once.)"
+    ]
+  },
+  "smith_told_you_her_own_name": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "requires_flag": "smith_upgraded",
+      "min_visits": 5,
+      "chance": 0.11
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 2,
+      "flag": "smith_named_herself"
+    },
+    "lines": [
+      "Today the smith — who had been simply *the smith* the whole run — told you her name.",
+      "Halna's eldest daughter. You did not know Halna had had a daughter who survived. The",
+      "smith had survived. The smith has a name. You said the name back. She nodded once.",
+      "  (+2 Max HP, permanently — a smith's name, given to you, made survivor's name.)"
+    ]
+  },
+  "armor_buckle_settled_into_your_ribs": {
+    "category": "body",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "requires_flag": "armor_bought",
+      "min_visits": 3,
+      "chance": 0.13
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "armor_settled"
+    },
+    "lines": [
+      "The armor you bought has, between the last zone and this one, finally settled. The",
+      "buckle has stopped digging. The pad has shaped to your ribs. You forget you are wearing",
+      "it now, except in the moments when it stops a blow. From now on, you are the armor.",
+      "  (+1 Defense, permanently — armor that has finally shaped to the body wearing it.)"
+    ]
+  },
+  "armor_old_blood_in_the_lining": {
+    "category": "half_truth",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "requires_flag": "armor_bought",
+      "min_visits": 2,
+      "chance": 0.12
+    },
+    "effect": {
+      "flag": "armor_old_blood"
+    },
+    "lines": [
+      "There is old blood in the lining of the armor — not yours, not the last fight's. Older.",
+      "The quartermaster told you. You did not mind. Old blood does not, in the kingdom,",
+      "infect; it knows where it stood. The blood holds the armor's shape. The shape is yours now."
+    ]
+  },
+  "armor_a_strap_came_loose_at_a_good_moment": {
+    "category": "found",
+    "trigger": {
+      "at": [
+        "combat_low_hp"
+      ],
+      "requires_flag": "armor_bought",
+      "chance": 0.12
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 1,
+      "flag": "armor_loose_strap"
+    },
+    "lines": [
+      "In the worst beat tonight a strap on your armor came loose — and the enemy's grab,",
+      "going for the strap, came up with nothing in their fist. You hadn't loosened the strap.",
+      "The armor had. You re-tightened it after, slow. The armor is keeping you on purpose.",
+      "  (+1 Max HP, permanently — a strap that loosened, on purpose, in your favour.)"
+    ]
+  },
+  "armor_quartermaster_pressed_a_token_into_your_hand": {
+    "category": "promise_kept",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "requires_flag": "armor_bought",
+      "min_visits": 3,
+      "chance": 0.12
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "quartermaster_token"
+    },
+    "lines": [
+      "Today at the quartermaster's, with the new piece on you, she pressed a small wooden",
+      "token into your palm — the Gravewatch quartermaster's mark, the one given to fighters",
+      "who survive long enough to need a third piece. You did not need three. You will have it.",
+      "  (+1 Defense, permanently — a quartermaster's token, given to you for the surviving.)"
+    ]
+  },
+  "armor_padding_smelled_of_a_kitchen_for_a_count": {
+    "category": "mind",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "requires_flag": "armor_bought",
+      "min_visits": 2,
+      "chance": 0.11
+    },
+    "effect": {
+      "flag": "armor_kitchen_smell"
+    },
+    "lines": [
+      "Tonight the padding of your armor, for one count, smelled — distinctly — of a kitchen.",
+      "Onions, broth, the smoke of an oven. You don't know whose kitchen the padding had been",
+      "near. You stood still a count, breathing it. The smell went. The armor breathed normally."
+    ]
+  },
+  "armor_buckle_caught_a_widows_eye": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "requires_flag": "armor_bought",
+      "min_visits": 3,
+      "chance": 0.11
+    },
+    "effect": {
+      "flag": "armor_widow_recognized"
+    },
+    "lines": [
+      "Today, walking Gravewatch in your armor, a widow on the second bench looked at the",
+      "buckle — looked at it specifically — and her face went briefly soft. The buckle had",
+      "been her husband's. She did not say. You did not ask. You nodded to her. She nodded back."
+    ]
+  },
+  "armor_chest_piece_knocked_against_a_grave_marker": {
+    "category": "body",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "requires_flag": "armor_bought",
+      "min_visits": 3,
+      "chance": 0.11
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": -1,
+      "flag": "armor_grave_knock"
+    },
+    "lines": [
+      "Tonight, kneeling at a grave to read the name, your chest-piece knocked against the",
+      "marker — a small, hollow sound. The marker took the knock. The chest-piece took the",
+      "knock back. Some of the dead the marker holds came, very briefly, into the armor. You stood up.",
+      "  (-1 Max HP, permanently — a knock against a grave-marker that travelled both ways.)"
+    ]
+  },
+  "armor_will_outlast_you": {
+    "category": "half_truth",
+    "trigger": {
+      "at": [
+        "save_action"
+      ],
+      "requires_flag": "armor_bought",
+      "min_visits": 4,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "armor_outlast_you"
+    },
+    "lines": [
+      "Tonight, taking the armor off at the saving-place, you understood that it will outlast",
+      "you. The next one to wear it will not be you. You said this — without speaking, only",
+      "thinking it — to the armor. The armor agreed. You both came to terms. You slept easier.",
+      "  (+1 Defense, permanently — a peace made with a piece of gear that will see you out.)"
+    ]
+  },
+  "armor_a_dent_appeared_overnight": {
+    "category": "found",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "requires_flag": "armor_bought",
+      "min_visits": 4,
+      "chance": 0.1
+    },
+    "effect": {
+      "flag": "armor_overnight_dent"
+    },
+    "lines": [
+      "There is a dent in your chest-piece this morning that was not there at last save. Not",
+      "a fight-dent. A pressing — as if a heavy thoughtful hand had laid itself on the armor",
+      "in the night. You found no scratch around the dent. You will leave it. The armor knows."
+    ]
+  },
+  "armor_taught_you_to_walk_quieter": {
+    "category": "mind",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "requires_flag": "armor_bought",
+      "min_visits": 3,
+      "chance": 0.13
+    },
+    "effect": {
+      "stat": "max_stamina",
+      "delta": 1,
+      "flag": "armor_quieter_walk"
+    },
+    "lines": [
+      "Wearing the armor, you have had to learn to walk quieter — the way that does not jingle.",
+      "Between the last zone and this, the walking has become natural. Your boots and your",
+      "buckles have made their peace with each other. You can sneak when you need to now.",
+      "  (+1 Max Stamina, permanently — a quieter walk that the armor and you negotiated.)"
+    ]
+  },
+  "armor_kept_you_warm_in_a_cold_zone": {
+    "category": "found",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "mountain",
+        "summit",
+        "choir"
+      ],
+      "requires_flag": "armor_bought",
+      "chance": 0.12
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 1,
+      "flag": "armor_warm_cold_zone"
+    },
+    "lines": [
+      "In the colder air tonight your armor — surprisingly — kept you warm. The metal should",
+      "have leached the heat. It did the opposite. Something in the padding has decided to",
+      "hold your warmth back for you. The cold zones will be a little kinder now.",
+      "  (+1 Max HP, permanently — armor that held your warmth back for you in a cold place.)"
+    ]
+  },
+  "armor_lay_for_a_count_in_the_shape_of_a_friend": {
+    "category": "half_truth",
+    "trigger": {
+      "at": [
+        "save_action"
+      ],
+      "requires_flag": "armor_bought",
+      "min_visits": 5,
+      "chance": 0.1
+    },
+    "effect": {
+      "flag": "armor_friend_shape"
+    },
+    "lines": [
+      "Tonight at the saving-place you took the armor off and set it down and, for one count,",
+      "it kept the shape of someone you used to know. Not yours. Briefly theirs. The armor",
+      "knew them. They were a long way away. They were thinking of you. The armor showed you."
+    ]
+  },
+  "weapon_remembered_a_strike_for_you": {
+    "category": "found",
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "min_level": 5,
+      "chance": 0.13
+    },
+    "effect": {
+      "stat": "attack",
+      "delta": 1,
+      "flag": "weapon_recalled_strike"
+    },
+    "lines": [
+      "Your weapon, tonight in the fight, recalled — quickly, only as the body knows things —",
+      "the angle of a strike you had made with it three fights ago. The same strike. You",
+      "did not consciously repeat. Your hand obeyed the weapon. The strike landed perfectly.",
+      "  (+1 Attack, permanently — a weapon-memory of a strike, returned to your hand.)"
+    ]
+  },
+  "weapon_grip_warmed_to_your_hand": {
+    "category": "body",
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "min_level": 5,
+      "chance": 0.13
+    },
+    "effect": {
+      "stat": "max_stamina",
+      "delta": 1,
+      "flag": "grip_warmed"
+    },
+    "lines": [
+      "After the fight tonight your weapon's grip stayed warm in your hand longer than it",
+      "should have — the heat of you having held it long enough that the wood had remembered.",
+      "You will not need to warm your hand on it before next fight. The wood is ready.",
+      "  (+1 Max Stamina, permanently — a grip that does not need warming, having warmed to you.)"
+    ]
+  },
+  "weapon_will_break_for_someone_else": {
+    "category": "half_truth",
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "min_level": 6,
+      "chance": 0.1
+    },
+    "effect": {
+      "flag": "weapon_break_for_other"
+    },
+    "lines": [
+      "Tonight you understood, with the weapon in your hand after the kill, that the weapon",
+      "will not break in your hand. It will break — eventually, it always breaks — in someone",
+      "else's. The next person to hold it. That is its decision. It is your decision too. You agreed."
+    ]
+  },
+  "weapon_kept_a_blood_drop_against_your_palm": {
+    "category": "broken",
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "min_level": 5,
+      "chance": 0.12
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": -1,
+      "flag": "weapon_kept_blood"
+    },
+    "lines": [
+      "After tonight's fight a drop of someone else's blood — small, dark — soaked into the",
+      "wood of your weapon, against your palm. You cannot get it out. You stopped trying.",
+      "The drop is in the wood now. The wood is also in your hand. Some of the drop is in you.",
+      "  (-1 Max HP, permanently — a drop of someone else's blood that travelled through your weapon.)"
+    ]
+  },
+  "weapon_swung_one_count_easier": {
+    "category": "found",
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "min_level": 6,
+      "chance": 0.11
+    },
+    "effect": {
+      "stat": "attack",
+      "delta": 1,
+      "flag": "swung_easier"
+    },
+    "lines": [
+      "The weapon, tonight, swung one full count easier than it had at the start of the run.",
+      "Not lighter — easier. The arm has agreed with it. The arm and the weapon are one",
+      "machine now. You can hit harder, faster. You will hit faster than you used to.",
+      "  (+1 Attack, permanently — a weapon and an arm that have agreed to be one machine.)"
+    ]
+  },
+  "weapon_pommel_pointed_back_at_a_friend": {
+    "category": "promise_kept",
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "min_level": 5,
+      "chance": 0.11
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "pommel_pointed_friend"
+    },
+    "lines": [
+      "Mid-fight tonight, between strikes, you turned your weapon — for one count — pommel-",
+      "first toward a friend at your side. Not aiming. Marking. The kingdom's old fighters do",
+      "this to signal *I have not forgotten you in the kill.* Your friend saw. They nodded.",
+      "  (+1 Defense, permanently — an old fighter's signal, given between strikes.)"
+    ]
+  },
+  "weapon_sang_a_low_note_against_a_blade": {
+    "category": "half_truth",
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "min_level": 6,
+      "chance": 0.1
+    },
+    "effect": {
+      "flag": "weapon_sang"
+    },
+    "lines": [
+      "On contact with another blade tonight your weapon sang — low, briefly, a sustained",
+      "note. Not the usual ring. A note. The note had a shape. It was, you think, the first",
+      "note of a song. The other blade went silent. The weapon will not sing twice. It did, once."
+    ]
+  },
+  "weapon_carried_a_song_to_the_summit": {
+    "category": "promise_kept",
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "min_level": 8,
+      "chance": 0.09
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 1,
+      "flag": "weapon_summit_song"
+    },
+    "lines": [
+      "Tonight your weapon — without your noticing — picked up the third line of a song you",
+      "had been humming on the climb. The line is in the steel now. It is going to the",
+      "Summit with you. The Summit will hear it from your weapon, when the time comes. You will sing.",
+      "  (+1 Max HP, permanently — a song-line picked up by your weapon, kept for the Summit.)"
+    ]
+  },
+  "weapon_handle_smoothed_to_your_thumb": {
+    "category": "body",
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "min_level": 5,
+      "chance": 0.12
+    },
+    "effect": {
+      "stat": "max_stamina",
+      "delta": 1,
+      "flag": "handle_smoothed"
+    },
+    "lines": [
+      "The handle of your weapon, between the last fight and tonight, has smoothed itself in",
+      "the exact place your thumb rests. The wood and your thumb have come to an agreement.",
+      "You can grip longer without tiring. The grip is, now, the shape of the work it does.",
+      "  (+1 Max Stamina, permanently — a handle that has smoothed itself to the shape of your thumb.)"
+    ]
+  },
+  "weapon_did_not_strike_a_thing_it_had_struck_before": {
+    "category": "mind",
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "min_level": 6,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "weapon_remembered_kind"
+    },
+    "lines": [
+      "Tonight in the fight your weapon, between two swings, held back from striking — the",
+      "enemy was the same kind it had killed many of before. The weapon paused. You took the",
+      "next swing. The weapon went again. You both, for one count, considered the kindness of pause.",
+      "  (+1 Defense, permanently — a weapon that paused for one count in respect of those it had killed.)"
+    ]
+  },
+  "trophy_in_your_pocket_warmed_your_thigh": {
+    "category": "found",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "min_level": 3,
+      "chance": 0.13
+    },
+    "effect": {
+      "stat": "max_stamina",
+      "delta": 1,
+      "flag": "trophy_warm"
+    },
+    "lines": [
+      "Tonight you walked with a trophy in your pocket — feather, tooth, scale, whatever you",
+      "carry — and the pocket, against your thigh, warmed. The trophy is keeping you company.",
+      "Trophies do this for those who keep them. You will keep them more carefully from now on.",
+      "  (+1 Max Stamina, permanently — a trophy warming the pocket of one who has kept it well.)"
+    ]
+  },
+  "beastmaster_recognized_a_smell_on_you": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "min_level": 3,
+      "chance": 0.12
+    },
+    "effect": {
+      "flag": "beastmaster_smelled"
+    },
+    "lines": [
+      "Today the Beastmaster, as you passed the pen, lifted their head — sniffed once — and",
+      "named the animal whose trophy you were carrying. Not by looking. By the smell on you.",
+      "They tipped their head, approving. You walked on. The smell is yours. The Beastmaster knows."
+    ]
+  },
+  "trophy_taught_you_to_kneel_when_you_take_it": {
+    "category": "mind",
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "min_level": 3,
+      "chance": 0.11
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "trophy_kneel"
+    },
+    "lines": [
+      "Tonight, taking a trophy from a kill, you knelt — without thinking — and made the cut",
+      "slow. The kingdom's old hunters used to do this. You have not been told. You did it",
+      "anyway. The trophy is cleaner. The taking is, for now, an honest taking.",
+      "  (+1 Defense, permanently — a kneeling for the trophy that the body has chosen for you.)"
+    ]
+  },
+  "trophy_a_paw_held_your_finger_in_a_pocket": {
+    "category": "half_truth",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "min_level": 3,
+      "chance": 0.1
+    },
+    "effect": {
+      "flag": "paw_held_finger"
+    },
+    "lines": [
+      "Today, reaching into your pocket for a coin, your finger was held — for one count —",
+      "by the curled paw of a small trophy. As if the paw had decided. Then it let go. You",
+      "took the coin. You did not look at the paw. You walked on. The paw will hold you again."
+    ]
+  },
+  "beastmaster_set_aside_a_collar_for_you": {
+    "category": "promise_kept",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "min_level": 3,
+      "chance": 0.11
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 1,
+      "flag": "beastmaster_collar"
+    },
+    "lines": [
+      "Today at the Beastmaster's there was a small leather collar on the high peg — your size,",
+      "old, the kind that has been on a dog before. The Beastmaster said it had been waiting.",
+      "Said you would know what to do with it. You took it. You don't, yet. You will.",
+      "  (+1 Max HP, permanently — a collar set aside by the Beastmaster for hands you have not yet earned.)"
+    ]
+  },
+  "trophy_named_an_old_friend_for_you": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "min_level": 4,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "trophy_named_friend"
+    },
+    "lines": [
+      "Tonight, turning a trophy over in your hand, you said — without thinking — the name",
+      "of a friend who has been dead. The trophy, in the kingdom's old way, has lent itself",
+      "to the naming. You are, briefly, in the room with them. You stood up after. You stood taller.",
+      "  (+1 Defense, permanently — a trophy that let you name a friend who could not be named otherwise.)"
+    ]
+  },
+  "trophy_was_returned_to_you_by_a_stranger": {
+    "category": "found",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village",
+        "crossroads"
+      ],
+      "min_level": 3,
+      "chance": 0.1
+    },
+    "effect": {
+      "flag": "trophy_returned"
+    },
+    "lines": [
+      "Tonight a stranger came to you and handed back a trophy you had dropped — three zones",
+      "ago, in the bad fight. They had carried it that whole way to find you. They would not",
+      "take payment. They were the friend of someone you had laid to rest. They went on their road."
+    ]
+  },
+  "beastmaster_told_you_the_old_name_of_a_creature": {
+    "category": "mind",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "min_level": 4,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "attack",
+      "delta": 1,
+      "flag": "beastmaster_old_name"
+    },
+    "lines": [
+      "Today at the Beastmaster's pen they told you the old name — the kingdom-old name — of",
+      "one of the creatures you have been hunting. They said the name made the killing harder.",
+      "You said *yes.* You took the name. Your hand will be slower next time. Your hand will be more deliberate.",
+      "  (+1 Attack, permanently — an old name for a creature, taken to make your hand deliberate.)"
+    ]
+  },
+  "shop_keeper_kept_back_a_bread": {
+    "category": "promise_kept",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "min_visits": 3,
+      "chance": 0.13
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 1,
+      "flag": "shop_kept_bread"
+    },
+    "lines": [
+      "Today at Gravewatch's shop the keeper, behind the counter, took out — from a low shelf",
+      "— a small loaf and pushed it across to you without charging. *For the road.* You took",
+      "it. You did not protest. You eat better on the road for it. You will eat better tonight.",
+      "  (+1 Max HP, permanently — a loaf set aside for you by hands that did not charge for it.)"
+    ]
+  },
+  "potion_tasted_of_a_garden_at_home": {
+    "category": "found",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "min_level": 3,
+      "chance": 0.11
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 1,
+      "flag": "potion_garden"
+    },
+    "lines": [
+      "Tonight, drinking the last of one of your potions between fights, it tasted — briefly —",
+      "of the herb-garden you played in as a child. You don't remember the garden. You",
+      "remember the taste. The garden is in the potion. You will keep some of the taste in you.",
+      "  (+1 Max HP, permanently — a potion that tasted of a garden you had forgotten.)"
+    ]
+  },
+  "shop_keeper_named_you_aloud_for_the_first_time": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "min_visits": 4,
+      "chance": 0.12
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "shop_keeper_named"
+    },
+    "lines": [
+      "Today at Gravewatch's shop the keeper, paying you out for something you had brought,",
+      "said your name aloud — for the first time you had heard from them. Quietly. Like a",
+      "person testing the weight of a friend's word. You said theirs back. Equal weight.",
+      "  (+1 Defense, permanently — your name said aloud by a shopkeeper testing the weight of it.)"
+    ]
+  },
+  "consumable_in_your_pocket_warmed_a_pocket": {
+    "category": "body",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "min_level": 3,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "max_stamina",
+      "delta": 1,
+      "flag": "consumable_pocket_warm"
+    },
+    "lines": [
+      "Tonight, walking, you noticed that your potion pouch — the one with the small things",
+      "you carry — was warm against your thigh. Not the warmth of body-heat. The warmth of",
+      "things that have decided to be ready. They are ready. You walked easier knowing.",
+      "  (+1 Max Stamina, permanently — a pouch of consumables that has decided to stand ready.)"
+    ]
+  },
+  "shop_an_old_one_paid_you_for_a_story": {
+    "category": "found",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "min_visits": 3,
+      "chance": 0.11
+    },
+    "effect": {
+      "flag": "old_one_paid_story"
+    },
+    "lines": [
+      "Today at the shop an old one — leaning against the counter, between purchases — gave",
+      "you a small coin in exchange for a story about where you had been. You told them. Not",
+      "the worst parts. The next parts. They paid in full. They were the last to ask of you tonight."
+    ]
+  },
+  "potion_did_not_drink_smooth_today": {
+    "category": "broken",
+    "trigger": {
+      "at": [
+        "combat_low_hp"
+      ],
+      "min_level": 3,
+      "chance": 0.11
+    },
+    "effect": {
+      "stat": "max_stamina",
+      "delta": -1,
+      "flag": "potion_rough"
+    },
+    "lines": [
+      "Tonight in the bad beat you drank a potion and it caught — went down rough, the way",
+      "potions do when the bottle has, somewhere along the way, been knocked. The healing came.",
+      "The next breath was harder. Your chest will be a little tireder, from now on, after potions.",
+      "  (-1 Max Stamina, permanently — a potion that went down rough and took some of your breath.)"
+    ]
+  },
+  "shop_taught_you_to_count_change": {
+    "category": "mind",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "min_visits": 4,
+      "chance": 0.1
+    },
+    "effect": {
+      "flag": "learned_to_count_change"
+    },
+    "lines": [
+      "Travelling through Gravewatch you have learned, slowly, to count the change carefully",
+      "before pocketing — the way merchants in the kingdom expect of careful customers. You",
+      "are not a soft mark anymore. The shopkeepers tip their heads at you in the new way."
+    ]
+  },
+  "consumable_was_a_gift_for_someone_else": {
+    "category": "promise_kept",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "min_visits": 3,
+      "chance": 0.11
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 1,
+      "flag": "gift_for_other"
+    },
+    "lines": [
+      "Today you bought a small consumable — a sweet, a pastry, something that does not heal",
+      "— and gave it, without speaking, to a child in Gravewatch's square. The child did not",
+      "thank you in words. They opened it. They ate. The square went on its day. You walked on lighter.",
+      "  (+1 Max HP, permanently — a thing bought for the eating of a child.)"
+    ]
   }
 }

@@ -5,9 +5,9 @@
   "tolerance": 0.1,
   "careful_win_rate": {
     "warrior": 0.957,
-    "rogue": 0.753,
-    "mage": 0.737,
-    "ranger": 0.913,
-    "cleric": 0.56
+    "rogue": 0.827,
+    "mage": 0.820,
+    "ranger": 0.910,
+    "cleric": 0.663
   }
 }
