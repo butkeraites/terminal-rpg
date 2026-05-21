@@ -956,7 +956,44 @@
       "Each of them did something different with what they saw."
     ],
     "connections": ["crossroads"],
-    "conditional_connections": ["karst_outpost", "wynne_camp", "margrave_monument"]
+    "conditional_connections": ["karst_outpost", "wynne_camp", "margrave_monument"],
+    "encounters": [
+      {"type": "discovery", "id": "border_lichen_post", "label": "🌐 A border-post grown over with lichen",
+       "lines": [
+         "🌐 At the very turn where Mournhold's map said OUTSIDE, a border-post.",
+         "Wood, set deep, older than the realm-line it marks. The wood is grey now.",
+         "It has been grown over with lichen on the north face, where the wind comes.",
+         "",
+         "The lichen has been there long enough to have its own pattern. Old patterns.",
+         "",
+         "Where the lichen has not grown, the wood has been written on.",
+         "By many hands. Over what must be centuries. The writing is the same kind of",
+         "writing in every direction: a person's name, and the direction they were going.",
+         "",
+         "  PETRI ->  (going out, Karst spelling)",
+         "  HALWEN ->  (going out, two hundred years ago at least, by the script)",
+         "  <- ANSEL  (coming in. Wynne spelling. Five winters ago.)",
+         "  <- ANSEL'S MOTHER  (added later, in a different hand. She did not make it.)",
+         "  KARENA ->  (going out. Recent. No spelling — she did not know the marks.)",
+         "  KARENA <-  (also recent. She came back. The arrow crossed out, re-drawn.)",
+         "  THE TWELVE OF BRACKMERE ->  (going out, three winters ago)",
+         "  THE TWELVE OF BRACKMERE  (no arrow. The arrow was started, abandoned.)",
+         "",
+         "  THE PALL ->  (no arrow. The Pall does not cross at this border. The Pall stays.)",
+         "      (A hand has added: 'THE PALL CANNOT CROSS WHILE CAEL HOLDS.')",
+         "      (Another hand: 'THANK CAEL. WE ARE STILL ALIVE BECAUSE OF HER.')",
+         "      (A third hand: 'THANK THE NINETEEN BEFORE HER. WE ARE STILL ALIVE BECAUSE OF THEM.')",
+         "",
+         "Below all the names, in the writing of a Karst trader who used this border often,",
+         "carved deep and recent — perhaps Tace's, perhaps her brother's:",
+         "",
+         "  'A border is a place where someone has to count.'",
+         "  'A border is a place where someone has to say who has crossed.'",
+         "  'No one keeps this post. We keep it together. None of us are wrong about who has crossed.'",
+         "  'A border is the only thing Mournhold and Karst and Wynne and the Margrave agree on.'",
+         "  'We agree on who has come through. We agree on the names. That is something.'"
+       ]}
+    ]
   },
   "karst_outpost": {
     "name": "The Karst Outpost",
