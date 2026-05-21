@@ -5356,5 +5356,1176 @@
       "before this one — yours and the others'. It is gathering. You cannot wipe it away. You",
       "did not put it there. It does not, in fact, belong to you. But it is in your saves now."
     ]
+  },
+  "warrior_carried_the_dead": {
+    "category": "promise_kept",
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "requires_class": [
+        "warrior"
+      ],
+      "chance": 0.16
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "carried_a_body"
+    },
+    "lines": [
+      "After the fight, you carried one of theirs out from where they had fallen. You did not",
+      "have to. The body was heavy. You held it differently than you had ever held anything",
+      "before. Something in your back learned a thing you will not unlearn. You stand straighter.",
+      "  (+1 Defense, permanently — a weight your body now knows how to bear.)"
+    ]
+  },
+  "warrior_a_shield_arm_taught_you_to_stay": {
+    "category": "body",
+    "trigger": {
+      "at": [
+        "combat_low_hp"
+      ],
+      "requires_class": [
+        "warrior"
+      ],
+      "chance": 0.18
+    },
+    "effect": {
+      "stat": "max_stamina",
+      "delta": -1,
+      "flag": "shield_arm_learned"
+    },
+    "lines": [
+      "At the worst beat, the shield-arm took a blow that should have been the killing one.",
+      "It took it. The arm has a new memory now — a deep one, in the bone. The bone aches",
+      "before rain, will ache before rain forever, and the rest of you has less room to breathe.",
+      "  (-1 Max Stamina, permanently — the arm remembers, and the rest of the body pays.)"
+    ]
+  },
+  "warrior_the_first_strike_did_not_land": {
+    "category": "found",
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "requires_class": [
+        "warrior"
+      ],
+      "chance": 0.14
+    },
+    "effect": {
+      "stat": "attack",
+      "delta": 1,
+      "flag": "first_strike_swerved"
+    },
+    "lines": [
+      "Your first strike of the fight, today, went somewhere it had not intended — past the",
+      "guard, low, where you usually never reach. The body of the enemy was where your blade",
+      "was. You don't know whose body had taught your hand that line. But it knows the line now.",
+      "  (+1 Attack, permanently — a line your hand learned, in the dark, from somebody.)"
+    ]
+  },
+  "warrior_you_broke_a_haft_against_a_wall": {
+    "category": "broken",
+    "trigger": {
+      "at": [
+        "combat_low_hp"
+      ],
+      "requires_class": [
+        "warrior"
+      ],
+      "chance": 0.14
+    },
+    "effect": {
+      "stat": "max_stamina",
+      "delta": -1,
+      "flag": "haft_broken"
+    },
+    "lines": [
+      "Somewhere in the worst of it your haft cracked against stone. You did not feel it crack.",
+      "You felt it after — when the weight in your hand was wrong. The grip you trusted is",
+      "the grip you will not trust again. The kingdom takes such trusts. It does not give back.",
+      "  (-1 Max Stamina, permanently — a trust withdrawn from your own hand.)"
+    ]
+  },
+  "warrior_old_drillmaster_breathed_with_you": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "requires_class": [
+        "warrior"
+      ],
+      "chance": 0.15
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "drillmaster_count"
+    },
+    "lines": [
+      "In the middle of it, a count came back to you — your old drillmaster's count, the one",
+      "they used to set the rhythm in the yard. They have been dead a long count themselves.",
+      "You held to the count. The fight went where the count went. You will stand to that beat.",
+      "  (+1 Defense, permanently — a count given to you by the long dead.)"
+    ]
+  },
+  "warrior_the_dead_friends_step_in_yours": {
+    "category": "half_truth",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "requires_class": [
+        "warrior"
+      ],
+      "chance": 0.13
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": -1,
+      "flag": "ghost_step_warrior"
+    },
+    "lines": [
+      "You stepped on a particular slick of moss today, and for one count a friend you lost a",
+      "long time ago stepped beside you. Not behind. Beside. As if they had not died, as if",
+      "the war had not. Your chest took a small price for that count. You will pay it again.",
+      "  (-1 Max HP, permanently — a step you took beside someone who could not be there.)"
+    ]
+  },
+  "warrior_you_unsheathed_for_nothing": {
+    "category": "promise_broken",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "requires_class": [
+        "warrior"
+      ],
+      "chance": 0.12
+    },
+    "effect": {
+      "flag": "drew_against_air"
+    },
+    "lines": [
+      "Today, at a sound you did not understand, you drew your blade and there was nothing.",
+      "Just air. You sheathed it. The air remembered. You will not draw at a sound that small",
+      "again. But the air will. The air keeps a small record of every blade drawn against it."
+    ]
+  },
+  "warrior_a_widow_thanked_you_first": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "requires_class": [
+        "warrior"
+      ],
+      "min_visits": 2,
+      "chance": 0.15
+    },
+    "effect": {
+      "flag": "widow_first"
+    },
+    "lines": [
+      "A widow in Gravewatch thanked you tonight — not for anything you did this run. For a",
+      "thing your last warrior did, and the one before that. You did not know how to take it.",
+      "You said nothing. You both cried. She thanked you first. That has not happened before."
+    ]
+  },
+  "warrior_armor_grew_into_a_scar": {
+    "category": "body",
+    "trigger": {
+      "at": [
+        "combat_low_hp"
+      ],
+      "requires_class": [
+        "warrior"
+      ],
+      "chance": 0.13
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 2,
+      "flag": "buckle_scar"
+    },
+    "lines": [
+      "A buckle dug into your side for so long under the worst of the fight that, after, the",
+      "skin had folded around it. It became a scar in the shape of the buckle. The scar is",
+      "armor too, now — your body decided that, without asking you. You will be harder to kill.",
+      "  (+2 Max HP, permanently — a scar in the shape of your own gear.)"
+    ]
+  },
+  "warrior_named_your_blade_in_the_dark": {
+    "category": "promise_kept",
+    "trigger": {
+      "at": [
+        "save_action"
+      ],
+      "requires_class": [
+        "warrior"
+      ],
+      "min_visits": 2,
+      "chance": 0.13
+    },
+    "effect": {
+      "stat": "attack",
+      "delta": 1,
+      "flag": "blade_has_a_name"
+    },
+    "lines": [
+      "Tonight, in the dark before sleep, you said a name to your blade. Not yours. Someone",
+      "you could not keep alive. The blade took the name. The next time you draw it, the name",
+      "will be on the steel. Steel takes names well. Steel cannot betray the names it takes.",
+      "  (+1 Attack, permanently — a name given to your blade, in the dark.)"
+    ]
+  },
+  "rogue_a_pocket_held_a_coin_for_you": {
+    "category": "found",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "requires_class": [
+        "rogue"
+      ],
+      "chance": 0.15
+    },
+    "effect": {
+      "stat": "max_stamina",
+      "delta": 1,
+      "flag": "pocket_coin"
+    },
+    "lines": [
+      "You brushed past someone today in the close street and felt — without taking — that",
+      "their pocket had set aside a single small coin for your fingers, the way a hand sets",
+      "aside a thing for a sibling. You did not take it. You felt seen. You walk lighter.",
+      "  (+1 Max Stamina, permanently — a pocket that had room for you in it.)"
+    ]
+  },
+  "rogue_a_lock_opened_for_you_alone": {
+    "category": "found",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "requires_class": [
+        "rogue"
+      ],
+      "min_visits": 2,
+      "chance": 0.14
+    },
+    "effect": {
+      "stat": "attack",
+      "delta": 1,
+      "flag": "lock_opened_for_you"
+    },
+    "lines": [
+      "A lock today opened under your hand at a pressure it had no business yielding to. You",
+      "tested it after. You could not make it open again. It opened once, for you, for the",
+      "thing on the far side. You took the thing. Your hands have a new sureness in them now.",
+      "  (+1 Attack, permanently — a sureness a lock decided you deserved.)"
+    ]
+  },
+  "rogue_you_heard_a_door_not_opened": {
+    "category": "mind",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "requires_class": [
+        "rogue"
+      ],
+      "chance": 0.16
+    },
+    "effect": {
+      "flag": "heard_closed_door"
+    },
+    "lines": [
+      "Down the corridor today you heard the click of a closed door opening. Nobody else did.",
+      "You went and looked. The door was closed. It had not been opened. But you heard it open.",
+      "You hear those, now — the doors that almost did. You will hear them for the rest of this."
+    ]
+  },
+  "rogue_the_dark_kept_your_step": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "requires_class": [
+        "rogue"
+      ],
+      "chance": 0.14
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "dark_keeps_you"
+    },
+    "lines": [
+      "At the worst of it tonight the shadow under a beam, where you had stepped, did not",
+      "rustle. It should have. The shadow has decided to be quiet where you walk. You can feel",
+      "it deciding. The dark is in this with you. The dark holds its breath when you step.",
+      "  (+1 Defense, permanently — the dark keeps its own counsel where your foot falls.)"
+    ]
+  },
+  "rogue_you_did_not_slip_when_you_should_have": {
+    "category": "promise_kept",
+    "trigger": {
+      "at": [
+        "combat_low_hp"
+      ],
+      "requires_class": [
+        "rogue"
+      ],
+      "chance": 0.16
+    },
+    "effect": {
+      "flag": "boot_held"
+    },
+    "lines": [
+      "Your boot, on the wet slate of the roof, today, held. It should not have. The slate was",
+      "old and rounded. You crossed it. You did not look down. You don't know what held you.",
+      "Something held. You will, in dark moments, wonder if it was the roof itself. It was."
+    ]
+  },
+  "rogue_a_knife_came_back_warm": {
+    "category": "half_truth",
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "requires_class": [
+        "rogue"
+      ],
+      "chance": 0.13
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": -1,
+      "flag": "warm_blade_return"
+    },
+    "lines": [
+      "Your throwing knife came back to your hand tonight warmer than it left. Not blood-warm.",
+      "Hand-warm. As if it had been in a stranger's pocket for a count, between you and the",
+      "throw, and was returned to you. You took it. You will not throw it again this run.",
+      "  (-1 Max HP, permanently — a borrowed warmth that did not leave you whole.)"
+    ]
+  },
+  "rogue_a_thief_friend_taught_you_to_stay_still": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "requires_class": [
+        "rogue"
+      ],
+      "min_visits": 2,
+      "chance": 0.13
+    },
+    "effect": {
+      "stat": "max_stamina",
+      "delta": 1,
+      "flag": "stillness_lesson"
+    },
+    "lines": [
+      "In the bad moment a lesson came back to you — a thief-friend you had once, in the year",
+      "before they were caught. They taught you to stay perfectly still and let the guard's",
+      "eye go past. You stayed still tonight. The eye went past. They kept a thing in you.",
+      "  (+1 Max Stamina, permanently — a stillness taught to you, kept in you.)"
+    ]
+  },
+  "rogue_the_market_glanced_aside_for_you": {
+    "category": "found",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "requires_class": [
+        "rogue"
+      ],
+      "chance": 0.15
+    },
+    "effect": {
+      "flag": "market_aside"
+    },
+    "lines": [
+      "You walked the market in Gravewatch tonight and four eyes that should have caught you",
+      "— eyes you can name, eyes you know — were elsewhere when you passed. Not coincidence.",
+      "The market has its own preferences. Tonight it preferred you to pass. You passed."
+    ]
+  },
+  "rogue_you_stole_what_was_already_yours": {
+    "category": "promise_broken",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "requires_class": [
+        "rogue"
+      ],
+      "min_visits": 2,
+      "chance": 0.12
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": -1,
+      "flag": "stole_own"
+    },
+    "lines": [
+      "Tonight you took a small thing from a sill that, you realised after, was a thing of",
+      "yours — left there a long time ago, by you, when you were younger. You took it from",
+      "your own younger self. The thing is yours. You took it from yourself. You will pay.",
+      "  (-1 Max HP, permanently — a theft from a self who could not protest.)"
+    ]
+  },
+  "rogue_the_palm_of_an_enemy_relaxed": {
+    "category": "half_truth",
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "requires_class": [
+        "rogue"
+      ],
+      "chance": 0.12
+    },
+    "effect": {
+      "flag": "enemy_palm_relaxed"
+    },
+    "lines": [
+      "At the worst beat of the fight the enemy's palm — the one on the grip — relaxed. Not",
+      "a slip. A relaxing. As if they were tired of fighting you, particularly. You finished",
+      "them. They went down easy. You don't know why they relaxed. You will think about it."
+    ]
+  },
+  "mage_a_word_came_first_today": {
+    "category": "mind",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "requires_class": [
+        "mage"
+      ],
+      "chance": 0.16
+    },
+    "effect": {
+      "stat": "attack",
+      "delta": 1,
+      "flag": "first_word_back"
+    },
+    "lines": [
+      "Today, before any other thought, the first word of a spell you have not cast in years",
+      "came up to you. Whole. Clean. The way the very first words used to come, when you were",
+      "newer. You held the word. You will not say it now. But it is in your mouth, ready.",
+      "  (+1 Attack, permanently — an old word, returned to you in good condition.)"
+    ]
+  },
+  "mage_you_forgot_your_first_spell": {
+    "category": "forgetting",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "requires_class": [
+        "mage"
+      ],
+      "min_visits": 2,
+      "chance": 0.14
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": -1,
+      "flag": "first_spell_gone"
+    },
+    "lines": [
+      "The very first one. The one your teacher gave you, that little candle-lighting thing,",
+      "two syllables — you reached for it tonight and there was nothing. The page in you",
+      "where it lived is blank. Your teacher is dead. They cannot give it back. It is gone.",
+      "  (-1 Max HP, permanently — your first spell, taken cleanly by the Pall.)"
+    ]
+  },
+  "mage_a_lamp_lit_without_you_saying": {
+    "category": "found",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "requires_class": [
+        "mage"
+      ],
+      "chance": 0.15
+    },
+    "effect": {
+      "flag": "lamp_lit_for_thinking"
+    },
+    "lines": [
+      "You thought, briefly, that you would like the lamp lit. The lamp lit. You had not said",
+      "the word. The kindling caught on the thought alone. This has happened a small number of",
+      "times in the history of the discipline. It has happened once to you. You said nothing."
+    ]
+  },
+  "mage_a_circle_drew_itself_at_your_step": {
+    "category": "half_truth",
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "requires_class": [
+        "mage"
+      ],
+      "chance": 0.13
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "dust_warded"
+    },
+    "lines": [
+      "At the bad moment, you looked down and the dust at your feet had — without any drawing",
+      "by you — composed itself into a small protective circle. A ward, freshly drawn, by the",
+      "ground beneath you. You stepped out of it after. It stayed in your gait somehow.",
+      "  (+1 Defense, permanently — a ward the ground drew on your behalf.)"
+    ]
+  },
+  "mage_you_burned_a_page_you_did_not_mean_to": {
+    "category": "broken",
+    "trigger": {
+      "at": [
+        "discovery_read"
+      ],
+      "requires_class": [
+        "mage"
+      ],
+      "chance": 0.13
+    },
+    "effect": {
+      "stat": "attack",
+      "delta": -1,
+      "flag": "burned_page"
+    },
+    "lines": [
+      "Reading tonight you came too close to the candle and a margin caught and you smothered",
+      "it but a corner of the page was gone, and on that corner was the close of a spell you",
+      "had loved. The spell is half now. The half is no spell. You are dimmer for it.",
+      "  (-1 Attack, permanently — a spell halved by your own candle, your own hand.)"
+    ]
+  },
+  "mage_an_old_mentor_whispered_a_correction": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "requires_class": [
+        "mage"
+      ],
+      "chance": 0.13
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 2,
+      "flag": "mentor_corrected"
+    },
+    "lines": [
+      "In the casting, mid-fight, a voice — your old mentor's, who has been dead the count",
+      "of a small kingdom — said *no, here* and your hand obeyed and corrected the angle of",
+      "the gesture. The spell took. You stood up after. They have not stopped teaching you.",
+      "  (+2 Max HP, permanently — a correction from a teacher who is no longer there to give it.)"
+    ]
+  },
+  "mage_the_air_was_a_little_easier_to_shape_today": {
+    "category": "found",
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "requires_class": [
+        "mage"
+      ],
+      "chance": 0.14
+    },
+    "effect": {
+      "stat": "attack",
+      "delta": 1,
+      "flag": "air_easier"
+    },
+    "lines": [
+      "For one cast tonight, the air bent the way old air bent — old air, kingdom-old air,",
+      "the kind that is older than the rite that forgot itself. It did not resist your shape.",
+      "You will remember that compliance. Your hand will remember. Your spells will be cleaner.",
+      "  (+1 Attack, permanently — an air that decided to be shaped, briefly, for you.)"
+    ]
+  },
+  "mage_you_forgot_the_name_of_a_familiar_you_never_had": {
+    "category": "forgetting",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "requires_class": [
+        "mage"
+      ],
+      "chance": 0.12
+    },
+    "effect": {
+      "flag": "familiar_name_lost"
+    },
+    "lines": [
+      "A name came to you today — a familiar's name, the soft kind of name people give little",
+      "creatures who help them with the work. You did not have a familiar. You have never had.",
+      "The name went again. Some other you, in some other run, had one. The name was theirs."
+    ]
+  },
+  "mage_a_borrowed_word_burned_you": {
+    "category": "body",
+    "trigger": {
+      "at": [
+        "combat_low_hp"
+      ],
+      "requires_class": [
+        "mage"
+      ],
+      "chance": 0.15
+    },
+    "effect": {
+      "stat": "max_stamina",
+      "delta": -1,
+      "flag": "burned_by_word"
+    },
+    "lines": [
+      "You used a syllable tonight that did not belong to you. You used it because nothing",
+      "else would have worked. The syllable did the work and then took a small bite from the",
+      "inside of your mouth, in payment. Your breath will be shorter from now on. Justly.",
+      "  (-1 Max Stamina, permanently — the cost of a word you could not have rightly known.)"
+    ]
+  },
+  "mage_a_book_remembered_what_you_meant": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "discovery_read"
+      ],
+      "requires_class": [
+        "mage"
+      ],
+      "chance": 0.14
+    },
+    "effect": {
+      "stat": "max_stamina",
+      "delta": 1,
+      "flag": "book_remembered_you"
+    },
+    "lines": [
+      "The book opened, tonight, to the right page. You had not flipped to it. You had been",
+      "thinking about the spell on it — barely thinking — and the book, on its own, found",
+      "the page for you. A small companionship. Books do this for the people they know.",
+      "  (+1 Max Stamina, permanently — a book that found your page for you.)"
+    ]
+  },
+  "ranger_a_bird_did_not_lift_at_your_step": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "forest",
+        "reach",
+        "mountain"
+      ],
+      "requires_class": [
+        "ranger"
+      ],
+      "chance": 0.16
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "bird_kept_seat"
+    },
+    "lines": [
+      "A bird in the low brush, today, did not lift at your step. It should have. It is the",
+      "kind of bird that lifts at the rustle of a vole. You walked close. It cocked its head",
+      "at you. You walked on. The brush has, for the moment, decided that you are not a threat.",
+      "  (+1 Defense, permanently — a small judgement from the wild, in your favour.)"
+    ]
+  },
+  "ranger_a_path_softened_for_your_boot": {
+    "category": "found",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "forest",
+        "reach",
+        "mountain"
+      ],
+      "requires_class": [
+        "ranger"
+      ],
+      "chance": 0.15
+    },
+    "effect": {
+      "flag": "moss_thickened"
+    },
+    "lines": [
+      "Where you walked today, the moss was a little thicker. The roots tucked themselves",
+      "down. The path did not catch your foot anywhere. Some paths take to some hunters. This",
+      "path, today, took to yours. You will walk it again. It will be ready for you again."
+    ]
+  },
+  "ranger_a_stream_turned_to_drink": {
+    "category": "found",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "reach",
+        "forest"
+      ],
+      "requires_class": [
+        "ranger"
+      ],
+      "chance": 0.14
+    },
+    "effect": {
+      "stat": "max_stamina",
+      "delta": 1,
+      "flag": "stream_bent"
+    },
+    "lines": [
+      "You knelt by the stream today and the bend of the water seemed to deepen, just enough,",
+      "to fit your cupped hand. You drank. The water was sweet. Hunters notice such things.",
+      "You will not say it out loud. But you will count the stream as one of yours, from now on.",
+      "  (+1 Max Stamina, permanently — a water that gave you what you needed.)"
+    ]
+  },
+  "ranger_a_wolf_let_you_sleep": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "save_action"
+      ],
+      "location": [
+        "forest",
+        "mountain",
+        "reach"
+      ],
+      "requires_class": [
+        "ranger"
+      ],
+      "chance": 0.12
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 2,
+      "flag": "wolf_let_you_sleep"
+    },
+    "lines": [
+      "You slept tonight in a copse where, by the prints, a wolf had passed. The wolf did not",
+      "come back. You slept the whole night. The wolf has, for this run, decided about you.",
+      "When you next see a wolf — and you will — you will look at it differently. It will look back.",
+      "  (+2 Max HP, permanently — a sleep allowed you by something that owed you nothing.)"
+    ]
+  },
+  "ranger_an_arrow_came_back_quiet": {
+    "category": "half_truth",
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "requires_class": [
+        "ranger"
+      ],
+      "chance": 0.13
+    },
+    "effect": {
+      "flag": "quiet_arrow"
+    },
+    "lines": [
+      "You loosed a shaft tonight and, after the fight, found it where it had fallen. There",
+      "was no flight-sound when it came back into the leaves. Arrows make a sound. This one",
+      "did not. You picked it up. The leaves did not crackle. The forest is being polite to you."
+    ]
+  },
+  "ranger_a_thicket_closed_behind_you": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "forest"
+      ],
+      "requires_class": [
+        "ranger"
+      ],
+      "min_visits": 2,
+      "chance": 0.13
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": -1,
+      "flag": "thicket_closed"
+    },
+    "lines": [
+      "Whatever was on your trail today lost it at the thicket. The thicket closed behind you.",
+      "You did not push it shut. It shut. The thicket has decided whose side it is on. That",
+      "decision cost it a little of itself; you felt it cost you a little of yourself too.",
+      "  (-1 Max HP, permanently — a kindness from the wild has its small price.)"
+    ]
+  },
+  "ranger_you_loosed_at_an_animal_that_was_not_there": {
+    "category": "promise_broken",
+    "trigger": {
+      "at": [
+        "combat_low_hp"
+      ],
+      "requires_class": [
+        "ranger"
+      ],
+      "chance": 0.13
+    },
+    "effect": {
+      "stat": "max_stamina",
+      "delta": -1,
+      "flag": "loosed_at_shadow"
+    },
+    "lines": [
+      "At the worst moment you put a shaft at a shape in the brush, and the shape was not",
+      "there. Was, briefly, but had not been an animal. You spent the shaft. You spent the",
+      "breath. The forest noted the waste. Your draw will be a little harder, from now on.",
+      "  (-1 Max Stamina, permanently — a shot the forest is keeping the cost of.)"
+    ]
+  },
+  "ranger_an_old_blind_was_left_for_you": {
+    "category": "found",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "forest",
+        "mountain"
+      ],
+      "requires_class": [
+        "ranger"
+      ],
+      "min_visits": 2,
+      "chance": 0.13
+    },
+    "effect": {
+      "stat": "attack",
+      "delta": 1,
+      "flag": "blind_for_you"
+    },
+    "lines": [
+      "On a ridge today you found a hunter's blind — freshly braced, the brush still green",
+      "in the weave. No hunter. The position was good for a southerly. You sighted from it.",
+      "The shot you would have taken was clean. Someone left it for you. You took the place.",
+      "  (+1 Attack, permanently — a sight-line another hunter prepared for the next pair of eyes.)"
+    ]
+  },
+  "ranger_the_quarry_stood_for_a_breath": {
+    "category": "promise_kept",
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "requires_class": [
+        "ranger"
+      ],
+      "chance": 0.14
+    },
+    "effect": {
+      "flag": "quarry_gave_breath"
+    },
+    "lines": [
+      "The thing you were hunting, tonight, stopped at the bad moment and gave you the breath",
+      "you needed for the killing shot. It did not run when it should have. Hunters know when",
+      "the quarry has, for whatever reason, decided to give itself. This one decided. You took."
+    ]
+  },
+  "ranger_a_track_in_your_own_shape_crossed_yours": {
+    "category": "half_truth",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "forest",
+        "reach",
+        "mountain"
+      ],
+      "requires_class": [
+        "ranger"
+      ],
+      "min_visits": 2,
+      "chance": 0.12
+    },
+    "effect": {
+      "flag": "track_in_your_shape"
+    },
+    "lines": [
+      "You crossed a track today: boot-print same length as yours, same heel-bite, going the",
+      "other way. Fresh enough that you should have met the walker. You did not. The wood was",
+      "open. There was nobody. Some other you, in some other run, walked this way. Towards you."
+    ]
+  },
+  "cleric_a_small_prayer_answered_today": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "combat_low_hp"
+      ],
+      "requires_class": [
+        "cleric"
+      ],
+      "chance": 0.18
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 2,
+      "flag": "small_prayer_answered"
+    },
+    "lines": [
+      "In the worst beat you said a prayer you barely meant — half-thought, between the breath",
+      "and the strike. The prayer was answered. Not loud. Not by a name you would recognize.",
+      "But the strike landed. You stood. Something heard. Something will hear, from now on.",
+      "  (+2 Max HP, permanently — a prayer answered in the way prayers are sometimes answered.)"
+    ]
+  },
+  "cleric_you_did_not_pray_at_a_grave": {
+    "category": "promise_broken",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "requires_class": [
+        "cleric"
+      ],
+      "min_visits": 2,
+      "chance": 0.13
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": -1,
+      "flag": "skipped_a_grave_prayer"
+    },
+    "lines": [
+      "You passed a grave today without pausing. You knew you should pause. You did not. The",
+      "grave did not call after you — graves never do. The graves you pass without praying",
+      "for sit a little heavier on you. From now on, that one will sit on you. You let it.",
+      "  (-1 Max HP, permanently — a prayer withheld from someone who could not ask.)"
+    ]
+  },
+  "cleric_an_old_word_came_back_clean": {
+    "category": "mind",
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "requires_class": [
+        "cleric"
+      ],
+      "chance": 0.15
+    },
+    "effect": {
+      "stat": "attack",
+      "delta": 1,
+      "flag": "old_word_clean"
+    },
+    "lines": [
+      "Out of your mouth at the end of the fight tonight came a benediction in the older",
+      "tongue — the one before the rite, the one nobody has been taught for generations. You",
+      "did not know you knew it. The kingdom knew. The kingdom gave it back to you, tonight.",
+      "  (+1 Attack, permanently — a benediction in a tongue older than your teaching.)"
+    ]
+  },
+  "cleric_atrels_silence_was_louder": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "last_altar"
+      ],
+      "requires_class": [
+        "cleric"
+      ],
+      "chance": 0.16
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "atrels_silence_loud"
+    },
+    "lines": [
+      "You stood at Atrél's altar tonight and Atrél did not speak. The silence was louder than",
+      "any speech. As if Atrél, for you, were doing something more attentive than speaking.",
+      "You did not need a word. You knew it had been given. You stood differently after.",
+      "  (+1 Defense, permanently — a silence given to you in place of a word.)"
+    ]
+  },
+  "cleric_a_dying_one_thanked_you_in_their_name": {
+    "category": "promise_kept",
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "requires_class": [
+        "cleric"
+      ],
+      "chance": 0.13
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 2,
+      "flag": "dying_thanked_you"
+    },
+    "lines": [
+      "One of those who fell tonight, in their last breath, said your name. Not asked for help.",
+      "Said your name, the way a child says the name of someone who is staying with them. You",
+      "stayed. You held the hand until the breath was done. The name is yours from them now.",
+      "  (+2 Max HP, permanently — a name held by someone who could not keep their own.)"
+    ]
+  },
+  "cleric_a_prayer_collapsed_under_you": {
+    "category": "broken",
+    "trigger": {
+      "at": [
+        "combat_low_hp"
+      ],
+      "requires_class": [
+        "cleric"
+      ],
+      "chance": 0.14
+    },
+    "effect": {
+      "stat": "attack",
+      "delta": -1,
+      "flag": "prayer_collapsed"
+    },
+    "lines": [
+      "Mid-prayer tonight you went down. The words went with you. Not just the words you had",
+      "been saying — words behind them, words you had not yet thought of saying. The prayer",
+      "collapsed inward. Some of it is not there anymore. You will be quieter from now on.",
+      "  (-1 Attack, permanently — a prayer collapsed, taking a corner of you with it.)"
+    ]
+  },
+  "cleric_you_gave_a_blessing_to_a_door": {
+    "category": "found",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "requires_class": [
+        "cleric"
+      ],
+      "chance": 0.14
+    },
+    "effect": {
+      "flag": "blessed_a_door"
+    },
+    "lines": [
+      "Tonight you blessed a door in Gravewatch as you passed it — quietly, almost without",
+      "thinking. The door took the blessing. The hinge will be easier from now on for whoever",
+      "opens it. You did not know whose door. It does not matter. The door knows."
+    ]
+  },
+  "cleric_a_god_glanced_aside_at_you": {
+    "category": "half_truth",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "requires_class": [
+        "cleric"
+      ],
+      "chance": 0.11
+    },
+    "effect": {
+      "flag": "god_glanced"
+    },
+    "lines": [
+      "For one count today you felt, distinctly, that a god — not Atrél, not one of the kind",
+      "ones — turned its eye briefly to you. You did not look back. You did not move. The",
+      "count ended. The eye went elsewhere. You will not say which god. You will not forget."
+    ]
+  },
+  "cleric_you_held_a_silence_that_was_a_prayer": {
+    "category": "mind",
+    "trigger": {
+      "at": [
+        "save_action"
+      ],
+      "requires_class": [
+        "cleric"
+      ],
+      "chance": 0.13
+    },
+    "effect": {
+      "stat": "max_stamina",
+      "delta": -1,
+      "flag": "silence_as_prayer"
+    },
+    "lines": [
+      "You sat at the disk to save tonight and, before saving, held a silence with someone",
+      "you could not see. It was prayer. You could feel that it was. The silence took a small",
+      "weight out of you. The weight had to come from somewhere. Your lungs paid the count.",
+      "  (-1 Max Stamina, permanently — a silence that was prayer, paid for by the body.)"
+    ]
+  },
+  "cleric_one_of_the_silenced_blessed_you_back": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "sealed_chamber"
+      ],
+      "requires_class": [
+        "cleric"
+      ],
+      "min_visits": 2,
+      "chance": 0.13
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 3,
+      "flag": "silenced_blessed_back"
+    },
+    "lines": [
+      "You stood among the silenced graves tonight and gave them, one by one, the blessings",
+      "that had been refused them in life. Halfway through, you felt one of them give you a",
+      "blessing back. Soundlessly. The way the silenced bless. You stood the whole night with it.",
+      "  (+3 Max HP, permanently — a blessing returned by one who was forbidden to speak.)"
+    ]
   }
 }

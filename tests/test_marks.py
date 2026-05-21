@@ -82,6 +82,24 @@ def test_eligible_respects_denies_mark(content, tmp_path):
     assert not marks.eligible(state, mark, "zone_arrival")
 
 
+def test_eligible_respects_requires_class(content, tmp_path):
+    """A class-gated mark only fires for one of its allowed classes."""
+    # Warrior is the class built by _player(content). Make a mark that only
+    # rolls for mages — it must not be eligible for the warrior.
+    state = make_state(_player(content), content, ScriptedIO(), StubRandom(),
+                       chronicle_dir=tmp_path)
+    mage_only = {"id": "for_mages", "trigger": {"at": ["zone_arrival"],
+                                                 "requires_class": ["mage"]},
+                 "lines": ["x"]}
+    assert not marks.eligible(state, mage_only, "zone_arrival")
+    # A mark that allows warriors (alone or in a list) must be eligible.
+    warrior_ok = {"id": "for_warriors", "trigger": {"at": ["zone_arrival"],
+                                                     "requires_class": ["warrior",
+                                                                        "ranger"]},
+                  "lines": ["x"]}
+    assert marks.eligible(state, warrior_ok, "zone_arrival")
+
+
 def test_apply_effect_changes_player_stat(content, tmp_path):
     """A mark with a stat effect changes the player's stat by the delta."""
     state = make_state(_player(content), content, ScriptedIO(), StubRandom(),

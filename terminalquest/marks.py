@@ -33,6 +33,7 @@ Marks live in ``data/marks.json``. Each entry is a dict with these fields::
         "min_level":    optional player-level gate,
         "min_visits":   optional zone-visits-this-run gate,
         "requires_flag":     optional flag id the player must have set,
+        "requires_class":    optional list of class_ids the mark is limited to,
         "denies_mark":  optional list of mark ids that block this one,
         "chance":       float 0..1 — base roll chance per check
       },
@@ -152,6 +153,9 @@ def eligible(state, mark, fire_site):
             return False
     requires_flag = trigger.get("requires_flag")
     if requires_flag and not state.flags.get(requires_flag):
+        return False
+    requires_class = trigger.get("requires_class") or []
+    if requires_class and state.player.class_id not in requires_class:
         return False
     denies = trigger.get("denies_mark") or []
     for blocker in denies:
