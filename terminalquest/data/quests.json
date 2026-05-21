@@ -4862,5 +4862,247 @@
     "requires_mark": "summit_you_left_a_button_at_the_step",
     "reward_chronicle_line": "Once they had left a button at the Summit step, the Penitent at the upper stone could not refuse them. They ended him.",
     "flavor": "Once you left a button at the Summit step. The Penitent knows the gesture. End him. The button stays."
+  },
+  "da_after_insomniac_tally": {
+    "name": "After the Insomniac's Tally",
+    "target_enemy": "wolf",
+    "needed": 2,
+    "reward_gold": 150,
+    "cleanse_required": 0,
+    "requires_discovery": [
+      "insomniac_tally"
+    ],
+    "reward_marks": [
+      "insomniac_no_longer_counts_you"
+    ],
+    "flavor": "Two strokes on the Insomniac's tally are wolves that came off the wood last night and did not go back. End them. The tally can end two short."
+  },
+  "da_after_halnas_stump": {
+    "name": "After Halna's Stump",
+    "target_enemy": "wolf",
+    "needed": 2,
+    "reward_gold": 200,
+    "cleanse_required": 0,
+    "requires_discovery": [
+      "halnas_stump"
+    ],
+    "flavor": "Halna sat on this stump once and the wolves did not come for her. Two have come for it since. End them. The stump will be sat on again."
+  },
+  "da_after_piranesi_reach_furrow": {
+    "name": "After Piranesi's Furrow",
+    "target_enemy": "drowned_thresher",
+    "needed": 2,
+    "reward_gold": 350,
+    "cleanse_required": 1,
+    "requires_discovery": [
+      "piranesi_reach_furrow"
+    ],
+    "reward_marks": [
+      "you_have_been_in_piranesis_notes"
+    ],
+    "flavor": "Piranesi drew the furrow with a thresher's footprint in it twice. End the two threshers who left them. The furrow will dry in the shape of a feet that left."
+  },
+  "da_after_piranesi_reach_birds": {
+    "name": "After Piranesi's Birds",
+    "target_enemy": "bog_lurcher",
+    "needed": 3,
+    "reward_gold": 300,
+    "cleanse_required": 1,
+    "requires_discovery": [
+      "piranesi_reach_birds"
+    ],
+    "flavor": "Piranesi drew three birds over the floodfields and named none. Three lurchers wear feathers the same colour. End them. The birds will be named by the silence after."
+  },
+  "da_after_famine_capital_letter": {
+    "name": "After the Famine Letter",
+    "target_enemy": "silt_drowner",
+    "needed": 2,
+    "reward_gold": 350,
+    "cleanse_required": 2,
+    "requires_discovery": [
+      "famine_capital_letter"
+    ],
+    "reward_consumables": [
+      "The Last Bread"
+    ],
+    "flavor": "The capital letter on the famine page is a B and stops there. Two silt-drowners came up the river the night that B was written. End them. The letter can be finished by another hand."
+  },
+  "da_after_famine_waterwheel_song": {
+    "name": "After the Waterwheel Song",
+    "target_enemy": "last_reaper",
+    "needed": 1,
+    "reward_gold": 800,
+    "cleanse_required": 3,
+    "requires_discovery": [
+      "famine_waterwheel_song"
+    ],
+    "reward_chronicle_line": "They heard the waterwheel song and put the Last Reaper down. The wheel turned once after, and was still.",
+    "flavor": "The waterwheel song names the Last Reaper in its second verse. End him. The song can have a final verse you write in silence."
+  },
+  "da_after_reach_tally": {
+    "name": "After the Reach Tally",
+    "target_enemy": "drowned_thresher",
+    "needed": 3,
+    "reward_gold": 400,
+    "cleanse_required": 1,
+    "requires_discovery": [
+      "reach_tally"
+    ],
+    "reward_marks": [
+      "the_reach_remembers_your_step"
+    ],
+    "flavor": "The Reach tally has three names in the lost column. Three threshers wear those names on their backs in salt. End them. The column can be closed."
+  },
+  "da_after_drowned_holds_petition": {
+    "name": "After the Drowned Petition",
+    "target_enemy": "doorshut",
+    "needed": 2,
+    "reward_gold": 450,
+    "cleanse_required": 2,
+    "requires_discovery": [
+      "drowned_holds_petition"
+    ],
+    "flavor": "The petition was pushed under a door that had been shut for years. Two doorshuts now hold the names of the petitioners in their hinges. End them. The names can come out."
+  },
+  "da_after_tace_last_bundle": {
+    "name": "After Tace's Last Bundle",
+    "target_enemy": "reedwife",
+    "needed": 2,
+    "reward_gold": 450,
+    "cleanse_required": 2,
+    "requires_discovery": [
+      "tace_last_bundle"
+    ],
+    "reward_consumables": [
+      "The Last Bread"
+    ],
+    "flavor": "Tace's last bundle is by the doorpost, unopened. Two reedwives sang the night she set it down. End them. Someone alive can open the bundle now."
+  },
+  "da_after_piranesi_holds_doorpost": {
+    "name": "After Piranesi's Doorpost",
+    "target_enemy": "bonesong",
+    "needed": 1,
+    "reward_gold": 500,
+    "cleanse_required": 3,
+    "requires_discovery": [
+      "piranesi_holds_doorpost"
+    ],
+    "reward_marks": [
+      "piranesis_pencil_pointed_at_you"
+    ],
+    "flavor": "Piranesi wrote names on the doorpost no living scribe had a right to. One bonesong sings them now. End it. The doorpost will go quiet."
+  },
+  "da_after_erons_doorpost": {
+    "name": "After Eron's Doorpost",
+    "target_enemy": "forager_boy",
+    "needed": 1,
+    "reward_gold": 350,
+    "cleanse_required": 2,
+    "requires_discovery": [
+      "erons_doorpost"
+    ],
+    "reward_marks": [
+      "holds_eron_almost_spoke"
+    ],
+    "flavor": "Eron carved his name low on the doorpost, in a child's hand. One forager-boy walks the lane with the same hand. End him. Eron's name will be the only one left low."
+  },
+  "da_after_piranesi_cave_stone": {
+    "name": "After Piranesi's Cave Stone",
+    "target_enemy": "cave_troll",
+    "needed": 1,
+    "reward_gold": 400,
+    "cleanse_required": 1,
+    "requires_discovery": [
+      "piranesi_cave_stone"
+    ],
+    "reward_marks": [
+      "you_dreamt_in_piranesis_voice"
+    ],
+    "flavor": "Piranesi sketched the cave stone with a troll's tooth-mark on it. End the troll. The stone will lose the mark."
+  },
+  "da_after_gullet_alcove": {
+    "name": "After the Gullet's Alcove",
+    "target_enemy": "giant_bat",
+    "needed": 3,
+    "reward_gold": 300,
+    "cleanse_required": 1,
+    "requires_discovery": [
+      "gullet_alcove"
+    ],
+    "reward_marks": [
+      "gullet_older_hand_set_a_thing_aside"
+    ],
+    "flavor": "The Gullet's alcove holds three roosting bats older than the Pall. End them. The alcove can hold something kinder for a while."
+  },
+  "da_after_piranesi_mourncross_square": {
+    "name": "After Piranesi's Square",
+    "target_enemy": "hollow_procession",
+    "needed": 1,
+    "reward_gold": 600,
+    "cleanse_required": 3,
+    "requires_discovery": [
+      "piranesi_mourncross_square"
+    ],
+    "reward_marks": [
+      "mourncross_open_door_closed"
+    ],
+    "flavor": "Piranesi drew the square the year the census was burned. One hollow procession still walks it on the same line he drew. End the line."
+  },
+  "da_after_atrel_register": {
+    "name": "After Atrél's Register",
+    "target_enemy": "pall_magistrate",
+    "needed": 1,
+    "reward_gold": 800,
+    "cleanse_required": 4,
+    "requires_discovery": [
+      "atrel_register"
+    ],
+    "reward_marks": [
+      "promised_atrel_a_grief"
+    ],
+    "flavor": "Atrél kept a register under the side altar — the names the Magistrates struck out. End the Magistrate who held the pen. The register can be re-read by a kinder voice."
+  },
+  "da_after_piranesi_choir_column": {
+    "name": "After Piranesi's Choir Column",
+    "target_enemy": "reliquary_golem",
+    "needed": 1,
+    "reward_gold": 900,
+    "cleanse_required": 4,
+    "requires_discovery": [
+      "piranesi_choir_column"
+    ],
+    "reward_consumables": [
+      "The Last Bread"
+    ],
+    "flavor": "Piranesi drew the column of the Choir and named the golem at its base in pencil. End it. The column can lose a name; the Choir can lose a step."
+  },
+  "da_after_atrel_side_altar": {
+    "name": "After Atrél's Side Altar",
+    "target_enemy": "censer_shade",
+    "needed": 2,
+    "reward_gold": 500,
+    "cleanse_required": 3,
+    "requires_discovery": [
+      "atrel_side_altar"
+    ],
+    "reward_marks": [
+      "choir_set_a_grief_at_atrels_side_altar"
+    ],
+    "flavor": "Atrél's side altar has two censer-shades that came when the main altar was loud. End them. The side altar can be quiet again, the way Atrél kept it."
+  },
+  "da_after_last_dyke_lore": {
+    "name": "After the Last Dyke's Older Name",
+    "target_enemy": "dyke_warden",
+    "needed": 1,
+    "reward_gold": 1100,
+    "cleanse_required": 4,
+    "requires_discovery": [
+      "last_dyke_lore"
+    ],
+    "reward_marks": [
+      "dyke_a_name_carved_on_the_stone"
+    ],
+    "reward_chronicle_line": "They learned the dyke's older name and ended the Warden who guarded the newer one. The stone could be re-carved.",
+    "flavor": "The Last Dyke had an older name. The Warden answers only to the newer one. End him. The older name can be carved over the newer."
   }
 }
