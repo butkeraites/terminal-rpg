@@ -2306,5 +2306,194 @@
     ],
     "reward_chronicle_line": "A previous one of them had walked the Witherwood younger. The wood remembered the gait. The new self ended the wolf the old self had run from.",
     "flavor": "A previous you walked here younger and faster. One wolf the previous you ran from is still there. End it."
+  },
+  "thresher_pair_at_low_water": {
+    "name": "Two Threshers at Low Water",
+    "target_enemy": "drowned_thresher",
+    "needed": 2,
+    "reward_gold": 200,
+    "cleanse_required": 1,
+    "flavor": "Two threshers at low water — the easy two, the ones the Reach offers you when you arrive. End them. The Reach begins the day quieter."
+  },
+  "silt_drowners_at_dawn": {
+    "name": "Silt-Drowners at Dawn",
+    "target_enemy": "silt_drowner",
+    "needed": 4,
+    "reward_gold": 350,
+    "cleanse_required": 1,
+    "flavor": "Four silt-drowners come up at dawn. The Reach's old fishermen took them while the songs were still warm. End them."
+  },
+  "thresher_reeds_for_winter": {
+    "name": "Thresher-Reeds for the Long Winter",
+    "target_trophy": "thresher_reed",
+    "needed": 20,
+    "reward_gold": 700,
+    "cleanse_required": 3,
+    "reward_chronicle_line": "They brought back twenty thresher-reeds — enough to seal the Reach's last farmhouse through one more winter.",
+    "reward_consumables": [
+      "The Last Bread",
+      "The Last Bread",
+      "The Last Bread"
+    ],
+    "flavor": "The last farmhouse needs twenty reeds to seal it for the winter. Twenty. No fewer. The roof leaked once already."
+  },
+  "after_silt_in_boots": {
+    "name": "After the Silt in Your Boots",
+    "target_enemy": "drowned_thresher",
+    "needed": 2,
+    "reward_gold": 350,
+    "cleanse_required": 1,
+    "requires_mark": "reach_silt_in_your_boots",
+    "reward_marks": [
+      "reach_taught_you_to_wade"
+    ],
+    "flavor": "Silt sat in your boots after the Reach. Two threshers walked past it without noticing. End them. The silt will teach you to wade after."
+  },
+  "after_river_hairband": {
+    "name": "After the River Took Your Hairband",
+    "target_enemy": "silt_drowner",
+    "needed": 1,
+    "reward_gold": 300,
+    "cleanse_required": 1,
+    "requires_mark": "reach_river_took_your_hairband",
+    "reward_marks": [
+      "reach_water_remembered_your_face"
+    ],
+    "flavor": "The river took your hairband once. A silt-drowner wears it on his wrist. End him. The hairband will come back."
+  },
+  "after_kept_your_step": {
+    "name": "After the Reach Kept Your Step",
+    "target_enemy": "bog_lurcher",
+    "needed": 1,
+    "reward_gold": 400,
+    "cleanse_required": 2,
+    "requires_mark": "reach_kept_your_step",
+    "reward_chronicle_line": "The Reach had kept their step once; they returned and ended the Bog-Lurcher whose footprints had been the kept ones, found out.",
+    "flavor": "The Reach kept your step. A Lurcher walks in the kept step. End the Lurcher. The step will be yours alone."
+  },
+  "after_drowned_song": {
+    "name": "After the Reach Drowned a Song You Loved",
+    "target_enemy": "last_reaper",
+    "needed": 1,
+    "reward_gold": 600,
+    "cleanse_required": 2,
+    "requires_mark": "reach_drowned_a_song_you_loved",
+    "reward_marks": [
+      "reaper_water_did_not_answer"
+    ],
+    "flavor": "A song you loved drowned in the Reach. The Reaper hums it now. End him. The song will be quiet."
+  },
+  "after_helka_bench": {
+    "name": "After Helka Set a Bench for You",
+    "target_enemy": "drowned_thresher",
+    "needed": 3,
+    "reward_gold": 350,
+    "cleanse_required": 1,
+    "requires_mark": "reach_helka_set_a_bench_for_you",
+    "reward_consumables": [
+      "The Last Bread",
+      "The Last Bread"
+    ],
+    "flavor": "Helka set a bench for you at the Reach's edge once. Three threshers walked between you and the bench. End them. The bench will be a bench again."
+  },
+  "reaper_no_damage": {
+    "name": "Clean Against the Last Reaper",
+    "target_enemy": "last_reaper",
+    "completion_condition": "no_damage_taken",
+    "needed": 1,
+    "reward_gold": 700,
+    "cleanse_required": 2,
+    "flavor": "The Last Reaper. End him without a scratch on you. The Reach's old water-keepers did it this way to keep the dead uninterested."
+  },
+  "lurcher_named_at_death": {
+    "name": "Name the Bog-Lurchers as They Die",
+    "target_enemy": "bog_lurcher",
+    "completion_condition": "named_them_at_death",
+    "needed": 2,
+    "reward_gold": 500,
+    "cleanse_required": 2,
+    "reward_marks": [
+      "holds_doorpost_remembered_a_name"
+    ],
+    "flavor": "Two Lurchers. Speak each one's old name as the killing blow lands. The Reach's old morticians did it this way."
+  },
+  "silt_pet_assisted": {
+    "name": "Let the Pet Bring the Silt-Drowners Down",
+    "target_enemy": "silt_drowner",
+    "completion_condition": "pet_assisted",
+    "needed": 2,
+    "reward_gold": 400,
+    "cleanse_required": 1,
+    "flavor": "Two silt-drowners. Your pet lands the blow that drops each under half hp. The pet learns the Reach the way pets do."
+  },
+  "thresher_no_abilities": {
+    "name": "Three Threshers Without Abilities",
+    "target_enemy": "drowned_thresher",
+    "completion_condition": "used_no_abilities",
+    "needed": 3,
+    "reward_gold": 500,
+    "cleanse_required": 1,
+    "flavor": "Three threshers. No ability used in any of the three fights. The Reach's first farmers did it this way."
+  },
+  "warriors_wall_against_reach": {
+    "name": "The Warrior's Wall Against the Reach",
+    "target_enemy": "drowned_thresher",
+    "needed": 6,
+    "reward_gold": 600,
+    "cleanse_required": 1,
+    "requires_class": [
+      "warrior"
+    ],
+    "reward_consumables": [
+      "The Last Bread"
+    ],
+    "flavor": "Six threshers, broken against the wall a warrior holds at the Reach's edge. The Reach respects the wall."
+  },
+  "rangers_dry_foot": {
+    "name": "The Ranger's Dry Foot on the Reach",
+    "target_enemy": "bog_lurcher",
+    "needed": 3,
+    "reward_gold": 600,
+    "cleanse_required": 2,
+    "requires_class": [
+      "ranger"
+    ],
+    "reward_marks": [
+      "reach_taught_you_to_wade"
+    ],
+    "flavor": "Three lurchers. The ranger never wets her foot in any of the three fights. The Reach respects dry feet."
+  },
+  "hidden_after_piranesi_furrow": {
+    "name": "After Piranesi Drew the Furrow",
+    "target_enemy": "drowned_thresher",
+    "needed": 2,
+    "reward_gold": 400,
+    "cleanse_required": 0,
+    "hidden": true,
+    "trigger_action": {
+      "type": "flag_set",
+      "params": {
+        "flag_name": "piranesi_reach_furrow_seen"
+      }
+    },
+    "reward_marks": [
+      "reach_promised_the_field_a_grain"
+    ],
+    "flavor": "Once Piranesi's furrow drawing is known to you, two threshers walk along the furrow's exact line. End them. The furrow will be a furrow."
+  },
+  "after_reckoning_in_the_reach": {
+    "name": "After the Reckoning, the Reach Is Colder",
+    "target_enemy": "last_reaper",
+    "needed": 1,
+    "reward_gold": 1000,
+    "cleanse_required": 3,
+    "requires_ending": [
+      "reckoning"
+    ],
+    "reward_marks": [
+      "reaper_water_did_not_answer"
+    ],
+    "reward_chronicle_line": "Once they had once unmade Mournhold by Reckoning, the Reach's Last Reaper was colder by one count, and they took him in that count.",
+    "flavor": "Across runs, the Reckoning marks you. The Reach is colder by one count for you. The Reaper feels the cold. End him."
   }
 }
