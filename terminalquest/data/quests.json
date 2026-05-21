@@ -1280,5 +1280,203 @@
     ],
     "reward_chronicle_line": "Once they had once unmade Mournhold by Reckoning, the Ashen Penitent at the stone above the snowline turned his head and asked for the rest. They gave it.",
     "flavor": "Across runs, the Reckoning marks you. The Penitent turns his head when you arrive. End him. The kingdom never had a way to refuse this."
+  },
+  "bonesong_quartet": {
+    "name": "Four Bonesongs to Quiet",
+    "target_enemy": "bonesong",
+    "needed": 4,
+    "reward_gold": 350,
+    "cleanse_required": 1,
+    "flavor": "Four bonesongs hum at the corners of the holds. End the humming. The dead in the walls deserve a different sound."
+  },
+  "doorshut_three": {
+    "name": "Three Doorshuts Will Open Once",
+    "target_enemy": "doorshut",
+    "needed": 3,
+    "reward_gold": 400,
+    "cleanse_required": 1,
+    "flavor": "Three doorshuts are the doors that closed the holds against the kingdom. End them. The doors will open once."
+  },
+  "red_beards_three": {
+    "name": "Three Red Beards on the Old Hammer-Road",
+    "target_enemy": "red_beard",
+    "needed": 3,
+    "reward_gold": 500,
+    "cleanse_required": 2,
+    "flavor": "Three of the holds' old guard still walk the hammer-road. End them. The hammer-road belongs to no one and that is right."
+  },
+  "reedwives_two": {
+    "name": "Two Reedwives at the Old Wash",
+    "target_enemy": "reedwife",
+    "needed": 2,
+    "reward_gold": 450,
+    "cleanse_required": 2,
+    "flavor": "Two reedwives at the old wash, still trying to clean what should not be clean. End them. The wash can be wash again."
+  },
+  "doorposts_a_read_the_sentry_log": {
+    "name": "The Names on the Doorposts — Read the Sentry Log",
+    "target_enemy": "doorshut",
+    "needed": 2,
+    "reward_gold": 250,
+    "cleanse_required": 0,
+    "requires_discovery": [
+      "famine_sentry_log"
+    ],
+    "chain_next": "doorposts_b_seed_ledger",
+    "flavor": "The sentry log names two doorshuts who closed first. End them. Their names are the first you will need."
+  },
+  "doorposts_b_seed_ledger": {
+    "name": "The Names on the Doorposts — The Seed Ledger",
+    "target_enemy": "red_beard",
+    "needed": 1,
+    "reward_gold": 400,
+    "cleanse_required": 0,
+    "requires_quest": [
+      "doorposts_a_read_the_sentry_log"
+    ],
+    "requires_discovery": [
+      "famine_seed_ledger"
+    ],
+    "chain_next": "doorposts_c_brackmere_child",
+    "reward_marks": [
+      "holds_doorpost_remembered_a_name"
+    ],
+    "flavor": "The seed ledger names a Red Beard who refused to share. End him. The ledger will name him a refuser."
+  },
+  "doorposts_c_brackmere_child": {
+    "name": "The Names on the Doorposts — Brackmere's Child",
+    "target_enemy": "reedwife",
+    "needed": 1,
+    "reward_gold": 500,
+    "cleanse_required": 0,
+    "requires_quest": [
+      "doorposts_b_seed_ledger"
+    ],
+    "requires_discovery": [
+      "famine_brackmere_child"
+    ],
+    "chain_next": "doorposts_d_carve_a_name",
+    "reward_marks": [
+      "holds_you_forgot_a_grandmother"
+    ],
+    "flavor": "The Brackmere child's name is on a reedwife's apron. End her. Take the apron. The child will be named again."
+  },
+  "doorposts_d_carve_a_name": {
+    "name": "The Names on the Doorposts — Carve a Name",
+    "target_enemy": "bonesong",
+    "needed": 3,
+    "reward_gold": 700,
+    "cleanse_required": 0,
+    "requires_quest": [
+      "doorposts_c_brackmere_child"
+    ],
+    "reward_chronicle_line": "They walked the Drowned Holds and named four doorposts — sentry, refuser, child, and grandmother — and the Holds had four names they could be remembered by, briefly.",
+    "reward_marks": [
+      "holds_you_added_a_name_to_a_post"
+    ],
+    "flavor": "Three bonesongs guard the doorpost where you can carve the names. End them. Carve. The kingdom will have four names the Pall did not unname."
+  },
+  "red_beards_hammer_picked_up": {
+    "name": "Red Beard's Hammer Haft, Reclaimed",
+    "target_enemy": "red_beard",
+    "needed": 1,
+    "reward_gold": 400,
+    "cleanse_required": 2,
+    "requires_discovery": [
+      "red_beards_hammer_haft"
+    ],
+    "reward_consumables": [
+      "The Last Bread"
+    ],
+    "flavor": "His haft is still in the doorpost. End the Red Beard who left it there. The haft will not need to stay."
+  },
+  "after_holds_blamed_you": {
+    "name": "After the Holds Blamed You for Living",
+    "target_enemy": "bonesong",
+    "needed": 3,
+    "reward_gold": 400,
+    "cleanse_required": 1,
+    "requires_mark": "holds_blamed_you_for_living",
+    "reward_marks": [
+      "holds_recognized_your_grief"
+    ],
+    "flavor": "The Holds blamed you for living. Three bonesongs sing the blame. End them. The blame will be a grief instead."
+  },
+  "after_dead_hand_caught_sleeve": {
+    "name": "After a Dead Hand Caught Your Sleeve",
+    "target_enemy": "reedwife",
+    "needed": 1,
+    "reward_gold": 350,
+    "cleanse_required": 2,
+    "requires_mark": "holds_dead_hand_caught_your_sleeve",
+    "reward_chronicle_line": "Once a dead hand had caught their sleeve in the Drowned Holds, they returned and ended the reedwife who had thrown it.",
+    "flavor": "Once a dead hand caught your sleeve here. A reedwife threw it. End her. The sleeve will be a sleeve."
+  },
+  "named_them_at_death_holds": {
+    "name": "Name Them As They Die",
+    "target_enemy": "doorshut",
+    "completion_condition": "named_them_at_death",
+    "needed": 2,
+    "reward_gold": 500,
+    "cleanse_required": 2,
+    "reward_marks": [
+      "holds_doorpost_remembered_a_name"
+    ],
+    "flavor": "Two doorshuts. Speak their old name as the killing blow lands. The kingdom's old undertakers did it this way."
+  },
+  "no_damage_taken_holds": {
+    "name": "Clean Through the Drowned Holds",
+    "target_enemy": "red_beard",
+    "completion_condition": "no_damage_taken",
+    "needed": 1,
+    "reward_gold": 600,
+    "cleanse_required": 2,
+    "flavor": "A Red Beard. End him without a scratch on you. The Holds measure who came through them whole."
+  },
+  "hidden_forager_recognized_you": {
+    "name": "The Forager Boy Recognized You",
+    "target_enemy": "forager_boy",
+    "needed": 1,
+    "reward_gold": 300,
+    "cleanse_required": 0,
+    "hidden": true,
+    "trigger_action": {
+      "type": "zone_visited",
+      "params": {
+        "zone_id": "drowned_holds"
+      }
+    },
+    "reward_marks": [
+      "holds_eron_almost_spoke"
+    ],
+    "flavor": "The forager boy in the rafters looked at you for one count longer than at the others. End the boy. The look will mean something later."
+  },
+  "reborn_you_were_almost_a_forager": {
+    "name": "A Previous You Was Almost a Forager Boy",
+    "target_enemy": "forager_boy",
+    "needed": 1,
+    "reward_gold": 500,
+    "cleanse_required": 0,
+    "requires_flag": "is_reborn",
+    "reward_marks": [
+      "holds_you_carry_a_shard_of_pottery"
+    ],
+    "reward_chronicle_line": "A previous one of them had been a forager boy in the Drowned Holds, and when they returned, one of the boys had the same shard of pottery in his pocket.",
+    "flavor": "A previous you stood in this hold once, hand on a windowsill, near to becoming a forager. One of the boys has the shard your previous you almost picked up. End him. Take the shard."
+  },
+  "mages_four_names": {
+    "name": "The Mage's Four Counter-Songs",
+    "target_enemy": "bonesong",
+    "needed": 4,
+    "reward_gold": 600,
+    "cleanse_required": 1,
+    "requires_class": [
+      "mage"
+    ],
+    "reward_marks": [
+      "holds_recognized_your_grief"
+    ],
+    "reward_chronicle_line": "A mage walked the Drowned Holds and pitched a counter-song against four bonesongs. The names they had eaten came back out of their mouths in the dying.",
+    "flavor": "Four bonesongs each carry a name they ate. Only a mage knows the right pitch to make them give the names back."
   }
 }
