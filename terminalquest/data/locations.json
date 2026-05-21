@@ -1048,6 +1048,29 @@
          "'No grain is to be released. No water is to be released. No release of any kind.'",
          "'The holds will hold themselves through the famine winter. The capital eats.'",
          "Underneath, a forger's hand has tried — and failed — to add a single word: 'enough.'"
+       ]},
+      {"type": "discovery", "id": "third_dyke_beams", "label": "🪵 A small stack of new beams beside the third dyke",
+       "lines": [
+         "🪵 Beyond the upright dyke — the one that held — a small stack of new beams.",
+         "Pine, fresh-cut, oiled. Eight of them, set neatly. None of them have been used yet.",
+         "Beside the stack, a folded note in the Engineer's hand. Brown ink. Recent.",
+         "",
+         "  'I have not been here in twenty winters. I have not lifted my elbow.'",
+         "  'I am not lifting it yet. I am writing this with my left hand.'",
+         "",
+         "  'These beams are for the third dyke — the one I tried to close, the one she'",
+         "  'bound me away from. They are cut to the right length. They are oiled.'",
+         "  'They are here. I had them carried by people who do not know what they are for.'",
+         "  'I do not ask people to know. I ask them to carry. They have carried.'",
+         "",
+         "  'When the Reaper is down, I will come. I will lift my arm. I will set the first'",
+         "  'beam into the gate-slot I could not reach the day she opened it. The beams will'",
+         "  'remember the slot. The slot will remember the beams. I will not need to teach them.'",
+         "",
+         "  'If you have walked here from where she still is — and she still is, I know that —'",
+         "  'do not lift a beam yourself. The beam is mine to lift. I have been waiting to lift'",
+         "  'a beam for twenty winters. You can give me only one thing: come back and tell me she is down.'",
+         "  'I will lift the elbow. The beams will know me by the hands that lift them. — Helka.'"
        ]}
     ]
   },
