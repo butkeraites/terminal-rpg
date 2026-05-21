@@ -1095,5 +1095,190 @@
       "choir_set_a_grief_at_atrels_side_altar"
     ],
     "flavor": "Once you have made Atrél's Peace, the side altar accepts a grief. An effigy guards the altar. End it. Set the grief."
+  },
+  "mountain_ogres_four": {
+    "name": "Four Ogres on the Bare Ridge",
+    "target_enemy": "mountain_ogre",
+    "needed": 4,
+    "reward_gold": 700,
+    "cleanse_required": 4,
+    "flavor": "Four ogres watch the bare ridge — the spot where climbers stop seeing each other's silhouettes against the sky. End them."
+  },
+  "stone_golems_two": {
+    "name": "Stone-Golems at the Step",
+    "target_enemy": "stone_golem",
+    "needed": 2,
+    "reward_gold": 800,
+    "cleanse_required": 4,
+    "flavor": "Two stone-golems hold the last narrow step. Without them, the way to the Summit becomes a thing a climber can walk."
+  },
+  "ice_wraiths_six": {
+    "name": "Six Wraiths Above the Snowline",
+    "target_enemy": "ice_wraith",
+    "needed": 6,
+    "reward_gold": 600,
+    "cleanse_required": 4,
+    "flavor": "Six wraiths above the snowline. They were climbers once and the snow is colder for not knowing it."
+  },
+  "the_ashen_penitent_must_kneel": {
+    "name": "The Ashen Penitent Must Kneel",
+    "target_enemy": "ashen_penitent",
+    "needed": 1,
+    "reward_gold": 1300,
+    "cleanse_required": 5,
+    "reward_chronicle_line": "They walked the Ashen Climb to the Penitent's stone and made him kneel one last time.",
+    "flavor": "He was the first survivor who turned back. He has knelt at this stone for a century. Make him kneel one more time."
+  },
+  "hand_a_find_the_handprint": {
+    "name": "The Hand Beneath Yours — Find the Print",
+    "target_enemy": "ice_wraith",
+    "needed": 2,
+    "reward_gold": 350,
+    "cleanse_required": 0,
+    "requires_discovery": [
+      "climbers_stone"
+    ],
+    "chain_next": "hand_b_climb_the_step",
+    "flavor": "The climbers' stone has a handprint that fits yours. Two wraiths circle it. End them. Place your hand."
+  },
+  "hand_b_climb_the_step": {
+    "name": "The Hand Beneath Yours — Climb the Step",
+    "target_enemy": "stone_golem",
+    "needed": 1,
+    "reward_gold": 600,
+    "cleanse_required": 0,
+    "requires_quest": [
+      "hand_a_find_the_handprint"
+    ],
+    "chain_next": "hand_c_set_your_print",
+    "reward_marks": [
+      "penitent_handprint_under_yours"
+    ],
+    "flavor": "A stone-golem stands at the step the hand under yours could not pass. Pass it. The hand under yours is owed."
+  },
+  "hand_c_set_your_print": {
+    "name": "The Hand Beneath Yours — Set Your Own",
+    "target_enemy": "ashen_penitent",
+    "needed": 1,
+    "reward_gold": 1000,
+    "cleanse_required": 0,
+    "requires_quest": [
+      "hand_b_climb_the_step"
+    ],
+    "reward_chronicle_line": "They placed their own handprint above the one from before, and the Penitent recognized the order of the hands.",
+    "reward_marks": [
+      "penitent_named_you"
+    ],
+    "flavor": "The Penitent waits at the upper stone. Take him. Then set your own handprint above the one from before. The order will matter, later."
+  },
+  "piranesi_bare_patch_known": {
+    "name": "The Bare Patch Piranesi Drew",
+    "target_enemy": "mountain_ogre",
+    "needed": 1,
+    "reward_gold": 400,
+    "cleanse_required": 4,
+    "requires_discovery": [
+      "piranesi_mountain_bare_patch"
+    ],
+    "reward_marks": [
+      "the_climb_marked_your_lungs"
+    ],
+    "flavor": "Piranesi drew the bare patch as the place where the snow refuses to fall. An ogre keeps that patch. Take it."
+  },
+  "penitents_paper_read": {
+    "name": "What the Penitent's Paper Names",
+    "target_enemy": "ashen_penitent",
+    "needed": 1,
+    "reward_gold": 800,
+    "cleanse_required": 5,
+    "requires_discovery": [
+      "penitents_paper"
+    ],
+    "reward_marks": [
+      "penitent_told_you_his_wifes_name"
+    ],
+    "flavor": "The paper names his wife. Once you have read the name, the Penitent will allow himself one true fight. End him in it."
+  },
+  "after_he_named_you": {
+    "name": "After He Named You",
+    "target_enemy": "ashen_penitent",
+    "needed": 1,
+    "reward_gold": 900,
+    "cleanse_required": 5,
+    "requires_mark": "penitent_named_you",
+    "reward_chronicle_line": "After the Penitent had named them, they returned to his stone and ended him with the name he had given them.",
+    "flavor": "He named you once. Return to the stone. End him with the name he gave you. Names should not outlive their givers."
+  },
+  "after_his_wifes_name": {
+    "name": "After You Knew His Wife's Name",
+    "target_enemy": "ashen_penitent",
+    "needed": 1,
+    "reward_gold": 1100,
+    "cleanse_required": 5,
+    "requires_mark": "penitent_told_you_his_wifes_name",
+    "reward_marks": [
+      "penitent_named_the_summit_for_you"
+    ],
+    "flavor": "Once you knew his wife's name. The Penitent owes you one true name in return — the Summit's. End him. Carry the name up."
+  },
+  "climb_low_hp_kill": {
+    "name": "The Last Hour of the Climb",
+    "target_enemy": "stone_golem",
+    "completion_condition": "killed_while_low_hp",
+    "needed": 1,
+    "reward_gold": 700,
+    "cleanse_required": 4,
+    "flavor": "Take a stone-golem while your hp is below a quarter. The old climbers said it was the only honest way to end one."
+  },
+  "climb_no_healing": {
+    "name": "The Climber Who Refused Healing",
+    "target_enemy": "ice_wraith",
+    "completion_condition": "no_healing_received",
+    "needed": 2,
+    "reward_gold": 600,
+    "cleanse_required": 4,
+    "flavor": "Two wraiths. No healing received in either fight — not a potion, not a companion. The kingdom's old climbers walked this way until they could not."
+  },
+  "climb_no_abilities": {
+    "name": "Without the Things They Taught You",
+    "target_enemy": "mountain_ogre",
+    "completion_condition": "used_no_abilities",
+    "needed": 1,
+    "reward_gold": 600,
+    "cleanse_required": 4,
+    "flavor": "An ogre. No ability used the whole fight. Sword and feet, the way the kingdom's first climbers did. Honest."
+  },
+  "hidden_penitent_was_waiting": {
+    "name": "The Penitent Was Waiting",
+    "target_enemy": "ashen_penitent",
+    "needed": 1,
+    "reward_gold": 800,
+    "cleanse_required": 0,
+    "hidden": true,
+    "trigger_action": {
+      "type": "zone_visited",
+      "params": {
+        "zone_id": "mountain"
+      }
+    },
+    "reward_marks": [
+      "penitent_ash_on_your_tongue"
+    ],
+    "flavor": "He has been kneeling at this stone for a century, and the shape he kneels around is your shape. End him."
+  },
+  "after_reckoning_on_the_climb": {
+    "name": "After the Reckoning, the Climb Remembers",
+    "target_enemy": "ashen_penitent",
+    "needed": 1,
+    "reward_gold": 1500,
+    "cleanse_required": 5,
+    "requires_ending": [
+      "reckoning"
+    ],
+    "reward_marks": [
+      "penitent_named_the_summit_for_you"
+    ],
+    "reward_chronicle_line": "Once they had once unmade Mournhold by Reckoning, the Ashen Penitent at the stone above the snowline turned his head and asked for the rest. They gave it.",
+    "flavor": "Across runs, the Reckoning marks you. The Penitent turns his head when you arrive. End him. The kingdom never had a way to refuse this."
   }
 }
