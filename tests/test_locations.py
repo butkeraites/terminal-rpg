@@ -77,12 +77,12 @@ def test_grave_appears_and_can_be_searched(tmp_path, content):
     player = _player(content)
     gold_before = player.gold
     # Start at crossroads → "2" travels to Witherwood (option 2 = forest).
-    # v0.16 forest with grave: 1 combat, 2 mini-boss, 3 NPC, 4-6 discoveries
-    # (2 Piranesi + Atrél marker), 7 grave, 8-9 conn, 10 walk back,
-    # 11-14 util → quit=14. Grave is option 7.
-    # After grave searched: same menu minus grave → 1-6 encounters, 7-8 conn,
-    # 9 walk back, 10-13 util → quit=13.
-    io = ScriptedIO(["2", "7", "13"])
+    # v1.38 forest with grave: 1 combat, 2 mini-boss, 3 NPC, 4-7 discoveries
+    # (2 Piranesi + Atrél marker + Halna's stump), 8 grave, 9-10 conn,
+    # 11 walk back, 12-15 util → quit=15. Grave is option 8.
+    # After grave searched: 1-7 encounters, 8-9 conn, 10 walk back,
+    # 11-14 util → quit=14.
+    io = ScriptedIO(["2", "8", "14"])
     state = make_state(player, content, io, StubRandom(), chronicle_dir=tmp_path)
     locations.location_loop(state)
     assert "Half-buried" in io.text()
@@ -254,10 +254,10 @@ def test_overlevel_travel_warns_and_can_turn_back(content):
 
 
 def test_travel_into_a_zone_fight_and_return(content):
-    # v0.16 forest menu: 1 combat, 2 mini-boss, 3 NPC, 4-6 discoveries
-    # (2 Piranesi + Atrél marker), 7 to Crossroads, 8 to Reach,
-    # 9 walk back, 10-13 util. Travel back is 7.
-    io = ScriptedIO(["2", "1", "1", "7", "6"])
+    # v1.38 forest menu: 1 combat, 2 mini-boss, 3 NPC, 4-7 discoveries
+    # (2 Piranesi + Atrél marker + Halna's stump), 8 to Crossroads,
+    # 9 to Reach, 10 walk back, 11-14 util. Travel-to-Crossroads is 8.
+    io = ScriptedIO(["2", "1", "1", "8", "6"])
     state = make_state(_strong_player(content), content, io, StubRandom())
     locations.location_loop(state)
     text = io.text()
@@ -461,12 +461,12 @@ def test_chained_encounter_restores_stamina_when_chain_breaks(content, monkeypat
 def test_fast_travel_returns_to_the_crossroads(content):
     """A zone offers 'Walk back to the Crossroads' that drops the player at the hub.
 
-    v0.16 forest: 1 fight, 2 mini-boss, 3 NPC, 4-6 discoveries (2 Piranesi +
-    Atrél), 7-8 conn, 9 walk back, 10-13 util. Walk back is 9.
+    v1.38 forest: 1 fight, 2 mini-boss, 3 NPC, 4-7 discoveries (2 Piranesi +
+    Atrél + Halna's stump), 8-9 conn, 10 walk back, 11-14 util. Walk back is 10.
     After walk-back, Crossroads also shows a "Return to The Witherwood"
     fast-travel option, so menu becomes 7 items → quit = 7.
     """
-    io = ScriptedIO(["9", "7"])  # walk back (option 9), then quit at Crossroads
+    io = ScriptedIO(["10", "7"])  # walk back (option 10), then quit at Crossroads
     state = make_state(_player(content), content, io, StubRandom(),
                        current_location="forest")
     locations.location_loop(state)
@@ -478,13 +478,12 @@ def test_fast_travel_returns_to_the_crossroads(content):
 
 def test_fast_travel_round_trip_returns_to_origin(content):
     """Fast travel out and back leaves the player at the zone they came from."""
-    # v0.16 forest: 1 fight, 2 mini-boss, 3 NPC, 4-6 discoveries, 7-8 conn,
-    # 9 walk back, 10-13 util. Walk back is 9.
+    # v1.38 forest: 1 fight, 2 mini-boss, 3 NPC, 4-7 discoveries, 8-9 conn,
+    # 10 walk back, 11-14 util. Walk back is 10.
     # At Crossroads with fast_travel_return set: 1 to Gravewatch, 2 to Forest,
     # 3 Return to Forest, 4-7 util. Return is 3.
-    # After return: forest menu of 13 items (Piranesi discoveries are
-    # one-time but un-touched here) → quit=13.
-    io = ScriptedIO(["9", "3", "13"])
+    # After return: forest menu of 14 items → quit=14.
+    io = ScriptedIO(["10", "3", "14"])
     state = make_state(_player(content), content, io, StubRandom(),
                        current_location="forest")
     locations.location_loop(state)
@@ -743,15 +742,15 @@ def test_warden_ending_increments_cleanse(tmp_path, content):
 def test_cleansed_intro_shows_after_first_completion(tmp_path, content):
     """After 1+ cleanses, the Witherwood intro switches to its cleansed variant.
 
-    v0.16 forest: 1 combat, 2 mini-boss, 3 NPC, 4-6 discoveries (2 Piranesi
-    + Atrél marker), 7-8 conn, 9 walk back, 10-13 util → quit=13.
+    v1.38 forest: 1 combat, 2 mini-boss, 3 NPC, 4-7 discoveries (2 Piranesi
+    + Atrél marker + Halna's stump), 8-9 conn, 10 walk back, 11-14 util → quit=14.
     """
     from terminalquest import chronicle
     finished = make_state(_player(content), content, current_location="summit",
                           chronicle_dir=tmp_path)
     chronicle.record(finished, "warden", tmp_path)
     chronicle.add_cleanse(tmp_path)
-    io = ScriptedIO(["2", "13"])
+    io = ScriptedIO(["2", "14"])
     state = make_state(_player(content), content, io, StubRandom(),
                        chronicle_dir=tmp_path)
     locations.location_loop(state)
@@ -940,12 +939,12 @@ def test_npc_introduces_then_tracks_then_completes(tmp_path, content):
 def test_npc_unlock_opens_a_conditional_connection(tmp_path, content):
     """Once unlocked, a sub-zone appears as a travel option in the parent zone.
 
-    v0.16 forest menu with Hunter's Cache unlocked: 1 combat, 2 mini-boss,
-    3 NPC, 4-6 discoveries (2 Piranesi + Atrél), 7 to Crossroads, 8 to Reach,
-    9 Hunter's Cache, 10 walk back, 11-14 util → quit=14.
+    v1.38 forest menu with Hunter's Cache unlocked: 1 combat, 2 mini-boss,
+    3 NPC, 4-7 discoveries (2 Piranesi + Atrél + Halna's stump), 8 to
+    Crossroads, 9 to Reach, 10 Hunter's Cache, 11 walk back, 12-15 util → quit=15.
     """
     player = _player(content)
-    state = make_state(player, content, ScriptedIO(["14"]), StubRandom(),
+    state = make_state(player, content, ScriptedIO(["15"]), StubRandom(),
                        current_location="forest", chronicle_dir=tmp_path)
     state.flags["unlocked_connections"] = ["hunters_cache"]
     locations.location_loop(state)
@@ -1893,8 +1892,8 @@ def test_intro_familiar_replaces_cold_intro_after_threshold_visits(
     for _ in range(locations.FAMILIAR_VISITS):
         chronicle.add_zone_visit("forest", tmp_path)
     # Start a new run that arrives at the Witherwood and immediately quits.
-    # forest has 11 menu options; the Quit Game option is at index 11.
-    io = ScriptedIO(["13"])
+    # v1.38 forest has 14 menu options; the Quit Game option is at index 14.
+    io = ScriptedIO(["14"])
     state = make_state(_player(content), content, io, StubRandom(),
                        current_location="forest", chronicle_dir=tmp_path)
     locations.location_loop(state)
@@ -1914,7 +1913,7 @@ def test_intro_familiar_does_not_appear_below_threshold(tmp_path, content):
     from terminalquest import chronicle
     for _ in range(locations.FAMILIAR_VISITS - 2):
         chronicle.add_zone_visit("forest", tmp_path)
-    io = ScriptedIO(["13"])
+    io = ScriptedIO(["14"])
     state = make_state(_player(content), content, io, StubRandom(),
                        current_location="forest", chronicle_dir=tmp_path)
     locations.location_loop(state)
