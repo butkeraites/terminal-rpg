@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "mournhold"
-version = "1.53.0"
+version = "1.54.0"
 description = "A hermetic, offline grimdark terminal RPG."
 readme = "README.md"
 requires-python = ">=3.9"
