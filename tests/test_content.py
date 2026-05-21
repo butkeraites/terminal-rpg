@@ -210,3 +210,190 @@ def test_validate_rejects_quest_missing_required_field():
     }
     with pytest.raises(ValueError):
         content.validate()
+
+
+# --- Phase 1 Batch 1: rich quest schema -----------------------------------
+#
+# These tests pin the *acceptance* and *reference-integrity* contracts of
+# the extended quest schema (docs/QUESTS.md). The engine does not yet wire
+# all of these fields into behaviour; that happens in subsequent batches.
+# But the schema must be honest from the first authoring batch — typos in
+# requires_quest, requires_class, requires_mark, etc. fail at load time.
+
+def _base_quest():
+    """Return a minimal-but-valid quest dict that we mutate per test."""
+    return {
+        "name": "Test Quest",
+        "target_enemy": "wolf",
+        "needed": 1,
+        "reward_gold": 1,
+        "cleanse_required": 0,
+    }
+
+
+def test_quest_accepts_target_trophy_instead_of_target_enemy():
+    """A trophy quest replaces target_enemy with a known trophy name."""
+    content = load_content()
+    # Pick any trophy that an enemy actually drops.
+    trophy = next(e["trophy"] for e in content.enemies.values() if e.get("trophy"))
+    q = _base_quest()
+    del q["target_enemy"]
+    q["target_trophy"] = trophy
+    q["needed"] = 5
+    content.quests["test_trophy_q"] = q
+    content.validate()  # no raise
+
+
+def test_quest_rejects_unknown_trophy():
+    content = load_content()
+    q = _base_quest()
+    del q["target_enemy"]
+    q["target_trophy"] = "no_such_trophy_exists_anywhere"
+    content.quests["bad_trophy"] = q
+    with pytest.raises(ValueError):
+        content.validate()
+
+
+def test_quest_rejects_both_target_enemy_and_trophy():
+    """A quest with both target_enemy AND target_trophy is ambiguous."""
+    content = load_content()
+    trophy = next(e["trophy"] for e in content.enemies.values() if e.get("trophy"))
+    q = _base_quest()
+    q["target_trophy"] = trophy
+    content.quests["double_targeted"] = q
+    with pytest.raises(ValueError):
+        content.validate()
+
+
+def test_quest_accepts_completion_condition_with_no_kill_target():
+    """A pure-conditional quest (no kill target) uses completion_condition."""
+    content = load_content()
+    q = {
+        "name": "Win Without Healing",
+        "needed": 1,
+        "reward_gold": 0,
+        "cleanse_required": 0,
+        "completion_condition": "no_healing_received",
+    }
+    content.quests["conditional_only"] = q
+    content.validate()
+
+
+def test_quest_rejects_unknown_completion_condition():
+    content = load_content()
+    q = _base_quest()
+    q["completion_condition"] = "this_condition_is_imaginary"
+    content.quests["bad_cond"] = q
+    with pytest.raises(ValueError):
+        content.validate()
+
+
+def test_quest_rejects_requires_class_unknown():
+    content = load_content()
+    q = _base_quest()
+    q["requires_class"] = ["paladin"]  # not a real class
+    content.quests["bad_class"] = q
+    with pytest.raises(ValueError):
+        content.validate()
+
+
+def test_quest_accepts_known_requires_class():
+    content = load_content()
+    q = _base_quest()
+    q["requires_class"] = ["warrior", "ranger"]
+    content.quests["good_class"] = q
+    content.validate()
+
+
+def test_quest_rejects_unknown_requires_mark():
+    content = load_content()
+    if not content.marks:
+        pytest.skip("marks pool empty; cannot test mark-id validation")
+    q = _base_quest()
+    q["requires_mark"] = "this_mark_does_not_exist"
+    content.quests["bad_mark"] = q
+    with pytest.raises(ValueError):
+        content.validate()
+
+
+def test_quest_accepts_known_requires_mark():
+    content = load_content()
+    if not content.marks:
+        pytest.skip("marks pool empty; cannot test mark-id validation")
+    real_mark = next(iter(content.marks))
+    q = _base_quest()
+    q["requires_mark"] = real_mark
+    content.quests["good_mark"] = q
+    content.validate()
+
+
+def test_quest_rejects_requires_quest_unknown():
+    content = load_content()
+    q = _base_quest()
+    q["requires_quest"] = ["this_quest_id_is_not_real"]
+    content.quests["bad_prereq"] = q
+    with pytest.raises(ValueError):
+        content.validate()
+
+
+def test_quest_accepts_requires_quest_pointing_to_existing():
+    content = load_content()
+    existing = next(iter(content.quests))
+    q = _base_quest()
+    q["requires_quest"] = [existing]
+    content.quests["after_existing"] = q
+    content.validate()
+
+
+def test_quest_rejects_chain_next_unknown():
+    content = load_content()
+    q = _base_quest()
+    q["chain_next"] = "nonexistent_quest"
+    content.quests["bad_chain"] = q
+    with pytest.raises(ValueError):
+        content.validate()
+
+
+def test_quest_accepts_full_rich_schema():
+    """A quest using every optional field validates clean when refs are real."""
+    content = load_content()
+    if not content.marks:
+        pytest.skip("marks pool empty; cannot exercise mark refs")
+    real_mark = next(iter(content.marks))
+    existing_q = next(iter(content.quests))
+    q = {
+        "name": "The Full Schema Exercise",
+        "flavor": "Walked all the way to the design doc and back.",
+        "target_enemy": "wolf",
+        "needed": 3,
+        "reward_gold": 100,
+        "reward_consumables": ["bread"],
+        "reward_marks": [real_mark],
+        "reward_chronicle_line": "They proved the schema worked.",
+        "reward_ending_unlock": "demo_ending",
+        "cleanse_required": 0,
+        "min_level": 1,
+        "requires_flag": "the_counted",
+        "requires_flags": ["a", "b"],
+        "requires_mark": real_mark,
+        "requires_marks": [real_mark],
+        "requires_class": ["warrior"],
+        "requires_ending": ["atrel_peace"],
+        "requires_quest": [existing_q],
+        "denies_quest": [existing_q],
+        "requires_discovery": ["any_string_ok"],
+        "requires_chronicle_entry": {"fell_in_zone": "reach"},
+        "chain_next": existing_q,
+        "hidden": False,
+    }
+    content.quests["rich_q"] = q
+    content.validate()
+
+
+def test_quest_rejects_negative_min_level():
+    content = load_content()
+    q = _base_quest()
+    q["min_level"] = 0  # must be >= 1
+    content.quests["bad_level"] = q
+    with pytest.raises(ValueError):
+        content.validate()

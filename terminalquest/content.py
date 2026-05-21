@@ -19,6 +19,33 @@ _VALID_STATS = {"attack", "defense", "max_hp", "max_stamina"}
 _VALID_PROC_TRIGGERS = {"on_hit", "on_crit"}
 _VALID_TIERS = {1, 2, 3}
 
+# The vocabulary of in-fight / in-run conditions that a Conditional Combat
+# quest can ask for. Each is implemented (or to be implemented) as a small
+# predicate in combat.py. The set is intentionally fixed; quests refer to
+# keys, the engine knows what each key means. See docs/QUESTS.md.
+VALID_COMPLETION_CONDITIONS = {
+    "no_stun_during_fight",
+    "no_potions_in_zone",
+    "no_hireling_death",
+    "companion_landed_kill",
+    "first_strike_yours",
+    "killed_in_one_round",
+    "fled_then_returned",
+    "no_damage_taken",
+    "status_cleared",
+    "critical_killing_blow",
+    "kept_full_stamina",
+    "used_no_abilities",
+    "killed_with_thrown",
+    "pet_assisted",
+    "killed_while_low_hp",
+    "killed_after_dodging",
+    "killed_during_stun",
+    "no_healing_received",
+    "unarmed_kill",
+    "named_them_at_death",
+}
+
 
 class ContentError(ValueError):
     """Raised when a data file is missing or malformed."""
@@ -176,41 +203,211 @@ class Content:
             )
 
     def _validate_quests(self):
-        """Check every Quest Board bounty references a real enemy.
+        """Validate every Quest Board entry against the schema in docs/QUESTS.md.
 
-        Each quest needs ``name``, ``target_enemy`` (must exist in enemies.json),
-        ``needed`` (positive int), ``reward_gold`` (non-negative int), and
-        ``cleanse_required`` (non-negative int).
+        Required fields: ``name``, ``needed`` (>0), ``reward_gold`` (>=0),
+        ``cleanse_required`` (>=0), AND one of ``target_enemy`` or
+        ``target_trophy`` (or a ``completion_condition`` for non-kill quests).
+
+        Optional gates: ``min_level``, ``requires_flag(s)``, ``requires_mark(s)``,
+        ``requires_class``, ``requires_ending``, ``requires_quest``,
+        ``requires_discovery``, ``requires_chronicle_entry``, ``denies_quest``.
+
+        Optional chain / reward / hidden fields per docs/QUESTS.md.
+
+        Every referenced id (enemy, trophy, class, mark, quest, ending,
+        discovery, consumable, completion_condition) is checked against
+        the actual content. Typos fail at load time.
         """
-        required = ("name", "target_enemy", "needed", "reward_gold",
-                    "cleanse_required")
+        required = ("name", "needed", "reward_gold", "cleanse_required")
+        # Collect trophy ids from enemies — any string used as `trophy` on
+        # an enemy is a valid `target_trophy`.
+        trophies_available = {e["trophy"] for e in self.enemies.values()
+                              if e.get("trophy")}
+        # Collect mark ids if marks are loaded.
+        mark_ids = set(self.marks.keys())
+        # Collect class ids.
+        class_ids = set(self.classes.keys())
+        # Collect quest ids (for chain / denies / requires references).
+        quest_ids = set(self.quests.keys())
+
+        def _check_int(field, value, qid, minimum=0, allow_none=False):
+            if value is None and allow_none:
+                return
+            if not (isinstance(value, int) and not isinstance(value, bool)
+                    and value >= minimum):
+                raise ValueError(
+                    f"quest '{qid}' has invalid {field!r} value {value!r} "
+                    f"(want int >= {minimum})"
+                )
+
+        def _check_list_of_str(field, value, qid):
+            if not isinstance(value, list) or not all(
+                    isinstance(x, str) for x in value):
+                raise ValueError(
+                    f"quest '{qid}' field {field!r} must be a list of strings, "
+                    f"got {value!r}"
+                )
+
+        def _check_known_ids(field, ids, valid_set, qid, kind):
+            for vid in ids:
+                if vid not in valid_set:
+                    raise ValueError(
+                        f"quest '{qid}' field {field!r} references unknown "
+                        f"{kind} '{vid}'"
+                    )
+
         for qid, quest in self.quests.items():
             for field in required:
                 if field not in quest:
                     raise ValueError(
-                        f"quest '{qid}' is missing required field '{field}'"
+                        f"quest '{qid}' is missing required field {field!r}"
                     )
-            te = quest["target_enemy"]
-            if te not in self.enemies:
+            # Numeric fields
+            _check_int("needed", quest["needed"], qid, minimum=1)
+            _check_int("reward_gold", quest["reward_gold"], qid, minimum=0)
+            _check_int("cleanse_required", quest["cleanse_required"], qid,
+                       minimum=0)
+            _check_int("min_level", quest.get("min_level"), qid,
+                       minimum=1, allow_none=True)
+
+            # Completion target: exactly one of target_enemy / target_trophy /
+            # completion_condition (the last for pure-condition quests like
+            # "complete the run without dying"; rare, but allowed).
+            te = quest.get("target_enemy")
+            tt = quest.get("target_trophy")
+            cc = quest.get("completion_condition")
+            targets = [t for t in (te, tt) if t is not None]
+            if not targets and not cc:
+                raise ValueError(
+                    f"quest '{qid}' must specify one of 'target_enemy', "
+                    f"'target_trophy', or 'completion_condition'"
+                )
+            if len(targets) > 1:
+                raise ValueError(
+                    f"quest '{qid}' must specify only one of 'target_enemy' "
+                    f"or 'target_trophy', not both"
+                )
+            if te is not None and te not in self.enemies:
                 raise ValueError(
                     f"quest '{qid}' targets unknown enemy '{te}'"
                 )
-            if not (isinstance(quest["needed"], int) and quest["needed"] > 0):
+            if tt is not None and tt not in trophies_available:
                 raise ValueError(
-                    f"quest '{qid}' has invalid 'needed' value {quest['needed']!r}"
+                    f"quest '{qid}' targets unknown trophy '{tt}' "
+                    f"(no enemy drops it)"
                 )
-            if not (isinstance(quest["reward_gold"], int)
-                    and quest["reward_gold"] >= 0):
+            if cc is not None and cc not in VALID_COMPLETION_CONDITIONS:
                 raise ValueError(
-                    f"quest '{qid}' has invalid 'reward_gold' value "
-                    f"{quest['reward_gold']!r}"
+                    f"quest '{qid}' has unknown completion_condition '{cc}'"
                 )
-            if not (isinstance(quest["cleanse_required"], int)
-                    and quest["cleanse_required"] >= 0):
-                raise ValueError(
-                    f"quest '{qid}' has invalid 'cleanse_required' value "
-                    f"{quest['cleanse_required']!r}"
-                )
+
+            # Gate references
+            if "requires_flag" in quest:
+                if not isinstance(quest["requires_flag"], str):
+                    raise ValueError(
+                        f"quest '{qid}' field 'requires_flag' must be a string"
+                    )
+            if "requires_flags" in quest:
+                _check_list_of_str("requires_flags",
+                                   quest["requires_flags"], qid)
+            if "requires_mark" in quest:
+                mid = quest["requires_mark"]
+                if not isinstance(mid, str):
+                    raise ValueError(
+                        f"quest '{qid}' field 'requires_mark' must be a string"
+                    )
+                if mark_ids and mid not in mark_ids:
+                    raise ValueError(
+                        f"quest '{qid}' requires unknown mark '{mid}'"
+                    )
+            if "requires_marks" in quest:
+                _check_list_of_str("requires_marks",
+                                   quest["requires_marks"], qid)
+                if mark_ids:
+                    _check_known_ids("requires_marks",
+                                     quest["requires_marks"],
+                                     mark_ids, qid, "mark")
+            if "requires_class" in quest:
+                _check_list_of_str("requires_class",
+                                   quest["requires_class"], qid)
+                _check_known_ids("requires_class",
+                                 quest["requires_class"],
+                                 class_ids, qid, "class")
+            if "requires_ending" in quest:
+                _check_list_of_str("requires_ending",
+                                   quest["requires_ending"], qid)
+            if "requires_quest" in quest:
+                _check_list_of_str("requires_quest",
+                                   quest["requires_quest"], qid)
+                _check_known_ids("requires_quest",
+                                 quest["requires_quest"],
+                                 quest_ids, qid, "quest")
+            if "denies_quest" in quest:
+                _check_list_of_str("denies_quest",
+                                   quest["denies_quest"], qid)
+                _check_known_ids("denies_quest",
+                                 quest["denies_quest"],
+                                 quest_ids, qid, "quest")
+            if "requires_discovery" in quest:
+                _check_list_of_str("requires_discovery",
+                                   quest["requires_discovery"], qid)
+            if "requires_chronicle_entry" in quest:
+                if not isinstance(quest["requires_chronicle_entry"], dict):
+                    raise ValueError(
+                        f"quest '{qid}' field 'requires_chronicle_entry' "
+                        f"must be a dict"
+                    )
+
+            # Chain
+            if "chain_next" in quest:
+                nxt = quest["chain_next"]
+                if not isinstance(nxt, str):
+                    raise ValueError(
+                        f"quest '{qid}' field 'chain_next' must be a string"
+                    )
+                if nxt not in quest_ids:
+                    raise ValueError(
+                        f"quest '{qid}' chains to unknown quest '{nxt}'"
+                    )
+
+            # Rewards
+            if "reward_consumables" in quest:
+                _check_list_of_str("reward_consumables",
+                                   quest["reward_consumables"], qid)
+            if "reward_marks" in quest:
+                _check_list_of_str("reward_marks",
+                                   quest["reward_marks"], qid)
+                if mark_ids:
+                    _check_known_ids("reward_marks",
+                                     quest["reward_marks"],
+                                     mark_ids, qid, "mark")
+            if "reward_chronicle_line" in quest:
+                if not isinstance(quest["reward_chronicle_line"], str):
+                    raise ValueError(
+                        f"quest '{qid}' field 'reward_chronicle_line' "
+                        f"must be a string"
+                    )
+            if "reward_ending_unlock" in quest:
+                if not isinstance(quest["reward_ending_unlock"], str):
+                    raise ValueError(
+                        f"quest '{qid}' field 'reward_ending_unlock' "
+                        f"must be a string"
+                    )
+
+            # Hidden / trigger
+            if "hidden" in quest:
+                if not isinstance(quest["hidden"], bool):
+                    raise ValueError(
+                        f"quest '{qid}' field 'hidden' must be a bool"
+                    )
+            if "trigger_action" in quest:
+                ta = quest["trigger_action"]
+                if not isinstance(ta, dict) or "type" not in ta:
+                    raise ValueError(
+                        f"quest '{qid}' field 'trigger_action' must be a "
+                        f"dict with a 'type' key"
+                    )
 
     def _validate_components(self):
         """Check every weapon slot exists and components grant only real stats."""
