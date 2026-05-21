@@ -14137,5 +14137,1086 @@
       "exactly what to say. They opened to you. They told you the thing the previous you needed to hear.",
       "  (+2 Max HP, permanently — a conversation a previous you failed, this you completed.)"
     ]
+  },
+  "road_not_taken_walked_past_a_stranger_who_almost_spoke": {
+    "category": "broken",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "min_level": 3,
+      "chance": 0.13
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": -1,
+      "flag": "stranger_almost_spoke"
+    },
+    "lines": [
+      "Today you passed a stranger on the road who, you saw clearly, had been about to speak.",
+      "They had opened their mouth. You did not stop. Their mouth closed. You will not, in",
+      "this run or any, know what they had to say. The road has it. The road keeps it from you.",
+      "  (-1 Max HP, permanently — a sentence you walked past hearing because you did not slow.)"
+    ]
+  },
+  "road_not_taken_did_not_ask_the_widows_name": {
+    "category": "promise_broken",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "min_level": 3,
+      "min_visits": 3,
+      "chance": 0.12
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": -1,
+      "flag": "did_not_ask_widow_name"
+    },
+    "lines": [
+      "The widow on the second bench in Gravewatch — you have walked past her many times now.",
+      "Tonight you did not ask her name. You had decided you would, one of these times. You",
+      "did not. You walked on. She watched you go. The bench, behind you, kept her shape.",
+      "  (-1 Max HP, permanently — a widow's name unasked, this run, in any.)"
+    ]
+  },
+  "road_not_taken_did_not_kneel_at_a_dying_one": {
+    "category": "broken",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "min_level": 4,
+      "chance": 0.11
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": -2,
+      "flag": "did_not_kneel_dying"
+    },
+    "lines": [
+      "On the road today there was a small figure under a tree, breathing slowly. You did not",
+      "stop. You did not know them. You did not have time. You walked on. They went the rest",
+      "of the way alone. Some other run, some other you, would have stopped. This you did not.",
+      "  (-2 Max HP, permanently — a death you walked past while there was still time to sit.)"
+    ]
+  },
+  "road_not_taken_did_not_answer_a_child": {
+    "category": "lost",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village",
+        "mourncross"
+      ],
+      "min_level": 3,
+      "chance": 0.11
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": -1,
+      "flag": "did_not_answer_child"
+    },
+    "lines": [
+      "Today a child in the square spoke to you — a question, you didn't quite catch what.",
+      "You smiled vaguely and walked on. The child's face fell. You did not see it fall. You",
+      "saw it after, in memory. The child will grow up. You will not see them again. They asked.",
+      "  (-1 Max HP, permanently — a child's question unanswered by you on a day you had time.)"
+    ]
+  },
+  "road_not_taken_did_not_hold_an_old_hand": {
+    "category": "broken",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "min_level": 4,
+      "chance": 0.11
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": -1,
+      "flag": "did_not_hold_old_hand"
+    },
+    "lines": [
+      "An old one in the square, on the bench by the well, was holding their hand out — not",
+      "for alms. To hold. You did not take it. You did not feel up to the holding. You walked.",
+      "The hand stayed out a count. Then it withdrew. They will hold someone else's. Not yours.",
+      "  (-1 Max HP, permanently — an old one's hand offered, by you, refused without speaking.)"
+    ]
+  },
+  "road_not_taken_did_not_let_a_companion_finish": {
+    "category": "promise_broken",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "requires_flag": "has_companion",
+      "min_level": 4,
+      "chance": 0.11
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": -1,
+      "flag": "cut_off_companion"
+    },
+    "lines": [
+      "Your companion, tonight, was telling you something — slowly, working their way to it.",
+      "You cut them off mid-thought. You did not mean to. You did. The sentence they were",
+      "building never finished. They will not, in this run, try to say it again. You will not hear it.",
+      "  (-1 Max HP, permanently — a sentence from your companion you did not let arrive.)"
+    ]
+  },
+  "road_not_taken_did_not_recognize_an_old_friend": {
+    "category": "forgetting",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village",
+        "crossroads"
+      ],
+      "min_level": 4,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": -2,
+      "flag": "did_not_recognize_friend"
+    },
+    "lines": [
+      "Today, in passing, you walked by someone whose face you would, in any other run, have",
+      "stopped for. An old friend. Tonight you didn't recognize them. The Pall has taken their",
+      "face from you, slowly. They saw you not see them. They walked on. You will not, again.",
+      "  (-2 Max HP, permanently — an old friend you did not, today, recognize.)"
+    ]
+  },
+  "road_not_taken_did_not_thank_the_innkeeper_aloud": {
+    "category": "promise_broken",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "min_level": 3,
+      "chance": 0.11
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": -1,
+      "flag": "did_not_thank_innkeeper"
+    },
+    "lines": [
+      "Tonight at the inn the innkeeper did, for you, a small specific kindness. You felt it.",
+      "You did not, aloud, thank her. You thanked her in your head. The thanks-in-the-head",
+      "did not, in this run, reach her. She will go to bed not knowing. You will go to bed knowing.",
+      "  (-1 Max HP, permanently — a thanks you owed but did not say aloud.)"
+    ]
+  },
+  "road_not_taken_walked_past_atrels_altar_without_kneeling": {
+    "category": "broken",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "last_altar"
+      ],
+      "min_level": 3,
+      "chance": 0.12
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": -1,
+      "flag": "did_not_kneel_atrel"
+    },
+    "lines": [
+      "Today you walked past Atrél's altar without kneeling. You had reason. You always have",
+      "reason. The altar did not, in this run, get the kneel from you. Atrél did not, in this",
+      "run, get the count of your weight on the flagstone. The altar will, in your life, remember.",
+      "  (-1 Max HP, permanently — a kneel withheld by you from an altar that asks for none.)"
+    ]
+  },
+  "road_not_taken_did_not_say_a_friends_name_when_passing_their_grave": {
+    "category": "lost",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "min_level": 5,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": -1,
+      "flag": "did_not_say_friend_name"
+    },
+    "lines": [
+      "You passed a grave today of someone you knew. You knew the name. You did not say the",
+      "name aloud. Said names land. Unsaid names drift. The name will drift, this run. You",
+      "will say it next time. There will be no next time. You will say it next run, perhaps.",
+      "  (-1 Max HP, permanently — a friend's name unsaid at the place that asks for it.)"
+    ]
+  },
+  "road_not_taken_did_not_take_the_smaller_path": {
+    "category": "half_truth",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "min_level": 3,
+      "chance": 0.12
+    },
+    "effect": {
+      "flag": "did_not_take_smaller_path"
+    },
+    "lines": [
+      "At a fork today there was a smaller, less-walked path. You took the bigger. The smaller",
+      "path led somewhere — somewhere you would, in some other run, have seen. You did not see.",
+      "The smaller path went on without you. It was not, in this run, walked by your foot."
+    ]
+  },
+  "road_not_taken_did_not_pause_for_the_view": {
+    "category": "broken",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "mountain",
+        "summit"
+      ],
+      "min_level": 4,
+      "chance": 0.11
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": -1,
+      "flag": "did_not_pause_view"
+    },
+    "lines": [
+      "Today on the climb you came around a turn that opened on a view — the kingdom spread",
+      "below, the light particular. You did not pause. You had work. The view watched you pass.",
+      "You will not, in this run, see that light again from that angle. The angle is in someone else's.",
+      "  (-1 Max HP, permanently — a view you walked through without granting it the count of looking.)"
+    ]
+  },
+  "road_not_taken_did_not_drink_at_a_well": {
+    "category": "body",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "min_level": 3,
+      "chance": 0.11
+    },
+    "effect": {
+      "stat": "max_stamina",
+      "delta": -1,
+      "flag": "did_not_drink_well"
+    },
+    "lines": [
+      "There was a well by the road today — clean, cold, the rope new. You walked past. You",
+      "were not thirsty. Some other you, in some other run, would have drunk. Your body, in",
+      "this run, will be tireder for the not-drinking. The well will be a well for the next walker.",
+      "  (-1 Max Stamina, permanently — a well unused by you on a day you walked past it.)"
+    ]
+  },
+  "road_not_taken_did_not_throw_a_coin_in": {
+    "category": "promise_broken",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "min_level": 3,
+      "chance": 0.1
+    },
+    "effect": {
+      "flag": "did_not_throw_coin"
+    },
+    "lines": [
+      "There is a coin-well at the Crossroads — small, the bottom littered with the wishes",
+      "of a generation. You did not throw a coin in today. You did not have a wish you trusted.",
+      "Many others did. Some of theirs are in the bottom, waiting. None of yours, this run. None."
+    ]
+  },
+  "road_not_taken_did_not_eat_at_the_open_kitchen": {
+    "category": "found",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "min_level": 3,
+      "chance": 0.1
+    },
+    "effect": {
+      "flag": "did_not_eat_open_kitchen"
+    },
+    "lines": [
+      "Gravewatch's open kitchen — the one with the wide door, the cook who sings — had stew",
+      "tonight. You did not stop. You ate at the inn. The stew, today, was the kind that would",
+      "have been remembered. You will not remember it. You will eat the inn's stew in this run."
+    ]
+  },
+  "road_not_taken_did_not_listen_to_the_song_on_the_corner": {
+    "category": "lost",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "min_level": 4,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "max_stamina",
+      "delta": -1,
+      "flag": "did_not_listen_song"
+    },
+    "lines": [
+      "On the corner near the bell-tower there was a player today — a small one, a stringed",
+      "instrument. You did not stop. The song they were playing was not one you knew. It was",
+      "going to be one you knew, if you had stopped. The song finished without you in the audience.",
+      "  (-1 Max Stamina, permanently — a song you did not stop for that would have stayed with you.)"
+    ]
+  },
+  "road_not_taken_did_not_go_inside_the_lit_window": {
+    "category": "half_truth",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "mourncross"
+      ],
+      "min_level": 5,
+      "chance": 0.1
+    },
+    "effect": {
+      "flag": "did_not_enter_lit_window"
+    },
+    "lines": [
+      "In Mourncross tonight, the third house on the second street had a lit window. You did",
+      "not go in. You had been told not to. You did not. There was someone in there. There is.",
+      "They will be in there for a long time. You did not see them. You will not, this run."
+    ]
+  },
+  "road_not_taken_did_not_re_enter_a_zone_you_loved": {
+    "category": "broken",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "min_level": 5,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": -1,
+      "flag": "did_not_reenter_loved_zone"
+    },
+    "lines": [
+      "Today at a branching you considered going back to a zone you had loved. You did not.",
+      "The path was longer. The work pressed. You went the other way. The zone you loved is",
+      "still there. You will not, in this run, see it again. Other yous have. Not this you.",
+      "  (-1 Max HP, permanently — a zone you loved and chose, today, not to return to.)"
+    ]
+  },
+  "road_not_taken_did_not_take_a_bath": {
+    "category": "body",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "min_level": 4,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "max_stamina",
+      "delta": -1,
+      "flag": "did_not_take_bath"
+    },
+    "lines": [
+      "Gravewatch has, in its third street, a small bath-house — hot stones, the kingdom's old",
+      "way. You did not go in today. You meant to. You did not. Your body will be tireder from",
+      "now on, in the run, than it would have been if you had taken the bath. You did not.",
+      "  (-1 Max Stamina, permanently — a bath you did not take that your body needed.)"
+    ]
+  },
+  "road_not_taken_did_not_buy_a_thing_you_eyed": {
+    "category": "lost",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "min_level": 4,
+      "chance": 0.1
+    },
+    "effect": {
+      "flag": "did_not_buy_eyed"
+    },
+    "lines": [
+      "Today at a stall you saw a thing — small, the kind of thing you would, in any other",
+      "run, have bought. You did not. You had been frugal. You walked away. The thing was",
+      "bought by someone else the next morning. You will not see the thing again, this run."
+    ]
+  },
+  "road_not_taken_did_not_open_an_unlocked_door": {
+    "category": "half_truth",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "min_level": 4,
+      "chance": 0.11
+    },
+    "effect": {
+      "flag": "did_not_open_unlocked"
+    },
+    "lines": [
+      "Today you came to a door that was, you sensed, unlocked. You did not try. You walked",
+      "on. The door stayed unlocked, this run. The door will be locked by morning. Whatever",
+      "was inside the door for you to find, you did not find. Some other run, you would have."
+    ]
+  },
+  "road_not_taken_did_not_climb_to_the_upper_room": {
+    "category": "broken",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village",
+        "burned_library"
+      ],
+      "min_level": 4,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": -1,
+      "flag": "did_not_climb_upper"
+    },
+    "lines": [
+      "There was a stair to an upper room you noticed today. You did not climb. The stair was",
+      "narrow, the room above quiet. You had reason not to climb. The upper room kept what it",
+      "had for you, but you were not, in this run, the one who took it. You walked back down.",
+      "  (-1 Max HP, permanently — a stair not taken by you that was meant to be taken once.)"
+    ]
+  },
+  "road_not_taken_did_not_push_the_chamber_door_open_further": {
+    "category": "half_truth",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "sealed_chamber",
+        "bone_tomb"
+      ],
+      "min_level": 5,
+      "chance": 0.1
+    },
+    "effect": {
+      "flag": "did_not_push_chamber"
+    },
+    "lines": [
+      "In the chamber today you came to an inner door that was ajar. You did not push it",
+      "further open. You had been told not to. You did not. The door is the same shade of ajar",
+      "as you left it. The next visitor will push, perhaps. Not you. Not this you. Not this run."
+    ]
+  },
+  "road_not_taken_did_not_knock": {
+    "category": "promise_broken",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "min_level": 3,
+      "chance": 0.11
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": -1,
+      "flag": "did_not_knock"
+    },
+    "lines": [
+      "There was a door today you had been meaning to knock on. You came to it. You did not.",
+      "You had reason. You always have. The person inside did not, this run, hear your knock.",
+      "They are still in there. They will, in some other run, hear your knock. Not this run.",
+      "  (-1 Max HP, permanently — a door you came to and did not knock on, today.)"
+    ]
+  },
+  "road_not_taken_did_not_enter_the_old_shop": {
+    "category": "found",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village",
+        "crossroads"
+      ],
+      "min_level": 4,
+      "chance": 0.1
+    },
+    "effect": {
+      "flag": "did_not_enter_old_shop"
+    },
+    "lines": [
+      "There is a shop at the corner of the Crossroads that is rarely open. It was open today.",
+      "You did not go in. You meant to. You walked past. The keeper saw you walk past. They",
+      "did not, you suspect, mind. They have many days of openness. You will not see this one."
+    ]
+  },
+  "road_not_taken_did_not_close_a_door_you_had_opened": {
+    "category": "broken",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "min_level": 4,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": -1,
+      "flag": "did_not_close_door"
+    },
+    "lines": [
+      "Today you opened a door, took what you needed, and went without closing it. You did",
+      "not mean to leave it. You did. Whatever lived inside the room will, this night, walk",
+      "out into the kingdom. You will not be there to put it back. You walked on. The door is open.",
+      "  (-1 Max HP, permanently — a door you opened and left open that should have been closed.)"
+    ]
+  },
+  "road_not_taken_did_not_open_a_letter_from_yourself": {
+    "category": "forgetting",
+    "trigger": {
+      "at": [
+        "save_action"
+      ],
+      "min_level": 5,
+      "requires_flag": "is_reborn",
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": -1,
+      "flag": "did_not_open_self_letter"
+    },
+    "lines": [
+      "Tonight at the saving-place you found, in your pack, a small folded letter. The wax",
+      "seal had your old mark. From a previous you. You did not break the seal. You set the",
+      "letter aside for later. There is no later. The letter is still sealed. You will not, this run.",
+      "  (-1 Max HP, permanently — a letter from a previous you to this you, left unopened.)"
+    ]
+  },
+  "road_not_taken_did_not_open_the_chronicle_at_a_particular_page": {
+    "category": "lost",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "min_level": 5,
+      "chance": 0.1
+    },
+    "effect": {
+      "flag": "did_not_open_chronicle_page"
+    },
+    "lines": [
+      "Tonight in the Chronicle room you had — clearly — a particular page in mind to find.",
+      "You forgot, when you got there. You read other pages. You left. The page you had been",
+      "meaning to find is still there. It will be there when you come back. There is no when."
+    ]
+  },
+  "road_not_taken_did_not_open_a_box_under_a_bed": {
+    "category": "half_truth",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village",
+        "hidden_hold"
+      ],
+      "min_level": 5,
+      "chance": 0.09
+    },
+    "effect": {
+      "flag": "did_not_open_box_under_bed"
+    },
+    "lines": [
+      "In a room you stayed in tonight, under the bed, there was a small wooden box. You knew",
+      "it was there. You did not open it. You had no claim. You did not. The box is still",
+      "under the bed. The box will, you think, contain a thing meant for you. You did not."
+    ]
+  },
+  "road_not_taken_did_not_open_a_grave_you_owned": {
+    "category": "promise_broken",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "requires_flag": "is_reborn",
+      "min_level": 6,
+      "chance": 0.09
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": -1,
+      "flag": "did_not_open_own_grave"
+    },
+    "lines": [
+      "In the yard today there was a small grave with your name — a previous you's. You had",
+      "been told what was buried with you. You did not unbury. You did not, in this run, take",
+      "back the thing that had gone in with you. The grave is intact. The thing is, still, theirs.",
+      "  (-1 Max HP, permanently — a thing you buried as someone else and could have unburied.)"
+    ]
+  },
+  "road_not_taken_did_not_finish_the_book": {
+    "category": "broken",
+    "trigger": {
+      "at": [
+        "discovery_read"
+      ],
+      "min_level": 4,
+      "chance": 0.12
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": -1,
+      "flag": "did_not_finish_book"
+    },
+    "lines": [
+      "Today you stopped reading two pages before the end. You had had enough. The two pages",
+      "would have changed how you read the whole book. You did not read them. The book is",
+      "shelved. Some other reader will. You will not, in this run, learn the thing the end said.",
+      "  (-1 Max HP, permanently — a book stopped two pages before the change.)"
+    ]
+  },
+  "road_not_taken_did_not_read_a_letter_left_for_you": {
+    "category": "lost",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "min_level": 4,
+      "chance": 0.11
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": -1,
+      "flag": "did_not_read_letter"
+    },
+    "lines": [
+      "There was a letter for you at the inn today, left at the front desk by hand. You did",
+      "not open it. You meant to before bed. You forgot. The letter is still in your pack.",
+      "It will, in this run, stay unread. The hand that wrote it is somewhere doing other things.",
+      "  (-1 Max HP, permanently — a letter left for you that you did not read in time.)"
+    ]
+  },
+  "road_not_taken_did_not_read_the_margin": {
+    "category": "forgetting",
+    "trigger": {
+      "at": [
+        "discovery_read"
+      ],
+      "min_level": 4,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "max_stamina",
+      "delta": -1,
+      "flag": "did_not_read_margin"
+    },
+    "lines": [
+      "In the page you read today there were margin-notes — small, in a hand you almost knew.",
+      "You did not read them. You read the body of the page. The margin was the whole point.",
+      "The next reader will. They will be confused. The margin remains for them. You did not.",
+      "  (-1 Max Stamina, permanently — a margin you did not read that was the page's whole point.)"
+    ]
+  },
+  "road_not_taken_did_not_finish_a_sentence_someone_started": {
+    "category": "promise_broken",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "min_level": 4,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": -1,
+      "flag": "did_not_finish_sentence"
+    },
+    "lines": [
+      "Tonight someone you knew started a sentence — left it hanging in mid-air, looking at",
+      "you to finish it. The right ending was clear. You did not finish. They had to finish",
+      "the sentence themselves. They finished it differently than you would have. You missed your turn.",
+      "  (-1 Max HP, permanently — a sentence you did not finish that was left, deliberately, open.)"
+    ]
+  },
+  "road_not_taken_did_not_read_the_last_line_aloud": {
+    "category": "broken",
+    "trigger": {
+      "at": [
+        "discovery_read"
+      ],
+      "min_level": 5,
+      "chance": 0.1
+    },
+    "effect": {
+      "flag": "did_not_read_aloud"
+    },
+    "lines": [
+      "Today the page you finished reading had a last line that needed to be spoken — said",
+      "aloud, into the air, so the room could hear. You read it in your head. The room did",
+      "not hear. The line did not, in this run, take. It will take, someone else's run. Not this."
+    ]
+  },
+  "road_not_taken_did_not_read_a_recipe_in_a_kitchen": {
+    "category": "lost",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "min_level": 4,
+      "chance": 0.09
+    },
+    "effect": {
+      "stat": "max_stamina",
+      "delta": -1,
+      "flag": "did_not_read_recipe"
+    },
+    "lines": [
+      "On a hook in a kitchen today there was a recipe — old, smoke-darkened, the writing the",
+      "kingdom's old way. You did not read it. You had been hungry, then less hungry. The",
+      "recipe stayed on the hook. Someone else will read it. Not you. You will not eat that meal.",
+      "  (-1 Max Stamina, permanently — a recipe you did not read that would have fed you twice.)"
+    ]
+  },
+  "road_not_taken_did_not_read_the_back_of_a_sign": {
+    "category": "half_truth",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "min_level": 4,
+      "chance": 0.09
+    },
+    "effect": {
+      "flag": "did_not_read_sign_back"
+    },
+    "lines": [
+      "Today a signpost had something on the back. You walked past it without going around.",
+      "Whatever was on the back, you did not read. The sign you read on the front said one",
+      "thing. The back said something else. You will not know what. The sign keeps both."
+    ]
+  },
+  "road_not_taken_did_not_read_a_friends_handwriting": {
+    "category": "lost",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "min_level": 5,
+      "chance": 0.09
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": -1,
+      "flag": "did_not_read_friend_hand"
+    },
+    "lines": [
+      "Tonight you came across a note in a friend's handwriting — left somewhere, for you, on",
+      "the kingdom's slow message-net. You folded it. You meant to read it at the inn. You did",
+      "not. The note is still in your coat. You will not, in this run, take it back out.",
+      "  (-1 Max HP, permanently — a friend's handwriting you did not, in time, read.)"
+    ]
+  },
+  "road_not_taken_did_not_read_a_grave_marker_fully": {
+    "category": "broken",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "min_level": 5,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": -1,
+      "flag": "did_not_read_full_grave"
+    },
+    "lines": [
+      "Today you read part of a grave-marker — the name. You did not read the rest. The rest",
+      "was the dates, the small line about who they had been. You walked on. The grave is in",
+      "the kingdom. The dates are in the stone. You did not know them. You will not, this run.",
+      "  (-1 Max HP, permanently — a grave-marker you read only the name of.)"
+    ]
+  },
+  "road_not_taken_did_not_read_a_drawing": {
+    "category": "mind",
+    "trigger": {
+      "at": [
+        "discovery_read"
+      ],
+      "min_level": 5,
+      "chance": 0.1
+    },
+    "effect": {
+      "flag": "did_not_read_drawing"
+    },
+    "lines": [
+      "On a page today there was a drawing. The drawing was the message. You did not read the",
+      "drawing — you read the text below and walked on. The drawing was, you understand now,",
+      "what the page was for. You did not see what the drawing was. The page kept it. From you."
+    ]
+  },
+  "road_not_taken_did_not_sit_with_the_first_grief": {
+    "category": "broken",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "min_level": 4,
+      "chance": 0.12
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": -1,
+      "flag": "did_not_sit_first_grief"
+    },
+    "lines": [
+      "Tonight a grief you had been carrying — small, manageable, the kind that does not, on",
+      "its own, hurt — came up to you and asked you to sit with it. You did not. You said you",
+      "were busy. The grief sat down alone. The grief will, in this run, not get sat with again.",
+      "  (-1 Max HP, permanently — a grief you did not sit with on a night you had time.)"
+    ]
+  },
+  "road_not_taken_did_not_cry_when_you_could_have": {
+    "category": "body",
+    "trigger": {
+      "at": [
+        "save_action"
+      ],
+      "min_level": 4,
+      "chance": 0.11
+    },
+    "effect": {
+      "stat": "max_stamina",
+      "delta": -1,
+      "flag": "did_not_cry"
+    },
+    "lines": [
+      "Tonight at the saving-place, alone, you came up to a count where you could have cried.",
+      "You did not. You held it. You went to sleep dry-eyed. The crying went into your shoulders.",
+      "Your shoulders will be tireder for it. You will not, in this run, cry that crying. It stays.",
+      "  (-1 Max Stamina, permanently — a crying held back at a count where it could have come.)"
+    ]
+  },
+  "road_not_taken_did_not_write_the_letter_you_meant_to": {
+    "category": "promise_broken",
+    "trigger": {
+      "at": [
+        "save_action"
+      ],
+      "min_level": 4,
+      "chance": 0.11
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": -1,
+      "flag": "did_not_write_letter"
+    },
+    "lines": [
+      "Tonight at the saving-place you had paper, ink, a candle, and a person you meant to",
+      "write a letter to. You did not write. You meant to. You closed the ink. The paper is",
+      "still folded in your pack. The person will not, in this run, get the letter.",
+      "  (-1 Max HP, permanently — a letter you meant to write tonight and did not.)"
+    ]
+  },
+  "road_not_taken_did_not_apologize_to_someone_you_owed": {
+    "category": "promise_broken",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "min_level": 4,
+      "chance": 0.11
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": -2,
+      "flag": "did_not_apologize"
+    },
+    "lines": [
+      "Today you passed someone you owed an apology to. You did not, today, give it. You had",
+      "decided you would. You did not. The owed apology stays owed, this run. They will go",
+      "to sleep tonight knowing you did not. So will you. The owing will be heavier from now.",
+      "  (-2 Max HP, permanently — an apology owed by you and not, in this run, paid.)"
+    ]
+  },
+  "road_not_taken_did_not_let_yourself_be_held": {
+    "category": "broken",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "requires_flag": "has_companion",
+      "min_level": 5,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": -1,
+      "flag": "did_not_let_held"
+    },
+    "lines": [
+      "Tonight your companion, seeing you tired, opened their arms — the simple gesture, the",
+      "offer of holding. You did not step into it. You patted their shoulder. You went to bed.",
+      "Some other you would have stepped in. The companion did not, in this run, hold you.",
+      "  (-1 Max HP, permanently — a holding offered you that you did not step into.)"
+    ]
+  },
+  "road_not_taken_did_not_take_an_hour_off": {
+    "category": "body",
+    "trigger": {
+      "at": [
+        "save_action"
+      ],
+      "min_level": 4,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "max_stamina",
+      "delta": -1,
+      "flag": "did_not_take_hour"
+    },
+    "lines": [
+      "Tonight you had the option of an hour off — to sit somewhere, to do nothing, to let",
+      "your body lay flat. You did not take it. You walked the next zone. Your body kept",
+      "score. The score will not be paid in this run. The hour is the kingdom's now, not yours.",
+      "  (-1 Max Stamina, permanently — an hour off your body needed that you did not take.)"
+    ]
+  },
+  "road_not_taken_did_not_let_a_companion_carry_a_grief": {
+    "category": "promise_broken",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "requires_flag": "has_companion",
+      "min_level": 5,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": -1,
+      "flag": "did_not_let_carry_grief"
+    },
+    "lines": [
+      "Today your companion offered, without asking, to carry one of your griefs for the hour",
+      "of the walking. You said no. You did not, you said, want them to carry it. They had",
+      "wanted to. They put their hand back at their side. The grief is still yours. They went quieter.",
+      "  (-1 Max HP, permanently — a companion's offer to carry a grief that you refused.)"
+    ]
+  },
+  "road_not_taken_did_not_say_a_thing_you_were_proud_of": {
+    "category": "lost",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "min_level": 4,
+      "chance": 0.1
+    },
+    "effect": {
+      "flag": "did_not_say_proud"
+    },
+    "lines": [
+      "Tonight you did a thing you were proud of. You did not tell anyone. You went to bed",
+      "with the pride wholly inside you. Someone else has not heard. The pride did not, in",
+      "this run, become a thing shared. The pride will, you suspect, fade. You will not say it."
+    ]
+  },
+  "road_not_taken_did_not_burn_an_old_paper": {
+    "category": "broken",
+    "trigger": {
+      "at": [
+        "save_action"
+      ],
+      "min_level": 5,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": -1,
+      "flag": "did_not_burn_paper"
+    },
+    "lines": [
+      "Tonight at the saving-place there was a paper in your pack — old, of yours, the kind",
+      "you have been meaning to burn. You did not burn it. You held it over the candle. You",
+      "put it back. The paper will be in your pack still, in your next save. You will not.",
+      "  (-1 Max HP, permanently — a paper you should have burned and chose, tonight, to keep.)"
+    ]
+  },
+  "road_not_taken_did_not_say_thank_you_to_the_kingdom": {
+    "category": "promise_broken",
+    "trigger": {
+      "at": [
+        "save_action"
+      ],
+      "min_level": 6,
+      "chance": 0.09
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": -1,
+      "flag": "did_not_thank_kingdom"
+    },
+    "lines": [
+      "Tonight at the saving-place, alone, you had the chance to say *thank you* — quietly,",
+      "to the kingdom — for the day's small mercies. You did not. You went to bed. The",
+      "kingdom did not, in this run, hear from you the thanks. The kingdom keeps these accounts.",
+      "  (-1 Max HP, permanently — a thanks you owed the kingdom you walked through.)"
+    ]
   }
 }
