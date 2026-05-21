@@ -4759,12 +4759,15 @@
         "summit"
       ],
       "min_level": 7,
-      "chance": 0.18
+      "chance": 0.18,
+      "denies_mark": [
+        "almost_chose_to_turn_back"
+      ]
     },
     "effect": {
       "stat": "max_hp",
       "delta": -1,
-      "flag": "almost_turned_back"
+      "flag": "summit_almost_turned_back"
     },
     "lines": [
       "You stood at the last switchback today and the wind came down and almost talked you out",
