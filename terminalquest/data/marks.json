@@ -17421,5 +17421,1030 @@
       "has had to reset its preparations. The Pall is, for the first time, uncertain. So are you. Good.",
       "  (+2 Max HP, permanently — a Summit that has had, in your hands, to reset its preparations.)"
     ]
+  },
+  "save_you_dreamt_of_a_pall_corridor": {
+    "category": "half_truth",
+    "trigger": {
+      "at": [
+        "save_action"
+      ],
+      "min_level": 4,
+      "chance": 0.13
+    },
+    "effect": {
+      "flag": "dreamt_pall_corridor"
+    },
+    "lines": [
+      "Tonight at the saving you dreamt of a long corridor. Empty. Lit by no source. The walls",
+      "had faces in them you almost knew. You walked the corridor in the dream. You woke at",
+      "the door at the end without opening it. The door will be there next time. So will you."
+    ]
+  },
+  "save_you_dreamt_of_your_mother_at_a_window": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "save_action"
+      ],
+      "min_level": 3,
+      "chance": 0.13
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 1,
+      "flag": "dreamt_mother_window"
+    },
+    "lines": [
+      "Tonight at the saving you dreamt your mother at a window. She was looking out, not at",
+      "you. The window opened to a garden that did not exist. She did not turn. You watched",
+      "her watching. The dream was a kindness. You woke held. You stood up easier.",
+      "  (+1 Max HP, permanently — a dream of your mother at a window the kingdom let you have.)"
+    ]
+  },
+  "save_you_dreamt_of_a_child_you_might_have_had": {
+    "category": "broken",
+    "trigger": {
+      "at": [
+        "save_action"
+      ],
+      "min_level": 5,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": -1,
+      "flag": "dreamt_unborn_child"
+    },
+    "lines": [
+      "Tonight at the saving you dreamt of a child you might, in a kinder world, have had.",
+      "You did not see the face clearly. You saw the small hand. The hand reached for yours.",
+      "You woke before it touched. The hand kept reaching, in the dream, after you had left.",
+      "  (-1 Max HP, permanently — a child unborn whose hand reached for yours in the saving-dream.)"
+    ]
+  },
+  "save_you_did_not_dream_at_all": {
+    "category": "forgetting",
+    "trigger": {
+      "at": [
+        "save_action"
+      ],
+      "min_level": 5,
+      "chance": 0.11
+    },
+    "effect": {
+      "stat": "max_stamina",
+      "delta": -1,
+      "flag": "did_not_dream"
+    },
+    "lines": [
+      "Tonight at the saving you slept and did not dream. Not once, not at all. The Pall took",
+      "the dreaming. The Pall does this, sometimes, when it is busy. You woke with the count",
+      "of the night unaccounted for. The night is in the Pall's books now. Not yours.",
+      "  (-1 Max Stamina, permanently — a night of dreams the Pall took for itself.)"
+    ]
+  },
+  "save_the_saving_itself_felt_ceremonial": {
+    "category": "mind",
+    "trigger": {
+      "at": [
+        "save_action"
+      ],
+      "min_level": 4,
+      "chance": 0.11
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "saving_ceremonial"
+    },
+    "lines": [
+      "Tonight the saving — the act of laying yourself out for the disk, palm flat — felt",
+      "ceremonial. Not perfunctory. The kingdom's old laying-down. You took longer than usual.",
+      "The disk took the save slowly, in respect. You will, from now on, save in this manner.",
+      "  (+1 Defense, permanently — a saving-ritual the body has come to do with proper care.)"
+    ]
+  },
+  "save_you_woke_with_someones_name_in_your_mouth": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "save_action"
+      ],
+      "min_level": 4,
+      "chance": 0.11
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 1,
+      "flag": "save_name_in_mouth"
+    },
+    "lines": [
+      "Tonight at waking, after a save, you had a name in your mouth — a name from somewhere,",
+      "not yours, not anyone's you've met this run. You said it once aloud. The name took. The",
+      "kingdom kept it. You will, from now on, know the name. You will not know what to do with it.",
+      "  (+1 Max HP, permanently — a name in your mouth at waking that the kingdom decided to leave you.)"
+    ]
+  },
+  "save_the_lamp_at_the_save_place_set_itself": {
+    "category": "found",
+    "trigger": {
+      "at": [
+        "save_action"
+      ],
+      "min_level": 3,
+      "chance": 0.11
+    },
+    "effect": {
+      "stat": "max_stamina",
+      "delta": 1,
+      "flag": "save_lamp_set"
+    },
+    "lines": [
+      "Tonight at the saving-place the lamp on the wall — that you had not yet lit — was",
+      "lit. Faintly. It had decided you were coming. It had decided to be ready. You did not,",
+      "in the end, blow it out. You let it burn through the saving. You slept in its light.",
+      "  (+1 Max Stamina, permanently — a lamp that had decided you were coming and lit itself.)"
+    ]
+  },
+  "save_you_dreamt_of_the_previous_warden_walking": {
+    "category": "half_truth",
+    "trigger": {
+      "at": [
+        "save_action"
+      ],
+      "min_level": 7,
+      "chance": 0.1
+    },
+    "effect": {
+      "flag": "dreamt_previous_warden"
+    },
+    "lines": [
+      "Tonight you dreamt the previous Warden walking — slow, head down, the kingdom around",
+      "them. They turned, in the dream, and saw you watching. They did not, in the dream,",
+      "speak. They lifted a hand. You woke. The hand stayed in the air after you were awake."
+    ]
+  },
+  "save_the_dust_under_the_bed_kept_a_shape": {
+    "category": "half_truth",
+    "trigger": {
+      "at": [
+        "save_action"
+      ],
+      "min_level": 5,
+      "chance": 0.09
+    },
+    "effect": {
+      "flag": "save_dust_shape"
+    },
+    "lines": [
+      "Tonight at the saving-place you noticed the dust under the bed — undisturbed for many",
+      "nights — had, in one corner, the shape of a small footprint. Not yours. Smaller. The",
+      "kingdom has, in this room, a small companion. You did not, in the end, sweep the dust."
+    ]
+  },
+  "save_you_dreamt_of_atrels_first_face": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "save_action"
+      ],
+      "min_level": 6,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 1,
+      "flag": "dreamt_atrel_first_face"
+    },
+    "lines": [
+      "Tonight you dreamt of Atrél — the face from before the rite, the older one, the one",
+      "the kingdom decided to forget. You saw it clearly. You woke with the face slipping",
+      "from you, the way old dreams slip. Some of the face stayed. You will, you think, hold it.",
+      "  (+1 Max HP, permanently — Atrél's first face, briefly held in a saving-dream.)"
+    ]
+  },
+  "save_you_set_a_bowl_of_water_by_the_bed": {
+    "category": "promise_kept",
+    "trigger": {
+      "at": [
+        "save_action"
+      ],
+      "min_level": 4,
+      "chance": 0.11
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "save_water_bowl"
+    },
+    "lines": [
+      "Tonight at the saving-place you set, without thinking, a small bowl of water by the",
+      "head of the bed. The kingdom's old way. For the dead who, in the night, might come",
+      "thirsty. You did not need to. You did. The bowl was empty in the morning. They came.",
+      "  (+1 Defense, permanently — a bowl set out for the dead at the saving-place, drained by morning.)"
+    ]
+  },
+  "save_you_dreamt_of_walking_back_through_zones": {
+    "category": "mind",
+    "trigger": {
+      "at": [
+        "save_action"
+      ],
+      "min_level": 5,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "max_stamina",
+      "delta": 1,
+      "flag": "dreamt_walked_back"
+    },
+    "lines": [
+      "Tonight at the saving you dreamt the whole route back — Witherwood, Sodden Reach, the",
+      "Gullet, all the way. In one count. You walked it in the dream in the time it takes to",
+      "breathe. The body knows the way now. The body will know the way in the next walking.",
+      "  (+1 Max Stamina, permanently — a saving-dream of walking the whole way back in one breath.)"
+    ]
+  },
+  "save_you_dreamt_of_a_house_you_used_to_live_in": {
+    "category": "lost",
+    "trigger": {
+      "at": [
+        "save_action"
+      ],
+      "min_level": 5,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": -1,
+      "flag": "save_dreamt_lost_house"
+    },
+    "lines": [
+      "Tonight at the saving you dreamt a house you used to live in. Long ago. Before the",
+      "kingdom. The house was not the way you remembered it. The Pall had been in it.",
+      "Rearranged the rooms. You woke unsettled. The Pall had been redecorating your old places.",
+      "  (-1 Max HP, permanently — a house from before the kingdom the Pall has redecorated in your sleep.)"
+    ]
+  },
+  "save_a_companion_kept_first_watch": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "save_action"
+      ],
+      "requires_flag": "has_companion",
+      "min_level": 5,
+      "chance": 0.11
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 1,
+      "flag": "companion_first_watch_dream"
+    },
+    "lines": [
+      "Tonight at the saving-place your companion took first watch. While they sat with their",
+      "back to the door you slept deeper than you have in nights. Your companion will not, in",
+      "the morning, comment. You will both know. You will offer to take first watch tomorrow.",
+      "  (+1 Max HP, permanently — a deeper sleep allowed by a companion's first watch.)"
+    ]
+  },
+  "save_you_dreamt_of_a_child_naming_a_grave": {
+    "category": "found",
+    "trigger": {
+      "at": [
+        "save_action"
+      ],
+      "min_level": 5,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "dreamt_child_named_grave"
+    },
+    "lines": [
+      "Tonight you dreamt a child naming a grave — the one in Gravewatch's third row, the",
+      "unnamed one. The child said the name aloud. You woke with the name in your head. The",
+      "child will not, in waking, be there. The name will. You will say it tomorrow at the grave.",
+      "  (+1 Defense, permanently — a name given to you, in a dream, for an unnamed grave by a child.)"
+    ]
+  },
+  "save_you_dreamt_of_the_kingdom_breathing": {
+    "category": "mind",
+    "trigger": {
+      "at": [
+        "save_action"
+      ],
+      "min_level": 6,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "max_stamina",
+      "delta": 1,
+      "flag": "kingdom_breathed"
+    },
+    "lines": [
+      "Tonight you dreamt of the kingdom — the whole of it, every zone, every Pall-corner —",
+      "breathing. Slow. Long inhales, long exhales. You breathed with it. You woke breathing",
+      "to its rhythm. From now on, between zones, you will breathe to the kingdom's rhythm.",
+      "  (+1 Max Stamina, permanently — a saving-dream of the kingdom breathing that your lungs caught.)"
+    ]
+  },
+  "save_an_owl_sat_at_the_saving_window": {
+    "category": "found",
+    "trigger": {
+      "at": [
+        "save_action"
+      ],
+      "min_level": 4,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "owl_at_window"
+    },
+    "lines": [
+      "Tonight at the saving-place an owl was on the sill of the window. The owl did not",
+      "hunt. Did not move. The owl watched you save. The kingdom uses owls, sometimes, the",
+      "way it uses widows — as quiet witnesses. The owl noted the saving. You stood up watched.",
+      "  (+1 Defense, permanently — an owl on the saving-window keeping the kingdom's notes.)"
+    ]
+  },
+  "save_you_woke_holding_a_word_you_could_not_say": {
+    "category": "half_truth",
+    "trigger": {
+      "at": [
+        "save_action"
+      ],
+      "min_level": 6,
+      "chance": 0.09
+    },
+    "effect": {
+      "flag": "woke_word_unsayable"
+    },
+    "lines": [
+      "Tonight at waking you held a word in your mouth that, when you tried to say it, would",
+      "not come out. The word was not lost. The word was waiting. The word is something the",
+      "kingdom does not, yet, want said. You will, when the right moment comes, say it."
+    ]
+  },
+  "save_the_chalk_marks_on_the_doorpost_glowed_faintly": {
+    "category": "half_truth",
+    "trigger": {
+      "at": [
+        "save_action"
+      ],
+      "location": [
+        "village"
+      ],
+      "min_level": 5,
+      "chance": 0.1
+    },
+    "effect": {
+      "flag": "save_chalk_glowed"
+    },
+    "lines": [
+      "Tonight at the saving-place, in Gravewatch, the chalk marks on the doorpost — the",
+      "small protective signs the innkeepers leave — glowed, very faintly, for one count when",
+      "you crossed. The marks recognized you. The marks let you pass. You went in. You slept."
+    ]
+  },
+  "save_you_dreamt_of_a_priest_robing_you": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "save_action"
+      ],
+      "min_level": 6,
+      "chance": 0.09
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 1,
+      "flag": "dreamt_priest_robing"
+    },
+    "lines": [
+      "Tonight you dreamt a priest — old, neither Atrél nor Vael, somebody else — robing you.",
+      "Carefully. The way they robe a priest the kingdom intends to send out. You did not",
+      "protest in the dream. You stood for it. The priest, before fading, blessed your hands.",
+      "  (+1 Max HP, permanently — a robing in a dream that the body remembers like a benediction.)"
+    ]
+  },
+  "save_you_wrote_a_name_into_a_save_corner": {
+    "category": "promise_kept",
+    "trigger": {
+      "at": [
+        "save_action"
+      ],
+      "min_level": 5,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "wrote_name_save_corner"
+    },
+    "lines": [
+      "Tonight at the saving-place you scratched, with your knife on the underside of the",
+      "saving-table, a single name. Yours. The next person to lift the table will see it.",
+      "You are now in the table. The table will, you think, remember the next time you save.",
+      "  (+1 Defense, permanently — your name scratched into the underside of a saving-table.)"
+    ]
+  },
+  "save_you_dreamt_of_finishing_the_climb_well": {
+    "category": "found",
+    "trigger": {
+      "at": [
+        "save_action"
+      ],
+      "min_level": 7,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 2,
+      "flag": "dreamt_finishing_well"
+    },
+    "lines": [
+      "Tonight you dreamt of finishing the climb well. Not the way the climb actually ends.",
+      "A version of the ending where everyone you wanted alive was alive. You stayed in the",
+      "dream longer than you should have. You woke knowing the dream was the kingdom's gift.",
+      "  (+2 Max HP, permanently — a dream of finishing well the kingdom let you have, for once.)"
+    ]
+  },
+  "save_the_innkeeper_left_a_pillow_for_you": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "save_action"
+      ],
+      "location": [
+        "village"
+      ],
+      "min_level": 4,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 1,
+      "flag": "save_pillow"
+    },
+    "lines": [
+      "Tonight at Gravewatch's inn the innkeeper had put an extra pillow — the soft one, the",
+      "one she keeps back for particular guests — on your bed. You slept with two pillows. You",
+      "have not slept with two in a long count. She did not, in the morning, say. You said thanks.",
+      "  (+1 Max HP, permanently — an extra pillow the innkeeper kept back for whichever guest you turned out to be.)"
+    ]
+  },
+  "save_the_room_had_been_swept_for_you": {
+    "category": "found",
+    "trigger": {
+      "at": [
+        "save_action"
+      ],
+      "location": [
+        "village"
+      ],
+      "min_level": 4,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "max_stamina",
+      "delta": 1,
+      "flag": "save_room_swept"
+    },
+    "lines": [
+      "Tonight at the inn the room had been recently swept — for you. The floor was clean.",
+      "The corners were clean. There were marks of the broom on the floor in the doorway. The",
+      "innkeeper had wanted you to come into a clean room. The kingdom is being kind tonight.",
+      "  (+1 Max Stamina, permanently — a room swept for you with care that you noticed and kept.)"
+    ]
+  },
+  "save_you_thanked_the_disk_aloud": {
+    "category": "promise_kept",
+    "trigger": {
+      "at": [
+        "save_action"
+      ],
+      "min_level": 6,
+      "chance": 0.09
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "thanked_disk"
+    },
+    "lines": [
+      "Tonight at the saving, before you slept, you thanked the disk — aloud — for keeping",
+      "what it has been keeping. The disk did not respond. The disk does not. The thanks landed.",
+      "The disk will, from now on, take your saves a count more carefully. You will know it does.",
+      "  (+1 Defense, permanently — a thanks said aloud to the disk that has been keeping you.)"
+    ]
+  },
+  "discovery_a_page_re_arranged_under_your_eye": {
+    "category": "half_truth",
+    "trigger": {
+      "at": [
+        "discovery_read"
+      ],
+      "min_level": 5,
+      "chance": 0.12
+    },
+    "effect": {
+      "flag": "page_rearranged"
+    },
+    "lines": [
+      "Tonight, halfway through a page, the words on it re-arranged themselves under your eye.",
+      "Not many — three or four. The new arrangement said a different sentence. You read both.",
+      "The page settled. The second sentence is in your head now. The first is in someone else's."
+    ]
+  },
+  "discovery_ink_was_still_drying": {
+    "category": "found",
+    "trigger": {
+      "at": [
+        "discovery_read"
+      ],
+      "min_level": 4,
+      "chance": 0.12
+    },
+    "effect": {
+      "stat": "attack",
+      "delta": 1,
+      "flag": "ink_still_drying"
+    },
+    "lines": [
+      "Tonight, turning a page, you noticed the ink — somewhere mid-page — was still drying.",
+      "Not old. Today. Somebody had been writing this. Recently. You did not see who. They",
+      "left in a hurry. The page is yours now. You will, in your own ink, finish it.",
+      "  (+1 Attack, permanently — a page whose ink was still drying when you found it.)"
+    ]
+  },
+  "discovery_a_word_was_underlined_for_you": {
+    "category": "promise_kept",
+    "trigger": {
+      "at": [
+        "discovery_read"
+      ],
+      "min_level": 4,
+      "chance": 0.11
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 1,
+      "flag": "word_underlined"
+    },
+    "lines": [
+      "Tonight on a page you read, one word — a small one, in the middle of a sentence — had",
+      "been carefully underlined. By a hand you don't know. The hand had wanted the next reader",
+      "to see this word particularly. You were the next reader. The word is, now, particularly yours.",
+      "  (+1 Max HP, permanently — a word underlined for the next reader who turned out to be you.)"
+    ]
+  },
+  "discovery_a_clerks_doodle_was_your_face": {
+    "category": "half_truth",
+    "trigger": {
+      "at": [
+        "discovery_read"
+      ],
+      "min_level": 5,
+      "chance": 0.1
+    },
+    "effect": {
+      "flag": "clerk_doodle_your_face"
+    },
+    "lines": [
+      "Tonight in the margin of a page there was, scribbled, a small face. A clerk's idle",
+      "doodle, perhaps. The face was yours. You don't remember the clerk. The clerk drew",
+      "you. The drawing was very careful. The clerk loved you, in some run, in some way."
+    ]
+  },
+  "discovery_the_pages_were_warm_to_the_touch": {
+    "category": "body",
+    "trigger": {
+      "at": [
+        "discovery_read"
+      ],
+      "min_level": 4,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "max_stamina",
+      "delta": 1,
+      "flag": "pages_warm"
+    },
+    "lines": [
+      "Tonight the pages of the book were warm under your fingertips. Not just the page you",
+      "were reading. The whole book. Body-warm. The book had been held, recently and long, by",
+      "somebody who cared about the book. The warmth lingered. You read in the warmth. Easier.",
+      "  (+1 Max Stamina, permanently — a book whose pages stayed warm under your reading hand.)"
+    ]
+  },
+  "discovery_a_pressed_flower_fell_out": {
+    "category": "found",
+    "trigger": {
+      "at": [
+        "discovery_read"
+      ],
+      "min_level": 4,
+      "chance": 0.11
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 1,
+      "flag": "discovery_pressed_flower"
+    },
+    "lines": [
+      "Tonight from the book a small pressed flower — colourless from age — fell out. A reader",
+      "before you, somewhere, in some other run, had put it there. You picked it up. You put",
+      "it back. The flower stays in the book. You will, in some other run, find it again.",
+      "  (+1 Max HP, permanently — a pressed flower kept in a discovery-book you have left there for the next reader.)"
+    ]
+  },
+  "discovery_the_text_corrected_itself": {
+    "category": "mind",
+    "trigger": {
+      "at": [
+        "discovery_read"
+      ],
+      "min_level": 5,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 1,
+      "flag": "text_corrected"
+    },
+    "lines": [
+      "Tonight you re-read a line and the text — for one count — corrected itself. The wrong",
+      "word slid sideways and the right word came in. You saw the change. The kingdom has",
+      "decided this line should be true. You read the corrected version. You will not see the wrong one again.",
+      "  (+1 Max HP, permanently — a line corrected, under your eye, by the kingdom's invisible editor.)"
+    ]
+  },
+  "discovery_the_book_was_in_a_dead_friends_hand": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "discovery_read"
+      ],
+      "min_level": 5,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 1,
+      "flag": "discovery_dead_friend_hand"
+    },
+    "lines": [
+      "Tonight you recognized the handwriting in the book. A friend's. A friend who is dead",
+      "now. They had written this. You did not know they had. You did not know they wrote at",
+      "all. You read the whole thing. You sat the count out. You stand straighter for it.",
+      "  (+1 Max HP, permanently — a book in your dead friend's hand that you, tonight, read.)"
+    ]
+  },
+  "discovery_a_word_made_you_say_someones_name": {
+    "category": "half_truth",
+    "trigger": {
+      "at": [
+        "discovery_read"
+      ],
+      "min_level": 4,
+      "chance": 0.1
+    },
+    "effect": {
+      "flag": "word_named_someone"
+    },
+    "lines": [
+      "Tonight a word on the page — the kingdom's old word for *patient* — made you, without",
+      "thinking, say aloud the name of someone you knew. The name took. The kingdom has decided",
+      "the name and the word belong together. You will, from now on, hear them as one phrase."
+    ]
+  },
+  "discovery_the_page_held_a_threadbare_ribbon": {
+    "category": "found",
+    "trigger": {
+      "at": [
+        "discovery_read"
+      ],
+      "min_level": 5,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "discovery_ribbon"
+    },
+    "lines": [
+      "Tonight, tucked between pages, there was a small threadbare ribbon. Red once. Pink now.",
+      "A child's ribbon. You took it. You did not put it back. The ribbon now travels with you.",
+      "It rides in your coat. The page that had been marked by it will be re-marked, by you, with a clean one.",
+      "  (+1 Defense, permanently — a child's threadbare ribbon taken from a discovery-page to ride with you.)"
+    ]
+  },
+  "discovery_a_paragraph_was_in_the_old_tongue": {
+    "category": "mind",
+    "trigger": {
+      "at": [
+        "discovery_read"
+      ],
+      "min_level": 6,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "attack",
+      "delta": 1,
+      "flag": "paragraph_old_tongue"
+    },
+    "lines": [
+      "Tonight a whole paragraph of the page was in the old tongue. You should not have been",
+      "able to read it. You read it. The body and the kingdom have been teaching you, slowly.",
+      "The paragraph said something important. You will, in some other run, write it back into a margin.",
+      "  (+1 Attack, permanently — an old-tongue paragraph you read without realising you could.)"
+    ]
+  },
+  "discovery_the_book_breathed_open_at_the_right_page": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "discovery_read"
+      ],
+      "min_level": 4,
+      "chance": 0.11
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 1,
+      "flag": "book_breathed_open"
+    },
+    "lines": [
+      "Tonight the book, untouched on the table, breathed open — a slight, decided motion — at",
+      "the exact page you needed. You did not, in the end, ask how. You read the page. The",
+      "book closed when you closed it. The book will do this for you again.",
+      "  (+1 Max HP, permanently — a book that has begun to open to the right page for you.)"
+    ]
+  },
+  "discovery_a_smudge_on_your_thumb_came_from_a_page": {
+    "category": "body",
+    "trigger": {
+      "at": [
+        "discovery_read"
+      ],
+      "min_level": 4,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": -1,
+      "flag": "discovery_smudge_thumb"
+    },
+    "lines": [
+      "Tonight your thumb came away from a page with a small dark smudge — the kingdom's old",
+      "soot-ink, the kind the rite was written in. The smudge will not wash off. You will",
+      "carry, on your right thumb, a small mark of the rite-ink from now on. You can carry it.",
+      "  (-1 Max HP, permanently — soot-ink from the rite on your thumb that will not wash away.)"
+    ]
+  },
+  "discovery_a_blank_page_was_meant_for_you_to_write": {
+    "category": "promise_kept",
+    "trigger": {
+      "at": [
+        "discovery_read"
+      ],
+      "min_level": 5,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "discovery_blank_for_you"
+    },
+    "lines": [
+      "Tonight the book ended one chapter and the next page was blank — pen and ink set next",
+      "to it. The kingdom was waiting. You picked up the pen. You wrote a short sentence. You",
+      "closed the book. The next reader will read your sentence. The kingdom keeps the chain.",
+      "  (+1 Defense, permanently — a sentence you wrote into a discovery-book for the next reader.)"
+    ]
+  },
+  "discovery_a_page_had_been_torn_out_for_safety": {
+    "category": "half_truth",
+    "trigger": {
+      "at": [
+        "discovery_read"
+      ],
+      "min_level": 5,
+      "chance": 0.09
+    },
+    "effect": {
+      "flag": "page_torn_for_safety"
+    },
+    "lines": [
+      "Tonight you noticed a page had been torn out of the book — clean, careful. The kingdom",
+      "tears pages for safety. The page that was here held something the kingdom decided",
+      "should not, today, be known. You did not press. The torn page is somewhere safe."
+    ]
+  },
+  "discovery_someone_had_dog_eared_a_page_for_you": {
+    "category": "found",
+    "trigger": {
+      "at": [
+        "discovery_read"
+      ],
+      "min_level": 4,
+      "chance": 0.11
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 1,
+      "flag": "discovery_dog_eared_for_you"
+    },
+    "lines": [
+      "Tonight a page in the book had been folded down at the corner — by a hand other than",
+      "yours, the kingdom's hand-of-recommendation. You read that page. It was, indeed, the",
+      "one you needed. You unfolded the corner before you closed the book. The kingdom does not need credit.",
+      "  (+1 Max HP, permanently — a dog-eared page in a book left for you by a hand that knew.)"
+    ]
+  },
+  "discovery_a_diagram_changed_position_on_the_page": {
+    "category": "half_truth",
+    "trigger": {
+      "at": [
+        "discovery_read"
+      ],
+      "min_level": 6,
+      "chance": 0.09
+    },
+    "effect": {
+      "flag": "diagram_moved"
+    },
+    "lines": [
+      "Tonight on a page there was a diagram — a small one, a chart of stars, perhaps. When",
+      "you looked again, the diagram had shifted half a finger to the right on the page. The",
+      "diagram has decided about you. The diagram is, in some way, alive. You closed the book carefully."
+    ]
+  },
+  "discovery_a_page_smelled_of_a_kitchen": {
+    "category": "mind",
+    "trigger": {
+      "at": [
+        "discovery_read"
+      ],
+      "min_level": 5,
+      "chance": 0.09
+    },
+    "effect": {
+      "flag": "discovery_page_kitchen_smell"
+    },
+    "lines": [
+      "Tonight a page in the book smelled of a kitchen — onions, broth, the kingdom's old",
+      "cooking. The reader before you had been a cook. They had read the book at a kitchen",
+      "table. You read the page. You felt fed by it. The kitchen-smell will be on you a while."
+    ]
+  },
+  "discovery_the_book_was_too_heavy_in_your_hands": {
+    "category": "body",
+    "trigger": {
+      "at": [
+        "discovery_read"
+      ],
+      "min_level": 5,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "max_stamina",
+      "delta": -1,
+      "flag": "discovery_too_heavy"
+    },
+    "lines": [
+      "Tonight the book — small, ordinary by its size — was, in your hands, very heavy. The",
+      "weight of what was in it. You could feel the weight. You read the book. You will be",
+      "tireder, in your arms, for having held it. The weight will not, properly, leave you.",
+      "  (-1 Max Stamina, permanently — a book too heavy in your hands for what it weighed by size.)"
+    ]
+  },
+  "discovery_a_glyph_appeared_at_the_chapter_break": {
+    "category": "found",
+    "trigger": {
+      "at": [
+        "discovery_read"
+      ],
+      "min_level": 6,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "attack",
+      "delta": 1,
+      "flag": "chapter_glyph"
+    },
+    "lines": [
+      "Tonight at a chapter break in the book there was a small glyph — one of the kingdom's",
+      "old marks — that had not, on previous readings, been there. The glyph was for you. The",
+      "glyph meant *keep going*. You did, in the reading. You will, in the rest of the climb.",
+      "  (+1 Attack, permanently — a chapter-break glyph of *keep going* placed in the book for you.)"
+    ]
+  },
+  "discovery_the_page_held_a_lock_of_hair": {
+    "category": "lost",
+    "trigger": {
+      "at": [
+        "discovery_read"
+      ],
+      "min_level": 5,
+      "chance": 0.09
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": -1,
+      "flag": "discovery_lock_hair"
+    },
+    "lines": [
+      "Tonight tucked into a page there was a small lock of hair — light, fine, a child's. The",
+      "page was the kind of page where a parent might press such a thing. You did not, in the",
+      "end, take the lock. You closed it back into the book. The child is somewhere they are.",
+      "  (-1 Max HP, permanently — a lock of child's hair pressed into a page that you closed back.)"
+    ]
+  },
+  "discovery_a_paragraph_was_a_letter_to_you": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "discovery_read"
+      ],
+      "min_level": 6,
+      "chance": 0.09
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 2,
+      "flag": "paragraph_letter_to_you"
+    },
+    "lines": [
+      "Tonight a paragraph in the book was — by its language, by its small specific kindness —",
+      "addressed to you. Not by name. By the shape of who you are. The kingdom had written you",
+      "a letter and folded it into a discovery. You read it. You stood up steady. You stood up known.",
+      "  (+2 Max HP, permanently — a paragraph addressed to the shape of you, in a discovery-book.)"
+    ]
+  },
+  "discovery_the_signature_at_the_end_was_yours": {
+    "category": "half_truth",
+    "trigger": {
+      "at": [
+        "discovery_read"
+      ],
+      "requires_flag": "is_reborn",
+      "min_level": 6,
+      "chance": 0.1
+    },
+    "effect": {
+      "flag": "discovery_self_signed"
+    },
+    "lines": [
+      "Tonight you turned the last page of the book and the signature at the end was yours. A",
+      "previous you's. You had read your own writing all the way through, not knowing. The",
+      "book is, in this way, a letter from a previous you to this you. You will, in some other run, write the next."
+    ]
+  },
+  "discovery_an_index_was_compiled_for_you": {
+    "category": "found",
+    "trigger": {
+      "at": [
+        "discovery_read"
+      ],
+      "min_level": 5,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "max_stamina",
+      "delta": 1,
+      "flag": "discovery_index_for_you"
+    },
+    "lines": [
+      "Tonight at the back of the book there was an index — by topic — that did not, on",
+      "previous readings, exist. Someone had compiled it for the next reader. The next reader",
+      "was you. The index is short. The entries are exactly the things you needed to look up.",
+      "  (+1 Max Stamina, permanently — an index someone compiled at the back of a book just for the next reader's eye.)"
+    ]
+  },
+  "discovery_the_book_thanked_you_for_reading_it": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "discovery_read"
+      ],
+      "min_level": 7,
+      "chance": 0.08
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 1,
+      "flag": "discovery_book_thanked"
+    },
+    "lines": [
+      "Tonight, finishing the book, you had the distinct sense — for one count — that the",
+      "book had thanked you for reading it. Not the author. The book itself. Books, in",
+      "Mournhold, last a long time. They learn to be glad of readers. This book was glad of you.",
+      "  (+1 Max HP, permanently — a book whose own thanks landed in you at the closing of its last page.)"
+    ]
   }
 }
