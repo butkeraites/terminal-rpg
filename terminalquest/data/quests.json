@@ -8494,5 +8494,338 @@
       "gullet_mawmother_braced_for_you"
     ],
     "reward_chronicle_line": "A climber had taken the Mother Appetite into themselves briefly; the Maw-Mother in the Gullet ended at the answering hunger."
+  },
+  "mc_bell_no_reason": {
+    "name": "After a Bell Rang for No Specific Reason",
+    "target_enemy": "hollow_bellward",
+    "needed": 1,
+    "reward_gold": 1000,
+    "cleanse_required": 3,
+    "requires_mark": "music_a_bell_rang_for_no_specific_reason",
+    "flavor": "A bell at Gravewatch rang for no specific reason — for you, perhaps. The Hollow Bellward in Mourncross felt the bell ring. End her."
+  },
+  "mc_kettle_song": {
+    "name": "After the Kettle Song Steadied You",
+    "target_enemy": "wolf",
+    "needed": 2,
+    "reward_gold": 300,
+    "cleanse_required": 0,
+    "requires_mark": "music_a_kettle_song_steadied_you",
+    "flavor": "A kettle song at Gravewatch steadied you for a count. Two wolves of the wood had been counting on you unsteady. End them."
+  },
+  "mc_low_hum": {
+    "name": "After a Low Hum Carried the Zone",
+    "target_enemy": "ice_wraith",
+    "needed": 3,
+    "reward_gold": 600,
+    "cleanse_required": 4,
+    "requires_mark": "music_a_low_hum_carried_the_zone_with_you",
+    "flavor": "A low hum carried a whole zone with you for a passage. Three ice-wraiths above the snowline took the hum as challenge. End them."
+  },
+  "mc_silence_landed": {
+    "name": "After a Silence Landed Correctly",
+    "target_enemy": "censer_shade",
+    "needed": 2,
+    "reward_gold": 700,
+    "cleanse_required": 4,
+    "requires_mark": "music_a_silence_landed_correctly",
+    "flavor": "A silence in the Choir landed correctly for one count. Two censer-shades had been trying to fill the silence. End them."
+  },
+  "mc_widow_humming": {
+    "name": "After a Widow Was Humming Again",
+    "target_enemy": "pall_magistrate",
+    "needed": 1,
+    "reward_gold": 700,
+    "cleanse_required": 3,
+    "requires_mark": "music_a_widow_was_humming_again",
+    "flavor": "A widow in Mourncross was humming again — the kingdom is remembering. A magistrate had been waiting for the humming to stop. End him.",
+    "reward_chronicle_line": "A widow in Mourncross had begun humming again; the magistrate who had been waiting for the silence fell at the song."
+  },
+  "mc_unsung_verse_returned": {
+    "name": "After an Unsung Verse Came Back",
+    "target_enemy": "choirmaster_effigy",
+    "needed": 1,
+    "reward_gold": 800,
+    "cleanse_required": 4,
+    "requires_mark": "music_an_unsung_verse_came_back",
+    "flavor": "An unsung verse came back to you — for one breath. An effigy in the Choir had eaten the verse before. End it. The verse stays sung."
+  },
+  "mc_silence_kindness": {
+    "name": "After Silence Was a Kindness",
+    "target_enemy": "wolf",
+    "needed": 3,
+    "reward_gold": 350,
+    "cleanse_required": 0,
+    "requires_mark": "music_silence_after_a_kill_was_a_kindness",
+    "flavor": "After a kill you held the silence kindly. Three wolves of the wood had counted on the silence breaking. End them."
+  },
+  "mc_kingdom_long_note": {
+    "name": "After the Kingdom Held a Long Sustained Note",
+    "target_enemy": "cantor_vael",
+    "needed": 1,
+    "reward_gold": 2000,
+    "cleanse_required": 4,
+    "requires_mark": "music_the_kingdom_made_a_long_sustained_note",
+    "flavor": "The kingdom held a long sustained note for one count. Cantor Vael was the only one who didn't sing it. End him in the holding.",
+    "reward_marks": [
+      "choir_kept_the_third_line"
+    ]
+  },
+  "mc_lost_verse_taught": {
+    "name": "After You Knew the Lost Verse, the Choir Tried Again",
+    "target_enemy": "choirmaster_effigy",
+    "needed": 3,
+    "reward_gold": 800,
+    "cleanse_required": 4,
+    "requires_mark": "music_the_choir_air_was_thinner_for_a_song",
+    "flavor": "Once the Choir's air was thinner for a song of yours. Three effigies tried to thicken it. End them."
+  },
+  "mc_child_seat_table": {
+    "name": "After a Child Gave You Their Seat at a Table",
+    "target_enemy": "bandit",
+    "needed": 2,
+    "reward_gold": 350,
+    "cleanse_required": 0,
+    "requires_mark": "children_a_child_gave_you_their_seat_at_a_table",
+    "flavor": "A child gave you their seat at a table once. Two bandits had been watching for the table. End them."
+  },
+  "mc_child_warm_pastry": {
+    "name": "After a Child Handed You a Warm Pastry",
+    "target_enemy": "wolf",
+    "needed": 3,
+    "reward_gold": 350,
+    "cleanse_required": 0,
+    "requires_mark": "children_a_child_handed_you_a_warm_pastry",
+    "flavor": "A child handed you a warm pastry once. Three wolves of the wood smelled the warmth from the road. End them. The pastry was good."
+  },
+  "mc_child_pebble": {
+    "name": "After a Child Offered You a Pebble",
+    "target_enemy": "bandit",
+    "needed": 1,
+    "reward_gold": 250,
+    "cleanse_required": 0,
+    "requires_mark": "children_a_child_offered_you_a_pebble",
+    "flavor": "A child offered you a pebble — a real one. A bandit on the road had wanted to laugh at the offer. End him. The pebble stays in your pocket."
+  },
+  "mc_child_sat_count": {
+    "name": "After a Child Sat at Your Side a Count",
+    "target_enemy": "bonesong",
+    "needed": 1,
+    "reward_gold": 500,
+    "cleanse_required": 1,
+    "requires_mark": "children_a_child_sat_at_your_side_a_count",
+    "flavor": "A child sat at your side for a count once. A bonesong in the Holds had noticed the small weight beside you. End it."
+  },
+  "mc_child_taught_word": {
+    "name": "After a Child Taught You a New Word",
+    "target_enemy": "library_warden",
+    "needed": 1,
+    "reward_gold": 700,
+    "cleanse_required": 3,
+    "requires_mark": "children_a_child_taught_you_a_new_word",
+    "flavor": "A child taught you a new word once. A library-warden in the Burned Library wanted to cross the word out. End him."
+  },
+  "mc_child_walked_path": {
+    "name": "After a Child Walked Part of Your Path",
+    "target_enemy": "wolf",
+    "needed": 3,
+    "reward_gold": 400,
+    "cleanse_required": 0,
+    "requires_mark": "children_a_child_walked_part_of_your_path_with_you",
+    "flavor": "A child walked part of your path with you once. Three wolves of the wood had seen the small companion. End them."
+  },
+  "mc_child_lullaby": {
+    "name": "After a Child Was Singing the Old Lullaby",
+    "target_enemy": "hollow_procession",
+    "needed": 1,
+    "reward_gold": 700,
+    "cleanse_required": 3,
+    "requires_mark": "children_a_child_was_singing_the_old_lullaby",
+    "flavor": "A child was singing the old lullaby. One of the procession in Mourncross stopped to listen. End it. The lullaby keeps singing."
+  },
+  "mc_two_children_game": {
+    "name": "After Two Children Were Playing a Game You Knew",
+    "target_enemy": "bandit",
+    "needed": 2,
+    "reward_gold": 300,
+    "cleanse_required": 0,
+    "requires_mark": "children_two_children_were_playing_a_game_you_knew",
+    "flavor": "Two children at Gravewatch were playing a game you knew. Two bandits on the road had once played the same game. End them.",
+    "reward_chronicle_line": "Two children had been playing a game two bandits had also played; the bandits ended at the road's edge for the recognition."
+  },
+  "mc_fallen_hireling_buckle": {
+    "name": "After Blood Was on Your Buckle",
+    "target_enemy": "ashen_penitent",
+    "needed": 1,
+    "reward_gold": 1100,
+    "cleanse_required": 4,
+    "requires_mark": "fallen_hireling_blood_is_on_your_buckle",
+    "flavor": "A fallen hireling's blood is on your buckle still. A Penitent above the snowline knew the hireling. End him."
+  },
+  "dm_door_unlocked": {
+    "name": "After a Door Was Left Unlocked in Trust",
+    "target_enemy": "doorshut",
+    "needed": 2,
+    "reward_gold": 400,
+    "cleanse_required": 1,
+    "requires_mark": "daily_a_door_was_left_unlocked_in_trust",
+    "flavor": "A door at Gravewatch was left unlocked in trust. Two doorshuts in the Holds had hoped to find the unlocked one. End them."
+  },
+  "dm_kettle_whistled": {
+    "name": "After a Kettle Whistled on a Passing Hearth",
+    "target_enemy": "wolf",
+    "needed": 2,
+    "reward_gold": 250,
+    "cleanse_required": 0,
+    "requires_mark": "daily_a_kettle_whistled_on_a_passing_hearth",
+    "flavor": "A kettle whistled on a passing hearth as you walked. Two wolves of the wood took the whistle as direction. End them."
+  },
+  "dm_market_haggle": {
+    "name": "After a Market Haggle Ended in Laughter",
+    "target_enemy": "bandit",
+    "needed": 3,
+    "reward_gold": 300,
+    "cleanse_required": 0,
+    "requires_mark": "daily_a_market_haggle_ended_in_laughter",
+    "flavor": "A market haggle at Gravewatch ended in laughter. Three bandits on the road had been listening for raised voices. End them."
+  },
+  "dm_market_old_song": {
+    "name": "After a Market Song Was the Old Song",
+    "target_enemy": "wolf",
+    "needed": 3,
+    "reward_gold": 350,
+    "cleanse_required": 0,
+    "requires_mark": "daily_a_market_song_was_the_old_song",
+    "flavor": "A market song at Gravewatch was the old song. Three wolves of the wood had heard the song's first singer. End them."
+  },
+  "dm_market_vendor_called": {
+    "name": "After a Market Vendor Called Your Order",
+    "target_enemy": "bandit",
+    "needed": 2,
+    "reward_gold": 350,
+    "cleanse_required": 0,
+    "requires_mark": "daily_a_market_vendor_called_your_order",
+    "flavor": "A market vendor called your order — by you. Two bandits had hoped the order was theirs. End them."
+  },
+  "dm_neighbor_bulb": {
+    "name": "After a Neighbour Planted a Bulb",
+    "target_enemy": "drowned_thresher",
+    "needed": 2,
+    "reward_gold": 500,
+    "cleanse_required": 1,
+    "requires_mark": "daily_a_neighbour_planted_a_bulb",
+    "flavor": "A neighbour at Gravewatch planted a bulb. Two threshers in the Reach had hoped the bulb stayed un-planted. End them."
+  },
+  "dm_rope_loaned": {
+    "name": "After a Rope Was Loaned for Carrying",
+    "target_enemy": "cave_troll",
+    "needed": 2,
+    "reward_gold": 800,
+    "cleanse_required": 2,
+    "requires_mark": "daily_a_rope_was_loaned_for_carrying",
+    "flavor": "A rope at Gravewatch was loaned for carrying. Two cave-trolls had hoped to take the rope first. End them."
+  },
+  "dm_window_open_air": {
+    "name": "After a Window Was Open to Let in Air",
+    "target_enemy": "bandit",
+    "needed": 1,
+    "reward_gold": 250,
+    "cleanse_required": 0,
+    "requires_mark": "daily_a_window_was_open_to_let_in_air",
+    "flavor": "A window was open at Gravewatch to let in air. A bandit had been watching the window for entry. End him."
+  },
+  "cm_mage_burned_borrowed": {
+    "name": "After a Borrowed Word Burned the Mage",
+    "target_enemy": "library_warden",
+    "needed": 1,
+    "reward_gold": 800,
+    "cleanse_required": 3,
+    "requires_mark": "mage_a_borrowed_word_burned_you",
+    "flavor": "A borrowed word burned the mage's hand once. A library-warden had noticed the scar. End him."
+  },
+  "cm_mage_circle_drew_itself": {
+    "name": "After a Circle Drew Itself at the Mage's Step",
+    "target_enemy": "reliquary_golem",
+    "needed": 1,
+    "reward_gold": 1200,
+    "cleanse_required": 4,
+    "requires_mark": "mage_a_circle_drew_itself_at_your_step",
+    "flavor": "A circle drew itself at the mage's step. A reliquary golem had been the circle's previous keeper. End it."
+  },
+  "cm_mage_word_came_first": {
+    "name": "After a Word Came First Today",
+    "target_enemy": "censer_shade",
+    "needed": 2,
+    "reward_gold": 600,
+    "cleanse_required": 4,
+    "requires_mark": "mage_a_word_came_first_today",
+    "flavor": "Today a word came first — before the mage's intent. Two censer-shades had heard the early word. End them."
+  },
+  "cm_cleric_dying_thanked": {
+    "name": "After a Dying One Thanked the Cleric",
+    "target_enemy": "hollow_procession",
+    "needed": 1,
+    "reward_gold": 700,
+    "cleanse_required": 3,
+    "requires_mark": "cleric_a_dying_one_thanked_you_in_their_name",
+    "flavor": "A dying one thanked the cleric in their own name. One of the procession had been waiting for the thanks. End it."
+  },
+  "cm_cleric_prayer_collapsed": {
+    "name": "After a Prayer Collapsed Under the Cleric",
+    "target_enemy": "hollow_procession",
+    "needed": 2,
+    "reward_gold": 600,
+    "cleanse_required": 3,
+    "requires_mark": "cleric_a_prayer_collapsed_under_you",
+    "flavor": "A prayer collapsed under the cleric once. Two of the procession had been mid-amen. End them."
+  },
+  "cm_cleric_small_prayer": {
+    "name": "After a Small Prayer Was Answered Today",
+    "target_enemy": "bandit",
+    "needed": 2,
+    "reward_gold": 300,
+    "cleanse_required": 0,
+    "requires_mark": "cleric_a_small_prayer_answered_today",
+    "flavor": "A small prayer of the cleric's was answered today. Two bandits on the road had hoped the prayer go unheard. End them."
+  },
+  "cm_warrior_shield_taught": {
+    "name": "After a Shield Arm Taught the Warrior to Stay",
+    "target_enemy": "ashen_penitent",
+    "needed": 1,
+    "reward_gold": 1300,
+    "cleanse_required": 5,
+    "requires_mark": "warrior_a_shield_arm_taught_you_to_stay",
+    "flavor": "The warrior's shield arm taught her to stay. A Penitent above the snowline tested the staying. End him.",
+    "reward_marks": [
+      "the_climb_marked_your_lungs"
+    ]
+  },
+  "cm_warrior_named_blade": {
+    "name": "After the Warrior Named Her Blade in the Dark",
+    "target_enemy": "shadow_warden",
+    "needed": 1,
+    "reward_gold": 2200,
+    "cleanse_required": 5,
+    "requires_mark": "warrior_named_your_blade_in_the_dark",
+    "flavor": "The warrior named her blade in the dark once. The Shadow Warden at the Summit knew the name. End him.",
+    "reward_chronicle_line": "A warrior had named her blade in the dark; the Shadow Warden ended at the name spoken in light."
+  },
+  "cm_rogue_knife_warm": {
+    "name": "After a Knife Came Back Warm",
+    "target_enemy": "bandit",
+    "needed": 4,
+    "reward_gold": 500,
+    "cleanse_required": 0,
+    "requires_mark": "rogue_a_knife_came_back_warm",
+    "flavor": "The rogue's knife came back warm — used. Four bandits on the road had been the warming. End them."
+  },
+  "cm_ranger_thicket_open": {
+    "name": "After a Path Softened for the Ranger's Boot",
+    "target_enemy": "wolf",
+    "needed": 5,
+    "reward_gold": 600,
+    "cleanse_required": 0,
+    "requires_mark": "ranger_a_path_softened_for_your_boot",
+    "flavor": "A path in the Witherwood softened for the ranger's boot. Five wolves of the pack had hoped the path stayed hard. End them."
   }
 }
