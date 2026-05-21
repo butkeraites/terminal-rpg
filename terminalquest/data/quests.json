@@ -5071,5 +5071,1051 @@
     ],
     "reward_chronicle_line": "A forager boy in the Drowned Holds carried the brackmere-clay shard a previous one of them had once palmed. The new self returned, ended the boy, and put the shard back in the same pocket.",
     "flavor": "A forager boy carries the shard of pottery a previous you palmed in the kitchen. End him. The shard goes back to the same pocket."
+  },
+  "w3_stone_named_the_youngest": {
+    "name": "The Witherwood Stone Names the Youngest Pup",
+    "target_enemy": "wolf",
+    "needed": 4,
+    "reward_gold": 250,
+    "cleanse_required": 0,
+    "requires_discovery": [
+      "piranesi_witherwood_stone"
+    ],
+    "reward_marks": [
+      "the_witherwood_remembered_a_younger_step"
+    ],
+    "flavor": "Piranesi's stone names the four younger of this winter's pups by their first kills. End them. The stone will keep the names, and there will be no fifth winter for the line."
+  },
+  "w3_stone_names_a_bandit": {
+    "name": "The Stone Knew a Bandit by Name",
+    "target_enemy": "bandit",
+    "needed": 2,
+    "reward_gold": 350,
+    "cleanse_required": 1,
+    "requires_discovery": [
+      "piranesi_witherwood_stone"
+    ],
+    "flavor": "Piranesi's stone — among the wolf-names — carries two bandits who once carved their own. End them. The stone is for wolves. The carving will wear off."
+  },
+  "w3_pet_brings_the_wolves_down": {
+    "name": "Let the Pet Bring the Wolves Down",
+    "target_enemy": "wolf",
+    "completion_condition": "pet_assisted",
+    "needed": 3,
+    "reward_gold": 400,
+    "cleanse_required": 0,
+    "flavor": "Three wolves. Your pet lands the blow that drops each one under half hp. The wood watches a pet learn the trick its older cousins forgot."
+  },
+  "w3_after_wood_breath_pack_lead": {
+    "name": "After the Wood Held Its Breath — A Pack Lead Knew",
+    "target_enemy": "pack_lead",
+    "needed": 1,
+    "reward_gold": 800,
+    "cleanse_required": 1,
+    "requires_mark": "the_wood_held_its_breath_for_you",
+    "reward_chronicle_line": "The wood had held its breath for them once; the pack lead at the Hunter's Cache had heard the holding, and came to test it. The test failed her.",
+    "flavor": "The wood once held its breath for you. The pack lead at the Hunter's Cache heard the holding and resented it. End her. The wood will breathe again."
+  },
+  "w3_goblin_cleric_bless_the_starving": {
+    "name": "The Cleric's Blessing for the Starving",
+    "target_enemy": "goblin",
+    "needed": 6,
+    "reward_gold": 350,
+    "cleanse_required": 0,
+    "requires_class": [
+      "cleric"
+    ],
+    "reward_chronicle_line": "A cleric walked the Witherwood and gave six scavvers the small blessing the kingdom had owed them when they were still farmers.",
+    "flavor": "Six scavvers. They were farmers once, before the food ran out and they ran upright. Only a cleric remembers to bless them as farmers, not as goblins."
+  },
+  "w3_halnas_stump_the_wolf_that_takes_bread": {
+    "name": "The Wolf at Halna's Stump",
+    "target_enemy": "wolf",
+    "needed": 1,
+    "reward_gold": 300,
+    "cleanse_required": 0,
+    "requires_discovery": [
+      "halnas_stump"
+    ],
+    "reward_consumables": [
+      "The Last Bread"
+    ],
+    "reward_chronicle_line": "They had watched Halna's stump, and the wolf who took her bread; then they took the wolf. Halna folded the cloth again the next morning.",
+    "flavor": "Old Halna sets bread on the stump. A wolf takes the bread. Not the same wolf each time. One in particular has begun to leave nothing for the rest. End it. Halna will know."
+  },
+  "w3_goblin_stun_kill": {
+    "name": "End the Scavvers in the Stagger",
+    "target_enemy": "goblin",
+    "completion_condition": "killed_during_stun",
+    "needed": 4,
+    "reward_gold": 400,
+    "cleanse_required": 0,
+    "flavor": "Four scavvers. Each killing blow lands while the scavver is stunned. The kingdom's old patrolmen did it this way to spare the rest the noise of the dying."
+  },
+  "w3_after_wolf_let_you_sleep": {
+    "name": "After the Wolf Let You Sleep",
+    "target_enemy": "wolf",
+    "needed": 1,
+    "reward_gold": 350,
+    "cleanse_required": 0,
+    "requires_mark": "ranger_a_wolf_let_you_sleep",
+    "reward_marks": [
+      "the_witherwood_remembered_a_younger_step"
+    ],
+    "reward_chronicle_line": "A wolf had once let a ranger sleep in its copse; the next wolf the ranger met carried the same mark, and the ranger ended it kindly.",
+    "flavor": "A wolf let you sleep one night. The next morning, a wolf is here who carries the same scent. Not the same wolf. End it the way the first one would have wanted."
+  },
+  "w3_ranger_sworn_takes_the_wolf": {
+    "name": "Let the Sworn Take the Wolf",
+    "target_enemy": "wolf",
+    "completion_condition": "companion_landed_kill",
+    "needed": 2,
+    "reward_gold": 400,
+    "cleanse_required": 0,
+    "requires_class": [
+      "ranger"
+    ],
+    "flavor": "Two wolves. The ranger reads the trail; the sworn lands the last blow. The wood marks who chose to step aside."
+  },
+  "w3_ranger_dodge_then_strike": {
+    "name": "The Ranger's Dodge in the Wood",
+    "target_enemy": "wolf",
+    "completion_condition": "killed_after_dodging",
+    "needed": 3,
+    "reward_gold": 450,
+    "cleanse_required": 0,
+    "requires_class": [
+      "ranger"
+    ],
+    "reward_marks": [
+      "ranger_a_wolf_let_you_sleep"
+    ],
+    "flavor": "Three wolves. Each killing blow lands on a turn after the ranger dodged. The wood's old hunters did it this way. The wolves did not mind."
+  },
+  "w3_reborn_halnas_stump_old_cloth": {
+    "name": "Reborn at Halna's Stump — A Previous Cloth",
+    "target_enemy": "wolf",
+    "needed": 2,
+    "reward_gold": 450,
+    "cleanse_required": 0,
+    "requires_flag": "is_reborn",
+    "requires_discovery": [
+      "halnas_stump"
+    ],
+    "reward_marks": [
+      "the_witherwood_remembered_a_younger_step"
+    ],
+    "reward_chronicle_line": "A previous one of them had folded the cloth at Halna's stump the way Halna folds it. The new self ended the two wolves who had begun to remember the folding.",
+    "flavor": "A previous you had folded the cloth at Halna's stump the way she folds it. Two wolves remember the folding and want the previous you back. End them. The cloth stays folded."
+  },
+  "w3_goblin_company_in_the_clearing": {
+    "name": "Scavver Company in the Clearing",
+    "target_enemy": "goblin",
+    "needed": 5,
+    "reward_gold": 200,
+    "cleanse_required": 0,
+    "flavor": "Five scavvers have made a small camp in the clearing the stag once used. End them. The clearing will be a clearing again, instead of a camp."
+  },
+  "w3_pet_at_the_packs_edge": {
+    "name": "The Pet at the Pack's Edge",
+    "target_enemy": "pack_lead",
+    "completion_condition": "pet_assisted",
+    "needed": 1,
+    "reward_gold": 700,
+    "cleanse_required": 1,
+    "reward_marks": [
+      "the_wood_held_its_breath_for_you"
+    ],
+    "flavor": "The pack lead at the Hunter's Cache. Your pet must land the blow that drops her under half. The wood holds its breath when the pet does."
+  },
+  "w3_bandit_ambush_at_dusk": {
+    "name": "Cutthroats Named at the Dying",
+    "target_enemy": "bandit",
+    "completion_condition": "named_them_at_death",
+    "needed": 4,
+    "reward_gold": 500,
+    "cleanse_required": 1,
+    "reward_marks": [
+      "forgot_smell_of_pine"
+    ],
+    "flavor": "Four bandits along the wood-edge road. Speak each one's first name as the killing blow lands. The road's old patrolmen kept the names for the keeping."
+  },
+  "w3_bandit_clean_first_strike": {
+    "name": "The Wood-Edge Ambush — First Blow Yours",
+    "target_enemy": "bandit",
+    "completion_condition": "first_strike_yours",
+    "needed": 3,
+    "reward_gold": 350,
+    "cleanse_required": 0,
+    "flavor": "Three bandits where the road bends under the wood-edge. The first blow in each fight is yours. The cutthroats had been waiting."
+  },
+  "w3_halnas_stump_pack_circles": {
+    "name": "The Pack That Began to Circle Halna's Stump",
+    "target_enemy": "wolf",
+    "needed": 3,
+    "reward_gold": 400,
+    "cleanse_required": 0,
+    "requires_quest": [
+      "w3_halnas_stump_the_wolf_that_takes_bread"
+    ],
+    "reward_marks": [
+      "the_wood_held_its_breath_for_you"
+    ],
+    "flavor": "After the one wolf you took, three of its pack began to circle the stump in its place. End them. Halna's bread is for the wolves who know the cloth, not the wolves who did not."
+  },
+  "da_after_piranesi_choir_column": {
+    "name": "After Piranesi's Choir Column",
+    "target_enemy": "reliquary_golem",
+    "needed": 1,
+    "reward_gold": 900,
+    "cleanse_required": 4,
+    "requires_discovery": [
+      "piranesi_choir_column"
+    ],
+    "reward_consumables": [
+      "The Last Bread"
+    ],
+    "flavor": "Piranesi drew the column of the Choir and named the golem at its base in pencil. End it. The column can lose a name; the Choir can lose a step."
+  },
+  "da_after_piranesi_holds_doorpost": {
+    "name": "After Piranesi's Doorpost",
+    "target_enemy": "bonesong",
+    "needed": 1,
+    "reward_gold": 500,
+    "cleanse_required": 3,
+    "requires_discovery": [
+      "piranesi_holds_doorpost"
+    ],
+    "reward_marks": [
+      "piranesis_pencil_pointed_at_you"
+    ],
+    "flavor": "Piranesi wrote names on the doorpost no living scribe had a right to. One bonesong sings them now. End it. The doorpost will go quiet."
+  },
+  "da_after_erons_doorpost": {
+    "name": "After Eron's Doorpost",
+    "target_enemy": "forager_boy",
+    "needed": 1,
+    "reward_gold": 350,
+    "cleanse_required": 2,
+    "requires_discovery": [
+      "erons_doorpost"
+    ],
+    "reward_marks": [
+      "holds_eron_almost_spoke"
+    ],
+    "flavor": "Eron carved his name low on the doorpost, in a child's hand. One forager-boy walks the lane with the same hand. End him. Eron's name will be the only one left low."
+  },
+  "da_after_piranesi_mourncross_square": {
+    "name": "After Piranesi's Square",
+    "target_enemy": "hollow_procession",
+    "needed": 1,
+    "reward_gold": 600,
+    "cleanse_required": 3,
+    "requires_discovery": [
+      "piranesi_mourncross_square"
+    ],
+    "reward_marks": [
+      "mourncross_open_door_closed"
+    ],
+    "flavor": "Piranesi drew the square the year the census was burned. One hollow procession still walks it on the same line he drew. End the line."
+  },
+  "da_after_atrel_register": {
+    "name": "After Atrél's Register",
+    "target_enemy": "pall_magistrate",
+    "needed": 1,
+    "reward_gold": 800,
+    "cleanse_required": 4,
+    "requires_discovery": [
+      "atrel_register"
+    ],
+    "reward_marks": [
+      "promised_atrel_a_grief"
+    ],
+    "flavor": "Atrél kept a register under the side altar — the names the Magistrates struck out. End the Magistrate who held the pen. The register can be re-read by a kinder voice."
+  },
+  "da_after_piranesi_cave_stone": {
+    "name": "After Piranesi's Cave Stone",
+    "target_enemy": "cave_troll",
+    "needed": 1,
+    "reward_gold": 400,
+    "cleanse_required": 1,
+    "requires_discovery": [
+      "piranesi_cave_stone"
+    ],
+    "reward_marks": [
+      "you_dreamt_in_piranesis_voice"
+    ],
+    "flavor": "Piranesi sketched the cave stone with a troll's tooth-mark on it. End the troll. The stone will lose the mark."
+  },
+  "da_after_last_dyke_lore": {
+    "name": "After the Last Dyke's Older Name",
+    "target_enemy": "dyke_warden",
+    "needed": 1,
+    "reward_gold": 1100,
+    "cleanse_required": 4,
+    "requires_discovery": [
+      "last_dyke_lore"
+    ],
+    "reward_marks": [
+      "dyke_a_name_carved_on_the_stone"
+    ],
+    "reward_chronicle_line": "They learned the dyke's older name and ended the Warden who guarded the newer one. The stone could be re-carved.",
+    "flavor": "The Last Dyke had an older name. The Warden answers only to the newer one. End him. The older name can be carved over the newer."
+  },
+  "da_after_piranesi_reach_birds": {
+    "name": "After Piranesi's Birds",
+    "target_enemy": "bog_lurcher",
+    "needed": 3,
+    "reward_gold": 300,
+    "cleanse_required": 1,
+    "requires_discovery": [
+      "piranesi_reach_birds"
+    ],
+    "flavor": "Piranesi drew three birds over the floodfields and named none. Three lurchers wear feathers the same colour. End them. The birds will be named by the silence after."
+  },
+  "da_after_famine_waterwheel_song": {
+    "name": "After the Waterwheel Song",
+    "target_enemy": "last_reaper",
+    "needed": 1,
+    "reward_gold": 800,
+    "cleanse_required": 3,
+    "requires_discovery": [
+      "famine_waterwheel_song"
+    ],
+    "reward_chronicle_line": "They heard the waterwheel song and put the Last Reaper down. The wheel turned once after, and was still.",
+    "flavor": "The waterwheel song names the Last Reaper in its second verse. End him. The song can have a final verse you write in silence."
+  },
+  "da_after_tace_last_bundle": {
+    "name": "After Tace's Last Bundle",
+    "target_enemy": "reedwife",
+    "needed": 2,
+    "reward_gold": 450,
+    "cleanse_required": 2,
+    "requires_discovery": [
+      "tace_last_bundle"
+    ],
+    "reward_consumables": [
+      "The Last Bread"
+    ],
+    "flavor": "Tace's last bundle is by the doorpost, unopened. Two reedwives sang the night she set it down. End them. Someone alive can open the bundle now."
+  },
+  "da_after_famine_capital_letter": {
+    "name": "After the Famine Letter",
+    "target_enemy": "silt_drowner",
+    "needed": 2,
+    "reward_gold": 350,
+    "cleanse_required": 2,
+    "requires_discovery": [
+      "famine_capital_letter"
+    ],
+    "reward_consumables": [
+      "The Last Bread"
+    ],
+    "flavor": "The capital letter on the famine page is a B and stops there. Two silt-drowners came up the river the night that B was written. End them. The letter can be finished by another hand."
+  },
+  "da_after_drowned_holds_petition": {
+    "name": "After the Drowned Petition",
+    "target_enemy": "doorshut",
+    "needed": 2,
+    "reward_gold": 450,
+    "cleanse_required": 2,
+    "requires_discovery": [
+      "drowned_holds_petition"
+    ],
+    "flavor": "The petition was pushed under a door that had been shut for years. Two doorshuts now hold the names of the petitioners in their hinges. End them. The names can come out."
+  },
+  "da_after_atrel_side_altar": {
+    "name": "After Atrél's Side Altar",
+    "target_enemy": "censer_shade",
+    "needed": 2,
+    "reward_gold": 500,
+    "cleanse_required": 3,
+    "requires_discovery": [
+      "atrel_side_altar"
+    ],
+    "reward_marks": [
+      "choir_set_a_grief_at_atrels_side_altar"
+    ],
+    "flavor": "Atrél's side altar has two censer-shades that came when the main altar was loud. End them. The side altar can be quiet again, the way Atrél kept it."
+  },
+  "da_after_reach_tally": {
+    "name": "After the Reach Tally",
+    "target_enemy": "drowned_thresher",
+    "needed": 3,
+    "reward_gold": 400,
+    "cleanse_required": 1,
+    "requires_discovery": [
+      "reach_tally"
+    ],
+    "reward_marks": [
+      "the_reach_remembers_your_step"
+    ],
+    "flavor": "The Reach tally has three names in the lost column. Three threshers wear those names on their backs in salt. End them. The column can be closed."
+  },
+  "da_after_piranesi_reach_furrow": {
+    "name": "After Piranesi's Furrow",
+    "target_enemy": "drowned_thresher",
+    "needed": 2,
+    "reward_gold": 350,
+    "cleanse_required": 1,
+    "requires_discovery": [
+      "piranesi_reach_furrow"
+    ],
+    "reward_marks": [
+      "you_have_been_in_piranesis_notes"
+    ],
+    "flavor": "Piranesi drew the furrow with a thresher's footprint in it twice. End the two threshers who left them. The furrow will dry in the shape of a feet that left."
+  },
+  "da_after_gullet_alcove": {
+    "name": "After the Gullet's Alcove",
+    "target_enemy": "giant_bat",
+    "needed": 3,
+    "reward_gold": 300,
+    "cleanse_required": 1,
+    "requires_discovery": [
+      "gullet_alcove"
+    ],
+    "reward_marks": [
+      "gullet_older_hand_set_a_thing_aside"
+    ],
+    "flavor": "The Gullet's alcove holds three roosting bats older than the Pall. End them. The alcove can hold something kinder for a while."
+  },
+  "da_after_insomniac_tally": {
+    "name": "After the Insomniac's Tally",
+    "target_enemy": "wolf",
+    "needed": 2,
+    "reward_gold": 150,
+    "cleanse_required": 0,
+    "requires_discovery": [
+      "insomniac_tally"
+    ],
+    "reward_marks": [
+      "insomniac_no_longer_counts_you"
+    ],
+    "flavor": "Two strokes on the Insomniac's tally are wolves that came off the wood last night and did not go back. End them. The tally can end two short."
+  },
+  "da_after_halnas_stump": {
+    "name": "After Halna's Stump",
+    "target_enemy": "wolf",
+    "needed": 2,
+    "reward_gold": 200,
+    "cleanse_required": 0,
+    "requires_discovery": [
+      "halnas_stump"
+    ],
+    "flavor": "Halna sat on this stump once and the wolves did not come for her. Two have come for it since. End them. The stump will be sat on again."
+  },
+  "hc2_dyke_chain_a_read_the_order": {
+    "name": "The Last Dyke — Read the Closed-Gate Order",
+    "target_enemy": "dyke_warden",
+    "needed": 1,
+    "reward_gold": 500,
+    "cleanse_required": 1,
+    "requires_discovery": [
+      "last_dyke_lore"
+    ],
+    "chain_next": "hc2_dyke_chain_b_one_round",
+    "flavor": "The closed-gate order has been read. End the warden who held it. The chain of holding will be shorter by one warden."
+  },
+  "hc2_reborn_dyke_closed_gate_order": {
+    "name": "A Closed-Gate Order a Previous You Could Not Forge",
+    "target_enemy": "dyke_warden",
+    "needed": 1,
+    "reward_gold": 850,
+    "cleanse_required": 1,
+    "requires_flag": "is_reborn",
+    "requires_discovery": [
+      "last_dyke_lore"
+    ],
+    "reward_chronicle_line": "A previous one of them had read the closed-gate order and could not forge the word 'enough'. The new self ended the warden instead.",
+    "flavor": "A previous you read the closed-gate order and could not add 'enough'. The new you ends the warden who held it. The forging is moot now."
+  },
+  "hc2_dyke_warden_no_abilities": {
+    "name": "The Capital Way — Plain Steel at the Dyke",
+    "target_enemy": "dyke_warden",
+    "completion_condition": "used_no_abilities",
+    "needed": 1,
+    "reward_gold": 800,
+    "cleanse_required": 2,
+    "flavor": "The capital-sworn engineers fought with what their hands knew. End her with no ability spent. The capital's way ends with her."
+  },
+  "hc2_dyke_chain_b_one_round": {
+    "name": "The Last Dyke — End Her in a Single Round",
+    "target_enemy": "dyke_warden",
+    "completion_condition": "killed_in_one_round",
+    "needed": 1,
+    "reward_gold": 1000,
+    "cleanse_required": 2,
+    "requires_quest": [
+      "hc2_dyke_chain_a_read_the_order"
+    ],
+    "reward_chronicle_line": "Once they had read the order, they ended the warden in a single round. The capital's writ stopped being read at the dyke.",
+    "reward_consumables": [
+      "The Last Bread"
+    ],
+    "flavor": "You have read the order. End the warden in a single round. The capital's hand stops at the dyke today. The water will know."
+  },
+  "hc2_after_dyke_name_carved": {
+    "name": "After You Carved a Name on the Dyke",
+    "target_enemy": "dyke_warden",
+    "needed": 1,
+    "reward_gold": 850,
+    "cleanse_required": 2,
+    "requires_mark": "dyke_a_name_carved_on_the_stone",
+    "reward_chronicle_line": "Once they had carved a warden's initial into the dyke stone, the next warden's letter went under the first. Two letters. Both kept.",
+    "flavor": "You have carved one warden's initial into the dyke. Carve the next under it. End her. Two letters now, both kept by the stone."
+  },
+  "hc2_after_halnas_stag": {
+    "name": "After You Saw Halna's Stag",
+    "target_enemy": "pack_lead",
+    "needed": 1,
+    "reward_gold": 650,
+    "cleanse_required": 1,
+    "requires_discovery": [
+      "halnas_stag"
+    ],
+    "reward_consumables": [
+      "The Last Bread"
+    ],
+    "flavor": "You have seen Halna's drawing of the stag she let walk. The pack lead at the cache has not been let walk. End him. The drawing stays."
+  },
+  "hc2_ranger_pack_lead_quiet_kill": {
+    "name": "A Ranger's Kill at the Hunter's Cache",
+    "target_enemy": "pack_lead",
+    "completion_condition": "first_strike_yours",
+    "needed": 1,
+    "reward_gold": 800,
+    "cleanse_required": 1,
+    "requires_class": [
+      "ranger"
+    ],
+    "flavor": "The cache was a ranger's place before it was a wolf's. End the pack lead with the first strike yours. Halna will know the shape."
+  },
+  "hc2_reborn_cache_tally": {
+    "name": "An Unmarked Line on Halna's Tally",
+    "target_enemy": "pack_lead",
+    "needed": 1,
+    "reward_gold": 750,
+    "cleanse_required": 0,
+    "requires_flag": "is_reborn",
+    "requires_discovery": [
+      "hunters_cache_lore"
+    ],
+    "reward_chronicle_line": "A previous one of them had read Halna's tally; the new self came back and ended the pack lead, and the last unmarked line was crossed.",
+    "flavor": "A previous you read Halna's tally and did not finish the count. The new you finishes. End the pack lead. The last line crosses out."
+  },
+  "hc2_pack_lead_in_one_round": {
+    "name": "The Pack Lead in a Single Round",
+    "target_enemy": "pack_lead",
+    "completion_condition": "killed_in_one_round",
+    "needed": 1,
+    "reward_gold": 800,
+    "cleanse_required": 1,
+    "flavor": "End the pack lead in one round. The cache will open quieter than it has ever opened. The wolves in the wood will hear the quiet."
+  },
+  "hc2_warrior_pack_lead_head_on": {
+    "name": "A Warrior's Fight at the Cache",
+    "target_enemy": "pack_lead",
+    "completion_condition": "no_healing_received",
+    "needed": 1,
+    "reward_gold": 750,
+    "cleanse_required": 1,
+    "requires_class": [
+      "warrior"
+    ],
+    "flavor": "A warrior's fight at the cache. No poultice spent, no draught swallowed. End him on the blood you brought in. Halna will count."
+  },
+  "hc2_warden_ending_dyke_recognizes": {
+    "name": "After the Warden, the Dyke Recognizes a Keeper",
+    "target_enemy": "dyke_warden",
+    "needed": 1,
+    "reward_gold": 1000,
+    "cleanse_required": 2,
+    "requires_ending": [
+      "warden"
+    ],
+    "reward_marks": [
+      "ending_warden_a_keeper_song_started_to_form_in_you"
+    ],
+    "reward_chronicle_line": "Once they had become the Warden, the dyke-warden recognised the keeper-mark on them and gave one nod before the fight; the fight ended.",
+    "flavor": "Across runs, you have been the Warden. The dyke-warden recognises the keeper-mark on you. She nods once. End her. The post is yours after."
+  },
+  "hc2_pack_lead_no_abilities": {
+    "name": "Halna's Way — Plain Steel at the Cache",
+    "target_enemy": "pack_lead",
+    "completion_condition": "used_no_abilities",
+    "needed": 1,
+    "reward_gold": 700,
+    "cleanse_required": 1,
+    "flavor": "End the pack lead with no ability spent. Halna's father did it this way the first time, and she did it this way the second time."
+  },
+  "hc2_pack_lead_no_damage": {
+    "name": "Untouched by the Pack Lead",
+    "target_enemy": "pack_lead",
+    "completion_condition": "no_damage_taken",
+    "needed": 1,
+    "reward_gold": 900,
+    "cleanse_required": 1,
+    "reward_chronicle_line": "They ended the Hunter's Cache pack lead without a tooth in them. Halna's tally got a final unmarked line, struck through clean.",
+    "flavor": "The pack lead, ended without a tooth landing on you. Halna will see no blood on you when you walk back. She will not say so."
+  },
+  "hc2_after_dyke_held_water": {
+    "name": "After the Water Paused for You",
+    "target_enemy": "dyke_warden",
+    "needed": 1,
+    "reward_gold": 900,
+    "cleanse_required": 2,
+    "requires_mark": "dyke_held_the_water_back_for_you",
+    "reward_consumables": [
+      "The Last Bread"
+    ],
+    "flavor": "The water has paused for you, once. End the warden again. The water will pause again. The dyke remembers the dry foot it gave you."
+  },
+  "hc2_dyke_warden_no_damage": {
+    "name": "Untouched at the Last Dyke",
+    "target_enemy": "dyke_warden",
+    "completion_condition": "no_damage_taken",
+    "needed": 1,
+    "reward_gold": 1000,
+    "cleanse_required": 2,
+    "flavor": "The dyke-warden, ended without a finger on you. The held water behind her will not get a finger on you either. The boots stay dry."
+  },
+  "hc2_after_cache_strap_for_you": {
+    "name": "After the Cache Set a Strap Aside for You",
+    "target_enemy": "pack_lead",
+    "needed": 1,
+    "reward_gold": 750,
+    "cleanse_required": 1,
+    "requires_mark": "hunters_cache_strap_for_you",
+    "reward_consumables": [
+      "The Last Bread"
+    ],
+    "flavor": "The cache has set a strap aside for your wrist. The pack lead smells the new wrist on the next visit. End him. The strap stays."
+  },
+  "hc2_dyke_warden_in_one_round_after_paused": {
+    "name": "A Single Round, After She Almost Let You Through",
+    "target_enemy": "dyke_warden",
+    "completion_condition": "killed_in_one_round",
+    "needed": 1,
+    "reward_gold": 950,
+    "cleanse_required": 2,
+    "requires_mark": "dyke_warden_almost_let_you_through",
+    "reward_chronicle_line": "She had almost let them through, once. They returned and ended her in a single round. The post she had kept stayed kept in the silence.",
+    "flavor": "Once she almost let you through. Now end her in a single round. The post she kept will be quieter than she kept it."
+  },
+  "hc2_after_cache_button_pairs": {
+    "name": "After the Cache Returned Your Father's Button",
+    "target_enemy": "pack_lead",
+    "needed": 1,
+    "reward_gold": 850,
+    "cleanse_required": 1,
+    "requires_mark": "hunters_cache_button_pairs_yours",
+    "reward_chronicle_line": "The cache had returned a button of their father's; they wore it into the fight, and the pack lead ended at the second nail.",
+    "flavor": "You carry a button your father lost when you were small. The pack lead can smell the older coat on you. End him. The button stays."
+  },
+  "gw_after_insomniac_long_line": {
+    "name": "The Long Black Line",
+    "target_enemy": "goblin",
+    "needed": 4,
+    "reward_gold": 360,
+    "cleanse_required": 0,
+    "requires_discovery": [
+      "insomniac_tally"
+    ],
+    "requires_quest": [
+      "gw_after_insomniac_red_mark"
+    ],
+    "reward_marks": [
+      "insomniac_taught_you_to_count_too"
+    ],
+    "flavor": "The long black line on the Insomniac's beam is the nights she has not slept. Four goblins, by their noise outside her window, are why the line is one count taller than it would be. End them. The line will stop where it is, for one night."
+  },
+  "gw_hearthkeeper_limp_remembered": {
+    "name": "The Limp the Hearthkeeper Noticed",
+    "target_enemy": "bandit",
+    "needed": 2,
+    "reward_gold": 320,
+    "cleanse_required": 0,
+    "requires_mark": "hearthkeeper_noticed_your_limp",
+    "flavor": "The Hearthkeeper moved your cup an inch for your bad leg. Two bandits on the road know the limp and think it is a weakness. End them. The cup will be where it should be tomorrow."
+  },
+  "gw_lamp2_you_lit_a_lamp": {
+    "name": "After You Lit One of the Crossroads Lamps",
+    "target_enemy": "bandit",
+    "needed": 3,
+    "reward_gold": 450,
+    "cleanse_required": 1,
+    "requires_mark": "lamp2_let_you_light_a_lamp",
+    "reward_marks": [
+      "lamp2_walked_you_back_at_the_late_count"
+    ],
+    "flavor": "The lampkeeper let you light one of the Crossroads lamps yourself. Three bandits walk under the lamp at night and do not look up. End them. The lamp leans toward you when you arrive. The lamp knows."
+  },
+  "gw_smith_first_upgrade_bandits": {
+    "name": "Bandits on the Road, the Day the Smith Took Your Coin",
+    "target_enemy": "bandit",
+    "needed": 3,
+    "reward_gold": 350,
+    "cleanse_required": 0,
+    "requires_flag": "first_smith_upgrade",
+    "flavor": "The smith took your coin and bent the metal. Three bandits on the road heard the coin clink. They want it back. They will not have it. End them. The bent metal was worth the noise."
+  },
+  "gw_small_altar_one_cruelty": {
+    "name": "After the Small Altar — One Cruelty Brought",
+    "target_enemy": "bandit",
+    "needed": 1,
+    "reward_gold": 400,
+    "cleanse_required": 1,
+    "requires_discovery": [
+      "gravewatch_small_altar"
+    ],
+    "reward_chronicle_line": "They had read the small altar at Gravewatch and decided to bring Atrél one cruelty given to a child on the road; one bandit ended for it, and the altar held the bringing.",
+    "flavor": "The small altar's last line — 'Brought: one cruelty given to my son.' — names a bandit on the Witherwood road. End him. The line will read: 'Brought, kept.' Atrél will hold it."
+  },
+  "gw_smith_quenched_for_you": {
+    "name": "After the Smith Quenched a Blade for You to See",
+    "target_enemy": "bandit",
+    "needed": 3,
+    "reward_gold": 400,
+    "cleanse_required": 0,
+    "requires_mark": "village_smith_quenched_for_you",
+    "reward_marks": [
+      "the_wood_held_its_breath_for_you"
+    ],
+    "flavor": "Gravewatch's smith held a blade in the trough a count too long for you to see. The lesson took. Three bandits on the road will learn the quench from your hand. End them. The smith will not say. She will know."
+  },
+  "gw_caretaker_late_round": {
+    "name": "The Caretaker's Late Round",
+    "target_enemy": "goblin",
+    "needed": 3,
+    "reward_gold": 280,
+    "cleanse_required": 0,
+    "requires_discovery": [
+      "hearthkeepers_book"
+    ],
+    "reward_marks": [
+      "holds_bread_bowl_warmed_when_you_passed"
+    ],
+    "flavor": "The Caretaker of Gravewatch walks the doors after the Hearthkeeper shuts the hearth. Three goblins in the wood have been keeping her round longer than it should be. End them. The Caretaker will finish her round at the hour she used to."
+  },
+  "gw_readers_pencil_kinder_use": {
+    "name": "The Reader's Pencil, Sharpened for a Kinder Use",
+    "target_enemy": "library_warden",
+    "needed": 1,
+    "reward_gold": 850,
+    "cleanse_required": 3,
+    "requires_discovery": [
+      "readers_pencil"
+    ],
+    "requires_quest": [
+      "after_readers_pencil"
+    ],
+    "reward_marks": [
+      "library_warden_a_name_kept_for_a_book"
+    ],
+    "flavor": "The Reader has sharpened the pencil again, for a kinder use. One more warden in the Burned Library would not let the kinder use be. End him. The Reader will set the pencil down. The kindness will be a written kindness."
+  },
+  "gw_after_saved_at_gravewatch_twice": {
+    "name": "After You Saved at Gravewatch a Second Time",
+    "target_enemy": "wolf",
+    "needed": 2,
+    "reward_gold": 240,
+    "cleanse_required": 0,
+    "requires_flag": "saved_at_gravewatch",
+    "denies_quest": [
+      "hidden_fs_first_save"
+    ],
+    "flavor": "The first save is a saving. The second is a return. Two wolves in the wood notice the returning. End them. The kingdom marks the coming-back the way it marks the going-out."
+  },
+  "gw_hidden_insomniac_dark_or_light": {
+    "name": "Dark Mark or Light Mark",
+    "target_enemy": "wolf",
+    "needed": 3,
+    "reward_gold": 320,
+    "cleanse_required": 0,
+    "hidden": true,
+    "trigger_action": {
+      "type": "flag_set",
+      "params": {
+        "flag_name": "insomniac_tally_seen"
+      }
+    },
+    "min_level": 3,
+    "denies_quest": [
+      "hidden_after_insomniac_tally"
+    ],
+    "reward_marks": [
+      "holds_recognized_your_grief"
+    ],
+    "flavor": "The Insomniac will know one day whether you are a dark mark or a light one. Three wolves at the wood-edge are pacing the decision toward light. End them. The decision will go where she expects."
+  },
+  "gw_after_insomniac_red_mark": {
+    "name": "The Red Mark in the Middle of the Beam",
+    "target_enemy": "wolf",
+    "needed": 3,
+    "reward_gold": 320,
+    "cleanse_required": 0,
+    "requires_discovery": [
+      "insomniac_tally"
+    ],
+    "requires_quest": [
+      "gw_after_insomniac_named_you"
+    ],
+    "chain_next": "gw_after_insomniac_long_line",
+    "flavor": "The Insomniac's red marks are climbers she does not know yet — have-not-come-back, but have-not-stopped-not-coming-back. Three wolves are why one of those climbers has not come back yet. End them. The red mark will turn one shade darker."
+  },
+  "gw_hearthkeeper_no_potions": {
+    "name": "Bread Is Enough — No Potions in the Wood",
+    "target_enemy": "goblin",
+    "completion_condition": "no_potions_in_zone",
+    "needed": 3,
+    "reward_gold": 450,
+    "cleanse_required": 0,
+    "requires_discovery": [
+      "hearthkeepers_book"
+    ],
+    "reward_marks": [
+      "hearthkeeper_set_you_extra_bread"
+    ],
+    "flavor": "The Hearthkeeper packs three rounds of bread for the wood, the day you tell her you will not carry potions. End three goblins in the wood without uncorking a single flask. The bread will be enough. She would say so, if she said anything."
+  },
+  "gw_insomniac_blue_cat": {
+    "name": "The Cat on the Windowsill",
+    "target_enemy": "wolf",
+    "needed": 2,
+    "reward_gold": 220,
+    "cleanse_required": 0,
+    "requires_discovery": [
+      "insomniac_tally"
+    ],
+    "flavor": "The Insomniac has counted five blue marks for the same cat she thinks were different cats. Two wolves are why the cat does not come to the sill anymore. End them. The cat will be a sixth blue mark next week."
+  },
+  "gw_readers_pencil_no_damage": {
+    "name": "The Reader's Pencil — End Him Without a Mark on You",
+    "target_enemy": "library_warden",
+    "completion_condition": "no_damage_taken",
+    "needed": 1,
+    "reward_gold": 1100,
+    "cleanse_required": 3,
+    "requires_discovery": [
+      "readers_pencil"
+    ],
+    "reward_marks": [
+      "library_warden_silence_after"
+    ],
+    "flavor": "The Reader does not flinch when they read. End the next warden without taking a hit. The Reader will note it in the margin — not in praise, only in record. The pencil keeps what is true."
+  },
+  "gw_after_insomniac_named_you": {
+    "name": "After the Insomniac Counted You",
+    "target_enemy": "bandit",
+    "needed": 2,
+    "reward_gold": 280,
+    "cleanse_required": 0,
+    "requires_discovery": [
+      "insomniac_tally"
+    ],
+    "reward_marks": [
+      "the_insomniac_lent_you_her_count"
+    ],
+    "flavor": "The Insomniac of Gravewatch counted you among the dark marks — the climbers who came back this winter. Two bandits on the road do not know she counts. End them. She will know the count was right."
+  },
+  "gw_hearthkeeper_bread_bowl": {
+    "name": "Bread for the Hearth, Wolves Off the Sheep",
+    "target_enemy": "wolf",
+    "needed": 5,
+    "reward_gold": 350,
+    "cleanse_required": 0,
+    "requires_discovery": [
+      "hearthkeepers_book"
+    ],
+    "reward_consumables": [
+      "The Last Bread"
+    ],
+    "flavor": "The Hearthkeeper bakes by the count of sheep the wolves leave her. Five wolves have made her short of mutton-fat for the loaves this winter. End them. The bread will rise the way it used to."
+  },
+  "cz_wanderer_b_reach": {
+    "name": "The Wanderer's Letter — At the Reach Furrow",
+    "target_enemy": "drowned_thresher",
+    "needed": 3,
+    "reward_gold": 350,
+    "cleanse_required": 2,
+    "requires_quest": [
+      "cz_wanderer_a_wood"
+    ],
+    "chain_next": "cz_wanderer_c_gullet",
+    "flavor": "The second drop was at a furrow in the Sodden Reach — three threshers turn the silt where she set the letter down to rest her arm. End them. The page beneath their boots is the second leaf of four."
+  },
+  "cz_pilgrim_d_climb": {
+    "name": "The Pilgrim's Stations — A Penitent on the Climb",
+    "target_enemy": "ashen_penitent",
+    "needed": 1,
+    "reward_gold": 1400,
+    "cleanse_required": 5,
+    "requires_quest": [
+      "cz_pilgrim_c_choir"
+    ],
+    "reward_chronicle_line": "They walked the pilgrim's four stations — door, gate, altar, cairn — and the kingdom remembered what the walking was for.",
+    "reward_marks": [
+      "the_climb_marked_your_lungs"
+    ],
+    "reward_consumables": [
+      "The Last Bread",
+      "The Last Bread"
+    ],
+    "flavor": "The fourth station is the cairn at the Climb's last bend, where pilgrims set down their token and turned for home. The Penitent who never turned home stands at it now. End them. The cairn has waited a long time to be a cairn again."
+  },
+  "cz_bounty_hollow_bellward_cross": {
+    "name": "The Bell That Crossed Four Zones",
+    "target_enemy": "hollow_bellward",
+    "needed": 1,
+    "reward_gold": 1500,
+    "cleanse_required": 5,
+    "flavor": "The Bellward's curfew bell was rung at sundown in Mourncross, and the holds heard it across the Reach, and the wood heard it through its branches, and the Gullet caught the last echo. Four zones, one bell. End the Bellward once more. The bell will stop crossing the kingdom at sundown."
+  },
+  "cz_kingdoms_reliquary": {
+    "name": "The Reliquary That Was a Hold's Box",
+    "target_enemy": "reliquary_golem",
+    "needed": 1,
+    "reward_gold": 1100,
+    "cleanse_required": 4,
+    "reward_marks": [
+      "holds_you_walked_a_street_that_was_a_street"
+    ],
+    "flavor": "The reliquary the Choir guards was carried up from a Brackmere hold the winter the gates closed. It held a saint's finger once. It holds nothing now. The golem keeps it anyway. End it. The hold can have its box back, empty though it will be."
+  },
+  "cz_bounty_red_beard_cross": {
+    "name": "The Smith Who Started for the Capital",
+    "target_enemy": "red_beard",
+    "needed": 1,
+    "reward_gold": 1000,
+    "cleanse_required": 4,
+    "reward_consumables": [
+      "The Last Bread"
+    ],
+    "flavor": "Red Beard set out from Brackmere with his anvil-hammer. He meant to walk through the Reach, past the dykes, to Mourncross. The river took him in the third bend. The walk is what is left. Take him once more, where the walk ended. The kingdom that closed its gate will know one more man tried."
+  },
+  "cz_kingdoms_procession": {
+    "name": "The Procession That Crossed Three Streets",
+    "target_enemy": "hollow_procession",
+    "needed": 2,
+    "reward_gold": 900,
+    "cleanse_required": 4,
+    "flavor": "A funeral that set out from the drowned holds, walked through the Gullet, and arrived in Mourncross with no body to bury. Two such processions still walk that route. End them. The kingdom will be one less funeral that never ended."
+  },
+  "cz_wanderer_d_climb": {
+    "name": "The Wanderer's Letter — On the Ashen Climb",
+    "target_enemy": "ice_wraith",
+    "needed": 2,
+    "reward_gold": 900,
+    "cleanse_required": 4,
+    "requires_quest": [
+      "cz_wanderer_c_gullet"
+    ],
+    "reward_chronicle_line": "They walked the wanderer's letter from the wood to the climb — four leaves, four zones, one woman who had carried them as far as she could.",
+    "reward_marks": [
+      "holds_you_walked_a_street_that_was_a_street"
+    ],
+    "reward_consumables": [
+      "The Last Bread"
+    ],
+    "flavor": "The fourth leaf is on the Climb. The grey snow has half-buried it. Two hollow wraiths circle the cairn where she set it last. End them. Read the last leaf. Carry the letter to the hold it was meant for — it is not there, but the walk is the answer."
+  },
+  "cz_bounty_last_reaper": {
+    "name": "The Reaper Whose Name the Kingdom Remembers",
+    "target_enemy": "last_reaper",
+    "needed": 1,
+    "reward_gold": 1200,
+    "cleanse_required": 4,
+    "reward_marks": [
+      "reaper_water_did_not_answer"
+    ],
+    "flavor": "The Last Reaper is named in three kingdom records — the Reach's tally, the Mourncross census, and the Choir's list of the unforgiven. End her once more, for the records that still know her name. The kingdom will be one less name on three lists."
+  },
+  "cz_pilgrim_a_holds": {
+    "name": "The Pilgrim's Stations — A Doorshut in the Drowned Holds",
+    "target_enemy": "doorshut",
+    "needed": 1,
+    "reward_gold": 300,
+    "cleanse_required": 2,
+    "chain_next": "cz_pilgrim_b_mourncross",
+    "flavor": "Pilgrims used to walk four stations from holds to summit, one prayer at each. The first station was a hold-door. The doorshut who stands at it now is the prayer turned away. End her. Set the first station back where it stood."
+  },
+  "cz_wanderer_c_gullet": {
+    "name": "The Wanderer's Letter — In the Gullet's Mouth",
+    "target_enemy": "dark_slime",
+    "needed": 2,
+    "reward_gold": 550,
+    "cleanse_required": 3,
+    "requires_quest": [
+      "cz_wanderer_b_reach"
+    ],
+    "chain_next": "cz_wanderer_d_climb",
+    "flavor": "The third leaf is in the Gullet's throat — she dropped it the morning the cave-cold first hit her lungs. Two creeping rots have grown over it. Take them. Lift the page out. It is half-eaten and the half that survives is the half that mattered."
+  },
+  "cz_bounty_cantor_vael_cross": {
+    "name": "The Cantor Whose Voice Crossed the Kingdom",
+    "target_enemy": "cantor_vael",
+    "needed": 1,
+    "reward_gold": 1800,
+    "cleanse_required": 5,
+    "reward_marks": [
+      "the_climb_marked_your_lungs"
+    ],
+    "reward_consumables": [
+      "The Last Bread"
+    ],
+    "flavor": "Cantor Vael's rite was sung at the Choir, but the unremembering reached every zone — Witherwood, Reach, Holds, Gullet, Mourncross, Climb. Take him once more. The voice that crossed the kingdom will stop crossing it."
+  },
+  "cz_pilgrim_b_mourncross": {
+    "name": "The Pilgrim's Stations — A Magistrate in Mourncross",
+    "target_enemy": "pall_magistrate",
+    "needed": 1,
+    "reward_gold": 600,
+    "cleanse_required": 3,
+    "requires_quest": [
+      "cz_pilgrim_a_holds"
+    ],
+    "chain_next": "cz_pilgrim_c_choir",
+    "flavor": "The second station was the capital's gate — where the pilgrim showed their token and was let through. A Pall-sworn magistrate keeps the gate now. Take him. The second station's stone is in his pocket. He has held it three winters too long."
+  },
+  "cz_wanderer_a_wood": {
+    "name": "The Wanderer's Letter — At the Witherwood Crossing",
+    "target_enemy": "wolf",
+    "needed": 2,
+    "reward_gold": 200,
+    "cleanse_required": 1,
+    "chain_next": "cz_wanderer_b_reach",
+    "flavor": "A wanderer crossed the kingdom once with a single letter in her pack, meant for a sister in a hold that no longer answered. She dropped it four times. The first drop was a wood-trail; two wolves are at it now. Bring them down. Pick up the page she left behind."
+  },
+  "cz_kingdoms_thresher": {
+    "name": "The Thresher the Whole Kingdom Saw",
+    "target_enemy": "drowned_thresher",
+    "needed": 4,
+    "reward_gold": 700,
+    "cleanse_required": 3,
+    "flavor": "Four threshers walked, in the seventh winter, from the Reach to the Witherwood, and the wood saw them, and the Gullet heard them, and Mourncross did not look. Take the four. The kingdom that did not look will get a chance to look again."
+  },
+  "cz_kingdoms_silt_drowner": {
+    "name": "The Drowner That Walked the Whole Reach",
+    "target_enemy": "silt_drowner",
+    "needed": 5,
+    "reward_gold": 600,
+    "cleanse_required": 3,
+    "flavor": "Five drowners — each from a different broken sluice along the Reach, each carrying a different hold's name on her hem. End them. Five sluices will know they have been emptied of their keeper. The kingdom will know its drowning was many."
+  },
+  "cz_pilgrim_c_choir": {
+    "name": "The Pilgrim's Stations — A Shade in the Choir",
+    "target_enemy": "censer_shade",
+    "needed": 2,
+    "reward_gold": 900,
+    "cleanse_required": 4,
+    "requires_quest": [
+      "cz_pilgrim_b_mourncross"
+    ],
+    "chain_next": "cz_pilgrim_d_climb",
+    "reward_marks": [
+      "the_climb_marked_your_lungs"
+    ],
+    "flavor": "The third station was at the cathedral side-altar — where Atrél once held the pilgrim's smallest grief. Two censer-shades have crowded the altar out. End them. The third station is the bowl beneath their feet. It is upturned. Set it right."
   }
 }

@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "mournhold"
-version = "2.2.0"
+version = "2.3.0"
 description = "A hermetic, offline grimdark terminal RPG."
 readme = "README.md"
 requires-python = ">=3.9"
@@ -19,7 +19,7 @@ dev = ["pytest>=7", "ruff>=0.1"]
 mournhold = "terminalquest.game:main"
 
 [tool.setuptools]
-packages = ["terminalquest"]
+packages = ["terminalquest", "tools", "tools.quests"]
 
 [tool.setuptools.package-data]
 terminalquest = ["data/*.json"]
@@ -29,3 +29,4 @@ line-length = 100
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+pythonpath = ["."]
