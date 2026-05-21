@@ -718,7 +718,89 @@
         {"text": "Why are you still here?", "next": "here"},
         {"text": "Tell him about Cael, under the mountain.",
          "next": "of_cael",
-         "requires_flag": "talked_to_cael"}
+         "requires_flag": "talked_to_cael"},
+        {"text": "Tell me about Renaud.",
+         "next": "of_renaud",
+         "requires_flag": "read_atrel_folio"}
+      ]
+    },
+    "of_renaud": {
+      "lines": [
+        "Atrél does not look surprised that you read the folio. He has been",
+        "waiting for someone to. He sits a little straighter against the altar.",
+        "",
+        "'Renaud was a steward,' he says. 'He kept the rites of the cathedral.'",
+        "'He brought small forgettings here for many people. He was good at it.'",
+        "'He was tender. He cried, the first time he brought a grief here for a widow.'",
+        "'I remember that. I held the grief. He sat with me, after, for a long while.'",
+        "",
+        "'When the famine winter came, he was afraid. He had seen people starve before —'",
+        "'his uncle, in his hold, when he was small. He had been carried out of that hold'",
+        "'with the people who would not, themselves, eat that winter. He owed those people.'",
+        "'He thought: if we just forget this one winter, we will not break under it.'",
+        "'He thought: the rite is a kindness. I will make the kindness bigger.'",
+        "",
+        "'He read my folio. He saw the page that said: one person, one loss.'",
+        "'He took the page out. He told himself that was a small change.'",
+        "'He told himself my altar was a place of compromise, anyway, and that compromise'",
+        "'was what people needed to survive. He told himself this several times.'",
+        "'You have to tell yourself a thing several times before you can do it.'",
+        "",
+        "'I do not hate him. He was a man who loved his people enough to do a terrible thing.'",
+        "'That is the kind of person who does the terrible things, in the end. The cruel'",
+        "'ones rarely have the courage. It is the kind ones who scale a kindness past its size.'"
+      ],
+      "responses": [
+        {"text": "Did he know what he was doing?", "next": "renaud_knew"},
+        {"text": "Would he have done it again, given the choice?", "next": "renaud_again"},
+        {"text": "(step back, quiet)", "next": "initial"}
+      ]
+    },
+    "renaud_knew": {
+      "lines": [
+        "Atrél nods slowly. He does not look away from you.",
+        "",
+        "'He knew. That is the part the kingdom does not tell.'",
+        "",
+        "'The night before the rite, he came here. He sat at this altar. He could'",
+        "'not bring himself to ask me to forget what he was about to do. He knew it'",
+        "'would not have worked. He sat for an hour. He cried, the way he cried'",
+        "'the first time, when he brought the widow's grief.'",
+        "",
+        "'Then he went up to the cathedral. Then he did it.'",
+        "",
+        "'He knew he would be unwritten by his own rite. He knew no one would ever'",
+        "'say his name again. He did it anyway, because he thought it was the only'",
+        "'kindness left to do at the scale he had built it to. He was wrong. He was'",
+        "'also brave. Brave and wrong is the worst combination a kind person can be.'"
+      ],
+      "responses": [
+        {"text": "Would he have done it again?", "next": "renaud_again"},
+        {"text": "(step back)", "next": "initial"}
+      ]
+    },
+    "renaud_again": {
+      "lines": [
+        "Atrél thinks about this for a long while.",
+        "",
+        "'I do not know,' he says. 'In the moment — yes. He thought he was saving'",
+        "'his people. He would have done the moment again.'",
+        "",
+        "'But if you gave him the moment and the rest of his life back, after, to live'",
+        "'with what he had done — knowing he would be unwritten, knowing the wound'",
+        "'would grow into the Pall, knowing a small god he had loved would be eaten'",
+        "'from inside by it for centuries — I do not know if he would have done it then.'",
+        "",
+        "'No one ever gets the moment and the rest of their life back. He had to choose'",
+        "'with only the moment in front of him. He chose. That is what a person is.'",
+        "",
+        "'If you climb the Summit and say the names, you can say his — if you want to.'",
+        "'I would rather you said the small ones he was kind to. The widow he brought here.'",
+        "'The boy whose first cruelty he set down here. Those are the people he was kind to.'",
+        "'The terrible thing was not all of him. It just outlasted the rest.'"
+      ],
+      "responses": [
+        {"text": "(step back)", "next": "initial"}
       ]
     },
     "of_cael": {

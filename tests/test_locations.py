@@ -1197,6 +1197,24 @@ def test_small_uns_second_drawing_gated_on_first(content, tmp_path):
     assert state.flags.get("read_small_uns_drawing") is True
 
 
+def test_atrel_renaud_branch_gated_on_reading_the_folio(content, tmp_path):
+    """v1.23 — Atrél's 'of_renaud' branch surfaces only after the folio is read."""
+    atrel = content.dialogues["atrel"]
+    initial_responses = atrel["initial"]["responses"]
+    renaud_branch = [r for r in initial_responses if "Renaud" in r.get("text", "")]
+    assert len(renaud_branch) == 1
+    assert renaud_branch[0].get("requires_flag") == "read_atrel_folio"
+    assert "of_renaud" in atrel
+    assert "renaud_knew" in atrel
+    assert "renaud_again" in atrel
+    # Reading the folio sets the flag.
+    state = make_state(_player(content), content, ScriptedIO(), StubRandom(),
+                       chronicle_dir=tmp_path)
+    assert not state.flags.get("read_atrel_folio")
+    locations._run_discovery(state, {"id": "atrel_original_rite", "lines": ["..."]})
+    assert state.flags.get("read_atrel_folio") is True
+
+
 def test_bone_tomb_requires_all_four_npc_quests_and_verren(content, tmp_path):
     """The Bone Tomb opens only after every NPC quest + Verren fragment."""
     state = make_state(_player(content), content, ScriptedIO(), StubRandom(),
