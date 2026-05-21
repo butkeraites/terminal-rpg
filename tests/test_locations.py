@@ -12,6 +12,41 @@ def _player(content):
     return Player("Hero", "warrior", content.classes["warrior"], content)
 
 
+def _visible_quest_order(state):
+    """Return [(qid, quest), ...] in the same display order quest_board uses.
+
+    Authoring-time, the board groups by category (bounty → chain → special)
+    and numbers sequentially. Position-sensitive tests use this helper to
+    compute the right index for the quest they care about and for Leave —
+    so the suite stays green as more authored content is added.
+    """
+    cleanses = chronicle.cleanses(state.chronicle_dir)
+    catalog = [(qid, q) for qid, q in state.content.quests.items()
+               if locations._quest_is_visible(q, state, cleanses)]
+    grouped = locations._group_catalog_by_category(catalog)
+    out = []
+    for row in grouped:
+        if row[0] == "__header__":
+            continue
+        _cat, qid, quest = row
+        out.append((qid, quest))
+    return out
+
+
+def _quest_pick_index(state, qid):
+    """1-based menu index for ``qid`` in the current quest_board view."""
+    order = _visible_quest_order(state)
+    for i, (q, _) in enumerate(order, start=1):
+        if q == qid:
+            return i
+    raise AssertionError(f"quest {qid!r} not visible on the board")
+
+
+def _leave_index(state):
+    """1-based menu index for the Leave option in the current quest_board view."""
+    return len(_visible_quest_order(state)) + 1
+
+
 def _strong_player(content):
     """A player who one-shots any enemy, for deterministic fight outcomes.
 
@@ -692,10 +727,13 @@ def test_quest_board_picks_up_and_completes_a_quest(content, tmp_path):
     player = _player(content)
     player.attack = 1000  # one-shot kills
 
-    # 1) Pick up the wolf cull (3 wolves).
-    io = ScriptedIO(["1", "4"])  # accept quest #1, then Leave
-    state = make_state(player, content, io, StubRandom(rnd=0.99),
+    # 1) Pick up the wolf cull (3 wolves). Compute the menu indices from the
+    #    visible catalog so the test stays green as new authored quests land.
+    state = make_state(player, content, ScriptedIO(), StubRandom(rnd=0.99),
                        chronicle_dir=tmp_path)
+    wolf_index = _quest_pick_index(state, "wolf_cull")
+    leave_index = _leave_index(state)
+    state.io = ScriptedIO([str(wolf_index), str(leave_index)])
     locations.quest_board(state)
     assert "wolf_cull" in state.flags["active_quests"]
 
@@ -705,9 +743,11 @@ def test_quest_board_picks_up_and_completes_a_quest(content, tmp_path):
         combat.run_combat(state, make_enemy("wolf", content))
     assert state.flags["quest_progress"]["wolf_cull"] == 3
 
-    # 3) Return to the board and claim the reward.
+    # 3) Return to the board and claim the reward. The wolf slip is now in
+    #    state.active_quests but it stays at the same display index, so
+    #    re-use the indices we computed above.
     gold_before = player.gold
-    state.io = ScriptedIO(["1", "4"])  # claim, then Leave
+    state.io = ScriptedIO([str(wolf_index), str(leave_index)])
     locations.quest_board(state)
     assert "wolf_cull" in state.flags["completed_quests"]
     assert player.gold > gold_before  # reward gold paid
@@ -1392,9 +1432,15 @@ def test_board_renders_category_headers_in_order(content, tmp_path):
 
 def test_board_skips_empty_category_headers(content, tmp_path):
     """A category with no visible quests has no header."""
-    # Add only a chain quest. No new bounty, no new special.
-    content.quests["solo_chain"] = _hidden_test_quest(
-        name="Solo Chain", requires_quest=["wolf_cull"])
+    # Restrict the catalog to a controlled set: one bounty, one chain step,
+    # and zero specials. Authored content adds specials over time, so the
+    # test needs to assert about an isolated catalog or the assertion
+    # 'no Special header' becomes a content-dependent flake.
+    content.quests = {
+        "wolf_cull": content.quests["wolf_cull"],
+        "solo_chain": _hidden_test_quest(
+            name="Solo Chain", requires_quest=["wolf_cull"]),
+    }
     player = _player(content)
     state = make_state(player, content, ScriptedIO(["999"]), StubRandom(),
                        chronicle_dir=tmp_path)
@@ -1414,8 +1460,14 @@ def test_board_skips_empty_category_headers(content, tmp_path):
 
 def test_board_numbering_stays_sequential_across_categories(content, tmp_path):
     """A user-typed number maps to a quest regardless of category boundaries."""
-    content.quests["zz_chain"] = _hidden_test_quest(
-        name="Z Chain", requires_quest=["wolf_cull"])
+    # Restrict to a controlled catalog so the expected position is exact.
+    content.quests = {
+        "wolf_cull": content.quests["wolf_cull"],
+        "scavver_purge": content.quests["scavver_purge"],
+        "bandit_hunt": content.quests["bandit_hunt"],
+        "zz_chain": _hidden_test_quest(
+            name="Z Chain", requires_quest=["wolf_cull"]),
+    }
     player = _player(content)
     state = make_state(player, content, ScriptedIO(["99"]), StubRandom(),
                        chronicle_dir=tmp_path)
@@ -1426,10 +1478,9 @@ def test_board_numbering_stays_sequential_across_categories(content, tmp_path):
         pass
     rendered = "\n".join(state.io.output)
     # The chain quest's number must come AFTER the bounty numbers.
-    # Default bounties at cleanse>=0: wolf_cull, scavver_purge, bandit_hunt
-    # (3 visible). Bounties get numbers 1..3 (wolf_cull shows as [done]
-    # since it's completed). Chain gets number 4 (in Chains section).
-    assert "4. Z Chain" in rendered or "5. Z Chain" in rendered
+    # Bounties: wolf_cull (done), scavver_purge, bandit_hunt → 1..3.
+    # Chain: zz_chain → 4.
+    assert "4. Z Chain" in rendered
 
 
 def test_chain_claim_emits_new_slip_pinned_notification(content, tmp_path):
@@ -1455,28 +1506,26 @@ def test_chain_claim_emits_new_slip_pinned_notification(content, tmp_path):
     }
     player = _player(content)
     player.attack = 1000  # one-shot
-    # Find the opener's slot in the visible catalog (cleanse 0, sorted by
-    # quests.json insertion order — our test quests are last).
-    catalog_pre = [q for q, info in content.quests.items()
-                   if info.get("cleanse_required", 0) <= 0
-                   and not info.get("requires_quest")
-                   and not info.get("denies_quest")]
-    opener_index = catalog_pre.index("openerq") + 1
-    leave_pre = len(catalog_pre) + 1
-    # 1) Take opener; 2) leave; 3) (after combat) re-enter and claim
-    state = make_state(player, content,
-                       ScriptedIO([str(opener_index), str(leave_pre)]),
-                       StubRandom(rnd=0.99),
+    # 1) Take opener; 2) leave; 3) (after combat) re-enter and claim.
+    #    Use the visibility helpers so the indices stay correct as the
+    #    authored catalog grows.
+    state = make_state(player, content, ScriptedIO(), StubRandom(rnd=0.99),
                        chronicle_dir=tmp_path)
+    opener_index = _quest_pick_index(state, "openerq")
+    leave_pre = _leave_index(state)
+    state.io = ScriptedIO([str(opener_index), str(leave_pre)])
     locations.quest_board(state)
     assert "openerq" in state.flags["active_quests"]
     # Kill the wolf so the opener becomes completable.
     state.io = ScriptedIO(["1"])
     combat.run_combat(state, make_enemy("wolf", content))
     assert state.flags["quest_progress"]["openerq"] == 1
-    # Re-open board; opener is still position opener_index because no chain
-    # follow-up is visible yet. Claim the opener; then leave.
-    state.io = ScriptedIO([str(opener_index), str(leave_pre + 1)])
+    # Re-open board; opener is at the same position (followup still hidden
+    # until openerq is claimed). Recompute leave_post — it shifts by +1 after
+    # the claim opens the follow-up.
+    opener_index = _quest_pick_index(state, "openerq")
+    leave_post = _leave_index(state) + 1  # claim will reveal followupq
+    state.io = ScriptedIO([str(opener_index), str(leave_post)])
     locations.quest_board(state)
     rendered = "\n".join(state.io.output)
     assert "openerq" in state.flags["completed_quests"]
@@ -1585,14 +1634,16 @@ def test_cleanse_gated_quest_hidden_until_threshold(tmp_path, content):
     from terminalquest import chronicle
     player = _player(content)
     # No cleanses → tier-1 (drowned_thresher_quiet, cleanse_required=1) hidden.
-    state = make_state(player, content, ScriptedIO(["4"]), StubRandom(),
+    state = make_state(player, content, ScriptedIO(), StubRandom(),
                        chronicle_dir=tmp_path)
+    state.io = ScriptedIO([str(_leave_index(state))])
     locations.quest_board(state)
     assert "Drowned Threshers" not in state.io.text()
     # Add one cleanse — now the tier-1 quest appears.
     chronicle.add_cleanse(tmp_path)
-    state2 = make_state(player, content, ScriptedIO(["5"]), StubRandom(),
+    state2 = make_state(player, content, ScriptedIO(), StubRandom(),
                        chronicle_dir=tmp_path)
+    state2.io = ScriptedIO([str(_leave_index(state2))])
     locations.quest_board(state2)
     assert "Drowned Threshers" in state2.io.text()
 

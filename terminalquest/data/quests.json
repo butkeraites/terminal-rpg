@@ -46,5 +46,196 @@
     "reward_gold": 600,
     "cleanse_required": 3,
     "flavor": "They guard tombs whose names have worn off. Free them."
+  },
+  "dire_wolf_cull": {
+    "name": "Cull the Dire Wolves at the Wood-Edge",
+    "target_enemy": "wolf",
+    "needed": 5,
+    "reward_gold": 200,
+    "cleanse_required": 1,
+    "flavor": "A larger pack moves at the wood-edge — the bigger, slower wolves the woodsmen used to thin in winter. Thin them again."
+  },
+  "road_to_the_reach": {
+    "name": "The Road to the Reach Is Not Safe",
+    "target_enemy": "bandit",
+    "needed": 4,
+    "reward_gold": 250,
+    "cleanse_required": 1,
+    "flavor": "Four farms along the Witherwood-Sodden road have gone silent. The cutthroats have decided about the road."
+  },
+  "silent_at_dusk": {
+    "name": "Silent at Dusk",
+    "target_enemy": "goblin",
+    "needed": 6,
+    "reward_gold": 150,
+    "cleanse_required": 0,
+    "flavor": "The scavvers come closer each dusk. Six of them, and the village fire can burn one count longer tonight."
+  },
+  "pelts_for_the_tanner": {
+    "name": "Pelts for the Tanner",
+    "target_trophy": "wolf_pelt",
+    "needed": 12,
+    "reward_gold": 200,
+    "cleanse_required": 0,
+    "reward_consumables": [
+      "The Last Bread"
+    ],
+    "flavor": "Old Halna's daughter, the tanner, asks for twelve. She will pay in coin and in something her grandmother kept the recipe of."
+  },
+  "teeth_for_the_smith": {
+    "name": "Teeth for the Smith's Keepsake",
+    "target_trophy": "scavver_fang",
+    "needed": 10,
+    "reward_gold": 300,
+    "cleanse_required": 1,
+    "flavor": "The smith strings them on wire for a small charm against the Pall. Ten teeth, no fewer."
+  },
+  "bat_wings_for_the_apothecary": {
+    "name": "Carrion Wings for the Old Apothecary",
+    "target_trophy": "bat_wing",
+    "needed": 6,
+    "reward_gold": 250,
+    "cleanse_required": 1,
+    "flavor": "She grinds them into the kingdom's old powder for the long nights. Six wings. She will not say what for."
+  },
+  "brother_in_the_wood_a": {
+    "name": "The Brother's Last Walk — Find What Took Him",
+    "target_enemy": "wolf",
+    "needed": 4,
+    "reward_gold": 100,
+    "cleanse_required": 0,
+    "chain_next": "brother_in_the_wood_b",
+    "flavor": "Tessa's brother walked into the Witherwood three winters ago and did not come back. Find the pack that did it. Start with four."
+  },
+  "brother_in_the_wood_b": {
+    "name": "The Brother's Last Walk — Find the Lead Pair",
+    "target_enemy": "wolf",
+    "needed": 3,
+    "reward_gold": 250,
+    "cleanse_required": 0,
+    "requires_quest": [
+      "brother_in_the_wood_a"
+    ],
+    "chain_next": "brother_in_the_wood_c",
+    "flavor": "The pack has a lead pair — the older two, the ones who chose the trail. Bring them down. Then the pack will scatter."
+  },
+  "brother_in_the_wood_c": {
+    "name": "The Brother's Last Walk — Bury What Is Left",
+    "target_enemy": "wolf",
+    "needed": 1,
+    "reward_gold": 400,
+    "cleanse_required": 0,
+    "requires_quest": [
+      "brother_in_the_wood_b"
+    ],
+    "reward_consumables": [
+      "The Last Bread"
+    ],
+    "reward_chronicle_line": "They walked the Witherwood for Tessa's brother and brought back what could be brought.",
+    "flavor": "The pack lead is the last. After it, you can lay what is left in the wood to rest properly. Tessa will know."
+  },
+  "read_the_witherwood_stone": {
+    "name": "What the Witherwood Stone Names",
+    "target_enemy": "wolf",
+    "needed": 2,
+    "reward_gold": 150,
+    "cleanse_required": 0,
+    "requires_discovery": [
+      "piranesi_witherwood_stone"
+    ],
+    "reward_marks": [
+      "forgot_smell_of_pine"
+    ],
+    "flavor": "Piranesi's note names two of the older wolves by the colour of their pelts. The stone knew them. Now you do too."
+  },
+  "halnas_stag_haunt": {
+    "name": "What Halna's Stag Knew",
+    "target_enemy": "wolf",
+    "needed": 1,
+    "reward_gold": 100,
+    "cleanse_required": 0,
+    "requires_discovery": [
+      "halnas_stag"
+    ],
+    "reward_consumables": [
+      "The Last Bread"
+    ],
+    "flavor": "Old Halna's stag-painting on the lodge wall marks the trail. One wolf walks that trail tonight. Take it. Halna will know."
+  },
+  "clean_one_round_wolf": {
+    "name": "A Wolf in a Clean Stroke",
+    "target_enemy": "wolf",
+    "completion_condition": "killed_in_one_round",
+    "needed": 3,
+    "reward_gold": 200,
+    "cleanse_required": 1,
+    "flavor": "Three wolves, three single rounds. The kingdom's old hunters did it this way to spare the pack the noise of the dying."
+  },
+  "no_stun_through_the_wood": {
+    "name": "Walk the Wood with a Clear Head",
+    "target_enemy": "wolf",
+    "completion_condition": "no_stun_during_fight",
+    "needed": 2,
+    "reward_gold": 150,
+    "cleanse_required": 1,
+    "flavor": "Take two wolves without letting either of them stagger you. Your footing will steadier itself for the keeping."
+  },
+  "protect_the_sworn": {
+    "name": "Bring Your Sworn Back Whole",
+    "target_enemy": "bandit",
+    "completion_condition": "no_hireling_death",
+    "needed": 3,
+    "reward_gold": 250,
+    "cleanse_required": 1,
+    "flavor": "Three cutthroats, and your sworn returns at your side after every one. Hirelings remember who keeps them whole."
+  },
+  "quiet_hunters_blessing": {
+    "name": "The Quiet Hunter's Blessing",
+    "target_enemy": "wolf",
+    "needed": 4,
+    "reward_gold": 250,
+    "cleanse_required": 0,
+    "requires_class": [
+      "ranger"
+    ],
+    "reward_consumables": [
+      "The Last Bread"
+    ],
+    "flavor": "Only a hunter knows the four particular wolves the wood asks the quiet ones to take. Old Halna will tell a Ranger which."
+  },
+  "bless_the_forest_dead": {
+    "name": "Bless the Forest Dead",
+    "target_enemy": "giant_bat",
+    "needed": 5,
+    "reward_gold": 200,
+    "cleanse_required": 0,
+    "requires_class": [
+      "cleric"
+    ],
+    "reward_chronicle_line": "They walked the Witherwood and blessed the small dead the wood had forgotten to bless.",
+    "flavor": "The carrion bats die at the wood's edge unmarked. Five quiet blessings — the kind only a Cleric carries."
+  },
+  "after_the_first_grey": {
+    "name": "After the First Grey",
+    "target_enemy": "wolf",
+    "needed": 1,
+    "reward_gold": 100,
+    "cleanse_required": 0,
+    "requires_mark": "first_grey_hair_came_in",
+    "reward_chronicle_line": "After their first grey hair, they took a single wolf in the Witherwood, and the wolf went down kindly.",
+    "flavor": "A particular old wolf has been waiting for a particular kind of climber — one who has been marked by the kingdom's grey. One wolf. One climber. One quiet kill."
+  },
+  "find_what_you_left_in_the_woods": {
+    "name": "Find What You Left in the Woods",
+    "target_enemy": "wolf",
+    "needed": 1,
+    "reward_gold": 200,
+    "cleanse_required": 0,
+    "requires_flag": "is_reborn",
+    "reward_marks": [
+      "your_first_kill_caught_up_to_you"
+    ],
+    "reward_chronicle_line": "They walked the Witherwood for a thing a previous one of them had left behind, and they brought it back.",
+    "flavor": "A previous you walked here, fell here, left something here. One wolf carries it. Take the wolf. Take the thing. The Chronicle will note both."
   }
 }

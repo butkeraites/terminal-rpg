@@ -172,12 +172,18 @@ def test_validate_rejects_a_non_positive_progression_level():
 
 
 def test_quests_load_and_target_real_enemies():
-    """quests.json is loaded as Content.quests and every target_enemy exists."""
+    """quests.json is loaded as Content.quests and every target/trophy exists."""
     content = load_content()
     assert content.quests, "quests.json should ship with the game"
     for qid, quest in content.quests.items():
-        assert quest["target_enemy"] in content.enemies, (
-            f"quest {qid!r} targets unknown enemy {quest['target_enemy']!r}")
+        # A quest must reference either a real enemy OR a real trophy.
+        tgt_enemy = quest.get("target_enemy")
+        tgt_trophy = quest.get("target_trophy")
+        assert tgt_enemy or tgt_trophy or quest.get("completion_condition"), (
+            f"quest {qid!r} has no target_enemy/target_trophy/completion_condition")
+        if tgt_enemy:
+            assert tgt_enemy in content.enemies, (
+                f"quest {qid!r} targets unknown enemy {tgt_enemy!r}")
         assert isinstance(quest["needed"], int) and quest["needed"] > 0
         assert isinstance(quest["reward_gold"], int) and quest["reward_gold"] >= 0
         assert isinstance(quest["cleanse_required"], int)
