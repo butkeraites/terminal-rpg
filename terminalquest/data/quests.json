@@ -3044,5 +3044,200 @@
     ],
     "reward_chronicle_line": "A previous one of them had been a Hollowed kneeling at Atrél's altar in the Choir. The new self ended the effigy that had once stood next to them.",
     "flavor": "A previous you knelt at Atrél's altar as a Hollowed. One effigy stood there next to the previous you. End it."
+  },
+  "after_relentless_taught_endure": {
+    "name": "After the Penitent's Relentless Taught You",
+    "target_enemy": "mountain_ogre",
+    "needed": 2,
+    "reward_gold": 700,
+    "cleanse_required": 4,
+    "requires_mark": "penitent_relentless_taught_you_to_endure",
+    "reward_marks": [
+      "the_climb_marked_your_lungs"
+    ],
+    "flavor": "The Penitent's relentless attack taught you to endure. Two ogres test what you learned. End them. The lesson was for use."
+  },
+  "after_penitent_left_fang": {
+    "name": "After the Penitent Left You a Scavver Fang",
+    "target_enemy": "ice_wraith",
+    "needed": 2,
+    "reward_gold": 600,
+    "cleanse_required": 4,
+    "requires_mark": "penitent_left_you_a_scavver_fang",
+    "reward_consumables": [
+      "The Last Bread"
+    ],
+    "flavor": "A scavver fang the Penitent set aside for you. Two wraiths want it back for the dead they were. End them. The fang is yours."
+  },
+  "after_summit_wind_call": {
+    "name": "After the Summit Wind Called Your Step",
+    "target_enemy": "ice_wraith",
+    "needed": 3,
+    "reward_gold": 700,
+    "cleanse_required": 4,
+    "requires_mark": "the_summit_wind_called_your_step",
+    "reward_marks": [
+      "summit_wind_taught_you_a_word"
+    ],
+    "flavor": "The Summit wind called your step once. Three wraiths heard the call. End them. The wind will speak only to you."
+  },
+  "after_fear_of_summit_stair": {
+    "name": "After You Knew Fear of the Summit Stair",
+    "target_enemy": "stone_golem",
+    "needed": 1,
+    "reward_gold": 800,
+    "cleanse_required": 5,
+    "requires_mark": "fear_of_the_summit_stair",
+    "reward_marks": [
+      "summit_ground_was_softer_than_you_thought"
+    ],
+    "reward_chronicle_line": "Once they had known fear of the Summit Stair, the stone-golem at its foot stepped aside; they took the golem in the stepping.",
+    "flavor": "You knew fear of the Summit Stair once. A golem keeps the stair. End him. The stair will be a stair after."
+  },
+  "after_lamp_oil_for_climb": {
+    "name": "After the Lampkeeper Gave You Oil",
+    "target_enemy": "ashen_penitent",
+    "needed": 1,
+    "reward_gold": 900,
+    "cleanse_required": 5,
+    "requires_mark": "lamp2_gave_you_oil_for_the_climb",
+    "reward_marks": [
+      "summit_climb_taught_you_a_name_you_already_knew"
+    ],
+    "flavor": "The lampkeeper at Gravewatch gave you oil for the climb. A Penitent above the snowline burned the oil. End him. The lampkeeper will know."
+  },
+  "after_a_child_promised_climber": {
+    "name": "After a Child Promised to Be a Climber Too",
+    "target_enemy": "ashen_penitent",
+    "needed": 1,
+    "reward_gold": 1100,
+    "cleanse_required": 5,
+    "requires_mark": "children_a_child_promised_to_be_a_climber_too",
+    "reward_marks": [
+      "penitent_named_the_summit_for_you"
+    ],
+    "reward_chronicle_line": "Once a child had promised them to be a climber too, the Penitent named the Summit for them, and they took the Penitent at the naming.",
+    "flavor": "A child promised once to be a climber too. The Penitent wants the child's name. End him. The child will be safe."
+  },
+  "after_breath_steamed_into_pall": {
+    "name": "After Your Breath Steamed Into the Pall",
+    "target_enemy": "ice_wraith",
+    "needed": 4,
+    "reward_gold": 800,
+    "cleanse_required": 5,
+    "requires_mark": "summit_your_breath_steamed_into_the_pall",
+    "reward_marks": [
+      "the_summit_started_to_listen"
+    ],
+    "flavor": "Your breath steamed into the Pall once. Four wraiths now carry the steam. End them. The Pall will exhale."
+  },
+  "after_summit_almost_turned_back": {
+    "name": "After You Almost Turned Back",
+    "target_enemy": "ashen_penitent",
+    "needed": 1,
+    "reward_gold": 1000,
+    "cleanse_required": 5,
+    "requires_mark": "summit_you_almost_turned_back",
+    "reward_chronicle_line": "Once they had almost turned back at the Summit step; they returned and ended the Penitent who had been ready to welcome the turning-back.",
+    "flavor": "You almost turned back. The Penitent at the upper stone was ready to welcome the turning. End him. You came back."
+  },
+  "turning_a_step_outside": {
+    "name": "Turning Back — Step Outside the Climb",
+    "target_enemy": "ice_wraith",
+    "needed": 2,
+    "reward_gold": 350,
+    "cleanse_required": 0,
+    "chain_next": "turning_b_walk_the_lower_path",
+    "flavor": "Two wraiths above the snowline argue. End them. The climb's old climbers turned back here. You will not, this time."
+  },
+  "turning_b_walk_the_lower_path": {
+    "name": "Turning Back — Walk the Lower Path",
+    "target_enemy": "mountain_ogre",
+    "needed": 1,
+    "reward_gold": 500,
+    "cleanse_required": 0,
+    "requires_quest": [
+      "turning_a_step_outside"
+    ],
+    "chain_next": "turning_c_face_the_penitent_who_let_you",
+    "reward_marks": [
+      "penitent_turning_back_was_an_option"
+    ],
+    "flavor": "An ogre keeps the lower path. End him. The lower path is the path the climbers who turned back walked."
+  },
+  "turning_c_face_the_penitent_who_let_you": {
+    "name": "Turning Back — Face the Penitent Who Let You",
+    "target_enemy": "ashen_penitent",
+    "needed": 1,
+    "reward_gold": 1200,
+    "cleanse_required": 0,
+    "requires_quest": [
+      "turning_b_walk_the_lower_path"
+    ],
+    "reward_chronicle_line": "They walked the climbers' turning-back path and ended the Penitent who had been letting them turn back. The climb went on after.",
+    "reward_marks": [
+      "road_not_taken_did_not_climb_to_the_upper_room"
+    ],
+    "flavor": "The Penitent who lets climbers turn back is at the lower-path stone. End him. The turning-back will still be an option, for others."
+  },
+  "climb_no_damage_wraith": {
+    "name": "Untouched Through the Wraith-Line",
+    "target_enemy": "ice_wraith",
+    "completion_condition": "no_damage_taken",
+    "needed": 2,
+    "reward_gold": 700,
+    "cleanse_required": 4,
+    "flavor": "Two wraiths. No damage taken in either fight. The Climb's old wardens did it this way."
+  },
+  "climb_thrown_kill_golem": {
+    "name": "Thrown Against the Stone-Golem",
+    "target_enemy": "stone_golem",
+    "completion_condition": "killed_with_thrown",
+    "needed": 1,
+    "reward_gold": 800,
+    "cleanse_required": 5,
+    "flavor": "A stone-golem, killed with a thrown weapon. The Climb's old climbers did it this way for the golems they had no quarrel with."
+  },
+  "climb_low_hp_kill_ogre": {
+    "name": "An Ogre at the Last Hour",
+    "target_enemy": "mountain_ogre",
+    "completion_condition": "killed_while_low_hp",
+    "needed": 1,
+    "reward_gold": 800,
+    "cleanse_required": 4,
+    "flavor": "An ogre, killed while you are at the last hour of your hp. The old climbers did this on purpose, to be sure they remembered."
+  },
+  "hidden_summit_wind_first_step": {
+    "name": "The Summit Wind Marked Your First Step",
+    "target_enemy": "ice_wraith",
+    "needed": 1,
+    "reward_gold": 400,
+    "cleanse_required": 0,
+    "hidden": true,
+    "trigger_action": {
+      "type": "zone_visited",
+      "params": {
+        "zone_id": "mountain"
+      }
+    },
+    "reward_marks": [
+      "pall_introduced_you_to_the_summit_wind"
+    ],
+    "flavor": "The first step above the snowline — the Summit wind passed through you for one count. A wraith felt it. End the wraith. The wind will pass again."
+  },
+  "after_warden_step_softer": {
+    "name": "After the Warden, the Step Is Softer",
+    "target_enemy": "stone_golem",
+    "needed": 2,
+    "reward_gold": 1200,
+    "cleanse_required": 5,
+    "requires_ending": [
+      "warden"
+    ],
+    "reward_marks": [
+      "ending_warden_the_summit_ground_will_be_softer_under_your_boot"
+    ],
+    "reward_chronicle_line": "Once they had once become the Warden, the Summit ground was softer for them; two stone-golems fell easier under the new step.",
+    "flavor": "Across runs, the Warden ending marks you. The Summit ground is softer for your step. Two stone-golems. They fall easier."
   }
 }
