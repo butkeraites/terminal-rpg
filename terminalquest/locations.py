@@ -1007,11 +1007,22 @@ def run_encounter(state, encounter, fallen, wardens):
     def _voice_the_hollowed(entry):
         """Print one line of the rising character's persistence — the last
         moment of them, before the Pall fully takes their face for the fight.
+
+        v1.16 — if the dying character left ``last_words``, the Hollowed
+        speaks those instead of a generic template. The words they chose
+        are the first thing through, before the Pall takes their face.
         """
         p = entry["player"]
         zone_id = entry.get("location", "")
         place = content.locations.get(zone_id, {}).get("name", "the grey")
         name, class_name = p["name"], p["class_name"]
+        io.show("")
+        last_words = entry.get("last_words", "")
+        if last_words:
+            io.show_slow(f"'I am {name}. I said one thing, before. I said it for you.'")
+            io.show_slow(f"   '{last_words}'")
+            io.pause(1)
+            return
         bank = (
             (f"'I am... I was {name}. The {class_name}. I fell at {place}.'",
              "'I almost made it. Don't make me almost make it again.'"),
@@ -1025,7 +1036,6 @@ def run_encounter(state, encounter, fallen, wardens):
              f"'I was {name} the {class_name}. Tell them I made it this far.'"),
         )
         lines = bank[rng.randint(0, len(bank) - 1) % len(bank)]
-        io.show("")
         for line in lines:
             io.show_slow(line)
         io.pause(1)
@@ -1533,6 +1543,12 @@ def _search_grave(state, fallen):
     place = fell_at.get("name", "the grey")
     io.show_slow(f"\n🪦 Half-buried in the grey earth: {p['name']} the {p['class_name']}.")
     io.show(f"{place} took them at level {p['level']}. It will take you too, in time.")
+    # v1.16: a line they left behind, if they left one.
+    last_words = entry.get("last_words", "")
+    if last_words:
+        io.show("")
+        io.show_slow("A scrap of paper, folded once, weighted with a stone:")
+        io.show_slow(f"   '{last_words}'")
     coins = min(p.get("gold", 0), 40)
     if coins:
         player.gold += coins
@@ -2244,7 +2260,15 @@ def location_loop(state):
             io.show("\n👋 Thanks for playing!")
             return
 
-    chronicle.record(state, "fell", state.chronicle_dir)
+    # v1.16: a dying character may leave one line for whoever climbs next.
+    # The line is stored on the chronicle entry and surfaces at their grave
+    # and as the first thing the Hollowed says when raised by the Pall.
+    io.clear()
+    io.show_slow("💀 The Pall takes you. You have a moment, before the dark.")
+    io.show_slow("If you have something to say to whoever climbs after you, say it now.")
+    io.show_slow("(One line. Enter alone to leave nothing.)")
+    last_words = io.ask("\n> ").strip()
+    chronicle.record(state, "fell", state.chronicle_dir, last_words=last_words)
     io.clear()
     io.show_slow("💀 The Pall takes another. It always does.")
     _run_summary(state)

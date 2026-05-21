@@ -150,6 +150,48 @@ def test_background_presence_first_line_box_at_crossroads(tmp_path, content):
     assert "small wooden box" in state.io.text()
 
 
+def test_last_words_persisted_on_chronicle_entry(tmp_path, content):
+    """v1.16 — chronicle.record(state, 'fell', last_words=...) stores the line."""
+    from terminalquest import chronicle
+    state = make_state(_player(content), content, current_location="forest",
+                       chronicle_dir=tmp_path)
+    chronicle.record(state, "fell", tmp_path,
+                     last_words="The cat is the only one who remembers all of us.")
+    entries = chronicle.load(tmp_path)
+    assert entries[-1].get("last_words") == \
+        "The cat is the only one who remembers all of us."
+
+
+def test_last_words_appear_at_grave(tmp_path, content):
+    """v1.16 — searching a grave reads the line the fallen left behind."""
+    from terminalquest import chronicle
+    fallen_state = make_state(_player(content), content, current_location="forest",
+                              chronicle_dir=tmp_path)
+    chronicle.record(fallen_state, "fell", tmp_path,
+                     last_words="Be kinder to the cat than I was.")
+    fallen = chronicle.fallen(chronicle.load(tmp_path))
+    state = make_state(_strong_player(content), content, ScriptedIO(), StubRandom(),
+                       current_location="forest", chronicle_dir=tmp_path)
+    locations._search_grave(state, fallen)
+    assert "Be kinder to the cat than I was." in state.io.text()
+
+
+def test_last_words_replace_hollowed_voice_when_present(tmp_path, content):
+    """v1.16 — when raised as a Hollowed, the dead's chosen line speaks first."""
+    from terminalquest import chronicle
+    fallen_state = make_state(_player(content), content, current_location="forest",
+                              chronicle_dir=tmp_path)
+    chronicle.record(fallen_state, "fell", tmp_path,
+                     last_words="I almost saw the cat.")
+    fallen = chronicle.fallen(chronicle.load(tmp_path))
+    state = make_state(_strong_player(content), content, ScriptedIO(["1", "2"]),
+                       StubRandom(rnd=0.0), current_location="forest",
+                       chronicle_dir=tmp_path)
+    encounter = content.locations["forest"]["encounters"][0]
+    locations.run_encounter(state, encounter, fallen, [])
+    assert "I almost saw the cat." in state.io.text()
+
+
 def test_hollowed_speaks_one_line_of_persistence_before_combat(tmp_path, content):
     """v1.6 — a rising Hollowed speaks one line as themselves before the fight.
 
