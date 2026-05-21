@@ -182,3 +182,84 @@ def test_content_loads_marks_with_ids_injected(content):
     if content.marks:
         sample_id, sample_mark = next(iter(content.marks.items()))
         assert sample_mark["id"] == sample_id
+
+
+def test_eligible_respects_min_visits(content, tmp_path):
+    """A mark with ``min_visits`` only fires after the zone has been visited enough times."""
+    state = make_state(_player(content), content, ScriptedIO(), StubRandom(),
+                       chronicle_dir=tmp_path)
+    state.current_location = "forest"
+    state.flags["zone_visits"] = {"forest": 1}
+    mark = {"id": "after_three", "trigger": {"at": ["zone_arrival"],
+                                              "location": ["forest"],
+                                              "min_visits": 3},
+            "lines": ["x"]}
+    assert not marks.eligible(state, mark, "zone_arrival")
+    state.flags["zone_visits"]["forest"] = 3
+    assert marks.eligible(state, mark, "zone_arrival")
+
+
+def test_eligible_respects_requires_flag(content, tmp_path):
+    """A flag-gated mark only fires after its flag is set on state.flags."""
+    state = make_state(_player(content), content, ScriptedIO(), StubRandom(),
+                       chronicle_dir=tmp_path)
+    mark = {"id": "needs_companion", "trigger": {"at": ["zone_arrival"],
+                                                  "requires_flag": "has_companion"},
+            "lines": ["x"]}
+    assert not marks.eligible(state, mark, "zone_arrival")
+    state.flags["has_companion"] = True
+    assert marks.eligible(state, mark, "zone_arrival")
+
+
+def test_level_up_fire_site_has_base_rate(content):
+    """The level_up fire site is registered with a generous base rate."""
+    # The site was added in v1.58 when the level-up moments batch shipped.
+    assert "level_up" in marks._BASE_RATES
+    # Generous enough that growings feel weighty without being guaranteed.
+    assert 0.2 <= marks._BASE_RATES["level_up"] <= 0.5
+
+
+def test_realistic_playthrough_accumulates_marks_in_design_range(content, tmp_path):
+    """A simulated late-game-ish playthrough should accumulate 5–40 marks.
+
+    Locks in the design intent (originally 5–15; expanded to 5–40 to match
+    the post-1000-mark content depth) so future content or engine changes
+    don't accidentally silence the marks system or make it too noisy.
+    """
+    import random
+    from terminalquest.state import GameState
+    from terminalquest.player import Player
+
+    player = Player("Sim", "warrior", content.classes["warrior"], content)
+    rng = random.Random("design-intent-2026-05-21")
+    state = GameState(player, content, ScriptedIO(), rng,
+                      chronicle_dir=tmp_path)
+    state.flags["zone_visits"] = {}
+
+    # Walk a realistic-ish run: 50 zone arrivals across 7 zones, with combat,
+    # saves, and discoveries proportional to a typical playthrough. Level up
+    # at every 7th arrival to climb to ~level 8.
+    zones = ["forest", "reach", "drowned_holds", "cave", "mourncross",
+             "choir", "mountain"]
+    for arrival in range(50):
+        state.current_location = zones[arrival % len(zones)]
+        state.flags["zone_visits"][state.current_location] = (
+            state.flags["zone_visits"].get(state.current_location, 0) + 1)
+        if arrival > 0 and arrival % 7 == 0 and player.level < 9:
+            player.level += 1
+            marks.roll_at(state, "level_up")
+        marks.roll_at(state, "zone_arrival")
+        marks.roll_at(state, "combat_victory")
+        if arrival % 3 == 0:
+            marks.roll_at(state, "combat_low_hp")
+        if arrival % 5 == 0:
+            marks.roll_at(state, "save_action")
+            marks.roll_at(state, "discovery_read")
+
+    accumulated = len(player.marks)
+    # The design target: the kingdom marks you several times per run but does
+    # not drown you in marks. If this band changes intentionally, update it
+    # in the same commit (same pattern as tools/balance_baseline.json).
+    assert 5 <= accumulated <= 40, (
+        f"realistic playthrough accumulated {accumulated} marks; "
+        "expected the design band of 5..40")

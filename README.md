@@ -10,6 +10,15 @@ The **Chronicle of the Fallen** remembers your dead. Their bones rise as
 the Hollowed in the zones where they fell; the hero who breaks the Warden
 is kept by the Pall, and faces themselves at the Summit on the next run.
 
+The kingdom also **marks** you — 1000 irreversible per-character moments
+that fire as you walk, fight, save, and grow. A mark is something that
+happens to *this* character (only this character) and cannot be undone:
+the smith's thumbprint on your weapon's grip, a grief Atrél held for one
+count, a face the Pall took from your memory. Some marks change your
+stats. All of them are recorded on the character sheet and persist
+through save/load via per-run sidecar files; saving and reloading does
+not undo a mark that fired. The next character starts un-marked.
+
 Built in pure Python 3 — no graphics, no runtime dependencies, just text,
 ANSI colour, and the writing earning its keep.
 
