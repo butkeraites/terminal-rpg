@@ -15218,5 +15218,1056 @@
       "kingdom did not, in this run, hear from you the thanks. The kingdom keeps these accounts.",
       "  (-1 Max HP, permanently — a thanks you owed the kingdom you walked through.)"
     ]
+  },
+  "status_poison_taught_you_to_breathe_slow": {
+    "category": "mind",
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "min_level": 3,
+      "chance": 0.13
+    },
+    "effect": {
+      "stat": "max_stamina",
+      "delta": 1,
+      "flag": "poison_breathe_slow"
+    },
+    "lines": [
+      "Tonight, after a fight, the poison had been in you long enough that you had learned —",
+      "as you fought, breath by breath — to breathe slowly through the burn of it. The lesson",
+      "stayed after the poison cleared. You will breathe slower in the bad beats now. It helps.",
+      "  (+1 Max Stamina, permanently — a slow-breath lesson the poison taught you to keep.)"
+    ]
+  },
+  "status_poison_left_a_tint_in_your_thumbnail": {
+    "category": "body",
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "min_level": 4,
+      "chance": 0.11
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": -1,
+      "flag": "poison_thumbnail"
+    },
+    "lines": [
+      "After a poison wound today the bed of your thumbnail — the left, the one you favour —",
+      "stayed faintly bluish. Not painful. Coloured. The kingdom's poisons leave such tints.",
+      "You will look at the thumb sometimes and remember what put it there. The tint will not fade.",
+      "  (-1 Max HP, permanently — a poison-tint in your thumbnail that you will see every day.)"
+    ]
+  },
+  "status_poison_a_friend_told_you_how_to_chew_the_leaf": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "location": [
+        "forest",
+        "reach"
+      ],
+      "min_level": 3,
+      "chance": 0.12
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "poison_leaf_lesson"
+    },
+    "lines": [
+      "Tonight, mid-fight, an old voice came up to you — somebody you used to know, who used",
+      "to gather. They told you which leaf to chew when the poison takes. You chewed. The",
+      "poison cleared faster. The voice has done you a kindness. You will remember the leaf.",
+      "  (+1 Defense, permanently — a leaf-name a long-gone friend told you between strikes.)"
+    ]
+  },
+  "status_poison_kept_you_from_dreaming": {
+    "category": "forgetting",
+    "trigger": {
+      "at": [
+        "save_action"
+      ],
+      "min_level": 4,
+      "chance": 0.11
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": -1,
+      "flag": "poison_no_dreams"
+    },
+    "lines": [
+      "Tonight at the saving-place, in the long sleep after a poisoned day, you did not dream.",
+      "Not for any of the night. The poison had taken your dreams. The dreams are, you suspect,",
+      "in the poison's account now. You will dream less from now on. The kingdom kept them.",
+      "  (-1 Max HP, permanently — a night of dreams the poison kept and did not give back.)"
+    ]
+  },
+  "status_poison_warned_you_about_a_third_strike": {
+    "category": "mind",
+    "trigger": {
+      "at": [
+        "combat_low_hp"
+      ],
+      "min_level": 5,
+      "chance": 0.11
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "poison_warned_third"
+    },
+    "lines": [
+      "Mid-fight tonight the poison in your blood, on its third tick, briefly tightened your",
+      "vision and showed you the enemy's next strike before they made it. The poison was, in",
+      "its small way, helping. You blocked. The poison subsided. You will know the trick now.",
+      "  (+1 Defense, permanently — a moment of unwelcome clarity the poison gave you, mid-tick.)"
+    ]
+  },
+  "status_poison_made_you_swear_off_something": {
+    "category": "broken",
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "min_level": 4,
+      "chance": 0.1
+    },
+    "effect": {
+      "flag": "poison_sworn_off"
+    },
+    "lines": [
+      "After the poison cleared tonight you swore off — to yourself, alone — a food you used",
+      "to love. The food had nothing to do with the poison. Your body decided. You will not",
+      "eat the food again, this run. The food is the kingdom's now. You will not taste it."
+    ]
+  },
+  "status_poison_left_an_apprentices_handwriting_on_a_label": {
+    "category": "half_truth",
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "min_level": 4,
+      "chance": 0.09
+    },
+    "effect": {
+      "flag": "poison_apprentice_label"
+    },
+    "lines": [
+      "On the empty bottle of antivenom you used tonight there was a small label, hand-written.",
+      "An apprentice's hand. Wobbly letters. They had been new to the labelling. They had",
+      "saved your life. You will, in some kindly impulse, write back. You don't know where they are."
+    ]
+  },
+  "status_poison_did_not_take_one_of_your_fingers": {
+    "category": "promise_kept",
+    "trigger": {
+      "at": [
+        "combat_low_hp"
+      ],
+      "min_level": 5,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 1,
+      "flag": "poison_spared_finger"
+    },
+    "lines": [
+      "Tonight the poison reached your hand and stopped — at the third knuckle of the index",
+      "finger, the dark line as visible as a marker. The line stopped there. The poison did",
+      "not take the finger. You will, every time you make a fist, see the line. It will fade slowly.",
+      "  (+1 Max HP, permanently — a finger the poison reached and did not, in the end, take.)"
+    ]
+  },
+  "status_poison_kept_a_song_out_of_your_throat_all_day": {
+    "category": "lost",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "min_level": 4,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "max_stamina",
+      "delta": -1,
+      "flag": "poison_no_song"
+    },
+    "lines": [
+      "Today, after a poisoned day, you found yourself unable to sing the song you usually",
+      "hum on the walk. The notes would not come. The poison had taken them, for the day. They",
+      "did not, in the end, come back. The song is in the kingdom's hands. Not yours. Not today.",
+      "  (-1 Max Stamina, permanently — a song the poison kept that did not, today, come back.)"
+    ]
+  },
+  "status_poison_a_healer_kissed_your_forehead": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "min_level": 4,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 2,
+      "flag": "poison_healer_kiss"
+    },
+    "lines": [
+      "Tonight in Gravewatch a healer — one of the old ones, the kind that the kingdom keeps",
+      "in alleyways — pressed their dry lips to your forehead after working the last of the",
+      "poison out of you. *Walk steady,* they said. You walked. You felt the steadiness held.",
+      "  (+2 Max HP, permanently — a healer's dry kiss to your forehead, the kingdom's old way.)"
+    ]
+  },
+  "status_burn_smoke_in_your_collar": {
+    "category": "body",
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "min_level": 3,
+      "chance": 0.13
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": -1,
+      "flag": "burn_smoke_collar"
+    },
+    "lines": [
+      "After a burning fight tonight, the inside of your collar smelled of smoke for hours.",
+      "You washed. The smell did not, fully, come out. The next time you sweat, it will come",
+      "back. From now on, in heat, you will smell of one of those fights. You can live with it.",
+      "  (-1 Max HP, permanently — smoke in your collar that the wash did not, fully, take out.)"
+    ]
+  },
+  "status_burn_taught_you_to_drop_and_roll": {
+    "category": "mind",
+    "trigger": {
+      "at": [
+        "combat_low_hp"
+      ],
+      "min_level": 4,
+      "chance": 0.12
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "burn_drop_roll"
+    },
+    "lines": [
+      "Tonight, mid-burning, your body — without your asking — dropped you to the ground and",
+      "rolled you. The kingdom's old way of putting out a fire on a person. You did not know",
+      "you knew. The roll worked. The flame went. You will, from now on, know the trick.",
+      "  (+1 Defense, permanently — the drop-and-roll your body knew in the bad beat without asking.)"
+    ]
+  },
+  "status_burn_a_strangers_cloak_was_thrown_over_you": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "combat_low_hp"
+      ],
+      "min_level": 4,
+      "chance": 0.11
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 1,
+      "flag": "burn_stranger_cloak"
+    },
+    "lines": [
+      "Mid-fight tonight a stranger — somebody who had been watching — threw their cloak over",
+      "you to smother a flame. You were knocked, briefly, into the dark of the wool. They",
+      "stamped. The flame went. You did not, you realise, get the stranger's name. The cloak is yours now.",
+      "  (+1 Max HP, permanently — a cloak a stranger threw to put you out, kept by you after.)"
+    ]
+  },
+  "status_burn_left_a_scar_in_the_shape_of_a_word": {
+    "category": "half_truth",
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "min_level": 5,
+      "chance": 0.09
+    },
+    "effect": {
+      "flag": "burn_scar_word"
+    },
+    "lines": [
+      "On your forearm, where the burn settled, the scar — by the time it healed — was the",
+      "shape of a word. The kingdom's old script, the rite-tongue. The word means *kept.* You",
+      "did not, this run, choose the word. The body chose it. You will look at it sometimes."
+    ]
+  },
+  "status_burn_kindled_an_old_anger": {
+    "category": "broken",
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "min_level": 4,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": -1,
+      "flag": "burn_old_anger"
+    },
+    "lines": [
+      "Tonight the burn went deeper than it should have. Underneath, a thing you had not",
+      "thought of in years — an old anger, the small kind that festers — kindled. You will",
+      "carry the anger forward. It will burn quietly. You can use it. It will use you a little.",
+      "  (-1 Max HP, permanently — an old anger the fight kindled that will not, now, fully bank.)"
+    ]
+  },
+  "status_burn_taught_you_to_offer_water_first": {
+    "category": "promise_kept",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "min_level": 5,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "burn_offer_water"
+    },
+    "lines": [
+      "After burning tonight you have learned, with some certainty, to offer water — to others —",
+      "before yourself. The body knows. A burned person nearby is, you understand, a priority",
+      "over a thirsty self. You will, from now on, give the cup before you take it.",
+      "  (+1 Defense, permanently — an offer-first manner the burning taught you to keep.)"
+    ]
+  },
+  "status_burn_a_match_does_not_light_easily_for_you_now": {
+    "category": "body",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "min_level": 4,
+      "chance": 0.09
+    },
+    "effect": {
+      "stat": "max_stamina",
+      "delta": -1,
+      "flag": "burn_match_hard"
+    },
+    "lines": [
+      "Tonight, lighting a candle at the saving-place, the match shook in your hand and the",
+      "flame would not come. You waited the body out. The body, since the bad burn, does not",
+      "make light easily. You will, from now on, take an extra count to start a fire.",
+      "  (-1 Max Stamina, permanently — a body that hesitates around small flames since the burning.)"
+    ]
+  },
+  "status_burn_kept_a_cinder_in_your_pocket": {
+    "category": "found",
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "min_level": 5,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "attack",
+      "delta": 1,
+      "flag": "burn_cinder_pocket"
+    },
+    "lines": [
+      "Tonight you took a small cinder — black, the size of a thumbnail — from the spent fire",
+      "of an enemy. You put it in your pocket. It will not, now, leave the pocket. It is yours.",
+      "It is a small reminder. Your next swing will be — by a count — angrier. The cinder agrees.",
+      "  (+1 Attack, permanently — a cinder from a fire that tried to take you, kept in your pocket.)"
+    ]
+  },
+  "status_burn_the_smith_recognized_the_burn_pattern": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "min_level": 5,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "burn_smith_recognized"
+    },
+    "lines": [
+      "Tonight the smith, seeing the burn on your forearm, named the kind of fire that made",
+      "it. *That's a censer-shade's fire,* she said. She had been burned by one too. She",
+      "showed you her own scar. You both stood quiet a count. The Choir is not finished with either of you.",
+      "  (+1 Defense, permanently — a burn the smith named, and an old scar shown back in return.)"
+    ]
+  },
+  "status_burn_left_a_kindness_in_the_ash": {
+    "category": "found",
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "min_level": 4,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 1,
+      "flag": "burn_kindness_ash"
+    },
+    "lines": [
+      "In the ash of tonight's burning fight there was a small unburned object — a wooden",
+      "carving the size of a thumb, the kind a child whittles. The fire had stepped around it.",
+      "You took it. It is in your pocket. The fire chose, somewhere in itself, to be kind. So can you.",
+      "  (+1 Max HP, permanently — a kindness the fire kept for you to find after.)"
+    ]
+  },
+  "status_bleed_kept_a_drop_on_your_chin": {
+    "category": "body",
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "min_level": 3,
+      "chance": 0.13
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": -1,
+      "flag": "bleed_chin_drop"
+    },
+    "lines": [
+      "Tonight in the fight a drop of your own blood — from a high wound, near your hairline —",
+      "ran down your face and dried on your chin. You did not wipe it. You walked the next zone",
+      "with it there. People you passed saw it. They did not comment. They had seen blood before.",
+      "  (-1 Max HP, permanently — a drop of your own blood you walked a zone with, deliberately not wiped.)"
+    ]
+  },
+  "status_bleed_taught_you_to_press_the_cloth": {
+    "category": "mind",
+    "trigger": {
+      "at": [
+        "combat_low_hp"
+      ],
+      "min_level": 4,
+      "chance": 0.12
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "bleed_press_cloth"
+    },
+    "lines": [
+      "Mid-fight tonight, with the bleeding bad, you pressed a cloth — torn from your own",
+      "sleeve — to the wound, hard, the kingdom's way. The bleeding slowed. The fight finished.",
+      "Your sleeve is short of cloth now. Your body, from now on, will know to press first.",
+      "  (+1 Defense, permanently — a cloth-pressing the body learned in the worst beat of the bleed.)"
+    ]
+  },
+  "status_bleed_left_a_print_on_a_doorframe": {
+    "category": "half_truth",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village",
+        "mourncross"
+      ],
+      "min_level": 4,
+      "chance": 0.1
+    },
+    "effect": {
+      "flag": "bleed_doorframe_print"
+    },
+    "lines": [
+      "Tonight, coming back from a bleeding day, you steadied yourself on a doorframe in",
+      "Gravewatch. Your palm left a print. The keeper of the house came out, saw the print,",
+      "and did not, in the end, wipe it away. The print is on the doorframe. It will remain."
+    ]
+  },
+  "status_bleed_a_dog_followed_you_back_to_town": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "min_level": 4,
+      "chance": 0.11
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 1,
+      "flag": "bleed_dog_followed"
+    },
+    "lines": [
+      "A dog — small, lean, scarred — followed you back to Gravewatch tonight from where the",
+      "bleeding had been. They had smelled the blood. They walked at a distance. They sat at",
+      "your inn door. They were gone in the morning. They had, for one night, decided about you.",
+      "  (+1 Max HP, permanently — a dog who decided to walk you home through the dusk of a bleeding day.)"
+    ]
+  },
+  "status_bleed_a_widow_recognized_the_pattern": {
+    "category": "half_truth",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "min_level": 4,
+      "chance": 0.1
+    },
+    "effect": {
+      "flag": "bleed_widow_recognized"
+    },
+    "lines": [
+      "Tonight a widow in the square looked at the way you held your side — the angle of the",
+      "favouring — and said quietly, *I had a husband who bled in that exact way.* She did not",
+      "say what happened to him. You did not ask. She gave you a small dry biscuit. You took it."
+    ]
+  },
+  "status_bleed_the_blood_stopped_when_you_named_someone": {
+    "category": "found",
+    "trigger": {
+      "at": [
+        "combat_low_hp"
+      ],
+      "min_level": 5,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 1,
+      "flag": "bleed_stopped_named"
+    },
+    "lines": [
+      "In the worst of the bleeding tonight you said — under your breath, almost without",
+      "thinking — the name of someone you loved. The blood, at the saying, slowed. The kingdom",
+      "has small mercies. The name was a key. You will say it again if the bleeding starts again.",
+      "  (+1 Max HP, permanently — a name that slowed a bleeding when you said it aloud.)"
+    ]
+  },
+  "status_bleed_left_a_stain_on_a_chronicle_page": {
+    "category": "promise_kept",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "min_level": 5,
+      "chance": 0.09
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "bleed_chronicle_stain"
+    },
+    "lines": [
+      "Tonight in the Chronicle, turning a page with bloodied hands you had not, fully,",
+      "washed, you left a small print at the margin. The clerk saw. The clerk did not, in",
+      "the end, scrub it. *The page has a record now,* she said. *Of you reading.* She turned a page for you.",
+      "  (+1 Defense, permanently — a Chronicle margin marked, by your hand, in your own blood.)"
+    ]
+  },
+  "status_bleed_was_in_someone_elses_clothes": {
+    "category": "broken",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "min_level": 5,
+      "chance": 0.09
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": -1,
+      "flag": "bleed_in_others_clothes"
+    },
+    "lines": [
+      "Tonight you found, washing, that some of the blood on your tunic was not yours. From a",
+      "fight you don't remember being touched by another's wound. Whoever had been with you,",
+      "bleeding, had bled onto your clothes. You laundered. The stain has set in. They are with you.",
+      "  (-1 Max HP, permanently — somebody else's bleeding kept on your tunic until it set.)"
+    ]
+  },
+  "status_bleed_an_old_one_handed_you_a_cloth": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "location": [
+        "village"
+      ],
+      "min_level": 4,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 1,
+      "flag": "bleed_old_cloth"
+    },
+    "lines": [
+      "Tonight, after a bleeding fight, you came back into Gravewatch and an old one — at",
+      "the gate, sitting — wordlessly handed you a folded clean cloth. They had been waiting",
+      "with the cloth for someone who needed it. You took it. You used it. The cloth is yours now.",
+      "  (+1 Max HP, permanently — a clean cloth an old one had been keeping for the next bleeder.)"
+    ]
+  },
+  "status_bleed_came_back_in_a_dream": {
+    "category": "mind",
+    "trigger": {
+      "at": [
+        "save_action"
+      ],
+      "min_level": 5,
+      "chance": 0.09
+    },
+    "effect": {
+      "flag": "bleed_dream"
+    },
+    "lines": [
+      "Tonight at the saving-place you dreamt the bleed again. Not the fight. The bleeding.",
+      "Slow. The way your body decided to keep going. You woke quietly. The dream was not a",
+      "nightmare. It was instruction. The body was teaching the body. You can, in waking, also keep going."
+    ]
+  },
+  "status_stun_a_count_was_taken_from_your_day": {
+    "category": "lost",
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "min_level": 3,
+      "chance": 0.13
+    },
+    "effect": {
+      "stat": "max_stamina",
+      "delta": -1,
+      "flag": "stun_count_taken"
+    },
+    "lines": [
+      "Tonight you were stunned, briefly, in the bad beat. The count of seconds you lost is",
+      "not, properly, in your memory. Your day is shorter by that count. The count is the",
+      "kingdom's. You will not, in this run, get it back. You can carry the small absence.",
+      "  (-1 Max Stamina, permanently — a count of seconds the stun took out of your day.)"
+    ]
+  },
+  "status_stun_the_room_was_quieter_when_you_came_back": {
+    "category": "half_truth",
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "min_level": 4,
+      "chance": 0.11
+    },
+    "effect": {
+      "flag": "stun_quieter_room"
+    },
+    "lines": [
+      "Coming back from the stun tonight, the room — the fight, the noise — was, for one",
+      "long count, quieter than it should have been. As if the world had been holding still",
+      "with you. Then sound returned. You finished. Some part of you stayed in the quieter room."
+    ]
+  },
+  "status_stun_made_you_drop_something": {
+    "category": "lost",
+    "trigger": {
+      "at": [
+        "combat_low_hp"
+      ],
+      "min_level": 3,
+      "chance": 0.11
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": -1,
+      "flag": "stun_dropped"
+    },
+    "lines": [
+      "In the stun tonight you dropped a small thing from your pouch — you don't know what.",
+      "You looked, after. The pouch is shorter by one thing. The thing is on the ground of",
+      "the fight-zone. The thing will not be picked up by you. You walked on. The thing stays.",
+      "  (-1 Max HP, permanently — something small dropped from your pouch during the stun and left.)"
+    ]
+  },
+  "status_stun_a_friend_caught_you_before_you_fell": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "combat_low_hp"
+      ],
+      "min_level": 4,
+      "chance": 0.12
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 1,
+      "flag": "stun_caught"
+    },
+    "lines": [
+      "In the stun tonight, when your knees gave, somebody — your companion, your hireling,",
+      "the pet, you don't remember which — caught your shoulder. You did not, in this fight,",
+      "go down. The hand that caught you was warm. You will not forget it was caught.",
+      "  (+1 Max HP, permanently — a hand on your shoulder in a stun that did not let you fall.)"
+    ]
+  },
+  "status_stun_left_a_metallic_taste": {
+    "category": "body",
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "min_level": 4,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "max_stamina",
+      "delta": -1,
+      "flag": "stun_metallic_taste"
+    },
+    "lines": [
+      "After tonight's stun, a metallic taste settled in your mouth and has not, by morning,",
+      "left. Your tongue tells you it is there. The kingdom's stuns leave it sometimes. You",
+      "will eat with a faint underlay of metal from now on. Eating will be a little slower.",
+      "  (-1 Max Stamina, permanently — a metallic taste a stun left that will not, in this run, fade.)"
+    ]
+  },
+  "status_stun_made_you_speak_an_old_name": {
+    "category": "half_truth",
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "min_level": 5,
+      "chance": 0.1
+    },
+    "effect": {
+      "flag": "stun_old_name"
+    },
+    "lines": [
+      "Coming back from the stun tonight you, before your full self had returned, said a name",
+      "aloud — somebody you had not thought of in a long time. Your old self said it. You",
+      "asked your own mouth, after, why. Your mouth would not, in this run, tell you why."
+    ]
+  },
+  "status_stun_taught_you_to_brace": {
+    "category": "mind",
+    "trigger": {
+      "at": [
+        "combat_low_hp"
+      ],
+      "min_level": 5,
+      "chance": 0.11
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "stun_brace_lesson"
+    },
+    "lines": [
+      "After being stunned tonight, your body — the next swing — braced before the strike",
+      "landed. Knees soft, shoulder turned in. The brace was correct. You learned it from being",
+      "knocked out of your stance the last count. The body teaches itself. You will brace from now on.",
+      "  (+1 Defense, permanently — a brace-stance the body learned from a stun, the once.)"
+    ]
+  },
+  "status_stun_the_companion_did_not_let_go_of_your_sleeve": {
+    "category": "promise_kept",
+    "trigger": {
+      "at": [
+        "combat_low_hp"
+      ],
+      "requires_flag": "has_companion",
+      "min_level": 4,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 1,
+      "flag": "stun_companion_sleeve"
+    },
+    "lines": [
+      "In the stun tonight your companion took your sleeve and held it tight. They did not",
+      "let go until you were back. You did not know they had. You found out from the cuff of",
+      "the sleeve, after — slightly stretched. They are not letting you go easily from now on.",
+      "  (+1 Max HP, permanently — a companion holding your sleeve through a stun until you came back.)"
+    ]
+  },
+  "status_stun_left_you_humming": {
+    "category": "found",
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "min_level": 4,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 1,
+      "flag": "stun_humming"
+    },
+    "lines": [
+      "After the stun cleared tonight you found you had been humming — out of habit, while",
+      "you came back — a tune you didn't know you knew. The tune was old. The tune was good.",
+      "It is in your throat now. You will hum it on the road. It will keep your step steady.",
+      "  (+1 Max HP, permanently — a tune the stun left in your throat that you will use to walk.)"
+    ]
+  },
+  "status_stun_an_npc_thanked_you_for_coming_back": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "min_level": 5,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 1,
+      "flag": "stun_thanked_back"
+    },
+    "lines": [
+      "After the stun tonight, an NPC at your side — whoever happened to be there — said,",
+      "very quietly, *welcome back.* They did not make a thing of it. You did not either. The",
+      "welcome was the small kingdom-old kind. You stood up under it. You felt the welcoming.",
+      "  (+1 Max HP, permanently — a *welcome back* given to you after a stun by someone next to you.)"
+    ]
+  },
+  "status_cured_a_potion_remembered_a_brew": {
+    "category": "found",
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "min_level": 4,
+      "chance": 0.12
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 1,
+      "flag": "cure_potion_remembered"
+    },
+    "lines": [
+      "Tonight a potion you drank — to cure a wound — tasted faintly of one your grandmother",
+      "used to brew when you were small. The kingdom's potions, you understand, are old recipes",
+      "carried forward. Your grandmother's was, somewhere, the same. You stand straighter knowing.",
+      "  (+1 Max HP, permanently — a potion whose taste matched one your grandmother once brewed.)"
+    ]
+  },
+  "status_braced_a_strike_glanced_off_your_shoulder": {
+    "category": "found",
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "min_level": 5,
+      "chance": 0.11
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "braced_glanced"
+    },
+    "lines": [
+      "Tonight, with the brace on, a strike that should have landed glanced off your shoulder.",
+      "You did not feel it land. You felt the deflection. The shoulder knows now what bracing",
+      "feels like, properly. It will brace itself before you tell it to, from now on.",
+      "  (+1 Defense, permanently — a brace-glance the shoulder learned on its own to do.)"
+    ]
+  },
+  "status_evasive_taught_your_feet_to_step_aside": {
+    "category": "mind",
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "min_level": 5,
+      "chance": 0.11
+    },
+    "effect": {
+      "stat": "max_stamina",
+      "delta": 1,
+      "flag": "evasive_step_aside"
+    },
+    "lines": [
+      "Tonight with the evasion in your blood, your feet stepped aside — without your asking —",
+      "from a strike. The step was small. The step worked. Your feet have, from now on, a",
+      "habit of small lateral steps. You will, when nervous, step sideways without thinking.",
+      "  (+1 Max Stamina, permanently — a step-aside the body learned that will travel with you.)"
+    ]
+  },
+  "status_cure_taught_you_to_recognise_a_plant": {
+    "category": "found",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "forest",
+        "reach"
+      ],
+      "min_level": 4,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "attack",
+      "delta": 1,
+      "flag": "cure_recognized_plant"
+    },
+    "lines": [
+      "Tonight, walking, you recognized — without naming — a plant by the path that you could,",
+      "if you ate it, use to cure a poison. The body learned it from a cured poison. Hunters",
+      "know the plant. You did not know you had become a hunter. You have, in a small way, become one.",
+      "  (+1 Attack, permanently — a wild plant the body learned to recognize from a curing.)"
+    ]
+  },
+  "status_cleansed_your_breath_was_quieter": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "min_level": 4,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 1,
+      "flag": "cleansed_quiet_breath"
+    },
+    "lines": [
+      "After a cleansing tonight — a status lifted, the body settled — your breath was, for",
+      "the next hour, quieter than it normally is. Not weaker. Cleaner. The kingdom does not",
+      "often clean a body. Tonight it did. You will, from now on, breathe a little cleaner.",
+      "  (+1 Max HP, permanently — a quietness in the breath the cleansing left in you.)"
+    ]
+  },
+  "status_brace_held_against_the_third_strike": {
+    "category": "promise_kept",
+    "trigger": {
+      "at": [
+        "combat_low_hp"
+      ],
+      "min_level": 5,
+      "chance": 0.11
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "brace_third_strike"
+    },
+    "lines": [
+      "Tonight your brace held against the third strike — the one that, in fights past, has",
+      "broken your guard. The brace held. The strike turned. You did not, in this fight, go",
+      "down. The brace will, from now on, hold against the third. The body has crossed a count.",
+      "  (+1 Defense, permanently — a brace that held a strike that used to break your guard.)"
+    ]
+  },
+  "status_cure_a_consumable_remembered_a_kitchen": {
+    "category": "half_truth",
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "min_level": 4,
+      "chance": 0.1
+    },
+    "effect": {
+      "flag": "cure_consumable_kitchen"
+    },
+    "lines": [
+      "Tonight a curing consumable you ate — a piece of bread, a small fruit — tasted of a",
+      "kitchen long gone. Not your grandmother's. Somebody's. The kingdom keeps its old",
+      "kitchens in its provisions. You ate the kitchen. It went with you. You did not say."
+    ]
+  },
+  "status_evasive_taught_you_to_tilt_your_head": {
+    "category": "body",
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "min_level": 5,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "evasive_tilt_head"
+    },
+    "lines": [
+      "Tonight, evading, you tilted your head — just a finger's width — and a strike that",
+      "would have caught your temple missed by exactly that finger. The tilt was learned. Your",
+      "neck knows now. From now on, in any threat, your head will tilt the right way for you.",
+      "  (+1 Defense, permanently — a head-tilt the neck learned that has saved you a temple-strike.)"
+    ]
+  },
+  "status_cure_made_you_kneel_to_drink": {
+    "category": "promise_kept",
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "min_level": 4,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 1,
+      "flag": "cure_kneel_drink"
+    },
+    "lines": [
+      "Tonight, drinking a curing potion, you knelt — without thinking — the kingdom's old way",
+      "of taking medicine. You did not know you knew. The body knew. The body has, somewhere",
+      "in it, the manners of an older Mournhold. You stood up under them. You will kneel again.",
+      "  (+1 Max HP, permanently — a kneeling-to-drink the body kept from older Mournhold.)"
+    ]
+  },
+  "status_cleared_the_kingdom_said_thank_you": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "min_level": 5,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "kingdom_thanked_clear"
+    },
+    "lines": [
+      "Tonight, after clearing the last of a particularly nasty status — burn, poison, both —",
+      "you stood and the kingdom, faintly, thanked you. Not Atrél. The kingdom itself. The",
+      "thanks landed softly. You don't get thanked often by Mournhold. You did, tonight. You stood taller.",
+      "  (+1 Defense, permanently — a thanks from the kingdom for clearing a status it had decided was bad.)"
+    ]
   }
 }
