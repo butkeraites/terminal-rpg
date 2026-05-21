@@ -4142,5 +4142,233 @@
       }
     },
     "flavor": "Once your first companion stood at your side, two goblins decided to test the count. End them. The companion will know they helped."
+  },
+  "purify_witherwood": {
+    "name": "After the Purify, the Wood Is One Count Greener",
+    "target_enemy": "wolf",
+    "needed": 3,
+    "reward_gold": 400,
+    "cleanse_required": 0,
+    "requires_ending": [
+      "purify"
+    ],
+    "flavor": "Once you had purified the kingdom, three wolves in the wood walked one count differently. End them. The wood will be greener for it.",
+    "reward_marks": [
+      "the_wood_held_its_breath_for_you"
+    ]
+  },
+  "purify_holds": {
+    "name": "After the Purify, the Holds Are Quieter",
+    "target_enemy": "bonesong",
+    "needed": 5,
+    "reward_gold": 600,
+    "cleanse_required": 1,
+    "requires_ending": [
+      "purify"
+    ],
+    "flavor": "Once you had purified the kingdom, five bonesongs in the Holds hummed a quieter pitch. End them. The pitch will be one count under after."
+  },
+  "purify_choir": {
+    "name": "After the Purify, the Choir Sings a Younger Air",
+    "target_enemy": "choirmaster_effigy",
+    "needed": 2,
+    "reward_gold": 900,
+    "cleanse_required": 4,
+    "requires_ending": [
+      "purify"
+    ],
+    "flavor": "Once you had purified the kingdom, two effigies in the Choir sang a younger air. End them. The Choir will sing kinder for one season.",
+    "reward_chronicle_line": "After the Purify, the Choir's effigies sang a younger air for them — two of those effigies ended kindly."
+  },
+  "atrel_reach": {
+    "name": "After Atrél's Peace, the Reach Holds a Grief",
+    "target_enemy": "last_reaper",
+    "needed": 1,
+    "reward_gold": 1000,
+    "cleanse_required": 2,
+    "requires_ending": [
+      "atrel_peace"
+    ],
+    "flavor": "Once you had made Atrél's Peace, the Reach's Reaper held a grief instead of swinging. End him. The grief is yours, briefly.",
+    "reward_marks": [
+      "reach_drowned_a_song_you_loved"
+    ]
+  },
+  "atrel_climb": {
+    "name": "After Atrél's Peace, the Climb Is Less Sharp",
+    "target_enemy": "ice_wraith",
+    "needed": 3,
+    "reward_gold": 700,
+    "cleanse_required": 4,
+    "requires_ending": [
+      "atrel_peace"
+    ],
+    "flavor": "Once you had made Atrél's Peace, three ice-wraiths above the snow-line lost their edge. End them."
+  },
+  "atrel_gravewatch_road": {
+    "name": "After Atrél's Peace, a Bandit Knew Better",
+    "target_enemy": "bandit",
+    "needed": 2,
+    "reward_gold": 350,
+    "cleanse_required": 0,
+    "requires_ending": [
+      "atrel_peace"
+    ],
+    "flavor": "Once you had made Atrél's Peace, two bandits on the road decided to test the peace. End them. The peace will hold.",
+    "reward_chronicle_line": "Bandits had tested Atrél's Peace; two of them ended at the road's edge for the testing."
+  },
+  "old_seal_holds": {
+    "name": "After the Old Seal, the Holds Settle",
+    "target_enemy": "red_beard",
+    "needed": 2,
+    "reward_gold": 700,
+    "cleanse_required": 2,
+    "requires_ending": [
+      "old_seal"
+    ],
+    "flavor": "Once you had made The Old Seal, two Red Beards in the Holds knelt without being asked. End them anyway. The Seal will know.",
+    "reward_marks": [
+      "holds_doorpost_remembered_a_name"
+    ]
+  },
+  "old_seal_gullet": {
+    "name": "After the Old Seal, the Gullet Tightens",
+    "target_enemy": "maw_mother",
+    "needed": 1,
+    "reward_gold": 1500,
+    "cleanse_required": 3,
+    "requires_ending": [
+      "old_seal"
+    ],
+    "flavor": "Once you had made The Old Seal, the Maw-Mother tightened her hold. She has been ready for a climber-with-the-Seal-behind-them. End her.",
+    "reward_chronicle_line": "After the Old Seal, the Maw-Mother braced harder than ever before; they took her in the bracing."
+  },
+  "reckoning_mourncross": {
+    "name": "After the Reckoning, the Capital Is Unmade",
+    "target_enemy": "hollow_procession",
+    "needed": 6,
+    "reward_gold": 1200,
+    "cleanse_required": 3,
+    "requires_ending": [
+      "reckoning"
+    ],
+    "flavor": "Once you had once unmade Mournhold by Reckoning, six of the procession are unmaking still. End them. The Reckoning will continue.",
+    "reward_marks": [
+      "mourncross_breathed_the_capital_air"
+    ]
+  },
+  "reckoning_choir_air": {
+    "name": "After the Reckoning, the Choir Has Less to Sing",
+    "target_enemy": "censer_shade",
+    "needed": 4,
+    "reward_gold": 800,
+    "cleanse_required": 4,
+    "requires_ending": [
+      "reckoning"
+    ],
+    "flavor": "Once you had unmade Mournhold by Reckoning, four censer-shades had less smoke. End them. The smoke will dissipate after."
+  },
+  "reckoning_climb_path": {
+    "name": "After the Reckoning, the Climb Has Fewer Stones",
+    "target_enemy": "stone_golem",
+    "needed": 1,
+    "reward_gold": 1100,
+    "cleanse_required": 4,
+    "requires_ending": [
+      "reckoning"
+    ],
+    "flavor": "Once you had unmade Mournhold by Reckoning, a stone-golem on the Climb's path had less stone in him. End him."
+  },
+  "warden_witherwood_callback": {
+    "name": "After the Warden, the Wood Lets You Pass",
+    "target_enemy": "pack_lead",
+    "needed": 1,
+    "reward_gold": 800,
+    "cleanse_required": 1,
+    "requires_ending": [
+      "warden"
+    ],
+    "flavor": "Once you had become the Warden, the wood's pack lead stepped aside for the count it took you to walk past. End him in the count.",
+    "reward_marks": [
+      "ending_warden_a_keeper_song_started_to_form_in_you"
+    ]
+  },
+  "warden_mourncross_recognized": {
+    "name": "After the Warden, Mourncross Recognizes",
+    "target_enemy": "pall_magistrate",
+    "needed": 2,
+    "reward_gold": 900,
+    "cleanse_required": 3,
+    "requires_ending": [
+      "warden"
+    ],
+    "flavor": "Once you had become the Warden, two magistrates in Mourncross recognized the keeper-mark on you. End them.",
+    "reward_chronicle_line": "The two magistrates of Mourncross had recognized the Warden-mark on them; both ended without ceremony."
+  },
+  "warden_summit_old_step": {
+    "name": "After the Warden, the Summit Has Heard Your Step",
+    "target_enemy": "shadow_warden",
+    "needed": 1,
+    "reward_gold": 2000,
+    "cleanse_required": 5,
+    "requires_ending": [
+      "warden"
+    ],
+    "flavor": "Once you had become the Warden, the Summit recognized the previous you's step in your stride. End the new Shadow Warden — the keeper before you has been waiting for this.",
+    "reward_marks": [
+      "summit_warden_old_step_remembered_you"
+    ],
+    "reward_chronicle_line": "A previous Warden had returned and ended the Shadow Warden again — the chain of keepers extended by one."
+  },
+  "hidden_truth_choir": {
+    "name": "After the Hidden Truth, the Choir Has No Riddle",
+    "target_enemy": "cantor_vael",
+    "needed": 1,
+    "reward_gold": 1700,
+    "cleanse_required": 4,
+    "requires_ending": [
+      "hidden_truth"
+    ],
+    "flavor": "Once you had known the hidden truth, Cantor Vael had no riddle for you. End him. The truth stays known.",
+    "reward_marks": [
+      "choir_almost_completed_the_rite"
+    ]
+  },
+  "hidden_truth_summit": {
+    "name": "After the Hidden Truth, the Summit Meets You Different",
+    "target_enemy": "shadow_warden",
+    "needed": 1,
+    "reward_gold": 2200,
+    "cleanse_required": 5,
+    "requires_ending": [
+      "hidden_truth"
+    ],
+    "flavor": "Once you had known the hidden truth, the Summit met you in a way you did not expect. End the Warden differently than before.",
+    "reward_marks": [
+      "ending_hidden_truth_the_summit_will_meet_you_differently"
+    ]
+  },
+  "caretaker_gravewatch": {
+    "name": "After the Caretaker, Gravewatch Sets a Chair",
+    "target_enemy": "bandit",
+    "needed": 1,
+    "reward_gold": 400,
+    "cleanse_required": 0,
+    "requires_ending": [
+      "caretaker"
+    ],
+    "flavor": "Once you had been the Caretaker, Gravewatch sets a chair for you. A bandit on the road tries to take the chair. End him.",
+    "reward_chronicle_line": "A bandit had tried to take the chair Gravewatch had set for the Caretaker; he ended at the road's edge."
+  },
+  "other_mournhold_border": {
+    "name": "After the Other Mournhold, the Border Is Open",
+    "target_enemy": "ashen_penitent",
+    "needed": 1,
+    "reward_gold": 1400,
+    "cleanse_required": 5,
+    "requires_ending": [
+      "other_mournhold"
+    ],
+    "flavor": "Once you had glimpsed the Other Mournhold, the Border was more open than before. A Penitent at the open Border stones notices. End him."
   }
 }
