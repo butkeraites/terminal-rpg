@@ -6117,5 +6117,236 @@
       "the_climb_marked_your_lungs"
     ],
     "flavor": "The third station was at the cathedral side-altar — where Atrél once held the pilgrim's smallest grief. Two censer-shades have crowded the altar out. End them. The third station is the bowl beneath their feet. It is upturned. Set it right."
+  },
+  "lg_summit_warden_again": {
+    "name": "The Summit Warden, Again",
+    "target_enemy": "shadow_warden",
+    "needed": 1,
+    "reward_gold": 2200,
+    "cleanse_required": 5,
+    "flavor": "The Shadow Warden has been ended many times. The kingdom has stopped counting. End him once more. The kingdom will count this one.",
+    "reward_chronicle_line": "The Summit Warden ended for what the kingdom no longer counted — and the count began again."
+  },
+  "lg_maw_mother_late": {
+    "name": "The Maw-Mother in the Late Quiet",
+    "target_enemy": "maw_mother",
+    "needed": 1,
+    "reward_gold": 1800,
+    "cleanse_required": 5,
+    "flavor": "The Maw-Mother is hungrier in the cleansed kingdom; there is less to eat. End her. The Gullet will be only the Gullet after.",
+    "reward_marks": [
+      "gullet_mawmother_braced_for_you"
+    ]
+  },
+  "lg_cantor_vael_last_breath": {
+    "name": "Cantor Vael's Last Breath",
+    "target_enemy": "cantor_vael",
+    "needed": 1,
+    "reward_gold": 2000,
+    "cleanse_required": 5,
+    "flavor": "The Cantor has been singing for a hundred winters. The cleansed kingdom hears him quieter. End him. The third line will hold.",
+    "reward_marks": [
+      "choir_you_unsung_your_name"
+    ],
+    "reward_chronicle_line": "Cantor Vael's last breath went into the air the cleansed kingdom had been quieting toward — and the air held the breath."
+  },
+  "lg_hollow_bellward_last_ring": {
+    "name": "The Hollow Bellward's Last Ring",
+    "target_enemy": "hollow_bellward",
+    "needed": 1,
+    "reward_gold": 1900,
+    "cleanse_required": 5,
+    "flavor": "The Bellward has been ringing the bell for a hundred winters. The cleansed kingdom hears the bell from far. End her. The bell will find a new ringer or none."
+  },
+  "lg_after_summit_listened": {
+    "name": "After the Summit Started to Listen",
+    "target_enemy": "ashen_penitent",
+    "needed": 2,
+    "reward_gold": 1500,
+    "cleanse_required": 5,
+    "flavor": "The Summit started to listen for you once. Two Penitents above the snowline keep the listening. End them. The Summit's listening will be yours alone.",
+    "requires_mark": "the_summit_started_to_listen",
+    "reward_marks": [
+      "summit_pall_paused_for_you"
+    ]
+  },
+  "lg_after_pall_paused": {
+    "name": "After the Pall Paused for You",
+    "target_enemy": "shadow_warden",
+    "needed": 1,
+    "reward_gold": 2500,
+    "cleanse_required": 5,
+    "flavor": "The Pall paused for you once. The new Shadow Warden does not. End him. The Pall will pause again — or it will not.",
+    "requires_mark": "summit_pall_paused_for_you",
+    "reward_chronicle_line": "The Pall had paused for them once; the new Warden did not, and they ended the Warden, and the Pall paused longer."
+  },
+  "lg_after_summit_named": {
+    "name": "After You Named Someone to the Summit Wind",
+    "target_enemy": "ice_wraith",
+    "needed": 4,
+    "reward_gold": 1100,
+    "cleanse_required": 5,
+    "flavor": "You named someone to the Summit wind once. Four ice-wraiths carry the name still. End them. The name will return to its owner.",
+    "requires_mark": "summit_you_named_someone_to_the_wind",
+    "reward_marks": [
+      "the_summit_wind_called_your_step"
+    ]
+  },
+  "lg_after_lung_marked": {
+    "name": "After the Climb Marked Your Lungs",
+    "target_enemy": "mountain_ogre",
+    "needed": 3,
+    "reward_gold": 1300,
+    "cleanse_required": 5,
+    "flavor": "The Climb marked your lungs once. Three ogres on the bare ridge feel the marking. End them. The lungs will be lungs after.",
+    "requires_mark": "the_climb_marked_your_lungs",
+    "reward_marks": [
+      "summit_ground_was_softer_than_you_thought"
+    ]
+  },
+  "lg_purify_then_warden": {
+    "name": "After Purify + Warden, the Capital Has No Reverence",
+    "target_enemy": "hollow_bellward",
+    "needed": 1,
+    "reward_gold": 2000,
+    "cleanse_required": 5,
+    "flavor": "Across runs, the player has both purified Mournhold and become its Warden. The Bellward at the high bell has no reverence left for either. End her.",
+    "requires_ending": [
+      "purify",
+      "warden"
+    ],
+    "reward_marks": [
+      "bellward_bell_rang_for_you"
+    ],
+    "reward_chronicle_line": "The kingdom that had been purified and then warded met its Hollow Bellward with no reverence; the bell rang only briefly."
+  },
+  "lg_old_seal_plus_atrel": {
+    "name": "After Old Seal + Atrél's Peace, the Choir Lays Down",
+    "target_enemy": "cantor_vael",
+    "needed": 1,
+    "reward_gold": 2100,
+    "cleanse_required": 5,
+    "flavor": "Across runs, the player has made both The Old Seal and Atrél's Peace. Cantor Vael, who has been singing the rite forever, lays down his voice when you enter. End him in the laying-down.",
+    "requires_ending": [
+      "old_seal",
+      "atrel_peace"
+    ],
+    "reward_marks": [
+      "choir_almost_completed_the_rite"
+    ]
+  },
+  "lg_reckoning_then_purify": {
+    "name": "After Reckoning, Then Purify, the Summit Listens Different",
+    "target_enemy": "shadow_warden",
+    "needed": 1,
+    "reward_gold": 2400,
+    "cleanse_required": 5,
+    "flavor": "Across runs, the player has both unmade Mournhold (Reckoning) AND rebuilt it (Purify). The Summit's listening is changed by the order. End the Warden in the changed listening.",
+    "requires_ending": [
+      "reckoning",
+      "purify"
+    ],
+    "reward_chronicle_line": "The Summit had listened to a climber who had both unmade and rebuilt the kingdom — and the listening changed the kill."
+  },
+  "lg_three_endings_summit": {
+    "name": "The Triple-Endings Summit",
+    "target_enemy": "shadow_warden",
+    "needed": 1,
+    "reward_gold": 3000,
+    "cleanse_required": 5,
+    "flavor": "Three endings stacked in the Chronicle — the player has done three different kinds of work for Mournhold. The Summit recognizes the triple-weight. End the Warden in the triple recognition.",
+    "requires_ending": [
+      "purify",
+      "warden",
+      "old_seal"
+    ],
+    "reward_marks": [
+      "summit_warden_old_step_remembered_you"
+    ],
+    "reward_chronicle_line": "They had purified, become the Warden, and made the Old Seal — across three runs. The Summit ended for them differently than for anyone else."
+  },
+  "lg_reborn_summit_keeper": {
+    "name": "A Reborn Keeper Returns to the Summit",
+    "target_enemy": "shadow_warden",
+    "needed": 1,
+    "reward_gold": 2800,
+    "cleanse_required": 5,
+    "flavor": "A previous self had been the Summit Warden once. The new self climbs back. The Warden recognizes the old gait. End him in the recognition.",
+    "requires_ending": [
+      "warden"
+    ],
+    "requires_flag": "is_reborn",
+    "reward_marks": [
+      "summit_warden_old_step_remembered_you"
+    ],
+    "reward_chronicle_line": "A previous one of them had been the Summit Warden; the new self returned and ended the new Warden in the chain of keepers."
+  },
+  "lg_reborn_choir_silence": {
+    "name": "A Reborn Climber Finds the Choir Silent",
+    "target_enemy": "choirmaster_effigy",
+    "needed": 2,
+    "reward_gold": 1500,
+    "cleanse_required": 5,
+    "flavor": "A previous self had ended Cantor Vael. The new self finds the Choir silent. Two effigies still raise their voices. End them. The Choir will be silent.",
+    "requires_ending": [
+      "hidden_truth"
+    ],
+    "requires_flag": "is_reborn"
+  },
+  "lg_reborn_unwarden": {
+    "name": "A Reborn Climber Refuses the Warden",
+    "target_enemy": "ashen_penitent",
+    "needed": 1,
+    "reward_gold": 2200,
+    "cleanse_required": 5,
+    "flavor": "A previous self had been the Warden. The new self refuses the role. A Penitent above the snowline tries to gently remind. End him. The refusal stays a refusal.",
+    "requires_ending": [
+      "warden"
+    ],
+    "requires_flag": "is_reborn",
+    "reward_marks": [
+      "penitent_turning_back_was_an_option"
+    ],
+    "reward_chronicle_line": "A previous one of them had been the Warden; the new self refused, and the Penitent who would have welcomed the warden-back fell to the refusal."
+  },
+  "lg_cleric_last_funeral": {
+    "name": "The Cleric's Last Funeral",
+    "target_enemy": "hollow_procession",
+    "needed": 7,
+    "reward_gold": 1600,
+    "cleanse_required": 5,
+    "flavor": "Seven of the procession. A cleric gives each a proper funeral. The cleansed Mourncross will be one count quieter for the work.",
+    "reward_chronicle_line": "A cleric walked the cleansed Mourncross and gave seven of the procession a proper funeral — and the capital was quieter.",
+    "requires_class": [
+      "cleric"
+    ]
+  },
+  "lg_mage_summit_song": {
+    "name": "The Mage's Summit Song",
+    "target_enemy": "ashen_penitent",
+    "needed": 1,
+    "reward_gold": 2000,
+    "cleanse_required": 5,
+    "flavor": "A Penitent above the snowline. Only a mage knows the pitch that ends a Penitent in the cleansed kingdom. End him.",
+    "reward_marks": [
+      "summit_wind_taught_you_a_word"
+    ],
+    "requires_class": [
+      "mage"
+    ]
+  },
+  "lg_warrior_summit_step": {
+    "name": "The Warrior's Step Onto the Summit",
+    "target_enemy": "shadow_warden",
+    "needed": 1,
+    "reward_gold": 2600,
+    "cleanse_required": 5,
+    "flavor": "The Shadow Warden in the cleansed kingdom expects honor. Only a warrior's foot weighs enough to give it. End him.",
+    "reward_marks": [
+      "summit_ground_was_softer_than_you_thought"
+    ],
+    "requires_class": [
+      "warrior"
+    ]
   }
 }
