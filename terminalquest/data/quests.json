@@ -237,5 +237,240 @@
     ],
     "reward_chronicle_line": "They walked the Witherwood for a thing a previous one of them had left behind, and they brought it back.",
     "flavor": "A previous you walked here, fell here, left something here. One wolf carries it. Take the wolf. Take the thing. The Chronicle will note both."
+  },
+  "thresher_quiet_reach": {
+    "name": "Quiet the Drowned Threshers",
+    "target_enemy": "drowned_thresher",
+    "needed": 5,
+    "reward_gold": 250,
+    "cleanse_required": 1,
+    "flavor": "The threshers stand in the silted fields and still try to thresh. Five. The reach's old farmers will know which five."
+  },
+  "silt_drowners_three": {
+    "name": "Three Silt-Drowners in the Eel-Pools",
+    "target_enemy": "silt_drowner",
+    "needed": 3,
+    "reward_gold": 200,
+    "cleanse_required": 1,
+    "flavor": "They drown the eels first, the water second, the comers third. Three of the drowners. The eel-pools will breathe again."
+  },
+  "bog_lurchers_at_low_water": {
+    "name": "Bog-Lurchers at Low Water",
+    "target_enemy": "bog_lurcher",
+    "needed": 4,
+    "reward_gold": 300,
+    "cleanse_required": 2,
+    "flavor": "When the sluice opens, four of the lurchers crawl up the gravel. Old Halna's daughter knows their count."
+  },
+  "thresher_reeds_for_the_weaver": {
+    "name": "Thresher-Reeds for the Weaver",
+    "target_trophy": "thresher_reed",
+    "needed": 8,
+    "reward_gold": 350,
+    "cleanse_required": 1,
+    "reward_consumables": [
+      "The Last Bread"
+    ],
+    "flavor": "The reach's old weaver took only the dead reeds the threshers grew through. Eight, and she will weave the kingdom a sash."
+  },
+  "reeds_to_dam_the_breach": {
+    "name": "Reeds to Dam the Breach",
+    "target_trophy": "thresher_reed",
+    "needed": 15,
+    "reward_gold": 500,
+    "cleanse_required": 2,
+    "reward_consumables": [
+      "The Last Bread",
+      "The Last Bread"
+    ],
+    "flavor": "The breach in the weir grows by the season. Fifteen thresher-reeds will hold it for another winter. No fewer."
+  },
+  "engineer_a_read_the_plans": {
+    "name": "The Engineer's Field — Read His Plans",
+    "target_enemy": "silt_drowner",
+    "needed": 1,
+    "reward_gold": 100,
+    "cleanse_required": 0,
+    "requires_discovery": [
+      "engineers_plans"
+    ],
+    "chain_next": "engineer_b_find_the_weir",
+    "flavor": "His engineering plans name a single drowner that walks where the main sluice should be. Take it. The Reach will remember."
+  },
+  "engineer_b_find_the_weir": {
+    "name": "The Engineer's Field — Find the Broken Weir",
+    "target_enemy": "drowned_thresher",
+    "needed": 3,
+    "reward_gold": 200,
+    "cleanse_required": 0,
+    "requires_quest": [
+      "engineer_a_read_the_plans"
+    ],
+    "chain_next": "engineer_c_the_reaper",
+    "flavor": "The threshers stand thickest where the weir broke. Three of them, and the path to the keeper is open."
+  },
+  "engineer_c_the_reaper": {
+    "name": "The Engineer's Field — Confront the Keeper",
+    "target_enemy": "last_reaper",
+    "needed": 1,
+    "reward_gold": 400,
+    "cleanse_required": 0,
+    "requires_quest": [
+      "engineer_b_find_the_weir"
+    ],
+    "chain_next": "engineer_d_let_the_field_breathe",
+    "reward_marks": [
+      "reaper_water_did_not_answer"
+    ],
+    "flavor": "The Last Reaper kept the weir shut so the kingdom would starve. Find him at the broken sluice. End the keeping."
+  },
+  "engineer_d_let_the_field_breathe": {
+    "name": "The Engineer's Field — Let It Breathe",
+    "target_enemy": "drowned_thresher",
+    "needed": 2,
+    "reward_gold": 600,
+    "cleanse_required": 0,
+    "requires_quest": [
+      "engineer_c_the_reaper"
+    ],
+    "reward_chronicle_line": "They opened the weir the Reaper had shut, and the silt-fields of Hólvar drew their first breath in a century.",
+    "reward_marks": [
+      "reach_promised_the_field_a_grain"
+    ],
+    "flavor": "Two threshers stand at the new flow. After them, the field drains, and Hólvar Reach is one less drowning."
+  },
+  "promise_the_field_a_grain": {
+    "name": "Promise the Field a Grain",
+    "target_enemy": "drowned_thresher",
+    "needed": 3,
+    "reward_gold": 200,
+    "cleanse_required": 1,
+    "denies_quest": [
+      "refuse_the_field_a_grain"
+    ],
+    "reward_marks": [
+      "reach_promised_the_field_a_grain"
+    ],
+    "flavor": "The reach's last farmer asks for a grain to be promised — even one. Three threshers, and she will plant. Once you promise, you cannot un-promise."
+  },
+  "refuse_the_field_a_grain": {
+    "name": "Refuse the Field a Grain",
+    "target_enemy": "drowned_thresher",
+    "needed": 3,
+    "reward_gold": 350,
+    "cleanse_required": 1,
+    "denies_quest": [
+      "promise_the_field_a_grain"
+    ],
+    "reward_marks": [
+      "reach_did_not_promise_the_field"
+    ],
+    "flavor": "Old Halna's daughter says: do not promise. The Pall hears promises. Three threshers, take the gold, walk on."
+  },
+  "hidden_the_reach_remembers": {
+    "name": "The Reach Remembers You",
+    "target_enemy": "silt_drowner",
+    "needed": 1,
+    "reward_gold": 200,
+    "cleanse_required": 0,
+    "hidden": true,
+    "trigger_action": {
+      "type": "zone_visited",
+      "params": {
+        "zone_id": "reach"
+      }
+    },
+    "reward_marks": [
+      "the_reach_remembers_your_step"
+    ],
+    "flavor": "The first time you set foot in the silt, one drowner turned its head toward you. It has been waiting since."
+  },
+  "hidden_after_almost_drowning": {
+    "name": "After You Almost Drowned",
+    "target_enemy": "drowned_thresher",
+    "needed": 2,
+    "reward_gold": 250,
+    "cleanse_required": 0,
+    "hidden": true,
+    "trigger_action": {
+      "type": "mark_fired",
+      "params": {
+        "mark_id": "reach_you_almost_drowned"
+      }
+    },
+    "reward_marks": [
+      "reach_taught_you_to_wade"
+    ],
+    "flavor": "The reach almost took you. Two threshers stood between you and the silt that wanted you. Repay them."
+  },
+  "thresher_no_damage": {
+    "name": "Untouched Through the Threshing-Field",
+    "target_enemy": "drowned_thresher",
+    "completion_condition": "no_damage_taken",
+    "needed": 2,
+    "reward_gold": 300,
+    "cleanse_required": 1,
+    "flavor": "Two threshers, and you finish each one without a scratch on you. The reach's old farmers will whisper about a climber who walked clean."
+  },
+  "one_round_silt_drowner": {
+    "name": "A Drowner in a Single Round",
+    "target_enemy": "silt_drowner",
+    "completion_condition": "killed_in_one_round",
+    "needed": 2,
+    "reward_gold": 250,
+    "cleanse_required": 1,
+    "flavor": "Two silt-drowners, and each one gone before the silt-song finishes its first verse. One round. No more."
+  },
+  "reach_both_steps_marked": {
+    "name": "The Reach Has Marked Both of Your Steps",
+    "target_enemy": "last_reaper",
+    "needed": 1,
+    "reward_gold": 500,
+    "cleanse_required": 0,
+    "requires_marks": [
+      "the_reach_remembers_your_step",
+      "reach_water_remembered_your_face"
+    ],
+    "reward_chronicle_line": "The Reach had marked their step and their face both, and they took the Reaper anyway.",
+    "flavor": "When the reach has marked you twice — your step, your face — a particular Reaper waits. He will not wait again."
+  },
+  "mages_drowning_song": {
+    "name": "The Mage's Drowning Song",
+    "target_enemy": "silt_drowner",
+    "needed": 3,
+    "reward_gold": 400,
+    "cleanse_required": 1,
+    "requires_class": [
+      "mage"
+    ],
+    "reward_consumables": [
+      "The Last Bread"
+    ],
+    "flavor": "Only a mage hears the harmonic the silt-drowners cast in. Three of them, sung silent. The reach will sleep one count quieter."
+  },
+  "cleric_lay_the_threshers": {
+    "name": "Lay the Threshers Down",
+    "target_enemy": "drowned_thresher",
+    "needed": 6,
+    "reward_gold": 350,
+    "cleanse_required": 1,
+    "requires_class": [
+      "cleric"
+    ],
+    "reward_chronicle_line": "They walked the Sodden Reach and laid six threshers properly down, the way the kingdom's old clerics laid the field-dead.",
+    "flavor": "The threshers were farmers once, drowned at their work. Six. Only a cleric's hand can lay them down so they stay."
+  },
+  "reborn_a_grain_you_planted": {
+    "name": "A Grain You Once Planted",
+    "target_enemy": "drowned_thresher",
+    "needed": 1,
+    "reward_gold": 300,
+    "cleanse_required": 0,
+    "requires_flag": "is_reborn",
+    "reward_marks": [
+      "reach_helka_set_a_bench_for_you"
+    ],
+    "reward_chronicle_line": "A previous one of them had planted a grain in Hólvar Reach, and when they came back, the field gave it back to them.",
+    "flavor": "A previous you planted a grain here, the year before the drowning. One thresher holds the place. Take it. The grain is still there."
   }
 }

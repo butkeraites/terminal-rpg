@@ -1146,15 +1146,16 @@ def test_hidden_quest_pins_when_zone_visited(content, tmp_path):
     player = _player(content)
     state = make_state(player, content, ScriptedIO(), StubRandom(),
                        chronicle_dir=tmp_path)
-    # Not at reach — scanner doesn't pin.
+    # Not at reach — scanner doesn't pin OUR quest.
     state.current_location = "forest"
     pinned = locations.scan_hidden_quest_triggers(state)
-    assert pinned == []
+    assert "zone_pinned" not in pinned
     assert "zone_pinned" not in state.flags.get("active_quests", [])
-    # At reach — scanner pins.
+    # At reach — scanner pins ours (alongside any other hidden quests
+    # that share the reach trigger, e.g. authored Batch-2 content).
     state.current_location = "reach"
     pinned = locations.scan_hidden_quest_triggers(state)
-    assert pinned == ["zone_pinned"]
+    assert "zone_pinned" in pinned
     assert "zone_pinned" in state.flags["active_quests"]
 
 
@@ -1206,10 +1207,13 @@ def test_hidden_quest_pin_is_idempotent(content, tmp_path):
     state = make_state(player, content, ScriptedIO(), StubRandom(),
                        chronicle_dir=tmp_path)
     state.current_location = "reach"
-    assert locations.scan_hidden_quest_triggers(state) == ["once_pinned_q"]
-    # Second scan — already in active_quests, no re-pin.
+    pinned = locations.scan_hidden_quest_triggers(state)
+    assert "once_pinned_q" in pinned
+    # Second scan — once_pinned_q is already active, must not re-pin it.
+    # (Other authored quests with the same trigger are also already pinned
+    # from the first scan, so the second scan returns nothing.)
     assert locations.scan_hidden_quest_triggers(state) == []
-    # And only one copy in active_quests.
+    # And only one copy of our test quest in active_quests.
     assert state.flags["active_quests"].count("once_pinned_q") == 1
 
 
