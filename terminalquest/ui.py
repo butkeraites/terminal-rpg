@@ -116,8 +116,14 @@ def hud(player):
             f"  💰 {player.gold}  🎒 {player.potion_count()}")
 
 
-def show_stats(io, player):
-    """Render the player's full stat sheet."""
+def show_stats(io, player, content=None):
+    """Render the player's full stat sheet.
+
+    v1.51 — if a content bundle is provided AND the player carries any marks,
+    a Marks section is rendered after the standard stats. Each fired mark's
+    first line is shown — a small list of the irreversible things the
+    kingdom has done to this character this run.
+    """
     io.show("\n" + "=" * 50)
     io.show(f"⚔️  {player.name} the {player.class_name} | Level {player.level}")
     io.show(f"❤️  HP: {player.hp}/{player.max_hp}")
@@ -128,4 +134,19 @@ def show_stats(io, player):
     effects = status.describe(player)
     if effects:
         io.show(f"Status: {effects}")
+    # v1.51 — Marks section: the kingdom's irreversible record of this
+    # character. Only shown when content is available and the player has
+    # accumulated at least one mark. The list is short by intent — one
+    # line per mark, the mark's own first line.
+    marks_list = getattr(player, "marks", None)
+    if marks_list and content is not None:
+        pool = getattr(content, "marks", None)
+        if pool:
+            from . import marks as _marks
+            lines = _marks.describe(player, pool)
+            if lines:
+                io.show("")
+                io.show(f"⊕ Marked by {len(marks_list)} small things:")
+                for line in lines:
+                    io.show(line)
     io.show("=" * 50 + "\n")

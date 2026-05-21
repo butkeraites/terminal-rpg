@@ -1,4 +1,6 @@
 """The player character and its progression logic."""
+import uuid
+
 from .accessory import Accessory
 from .armor import Armor
 from .combatant import Combatant
@@ -54,6 +56,11 @@ class Player(Combatant):
         self.companion = None  # bought once at Gravewatch; persists for the run
         self.hireling = None   # paid combat ally; can die and stays dead this run
         self.trophies = {}  # enemy-drop bag — keys map to entries in enemies.json
+        # v1.51 — irreversible per-character events from the Marks system.
+        # Each fired mark id is recorded here and in a sidecar file keyed by
+        # run_id, so reloading an older save still re-applies fired marks.
+        self.marks = []
+        self.run_id = uuid.uuid4().hex[:12]
         starter = class_def["weapon"]
         self.equip_weapon(make_weapon(content, starter["components"], starter["name"]))
         self.hp = self.max_hp
@@ -242,6 +249,8 @@ class Player(Combatant):
             "companion": self.companion.to_dict() if self.companion else None,
             "hireling": self.hireling.to_dict() if self.hireling else None,
             "trophies": dict(self.trophies),
+            "marks": list(self.marks),
+            "run_id": self.run_id,
         }
 
     @classmethod
@@ -281,4 +290,7 @@ class Player(Combatant):
         hire_data = data.get("hireling")
         player.hireling = Hireling.from_dict(hire_data) if hire_data else None
         player.trophies = dict(data.get("trophies", {}))
+        # v1.51 — restore marks list and run_id (older saves lack both).
+        player.marks = list(data.get("marks", []))
+        player.run_id = data.get("run_id") or uuid.uuid4().hex[:12]
         return player

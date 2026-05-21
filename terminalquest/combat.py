@@ -8,7 +8,7 @@ turn. Using a potion is no longer a free action.
 testable with ``ScriptedIO``. Damage/AI helpers are pure functions of
 their arguments and an injected ``random.Random`` for determinism.
 """
-from . import status
+from . import marks, status
 from .player import LEVEL_BOONS
 
 ATTACK_VARIANCE = (-2, 4)
@@ -729,6 +729,12 @@ def run_combat(state, enemy, *, refresh_after=True):
 
     if outcome == "victory":
         _grant_rewards(state, enemy)
+        # v1.51 — clean wins are a fire site. The kingdom marks survivors.
+        marks.roll_at(state, "combat_victory")
+        # v1.51 — survived a close call (limped through under 30% HP).
+        # This is the high-stakes site: reckless play is more likely to mark you.
+        if player.hp > 0 and player.hp < (player.max_hp * 0.30):
+            marks.roll_at(state, "combat_low_hp")
 
     # Hireling cleanup: if they died this fight, drop them from the player
     # and flag the state so future random encounters can spawn the Forsaken.

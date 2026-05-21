@@ -78,15 +78,24 @@ def load_game(slot, content, io, rng, save_dir=DEFAULT_SAVE_DIR):
     """Load and return the GameState from ``slot``, or None if the slot is empty.
 
     Raises ``SaveError`` if the slot holds a file that cannot be parsed.
+
+    v1.51 — after the state is rebuilt, marks fired during the run are merged
+    in from the per-run sidecar file. This is what prevents save-scumming a
+    mark away: the sidecar persists across save reloads as long as the run_id
+    is the same.
     """
     path = _slot_path(slot, Path(save_dir))
     if not path.exists():
         return None
     try:
         data = _migrate(json.loads(path.read_text(encoding="utf-8")))
-        return GameState.from_dict(data["state"], content, io, rng)
+        state = GameState.from_dict(data["state"], content, io, rng)
     except (KeyError, ValueError) as exc:
         raise SaveError(f"save slot {slot} could not be loaded: {exc}") from exc
+    # Merge sidecar marks (no-op if the file does not exist).
+    from . import marks as _marks  # local import to avoid cycle
+    _marks.merge_sidecar_into_player(state.player, state.chronicle_dir)
+    return state
 
 
 def list_saves(save_dir=DEFAULT_SAVE_DIR):

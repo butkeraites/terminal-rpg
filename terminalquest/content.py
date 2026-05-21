@@ -38,7 +38,8 @@ class Content:
     """An immutable bundle of all loaded game content."""
 
     def __init__(self, classes, abilities, enemies, locations, components, armor,
-                 companions, accessories, pets, hirelings, npcs, dialogues):
+                 companions, accessories, pets, hirelings, npcs, dialogues,
+                 marks=None):
         self.classes = classes
         self.abilities = abilities
         self.enemies = enemies
@@ -51,6 +52,9 @@ class Content:
         self.hirelings = hirelings
         self.npcs = npcs
         self.dialogues = dialogues
+        # v1.51 — irreversible per-character events (the Marks system).
+        # An empty dict is valid; the engine no-ops when the pool is empty.
+        self.marks = marks or {}
 
     def validate(self):
         """Raise ValueError if the data files are internally inconsistent."""
@@ -196,6 +200,16 @@ class Content:
 
 def load_content():
     """Load and validate every content file, returning a Content bundle."""
+    try:
+        marks_raw = _load("marks.json")
+    except ContentError:
+        # marks.json is optional — v1.51 ships with it, but the engine
+        # handles its absence as an empty pool.
+        marks_raw = {}
+    # Inject each mark's dict key as its 'id' so the engine can refer to
+    # it without re-walking the parent dict.
+    for mark_id, mark in marks_raw.items():
+        mark["id"] = mark_id
     content = Content(
         classes=_load("classes.json"),
         abilities=_load("abilities.json"),
@@ -209,6 +223,7 @@ def load_content():
         hirelings=_load("hirelings.json"),
         npcs=_load("npcs.json"),
         dialogues=_load("dialogues.json"),
+        marks=marks_raw,
     )
     content.validate()
     return content

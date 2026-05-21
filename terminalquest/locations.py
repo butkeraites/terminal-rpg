@@ -5,7 +5,7 @@ The world is a graph of locations loaded from ``data/locations.json``.
 location, offers its services, encounters and travel routes, and runs
 until the player dies, wins, or quits.
 """
-from . import chronicle, endings, saves
+from . import chronicle, endings, marks, saves
 from . import dialogue as _dialogue
 from .accessory import make_accessory
 from .armor import make_armor
@@ -884,6 +884,8 @@ def _run_discovery(state, encounter):
     chronicle.add_read_discovery(discovery_id, state.chronicle_dir)
     # SQ2 — reading lore is one of the small kindnesses.
     chronicle.add_kind_act(state.chronicle_dir)
+    # v1.51 — reading a discovery is a fire site for the Marks system.
+    marks.roll_at(state, "discovery_read")
     if discovery_id in _DISCOVERY_FLAGS:
         state.flags[_DISCOVERY_FLAGS[discovery_id]] = True
     # SQ4: Piranesi notes accumulate cross-run via the Chronicle.
@@ -1188,6 +1190,8 @@ def _warden_screen(state):
     chronicle.record(state, "warden", state.chronicle_dir)
     chronicle.add_cleanse(state.chronicle_dir)
     chronicle.add_ending_seen("warden", state.chronicle_dir)
+    # v1.51 — the character is done; their marks die with them.
+    marks.clear_sidecar(state.chronicle_dir, state.player.run_id)
     io.clear()
     io.show("=" * 50)
     io.show("🥀  THE PALL KEEPS YOU")
@@ -1509,6 +1513,8 @@ def _save_menu(state):
     if choice in ("1", "2", "3"):
         saves.save_game(state, int(choice))
         io.show(f"\n💾 Game saved to slot {choice}.")
+        # v1.51 — saving is a fire site. Atrél is the kingdom's audit log.
+        marks.roll_at(state, "save_action")
     elif choice != "4":
         io.show("\n❌ Invalid choice!")
     io.pause(1)
@@ -1902,6 +1908,8 @@ def caretaker(state):
     chronicle.record(state, "caretaker", state.chronicle_dir)
     chronicle.add_cleanse(state.chronicle_dir)
     chronicle.add_ending_seen("caretaker", state.chronicle_dir)
+    # v1.51 — the character has chosen to stay; their marks die with them.
+    marks.clear_sidecar(state.chronicle_dir, state.player.run_id)
     state.flags["run_ended"] = True
 
 
@@ -2245,6 +2253,9 @@ def location_loop(state):
             for line in loc[intro_key]:
                 io.show_slow(line)
             _print_background_presences(state)
+            # v1.51 — irreversible per-character event roll on every arrival.
+            # Atomic-saves to a sidecar before printing; save-scum has no power here.
+            marks.roll_at(state, "zone_arrival")
             arrived = False
         io.show(f"\n📍 {loc['name']}")
         io.show(hud(player))
@@ -2307,7 +2318,7 @@ def location_loop(state):
         elif kind == "weapon":
             _inspect_weapon(state)
         elif kind == "stats":
-            show_stats(io, player)
+            show_stats(io, player, content)
         elif kind == "save":
             _save_menu(state)
         elif kind == "quit":
@@ -2323,6 +2334,8 @@ def location_loop(state):
     io.show_slow("(One line. Enter alone to leave nothing.)")
     last_words = io.ask("\n> ").strip()
     chronicle.record(state, "fell", state.chronicle_dir, last_words=last_words)
+    # v1.51 — the character is gone; the marks die with them. Clear sidecar.
+    marks.clear_sidecar(state.chronicle_dir, state.player.run_id)
     io.clear()
     io.show_slow("💀 The Pall takes another. It always does.")
     _run_summary(state)

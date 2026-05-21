@@ -1,0 +1,619 @@
+{
+  "forgot_smell_of_pine": {
+    "category": "forgetting",
+    "trigger": {"at": ["zone_arrival"], "location": ["forest"], "min_visits": 2, "chance": 0.04},
+    "effect": null,
+    "lines": [
+      "You sit by a Witherwood pine for a moment.",
+      "You realize you cannot remember what pine smells like.",
+      "Atrél has it now. He has set it on the altar between the others."
+    ]
+  },
+  "forgot_mothers_voice": {
+    "category": "forgetting",
+    "trigger": {"at": ["save_action"], "min_level": 3, "chance": 0.015},
+    "effect": null,
+    "lines": [
+      "You write your save. As you do, you try to think of your mother saying your name.",
+      "You cannot hear it anymore. The sound is gone. The shape of her voice is gone.",
+      "Atrél holds it. He is gentle. You did not give it; it left you."
+    ]
+  },
+  "forgot_a_road": {
+    "category": "forgetting",
+    "trigger": {"at": ["zone_arrival"], "location": ["crossroads"], "chance": 0.02},
+    "effect": null,
+    "lines": [
+      "You stand at the Crossroads and try to remember which road you used to take",
+      "before this one. You cannot. You know there was another. The shape is missing.",
+      "Atrél receives the missing shape. He sets it with the others. He is full now."
+    ]
+  },
+  "forgot_a_song": {
+    "category": "forgetting",
+    "trigger": {"at": ["zone_arrival"], "location": ["choir"], "chance": 0.03},
+    "effect": null,
+    "lines": [
+      "You stop in the south aisle. There was a song you used to know. You hum the start.",
+      "The next note is gone. The song closes itself inside you, like a door at the end of a hall.",
+      "Atrél has it. The hall is shorter now. It still has rooms."
+    ]
+  },
+  "forgot_your_first_friend": {
+    "category": "forgetting",
+    "trigger": {"at": ["save_action"], "min_level": 5, "chance": 0.012},
+    "effect": null,
+    "lines": [
+      "You write your save. You realize you no longer remember the name of the first",
+      "child who chose you back. The face is also going. The whole afternoon is going.",
+      "Atrél catches the afternoon as it falls. He has soft hands for that kind of thing."
+    ]
+  },
+  "forgot_a_word_you_loved": {
+    "category": "forgetting",
+    "trigger": {"at": ["discovery_read"], "chance": 0.015},
+    "effect": null,
+    "lines": [
+      "You are reading. You reach for a word you have loved your whole life.",
+      "It is not there. You know its shape. You cannot say it. Atrél has the word.",
+      "It is on the altar between the others. He whispers it once for safekeeping."
+    ]
+  },
+  "burn_on_left_hand": {
+    "category": "body",
+    "trigger": {"at": ["combat_victory"], "location": ["reach", "drowned_holds"], "chance": 0.03},
+    "effect": {"stat": "max_hp", "delta": -3, "flag": "burned_left_hand"},
+    "lines": [
+      "Something hot brushes your left hand as the fight ends. You do not see what.",
+      "By the time you look, it is gone. The skin is white-pink where it should not be.",
+      "The hand will work. The hand will hurt. The hand is yours, in a different way now.",
+      "  (-3 Max HP, permanently.)"
+    ]
+  },
+  "white_hair_above_temple": {
+    "category": "body",
+    "trigger": {"at": ["combat_victory"], "min_level": 4, "chance": 0.02},
+    "effect": null,
+    "lines": [
+      "You touch your temple, after. There is a white hair where there was none.",
+      "It is short. It is a child's grey. It will not change back. You leave it.",
+      "Atrél, who keeps such things, considers it an unbillable expense."
+    ]
+  },
+  "small_scar_under_jaw": {
+    "category": "body",
+    "trigger": {"at": ["combat_low_hp"], "chance": 0.04},
+    "effect": {"stat": "defense", "delta": 1, "flag": "scar_under_jaw"},
+    "lines": [
+      "Something opened the skin under your jaw and the skin closed itself fast.",
+      "You did not notice when. The scar is a small ledge. Your fingers will find it",
+      "for the rest of your life. The next thing that swings at your face will glance.",
+      "  (+1 Defense, permanently.)"
+    ]
+  },
+  "loose_back_tooth": {
+    "category": "body",
+    "trigger": {"at": ["combat_victory"], "min_level": 3, "chance": 0.018},
+    "effect": {"stat": "max_stamina", "delta": -1},
+    "lines": [
+      "After the fight, a back tooth is loose. You did not notice the blow that did it.",
+      "You touch it with your tongue. It will not go back. You will lose it later.",
+      "Atrél, who collects the small ones, has gentle hands for teeth.",
+      "  (-1 Max Stamina, permanently — you sleep less well now.)"
+    ]
+  },
+  "calluses_finally": {
+    "category": "body",
+    "trigger": {"at": ["combat_victory"], "min_level": 5, "chance": 0.025},
+    "effect": {"stat": "attack", "delta": 1},
+    "lines": [
+      "Your hands have finally gone hard where they need to be hard.",
+      "You did not notice. You notice now. Holding the weapon does not hurt today.",
+      "It will not hurt again. Your grip will tell the next thing you swing at.",
+      "  (+1 Attack, permanently.)"
+    ]
+  },
+  "limp_after_choir": {
+    "category": "body",
+    "trigger": {"at": ["zone_arrival"], "location": ["mourncross", "choir"], "min_visits": 2, "chance": 0.03},
+    "effect": {"stat": "max_stamina", "delta": -2, "flag": "limp_right"},
+    "lines": [
+      "You walk down the choir's nave and realize your right leg is slow.",
+      "It did not used to be. Something at the gauntlet took it. You did not notice.",
+      "The leg will work. The leg will be slower. You will sleep less to outwalk it.",
+      "  (-2 Max Stamina, permanently. The Pall does not need to know.)"
+    ]
+  },
+  "certain_the_pall_knows": {
+    "category": "mind",
+    "trigger": {"at": ["combat_low_hp"], "min_level": 4, "chance": 0.025},
+    "effect": {"flag": "certain_pall_knows"},
+    "lines": [
+      "You are nearly down. You feel — and you know without seeing — that the Pall",
+      "has just looked at you, briefly, from somewhere very far away. The look is gone.",
+      "But you are now sure of something you did not used to be sure of. You are real to it."
+    ]
+  },
+  "doubt_that_atrel_is_real": {
+    "category": "mind",
+    "trigger": {"at": ["discovery_read"], "location": ["last_altar"], "chance": 0.02},
+    "effect": {"flag": "doubts_atrel"},
+    "lines": [
+      "You read. As you do, something in you wonders if you have been told a story.",
+      "Maybe Atrél is the kingdom's coping mechanism. Maybe the small altar is theatre.",
+      "You do not know what to do with the thought. The thought stays. It has joined you."
+    ]
+  },
+  "cannot_defend_in_the_choir": {
+    "category": "mind",
+    "trigger": {"at": ["zone_arrival"], "location": ["choir"], "min_visits": 3, "chance": 0.025},
+    "effect": {"flag": "no_defend_in_choir"},
+    "lines": [
+      "Something about this place — the air, the height of the ceiling, the unsung hymn —",
+      "decides for you that defending here is the wrong shape of action. You cannot do it.",
+      "You will not. Your body will refuse. The choir does not let you stand still.",
+      "  (You can no longer choose Defend in the Choir.)"
+    ]
+  },
+  "certainty_about_the_wolves": {
+    "category": "mind",
+    "trigger": {"at": ["combat_victory"], "location": ["forest"], "min_visits": 2, "chance": 0.03},
+    "effect": {"flag": "knows_wolves_were_dogs"},
+    "lines": [
+      "Walking away from the wolf you just killed, you become certain — without proof —",
+      "that this animal used to wear a collar. You can see the wear-line in its fur.",
+      "You will see it in every wolf you fight from now on. You will not be able to un-see it."
+    ]
+  },
+  "fear_of_the_summit_stair": {
+    "category": "mind",
+    "trigger": {"at": ["zone_arrival"], "location": ["mountain"], "min_visits": 3, "chance": 0.02},
+    "effect": {"flag": "fears_the_stair"},
+    "lines": [
+      "You crest a switchback and freeze. You cannot say why. Your legs simply",
+      "decide they are not going further today. You sit. The grey snow falls on you.",
+      "You will climb tomorrow. Today you cannot. The fear is yours now. It does not leave."
+    ]
+  },
+  "knew_the_engineer_would_smile": {
+    "category": "mind",
+    "trigger": {"at": ["zone_arrival"], "location": ["reach"], "min_visits": 2, "chance": 0.02},
+    "effect": null,
+    "lines": [
+      "You walk into the Reach knowing — without checking — that the Engineer will",
+      "smile at you today. She does. You do not know why you knew. The knowing stays.",
+      "Atrél has filed it. It is the kind of thing he likes to keep."
+    ]
+  },
+  "the_cat_now_sits_closer": {
+    "category": "bond",
+    "trigger": {"at": ["zone_arrival"], "location": ["village"], "min_visits": 4, "chance": 0.035},
+    "effect": {"flag": "cat_sits_closer"},
+    "lines": [
+      "The cat by the hearth, the same blue cat, has shifted. She is sitting closer to",
+      "where you usually sit. By a hand's width. She did not used to. She does now.",
+      "The cat will keep sitting at this distance. The distance is yours. Atrél will not have it."
+    ]
+  },
+  "wolf_knows_your_scent": {
+    "category": "bond",
+    "trigger": {"at": ["combat_victory"], "location": ["forest"], "chance": 0.03},
+    "effect": {"flag": "wolf_knows_you", "stat": "defense", "delta": 1},
+    "lines": [
+      "A wolf — not the one you just killed; one watching from the trees — sees you.",
+      "She does not move. She knows you now. She will not be at the next Witherwood",
+      "fight you have. She will not be at any of them. You and she have decided.",
+      "  (+1 Defense in the Witherwood, permanently. One wolf has chosen you.)"
+    ]
+  },
+  "small_un_remembers_you": {
+    "category": "bond",
+    "trigger": {"at": ["zone_arrival"], "location": ["hidden_hold"], "min_visits": 2, "chance": 0.05},
+    "effect": {"flag": "small_un_remembers"},
+    "lines": [
+      "The Small Un, today, looks up when you walk in. They do not look up for everyone.",
+      "They have decided that you are someone. They will not forget. Atrél will not get",
+      "to forget you for them, either. You and the Small Un are written into each other."
+    ]
+  },
+  "tree_leans_toward_you": {
+    "category": "bond",
+    "trigger": {"at": ["zone_arrival"], "location": ["forest"], "min_visits": 5, "chance": 0.025},
+    "effect": null,
+    "lines": [
+      "The third tree from the road north has shifted very slightly. It is leaning",
+      "toward you. It is not the wind. The tree has been a tree a long time and",
+      "has decided. You did not earn this. It is yours anyway. Carry it gently."
+    ]
+  },
+  "halna_will_save_you_a_cut": {
+    "category": "bond",
+    "trigger": {"at": ["combat_victory"], "location": ["forest"], "min_level": 4, "chance": 0.02},
+    "effect": {"flag": "halna_saves_meat"},
+    "lines": [
+      "After the fight, you pass Halna at her log. She does not look up. She does say,",
+      "to no one, that the next meat she dresses she will save you a cut. She means it.",
+      "The next time you arrive at her clearing, there will be a strip of meat on a stone.",
+      "  (Halna will leave you a free Health Potion the next time you arrive.)"
+    ]
+  },
+  "tessa_knows_your_step": {
+    "category": "bond",
+    "trigger": {"at": ["discovery_read"], "location": ["forest"], "requires_flag": "discoveries_seen", "chance": 0.04},
+    "effect": null,
+    "lines": [
+      "The Atrél-marker — Tessa's marker, you know now — registers your step the way",
+      "soil registers rain. It is not a magic. It is a smaller thing. The marker knows you.",
+      "When you pass it again, the stone will be a degree warmer than the air around it."
+    ]
+  },
+  "cat_no_longer_comes": {
+    "category": "broken",
+    "trigger": {"at": ["zone_arrival"], "location": ["village"], "min_visits": 3, "denies_mark": ["the_cat_now_sits_closer"], "chance": 0.018},
+    "effect": {"flag": "cat_does_not_come"},
+    "lines": [
+      "The cat by the hearth does not look at you today. She will not look at you again",
+      "this character. You did something. You do not know what. Atrél did not take this;",
+      "the cat decided. The cat is older than Atrél. The cat is allowed her decisions."
+    ]
+  },
+  "old_halna_will_not_nod": {
+    "category": "broken",
+    "trigger": {"at": ["zone_arrival"], "location": ["forest"], "min_visits": 5, "chance": 0.015},
+    "effect": {"flag": "halna_doesnt_nod"},
+    "lines": [
+      "Halna will not nod at you when you pass her fallen pine. Not today. Not again.",
+      "The nod was a small thing. It is gone. You do not know which of the wolves she",
+      "feeds is the one that decided this. Halna does. She will not tell you."
+    ]
+  },
+  "you_no_longer_dream": {
+    "category": "broken",
+    "trigger": {"at": ["save_action"], "min_level": 5, "chance": 0.015},
+    "effect": {"flag": "no_dreams"},
+    "lines": [
+      "You save. You realize, as you close the page, that you have not had a dream in",
+      "many nights. You used to. The dreams have left you. They will not come back.",
+      "Atrél has them all in a stack now. He has bound them. They are very neat."
+    ]
+  },
+  "insomniac_no_longer_counts_you": {
+    "category": "broken",
+    "trigger": {"at": ["zone_arrival"], "location": ["village"], "requires_flag": "the_counted", "chance": 0.02},
+    "effect": {"flag": "uncounted"},
+    "lines": [
+      "The Insomniac is still counting on her beam. She is not counting you, today.",
+      "She used to. You used to be a dark mark. Today you are no mark at all.",
+      "She will not start again. The counting goes on without you. It is alright."
+    ]
+  },
+  "the_bell_no_longer_finds_you": {
+    "category": "broken",
+    "trigger": {"at": ["zone_arrival"], "location": ["mourncross"], "min_visits": 4, "chance": 0.02},
+    "effect": {"flag": "bell_does_not_reach"},
+    "lines": [
+      "The Bellward's bell, that has been ringing your every hour since you arrived,",
+      "stops finding you. You hear it ring; the sound passes through you. It does not",
+      "ask. The Bellward has, somewhere in his fog, taken you off his list. You are sorry."
+    ]
+  },
+  "you_lose_a_glove": {
+    "category": "broken",
+    "trigger": {"at": ["zone_arrival"], "location": ["cave"], "chance": 0.025},
+    "effect": null,
+    "lines": [
+      "You realize, in the Gullet's wet, that you no longer have your left glove.",
+      "You do not remember where it went. The Older Hand will find it, eventually,",
+      "and set it among the one-of-each. You will not be there. You have walked on."
+    ]
+  },
+  "found_a_warm_pebble": {
+    "category": "found",
+    "trigger": {"at": ["zone_arrival"], "location": ["forest", "reach"], "chance": 0.04},
+    "effect": {"consumable": "Warm Pebble"},
+    "lines": [
+      "Your hand brushes a pebble on the path. It is warmer than the air. You pick it",
+      "up. It does not cool. You put it in your pocket. Atrél has not asked for it.",
+      "It is yours. It will not be in anyone else's pocket, this run or the next.",
+      "  (A Warm Pebble has been added to your inventory.)"
+    ]
+  },
+  "found_a_button": {
+    "category": "found",
+    "trigger": {"at": ["zone_arrival"], "location": ["drowned_holds"], "chance": 0.03},
+    "effect": null,
+    "lines": [
+      "There is a small wooden button in the silt at your boot. Worn, bored through.",
+      "You pick it up. It was someone's, once. It is yours, in the smallest possible way.",
+      "Atrél holds the someone. The button is for you to carry. He has not asked for it."
+    ]
+  },
+  "found_a_thread": {
+    "category": "found",
+    "trigger": {"at": ["zone_arrival"], "location": ["hidden_hold"], "chance": 0.05},
+    "effect": null,
+    "lines": [
+      "On the path between the bakery and the Small Un's, a thread of dyed wool —",
+      "green, almost grey now. It must be the Small Un's. You pick it up. You knot",
+      "it once into the corner of your cloak. The third knot is for warmth, not show."
+    ]
+  },
+  "found_a_coin_wedged_in_a_stone": {
+    "category": "found",
+    "trigger": {"at": ["discovery_read"], "chance": 0.025},
+    "effect": {"flag": "carried_a_coin"},
+    "lines": [
+      "Tucked under a stone where you sat to read, a coin. Karst minting. The edges",
+      "soft. Someone's, once. Yours now. You will give it back, one day, if you find",
+      "where it goes. You will not find where it goes. You will carry it anyway."
+    ]
+  },
+  "found_a_feather_in_the_choir": {
+    "category": "found",
+    "trigger": {"at": ["zone_arrival"], "location": ["choir"], "chance": 0.03},
+    "effect": null,
+    "lines": [
+      "On the south aisle's bench, where the column eats the word 'name,' a single",
+      "white feather. You take it. It weighs less than it should. The Choir does not",
+      "miss it. The feather is yours. Carry it. It is one small thing the Pall left."
+    ]
+  },
+  "found_a_bread_crust_in_kerris_pack": {
+    "category": "found",
+    "trigger": {"at": ["zone_arrival"], "location": ["hidden_hold"], "min_visits": 2, "chance": 0.04},
+    "effect": {"consumable": "Kerris's Crust"},
+    "lines": [
+      "Kerris's pack is open by the oven. There is a crust in it, set aside. He has",
+      "left it for you. He will not say so. He will not look up when you take it.",
+      "It will keep. It is from the bread Mira's recipe was for. It is enough for once.",
+      "  (Kerris's Crust added — a one-use heal of 25 HP.)"
+    ]
+  },
+  "river_takes_your_knot": {
+    "category": "lost",
+    "trigger": {"at": ["zone_arrival"], "location": ["reach", "drowned_holds"], "min_visits": 2, "chance": 0.03},
+    "effect": null,
+    "lines": [
+      "You realize, three steps after the crossing, that the knot you tied in your cloak",
+      "for warmth is gone. The river took it. The river is patient. It tries everything.",
+      "Atrél has the knot now. He has set it carefully. It is shaped like a small house."
+    ]
+  },
+  "lost_your_smallest_coin": {
+    "category": "lost",
+    "trigger": {"at": ["zone_arrival"], "chance": 0.02},
+    "effect": {"stat": "max_stamina", "delta": 0, "flag": "lost_small_coin"},
+    "lines": [
+      "Counting your purse in passing, you find the smallest copper is gone.",
+      "You do not remember when it left. It was the one your father gave you,",
+      "or someone's father. You did not notice the absence until just now.",
+      "Atrél holds it. He holds everyone's smallest one. He is, in this, very rich."
+    ]
+  },
+  "lost_a_small_song": {
+    "category": "lost",
+    "trigger": {"at": ["save_action"], "min_level": 4, "chance": 0.018},
+    "effect": null,
+    "lines": [
+      "You hum, while saving, a tune you have hummed all your life. The third note",
+      "is missing today. You try again. Still missing. You will not get it back.",
+      "Atrél has the third note. The rest is yours. The song still works, in pieces."
+    ]
+  },
+  "lost_the_taste_of_salt": {
+    "category": "lost",
+    "trigger": {"at": ["zone_arrival"], "location": ["cave"], "chance": 0.02},
+    "effect": null,
+    "lines": [
+      "You taste the wet of the Gullet on your lips. There is no salt in it. You realize",
+      "you no longer know what salt tastes like. You knew this morning. You do not now.",
+      "Atrél has it. It will season nothing of his. He does not season. He only keeps."
+    ]
+  },
+  "lost_your_left_glove": {
+    "category": "lost",
+    "trigger": {"at": ["zone_arrival"], "location": ["cave", "mountain"], "chance": 0.02},
+    "effect": {"stat": "defense", "delta": -1},
+    "lines": [
+      "Your left glove is gone. You do not remember when. The hand will be cold.",
+      "The hand will harden. The hand will be slower to block, until it learns.",
+      "Atrél has not asked for the glove. The Older Hand will find it. Eventually.",
+      "  (-1 Defense, permanently — a small cold has gotten into you.)"
+    ]
+  },
+  "lost_the_word_for_kindness": {
+    "category": "lost",
+    "trigger": {"at": ["discovery_read"], "min_level": 5, "chance": 0.012},
+    "effect": null,
+    "lines": [
+      "You reach for the word kindness while reading. You cannot find it. You know its",
+      "shape; you know what it means; you cannot say it. Atrél has the word itself.",
+      "He has bowed. The kindness is still in you. It will work without its name."
+    ]
+  },
+  "promised_to_come_back_to_the_stump": {
+    "category": "promise_kept",
+    "trigger": {"at": ["discovery_read"], "location": ["forest"], "requires_flag": "discoveries_seen", "chance": 0.04},
+    "effect": {"flag": "promised_stump"},
+    "lines": [
+      "Reading at Halna's stump, you decide — without saying so aloud — that you will",
+      "come back to it. Tomorrow, or the day after. Halna does not need you to. You",
+      "have decided. Promises are small. They are also kept. You are someone who keeps."
+    ]
+  },
+  "promised_to_say_the_name": {
+    "category": "promise_kept",
+    "trigger": {"at": ["discovery_read"], "location": ["sealed_chamber"], "chance": 0.04},
+    "effect": {"flag": "promised_to_say_a_name"},
+    "lines": [
+      "You read the wall behind one of the five chairs. You decide, quietly, that if",
+      "you reach the Summit you will say their name aloud. Just the one. You do not",
+      "say which. The wall does not need to know which. The wall has heard, anyway."
+    ]
+  },
+  "promised_to_write_a_line": {
+    "category": "promise_kept",
+    "trigger": {"at": ["zone_arrival"], "location": ["village"], "requires_flag": "hearth_keepers_book_seen", "chance": 0.05},
+    "effect": {"flag": "promised_hearth_line"},
+    "lines": [
+      "You walk past the hearth. You decide you will write a line in the book before",
+      "you leave this village this run. You do not need to tell the hearth-keeper.",
+      "She will know when you do it. She will not ask what you wrote. She will keep it."
+    ]
+  },
+  "promised_to_lay_flowers": {
+    "category": "promise_kept",
+    "trigger": {"at": ["discovery_read"], "location": ["forest", "reach"], "chance": 0.03},
+    "effect": {"flag": "promised_flowers"},
+    "lines": [
+      "You decide, at a small grave you have read, that you will lay one flower here",
+      "before this run ends. One. Small. The flower does not have to be impressive.",
+      "It only has to be set. You will set one. The dead get every flower offered them."
+    ]
+  },
+  "promised_to_remember_kerris": {
+    "category": "promise_kept",
+    "trigger": {"at": ["zone_arrival"], "location": ["hidden_hold"], "min_visits": 3, "chance": 0.04},
+    "effect": {"flag": "promised_kerris"},
+    "lines": [
+      "Walking past the bakery, you decide you will remember Kerris's name no matter",
+      "what Atrél takes from you. You write the name in your cloak's seam, in pencil.",
+      "It will smudge. You will write it again. Some names you decide to keep yourself."
+    ]
+  },
+  "promised_atrel_a_grief": {
+    "category": "promise_kept",
+    "trigger": {"at": ["zone_arrival"], "location": ["last_altar", "village"], "chance": 0.03},
+    "effect": {"flag": "promised_atrel_grief"},
+    "lines": [
+      "You decide — quietly, walking past his altar — that next time you pass here,",
+      "you will set one small grief down. You know which. You will not name it now.",
+      "Atrél will be here. He has been here. He will accept it the way he accepts all of them."
+    ]
+  },
+  "broke_the_stump_promise": {
+    "category": "promise_broken",
+    "trigger": {"at": ["zone_arrival"], "location": ["mountain"], "requires_flag": "promised_stump", "chance": 0.08},
+    "effect": {"stat": "max_hp", "delta": -2, "flag": "broke_stump_promise"},
+    "lines": [
+      "You realize, on the climb, that you did not go back to Halna's stump. You",
+      "promised yourself you would. You did not. There is no harm done; it is a stump.",
+      "Halna sets fresh bread on it tonight, the way she sets it every night.",
+      "The breaking is small. It is yours. Atrél does not take broken promises. They stay.",
+      "  (-2 Max HP, permanently. You will feel this. You meant well, once.)"
+    ]
+  },
+  "broke_the_name_promise": {
+    "category": "promise_broken",
+    "trigger": {"at": ["zone_arrival"], "location": ["summit"], "requires_flag": "promised_to_say_a_name", "chance": 0.10},
+    "effect": {"stat": "attack", "delta": -1, "flag": "broke_name_promise"},
+    "lines": [
+      "You stand at the Summit. You forgot which name. You promised to say one. You",
+      "cannot. It is, of course, exactly the one Atrél will keep for you, now. The",
+      "wall in the Sealed Chamber will not mind. It has heard people forget before.",
+      "  (-1 Attack, permanently. You meant to remember. You did not.)"
+    ]
+  },
+  "broke_the_flowers_promise": {
+    "category": "promise_broken",
+    "trigger": {"at": ["combat_low_hp"], "requires_flag": "promised_flowers", "chance": 0.06},
+    "effect": {"flag": "broke_flowers_promise"},
+    "lines": [
+      "You are bleeding. You remember, abruptly, the flower you promised to lay.",
+      "You do not have a flower. You do not have time. You will not have a flower",
+      "again this run. The promise is broken. The grave is the same grave. It waits."
+    ]
+  },
+  "broke_kerris_promise": {
+    "category": "promise_broken",
+    "trigger": {"at": ["save_action"], "requires_flag": "promised_kerris", "min_level": 6, "chance": 0.04},
+    "effect": null,
+    "lines": [
+      "You save. You realize Kerris's name is no longer in your cloak's seam. It must",
+      "have smudged out. You meant to write it again. You did not. Atrél has it now.",
+      "Kerris would forgive you. You will not ask him to. You will keep the silence."
+    ]
+  },
+  "broke_the_hearth_line_promise": {
+    "category": "promise_broken",
+    "trigger": {"at": ["zone_arrival"], "location": ["mountain", "summit"], "requires_flag": "promised_hearth_line", "chance": 0.07},
+    "effect": {"stat": "max_stamina", "delta": -1, "flag": "broke_hearth_promise"},
+    "lines": [
+      "You realize, far from the village, that you did not write the line. The book is",
+      "still on the hearth. It is still open. Someone else will write the next one.",
+      "The hearth-keeper does not mind. You mind. The minding is yours. It does not leave.",
+      "  (-1 Max Stamina, permanently. The sleeplessness of small things.)"
+    ]
+  },
+  "broke_atrel_promise": {
+    "category": "promise_broken",
+    "trigger": {"at": ["save_action"], "requires_flag": "promised_atrel_grief", "min_level": 6, "chance": 0.03},
+    "effect": null,
+    "lines": [
+      "You save. You realize — too late, again — that you did not bring the grief to",
+      "Atrél's altar this run. You meant to. You meant well. Atrél's hands are open",
+      "anyway, in the gentle way they are always open. He is patient. You are not the",
+      "first promise-breaker. He has held this kind of forgetting many times. He will hold yours."
+    ]
+  },
+  "almost_saw_a_face": {
+    "category": "half_truth",
+    "trigger": {"at": ["combat_low_hp"], "location": ["choir"], "chance": 0.04},
+    "effect": {"flag": "almost_saw_face"},
+    "lines": [
+      "At the edge of your vision, in the gauntlet, a face. Just a face. You did not",
+      "see whose. You did not have time to look. The face is gone. You know it was someone.",
+      "You will not know who. Atrél files the almost-seeing. It is enough for him to file."
+    ]
+  },
+  "almost_heard_your_name": {
+    "category": "half_truth",
+    "trigger": {"at": ["zone_arrival"], "location": ["reach", "drowned_holds"], "chance": 0.025},
+    "effect": null,
+    "lines": [
+      "The river is speaking. You almost hear your name in it. Not your name; close to it.",
+      "You stop to listen. The river goes back to being water. The almost-hearing stays.",
+      "It will surface at odd moments. You will not be able to say which moments. It is yours."
+    ]
+  },
+  "almost_remembered_a_smell": {
+    "category": "half_truth",
+    "trigger": {"at": ["zone_arrival"], "location": ["hidden_hold"], "min_visits": 2, "chance": 0.03},
+    "effect": null,
+    "lines": [
+      "Walking past Kerris's oven, you almost remember a smell that is older than you.",
+      "Your grandmother, maybe. Your mother. You do not have the smell — only the",
+      "almost-having. Atrél has the smell. The almost is yours. The almost is enough."
+    ]
+  },
+  "almost_understood_atrel": {
+    "category": "half_truth",
+    "trigger": {"at": ["discovery_read"], "location": ["last_altar", "choir"], "chance": 0.025},
+    "effect": {"flag": "almost_understood_atrel"},
+    "lines": [
+      "You almost understand what Atrél is doing. You almost see the shape of it. You",
+      "do not, in the end. The almost-understanding stays with you. It is a kind of",
+      "knowing. It is not the knowing. You will carry the almost. You will not say so."
+    ]
+  },
+  "almost_chose_to_turn_back": {
+    "category": "half_truth",
+    "trigger": {"at": ["zone_arrival"], "location": ["mountain"], "min_visits": 2, "chance": 0.04},
+    "effect": {"flag": "almost_turned_back"},
+    "lines": [
+      "On the climb, your foot decided — once, between two steps — to turn around.",
+      "You did not. You climbed. The decision is in you, though. You almost did. You",
+      "know you almost did. Atrél has the almost. The Pall does not have it yet."
+    ]
+  },
+  "almost_saw_the_pall_apologise": {
+    "category": "half_truth",
+    "trigger": {"at": ["combat_low_hp"], "location": ["mountain", "summit"], "min_level": 6, "chance": 0.03},
+    "effect": {"flag": "almost_saw_pall_apologise"},
+    "lines": [
+      "You are nearly down. The grey, for half a breath, shifts in a shape that looks",
+      "like an old man bowing. You blink. The grey is the grey again. Hunger never bows.",
+      "The almost-bowing is yours. It is a heavy thing. Atrél nods at you. He does not bow."
+    ]
+  }
+}
