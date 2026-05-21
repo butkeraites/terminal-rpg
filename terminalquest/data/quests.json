@@ -8827,5 +8827,393 @@
     "cleanse_required": 0,
     "requires_mark": "ranger_a_path_softened_for_your_boot",
     "flavor": "A path in the Witherwood softened for the ranger's boot. Five wolves of the pack had hoped the path stayed hard. End them."
+  },
+  "pl_arrived_quiet": {
+    "name": "After the Pall Arrived at Your Door Too Quietly",
+    "target_enemy": "shadow_warden",
+    "needed": 1,
+    "reward_gold": 2300,
+    "cleanse_required": 5,
+    "requires_mark": "pall_arrived_at_your_door_too_quietly",
+    "flavor": "The Pall arrived at your door too quietly once. The Shadow Warden was not the one knocking. End him for the not-knocking."
+  },
+  "pl_matched_step": {
+    "name": "After the Pall Matched Its Step to Yours",
+    "target_enemy": "ashen_penitent",
+    "needed": 1,
+    "reward_gold": 1500,
+    "cleanse_required": 5,
+    "requires_mark": "pall_began_to_match_its_step_to_yours",
+    "flavor": "The Pall began to match its step to yours. A Penitent above the snowline counted both feet. End him in the doubled count."
+  },
+  "pl_showed_face": {
+    "name": "After the Pall Showed You Its Face",
+    "target_enemy": "shadow_warden",
+    "needed": 1,
+    "reward_gold": 2700,
+    "cleanse_required": 5,
+    "requires_mark": "pall_began_to_show_you_its_face",
+    "flavor": "The Pall began to show you its face. The Shadow Warden's face was different. End him.",
+    "reward_chronicle_line": "The Pall had shown them its face once; the Shadow Warden's face was a wrong version, and they ended the wrongness."
+  },
+  "pl_blessed_meal": {
+    "name": "After the Pall Blessed One of Your Meals",
+    "target_enemy": "wolf",
+    "needed": 3,
+    "reward_gold": 500,
+    "cleanse_required": 1,
+    "requires_mark": "pall_blessed_one_of_your_meals",
+    "flavor": "The Pall blessed one of your meals — quietly. Three wolves of the wood smelled the wrong blessing. End them. The meal stays unblessed."
+  },
+  "pl_breathed_collar": {
+    "name": "After the Pall Breathed Into Your Collar",
+    "target_enemy": "ice_wraith",
+    "needed": 3,
+    "reward_gold": 800,
+    "cleanse_required": 4,
+    "requires_mark": "pall_breathed_into_your_collar",
+    "flavor": "The Pall breathed into your collar once. Three ice-wraiths above the snowline knew the breath. End them. The collar will be a collar."
+  },
+  "pl_held_air": {
+    "name": "After the Pall Briefly Held the Air Around You",
+    "target_enemy": "censer_shade",
+    "needed": 3,
+    "reward_gold": 700,
+    "cleanse_required": 4,
+    "requires_mark": "pall_briefly_held_the_air_around_you",
+    "flavor": "The Pall briefly held the air around you. Three censer-shades had been the holding. End them. The air will be air."
+  },
+  "pl_forgot_road": {
+    "name": "After You Forgot a Road",
+    "target_enemy": "bandit",
+    "needed": 3,
+    "reward_gold": 400,
+    "cleanse_required": 0,
+    "requires_mark": "forgot_a_road",
+    "flavor": "You forgot a road in the kingdom for one count. Three bandits walked the forgotten road. End them. The road comes back to you."
+  },
+  "pl_forgot_song": {
+    "name": "After You Forgot a Song",
+    "target_enemy": "choirmaster_effigy",
+    "needed": 1,
+    "reward_gold": 700,
+    "cleanse_required": 4,
+    "requires_mark": "forgot_a_song",
+    "flavor": "You forgot a song. An effigy in the Choir had been the song's previous singer. End it. The song returns by another route."
+  },
+  "pl_forgot_word_loved": {
+    "name": "After You Forgot a Word You Loved",
+    "target_enemy": "library_warden",
+    "needed": 1,
+    "reward_gold": 800,
+    "cleanse_required": 3,
+    "requires_mark": "forgot_a_word_you_loved",
+    "flavor": "You forgot a word you loved. A library-warden had crossed the word out. End him. The word will come back, slowly."
+  },
+  "pl_forgot_mothers_voice": {
+    "name": "After You Forgot Your Mother's Voice",
+    "target_enemy": "hollow_procession",
+    "needed": 1,
+    "reward_gold": 800,
+    "cleanse_required": 3,
+    "requires_mark": "forgot_mothers_voice",
+    "flavor": "You forgot your mother's voice for one count. One of the procession had been the forgetting's witness. End it.",
+    "reward_chronicle_line": "A climber forgot their mother's voice for one count; the procession-witness ended at the count's edge."
+  },
+  "pl_forgot_first_friend": {
+    "name": "After You Forgot Your First Friend",
+    "target_enemy": "bonesong",
+    "needed": 1,
+    "reward_gold": 600,
+    "cleanse_required": 1,
+    "requires_mark": "forgot_your_first_friend",
+    "flavor": "You forgot your first friend for a passage. A bonesong in the Holds had absorbed the name. End it. The name returns clean."
+  },
+  "pl_bleed_dog_followed": {
+    "name": "After a Dog Followed You Back to Town",
+    "target_enemy": "wolf",
+    "needed": 3,
+    "reward_gold": 400,
+    "cleanse_required": 0,
+    "requires_mark": "status_bleed_a_dog_followed_you_back_to_town",
+    "flavor": "A dog followed your bleed back to town once. Three wolves of the wood had been considering the same. End them."
+  },
+  "pl_bleed_widow_pattern": {
+    "name": "After a Widow Recognized the Pattern",
+    "target_enemy": "pall_magistrate",
+    "needed": 1,
+    "reward_gold": 700,
+    "cleanse_required": 3,
+    "requires_mark": "status_bleed_a_widow_recognized_the_pattern",
+    "flavor": "A widow in Mourncross recognized your bleed-pattern. A magistrate had been recording it. End him."
+  },
+  "pl_bleed_old_one_cloth": {
+    "name": "After an Old One Handed You a Cloth",
+    "target_enemy": "bandit",
+    "needed": 2,
+    "reward_gold": 350,
+    "cleanse_required": 0,
+    "requires_mark": "status_bleed_an_old_one_handed_you_a_cloth",
+    "flavor": "An old one at Gravewatch handed you a cloth for the bleed. Two bandits on the road had hoped the bleed go un-tended. End them."
+  },
+  "pl_bleed_print_doorframe": {
+    "name": "After Bleed Left a Print on a Doorframe",
+    "target_enemy": "doorshut",
+    "needed": 2,
+    "reward_gold": 500,
+    "cleanse_required": 1,
+    "requires_mark": "status_bleed_left_a_print_on_a_doorframe",
+    "flavor": "Your bleed left a print on a doorframe. Two doorshuts in the Holds had been reading the prints. End them."
+  },
+  "pl_altar_floor_warmed": {
+    "name": "After the Altar Floor Warmed Under Your Knee",
+    "target_enemy": "choirmaster_effigy",
+    "needed": 1,
+    "reward_gold": 800,
+    "cleanse_required": 4,
+    "requires_mark": "last_altar_floor_warmed_under_your_knee",
+    "flavor": "The altar floor at Atrél's last altar warmed under your knee. An effigy in the Choir noticed the warmer print. End it."
+  },
+  "pl_altar_kept_silence": {
+    "name": "After the Altar Kept Your Silence",
+    "target_enemy": "censer_shade",
+    "needed": 2,
+    "reward_gold": 600,
+    "cleanse_required": 4,
+    "requires_mark": "last_altar_kept_your_silence",
+    "flavor": "The altar kept a silence you brought to it. Two censer-shades had tried to fill the silence with smoke. End them."
+  },
+  "pl_altar_did_not_kneel": {
+    "name": "After You Did Not Kneel at the Altar",
+    "target_enemy": "reliquary_golem",
+    "needed": 1,
+    "reward_gold": 1100,
+    "cleanse_required": 4,
+    "requires_mark": "last_altar_you_did_not_kneel",
+    "flavor": "You did not kneel at Atrél's altar once. A reliquary golem held the non-kneel as evidence. End it."
+  },
+  "c3_ranger_bird_did_not_lift": {
+    "name": "After a Bird Did Not Lift at the Ranger's Step",
+    "target_enemy": "wolf",
+    "needed": 3,
+    "reward_gold": 400,
+    "cleanse_required": 0,
+    "requires_mark": "ranger_a_bird_did_not_lift_at_your_step",
+    "flavor": "A bird did not lift when the ranger stepped past. Three wolves of the pack had been waiting for the bird to startle. End them.",
+    "requires_class": [
+      "ranger"
+    ]
+  },
+  "c3_ranger_stream_turned": {
+    "name": "After a Stream Turned to Drink",
+    "target_enemy": "drowned_thresher",
+    "needed": 2,
+    "reward_gold": 500,
+    "cleanse_required": 1,
+    "requires_mark": "ranger_a_stream_turned_to_drink",
+    "flavor": "A stream turned to drink as the ranger approached. Two threshers in the Reach had hoped the stream stay drowned. End them.",
+    "requires_class": [
+      "ranger"
+    ]
+  },
+  "c3_ranger_arrow_quiet": {
+    "name": "After an Arrow Came Back Quiet",
+    "target_enemy": "bandit",
+    "needed": 4,
+    "reward_gold": 500,
+    "cleanse_required": 0,
+    "requires_mark": "ranger_an_arrow_came_back_quiet",
+    "flavor": "The ranger's arrow came back quiet — no sound on retrieve. Four bandits had been listening for the rustle. End them.",
+    "requires_class": [
+      "ranger"
+    ]
+  },
+  "c3_ranger_quarry_stood": {
+    "name": "After the Quarry Stood for a Breath",
+    "target_enemy": "pallid_stag",
+    "needed": 1,
+    "reward_gold": 1200,
+    "cleanse_required": 2,
+    "requires_mark": "ranger_the_quarry_stood_for_a_breath",
+    "flavor": "The Pallid Stag stood for a breath when the ranger approached. End him in the breath.",
+    "reward_marks": [
+      "the_wood_held_its_breath_for_you"
+    ],
+    "requires_class": [
+      "ranger"
+    ]
+  },
+  "c3_rogue_coin_in_pocket": {
+    "name": "After a Pocket Held a Coin for the Rogue",
+    "target_enemy": "bandit",
+    "needed": 3,
+    "reward_gold": 400,
+    "cleanse_required": 0,
+    "requires_mark": "rogue_a_pocket_held_a_coin_for_you",
+    "flavor": "A pocket at Gravewatch held a coin for the rogue — unsought. Three bandits on the road had been pickpockets. End them.",
+    "requires_class": [
+      "rogue"
+    ]
+  },
+  "c3_rogue_dark_kept_step": {
+    "name": "After the Dark Kept the Rogue's Step",
+    "target_enemy": "bonesong",
+    "needed": 1,
+    "reward_gold": 500,
+    "cleanse_required": 1,
+    "requires_mark": "rogue_the_dark_kept_your_step",
+    "flavor": "The dark in the Holds kept the rogue's step. A bonesong absorbed the step's sound. End it.",
+    "requires_class": [
+      "rogue"
+    ]
+  },
+  "c3_rogue_market_aside": {
+    "name": "After the Market Glanced Aside for the Rogue",
+    "target_enemy": "bandit",
+    "needed": 2,
+    "reward_gold": 400,
+    "cleanse_required": 0,
+    "requires_mark": "rogue_the_market_glanced_aside_for_you",
+    "flavor": "A Gravewatch market vendor glanced aside as the rogue passed. Two bandits had been watching the vendor's eyes. End them.",
+    "requires_class": [
+      "rogue"
+    ]
+  },
+  "c3_mage_old_mentor": {
+    "name": "After an Old Mentor Whispered a Correction",
+    "target_enemy": "library_warden",
+    "needed": 1,
+    "reward_gold": 900,
+    "cleanse_required": 3,
+    "requires_mark": "mage_an_old_mentor_whispered_a_correction",
+    "flavor": "An old mentor's voice whispered a correction in the mage's ear. A library-warden had been impersonating the mentor. End him.",
+    "requires_class": [
+      "mage"
+    ]
+  },
+  "c3_mage_air_easier": {
+    "name": "After the Air Was Easier to Shape",
+    "target_enemy": "censer_shade",
+    "needed": 3,
+    "reward_gold": 600,
+    "cleanse_required": 4,
+    "requires_mark": "mage_the_air_was_a_little_easier_to_shape_today",
+    "flavor": "The air was easier to shape today for the mage. Three censer-shades had been the resistance. End them.",
+    "requires_class": [
+      "mage"
+    ]
+  },
+  "c3_mage_forgot_first_spell": {
+    "name": "After the Mage Forgot Their First Spell",
+    "target_enemy": "choirmaster_effigy",
+    "needed": 1,
+    "reward_gold": 800,
+    "cleanse_required": 4,
+    "requires_mark": "mage_you_forgot_your_first_spell",
+    "flavor": "The mage forgot their first spell. An effigy had absorbed it. End it. The first spell returns by another route.",
+    "requires_class": [
+      "mage"
+    ]
+  },
+  "c3_cleric_old_word_clean": {
+    "name": "After an Old Word Came Back Clean",
+    "target_enemy": "hollow_procession",
+    "needed": 1,
+    "reward_gold": 600,
+    "cleanse_required": 3,
+    "requires_mark": "cleric_an_old_word_came_back_clean",
+    "flavor": "An old word of the cleric's came back clean. One of the procession in Mourncross had been holding the dirt. End it.",
+    "requires_class": [
+      "cleric"
+    ]
+  },
+  "c3_cleric_atrels_silence": {
+    "name": "After Atrél's Silence Was Louder",
+    "target_enemy": "censer_shade",
+    "needed": 2,
+    "reward_gold": 700,
+    "cleanse_required": 4,
+    "requires_mark": "cleric_atrels_silence_was_louder",
+    "flavor": "Atrél's silence was louder than usual for the cleric. Two censer-shades had been trying to fill it. End them.",
+    "requires_class": [
+      "cleric"
+    ]
+  },
+  "c3_cleric_silenced_blessed_back": {
+    "name": "After One of the Silenced Blessed You Back",
+    "target_enemy": "pall_magistrate",
+    "needed": 1,
+    "reward_gold": 800,
+    "cleanse_required": 3,
+    "requires_mark": "cleric_one_of_the_silenced_blessed_you_back",
+    "flavor": "One of the kingdom's silenced blessed the cleric back. A magistrate had crossed the blessing out. End him.",
+    "requires_class": [
+      "cleric"
+    ]
+  },
+  "c3_cleric_silence_a_prayer": {
+    "name": "After the Cleric Held a Silence That Was a Prayer",
+    "target_enemy": "censer_shade",
+    "needed": 4,
+    "reward_gold": 700,
+    "cleanse_required": 4,
+    "requires_mark": "cleric_you_held_a_silence_that_was_a_prayer",
+    "flavor": "The cleric held a silence that was a prayer. Four censer-shades had been the noise. End them.",
+    "reward_chronicle_line": "A cleric held a silence as a prayer; four censer-shades fell to make the silence true.",
+    "requires_class": [
+      "cleric"
+    ]
+  },
+  "c3_warrior_armor_scar": {
+    "name": "After the Warrior's Armor Grew into a Scar",
+    "target_enemy": "ashen_penitent",
+    "needed": 1,
+    "reward_gold": 1300,
+    "cleanse_required": 5,
+    "requires_mark": "warrior_armor_grew_into_a_scar",
+    "flavor": "The warrior's armor grew into a scar across runs. A Penitent above the snowline had been studying the scar. End him.",
+    "reward_marks": [
+      "the_climb_marked_your_lungs"
+    ],
+    "requires_class": [
+      "warrior"
+    ]
+  },
+  "c3_warrior_carried_dead": {
+    "name": "After the Warrior Carried the Dead",
+    "target_enemy": "hollow_procession",
+    "needed": 3,
+    "reward_gold": 700,
+    "cleanse_required": 3,
+    "requires_mark": "warrior_carried_the_dead",
+    "flavor": "The warrior carried the dead one Mourncross-walk. Three of the procession had been waiting for the burden's resting-place. End them.",
+    "requires_class": [
+      "warrior"
+    ]
+  },
+  "c3_warrior_old_drillmaster": {
+    "name": "After the Old Drillmaster Breathed With the Warrior",
+    "target_enemy": "stone_golem",
+    "needed": 1,
+    "reward_gold": 1300,
+    "cleanse_required": 5,
+    "requires_mark": "warrior_old_drillmaster_breathed_with_you",
+    "flavor": "The old drillmaster breathed with the warrior on a step. A stone-golem had been the test. End him in the breath.",
+    "requires_class": [
+      "warrior"
+    ]
+  },
+  "c3_warrior_dead_friends_step": {
+    "name": "After the Dead Friend's Step Was in the Warrior's",
+    "target_enemy": "shadow_warden",
+    "needed": 1,
+    "reward_gold": 2400,
+    "cleanse_required": 5,
+    "requires_mark": "warrior_the_dead_friends_step_in_yours",
+    "flavor": "A dead friend's step was in the warrior's. The Shadow Warden at the Summit knew the friend. End him.",
+    "reward_chronicle_line": "A warrior had carried a dead friend's step in her own; the Shadow Warden ended for the carrying.",
+    "requires_class": [
+      "warrior"
+    ]
   }
 }
