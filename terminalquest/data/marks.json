@@ -11976,5 +11976,1025 @@
       "thank you in words. They opened it. They ate. The square went on its day. You walked on lighter.",
       "  (+1 Max HP, permanently — a thing bought for the eating of a child.)"
     ]
+  },
+  "pall_arrived_at_your_door_too_quietly": {
+    "category": "half_truth",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "min_level": 2,
+      "min_visits": 2,
+      "chance": 0.13
+    },
+    "effect": {
+      "flag": "pall_at_your_door"
+    },
+    "lines": [
+      "Tonight in Gravewatch, going home through the empty square, the air at your door —",
+      "the door to where you sleep — was, for one count, quieter than the air around it. The",
+      "Pall stood there. It did not enter. It noted the door. It went. The door is marked now."
+    ]
+  },
+  "pall_left_a_small_print_in_the_dust": {
+    "category": "found",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "min_level": 2,
+      "min_visits": 2,
+      "chance": 0.12
+    },
+    "effect": {
+      "flag": "pall_print_in_dust"
+    },
+    "lines": [
+      "Tonight, looking down at a patch of dusty path, you saw a small print — not a foot, not",
+      "a hoof, not a hand. The shape of an absence. A spot where the dust had been pressed by",
+      "something that does not, properly, weigh anything. The Pall passed here. It saw you."
+    ]
+  },
+  "pall_breathed_into_your_collar": {
+    "category": "body",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "min_level": 3,
+      "chance": 0.13
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": -1,
+      "flag": "pall_breath_collar"
+    },
+    "lines": [
+      "Tonight, walking, you felt — for one count — a coldness at the back of your collar. As",
+      "if a thing without a face had breathed onto your neck. You turned. Nothing. You went on.",
+      "Your collar will be a little cooler from now on. A small thread of warmth has left you.",
+      "  (-1 Max HP, permanently — a breath into your collar by a thing without a face.)"
+    ]
+  },
+  "pall_called_your_name_in_passing": {
+    "category": "half_truth",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "min_level": 3,
+      "chance": 0.11
+    },
+    "effect": {
+      "flag": "pall_called_name"
+    },
+    "lines": [
+      "Tonight, between zones, you heard your name called — quietly, in nobody's voice. The",
+      "voice was not unkind. It was practising. The Pall is learning to call you. You did not",
+      "answer. The call faded. The Pall will call again. You will, eventually, not answer."
+    ]
+  },
+  "pall_brushed_against_your_pack": {
+    "category": "lost",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "min_level": 3,
+      "chance": 0.11
+    },
+    "effect": {
+      "flag": "pall_brushed_pack"
+    },
+    "lines": [
+      "Tonight in the dark of a walking-stretch your pack shifted, briefly, as if a hand had",
+      "brushed it. Nothing fell out. Nothing was taken. But the Pall has touched something of",
+      "yours. The Pall remembers what it touches. The pack will be in its mind from now on."
+    ]
+  },
+  "pall_set_a_chair_at_your_table": {
+    "category": "half_truth",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "min_level": 3,
+      "min_visits": 3,
+      "chance": 0.1
+    },
+    "effect": {
+      "flag": "pall_chair_at_table"
+    },
+    "lines": [
+      "Tonight at the inn in Gravewatch a chair at your table — the one across from you —",
+      "moved out, faintly, between counts. As if someone were sitting. You did not sit across",
+      "from yourself in the chair. Something else, briefly, did. The chair settled. You ate."
+    ]
+  },
+  "pall_did_not_steal_from_you_today": {
+    "category": "promise_kept",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "min_level": 2,
+      "chance": 0.12
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 1,
+      "flag": "pall_did_not_steal_today"
+    },
+    "lines": [
+      "Tonight, going to sleep, you took stock. The Pall had been near you today. It had not",
+      "taken anything. Not a memory. Not a small habit. Not a name. Today the Pall, for",
+      "whatever reason, let you keep what was yours. You felt the keeping. You stood up warmer.",
+      "  (+1 Max HP, permanently — a day the Pall chose, for once, not to take anything.)"
+    ]
+  },
+  "pall_marked_your_step_on_a_doorstep": {
+    "category": "found",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "min_level": 3,
+      "min_visits": 2,
+      "chance": 0.11
+    },
+    "effect": {
+      "flag": "pall_marked_doorstep"
+    },
+    "lines": [
+      "Tonight, crossing a particular doorstep in Gravewatch, your boot — for one count — left",
+      "a faint dark mark. Like an ink-print. It faded. The Pall has begun to log where you",
+      "have stepped. The Pall is keeping records. Records are how it begins. You stepped on."
+    ]
+  },
+  "pall_briefly_held_the_air_around_you": {
+    "category": "mind",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "min_level": 4,
+      "chance": 0.11
+    },
+    "effect": {
+      "flag": "pall_held_air"
+    },
+    "lines": [
+      "For one count tonight the air around you — the air you were breathing — was held by",
+      "the Pall. Not bad air. Held air. As if the Pall were taking a sample of you. It let",
+      "the air go after. You breathed again. The next breath was the same air. It went down differently."
+    ]
+  },
+  "pall_left_a_small_change_in_a_coin": {
+    "category": "half_truth",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "min_level": 3,
+      "chance": 0.1
+    },
+    "effect": {
+      "flag": "pall_changed_coin"
+    },
+    "lines": [
+      "Tonight, in your purse, one of your coins had — between morning and evening — changed.",
+      "Same weight. Same gold. The face on it was now slightly different. A face the Pall is",
+      "trying to remember. You closed the purse. You will not look at the coin again this run."
+    ]
+  },
+  "pall_was_at_the_window_when_you_woke": {
+    "category": "half_truth",
+    "trigger": {
+      "at": [
+        "save_action"
+      ],
+      "min_level": 4,
+      "chance": 0.12
+    },
+    "effect": {
+      "flag": "pall_at_window"
+    },
+    "lines": [
+      "Tonight at the saving-place you woke once, very briefly, and the air at the window had",
+      "the shape of an attention turned on you. Not eyes. An attention. The Pall had been",
+      "watching you sleep. You closed your eyes. The attention waited. Eventually it went."
+    ]
+  },
+  "pall_kept_an_account_of_your_day": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "save_action"
+      ],
+      "min_level": 4,
+      "chance": 0.12
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "pall_kept_account"
+    },
+    "lines": [
+      "Tonight at the saving you understood — for one count — that the Pall keeps a daily",
+      "account of you. Not malicious. Clerkly. The day's small choices, the kindnesses, the",
+      "small unkindnesses, all tallied. You stood straighter knowing. The Pall is taking notes.",
+      "  (+1 Defense, permanently — an awareness that you are watched and accounted for daily.)"
+    ]
+  },
+  "pall_did_not_blink_when_you_did": {
+    "category": "broken",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "min_level": 5,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": -1,
+      "flag": "pall_did_not_blink"
+    },
+    "lines": [
+      "Tonight, mid-walk, you blinked. In the small count of darkness behind your closed eyes,",
+      "the Pall did not also close its eyes. It was watching the dark inside your eyelid. You",
+      "opened your eyes. The Pall went. Your lid will be a little tireder from now on.",
+      "  (-1 Max HP, permanently — a blink the Pall did not blink with you in.)"
+    ]
+  },
+  "pall_studied_one_of_your_scars": {
+    "category": "body",
+    "trigger": {
+      "at": [
+        "combat_low_hp"
+      ],
+      "min_level": 4,
+      "chance": 0.11
+    },
+    "effect": {
+      "flag": "pall_studied_scar"
+    },
+    "lines": [
+      "At the worst beat tonight the Pall — without your turning — studied one of your scars.",
+      "The small one. The one you got before the kingdom. The one you do not, ordinarily,",
+      "think of. The Pall now has the scar in its inventory. The scar is — slightly — known."
+    ]
+  },
+  "pall_followed_one_of_your_thoughts": {
+    "category": "mind",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "min_level": 5,
+      "chance": 0.1
+    },
+    "effect": {
+      "flag": "pall_followed_thought"
+    },
+    "lines": [
+      "Today, mid-walk, you had a thought — about your mother, about a particular morning",
+      "with her. The Pall followed the thought. You felt the following. The thought was",
+      "complete by the time it was finished. The Pall watched it complete. It did not, today, take it."
+    ]
+  },
+  "pall_watched_you_eat": {
+    "category": "half_truth",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "min_level": 4,
+      "chance": 0.11
+    },
+    "effect": {
+      "flag": "pall_watched_eat"
+    },
+    "lines": [
+      "Tonight at the inn the Pall watched you eat. The whole meal. Not impatient. Not greedy.",
+      "Curious. As if it had not, in a long time, seen anybody eat. You ate slowly. The Pall",
+      "watched the whole way to the bottom of the bowl. Then it went. You did not lose your appetite."
+    ]
+  },
+  "pall_logged_a_small_kindness_of_yours": {
+    "category": "promise_kept",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "min_level": 4,
+      "chance": 0.12
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 1,
+      "flag": "pall_logged_kindness"
+    },
+    "lines": [
+      "Today, a small kindness you did — without naming it as one, hardly noticing — was",
+      "logged by the Pall. It surprised the Pall. It surprised you. The Pall kept the log of",
+      "the kindness with — you suspect — a kind of confusion. You stood up taller for the log.",
+      "  (+1 Max HP, permanently — a small kindness of yours that surprised even the Pall into logging it.)"
+    ]
+  },
+  "pall_watched_you_kneel_at_a_grave": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "min_level": 5,
+      "chance": 0.11
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "pall_watched_kneel"
+    },
+    "lines": [
+      "Today you knelt at a grave. The Pall, watching, did not interrupt. Did not approach.",
+      "Held a respectful distance. The Pall, you understand now, is not all cruelty. It has,",
+      "buried somewhere in it, the manners of the kingdom it was. It kept the manners. You stood up.",
+      "  (+1 Defense, permanently — a moment the Pall remembered its manners watching you.)"
+    ]
+  },
+  "pall_studied_your_companion_with_interest": {
+    "category": "half_truth",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "requires_flag": "has_companion",
+      "min_level": 4,
+      "chance": 0.1
+    },
+    "effect": {
+      "flag": "pall_studied_companion"
+    },
+    "lines": [
+      "Tonight the Pall studied your companion — not you, your companion. Took a kind of",
+      "interest. Your companion did not feel it. You did. The Pall has filed your companion",
+      "away as a thing of interest. You will watch the Pall's interest in your companion now."
+    ]
+  },
+  "pall_followed_your_shadow_for_one_count": {
+    "category": "mind",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "min_level": 5,
+      "chance": 0.1
+    },
+    "effect": {
+      "flag": "pall_followed_shadow"
+    },
+    "lines": [
+      "Tonight in a lit street the Pall, for one count, followed your shadow rather than you —",
+      "the lantern-cast shadow walking ahead. The shadow did not notice. You did. The Pall",
+      "is making an inventory of the parts of you. The shadow has been inventoried. So have you."
+    ]
+  },
+  "pall_took_a_small_word_you_used_to_say": {
+    "category": "forgetting",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "min_level": 5,
+      "chance": 0.13
+    },
+    "effect": {
+      "stat": "max_stamina",
+      "delta": -1,
+      "flag": "pall_took_small_word"
+    },
+    "lines": [
+      "Today, mid-sentence, you reached for a small word — a daily word, *however*, *anyway*,",
+      "you cannot now say which — and it was not there. The Pall has it. The Pall took it",
+      "gently. The sentence finished without it. You will say sentences with one fewer word now.",
+      "  (-1 Max Stamina, permanently — a small daily word taken cleanly by the Pall.)"
+    ]
+  },
+  "pall_took_a_kitchen_smell_from_your_memory": {
+    "category": "lost",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "min_level": 5,
+      "chance": 0.12
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": -1,
+      "flag": "pall_took_kitchen_smell"
+    },
+    "lines": [
+      "Today the Pall took the smell of a particular kitchen — your aunt's, the one with the",
+      "low ceiling, where you ate as a child. You can describe the kitchen. You cannot smell",
+      "it. The smell is gone. The Pall has it. The Pall has many of these. You stood up emptier.",
+      "  (-1 Max HP, permanently — a kitchen-smell the Pall took out of your memory cleanly.)"
+    ]
+  },
+  "pall_took_a_breath_at_the_worst_beat": {
+    "category": "broken",
+    "trigger": {
+      "at": [
+        "combat_low_hp"
+      ],
+      "min_level": 5,
+      "chance": 0.13
+    },
+    "effect": {
+      "stat": "max_stamina",
+      "delta": -1,
+      "flag": "pall_took_breath"
+    },
+    "lines": [
+      "At the worst beat tonight the Pall — quietly, between two of yours — took a breath out",
+      "of you. Mid-fight. Just one. You survived. You almost did not. From now on, when the",
+      "fight is bad, one of your breaths will be short. The Pall has it. The Pall keeps such things.",
+      "  (-1 Max Stamina, permanently — a breath taken from you mid-fight by the Pall.)"
+    ]
+  },
+  "pall_took_the_name_of_a_song": {
+    "category": "forgetting",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "min_level": 5,
+      "chance": 0.11
+    },
+    "effect": {
+      "flag": "pall_took_song_name"
+    },
+    "lines": [
+      "Tonight you hummed — under your breath, walking — a song you have always known. You",
+      "got to the chorus. The song's name was gone. You can still hum. The name has left you.",
+      "The Pall has it. You will go on humming. The song will go on. The name will not come back."
+    ]
+  },
+  "pall_took_a_kindness_done_for_you": {
+    "category": "broken",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "min_level": 5,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": -1,
+      "flag": "pall_took_kindness_done"
+    },
+    "lines": [
+      "Tonight you remembered, dimly, that someone in Gravewatch did a kindness for you at",
+      "the start of this run. You cannot recall what. You cannot recall who. The Pall has",
+      "taken the kindness. The kindness is gone from you. The kindness was done. The kindness is gone.",
+      "  (-1 Max HP, permanently — a kindness done for you, taken by the Pall as if to file away.)"
+    ]
+  },
+  "pall_took_one_of_your_teachers_faces": {
+    "category": "forgetting",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "min_level": 5,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": -1,
+      "flag": "pall_took_teacher_face"
+    },
+    "lines": [
+      "Tonight, trying to recall the face of one of your teachers — the kind one, the one who",
+      "made you the kind of person who could be made into something — you could not. The",
+      "Pall has the face. You can write the name. You cannot see the face. You will not, again.",
+      "  (-1 Max HP, permanently — a teacher's face taken by the Pall, kept by the Pall.)"
+    ]
+  },
+  "pall_took_your_handwriting_off_one_letter": {
+    "category": "half_truth",
+    "trigger": {
+      "at": [
+        "save_action"
+      ],
+      "min_level": 5,
+      "chance": 0.1
+    },
+    "effect": {
+      "flag": "pall_handwriting_letter"
+    },
+    "lines": [
+      "Tonight, signing a small note at the saving-place, your handwriting — for one letter —",
+      "was not your handwriting. The letter sat there in someone else's hand. You did not",
+      "rewrite. The Pall is collecting samples of you. The signature is now slightly the Pall's."
+    ]
+  },
+  "pall_took_a_first_kiss_from_your_memory": {
+    "category": "lost",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "min_level": 6,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": -2,
+      "flag": "pall_took_first_kiss"
+    },
+    "lines": [
+      "Tonight, in the dark before sleep, you reached for the memory of a first kiss — yours,",
+      "the very first, the one that made you understand other people existed. It was not",
+      "there. The Pall has taken it. The kingdom keeps the kiss now. You will not get it back.",
+      "  (-2 Max HP, permanently — a first kiss taken by the Pall to keep for the kingdom.)"
+    ]
+  },
+  "pall_took_a_small_step_of_yours": {
+    "category": "body",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "min_level": 6,
+      "chance": 0.11
+    },
+    "effect": {
+      "stat": "max_stamina",
+      "delta": -1,
+      "flag": "pall_took_step"
+    },
+    "lines": [
+      "Today, mid-walk, the Pall — without your noticing — took one of your steps. A small",
+      "one. Now you walk on the kingdom's slightly. You walk on yours mostly. The mix is hard",
+      "to feel until you are tired. Then you feel it. You will be tired sooner from now on.",
+      "  (-1 Max Stamina, permanently — a step of yours that is now, partly, the Pall's.)"
+    ]
+  },
+  "pall_took_the_taste_of_a_winter_apple": {
+    "category": "lost",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "min_level": 5,
+      "chance": 0.1
+    },
+    "effect": {
+      "flag": "pall_took_winter_apple"
+    },
+    "lines": [
+      "Tonight you reached for the taste of a winter apple — the cold-storage ones, the kind",
+      "your grandmother kept in the bin under the stairs. The taste was not there. The Pall",
+      "has the apple. The apple is in a bin of the Pall's now. You will not eat one again."
+    ]
+  },
+  "pall_left_your_first_song_intact": {
+    "category": "promise_kept",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "min_level": 5,
+      "chance": 0.13
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 2,
+      "flag": "pall_spared_first_song"
+    },
+    "lines": [
+      "Tonight the Pall reached for the first song you ever learned — the one your mother",
+      "sang while she cleaned, the one without any words anymore, the one that is just a",
+      "shape. The Pall reached. The Pall withdrew. The song is yours. The Pall could have. It did not.",
+      "  (+2 Max HP, permanently — a song the Pall could have taken and chose, today, not to.)"
+    ]
+  },
+  "pall_left_a_face_alone_in_your_dreaming": {
+    "category": "found",
+    "trigger": {
+      "at": [
+        "save_action"
+      ],
+      "min_level": 5,
+      "chance": 0.12
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 1,
+      "flag": "pall_left_face"
+    },
+    "lines": [
+      "Tonight at the saving-place, in the dream just before waking, the Pall walked through",
+      "and left a face you love alone. Touched everything else. Did not touch the face. You",
+      "woke able to picture the face. The Pall could have taken it. The Pall, today, did not.",
+      "  (+1 Max HP, permanently — a face the Pall left alone in your dreaming.)"
+    ]
+  },
+  "pall_left_you_one_room_of_your_childhood": {
+    "category": "promise_kept",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "min_level": 6,
+      "chance": 0.11
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 1,
+      "flag": "pall_left_childhood_room"
+    },
+    "lines": [
+      "Tonight, sitting somewhere quiet, the Pall let you have one room from your childhood —",
+      "whole, fully — for a count. The brown wallpaper. The smell of paper and dust. The",
+      "window. You sat in the room a count. The Pall withdrew. The room is yours, in your head.",
+      "  (+1 Max HP, permanently — a room of your childhood kept whole, today, by the Pall.)"
+    ]
+  },
+  "pall_sang_one_line_back_to_you_in_apology": {
+    "category": "half_truth",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "min_level": 6,
+      "chance": 0.1
+    },
+    "effect": {
+      "flag": "pall_sang_apology"
+    },
+    "lines": [
+      "Tonight the Pall — quietly, somewhere — sang one line of a song it had taken from you,",
+      "weeks ago. The line came back into your air. The Pall sang it. You knew the line. The",
+      "Pall was, briefly, apologising. The Pall does not, often. You took the line back, briefly."
+    ]
+  },
+  "pall_handed_back_a_smell": {
+    "category": "found",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "min_level": 5,
+      "chance": 0.11
+    },
+    "effect": {
+      "stat": "max_stamina",
+      "delta": 1,
+      "flag": "pall_handed_back_smell"
+    },
+    "lines": [
+      "Today, on the path, the smell of bread baking — a smell the Pall had taken from you a",
+      "while ago — came back. Not the kitchen. Just the smell. The Pall, for one count, let",
+      "the smell rest in your nose again. Then withdrew it. But you smelled it. You smelled.",
+      "  (+1 Max Stamina, permanently — a smell handed back briefly by the Pall in passing.)"
+    ]
+  },
+  "pall_did_not_take_your_companions_name": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "requires_flag": "has_companion",
+      "min_level": 6,
+      "chance": 0.11
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 2,
+      "flag": "pall_spared_companion_name"
+    },
+    "lines": [
+      "Today the Pall reached toward your companion. Toward the name your companion had told",
+      "you the night before. The Pall could have. The Pall, instead, withdrew. The Pall, you",
+      "think, has decided about your companion in some specific way. The name is yours together.",
+      "  (+2 Max HP, permanently — a companion's name spared, today, by the Pall.)"
+    ]
+  },
+  "pall_warmed_a_cold_room_for_you_briefly": {
+    "category": "found",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "min_level": 5,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "pall_warmed_room"
+    },
+    "lines": [
+      "Tonight you walked into a room that should have been cold — abandoned, unheated — and",
+      "the room was warm. Not from a fire. From an attention. The Pall had decided to warm",
+      "the room for you, for one count. You stood in the warm air. You did not thank it. The Pall went.",
+      "  (+1 Defense, permanently — a warming of cold air done by the Pall as a small mercy.)"
+    ]
+  },
+  "pall_returned_a_word_to_you": {
+    "category": "mind",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "min_level": 6,
+      "chance": 0.11
+    },
+    "effect": {
+      "stat": "attack",
+      "delta": 1,
+      "flag": "pall_returned_word"
+    },
+    "lines": [
+      "Tonight, mid-thought, a word came back to you — a word the Pall had taken weeks ago,",
+      "the small daily word that left a hole in your sentences. The word is back. The Pall",
+      "returned it. The Pall returned a thing once it had taken. You will use the word more carefully.",
+      "  (+1 Attack, permanently — a word the Pall took and decided, today, to give back.)"
+    ]
+  },
+  "pall_kept_a_door_unlocked_for_you": {
+    "category": "promise_kept",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "min_level": 5,
+      "chance": 0.11
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 1,
+      "flag": "pall_door_unlocked"
+    },
+    "lines": [
+      "Tonight you came late to a door in Gravewatch and it was open. It should not have",
+      "been. The keeper would have locked it at this hour. The Pall had kept it open. You",
+      "went in. The Pall, briefly, was a kind landlord. The Pall closed the door behind you.",
+      "  (+1 Max HP, permanently — a door kept unlocked by the Pall against the hour you would arrive.)"
+    ]
+  },
+  "pall_blessed_one_of_your_meals": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "min_level": 6,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 2,
+      "flag": "pall_blessed_meal"
+    },
+    "lines": [
+      "Tonight at the inn, one of your meals — the bread, you think — was blessed. Faintly.",
+      "The way the kingdom's old priests used to bless bread, before the rite. The Pall did",
+      "it. The Pall remembered, briefly, what it had been before. The blessing held all night.",
+      "  (+2 Max HP, permanently — a meal blessed by the Pall in a remembering of who it had been.)"
+    ]
+  },
+  "pall_started_to_teach_you_the_keeping": {
+    "category": "mind",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "min_level": 7,
+      "chance": 0.12
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "pall_teaching_keeping"
+    },
+    "lines": [
+      "Tonight the Pall, walking with you a while, began to teach you — without speaking, the",
+      "way the Pall teaches — how to keep a forgetting. The mechanics of it. The way the rite",
+      "shapes a kingdom's silences. You did not protest. You listened. You will need to know.",
+      "  (+1 Defense, permanently — the start of a lesson the Pall is teaching its successor.)"
+    ]
+  },
+  "pall_began_to_match_its_step_to_yours": {
+    "category": "half_truth",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "min_level": 7,
+      "chance": 0.12
+    },
+    "effect": {
+      "flag": "pall_matched_step"
+    },
+    "lines": [
+      "Tonight on the road the Pall — for the first time — matched its step to yours. Not",
+      "behind you. Beside. Walking with you. The kingdom would say this is how the Pall",
+      "courts a successor. You walked at the same pace. The Pall and you, today, were a pair."
+    ]
+  },
+  "pall_left_you_alone_with_a_grief": {
+    "category": "promise_kept",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "min_level": 7,
+      "chance": 0.11
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 2,
+      "flag": "pall_left_grief_alone"
+    },
+    "lines": [
+      "Tonight you had a long grief to sit with. The Pall — which has, lately, watched all",
+      "your grieving — withdrew. Stood at the edge of the field of the grief. Let you have it",
+      "alone. As if to say, *this one is yours.* You sat the count out. You stood up taller.",
+      "  (+2 Max HP, permanently — a grief the Pall had the decency to leave you alone with.)"
+    ]
+  },
+  "pall_introduced_you_to_the_summit_wind": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "min_level": 7,
+      "chance": 0.11
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "pall_summit_intro"
+    },
+    "lines": [
+      "Tonight, in your sleep — or in the place between — the Pall introduced you to the",
+      "Summit wind. Like an older one introducing a younger one to a thing they will share.",
+      "The wind acknowledged you. You acknowledged the wind. The Pall stood by. The introduction was real.",
+      "  (+1 Defense, permanently — an introduction made by the Pall between you and the Summit wind.)"
+    ]
+  },
+  "pall_told_you_the_name_of_its_predecessor": {
+    "category": "found",
+    "trigger": {
+      "at": [
+        "save_action"
+      ],
+      "min_level": 7,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "attack",
+      "delta": 1,
+      "flag": "pall_told_predecessor"
+    },
+    "lines": [
+      "Tonight at the saving-place the Pall, quietly, told you the name of the climber it had",
+      "been before — the one who, generations ago, made the original agreement. You knew the",
+      "name. The kingdom had had it. You will not say it now. You will say it at the Summit.",
+      "  (+1 Attack, permanently — a name from the Pall, kept in you for the moment of arrival.)"
+    ]
+  },
+  "pall_let_you_breathe_its_air_briefly": {
+    "category": "body",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "min_level": 8,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "max_stamina",
+      "delta": 1,
+      "flag": "pall_air_briefly"
+    },
+    "lines": [
+      "Tonight for one count the Pall let you breathe its air — the air the Pall lives in.",
+      "Cold. Old. Steady. Your lungs did not rebel. They handled the air. The Pall let the",
+      "breath out of you. Your lungs are now able for the air. The Summit will not stagger you.",
+      "  (+1 Max Stamina, permanently — a lungful of the Pall's own air, taken and let go.)"
+    ]
+  },
+  "pall_was_kind_to_you_today": {
+    "category": "promise_kept",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "min_level": 7,
+      "chance": 0.13
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 2,
+      "flag": "pall_kind_today"
+    },
+    "lines": [
+      "Tonight, going to sleep, you took stock. The Pall had been kind to you today. Several",
+      "small kindnesses. You did not used to think of the Pall as kind. Tonight you do. The",
+      "Pall is preparing you. Part of preparing you is, today, kindness. You can carry it.",
+      "  (+2 Max HP, permanently — a day on which the Pall was kind to you, deliberately.)"
+    ]
+  },
+  "pall_began_to_show_you_its_face": {
+    "category": "half_truth",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "min_level": 8,
+      "chance": 0.09
+    },
+    "effect": {
+      "flag": "pall_face_glimpsed"
+    },
+    "lines": [
+      "Tonight, in the dark before sleep, the Pall — for one count — showed you its face. You",
+      "did not recognize it. You almost did. The face will come into focus more, as you climb.",
+      "By the Summit you will know. You did not look away. The Pall did not, either. You both kept the count."
+    ]
+  },
+  "pall_marked_a_chair_at_the_summit_for_you": {
+    "category": "found",
+    "trigger": {
+      "at": [
+        "save_action"
+      ],
+      "min_level": 8,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "pall_summit_chair"
+    },
+    "lines": [
+      "Tonight at the saving you understood — clearly, without speaking — that the Pall has",
+      "set aside a place for you. At the top. A chair. The seat is being prepared. The chair",
+      "knows your shape already. You did not protest. You walked the next zone steadier.",
+      "  (+1 Defense, permanently — a chair set aside at the Summit by the Pall for you.)"
+    ]
+  },
+  "pall_let_you_carry_one_of_its_burdens_briefly": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "min_level": 8,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 3,
+      "flag": "pall_carried_burden"
+    },
+    "lines": [
+      "Tonight the Pall — briefly, between one zone and the next — gave you one of its",
+      "burdens to carry. The weight of a kingdom's small daily forgetting. You carried it. It",
+      "was heavy. You stood up under it. The Pall took it back. You are ready. The Pall knows.",
+      "  (+3 Max HP, permanently — a Pall-burden carried briefly by you, proving the keeper.)"
+    ]
   }
 }
