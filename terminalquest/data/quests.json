@@ -3670,5 +3670,197 @@
     "reward_marks": [
       "holds_recognized_your_grief"
     ]
+  },
+  "cc_no_stun_reach": {
+    "name": "No Stagger in the Reach",
+    "target_enemy": "drowned_thresher",
+    "needed": 2,
+    "reward_gold": 350,
+    "cleanse_required": 1,
+    "completion_condition": "no_stun_during_fight",
+    "flavor": "Two threshers. Neither one knocks you off your footing. The Reach remembers your foot then."
+  },
+  "cc_no_stun_climb": {
+    "name": "No Stagger Above the Snowline",
+    "target_enemy": "mountain_ogre",
+    "needed": 1,
+    "reward_gold": 600,
+    "cleanse_required": 4,
+    "completion_condition": "no_stun_during_fight",
+    "flavor": "An ogre. The wind tries; the ogre tries; neither one staggers you."
+  },
+  "cc_no_potions_reach": {
+    "name": "No Potions in the Reach",
+    "target_enemy": "bog_lurcher",
+    "needed": 2,
+    "reward_gold": 500,
+    "cleanse_required": 2,
+    "completion_condition": "no_potions_in_zone",
+    "flavor": "Two lurchers. No potion crossed your lips while in the Reach. The Reach respects climbers who refuse the bottle."
+  },
+  "cc_no_hireling_mourn": {
+    "name": "Your Sworn Survives the Capital",
+    "target_enemy": "pall_magistrate",
+    "needed": 2,
+    "reward_gold": 700,
+    "cleanse_required": 3,
+    "completion_condition": "no_hireling_death",
+    "flavor": "Two magistrates. Your sworn stands at your side after each fight. The capital marks the keeping."
+  },
+  "cc_companion_landed_kill_reach": {
+    "name": "The Sworn Closes the Reaper",
+    "target_enemy": "last_reaper",
+    "needed": 1,
+    "reward_gold": 800,
+    "cleanse_required": 2,
+    "completion_condition": "companion_landed_kill",
+    "flavor": "The Last Reaper. Your sworn lands the killing blow. The Reach's water doesn't answer."
+  },
+  "cc_first_strike_mourn_processions": {
+    "name": "First Strike, Capital Processions",
+    "target_enemy": "hollow_procession",
+    "needed": 4,
+    "reward_gold": 600,
+    "cleanse_required": 3,
+    "completion_condition": "first_strike_yours",
+    "flavor": "Four of the procession. The first blow in each fight is yours. The Pall hears who struck first."
+  },
+  "cc_one_round_dyke_warden": {
+    "name": "A Dyke-Warden in a Single Round",
+    "target_enemy": "dyke_warden",
+    "needed": 1,
+    "reward_gold": 700,
+    "cleanse_required": 2,
+    "completion_condition": "killed_in_one_round",
+    "flavor": "A dyke-warden ended in one round. The old water-keepers did it this way to spare the bystanders the noise."
+  },
+  "cc_fled_then_returned_climb": {
+    "name": "Flee, Then Return — Above the Snowline",
+    "target_enemy": "ashen_penitent",
+    "needed": 1,
+    "reward_gold": 900,
+    "cleanse_required": 5,
+    "completion_condition": "fled_then_returned",
+    "flavor": "A Penitent. Flee the first encounter. Return. End him. The Climb respects the trick of leaving more than the trick of staying."
+  },
+  "cc_no_damage_chairman": {
+    "name": "Untouched Against the Chairman",
+    "target_enemy": "the_chairman",
+    "needed": 1,
+    "reward_gold": 1100,
+    "cleanse_required": 4,
+    "completion_condition": "no_damage_taken",
+    "flavor": "The Chairman. End him without a scratch on you. The sealed chamber will be sealed differently after."
+  },
+  "cc_status_cleared_holds": {
+    "name": "Walk Clean from the Holds",
+    "target_enemy": "doorshut",
+    "needed": 2,
+    "reward_gold": 400,
+    "cleanse_required": 1,
+    "completion_condition": "status_cleared",
+    "flavor": "Two doorshuts. When you walk out, no status clings to you. The Holds measure who came through clean."
+  },
+  "cc_crit_killing_blow_climb": {
+    "name": "The Climber's Critical at the Step",
+    "target_enemy": "stone_golem",
+    "needed": 1,
+    "reward_gold": 700,
+    "cleanse_required": 4,
+    "completion_condition": "critical_killing_blow",
+    "flavor": "A stone-golem at the step. End it with a critical killing blow. The Climb's old grandmasters did it this way."
+  },
+  "cc_full_stamina_choir": {
+    "name": "Walk the Choir With Full Breath",
+    "target_enemy": "choirmaster_effigy",
+    "needed": 1,
+    "reward_gold": 600,
+    "cleanse_required": 4,
+    "completion_condition": "kept_full_stamina",
+    "flavor": "An effigy. End it without spending a single point of stamina. The Choir respects climbers who keep their breath whole."
+  },
+  "cc_no_abilities_pallid_stag": {
+    "name": "Honest Steel Against the Stag",
+    "target_enemy": "pallid_stag",
+    "needed": 1,
+    "reward_gold": 1100,
+    "cleanse_required": 2,
+    "completion_condition": "used_no_abilities",
+    "flavor": "The Pallid Stag. Sword and feet only. The Witherwood's first hunters did it this way."
+  },
+  "cc_thrown_lurcher": {
+    "name": "Thrown Against the Lurcher",
+    "target_enemy": "bog_lurcher",
+    "needed": 1,
+    "reward_gold": 500,
+    "cleanse_required": 2,
+    "completion_condition": "killed_with_thrown",
+    "flavor": "A lurcher. Killed with a thrown weapon — no swung metal. The Reach's old hunters did it this way for the lurchers they had no quarrel with."
+  },
+  "cc_pet_assist_silt": {
+    "name": "Let the Pet Bring the Silt-Drowners Down II",
+    "target_enemy": "silt_drowner",
+    "needed": 3,
+    "reward_gold": 500,
+    "cleanse_required": 1,
+    "completion_condition": "pet_assisted",
+    "flavor": "Three silt-drowners. Your pet lands the drop-below-half blow on each. The Reach respects the pet's footwork."
+  },
+  "cc_low_hp_devoured": {
+    "name": "An Honest Fight at the Last Hour",
+    "target_enemy": "devoured_captain",
+    "needed": 1,
+    "reward_gold": 1000,
+    "cleanse_required": 4,
+    "completion_condition": "killed_while_low_hp",
+    "flavor": "The Devoured Captain ended while you are at the last hour of your hp. The old captains did it this way for the captains they had loved once."
+  },
+  "cc_dodging_then_killing_gullet": {
+    "name": "Dodge, Then Strike",
+    "target_enemy": "cave_troll",
+    "needed": 2,
+    "reward_gold": 600,
+    "cleanse_required": 2,
+    "completion_condition": "killed_after_dodging",
+    "flavor": "Two cave-trolls. Each killing blow lands on a turn after you dodged. The kingdom's old rangers did it this way."
+  },
+  "cc_stun_killing_blow_bandit": {
+    "name": "End the Bandits While Stunned",
+    "target_enemy": "bandit",
+    "needed": 3,
+    "reward_gold": 400,
+    "cleanse_required": 0,
+    "completion_condition": "killed_during_stun",
+    "flavor": "Three bandits. Each killing blow lands while the bandit is stunned. The kingdom's old patrolmen did it this way."
+  },
+  "cc_no_healing_red_beard": {
+    "name": "Refuse Healing in the Holds",
+    "target_enemy": "red_beard",
+    "needed": 1,
+    "reward_gold": 600,
+    "cleanse_required": 2,
+    "completion_condition": "no_healing_received",
+    "flavor": "A Red Beard. No healing received — no potion, no companion, nothing. The Holds' old guards did it this way for the bargain."
+  },
+  "cc_unarmed_kill_doorshut": {
+    "name": "Unarmed Against the Doorshut",
+    "target_enemy": "doorshut",
+    "needed": 1,
+    "reward_gold": 500,
+    "cleanse_required": 1,
+    "completion_condition": "unarmed_kill",
+    "flavor": "A doorshut. End it with no weapon equipped. The Holds' old fighters did it this way for the doorshuts they had loved once."
+  },
+  "cc_named_at_death_giant_bat": {
+    "name": "Name the Bats at Death",
+    "target_enemy": "giant_bat",
+    "needed": 4,
+    "reward_gold": 500,
+    "cleanse_required": 0,
+    "completion_condition": "named_them_at_death",
+    "flavor": "Four giant bats. Speak each one's true name as the killing blow lands. The wood's old hunters knew the names.",
+    "reward_marks": [
+      "forgot_smell_of_pine"
+    ]
   }
 }
