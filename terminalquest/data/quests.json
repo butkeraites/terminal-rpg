@@ -1661,5 +1661,199 @@
     ],
     "reward_chronicle_line": "A cleric walked the Burned Library and gave three of its wardens a funeral. The clerks who served before would have nodded.",
     "flavor": "Three wardens. Only a cleric can give them the funeral the clerks were owed. End them. Lay them down properly."
+  },
+  "wynne_devoured_captain": {
+    "name": "The Devoured Captain Will Eat No More",
+    "target_enemy": "devoured_captain",
+    "needed": 1,
+    "reward_gold": 1200,
+    "cleanse_required": 4,
+    "reward_chronicle_line": "They walked Wynne's silent camp and ended the Devoured Captain who had been eating his own to feed the Pall.",
+    "flavor": "He was Wynne's captain. The Pall took his appetite first. End him. The camp will be silent the way camps are meant to be."
+  },
+  "wynne_cooking_fire_callback": {
+    "name": "After Wynne's Cooking Fire Stayed Warm",
+    "target_enemy": "devoured_captain",
+    "needed": 1,
+    "reward_gold": 900,
+    "cleanse_required": 3,
+    "requires_mark": "border_wynne_a_cooking_fire_stayed_warm_for_you",
+    "reward_marks": [
+      "border_wynne_a_friend_camped_here_once"
+    ],
+    "flavor": "A cooking fire at Wynne's stayed warm for you, once. The Captain remembers. End him. The fire will be a fire."
+  },
+  "wynne_after_emissary_letter": {
+    "name": "After the Emissary Left a Letter at Wynne's",
+    "target_enemy": "devoured_captain",
+    "needed": 1,
+    "reward_gold": 1000,
+    "cleanse_required": 3,
+    "requires_mark": "border_wynne_an_emissary_left_a_letter_for_you",
+    "reward_chronicle_line": "An emissary had left a letter at Wynne's silent camp once; the climber returned, ended the Devoured Captain, and the letter was finally allowed to be read.",
+    "flavor": "The emissary's letter was waiting for you, behind the Captain. End the Captain. The letter has been waiting too long."
+  },
+  "margrave_censor_ends_the_censoring": {
+    "name": "The Margrave Censor Must Read No Names",
+    "target_enemy": "margrave_censor",
+    "needed": 1,
+    "reward_gold": 1300,
+    "cleanse_required": 4,
+    "reward_chronicle_line": "They walked the Margrave's Monument and ended the Censor who had been crossing out names from the kingdom's own census for a hundred winters.",
+    "flavor": "He has been crossing names off the kingdom's own list. End him. The names he had not yet crossed will keep their letters."
+  },
+  "margrave_after_real_census": {
+    "name": "After You Read the Real Census",
+    "target_enemy": "margrave_censor",
+    "needed": 1,
+    "reward_gold": 1100,
+    "cleanse_required": 4,
+    "requires_discovery": [
+      "margrave_real_census"
+    ],
+    "reward_marks": [
+      "border_margrave_a_petition_was_left_for_you_to_judge"
+    ],
+    "flavor": "The real census names the climber the Margrave is afraid of. End the Margrave. The fear was justified, briefly."
+  },
+  "margrave_after_seal": {
+    "name": "After His Seal Stayed Warm Under Your Palm",
+    "target_enemy": "margrave_censor",
+    "needed": 1,
+    "reward_gold": 1200,
+    "cleanse_required": 4,
+    "requires_mark": "border_margrave_seal_kept_warm_under_your_palm",
+    "reward_marks": [
+      "border_margrave_a_dead_lord_thanked_you"
+    ],
+    "flavor": "His seal stayed warm under your palm. The Margrave knows the warmth. End him. The seal will know to whom it now belongs."
+  },
+  "shrine_keeper_three": {
+    "name": "End the Shrine Keeper's Watch",
+    "target_enemy": "shrine_keeper",
+    "needed": 3,
+    "reward_gold": 1500,
+    "cleanse_required": 4,
+    "reward_chronicle_line": "They walked the Pre-Pall Shrine and ended the Keeper three times — for the first king, for the first verse, and for the first climber's handprint.",
+    "flavor": "He has been keeping the shrine since before the Pall — since before the kingdom had a name to lose. End his keeping. Three times. He returns each time."
+  },
+  "shrine_after_verren_fragment": {
+    "name": "After You Held Verren's Fragment",
+    "target_enemy": "shrine_keeper",
+    "needed": 1,
+    "reward_gold": 1100,
+    "cleanse_required": 4,
+    "requires_discovery": [
+      "verren_fragment"
+    ],
+    "reward_marks": [
+      "children_a_child_promised_to_be_a_climber_too"
+    ],
+    "flavor": "Verren's fragment names the Keeper as one who served before her. End him. Verren's fragment is owed a count of silence."
+  },
+  "shrine_after_first_kings_pommel": {
+    "name": "After You Took the First King's Pommel",
+    "target_enemy": "shrine_keeper",
+    "needed": 1,
+    "reward_gold": 1300,
+    "cleanse_required": 4,
+    "requires_discovery": [
+      "first_kings_pommel"
+    ],
+    "reward_consumables": [
+      "The Last Bread",
+      "The Last Bread"
+    ],
+    "flavor": "The first king's pommel is small in your palm. The Keeper recognizes the weight. End him. The pommel will not be lost."
+  },
+  "shrine_after_handprint": {
+    "name": "After You Saw the First Climber's Handprint",
+    "target_enemy": "shrine_keeper",
+    "needed": 1,
+    "reward_gold": 1400,
+    "cleanse_required": 4,
+    "requires_discovery": [
+      "first_climbers_handprint"
+    ],
+    "reward_marks": [
+      "penitent_handprint_under_yours"
+    ],
+    "reward_chronicle_line": "They saw the first climber's handprint at the Pre-Pall Shrine and ended the Keeper. The handprint had been waiting for a second handprint to be set above it.",
+    "flavor": "The first climber's handprint is in the stone. End the Keeper. Set your hand. The print under yours will know."
+  },
+  "summit_after_warden_ending": {
+    "name": "Return to the Summit, After the Warden",
+    "target_enemy": "shadow_warden",
+    "needed": 1,
+    "reward_gold": 2000,
+    "cleanse_required": 5,
+    "requires_ending": [
+      "warden"
+    ],
+    "reward_chronicle_line": "Once they had once become the Warden, a previous one of them returned to the Summit and ended their own previous self — and the Pall blinked, briefly.",
+    "flavor": "Once you have once become the Warden, a previous you keeps the Summit. End them. The Pall blinks. The blink is enough."
+  },
+  "summit_after_purify_ending": {
+    "name": "Return to the Summit, After the Purify",
+    "target_enemy": "shadow_warden",
+    "needed": 1,
+    "reward_gold": 2200,
+    "cleanse_required": 5,
+    "requires_ending": [
+      "purify"
+    ],
+    "reward_marks": [
+      "summit_climb_taught_you_a_name_you_already_knew"
+    ],
+    "flavor": "Once you have purified Mournhold, the Warden at the Summit is the kingdom's own self standing in for the Pall. End them. The kingdom will know its own face."
+  },
+  "hidden_shrine_first_visit": {
+    "name": "The Shrine Has Been Waiting",
+    "target_enemy": "shrine_keeper",
+    "needed": 1,
+    "reward_gold": 800,
+    "cleanse_required": 0,
+    "hidden": true,
+    "trigger_action": {
+      "type": "zone_visited",
+      "params": {
+        "zone_id": "pre_pall_shrine"
+      }
+    },
+    "reward_marks": [
+      "lamp2_gave_you_oil_for_the_climb"
+    ],
+    "flavor": "The Pre-Pall Shrine has been waiting since before the Pall. The Keeper turns his head when you cross the threshold. End him. The Shrine will be older than you again."
+  },
+  "margrave_unarmed_kill": {
+    "name": "The Margrave, Unarmed",
+    "target_enemy": "margrave_censor",
+    "completion_condition": "unarmed_kill",
+    "needed": 1,
+    "reward_gold": 1500,
+    "cleanse_required": 4,
+    "flavor": "End the Margrave with no weapon equipped. The kingdom's old censors were ended this way when they had crossed too many."
+  },
+  "wynne_first_strike": {
+    "name": "First Strike at Wynne's",
+    "target_enemy": "devoured_captain",
+    "completion_condition": "first_strike_yours",
+    "needed": 1,
+    "reward_gold": 1000,
+    "cleanse_required": 4,
+    "flavor": "End the Devoured Captain after striking first. The Pall hates anyone who strikes before being struck."
+  },
+  "reborn_summit_keeper_remembers": {
+    "name": "A Previous You Climbed Here Once",
+    "target_enemy": "shadow_warden",
+    "needed": 1,
+    "reward_gold": 1500,
+    "cleanse_required": 5,
+    "requires_flag": "is_reborn",
+    "reward_marks": [
+      "summit_climb_taught_you_a_name_you_already_knew"
+    ],
+    "reward_chronicle_line": "A previous one of them had finished the climb. The Summit recognized their step. They ended the Warden the way previous selves had once been ended.",
+    "flavor": "A previous you climbed here. The Summit knows your step. End the Warden. The climb will know the name the previous you carried."
   }
 }
