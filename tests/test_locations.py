@@ -1172,9 +1172,11 @@ def test_hidden_quest_pins_when_mark_fired(content, tmp_path):
     player = _player(content)
     state = make_state(player, content, ScriptedIO(), StubRandom(),
                        chronicle_dir=tmp_path)
-    # No mark — scanner doesn't pin.
-    assert locations.scan_hidden_quest_triggers(state) == []
-    # Add the mark — scanner pins.
+    # No mark — scanner doesn't pin OUR test quest. (Other authored hidden
+    # quests may pin from the default state — that's fine.)
+    pinned = locations.scan_hidden_quest_triggers(state)
+    assert "mark_triggered_q" not in pinned
+    # Add the mark — scanner pins ours.
     player.marks.append(real_mark)
     pinned = locations.scan_hidden_quest_triggers(state)
     assert "mark_triggered_q" in pinned
@@ -1190,7 +1192,8 @@ def test_hidden_quest_pins_when_flag_set(content, tmp_path):
     player = _player(content)
     state = make_state(player, content, ScriptedIO(), StubRandom(),
                        chronicle_dir=tmp_path)
-    assert locations.scan_hidden_quest_triggers(state) == []
+    pinned = locations.scan_hidden_quest_triggers(state)
+    assert "flag_triggered_q" not in pinned
     state.flags["lost_verse_known"] = True
     pinned = locations.scan_hidden_quest_triggers(state)
     assert "flag_triggered_q" in pinned

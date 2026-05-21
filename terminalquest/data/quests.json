@@ -7488,5 +7488,380 @@
     "reward_marks": [
       "mourncross_an_unnamed_grave_called_your_name"
     ]
+  },
+  "ph_hireling_real_name": {
+    "name": "After the Hireling Told You Their Real Name",
+    "target_enemy": "bandit",
+    "needed": 3,
+    "reward_gold": 400,
+    "cleanse_required": 0,
+    "requires_mark": "hireling_told_you_their_real_name",
+    "flavor": "Your hireling told you their real name. Three bandits had hoped to use it as leverage. End them. The name stays a gift."
+  },
+  "ph_hireling_blow_for_you": {
+    "name": "After the Hireling Took a Blow for You",
+    "target_enemy": "ashen_penitent",
+    "needed": 1,
+    "reward_gold": 1100,
+    "cleanse_required": 4,
+    "requires_mark": "hireling_took_a_blow_meant_for_you",
+    "flavor": "Your hireling took a blow meant for you once. A Penitent above the snowline knew the blow. End him. The hireling lives."
+  },
+  "ph_hireling_blind_side": {
+    "name": "After the Hireling Walked at Your Blind Side",
+    "target_enemy": "bog_lurcher",
+    "needed": 2,
+    "reward_gold": 500,
+    "cleanse_required": 2,
+    "requires_mark": "hireling_walked_at_your_blind_side",
+    "flavor": "Your hireling walked at your blind side. Two bog-lurchers had been hoping the side stayed blind. End them."
+  },
+  "ph_hireling_grip": {
+    "name": "After the Hireling Taught You a Grip",
+    "target_enemy": "stone_golem",
+    "needed": 1,
+    "reward_gold": 1200,
+    "cleanse_required": 5,
+    "requires_mark": "hireling_taught_you_a_grip",
+    "flavor": "Your hireling taught you a grip the kingdom's old fighters used. A stone-golem above the snowline tests it. End him with the grip."
+  },
+  "ph_hireling_drank_with_you": {
+    "name": "After the Hireling Drank With You",
+    "target_enemy": "bandit",
+    "needed": 2,
+    "reward_gold": 350,
+    "cleanse_required": 0,
+    "requires_mark": "hireling_drank_with_you_for_the_first_time",
+    "flavor": "Your hireling drank with you for the first time. Two bandits had thought the hireling would be alone. End them."
+  },
+  "ph_hireling_pendant": {
+    "name": "After the Hireling Left a Pendant",
+    "target_enemy": "doorshut",
+    "needed": 3,
+    "reward_gold": 450,
+    "cleanse_required": 1,
+    "requires_mark": "hireling_left_their_pendant_in_your_pack",
+    "flavor": "Your hireling left a pendant in your pack. Three doorshuts in the Holds noticed the weight. End them."
+  },
+  "ph_fallen_hireling_inn": {
+    "name": "After a Fallen Hireling Was Recognized at an Inn",
+    "target_enemy": "wolf",
+    "needed": 4,
+    "reward_gold": 500,
+    "cleanse_required": 0,
+    "requires_mark": "fallen_hireling_was_recognized_at_an_inn",
+    "flavor": "A fallen hireling of yours was recognized at an inn. Four wolves of the road that took them are still out there. End them."
+  },
+  "ph_fallen_hireling_chronicle": {
+    "name": "After a Fallen Hireling Was Added to the Chronicle",
+    "target_enemy": "hollow_procession",
+    "needed": 1,
+    "reward_gold": 700,
+    "cleanse_required": 3,
+    "requires_mark": "fallen_hireling_was_added_to_the_chronicle",
+    "flavor": "A fallen hireling of yours is named in the Chronicle. One of the procession holds an echo of the name. End them. The name stays.",
+    "reward_chronicle_line": "A hireling who had fallen had been written into the Chronicle; one of the procession holding the echo fell to the next walk."
+  },
+  "ph_ash_hound_killed": {
+    "name": "After the Ash Hound Killed for You",
+    "target_enemy": "wolf",
+    "needed": 3,
+    "reward_gold": 400,
+    "cleanse_required": 0,
+    "requires_mark": "pet_ash_hound_killed_for_you",
+    "flavor": "The ash hound killed for you. Three wolves had been considering the ash hound prey. End them. The hound holds."
+  },
+  "ph_ash_hound_followed_grief": {
+    "name": "After the Ash Hound Followed Your Grief",
+    "target_enemy": "hollow_procession",
+    "needed": 1,
+    "reward_gold": 600,
+    "cleanse_required": 3,
+    "requires_mark": "pet_ash_hound_followed_your_grief",
+    "flavor": "The ash hound followed your grief. One of the procession noticed the following. End it. The grief stays followed."
+  },
+  "ph_ash_hound_warmed": {
+    "name": "After the Ash Hound Warmed Your Boots",
+    "target_enemy": "ice_wraith",
+    "needed": 2,
+    "reward_gold": 500,
+    "cleanse_required": 4,
+    "requires_mark": "pet_ash_hound_warmed_your_boots",
+    "flavor": "The ash hound warmed your boots. Two ice-wraiths above the snowline noticed the warmer step. End them."
+  },
+  "ph_magpie_warned": {
+    "name": "After the Magpie Warned You at the Worst Beat",
+    "target_enemy": "bandit",
+    "needed": 1,
+    "reward_gold": 400,
+    "cleanse_required": 0,
+    "requires_mark": "pet_magpie_warned_you_at_the_worst_beat",
+    "flavor": "The magpie warned you at the worst beat. A bandit had counted on the best one. End him."
+  },
+  "ph_magpie_said_word": {
+    "name": "After the Magpie Said a Word",
+    "target_enemy": "pall_magistrate",
+    "needed": 1,
+    "reward_gold": 600,
+    "cleanse_required": 3,
+    "requires_mark": "pet_magpie_said_a_word",
+    "flavor": "The magpie said a word that was almost yours. A magistrate in Mourncross took the word as evidence. End him."
+  },
+  "ph_pricklehog_kitchen": {
+    "name": "After the Pricklehog Warmed a Kitchen",
+    "target_enemy": "doorshut",
+    "needed": 2,
+    "reward_gold": 400,
+    "cleanse_required": 1,
+    "requires_mark": "pet_pricklehog_warmed_a_kitchen_for_you",
+    "flavor": "The pricklehog warmed a kitchen for you. Two doorshuts had hoped to close on the warmth. End them."
+  },
+  "ph_reborn_hireling": {
+    "name": "A Hireling Who Walked With a Previous You",
+    "target_enemy": "bandit",
+    "needed": 1,
+    "reward_gold": 700,
+    "cleanse_required": 1,
+    "requires_mark": "reborn_a_hireling_who_walked_with_you_before",
+    "flavor": "A hireling who had walked with a previous you recognizes your gait. A bandit on the road has been waiting for the recognition. End him."
+  },
+  "ph_reborn_pet_recognized": {
+    "name": "A Pet Recognized You at the Pen",
+    "target_enemy": "wolf",
+    "needed": 2,
+    "reward_gold": 500,
+    "cleanse_required": 0,
+    "requires_mark": "reborn_a_pet_recognized_you_at_the_pen",
+    "flavor": "A pet at the pen recognized you across runs. Two wolves of the wood had been considering the pet a target. End them.",
+    "reward_chronicle_line": "A pet at the Gravewatch pen had recognized them across runs; the wolves that had eyed it fell."
+  },
+  "ph_reborn_pet_name": {
+    "name": "After You Named a Pet a Name You Had Used Before",
+    "target_enemy": "wolf",
+    "needed": 3,
+    "reward_gold": 400,
+    "cleanse_required": 0,
+    "requires_mark": "reborn_you_named_a_pet_in_a_name_you_already_had_used",
+    "flavor": "You named a pet with a name a previous you had used. Three wolves of the wood knew the older bearer of the name. End them."
+  },
+  "ph_forgot_first_pet": {
+    "name": "After You Forgot the Name of Your First Pet",
+    "target_enemy": "bonesong",
+    "needed": 2,
+    "reward_gold": 500,
+    "cleanse_required": 1,
+    "requires_mark": "forgot_the_name_of_your_first_pet",
+    "flavor": "You forgot the name of your first pet. Two bonesongs in the Holds had eaten the name. End them. The name will be in air again, briefly."
+  },
+  "cr_hub_first_arrival": {
+    "name": "The Crossroads' First Recognition",
+    "target_enemy": "wolf",
+    "needed": 2,
+    "reward_gold": 200,
+    "cleanse_required": 0,
+    "hidden": true,
+    "trigger_action": {
+      "type": "zone_visited",
+      "params": {
+        "zone_id": "crossroads"
+      }
+    },
+    "reward_marks": [
+      "crossroads_your_shadow_was_one_count_late"
+    ],
+    "flavor": "Your first step at the Crossroads — your shadow was late by one count. Two wolves of the wood noticed. End them."
+  },
+  "cr_hub_shadow_late": {
+    "name": "After Your Shadow Was Late at the Crossroads",
+    "target_enemy": "bandit",
+    "needed": 3,
+    "reward_gold": 350,
+    "cleanse_required": 0,
+    "requires_mark": "crossroads_your_shadow_was_one_count_late",
+    "flavor": "Once your shadow was late at the Crossroads. Three bandits on the road had been waiting for the late shadow. End them."
+  },
+  "cr_hub_road_lamp_arrival": {
+    "name": "After a Lamp Came On at Your Arrival",
+    "target_enemy": "bandit",
+    "needed": 2,
+    "reward_gold": 250,
+    "cleanse_required": 0,
+    "requires_mark": "road_a_lamp_came_on_at_your_arrival",
+    "reward_marks": [
+      "lamp2_gave_you_oil_for_the_climb"
+    ],
+    "flavor": "A lamp came on at your arrival once. Two bandits had hoped to arrive in the dark. End them. The lamp stays lit."
+  },
+  "cr_hub_save_lamp": {
+    "name": "After the Save-Lamp Set Itself",
+    "target_enemy": "wolf",
+    "needed": 2,
+    "reward_gold": 300,
+    "cleanse_required": 0,
+    "requires_mark": "save_the_lamp_at_the_save_place_set_itself",
+    "flavor": "The lamp at the save-place set itself once. Two wolves of the wood had been the surprise. End them."
+  },
+  "cr_hub_traveler_returns": {
+    "name": "The Traveler Returns to the Crossroads",
+    "target_enemy": "bandit",
+    "needed": 4,
+    "reward_gold": 400,
+    "cleanse_required": 1,
+    "requires_flag": "is_reborn",
+    "flavor": "A Reborn climber arrives at the Crossroads. Four bandits had hoped to test the returner. End them.",
+    "reward_chronicle_line": "A Reborn climber arrived at the Crossroads; four bandits who would have tested the returner fell at the wood's edge."
+  },
+  "ft_after_chronicle_full": {
+    "name": "The Forgotten Thing II",
+    "target_enemy": "the_forgotten_thing",
+    "needed": 1,
+    "reward_gold": 1700,
+    "cleanse_required": 4,
+    "requires_mark": "first_grey_hair_came_in",
+    "flavor": "The Pall forgot one of its own. The thing waits, older than you remembered. End it again. The Pall still will not notice."
+  },
+  "ft_after_purify": {
+    "name": "The Forgotten Thing, After the Purify",
+    "target_enemy": "the_forgotten_thing",
+    "needed": 1,
+    "reward_gold": 1800,
+    "cleanse_required": 4,
+    "requires_ending": [
+      "purify"
+    ],
+    "reward_chronicle_line": "Once they had purified the kingdom, the thing the Pall had forgotten was already half-gone; they ended the rest.",
+    "flavor": "After the Purify, the forgotten thing is half-gone — the kingdom is remembering itself again. End the rest."
+  },
+  "ft_no_damage_taken": {
+    "name": "The Forgotten Thing, Untouched",
+    "target_enemy": "the_forgotten_thing",
+    "completion_condition": "no_damage_taken",
+    "needed": 1,
+    "reward_gold": 1500,
+    "cleanse_required": 4,
+    "flavor": "The forgotten thing. End it without a scratch on you. The Pall will not notice the cleanness either."
+  },
+  "ft_named_at_death": {
+    "name": "Name the Forgotten Thing as It Falls",
+    "target_enemy": "the_forgotten_thing",
+    "completion_condition": "named_them_at_death",
+    "needed": 1,
+    "reward_gold": 1600,
+    "cleanse_required": 4,
+    "flavor": "Speak the name the kingdom had given the thing — the name the kingdom then forgot. It falls in the speaking.",
+    "reward_marks": [
+      "holds_doorpost_remembered_a_name"
+    ]
+  },
+  "cr_walked_thrice": {
+    "name": "After You Walked the Crossroads Three Times",
+    "target_enemy": "bandit",
+    "needed": 6,
+    "reward_gold": 700,
+    "cleanse_required": 2,
+    "requires_marks": [
+      "crossroads_your_shadow_was_one_count_late",
+      "road_a_lamp_came_on_at_your_arrival"
+    ],
+    "flavor": "Twice the Crossroads marked you. Six bandits on the road had been counting. End them. The third walk will be cleaner.",
+    "reward_marks": [
+      "save_the_lamp_at_the_save_place_set_itself"
+    ]
+  },
+  "cr_hub_after_three_endings": {
+    "name": "After You Have Walked the Kingdom in Three Ways",
+    "target_enemy": "shadow_warden",
+    "needed": 1,
+    "reward_gold": 3000,
+    "cleanse_required": 5,
+    "requires_ending": [
+      "purify",
+      "warden",
+      "old_seal"
+    ],
+    "reward_chronicle_line": "They had walked Mournhold in three ways across runs — purified, warded, sealed — and at the Crossroads on their fourth arrival, they ended the Shadow Warden one last time.",
+    "flavor": "Three endings sit in the Chronicle. The Crossroads' lamp has been on for you since arrival. End the Shadow Warden — the kingdom has been waiting for this exact climber.",
+    "reward_marks": [
+      "summit_warden_old_step_remembered_you"
+    ]
+  },
+  "cr_companion_panic": {
+    "name": "After the Companion Walked You Through a Panic",
+    "target_enemy": "bandit",
+    "needed": 2,
+    "reward_gold": 400,
+    "cleanse_required": 0,
+    "requires_mark": "companion_walked_you_through_a_panic",
+    "reward_marks": [
+      "companion_taught_you_to_sleep_lighter"
+    ],
+    "flavor": "Your sworn walked you through a panic once. Two bandits had noticed the breathing change. End them."
+  },
+  "cr_pall_studied_companion": {
+    "name": "After the Pall Studied Your Companion",
+    "target_enemy": "ashen_penitent",
+    "needed": 1,
+    "reward_gold": 1300,
+    "cleanse_required": 5,
+    "requires_mark": "pall_studied_your_companion_with_interest",
+    "reward_chronicle_line": "The Pall had studied a sworn of theirs with interest; a Penitent above the snowline had also been studying. The Penitent fell first.",
+    "flavor": "The Pall studied your companion with interest. A Penitent above the snowline studied too. End him."
+  },
+  "cr_pall_did_not_take_name": {
+    "name": "After the Pall Did Not Take Your Companion's Name",
+    "target_enemy": "shadow_warden",
+    "needed": 1,
+    "reward_gold": 2400,
+    "cleanse_required": 5,
+    "requires_mark": "pall_did_not_take_your_companions_name",
+    "flavor": "The Pall did not take your companion's name. The Shadow Warden at the Summit cannot understand the refusal. End him.",
+    "reward_marks": [
+      "companion_named_a_star_for_you"
+    ]
+  },
+  "cr_reborn_companion_chronicle": {
+    "name": "A Reborn Chronicle Held Your Companion's Name",
+    "target_enemy": "pall_magistrate",
+    "needed": 1,
+    "reward_gold": 1500,
+    "cleanse_required": 3,
+    "requires_marks": [
+      "reborn_chronicle_held_your_companions_name_too"
+    ],
+    "reward_chronicle_line": "A previous Chronicle had held the sworn's name across runs; a magistrate in Mourncross had tried to scratch it out, and fell in the trying.",
+    "flavor": "A Chronicle across runs held your companion's name. A magistrate in Mourncross tried to scratch the name out. End him."
+  },
+  "br2_after_lookout_remembered_ii": {
+    "name": "After the Karst Lookout Remembered You II",
+    "target_enemy": "shrine_keeper",
+    "needed": 1,
+    "reward_gold": 1200,
+    "cleanse_required": 4,
+    "requires_marks": [
+      "border_karst_lookout_remembered_you"
+    ],
+    "flavor": "The Karst lookout remembered you twice now. The Pre-Pall Shrine Keeper noticed the remembering. End him."
+  },
+  "br2_three_borders_open": {
+    "name": "After the Border Air Changed II",
+    "target_enemy": "shadow_warden",
+    "needed": 1,
+    "reward_gold": 2600,
+    "cleanse_required": 5,
+    "requires_mark": "the_border_air_changed_when_you_crossed",
+    "requires_ending": [
+      "other_mournhold"
+    ],
+    "reward_chronicle_line": "Across runs, the Border air had changed; the Other Mournhold had been glimpsed. At the Summit, the Shadow Warden ended for the doubled crossing.",
+    "flavor": "Across runs, the Border air changed for you. The Other Mournhold has been glimpsed. End the Warden at the Summit."
+  },
+  "br2_emissary_gravewatch": {
+    "name": "After an Emissary Was at Gravewatch",
+    "target_enemy": "bandit",
+    "needed": 3,
+    "reward_gold": 450,
+    "cleanse_required": 1,
+    "requires_mark": "border_wynne_an_emissary_left_a_letter_for_you",
+    "flavor": "An emissary left a letter at Gravewatch. Three bandits on the road tried to intercept a reply. End them."
   }
 }
