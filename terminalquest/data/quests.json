@@ -4862,5 +4862,225 @@
     "requires_mark": "summit_you_left_a_button_at_the_step",
     "reward_chronicle_line": "Once they had left a button at the Summit step, the Penitent at the upper stone could not refuse them. They ended him.",
     "flavor": "Once you left a button at the Summit step. The Penitent knows the gesture. End him. The button stays."
+  },
+  "gw_after_insomniac_named_you": {
+    "name": "After the Insomniac Counted You",
+    "target_enemy": "bandit",
+    "needed": 2,
+    "reward_gold": 280,
+    "cleanse_required": 0,
+    "requires_discovery": [
+      "insomniac_tally"
+    ],
+    "reward_marks": [
+      "the_insomniac_lent_you_her_count"
+    ],
+    "flavor": "The Insomniac of Gravewatch counted you among the dark marks — the climbers who came back this winter. Two bandits on the road do not know she counts. End them. She will know the count was right."
+  },
+  "gw_after_insomniac_red_mark": {
+    "name": "The Red Mark in the Middle of the Beam",
+    "target_enemy": "wolf",
+    "needed": 3,
+    "reward_gold": 320,
+    "cleanse_required": 0,
+    "requires_discovery": [
+      "insomniac_tally"
+    ],
+    "requires_quest": [
+      "gw_after_insomniac_named_you"
+    ],
+    "chain_next": "gw_after_insomniac_long_line",
+    "flavor": "The Insomniac's red marks are climbers she does not know yet — have-not-come-back, but have-not-stopped-not-coming-back. Three wolves are why one of those climbers has not come back yet. End them. The red mark will turn one shade darker."
+  },
+  "gw_after_insomniac_long_line": {
+    "name": "The Long Black Line",
+    "target_enemy": "goblin",
+    "needed": 4,
+    "reward_gold": 360,
+    "cleanse_required": 0,
+    "requires_discovery": [
+      "insomniac_tally"
+    ],
+    "requires_quest": [
+      "gw_after_insomniac_red_mark"
+    ],
+    "reward_marks": [
+      "insomniac_taught_you_to_count_too"
+    ],
+    "flavor": "The long black line on the Insomniac's beam is the nights she has not slept. Four goblins, by their noise outside her window, are why the line is one count taller than it would be. End them. The line will stop where it is, for one night."
+  },
+  "gw_insomniac_blue_cat": {
+    "name": "The Cat on the Windowsill",
+    "target_enemy": "wolf",
+    "needed": 2,
+    "reward_gold": 220,
+    "cleanse_required": 0,
+    "requires_discovery": [
+      "insomniac_tally"
+    ],
+    "flavor": "The Insomniac has counted five blue marks for the same cat she thinks were different cats. Two wolves are why the cat does not come to the sill anymore. End them. The cat will be a sixth blue mark next week."
+  },
+  "gw_smith_quenched_for_you": {
+    "name": "After the Smith Quenched a Blade for You to See",
+    "target_enemy": "bandit",
+    "needed": 3,
+    "reward_gold": 400,
+    "cleanse_required": 0,
+    "requires_mark": "village_smith_quenched_for_you",
+    "reward_marks": [
+      "the_wood_held_its_breath_for_you"
+    ],
+    "flavor": "Gravewatch's smith held a blade in the trough a count too long for you to see. The lesson took. Three bandits on the road will learn the quench from your hand. End them. The smith will not say. She will know."
+  },
+  "gw_smith_first_upgrade_bandits": {
+    "name": "Bandits on the Road, the Day the Smith Took Your Coin",
+    "target_enemy": "bandit",
+    "needed": 3,
+    "reward_gold": 350,
+    "cleanse_required": 0,
+    "requires_flag": "first_smith_upgrade",
+    "flavor": "The smith took your coin and bent the metal. Three bandits on the road heard the coin clink. They want it back. They will not have it. End them. The bent metal was worth the noise."
+  },
+  "gw_hearthkeeper_bread_bowl": {
+    "name": "Bread for the Hearth, Wolves Off the Sheep",
+    "target_enemy": "wolf",
+    "needed": 5,
+    "reward_gold": 350,
+    "cleanse_required": 0,
+    "requires_discovery": [
+      "hearthkeepers_book"
+    ],
+    "reward_consumables": [
+      "The Last Bread"
+    ],
+    "flavor": "The Hearthkeeper bakes by the count of sheep the wolves leave her. Five wolves have made her short of mutton-fat for the loaves this winter. End them. The bread will rise the way it used to."
+  },
+  "gw_hearthkeeper_no_potions": {
+    "name": "Bread Is Enough — No Potions in the Wood",
+    "target_enemy": "goblin",
+    "completion_condition": "no_potions_in_zone",
+    "needed": 3,
+    "reward_gold": 450,
+    "cleanse_required": 0,
+    "requires_discovery": [
+      "hearthkeepers_book"
+    ],
+    "reward_marks": [
+      "hearthkeeper_set_you_extra_bread"
+    ],
+    "flavor": "The Hearthkeeper packs three rounds of bread for the wood, the day you tell her you will not carry potions. End three goblins in the wood without uncorking a single flask. The bread will be enough. She would say so, if she said anything."
+  },
+  "gw_hearthkeeper_limp_remembered": {
+    "name": "The Limp the Hearthkeeper Noticed",
+    "target_enemy": "bandit",
+    "needed": 2,
+    "reward_gold": 320,
+    "cleanse_required": 0,
+    "requires_mark": "hearthkeeper_noticed_your_limp",
+    "flavor": "The Hearthkeeper moved your cup an inch for your bad leg. Two bandits on the road know the limp and think it is a weakness. End them. The cup will be where it should be tomorrow."
+  },
+  "gw_lamp2_you_lit_a_lamp": {
+    "name": "After You Lit One of the Crossroads Lamps",
+    "target_enemy": "bandit",
+    "needed": 3,
+    "reward_gold": 450,
+    "cleanse_required": 1,
+    "requires_mark": "lamp2_let_you_light_a_lamp",
+    "reward_marks": [
+      "lamp2_walked_you_back_at_the_late_count"
+    ],
+    "flavor": "The lampkeeper let you light one of the Crossroads lamps yourself. Three bandits walk under the lamp at night and do not look up. End them. The lamp leans toward you when you arrive. The lamp knows."
+  },
+  "gw_small_altar_one_cruelty": {
+    "name": "After the Small Altar — One Cruelty Brought",
+    "target_enemy": "bandit",
+    "needed": 1,
+    "reward_gold": 400,
+    "cleanse_required": 1,
+    "requires_discovery": [
+      "gravewatch_small_altar"
+    ],
+    "reward_chronicle_line": "They had read the small altar at Gravewatch and decided to bring Atrél one cruelty given to a child on the road; one bandit ended for it, and the altar held the bringing.",
+    "flavor": "The small altar's last line — 'Brought: one cruelty given to my son.' — names a bandit on the Witherwood road. End him. The line will read: 'Brought, kept.' Atrél will hold it."
+  },
+  "gw_readers_pencil_kinder_use": {
+    "name": "The Reader's Pencil, Sharpened for a Kinder Use",
+    "target_enemy": "library_warden",
+    "needed": 1,
+    "reward_gold": 850,
+    "cleanse_required": 3,
+    "requires_discovery": [
+      "readers_pencil"
+    ],
+    "requires_quest": [
+      "after_readers_pencil"
+    ],
+    "reward_marks": [
+      "library_warden_a_name_kept_for_a_book"
+    ],
+    "flavor": "The Reader has sharpened the pencil again, for a kinder use. One more warden in the Burned Library would not let the kinder use be. End him. The Reader will set the pencil down. The kindness will be a written kindness."
+  },
+  "gw_readers_pencil_no_damage": {
+    "name": "The Reader's Pencil — End Him Without a Mark on You",
+    "target_enemy": "library_warden",
+    "completion_condition": "no_damage_taken",
+    "needed": 1,
+    "reward_gold": 1100,
+    "cleanse_required": 3,
+    "requires_discovery": [
+      "readers_pencil"
+    ],
+    "reward_marks": [
+      "library_warden_silence_after"
+    ],
+    "flavor": "The Reader does not flinch when they read. End the next warden without taking a hit. The Reader will note it in the margin — not in praise, only in record. The pencil keeps what is true."
+  },
+  "gw_after_saved_at_gravewatch_twice": {
+    "name": "After You Saved at Gravewatch a Second Time",
+    "target_enemy": "wolf",
+    "needed": 2,
+    "reward_gold": 240,
+    "cleanse_required": 0,
+    "requires_flag": "saved_at_gravewatch",
+    "denies_quest": [
+      "hidden_fs_first_save"
+    ],
+    "flavor": "The first save is a saving. The second is a return. Two wolves in the wood notice the returning. End them. The kingdom marks the coming-back the way it marks the going-out."
+  },
+  "gw_caretaker_late_round": {
+    "name": "The Caretaker's Late Round",
+    "target_enemy": "goblin",
+    "needed": 3,
+    "reward_gold": 280,
+    "cleanse_required": 0,
+    "requires_discovery": [
+      "hearthkeepers_book"
+    ],
+    "reward_marks": [
+      "holds_bread_bowl_warmed_when_you_passed"
+    ],
+    "flavor": "The Caretaker of Gravewatch walks the doors after the Hearthkeeper shuts the hearth. Three goblins in the wood have been keeping her round longer than it should be. End them. The Caretaker will finish her round at the hour she used to."
+  },
+  "gw_hidden_insomniac_dark_or_light": {
+    "name": "Dark Mark or Light Mark",
+    "target_enemy": "wolf",
+    "needed": 3,
+    "reward_gold": 320,
+    "cleanse_required": 0,
+    "hidden": true,
+    "trigger_action": {
+      "type": "flag_set",
+      "params": {
+        "flag_name": "insomniac_tally_seen"
+      }
+    },
+    "min_level": 3,
+    "denies_quest": [
+      "hidden_after_insomniac_tally"
+    ],
+    "reward_marks": [
+      "holds_recognized_your_grief"
+    ],
+    "flavor": "The Insomniac will know one day whether you are a dark mark or a light one. Three wolves at the wood-edge are pacing the decision toward light. End them. The decision will go where she expects."
   }
 }
