@@ -640,11 +640,11 @@ def test_echo_trader_buys_an_accessory_with_echoes(content, tmp_path):
 def test_pact_broker_hidden_on_fresh_chronicle(content, tmp_path):
     """Pact-Broker is a NG+ service — hidden until the first completion is in the Chronicle.
 
-    v1.22 Gravewatch: 6 services + 3 discoveries (small altar + Reader's pencil
-    + Insomniac's tally) + 1 travel + 4 utilities = 14 → quit at 14.
+    v1.36 Gravewatch: 6 services + 4 discoveries (small altar + hearth-keeper's
+    book + Reader's pencil + Insomniac's tally) + 1 travel + 4 util = 15 → quit at 15.
     """
     player = _player(content)
-    io = ScriptedIO(["1", "14"])  # crossroads "1" → Gravewatch, then Quit (14)
+    io = ScriptedIO(["1", "15"])  # crossroads "1" → Gravewatch, then Quit (15)
     state = make_state(player, content, io, StubRandom(), chronicle_dir=tmp_path)
     locations.location_loop(state)
     text = io.text()
@@ -655,8 +655,8 @@ def test_pact_broker_hidden_on_fresh_chronicle(content, tmp_path):
 def test_pact_broker_visible_after_warden_completion(tmp_path, content):
     """Once a run is recorded as cleansed, NG+ services become visible at Gravewatch.
 
-    v1.22 with NG+ + fast_travel_return active: 9 services + 3 discoveries +
-    1 connection + 1 return + 4 utilities → quit = 18.
+    v1.36 with NG+ + fast_travel_return active: 9 services + 4 discoveries +
+    1 connection + 1 return + 4 util → quit = 19.
     """
     from terminalquest import chronicle
     finished = make_state(_player(content), content, current_location="summit",
@@ -664,7 +664,7 @@ def test_pact_broker_visible_after_warden_completion(tmp_path, content):
     chronicle.record(finished, "warden", tmp_path)
     chronicle.add_cleanse(tmp_path)  # the cleanse increment that gates NG+
     player = _player(content)
-    io = ScriptedIO(["1", "18"])
+    io = ScriptedIO(["1", "19"])
     state = make_state(player, content, io, StubRandom(), chronicle_dir=tmp_path)
     locations.location_loop(state)
     text = io.text()
@@ -779,14 +779,14 @@ def test_purify_ending_unlocked_after_five_cleanses(tmp_path, content):
 def test_survivor_hidden_until_three_cleanses(tmp_path, content):
     """The Survivor only opens shop after 3 cleanses are in the Chronicle.
 
-    v1.22 with 2 cleanses: 9 services (Survivor still locked) + 3 discoveries
-    + 1 travel + 1 fast_travel_return + 4 utilities = 18 → quit at 18.
+    v1.36 with 2 cleanses: 9 services (Survivor still locked) + 4 discoveries
+    + 1 travel + 1 fast_travel_return + 4 util = 19 → quit at 19.
     """
     from terminalquest import chronicle
     player = _player(content)
     chronicle.add_cleanse(tmp_path)
     chronicle.add_cleanse(tmp_path)
-    io = ScriptedIO(["1", "18"])
+    io = ScriptedIO(["1", "19"])
     state = make_state(player, content, io, StubRandom(), chronicle_dir=tmp_path)
     locations.location_loop(state)
     assert "Survivor" not in io.text()
@@ -831,8 +831,8 @@ def test_cleanse_gated_quest_hidden_until_threshold(tmp_path, content):
 def test_beastmaster_hidden_before_first_completion(tmp_path, content):
     """v0.8: Beastmaster only opens after a completion AND while not purified."""
     player = _player(content)
-    # v1.22 Gravewatch: 6 services + 3 discoveries + 1 travel + 4 util = 14 → quit at 14.
-    io = ScriptedIO(["1", "14"])
+    # v1.36 Gravewatch: 6 services + 4 discoveries + 1 travel + 4 util = 15 → quit at 15.
+    io = ScriptedIO(["1", "15"])
     state = make_state(player, content, io, StubRandom(), chronicle_dir=tmp_path)
     locations.location_loop(state)
     assert "Beastmaster" not in io.text()
