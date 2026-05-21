@@ -4862,5 +4862,196 @@
     "requires_mark": "summit_you_left_a_button_at_the_step",
     "reward_chronicle_line": "Once they had left a button at the Summit step, the Penitent at the upper stone could not refuse them. They ended him.",
     "flavor": "Once you left a button at the Summit step. The Penitent knows the gesture. End him. The button stays."
+  },
+  "w3_pet_brings_the_wolves_down": {
+    "name": "Let the Pet Bring the Wolves Down",
+    "target_enemy": "wolf",
+    "completion_condition": "pet_assisted",
+    "needed": 3,
+    "reward_gold": 400,
+    "cleanse_required": 0,
+    "flavor": "Three wolves. Your pet lands the blow that drops each one under half hp. The wood watches a pet learn the trick its older cousins forgot."
+  },
+  "w3_pet_at_the_packs_edge": {
+    "name": "The Pet at the Pack's Edge",
+    "target_enemy": "pack_lead",
+    "completion_condition": "pet_assisted",
+    "needed": 1,
+    "reward_gold": 700,
+    "cleanse_required": 1,
+    "reward_marks": [
+      "the_wood_held_its_breath_for_you"
+    ],
+    "flavor": "The pack lead at the Hunter's Cache. Your pet must land the blow that drops her under half. The wood holds its breath when the pet does."
+  },
+  "w3_ranger_dodge_then_strike": {
+    "name": "The Ranger's Dodge in the Wood",
+    "target_enemy": "wolf",
+    "completion_condition": "killed_after_dodging",
+    "needed": 3,
+    "reward_gold": 450,
+    "cleanse_required": 0,
+    "requires_class": [
+      "ranger"
+    ],
+    "reward_marks": [
+      "ranger_a_wolf_let_you_sleep"
+    ],
+    "flavor": "Three wolves. Each killing blow lands on a turn after the ranger dodged. The wood's old hunters did it this way. The wolves did not mind."
+  },
+  "w3_ranger_sworn_takes_the_wolf": {
+    "name": "Let the Sworn Take the Wolf",
+    "target_enemy": "wolf",
+    "completion_condition": "companion_landed_kill",
+    "needed": 2,
+    "reward_gold": 400,
+    "cleanse_required": 0,
+    "requires_class": [
+      "ranger"
+    ],
+    "flavor": "Two wolves. The ranger reads the trail; the sworn lands the last blow. The wood marks who chose to step aside."
+  },
+  "w3_bandit_ambush_at_dusk": {
+    "name": "Cutthroats Named at the Dying",
+    "target_enemy": "bandit",
+    "completion_condition": "named_them_at_death",
+    "needed": 4,
+    "reward_gold": 500,
+    "cleanse_required": 1,
+    "reward_marks": [
+      "forgot_smell_of_pine"
+    ],
+    "flavor": "Four bandits along the wood-edge road. Speak each one's first name as the killing blow lands. The road's old patrolmen kept the names for the keeping."
+  },
+  "w3_bandit_clean_first_strike": {
+    "name": "The Wood-Edge Ambush — First Blow Yours",
+    "target_enemy": "bandit",
+    "completion_condition": "first_strike_yours",
+    "needed": 3,
+    "reward_gold": 350,
+    "cleanse_required": 0,
+    "flavor": "Three bandits where the road bends under the wood-edge. The first blow in each fight is yours. The cutthroats had been waiting."
+  },
+  "w3_stone_named_the_youngest": {
+    "name": "The Witherwood Stone Names the Youngest Pup",
+    "target_enemy": "wolf",
+    "needed": 4,
+    "reward_gold": 250,
+    "cleanse_required": 0,
+    "requires_discovery": [
+      "piranesi_witherwood_stone"
+    ],
+    "reward_marks": [
+      "the_witherwood_remembered_a_younger_step"
+    ],
+    "flavor": "Piranesi's stone names the four younger of this winter's pups by their first kills. End them. The stone will keep the names, and there will be no fifth winter for the line."
+  },
+  "w3_stone_names_a_bandit": {
+    "name": "The Stone Knew a Bandit by Name",
+    "target_enemy": "bandit",
+    "needed": 2,
+    "reward_gold": 350,
+    "cleanse_required": 1,
+    "requires_discovery": [
+      "piranesi_witherwood_stone"
+    ],
+    "flavor": "Piranesi's stone — among the wolf-names — carries two bandits who once carved their own. End them. The stone is for wolves. The carving will wear off."
+  },
+  "w3_halnas_stump_the_wolf_that_takes_bread": {
+    "name": "The Wolf at Halna's Stump",
+    "target_enemy": "wolf",
+    "needed": 1,
+    "reward_gold": 300,
+    "cleanse_required": 0,
+    "requires_discovery": [
+      "halnas_stump"
+    ],
+    "reward_consumables": [
+      "The Last Bread"
+    ],
+    "reward_chronicle_line": "They had watched Halna's stump, and the wolf who took her bread; then they took the wolf. Halna folded the cloth again the next morning.",
+    "flavor": "Old Halna sets bread on the stump. A wolf takes the bread. Not the same wolf each time. One in particular has begun to leave nothing for the rest. End it. Halna will know."
+  },
+  "w3_halnas_stump_pack_circles": {
+    "name": "The Pack That Began to Circle Halna's Stump",
+    "target_enemy": "wolf",
+    "needed": 3,
+    "reward_gold": 400,
+    "cleanse_required": 0,
+    "requires_quest": [
+      "w3_halnas_stump_the_wolf_that_takes_bread"
+    ],
+    "reward_marks": [
+      "the_wood_held_its_breath_for_you"
+    ],
+    "flavor": "After the one wolf you took, three of its pack began to circle the stump in its place. End them. Halna's bread is for the wolves who know the cloth, not the wolves who did not."
+  },
+  "w3_goblin_company_in_the_clearing": {
+    "name": "Scavver Company in the Clearing",
+    "target_enemy": "goblin",
+    "needed": 5,
+    "reward_gold": 200,
+    "cleanse_required": 0,
+    "flavor": "Five scavvers have made a small camp in the clearing the stag once used. End them. The clearing will be a clearing again, instead of a camp."
+  },
+  "w3_goblin_cleric_bless_the_starving": {
+    "name": "The Cleric's Blessing for the Starving",
+    "target_enemy": "goblin",
+    "needed": 6,
+    "reward_gold": 350,
+    "cleanse_required": 0,
+    "requires_class": [
+      "cleric"
+    ],
+    "reward_chronicle_line": "A cleric walked the Witherwood and gave six scavvers the small blessing the kingdom had owed them when they were still farmers.",
+    "flavor": "Six scavvers. They were farmers once, before the food ran out and they ran upright. Only a cleric remembers to bless them as farmers, not as goblins."
+  },
+  "w3_goblin_stun_kill": {
+    "name": "End the Scavvers in the Stagger",
+    "target_enemy": "goblin",
+    "completion_condition": "killed_during_stun",
+    "needed": 4,
+    "reward_gold": 400,
+    "cleanse_required": 0,
+    "flavor": "Four scavvers. Each killing blow lands while the scavver is stunned. The kingdom's old patrolmen did it this way to spare the rest the noise of the dying."
+  },
+  "w3_after_wolf_let_you_sleep": {
+    "name": "After the Wolf Let You Sleep",
+    "target_enemy": "wolf",
+    "needed": 1,
+    "reward_gold": 350,
+    "cleanse_required": 0,
+    "requires_mark": "ranger_a_wolf_let_you_sleep",
+    "reward_marks": [
+      "the_witherwood_remembered_a_younger_step"
+    ],
+    "reward_chronicle_line": "A wolf had once let a ranger sleep in its copse; the next wolf the ranger met carried the same mark, and the ranger ended it kindly.",
+    "flavor": "A wolf let you sleep one night. The next morning, a wolf is here who carries the same scent. Not the same wolf. End it the way the first one would have wanted."
+  },
+  "w3_after_wood_breath_pack_lead": {
+    "name": "After the Wood Held Its Breath — A Pack Lead Knew",
+    "target_enemy": "pack_lead",
+    "needed": 1,
+    "reward_gold": 800,
+    "cleanse_required": 1,
+    "requires_mark": "the_wood_held_its_breath_for_you",
+    "reward_chronicle_line": "The wood had held its breath for them once; the pack lead at the Hunter's Cache had heard the holding, and came to test it. The test failed her.",
+    "flavor": "The wood once held its breath for you. The pack lead at the Hunter's Cache heard the holding and resented it. End her. The wood will breathe again."
+  },
+  "w3_reborn_halnas_stump_old_cloth": {
+    "name": "Reborn at Halna's Stump — A Previous Cloth",
+    "target_enemy": "wolf",
+    "needed": 2,
+    "reward_gold": 450,
+    "cleanse_required": 0,
+    "requires_flag": "is_reborn",
+    "requires_discovery": [
+      "halnas_stump"
+    ],
+    "reward_marks": [
+      "the_witherwood_remembered_a_younger_step"
+    ],
+    "reward_chronicle_line": "A previous one of them had folded the cloth at Halna's stump the way Halna folds it. The new self ended the two wolves who had begun to remember the folding.",
+    "flavor": "A previous you had folded the cloth at Halna's stump the way she folds it. Two wolves remember the folding and want the previous you back. End them. The cloth stays folded."
   }
 }
