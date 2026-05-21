@@ -3862,5 +3862,285 @@
     "reward_marks": [
       "forgot_smell_of_pine"
     ]
+  },
+  "hidden_z2_forest": {
+    "name": "After Your Second Step in the Witherwood",
+    "target_enemy": "wolf",
+    "needed": 2,
+    "reward_gold": 250,
+    "cleanse_required": 0,
+    "hidden": true,
+    "trigger_action": {
+      "type": "zone_visited",
+      "params": {
+        "zone_id": "forest"
+      }
+    },
+    "flavor": "The wood marks the second visit differently than the first. Two wolves know."
+  },
+  "hidden_z2_reach": {
+    "name": "After Your Second Step in the Reach",
+    "target_enemy": "drowned_thresher",
+    "needed": 2,
+    "reward_gold": 300,
+    "cleanse_required": 1,
+    "hidden": true,
+    "trigger_action": {
+      "type": "zone_visited",
+      "params": {
+        "zone_id": "reach"
+      }
+    },
+    "flavor": "The Reach marks the second visit. Two threshers turn their heads."
+  },
+  "hidden_z2_cave": {
+    "name": "After Your Second Step in the Gullet",
+    "target_enemy": "dark_slime",
+    "needed": 2,
+    "reward_gold": 350,
+    "cleanse_required": 2,
+    "hidden": true,
+    "trigger_action": {
+      "type": "zone_visited",
+      "params": {
+        "zone_id": "cave"
+      }
+    },
+    "flavor": "The Gullet's air knows. Two slimes thicken on the wall."
+  },
+  "hidden_z2_mourncross": {
+    "name": "After Your Second Step in Mourncross",
+    "target_enemy": "hollow_procession",
+    "needed": 1,
+    "reward_gold": 500,
+    "cleanse_required": 3,
+    "hidden": true,
+    "trigger_action": {
+      "type": "zone_visited",
+      "params": {
+        "zone_id": "mourncross"
+      }
+    },
+    "flavor": "Mourncross's stones remember climbers who return. One of the procession turns to greet you."
+  },
+  "hidden_z2_choir": {
+    "name": "After Your Second Step in the Choir",
+    "target_enemy": "censer_shade",
+    "needed": 1,
+    "reward_gold": 600,
+    "cleanse_required": 4,
+    "hidden": true,
+    "trigger_action": {
+      "type": "zone_visited",
+      "params": {
+        "zone_id": "choir"
+      }
+    },
+    "flavor": "The Choir's smoke knows climbers who return. One censer-shade thickens at your step."
+  },
+  "hidden_z2_mountain": {
+    "name": "After Your Second Step Above the Snowline",
+    "target_enemy": "ice_wraith",
+    "needed": 2,
+    "reward_gold": 600,
+    "cleanse_required": 4,
+    "hidden": true,
+    "trigger_action": {
+      "type": "zone_visited",
+      "params": {
+        "zone_id": "mountain"
+      }
+    },
+    "flavor": "Two wraiths know returning climbers. They wait above the snow-line for the second-time step."
+  },
+  "hidden_mf_first_grey": {
+    "name": "After Your First Grey Hair",
+    "target_enemy": "wolf",
+    "needed": 1,
+    "reward_gold": 500,
+    "cleanse_required": 1,
+    "hidden": true,
+    "trigger_action": {
+      "type": "mark_fired",
+      "params": {
+        "mark_id": "first_grey_hair_came_in"
+      }
+    },
+    "flavor": "Once the first grey hair came in, the wood's older wolves knew. One of them is here for you.",
+    "reward_marks": [
+      "the_witherwood_remembered_a_younger_step"
+    ],
+    "reward_chronicle_line": "After the first grey hair, an older wolf in the Witherwood waited for them, and they took it kindly."
+  },
+  "hidden_mf_wolf_scent": {
+    "name": "After the Wolf Knew Your Scent",
+    "target_enemy": "bandit",
+    "needed": 2,
+    "reward_gold": 350,
+    "cleanse_required": 0,
+    "hidden": true,
+    "trigger_action": {
+      "type": "mark_fired",
+      "params": {
+        "mark_id": "wolf_knows_your_scent"
+      }
+    },
+    "flavor": "Once the wolf knew your scent, two bandits learned it from the wolf. End them. The scent will be only yours again."
+  },
+  "hidden_mf_reach_silt": {
+    "name": "After the Silt in Your Boots",
+    "target_enemy": "silt_drowner",
+    "needed": 2,
+    "reward_gold": 400,
+    "cleanse_required": 1,
+    "hidden": true,
+    "trigger_action": {
+      "type": "mark_fired",
+      "params": {
+        "mark_id": "reach_silt_in_your_boots"
+      }
+    },
+    "flavor": "Once silt sat in your boots, two silt-drowners remembered the weight. End them. The silt will be silt only."
+  },
+  "hidden_mf_holds_grief": {
+    "name": "After the Holds Recognized Your Grief",
+    "target_enemy": "doorshut",
+    "needed": 1,
+    "reward_gold": 500,
+    "cleanse_required": 2,
+    "hidden": true,
+    "trigger_action": {
+      "type": "mark_fired",
+      "params": {
+        "mark_id": "holds_recognized_your_grief"
+      }
+    },
+    "flavor": "Once the Holds recognized your grief, a doorshut wanted to close on it. End the doorshut. The grief stays yours."
+  },
+  "hidden_mf_gullet_marked_skin": {
+    "name": "After the Gullet Marked Your Skin",
+    "target_enemy": "cave_troll",
+    "needed": 1,
+    "reward_gold": 700,
+    "cleanse_required": 3,
+    "hidden": true,
+    "trigger_action": {
+      "type": "mark_fired",
+      "params": {
+        "mark_id": "gullet_marked_your_skin"
+      }
+    },
+    "flavor": "Once the Gullet marked your skin, a troll could read the mark. End the troll. The mark stays your own."
+  },
+  "hidden_mf_atrel_held_grief": {
+    "name": "After Atrél Held Your Grief Briefly",
+    "target_enemy": "choirmaster_effigy",
+    "needed": 1,
+    "reward_gold": 800,
+    "cleanse_required": 4,
+    "hidden": true,
+    "trigger_action": {
+      "type": "mark_fired",
+      "params": {
+        "mark_id": "choir_atrel_held_your_grief_briefly"
+      }
+    },
+    "flavor": "Once Atrél held your grief briefly, an effigy in the Choir wanted to take it back. End the effigy. The grief is hers, briefly, again.",
+    "reward_marks": [
+      "choir_set_a_grief_at_atrels_side_altar"
+    ]
+  },
+  "hidden_mf_penitent_endure": {
+    "name": "After the Penitent Taught Endurance",
+    "target_enemy": "mountain_ogre",
+    "needed": 1,
+    "reward_gold": 700,
+    "cleanse_required": 4,
+    "hidden": true,
+    "trigger_action": {
+      "type": "mark_fired",
+      "params": {
+        "mark_id": "penitent_relentless_taught_you_to_endure"
+      }
+    },
+    "flavor": "Once the Penitent taught you endurance, an ogre on the bare ridge tested the teaching. End him."
+  },
+  "hidden_mf_summit_listen": {
+    "name": "After the Summit Started to Listen",
+    "target_enemy": "ashen_penitent",
+    "needed": 1,
+    "reward_gold": 1200,
+    "cleanse_required": 5,
+    "hidden": true,
+    "trigger_action": {
+      "type": "mark_fired",
+      "params": {
+        "mark_id": "the_summit_started_to_listen"
+      }
+    },
+    "flavor": "Once the Summit started to listen, the Penitent at the upper stone could no longer ignore you. End him.",
+    "reward_marks": [
+      "summit_pall_paused_for_you"
+    ]
+  },
+  "hidden_fs_first_save": {
+    "name": "After Your First Save",
+    "target_enemy": "wolf",
+    "needed": 1,
+    "reward_gold": 200,
+    "cleanse_required": 0,
+    "hidden": true,
+    "trigger_action": {
+      "type": "flag_set",
+      "params": {
+        "flag_name": "saved_at_gravewatch"
+      }
+    },
+    "flavor": "The first time you save at Gravewatch, a wolf in the wood notices. End it. The kingdom marks the saving."
+  },
+  "hidden_fs_first_smith_use": {
+    "name": "After the Smith Took Your Coin",
+    "target_enemy": "bandit",
+    "needed": 1,
+    "reward_gold": 250,
+    "cleanse_required": 0,
+    "hidden": true,
+    "trigger_action": {
+      "type": "flag_set",
+      "params": {
+        "flag_name": "first_smith_upgrade"
+      }
+    },
+    "flavor": "Once you upgraded with the smith, a bandit on the road decided you had something worth taking. End him. He was wrong."
+  },
+  "hidden_fs_first_beastmaster": {
+    "name": "After the Beastmaster Took Your Trophy",
+    "target_enemy": "wolf",
+    "needed": 1,
+    "reward_gold": 300,
+    "cleanse_required": 0,
+    "hidden": true,
+    "trigger_action": {
+      "type": "flag_set",
+      "params": {
+        "flag_name": "first_beastmaster_trade"
+      }
+    },
+    "flavor": "Once the Beastmaster took your first trophy, the pack felt the loss. Two of them want their member back. End them."
+  },
+  "hidden_fs_companion_hired": {
+    "name": "After Your First Companion",
+    "target_enemy": "goblin",
+    "needed": 2,
+    "reward_gold": 250,
+    "cleanse_required": 0,
+    "hidden": true,
+    "trigger_action": {
+      "type": "flag_set",
+      "params": {
+        "flag_name": "companion_hired"
+      }
+    },
+    "flavor": "Once your first companion stood at your side, two goblins decided to test the count. End them. The companion will know they helped."
   }
 }
