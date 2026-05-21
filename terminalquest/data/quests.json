@@ -4370,5 +4370,272 @@
       "other_mournhold"
     ],
     "flavor": "Once you had glimpsed the Other Mournhold, the Border was more open than before. A Penitent at the open Border stones notices. End him."
+  },
+  "veteran_wood_two_marks": {
+    "name": "The Wood Has Marked You Twice",
+    "target_enemy": "wolf",
+    "needed": 1,
+    "reward_gold": 600,
+    "cleanse_required": 1,
+    "requires_marks": [
+      "wolf_knows_your_scent",
+      "the_witherwood_remembered_a_younger_step"
+    ],
+    "reward_marks": [
+      "the_wood_held_its_breath_for_you"
+    ],
+    "flavor": "The wood has marked you twice — once for the wolf's scent, once for the younger step. A wolf walks who carries both. End it. The wood will know."
+  },
+  "veteran_reach_two_marks": {
+    "name": "The Reach Has Marked Your Face and Step",
+    "target_enemy": "last_reaper",
+    "needed": 1,
+    "reward_gold": 900,
+    "cleanse_required": 2,
+    "requires_marks": [
+      "reach_water_remembered_your_face",
+      "the_reach_remembers_your_step"
+    ],
+    "reward_chronicle_line": "The Reach had marked their face and their step both; the Reaper knew the doubled marking and fell to it.",
+    "flavor": "The Reach knows your face and your step. The Reaper walks who reads both. End him. The marks stay."
+  },
+  "veteran_holds_grief_doorpost": {
+    "name": "The Holds Recognized Your Grief and a Doorpost",
+    "target_enemy": "bonesong",
+    "needed": 2,
+    "reward_gold": 700,
+    "cleanse_required": 2,
+    "requires_marks": [
+      "holds_recognized_your_grief",
+      "holds_doorpost_remembered_a_name"
+    ],
+    "reward_marks": [
+      "holds_eron_almost_spoke"
+    ],
+    "flavor": "The Holds know your grief and a doorpost that bore your carving. Two bonesongs sing the doorpost-name. End them. The carving stays carved."
+  },
+  "veteran_gullet_double": {
+    "name": "The Gullet Carved You Twice",
+    "target_enemy": "cave_troll",
+    "needed": 1,
+    "reward_gold": 900,
+    "cleanse_required": 3,
+    "requires_marks": [
+      "gullet_marked_your_skin",
+      "gullet_breathed_your_name"
+    ],
+    "reward_marks": [
+      "gullet_mawmother_braced_for_you"
+    ],
+    "flavor": "The Gullet marked your skin and breathed your name. A troll wears both readings. End him. The Gullet will be quiet."
+  },
+  "veteran_choir_grief_warmth": {
+    "name": "The Choir Warmed for You and Atrél Held Your Grief",
+    "target_enemy": "choirmaster_effigy",
+    "needed": 1,
+    "reward_gold": 1000,
+    "cleanse_required": 4,
+    "requires_marks": [
+      "choir_warmed_for_you",
+      "choir_atrel_held_your_grief_briefly"
+    ],
+    "reward_marks": [
+      "choir_set_a_grief_at_atrels_side_altar"
+    ],
+    "flavor": "The Choir warmed for you. Atrél held your grief briefly. An effigy carries both as relics. End it. Both stay yours."
+  },
+  "veteran_climb_dual_print": {
+    "name": "The Climb Has Your Handprint and the Penitent's Naming",
+    "target_enemy": "ashen_penitent",
+    "needed": 1,
+    "reward_gold": 1300,
+    "cleanse_required": 5,
+    "requires_marks": [
+      "penitent_handprint_under_yours",
+      "penitent_named_you"
+    ],
+    "reward_chronicle_line": "The Penitent's handprint sat under theirs and the Penitent had named them too; they ended the Penitent in the doubled marking, and the prints held.",
+    "flavor": "His handprint is below yours. He has named you. End him. Both prints stay. Both names stay."
+  },
+  "veteran_purify_witherwood_mark": {
+    "name": "After the Purify, the Wood Knew Your Scent Already",
+    "target_enemy": "pack_lead",
+    "needed": 1,
+    "reward_gold": 700,
+    "cleanse_required": 1,
+    "requires_mark": "wolf_knows_your_scent",
+    "requires_ending": [
+      "purify"
+    ],
+    "reward_marks": [
+      "ending_purify_you_started_being_recognized_in_the_witherwood"
+    ],
+    "flavor": "Across runs, the wood knows your scent. Across runs, you have once purified the kingdom. The pack lead knows both. End him."
+  },
+  "veteran_atrel_choir_grief": {
+    "name": "After Atrél's Peace, the Choir Already Held the Grief",
+    "target_enemy": "censer_shade",
+    "needed": 2,
+    "reward_gold": 700,
+    "cleanse_required": 4,
+    "requires_mark": "you_set_a_grief_at_atrels_altar",
+    "requires_ending": [
+      "atrel_peace"
+    ],
+    "reward_marks": [
+      "choir_atrel_held_your_grief_briefly"
+    ],
+    "flavor": "Across runs, you have set a grief at Atrél's altar. Across runs, you have made Atrél's Peace. Two censer-shades carry the doubled offering. End them."
+  },
+  "veteran_reckoning_holds_mark": {
+    "name": "After the Reckoning, the Holds Already Knew",
+    "target_enemy": "red_beard",
+    "needed": 2,
+    "reward_gold": 900,
+    "cleanse_required": 2,
+    "requires_mark": "holds_blamed_you_for_living",
+    "requires_ending": [
+      "reckoning"
+    ],
+    "reward_marks": [
+      "holds_recognized_your_grief"
+    ],
+    "flavor": "The Holds blamed you for living. You have unmade Mournhold by Reckoning. Two Red Beards see the doubled marking. End them. The blame becomes the unmaking."
+  },
+  "veteran_warden_climb_mark": {
+    "name": "After the Warden, the Climb Knew the Old Step",
+    "target_enemy": "ashen_penitent",
+    "needed": 1,
+    "reward_gold": 1300,
+    "cleanse_required": 5,
+    "requires_mark": "summit_warden_old_step_remembered_you",
+    "requires_ending": [
+      "warden"
+    ],
+    "reward_marks": [
+      "ending_warden_atrel_did_not_argue_with_you_tonight"
+    ],
+    "flavor": "Across runs, the Summit had remembered your old step. Across runs, you had once been the Warden. The Penitent above the snowline sees both readings. End him."
+  },
+  "veteran_old_seal_gullet": {
+    "name": "After the Old Seal, the Maw Already Braced",
+    "target_enemy": "maw_mother",
+    "needed": 1,
+    "reward_gold": 1600,
+    "cleanse_required": 3,
+    "requires_mark": "gullet_mawmother_braced_for_you",
+    "requires_ending": [
+      "old_seal"
+    ],
+    "reward_chronicle_line": "The Maw-Mother had braced for them once; they had made The Old Seal once. The doubled stance was hers; the doubled climber took her in it.",
+    "flavor": "She has braced for you. You have made The Old Seal. End her. The brace stays a brace."
+  },
+  "veteran_hidden_truth_choir_mark": {
+    "name": "After the Hidden Truth, the Choir's Air Was Thinner",
+    "target_enemy": "choirmaster_effigy",
+    "needed": 1,
+    "reward_gold": 1100,
+    "cleanse_required": 4,
+    "requires_mark": "music_the_choir_air_was_thinner_for_a_song",
+    "requires_ending": [
+      "hidden_truth"
+    ],
+    "reward_marks": [
+      "choir_almost_completed_the_rite"
+    ],
+    "flavor": "Across runs, the Choir's air was thinner for one song of yours. Across runs, you knew the hidden truth. An effigy feels the doubled thinning. End it."
+  },
+  "veteran_reborn_purify": {
+    "name": "Reborn After Purify, the Reach Sets a Bench",
+    "target_enemy": "drowned_thresher",
+    "needed": 1,
+    "reward_gold": 800,
+    "cleanse_required": 1,
+    "requires_flag": "is_reborn",
+    "requires_ending": [
+      "purify"
+    ],
+    "reward_marks": [
+      "reach_helka_set_a_bench_for_you"
+    ],
+    "flavor": "A previous you had purified the kingdom. The new you arrives and the Reach sets a bench. A thresher took the bench. End it."
+  },
+  "veteran_reborn_atrel": {
+    "name": "Reborn After Atrél's Peace, Atrél Remembered",
+    "target_enemy": "choirmaster_effigy",
+    "needed": 1,
+    "reward_gold": 900,
+    "cleanse_required": 4,
+    "requires_flag": "is_reborn",
+    "requires_ending": [
+      "atrel_peace"
+    ],
+    "reward_marks": [
+      "reborn_atrel_remembered_a_grief_you_set_aside"
+    ],
+    "reward_chronicle_line": "A previous one of them had made Atrél's Peace; Atrél remembered a grief the new self had set aside, and an effigy fell in the remembering.",
+    "flavor": "A previous you had made Atrél's Peace. Atrél remembers the grief the new you set aside. End the effigy that wants the grief back."
+  },
+  "veteran_reborn_warden": {
+    "name": "Reborn After the Warden, the Summit Recognized",
+    "target_enemy": "shadow_warden",
+    "needed": 1,
+    "reward_gold": 2000,
+    "cleanse_required": 5,
+    "requires_flag": "is_reborn",
+    "requires_ending": [
+      "warden"
+    ],
+    "reward_marks": [
+      "summit_warden_old_step_remembered_you"
+    ],
+    "reward_chronicle_line": "A previous one of them had been the Warden; the new self returned to the Summit, and the Shadow Warden recognized both selves.",
+    "flavor": "A previous you was the Warden. The new you climbs back. The Shadow Warden recognizes both. End the Warden in the doubled recognition."
+  },
+  "veteran_reborn_old_seal": {
+    "name": "Reborn After the Old Seal, Mourncross Lit a Lamp",
+    "target_enemy": "hollow_bellward",
+    "needed": 1,
+    "reward_gold": 1500,
+    "cleanse_required": 3,
+    "requires_flag": "is_reborn",
+    "requires_ending": [
+      "old_seal"
+    ],
+    "reward_marks": [
+      "mourncross_lamp_lit_briefly"
+    ],
+    "flavor": "A previous you had made The Old Seal. Mourncross lit a lamp for the new you. The Bellward saw the lamp. End her. The lamp stays."
+  },
+  "veteran_reborn_hidden_truth": {
+    "name": "Reborn After the Hidden Truth, the Pall Paused",
+    "target_enemy": "shadow_warden",
+    "needed": 1,
+    "reward_gold": 2300,
+    "cleanse_required": 5,
+    "requires_flag": "is_reborn",
+    "requires_ending": [
+      "hidden_truth"
+    ],
+    "reward_marks": [
+      "summit_pall_paused_for_you"
+    ],
+    "reward_chronicle_line": "A previous one of them had known the hidden truth. The new self climbed the Summit, and the Pall paused for them. They ended the Warden in the pause.",
+    "flavor": "A previous you had known the hidden truth. The new you climbs. The Pall pauses. End the Warden in the pause."
+  },
+  "veteran_reborn_reckoning": {
+    "name": "Reborn After the Reckoning, the Holds Were Empty",
+    "target_enemy": "doorshut",
+    "needed": 3,
+    "reward_gold": 800,
+    "cleanse_required": 1,
+    "requires_flag": "is_reborn",
+    "requires_ending": [
+      "reckoning"
+    ],
+    "reward_marks": [
+      "holds_you_walked_a_street_that_was_a_street"
+    ],
+    "flavor": "A previous you had unmade Mournhold by Reckoning. The new you arrives at the Holds and the houses are empty. Three doorshuts close at your step. End them. The houses stay empty."
   }
 }
