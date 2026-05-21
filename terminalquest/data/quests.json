@@ -11162,5 +11162,329 @@
     "cleanse_required": 4,
     "requires_mark": "ending_atrel_peace_first_grief_set_aside_easily",
     "flavor": "The first grief lifted easily a second time. Two effigies in the Choir noticed your eased shoulders. End them."
+  },
+  "hl2_warmer_breath": {
+    "name": "After a Hollowed's Breath Was Warmer",
+    "target_enemy": "hollow_procession",
+    "needed": 1,
+    "reward_gold": 700,
+    "cleanse_required": 3,
+    "requires_mark": "hollowed_breath_was_warmer_than_yours",
+    "flavor": "A Hollowed's breath was warmer than yours once. One of the procession kept the heat. End it."
+  },
+  "hl2_called_wrong_name": {
+    "name": "After a Hollowed Called You a Wrong Name",
+    "target_enemy": "hollow_procession",
+    "needed": 1,
+    "reward_gold": 700,
+    "cleanse_required": 3,
+    "requires_mark": "hollowed_called_you_a_name_that_was_not_yours",
+    "flavor": "A Hollowed called you a name not yours. One of the procession had been the name's previous owner. End it."
+  },
+  "hl2_kept_button": {
+    "name": "After a Hollowed Kept a Button from Their Coat",
+    "target_enemy": "bandit",
+    "needed": 2,
+    "reward_gold": 400,
+    "cleanse_required": 0,
+    "requires_mark": "hollowed_kept_a_button_from_their_coat",
+    "flavor": "A Hollowed kept a button from their coat once. Two bandits had wanted the button. End them."
+  },
+  "hl2_hands_open_died": {
+    "name": "After a Hollowed Died With Hands Open",
+    "target_enemy": "hollow_procession",
+    "needed": 1,
+    "reward_gold": 800,
+    "cleanse_required": 3,
+    "requires_mark": "hollowed_kept_their_hands_open_when_they_died",
+    "flavor": "A Hollowed kept their hands open when they died. One of the procession noted the openness. End it."
+  },
+  "hl2_familiar_face_ii": {
+    "name": "After Another Familiar Face Was Under the Hollow",
+    "target_enemy": "hollow_procession",
+    "needed": 2,
+    "reward_gold": 800,
+    "cleanse_required": 3,
+    "requires_mark": "hollowed_a_familiar_face_was_under_the_hollow",
+    "flavor": "Another familiar face was under a Hollowed. Two of the procession had been keeping faces. End them."
+  },
+  "hl2_kingdom_breathed_ii": {
+    "name": "After Another Kingdom-Breath at Laying-Rest",
+    "target_enemy": "hollow_bellward",
+    "needed": 1,
+    "reward_gold": 1300,
+    "cleanse_required": 3,
+    "requires_mark": "hollowed_kingdom_breathed_out_when_you_laid_them_to_rest",
+    "flavor": "The kingdom breathed out at another laying-rest. The Hollow Bellward felt the second silence. End her."
+  },
+  "sm2_long_one_two": {
+    "name": "After Two Long Blades Were Left for You",
+    "target_enemy": "bandit",
+    "needed": 3,
+    "reward_gold": 500,
+    "cleanse_required": 1,
+    "requires_mark": "smith_a_long_one_was_left_for_you",
+    "flavor": "Two long blades have been left for you on the smith's counter. Three bandits had hoped to take both. End them."
+  },
+  "sm2_spark_two": {
+    "name": "After Two Sparks Lit at the Forge",
+    "target_enemy": "wolf",
+    "needed": 3,
+    "reward_gold": 400,
+    "cleanse_required": 0,
+    "requires_mark": "smith_a_spark_lit_for_you",
+    "flavor": "Two sparks lit at the forge for you. Three wolves had hoped for no fire. End them."
+  },
+  "sm2_grip_remembered_ii": {
+    "name": "After a Weapon Remembered the Grip Again",
+    "target_enemy": "ashen_penitent",
+    "needed": 1,
+    "reward_gold": 1200,
+    "cleanse_required": 4,
+    "requires_mark": "smith_a_weapon_remembered_a_grip",
+    "flavor": "A weapon remembered your grip a second time. A Penitent above the snowline knew both grips. End him."
+  },
+  "sm2_blessing_two": {
+    "name": "After the Smith Blessed a Second Strike",
+    "target_enemy": "stone_golem",
+    "needed": 1,
+    "reward_gold": 1400,
+    "cleanse_required": 5,
+    "requires_mark": "smith_blessed_a_strike_for_you",
+    "flavor": "The smith blessed a second strike. A stone-golem above the snowline tested it. End him."
+  },
+  "sm2_held_two": {
+    "name": "After the Smith Held Your Weapon Too Long Twice",
+    "target_enemy": "pall_magistrate",
+    "needed": 1,
+    "reward_gold": 800,
+    "cleanse_required": 3,
+    "requires_mark": "smith_held_your_weapon_too_long",
+    "flavor": "The smith held your weapon too long a second time. A magistrate noted both holdings. End him."
+  },
+  "sm2_anvil_song_ii": {
+    "name": "After Another Anvil Sang Your Name",
+    "target_enemy": "library_warden",
+    "needed": 1,
+    "reward_gold": 900,
+    "cleanse_required": 3,
+    "requires_mark": "smith_a_weapon_remembered_a_grip",
+    "flavor": "Another anvil at Gravewatch sang your name. A library-warden had written down the first one. End him."
+  },
+  "cr2_cart_dead_ii": {
+    "name": "After Another Cart Passed With the Dead",
+    "target_enemy": "hollow_procession",
+    "needed": 3,
+    "reward_gold": 700,
+    "cleanse_required": 3,
+    "requires_mark": "crossroads_a_cart_passed_with_the_dead",
+    "flavor": "Another cart with the dead passed. Three of the procession had been walking behind. End them."
+  },
+  "cr2_dog_branching_ii": {
+    "name": "After Another Dog Followed You",
+    "target_enemy": "wolf",
+    "needed": 5,
+    "reward_gold": 500,
+    "cleanse_required": 0,
+    "requires_mark": "crossroads_a_dog_followed_you_to_the_branching",
+    "flavor": "Another dog followed you to the branching. Five wolves of the wood took offense. End them."
+  },
+  "cr2_song_throat_ii": {
+    "name": "After Another Song Caught in Your Throat",
+    "target_enemy": "censer_shade",
+    "needed": 3,
+    "reward_gold": 700,
+    "cleanse_required": 4,
+    "requires_mark": "crossroads_a_song_caught_in_your_throat",
+    "flavor": "Another song caught in your throat at the Crossroads. Three censer-shades wanted the unsung. End them."
+  },
+  "cr2_step_not_yours_ii": {
+    "name": "After Another Step Behind You Was Not Yours",
+    "target_enemy": "ashen_penitent",
+    "needed": 1,
+    "reward_gold": 1200,
+    "cleanse_required": 4,
+    "requires_mark": "crossroads_a_step_behind_you_was_not_yours",
+    "flavor": "Another step behind you was not yours. A Penitent above the snowline had been the step-maker. End him."
+  },
+  "cr2_old_one_blessed_ii": {
+    "name": "After Another Old One Blessed You",
+    "target_enemy": "bandit",
+    "needed": 3,
+    "reward_gold": 400,
+    "cleanse_required": 0,
+    "requires_mark": "crossroads_an_old_one_blessed_you_in_passing",
+    "flavor": "Another old one blessed you in passing. Three bandits noticed both blessings. End them."
+  },
+  "cr2_grave_branch_ii": {
+    "name": "After Another Grave at Another Branch",
+    "target_enemy": "wolf",
+    "needed": 3,
+    "reward_gold": 450,
+    "cleanse_required": 0,
+    "requires_mark": "crossroads_a_grave_at_the_third_branch",
+    "flavor": "Another grave at another branch of the Crossroads. Three wolves had been at the dirt. End them."
+  },
+  "wp2_balanced_ii": {
+    "name": "After Your Weapon Balanced a Second Time",
+    "target_enemy": "stone_golem",
+    "needed": 1,
+    "reward_gold": 1400,
+    "cleanse_required": 5,
+    "requires_mark": "weapon_balanced_itself",
+    "flavor": "Your weapon balanced itself a second time. A stone-golem tested both. End him."
+  },
+  "wp2_carried_song_ii": {
+    "name": "After Your Weapon Carried Two Songs",
+    "target_enemy": "shadow_warden",
+    "needed": 1,
+    "reward_gold": 2400,
+    "cleanse_required": 5,
+    "requires_mark": "weapon_carried_a_song_to_the_summit",
+    "flavor": "Your weapon carried two songs to the Summit. The Shadow Warden knew both. End him."
+  },
+  "wp2_refused_strike_ii": {
+    "name": "After Your Weapon Refused Two Strikes",
+    "target_enemy": "ashen_penitent",
+    "needed": 1,
+    "reward_gold": 1200,
+    "cleanse_required": 4,
+    "requires_mark": "weapon_did_not_strike_a_thing_it_had_struck_before",
+    "flavor": "Your weapon refused two previous strikes. A Penitent had been the previous victim. End him."
+  },
+  "wp2_grew_edge_ii": {
+    "name": "After Your Weapon Grew Another Edge",
+    "target_enemy": "cave_troll",
+    "needed": 2,
+    "reward_gold": 800,
+    "cleanse_required": 2,
+    "requires_mark": "weapon_grew_an_edge_you_did_not_grind",
+    "flavor": "Your weapon grew another edge unbidden. Two cave-trolls tested it. End them."
+  },
+  "wp2_grip_warm_ii": {
+    "name": "After Your Grip Warmed Twice",
+    "target_enemy": "drowned_thresher",
+    "needed": 3,
+    "reward_gold": 700,
+    "cleanse_required": 1,
+    "requires_mark": "weapon_grip_warmed_to_your_hand",
+    "flavor": "Your weapon's grip warmed twice. Three threshers in the Reach noticed both warmings. End them."
+  },
+  "wp2_handle_smooth_ii": {
+    "name": "After the Handle Smoothed Twice",
+    "target_enemy": "bandit",
+    "needed": 4,
+    "reward_gold": 500,
+    "cleanse_required": 0,
+    "requires_mark": "weapon_handle_smoothed_to_your_thumb",
+    "flavor": "The handle smoothed a second time. Four bandits had counted on splinters. End them."
+  },
+  "am2_dent_two": {
+    "name": "After Two Dents Appeared Overnight",
+    "target_enemy": "bog_lurcher",
+    "needed": 3,
+    "reward_gold": 700,
+    "cleanse_required": 2,
+    "requires_mark": "armor_a_dent_appeared_overnight",
+    "flavor": "Two dents appeared in your armor overnight. Three bog-lurchers in the Reach had been the night-strikers. End them."
+  },
+  "am2_strap_loose_two": {
+    "name": "After Two Straps Came Loose at Good Moments",
+    "target_enemy": "wolf",
+    "needed": 4,
+    "reward_gold": 500,
+    "cleanse_required": 0,
+    "requires_mark": "armor_a_strap_came_loose_at_a_good_moment",
+    "flavor": "Two straps came loose at good moments. Four wolves had counted on tighter armor. End them."
+  },
+  "am2_buckle_widow_ii": {
+    "name": "After Another Buckle Caught a Widow's Eye",
+    "target_enemy": "pall_magistrate",
+    "needed": 1,
+    "reward_gold": 800,
+    "cleanse_required": 3,
+    "requires_mark": "armor_buckle_caught_a_widows_eye",
+    "flavor": "Another armor buckle caught a widow's eye. A magistrate noted both. End him."
+  },
+  "am2_warm_zone_ii": {
+    "name": "After Your Armor Kept You Warm in a Second Cold Zone",
+    "target_enemy": "ice_wraith",
+    "needed": 4,
+    "reward_gold": 800,
+    "cleanse_required": 4,
+    "requires_mark": "armor_kept_you_warm_in_a_cold_zone",
+    "flavor": "Your armor kept you warm in a second cold zone. Four ice-wraiths above the snowline noted the warmth. End them."
+  },
+  "am2_chest_grave_marker": {
+    "name": "After Your Chest Piece Knocked a Grave Marker",
+    "target_enemy": "hollow_procession",
+    "needed": 1,
+    "reward_gold": 700,
+    "cleanse_required": 3,
+    "requires_mark": "armor_chest_piece_knocked_against_a_grave_marker",
+    "flavor": "Your chest piece knocked against a grave marker. One of the procession had been the marker's keeper. End it."
+  },
+  "am2_buckle_settled_ribs": {
+    "name": "After Your Buckle Settled Into Your Ribs",
+    "target_enemy": "ashen_penitent",
+    "needed": 1,
+    "reward_gold": 1200,
+    "cleanse_required": 4,
+    "requires_mark": "armor_buckle_settled_into_your_ribs",
+    "flavor": "Your armor buckle settled into your ribs. A Penitent above the snowline knew the settling. End him."
+  },
+  "th2_insomniac_blue": {
+    "name": "After the Insomniac Marked You Blue",
+    "target_enemy": "bandit",
+    "needed": 2,
+    "reward_gold": 400,
+    "cleanse_required": 0,
+    "requires_mark": "the_insomniac_marked_you_blue",
+    "flavor": "The Insomniac at Gravewatch marked you blue. Two bandits had been counting non-blue ones. End them."
+  },
+  "th2_innkeeper_first_ii": {
+    "name": "After the Innkeeper Used Your First Name II",
+    "target_enemy": "bandit",
+    "needed": 4,
+    "reward_gold": 500,
+    "cleanse_required": 0,
+    "requires_mark": "the_innkeeper_called_you_by_your_first_name",
+    "flavor": "The innkeeper used your first name a second time. Four bandits noticed both. End them."
+  },
+  "th2_hireling_meal_companion_ii": {
+    "name": "After the Hireling Kept Another Meal",
+    "target_enemy": "drowned_thresher",
+    "needed": 3,
+    "reward_gold": 600,
+    "cleanse_required": 1,
+    "requires_mark": "the_hireling_kept_a_meal_for_your_companion",
+    "flavor": "The hireling kept another meal for the companion. Three threshers had been the missed second catch. End them."
+  },
+  "th2_fire_warmer_two": {
+    "name": "After the Fire Was Warmer a Second Time",
+    "target_enemy": "ice_wraith",
+    "needed": 4,
+    "reward_gold": 700,
+    "cleanse_required": 4,
+    "requires_mark": "the_fire_was_warmer_for_you",
+    "flavor": "The Gravewatch fire was warmer for you a second time. Four ice-wraiths noted both. End them."
+  },
+  "th2_lowered_eyes_again": {
+    "name": "After Eyes Were Lowered Again",
+    "target_enemy": "bandit",
+    "needed": 3,
+    "reward_gold": 450,
+    "cleanse_required": 0,
+    "requires_mark": "the_first_time_someone_lowered_their_eyes_at_you",
+    "flavor": "Someone lowered their eyes at you again. Three bandits had not. End them."
+  },
+  "th2_chronicle_keeper_two": {
+    "name": "After the Chronicle's Keeper-Mark Settled",
+    "target_enemy": "shadow_warden",
+    "needed": 1,
+    "reward_gold": 2400,
+    "cleanse_required": 5,
+    "requires_mark": "the_chronicle_made_you_its_keeper",
+    "flavor": "The Chronicle's keeper-mark settled on you. The Shadow Warden tested it again. End him."
   }
 }
