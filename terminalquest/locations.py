@@ -57,6 +57,7 @@ _SERVICE_LABELS = {
     "reader": "📖 Read with the Reader",
     "insomniac": "🕯️  Sit with the Insomniac",
     "caretaker": "🌹 Become the Caretaker",
+    "hearth_line": "📝 Write a line in the hearth-keeper's book",
 }
 
 # SQ1 — The Reader Who Watches Back surfaces in Gravewatch after this many
@@ -210,6 +211,8 @@ def _run_service(state, service):
         insomniac(state)
     elif service == "caretaker":
         caretaker(state)
+    elif service == "hearth_line":
+        write_hearth_line(state)
 
 
 def scholar(state):
@@ -863,6 +866,17 @@ def _run_discovery(state, encounter):
     io.clear()
     for line in encounter["lines"]:
         io.show_slow(line)
+    # v1.40 — the hearth-keeper's book also displays what previous climbers
+    # have written. Appended after the discovery's static lines.
+    if encounter["id"] == "hearthkeepers_book":
+        past = chronicle.hearth_lines(state.chronicle_dir)
+        if past:
+            io.show("")
+            io.show_slow("Turned to the back of the book, in many hands over many runs,")
+            io.show_slow("what previous climbers have written:")
+            io.show("")
+            for past_line in past:
+                io.show_slow(f"  '{past_line}'")
     io.pause(2)
     discovery_id = encounter["id"]
     state.flags.setdefault("discoveries_seen", []).append(discovery_id)
@@ -1763,6 +1777,37 @@ def reader(state):
     player.hp = min(player.hp + bonus, player.max_hp)
     state.flags["read_with_reader"] = True
     io.show(f"\n   +{bonus} max HP — the Reader has read you in.")
+    io.pause(2)
+
+
+def write_hearth_line(state):
+    """v1.40 — A small Gravewatch service. Add a single line to the
+    hearth-keeper's book. Cross-run: every future character will read
+    what every previous character left, when they read the book.
+
+    The hearth-keeper does not look up. She is letting you write.
+    """
+    io = state.io
+    io.clear()
+    io.show_slow("📝 The hearth-keeper does not look up. The pencil is on the mantel.")
+    io.show_slow("Beside the pencil, the leather book is open to a fresh page.")
+    io.show_slow("Below the page, the marks of previous lines. They are short. Most are.")
+    io.show("")
+    io.show_slow("Write a line. One. It does not have to be about you. It often is not.")
+    io.show_slow("(Leave blank to step back and not write anything today.)")
+    line = io.ask("\n> ").strip()
+    if not line:
+        io.show_slow("\nYou set the pencil back on the mantel. The hearth-keeper")
+        io.show_slow("does not look up. The book is still open. You may come back.")
+        io.pause(2)
+        return
+    chronicle.add_hearth_line(line, state.chronicle_dir)
+    # v1.36 — keeping the small rite alive in the village is a kindness.
+    chronicle.add_kind_act(state.chronicle_dir)
+    io.show("")
+    io.show_slow("You write the line. You set the pencil back. The hearth-keeper")
+    io.show_slow("does not look up. The book stays open on the page. The next climber")
+    io.show_slow("who picks it up will read what you wrote, and the lines before yours.")
     io.pause(2)
 
 

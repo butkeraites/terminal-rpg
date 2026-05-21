@@ -639,11 +639,11 @@ def test_echo_trader_buys_an_accessory_with_echoes(content, tmp_path):
 def test_pact_broker_hidden_on_fresh_chronicle(content, tmp_path):
     """Pact-Broker is a NG+ service — hidden until the first completion is in the Chronicle.
 
-    v1.36 Gravewatch: 6 services + 4 discoveries (small altar + hearth-keeper's
-    book + Reader's pencil + Insomniac's tally) + 1 travel + 4 util = 15 → quit at 15.
+    v1.40 Gravewatch: 7 services (6 base + hearth_line) + 4 discoveries
+    + 1 travel + 4 util = 16 → quit at 16.
     """
     player = _player(content)
-    io = ScriptedIO(["1", "15"])  # crossroads "1" → Gravewatch, then Quit (15)
+    io = ScriptedIO(["1", "16"])  # crossroads "1" → Gravewatch, then Quit (16)
     state = make_state(player, content, io, StubRandom(), chronicle_dir=tmp_path)
     locations.location_loop(state)
     text = io.text()
@@ -654,8 +654,8 @@ def test_pact_broker_hidden_on_fresh_chronicle(content, tmp_path):
 def test_pact_broker_visible_after_warden_completion(tmp_path, content):
     """Once a run is recorded as cleansed, NG+ services become visible at Gravewatch.
 
-    v1.36 with NG+ + fast_travel_return active: 9 services + 4 discoveries +
-    1 connection + 1 return + 4 util → quit = 19.
+    v1.40 with NG+ + fast_travel_return active: 10 services (9 + hearth_line)
+    + 4 discoveries + 1 connection + 1 return + 4 util → quit = 20.
     """
     from terminalquest import chronicle
     finished = make_state(_player(content), content, current_location="summit",
@@ -663,7 +663,7 @@ def test_pact_broker_visible_after_warden_completion(tmp_path, content):
     chronicle.record(finished, "warden", tmp_path)
     chronicle.add_cleanse(tmp_path)  # the cleanse increment that gates NG+
     player = _player(content)
-    io = ScriptedIO(["1", "19"])
+    io = ScriptedIO(["1", "20"])
     state = make_state(player, content, io, StubRandom(), chronicle_dir=tmp_path)
     locations.location_loop(state)
     text = io.text()
@@ -778,14 +778,14 @@ def test_purify_ending_unlocked_after_five_cleanses(tmp_path, content):
 def test_survivor_hidden_until_three_cleanses(tmp_path, content):
     """The Survivor only opens shop after 3 cleanses are in the Chronicle.
 
-    v1.36 with 2 cleanses: 9 services (Survivor still locked) + 4 discoveries
-    + 1 travel + 1 fast_travel_return + 4 util = 19 → quit at 19.
+    v1.40 with 2 cleanses: 10 services (Survivor still locked, but hearth_line
+    visible) + 4 discoveries + 1 travel + 1 fast_travel_return + 4 util = 20 → quit at 20.
     """
     from terminalquest import chronicle
     player = _player(content)
     chronicle.add_cleanse(tmp_path)
     chronicle.add_cleanse(tmp_path)
-    io = ScriptedIO(["1", "19"])
+    io = ScriptedIO(["1", "20"])
     state = make_state(player, content, io, StubRandom(), chronicle_dir=tmp_path)
     locations.location_loop(state)
     assert "Survivor" not in io.text()
@@ -830,8 +830,8 @@ def test_cleanse_gated_quest_hidden_until_threshold(tmp_path, content):
 def test_beastmaster_hidden_before_first_completion(tmp_path, content):
     """v0.8: Beastmaster only opens after a completion AND while not purified."""
     player = _player(content)
-    # v1.36 Gravewatch: 6 services + 4 discoveries + 1 travel + 4 util = 15 → quit at 15.
-    io = ScriptedIO(["1", "15"])
+    # v1.40 Gravewatch: 7 services + 4 discoveries + 1 travel + 4 util = 16 → quit at 16.
+    io = ScriptedIO(["1", "16"])
     state = make_state(player, content, io, StubRandom(), chronicle_dir=tmp_path)
     locations.location_loop(state)
     assert "Beastmaster" not in io.text()
@@ -1228,6 +1228,33 @@ def test_cael_column_branch_gated_on_reading_the_column(content, tmp_path):
     assert not state.flags.get("read_column_of_seals")
     locations._run_discovery(state, {"id": "bone_tomb_column_of_seals", "lines": ["..."]})
     assert state.flags.get("read_column_of_seals") is True
+
+
+def test_hearth_line_writes_to_the_chronicle(content, tmp_path):
+    """v1.40 — Writing a line via the hearth-keeper's book service stores it
+    in the cross-run Chronicle. Subsequent reads of the discovery show it."""
+    from terminalquest import chronicle
+    player = _player(content)
+    io = ScriptedIO(["I am here. I have been here. — Renan"])
+    state = make_state(player, content, io, StubRandom(), chronicle_dir=tmp_path)
+    locations.write_hearth_line(state)
+    assert "I am here" in chronicle.hearth_lines(tmp_path)[0]
+
+
+def test_hearth_keepers_book_shows_past_lines(content, tmp_path):
+    """v1.40 — Reading the hearth-keeper's book appends the cross-run lines."""
+    from terminalquest import chronicle
+    chronicle.add_hearth_line("First climber's line.", tmp_path)
+    chronicle.add_hearth_line("Second climber's line.", tmp_path)
+    state = make_state(_player(content), content, ScriptedIO(), StubRandom(),
+                       chronicle_dir=tmp_path)
+    village = content.locations["village"]
+    book = next(e for e in village["encounters"]
+                if e.get("id") == "hearthkeepers_book")
+    locations.run_encounter(state, book, [], [])
+    text = state.io.text()
+    assert "First climber's line." in text
+    assert "Second climber's line." in text
 
 
 def test_cael_pall_words_branch_gated_on_reading_palls_page(content, tmp_path):

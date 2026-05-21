@@ -46,6 +46,7 @@ def _load_raw(chronicle_dir):
         endings = data.get("endings_seen_ids", [])
         fline = data.get("first_line", "")
         zone_visits = data.get("zone_visits_total", {})
+        hlines = data.get("hearth_lines", [])
         return {
             "entries": list(entries) if isinstance(entries, list) else [],
             "unlocks": list(unlocks) if isinstance(unlocks, list) else [],
@@ -72,6 +73,7 @@ def _load_raw(chronicle_dir):
             "first_line": (str(fline) if isinstance(fline, str) else ""),
             "zone_visits_total": (dict(zone_visits)
                                   if isinstance(zone_visits, dict) else {}),
+            "hearth_lines": (list(hlines) if isinstance(hlines, list) else []),
         }
     except (OSError, json.JSONDecodeError, AttributeError, TypeError):
         return {"entries": [], "unlocks": [], "owned_accessories": [],
@@ -84,7 +86,8 @@ def _load_raw(chronicle_dir):
                 "kind_acts": 0,
                 "endings_seen_ids": [],
                 "first_line": "",
-                "zone_visits_total": {}}
+                "zone_visits_total": {},
+                "hearth_lines": []}
 
 
 def load(chronicle_dir=DEFAULT_DIR):
@@ -136,6 +139,7 @@ def _save(raw, chronicle_dir):
         "endings_seen_ids": raw.get("endings_seen_ids", []),
         "first_line": raw.get("first_line", ""),
         "zone_visits_total": raw.get("zone_visits_total", {}),
+        "hearth_lines": raw.get("hearth_lines", []),
     }, chronicle_dir)
 
 
@@ -373,6 +377,35 @@ def set_first_line(line, chronicle_dir=DEFAULT_DIR):
     """
     raw = _load_raw(chronicle_dir)
     raw["first_line"] = str(line).strip()
+    _save(raw, chronicle_dir)
+
+
+def hearth_lines(chronicle_dir=DEFAULT_DIR):
+    """v1.40 — Lines climbers have written in the hearth-keeper's book.
+
+    Each is a single small thing a past character chose to leave behind in
+    Gravewatch. The book persists across runs; later climbers read what
+    earlier climbers wrote.
+    """
+    return list(_load_raw(chronicle_dir).get("hearth_lines", []))
+
+
+def add_hearth_line(line, chronicle_dir=DEFAULT_DIR):
+    """Append a single climber's line to the hearth-keeper's book.
+
+    Lines are stored verbatim, in order. Empty lines are skipped.
+    Capped at 200 stored lines (the book has a back cover, the hearth-keeper
+    has been keeping it for a long time).
+    """
+    text = str(line).strip()
+    if not text:
+        return
+    raw = _load_raw(chronicle_dir)
+    lines = raw.get("hearth_lines", [])
+    if not isinstance(lines, list):
+        lines = []
+    lines.append(text)
+    raw["hearth_lines"] = lines[-200:]  # keep the most recent 200
     _save(raw, chronicle_dir)
 
 

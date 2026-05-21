@@ -28,7 +28,7 @@
       "They do not ask why you have come back. They know why. They know."
     ],
     "connections": ["crossroads"],
-    "services": ["shop", "inn", "smith", "quartermaster", "pact_broker", "echo_trader", "night_hunt", "quest_board", "survivor", "beastmaster", "hireling_hall", "reader", "insomniac", "caretaker"],
+    "services": ["shop", "inn", "smith", "quartermaster", "pact_broker", "echo_trader", "night_hunt", "quest_board", "survivor", "beastmaster", "hireling_hall", "reader", "insomniac", "caretaker", "hearth_line"],
     "npc_services": ["scholar"],
     "encounters": [
       {"type": "discovery", "id": "readers_pencil", "label": "🪶 A worn pencil on the Reader's desk",
