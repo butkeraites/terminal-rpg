@@ -4862,5 +4862,190 @@
     "requires_mark": "summit_you_left_a_button_at_the_step",
     "reward_chronicle_line": "Once they had left a button at the Summit step, the Penitent at the upper stone could not refuse them. They ended him.",
     "flavor": "Once you left a button at the Summit step. The Penitent knows the gesture. End him. The button stays."
+  },
+  "cz_wanderer_a_wood": {
+    "name": "The Wanderer's Letter — At the Witherwood Crossing",
+    "target_enemy": "wolf",
+    "needed": 2,
+    "reward_gold": 200,
+    "cleanse_required": 1,
+    "chain_next": "cz_wanderer_b_reach",
+    "flavor": "A wanderer crossed the kingdom once with a single letter in her pack, meant for a sister in a hold that no longer answered. She dropped it four times. The first drop was a wood-trail; two wolves are at it now. Bring them down. Pick up the page she left behind."
+  },
+  "cz_wanderer_b_reach": {
+    "name": "The Wanderer's Letter — At the Reach Furrow",
+    "target_enemy": "drowned_thresher",
+    "needed": 3,
+    "reward_gold": 350,
+    "cleanse_required": 2,
+    "requires_quest": [
+      "cz_wanderer_a_wood"
+    ],
+    "chain_next": "cz_wanderer_c_gullet",
+    "flavor": "The second drop was at a furrow in the Sodden Reach — three threshers turn the silt where she set the letter down to rest her arm. End them. The page beneath their boots is the second leaf of four."
+  },
+  "cz_wanderer_c_gullet": {
+    "name": "The Wanderer's Letter — In the Gullet's Mouth",
+    "target_enemy": "dark_slime",
+    "needed": 2,
+    "reward_gold": 550,
+    "cleanse_required": 3,
+    "requires_quest": [
+      "cz_wanderer_b_reach"
+    ],
+    "chain_next": "cz_wanderer_d_climb",
+    "flavor": "The third leaf is in the Gullet's throat — she dropped it the morning the cave-cold first hit her lungs. Two creeping rots have grown over it. Take them. Lift the page out. It is half-eaten and the half that survives is the half that mattered."
+  },
+  "cz_wanderer_d_climb": {
+    "name": "The Wanderer's Letter — On the Ashen Climb",
+    "target_enemy": "ice_wraith",
+    "needed": 2,
+    "reward_gold": 900,
+    "cleanse_required": 4,
+    "requires_quest": [
+      "cz_wanderer_c_gullet"
+    ],
+    "reward_chronicle_line": "They walked the wanderer's letter from the wood to the climb — four leaves, four zones, one woman who had carried them as far as she could.",
+    "reward_marks": [
+      "holds_you_walked_a_street_that_was_a_street"
+    ],
+    "reward_consumables": [
+      "The Last Bread"
+    ],
+    "flavor": "The fourth leaf is on the Climb. The grey snow has half-buried it. Two hollow wraiths circle the cairn where she set it last. End them. Read the last leaf. Carry the letter to the hold it was meant for — it is not there, but the walk is the answer."
+  },
+  "cz_pilgrim_a_holds": {
+    "name": "The Pilgrim's Stations — A Doorshut in the Drowned Holds",
+    "target_enemy": "doorshut",
+    "needed": 1,
+    "reward_gold": 300,
+    "cleanse_required": 2,
+    "chain_next": "cz_pilgrim_b_mourncross",
+    "flavor": "Pilgrims used to walk four stations from holds to summit, one prayer at each. The first station was a hold-door. The doorshut who stands at it now is the prayer turned away. End her. Set the first station back where it stood."
+  },
+  "cz_pilgrim_b_mourncross": {
+    "name": "The Pilgrim's Stations — A Magistrate in Mourncross",
+    "target_enemy": "pall_magistrate",
+    "needed": 1,
+    "reward_gold": 600,
+    "cleanse_required": 3,
+    "requires_quest": [
+      "cz_pilgrim_a_holds"
+    ],
+    "chain_next": "cz_pilgrim_c_choir",
+    "flavor": "The second station was the capital's gate — where the pilgrim showed their token and was let through. A Pall-sworn magistrate keeps the gate now. Take him. The second station's stone is in his pocket. He has held it three winters too long."
+  },
+  "cz_pilgrim_c_choir": {
+    "name": "The Pilgrim's Stations — A Shade in the Choir",
+    "target_enemy": "censer_shade",
+    "needed": 2,
+    "reward_gold": 900,
+    "cleanse_required": 4,
+    "requires_quest": [
+      "cz_pilgrim_b_mourncross"
+    ],
+    "chain_next": "cz_pilgrim_d_climb",
+    "reward_marks": [
+      "the_climb_marked_your_lungs"
+    ],
+    "flavor": "The third station was at the cathedral side-altar — where Atrél once held the pilgrim's smallest grief. Two censer-shades have crowded the altar out. End them. The third station is the bowl beneath their feet. It is upturned. Set it right."
+  },
+  "cz_pilgrim_d_climb": {
+    "name": "The Pilgrim's Stations — A Penitent on the Climb",
+    "target_enemy": "ashen_penitent",
+    "needed": 1,
+    "reward_gold": 1400,
+    "cleanse_required": 5,
+    "requires_quest": [
+      "cz_pilgrim_c_choir"
+    ],
+    "reward_chronicle_line": "They walked the pilgrim's four stations — door, gate, altar, cairn — and the kingdom remembered what the walking was for.",
+    "reward_marks": [
+      "the_climb_marked_your_lungs"
+    ],
+    "reward_consumables": [
+      "The Last Bread",
+      "The Last Bread"
+    ],
+    "flavor": "The fourth station is the cairn at the Climb's last bend, where pilgrims set down their token and turned for home. The Penitent who never turned home stands at it now. End them. The cairn has waited a long time to be a cairn again."
+  },
+  "cz_kingdoms_thresher": {
+    "name": "The Thresher the Whole Kingdom Saw",
+    "target_enemy": "drowned_thresher",
+    "needed": 4,
+    "reward_gold": 700,
+    "cleanse_required": 3,
+    "flavor": "Four threshers walked, in the seventh winter, from the Reach to the Witherwood, and the wood saw them, and the Gullet heard them, and Mourncross did not look. Take the four. The kingdom that did not look will get a chance to look again."
+  },
+  "cz_kingdoms_procession": {
+    "name": "The Procession That Crossed Three Streets",
+    "target_enemy": "hollow_procession",
+    "needed": 2,
+    "reward_gold": 900,
+    "cleanse_required": 4,
+    "flavor": "A funeral that set out from the drowned holds, walked through the Gullet, and arrived in Mourncross with no body to bury. Two such processions still walk that route. End them. The kingdom will be one less funeral that never ended."
+  },
+  "cz_kingdoms_reliquary": {
+    "name": "The Reliquary That Was a Hold's Box",
+    "target_enemy": "reliquary_golem",
+    "needed": 1,
+    "reward_gold": 1100,
+    "cleanse_required": 4,
+    "reward_marks": [
+      "holds_you_walked_a_street_that_was_a_street"
+    ],
+    "flavor": "The reliquary the Choir guards was carried up from a Brackmere hold the winter the gates closed. It held a saint's finger once. It holds nothing now. The golem keeps it anyway. End it. The hold can have its box back, empty though it will be."
+  },
+  "cz_kingdoms_silt_drowner": {
+    "name": "The Drowner That Walked the Whole Reach",
+    "target_enemy": "silt_drowner",
+    "needed": 5,
+    "reward_gold": 600,
+    "cleanse_required": 3,
+    "flavor": "Five drowners — each from a different broken sluice along the Reach, each carrying a different hold's name on her hem. End them. Five sluices will know they have been emptied of their keeper. The kingdom will know its drowning was many."
+  },
+  "cz_bounty_last_reaper": {
+    "name": "The Reaper Whose Name the Kingdom Remembers",
+    "target_enemy": "last_reaper",
+    "needed": 1,
+    "reward_gold": 1200,
+    "cleanse_required": 4,
+    "reward_marks": [
+      "reaper_water_did_not_answer"
+    ],
+    "flavor": "The Last Reaper is named in three kingdom records — the Reach's tally, the Mourncross census, and the Choir's list of the unforgiven. End her once more, for the records that still know her name. The kingdom will be one less name on three lists."
+  },
+  "cz_bounty_cantor_vael_cross": {
+    "name": "The Cantor Whose Voice Crossed the Kingdom",
+    "target_enemy": "cantor_vael",
+    "needed": 1,
+    "reward_gold": 1800,
+    "cleanse_required": 5,
+    "reward_marks": [
+      "the_climb_marked_your_lungs"
+    ],
+    "reward_consumables": [
+      "The Last Bread"
+    ],
+    "flavor": "Cantor Vael's rite was sung at the Choir, but the unremembering reached every zone — Witherwood, Reach, Holds, Gullet, Mourncross, Climb. Take him once more. The voice that crossed the kingdom will stop crossing it."
+  },
+  "cz_bounty_red_beard_cross": {
+    "name": "The Smith Who Started for the Capital",
+    "target_enemy": "red_beard",
+    "needed": 1,
+    "reward_gold": 1000,
+    "cleanse_required": 4,
+    "reward_consumables": [
+      "The Last Bread"
+    ],
+    "flavor": "Red Beard set out from Brackmere with his anvil-hammer. He meant to walk through the Reach, past the dykes, to Mourncross. The river took him in the third bend. The walk is what is left. Take him once more, where the walk ended. The kingdom that closed its gate will know one more man tried."
+  },
+  "cz_bounty_hollow_bellward_cross": {
+    "name": "The Bell That Crossed Four Zones",
+    "target_enemy": "hollow_bellward",
+    "needed": 1,
+    "reward_gold": 1500,
+    "cleanse_required": 5,
+    "flavor": "The Bellward's curfew bell was rung at sundown in Mourncross, and the holds heard it across the Reach, and the wood heard it through its branches, and the Gullet caught the last echo. Four zones, one bell. End the Bellward once more. The bell will stop crossing the kingdom at sundown."
   }
 }
