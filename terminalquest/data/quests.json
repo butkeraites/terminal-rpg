@@ -1478,5 +1478,188 @@
     ],
     "reward_chronicle_line": "A mage walked the Drowned Holds and pitched a counter-song against four bonesongs. The names they had eaten came back out of their mouths in the dying.",
     "flavor": "Four bonesongs each carry a name they ate. Only a mage knows the right pitch to make them give the names back."
+  },
+  "pack_lead_must_fall": {
+    "name": "The Pack Lead Will Yield",
+    "target_enemy": "pack_lead",
+    "needed": 1,
+    "reward_gold": 600,
+    "cleanse_required": 1,
+    "flavor": "The pack lead has held the cache since the kingdom's last hunters left. End the holding. The cache will open."
+  },
+  "hunters_cache_three_step_a": {
+    "name": "The Hunter's Cache — Read the Lore",
+    "target_enemy": "wolf",
+    "needed": 3,
+    "reward_gold": 200,
+    "cleanse_required": 0,
+    "requires_discovery": [
+      "hunters_cache_lore"
+    ],
+    "chain_next": "hunters_cache_three_step_b",
+    "flavor": "Three wolves at the wood-edge before the cache opens. End them. The lore inside will be readable next."
+  },
+  "hunters_cache_three_step_b": {
+    "name": "The Hunter's Cache — Match the Collars",
+    "target_enemy": "wolf",
+    "needed": 2,
+    "reward_gold": 400,
+    "cleanse_required": 0,
+    "requires_quest": [
+      "hunters_cache_three_step_a"
+    ],
+    "requires_discovery": [
+      "hunters_cache_collars"
+    ],
+    "chain_next": "hunters_cache_three_step_c",
+    "flavor": "Two wolves wear collars matching the cache's. End them. The pack will understand who the new lead is."
+  },
+  "hunters_cache_three_step_c": {
+    "name": "The Hunter's Cache — Take the Lead",
+    "target_enemy": "pack_lead",
+    "needed": 1,
+    "reward_gold": 700,
+    "cleanse_required": 0,
+    "requires_quest": [
+      "hunters_cache_three_step_b"
+    ],
+    "reward_chronicle_line": "They read the cache's lore, matched its collars, and took the pack lead. The kingdom's last hunters would have nodded.",
+    "reward_consumables": [
+      "The Last Bread"
+    ],
+    "flavor": "The pack lead has been waiting. End him. The cache is yours."
+  },
+  "dyke_warden_three": {
+    "name": "Three Dyke-Wardens Will Open the Sluice",
+    "target_enemy": "dyke_warden",
+    "needed": 3,
+    "reward_gold": 700,
+    "cleanse_required": 2,
+    "flavor": "Three of the wardens hold the sluice closed. End them. The Reach beyond will drain by one count."
+  },
+  "dyke_after_third_beams_read": {
+    "name": "After Reading the Third Dyke's Beams",
+    "target_enemy": "dyke_warden",
+    "needed": 1,
+    "reward_gold": 500,
+    "cleanse_required": 2,
+    "requires_discovery": [
+      "third_dyke_beams"
+    ],
+    "reward_chronicle_line": "Once they had read the third dyke's beam-marks, they ended the warden who had carved them and read his name off his sleeve.",
+    "flavor": "The beams of the third dyke name the warden who carved them. End him. The carving will mean only what it meant."
+  },
+  "library_warden_six": {
+    "name": "Six Library-Wardens for the Catalog",
+    "target_enemy": "library_warden",
+    "needed": 6,
+    "reward_gold": 900,
+    "cleanse_required": 3,
+    "flavor": "Six wardens have kept the burned catalog out of climbers' hands for a century. End them. The catalog will be readable."
+  },
+  "library_after_clerks_seal": {
+    "name": "After You Saw the Clerk's Seal Register",
+    "target_enemy": "library_warden",
+    "needed": 2,
+    "reward_gold": 700,
+    "cleanse_required": 3,
+    "requires_discovery": [
+      "clerks_seal_register"
+    ],
+    "reward_consumables": [
+      "The Last Bread",
+      "The Last Bread"
+    ],
+    "flavor": "Two wardens guard the page the clerk's seal marks. End them. The page will be a page."
+  },
+  "pallid_stag_thrice": {
+    "name": "The Pallid Stag, Met Three Times",
+    "target_enemy": "pallid_stag",
+    "needed": 3,
+    "reward_gold": 1100,
+    "cleanse_required": 2,
+    "reward_marks": [
+      "holds_doorpost_remembered_a_name"
+    ],
+    "flavor": "The Stag returns when the Witherwood is sufficiently cleansed. Three times, three meetings. The Stag will not return after."
+  },
+  "the_forgotten_thing_once": {
+    "name": "End the Forgotten Thing",
+    "target_enemy": "the_forgotten_thing",
+    "needed": 1,
+    "reward_gold": 1500,
+    "cleanse_required": 4,
+    "reward_chronicle_line": "They found the thing the Pall had forgotten and ended it — the Pall did not notice that one of its own had been lost.",
+    "flavor": "The Pall forgot one of its own. The thing waits in the Witherwood, not knowing it should not exist. End it. The Pall will not know."
+  },
+  "chairman_must_close_his_books": {
+    "name": "The Chairman Must Close His Books",
+    "target_enemy": "the_chairman",
+    "needed": 1,
+    "reward_gold": 1300,
+    "cleanse_required": 3,
+    "reward_chronicle_line": "They walked the Sealed Chamber and ended the Chairman, who had been closing the kingdom's books in order to close the kingdom.",
+    "flavor": "He sealed the chamber with himself inside, and continued the rite from there. End him. The chamber will be unsealed."
+  },
+  "library_no_abilities": {
+    "name": "The Honest Librarian's Way",
+    "target_enemy": "library_warden",
+    "completion_condition": "used_no_abilities",
+    "needed": 1,
+    "reward_gold": 600,
+    "cleanse_required": 3,
+    "flavor": "A library-warden. No ability used the whole fight. The clerks who served before the burning did it this way."
+  },
+  "dyke_first_strike": {
+    "name": "First Strike at the Last Dyke",
+    "target_enemy": "dyke_warden",
+    "completion_condition": "first_strike_yours",
+    "needed": 2,
+    "reward_gold": 500,
+    "cleanse_required": 2,
+    "flavor": "Two dyke-wardens. The first blow in each fight is yours. The kingdom's old water-keepers struck first or lost."
+  },
+  "pallid_after_first_grey": {
+    "name": "The Pallid Stag, After the First Grey",
+    "target_enemy": "pallid_stag",
+    "needed": 1,
+    "reward_gold": 1200,
+    "cleanse_required": 2,
+    "requires_mark": "first_grey_hair_came_in",
+    "reward_marks": [
+      "the_climb_marked_your_lungs"
+    ],
+    "reward_chronicle_line": "After their first grey hair, the Pallid Stag let them have the kill. Some kills are gifts and some are losses; this was both.",
+    "flavor": "Once you have the first grey hair, the Pallid Stag knows. He will not refuse you. End him. The wood will know."
+  },
+  "hidden_library_remembers_a_reader": {
+    "name": "The Library Remembers a Reader",
+    "target_enemy": "library_warden",
+    "needed": 1,
+    "reward_gold": 600,
+    "cleanse_required": 0,
+    "hidden": true,
+    "trigger_action": {
+      "type": "flag_set",
+      "params": {
+        "flag_name": "burned_library_lore_seen"
+      }
+    },
+    "reward_consumables": [
+      "The Last Bread"
+    ],
+    "flavor": "Once you have read the Burned Library's lore, a warden remembers the last person who read it. End the warden. The reader and the warden will both be done."
+  },
+  "clerics_warden_funeral": {
+    "name": "A Funeral for the Wardens",
+    "target_enemy": "library_warden",
+    "needed": 3,
+    "reward_gold": 700,
+    "cleanse_required": 3,
+    "requires_class": [
+      "cleric"
+    ],
+    "reward_chronicle_line": "A cleric walked the Burned Library and gave three of its wardens a funeral. The clerks who served before would have nodded.",
+    "flavor": "Three wardens. Only a cleric can give them the funeral the clerks were owed. End them. Lay them down properly."
   }
 }
