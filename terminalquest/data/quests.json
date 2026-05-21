@@ -7863,5 +7863,316 @@
     "cleanse_required": 1,
     "requires_mark": "border_wynne_an_emissary_left_a_letter_for_you",
     "flavor": "An emissary left a letter at Gravewatch. Three bandits on the road tried to intercept a reply. End them."
+  },
+  "dl_baker_bread": {
+    "name": "After the Baker Kept Yesterday's Bread for Birds",
+    "target_enemy": "wolf",
+    "needed": 2,
+    "reward_gold": 250,
+    "cleanse_required": 0,
+    "requires_mark": "daily_a_baker_kept_yesterdays_bread_for_birds",
+    "flavor": "A baker at Gravewatch kept yesterday's bread for birds. Two wolves of the wood had hoped to take it. End them. The birds get the bread."
+  },
+  "dl_child_stick": {
+    "name": "After a Child Threw a Stick for a Dog",
+    "target_enemy": "bandit",
+    "needed": 2,
+    "reward_gold": 200,
+    "cleanse_required": 0,
+    "requires_mark": "daily_a_child_threw_a_stick_for_a_dog",
+    "flavor": "A child threw a stick for a dog. Two bandits on the road interrupted the throw. End them. The stick stays where it lands."
+  },
+  "dl_chimney_swept": {
+    "name": "After a Chimney Was Swept Clean",
+    "target_enemy": "bandit",
+    "needed": 3,
+    "reward_gold": 300,
+    "cleanse_required": 0,
+    "requires_mark": "daily_a_chimney_swept_clean",
+    "flavor": "A chimney at Gravewatch was swept clean. Three bandits on the road had been counting on smoke for cover. End them."
+  },
+  "dl_clothes_line": {
+    "name": "After a Clothes Line Was Set Again",
+    "target_enemy": "bandit",
+    "needed": 2,
+    "reward_gold": 250,
+    "cleanse_required": 0,
+    "requires_mark": "daily_a_clothes_line_was_set_again",
+    "flavor": "A clothes line at Gravewatch was set again — the village is keeping up. Two bandits had hoped the line stayed empty. End them."
+  },
+  "dl_dog_recognition": {
+    "name": "After a Dog Barked in Friendly Recognition",
+    "target_enemy": "wolf",
+    "needed": 3,
+    "reward_gold": 350,
+    "cleanse_required": 0,
+    "requires_mark": "daily_a_dog_barked_in_friendly_recognition",
+    "flavor": "A village dog barked in friendly recognition when you passed. Three wolves of the wood took the bark as territory. End them."
+  },
+  "dl_road_blackbird": {
+    "name": "After a Blackbird Lit Your Way at Dusk",
+    "target_enemy": "bandit",
+    "needed": 3,
+    "reward_gold": 300,
+    "cleanse_required": 0,
+    "requires_mark": "road_a_blackbird_lit_your_way_at_dusk",
+    "flavor": "A blackbird lit your way at dusk. Three bandits on the road had hoped the dusk would be lightless. End them."
+  },
+  "dl_road_mile_shorter": {
+    "name": "After a Mile Was Shorter Than It Had Been",
+    "target_enemy": "wolf",
+    "needed": 4,
+    "reward_gold": 400,
+    "cleanse_required": 0,
+    "requires_mark": "road_a_mile_was_shorter_than_it_had_been",
+    "flavor": "A mile felt shorter than the last time you walked it. Four wolves of the wood had not counted on the kingdom shortening for you. End them."
+  },
+  "dl_road_milestone": {
+    "name": "After a Milestone Recognized Your Step",
+    "target_enemy": "bandit",
+    "needed": 2,
+    "reward_gold": 300,
+    "cleanse_required": 0,
+    "requires_mark": "road_a_milestone_recognized_your_step",
+    "flavor": "A milestone on the road recognized your step. Two bandits had been leaning against the milestone. End them."
+  },
+  "dl_road_traveller_nod": {
+    "name": "After a Traveller Passed in Silent Nod",
+    "target_enemy": "bandit",
+    "needed": 1,
+    "reward_gold": 250,
+    "cleanse_required": 0,
+    "requires_mark": "road_a_traveller_passed_in_silent_nod",
+    "flavor": "A traveller passed you on the road with a silent nod. A bandit had wanted the traveller's nod for himself. End him."
+  },
+  "dl_save_breath": {
+    "name": "After Saving Caught Your Breath",
+    "target_enemy": "wolf",
+    "needed": 2,
+    "reward_gold": 300,
+    "cleanse_required": 0,
+    "requires_mark": "save_caught_your_breath_for_you",
+    "flavor": "The save place caught your breath for you. Two wolves of the wood noticed the longer pause. End them."
+  },
+  "dl_save_owl": {
+    "name": "After an Owl Sat at the Saving Window",
+    "target_enemy": "giant_bat",
+    "needed": 3,
+    "reward_gold": 350,
+    "cleanse_required": 1,
+    "requires_mark": "save_an_owl_sat_at_the_saving_window",
+    "flavor": "An owl sat at the saving window. Three carrion bats had not expected the owl. End them."
+  },
+  "dl_save_remembered_last": {
+    "name": "After Saving Remembered the Last Time",
+    "target_enemy": "bandit",
+    "needed": 2,
+    "reward_gold": 350,
+    "cleanse_required": 0,
+    "requires_mark": "save_remembered_the_last_time_you_saved",
+    "flavor": "The save place remembered the last time you saved. Two bandits had been counting on you forgetting. End them."
+  },
+  "dl_child_scar": {
+    "name": "After a Child Asked About Your Scar",
+    "target_enemy": "wolf",
+    "needed": 1,
+    "reward_gold": 300,
+    "cleanse_required": 0,
+    "requires_mark": "children_a_child_asked_about_your_scar",
+    "flavor": "A child at Gravewatch asked about your scar. One wolf of the wood had given you the scar. End it. The answer to the child will be true."
+  },
+  "dl_child_drew_picture": {
+    "name": "After a Child Drew a Picture of You",
+    "target_enemy": "bandit",
+    "needed": 2,
+    "reward_gold": 350,
+    "cleanse_required": 0,
+    "requires_mark": "children_a_child_drew_a_picture_of_you",
+    "flavor": "A child drew a picture of you. Two bandits on the road had laughed at the picture. End them. The picture stays drawn."
+  },
+  "dl_child_named_star": {
+    "name": "After a Child Named a Star for You",
+    "target_enemy": "ice_wraith",
+    "needed": 3,
+    "reward_gold": 600,
+    "cleanse_required": 4,
+    "requires_mark": "children_a_child_named_a_star_for_you",
+    "flavor": "A child at Gravewatch named a star for you. Three ice-wraiths above the snowline had been jealous of the naming. End them.",
+    "reward_chronicle_line": "A child had named a star for the climber; three ice-wraiths envious of the naming fell at the upper snowline."
+  },
+  "dl_warrior_widow_thank": {
+    "name": "After a Widow Thanked the Warrior First",
+    "target_enemy": "pall_magistrate",
+    "needed": 1,
+    "reward_gold": 600,
+    "cleanse_required": 3,
+    "requires_mark": "warrior_a_widow_thanked_you_first",
+    "flavor": "A widow in Mourncross thanked you first, before the other climbers. A magistrate noticed the thanking. End him."
+  },
+  "dl_rogue_lock_opened": {
+    "name": "After a Lock Opened for the Rogue Alone",
+    "target_enemy": "doorshut",
+    "needed": 3,
+    "reward_gold": 500,
+    "cleanse_required": 1,
+    "requires_mark": "rogue_a_lock_opened_for_you_alone",
+    "flavor": "A lock opened for you, just you, in the Holds. Three doorshuts wanted to test the opening. End them."
+  },
+  "dl_ranger_thicket_closed": {
+    "name": "After a Thicket Closed Behind the Ranger",
+    "target_enemy": "wolf",
+    "needed": 4,
+    "reward_gold": 450,
+    "cleanse_required": 0,
+    "requires_mark": "ranger_a_thicket_closed_behind_you",
+    "flavor": "A thicket in the Witherwood closed behind you. Four wolves of the pack had been on the other side. End them."
+  },
+  "se_smith_long_one": {
+    "name": "After the Smith Left a Long One for You",
+    "target_enemy": "bandit",
+    "needed": 3,
+    "reward_gold": 400,
+    "cleanse_required": 0,
+    "requires_mark": "smith_a_long_one_was_left_for_you",
+    "flavor": "The smith at Gravewatch left a long blade for you on her counter. Three bandits on the road had hoped to take it. End them."
+  },
+  "se_smith_spark": {
+    "name": "After a Spark Lit for the Climber",
+    "target_enemy": "wolf",
+    "needed": 2,
+    "reward_gold": 300,
+    "cleanse_required": 0,
+    "requires_mark": "smith_a_spark_lit_for_you",
+    "flavor": "A spark at the forge lit for you. Two wolves of the wood had hoped the spark would not catch. End them."
+  },
+  "se_smith_weapon_grip": {
+    "name": "After a Weapon Remembered a Grip",
+    "target_enemy": "ashen_penitent",
+    "needed": 1,
+    "reward_gold": 1100,
+    "cleanse_required": 4,
+    "requires_mark": "smith_a_weapon_remembered_a_grip",
+    "flavor": "A weapon at the forge remembered a grip — your previous self's grip. A Penitent above the snowline knew the grip. End him.",
+    "reward_marks": [
+      "penitent_handprint_under_yours"
+    ]
+  },
+  "se_smith_blessed_strike": {
+    "name": "After the Smith Blessed a Strike",
+    "target_enemy": "stone_golem",
+    "needed": 1,
+    "reward_gold": 1300,
+    "cleanse_required": 5,
+    "requires_mark": "smith_blessed_a_strike_for_you",
+    "flavor": "The smith blessed a strike of yours. A stone-golem above the snowline wanted to test the blessing. End him."
+  },
+  "se_smith_held_too_long": {
+    "name": "After the Smith Held Your Weapon Too Long",
+    "target_enemy": "pall_magistrate",
+    "needed": 1,
+    "reward_gold": 700,
+    "cleanse_required": 3,
+    "requires_mark": "smith_held_your_weapon_too_long",
+    "flavor": "The smith held your weapon too long — she had been remembering its previous owner. A magistrate noticed the longer return. End him."
+  },
+  "se_smith_anvil_song": {
+    "name": "After an Anvil Sang Your Name",
+    "target_enemy": "library_warden",
+    "needed": 1,
+    "reward_gold": 900,
+    "cleanse_required": 3,
+    "requires_mark": "smith_a_weapon_remembered_a_grip",
+    "flavor": "An anvil at Gravewatch sang your name for one count. A library-warden had been writing the name down. End him. The name keeps itself."
+  },
+  "se_purify_quieter_step": {
+    "name": "After Purify, the Kingdom Quieter in Your Step",
+    "target_enemy": "drowned_thresher",
+    "needed": 4,
+    "reward_gold": 600,
+    "cleanse_required": 1,
+    "requires_mark": "ending_purify_you_started_being_recognized_in_the_witherwood",
+    "flavor": "Across runs, the Witherwood recognized you. Four threshers in the Reach had heard about the recognition. End them."
+  },
+  "se_atrel_priest_robe": {
+    "name": "After Atrél's Priest Robe Kept You Warm",
+    "target_enemy": "censer_shade",
+    "needed": 2,
+    "reward_gold": 700,
+    "cleanse_required": 4,
+    "requires_mark": "ending_atrel_peace_a_priest_robe_kept_you_warm",
+    "flavor": "Across runs, an Atrél priest robe kept you warm. Two censer-shades noticed the warmer climber. End them."
+  },
+  "se_atrel_unhollowed_thanked": {
+    "name": "After an Unhollowed Thanked You",
+    "target_enemy": "hollow_procession",
+    "needed": 2,
+    "reward_gold": 700,
+    "cleanse_required": 3,
+    "requires_mark": "ending_atrel_peace_an_unhollowed_thanked_you",
+    "flavor": "An unhollowed in Mourncross thanked you across runs. Two of the procession had wanted the thank for themselves. End them."
+  },
+  "se_atrel_first_grief": {
+    "name": "After the First Grief Was Easy to Set Aside",
+    "target_enemy": "choirmaster_effigy",
+    "needed": 1,
+    "reward_gold": 800,
+    "cleanse_required": 4,
+    "requires_mark": "ending_atrel_peace_first_grief_set_aside_easily",
+    "flavor": "Once your first grief had been easy to set aside. An effigy in the Choir noticed the easier shoulders. End it."
+  },
+  "se_atrel_kept_companion": {
+    "name": "After You Kept a Grief for the Companion Too",
+    "target_enemy": "censer_shade",
+    "needed": 2,
+    "reward_gold": 600,
+    "cleanse_required": 4,
+    "requires_mark": "ending_atrel_peace_kept_a_grief_for_a_companion_too",
+    "flavor": "Once you kept a grief for the companion as well. Two censer-shades had hoped to take the doubled grief. End them."
+  },
+  "se_warden_inn_chair": {
+    "name": "After You Left a Chair at the Inn Empty",
+    "target_enemy": "ashen_penitent",
+    "needed": 1,
+    "reward_gold": 1300,
+    "cleanse_required": 5,
+    "requires_mark": "ending_warden_you_left_a_chair_at_the_inn_empty",
+    "flavor": "Across runs, you left a chair at the inn empty when you became the Warden. A Penitent above the snowline knew the chair. End him."
+  },
+  "se_warden_keeper_silence": {
+    "name": "After You Started Carrying a Keeper-Silence",
+    "target_enemy": "shadow_warden",
+    "needed": 1,
+    "reward_gold": 2200,
+    "cleanse_required": 5,
+    "requires_mark": "ending_warden_you_started_carrying_a_keeper_silence",
+    "flavor": "You carry a keeper-silence across runs. The new Shadow Warden tests the carry. End him.",
+    "reward_chronicle_line": "A climber who had once been the Warden carried the keeper-silence into a new run; the new Shadow Warden ended at the silence."
+  },
+  "se_warden_pall_three_steps": {
+    "name": "After the Pall Walked Three Steps With You",
+    "target_enemy": "shadow_warden",
+    "needed": 1,
+    "reward_gold": 2500,
+    "cleanse_required": 5,
+    "requires_mark": "ending_warden_the_pall_walked_three_steps_with_you",
+    "flavor": "The Pall walked three steps with you across runs. The new Shadow Warden walked alone. End him. The Pall will not walk the next three."
+  },
+  "se_mage_book_remembered": {
+    "name": "After a Book Remembered What You Meant",
+    "target_enemy": "library_warden",
+    "needed": 1,
+    "reward_gold": 800,
+    "cleanse_required": 3,
+    "requires_mark": "mage_a_book_remembered_what_you_meant",
+    "flavor": "A book at the Burned Library remembered what you meant. A warden had been waiting to cross out the meaning. End him."
+  },
+  "se_cleric_god_glanced": {
+    "name": "After a God Glanced Aside at You",
+    "target_enemy": "hollow_procession",
+    "needed": 3,
+    "reward_gold": 700,
+    "cleanse_required": 3,
+    "requires_mark": "cleric_a_god_glanced_aside_at_you",
+    "flavor": "A god glanced aside at you, briefly. Three of the procession noticed the glance. End them."
   }
 }
