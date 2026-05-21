@@ -1,7 +1,16 @@
 {
   "forgot_smell_of_pine": {
     "category": "forgetting",
-    "trigger": {"at": ["zone_arrival"], "location": ["forest"], "min_visits": 2, "chance": 0.04},
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "forest"
+      ],
+      "min_visits": 2,
+      "chance": 0.04
+    },
     "effect": null,
     "lines": [
       "You sit by a Witherwood pine for a moment.",
@@ -11,7 +20,13 @@
   },
   "forgot_mothers_voice": {
     "category": "forgetting",
-    "trigger": {"at": ["save_action"], "min_level": 3, "chance": 0.015},
+    "trigger": {
+      "at": [
+        "save_action"
+      ],
+      "min_level": 3,
+      "chance": 0.015
+    },
     "effect": null,
     "lines": [
       "You write your save. As you do, you try to think of your mother saying your name.",
@@ -21,7 +36,15 @@
   },
   "forgot_a_road": {
     "category": "forgetting",
-    "trigger": {"at": ["zone_arrival"], "location": ["crossroads"], "chance": 0.02},
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "crossroads"
+      ],
+      "chance": 0.02
+    },
     "effect": null,
     "lines": [
       "You stand at the Crossroads and try to remember which road you used to take",
@@ -31,7 +54,15 @@
   },
   "forgot_a_song": {
     "category": "forgetting",
-    "trigger": {"at": ["zone_arrival"], "location": ["choir"], "chance": 0.03},
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "choir"
+      ],
+      "chance": 0.03
+    },
     "effect": null,
     "lines": [
       "You stop in the south aisle. There was a song you used to know. You hum the start.",
@@ -41,7 +72,13 @@
   },
   "forgot_your_first_friend": {
     "category": "forgetting",
-    "trigger": {"at": ["save_action"], "min_level": 5, "chance": 0.012},
+    "trigger": {
+      "at": [
+        "save_action"
+      ],
+      "min_level": 5,
+      "chance": 0.012
+    },
     "effect": null,
     "lines": [
       "You write your save. You realize you no longer remember the name of the first",
@@ -51,7 +88,12 @@
   },
   "forgot_a_word_you_loved": {
     "category": "forgetting",
-    "trigger": {"at": ["discovery_read"], "chance": 0.015},
+    "trigger": {
+      "at": [
+        "discovery_read"
+      ],
+      "chance": 0.015
+    },
     "effect": null,
     "lines": [
       "You are reading. You reach for a word you have loved your whole life.",
@@ -61,8 +103,21 @@
   },
   "burn_on_left_hand": {
     "category": "body",
-    "trigger": {"at": ["combat_victory"], "location": ["reach", "drowned_holds"], "chance": 0.03},
-    "effect": {"stat": "max_hp", "delta": -3, "flag": "burned_left_hand"},
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "location": [
+        "reach",
+        "drowned_holds"
+      ],
+      "chance": 0.03
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": -3,
+      "flag": "burned_left_hand"
+    },
     "lines": [
       "Something hot brushes your left hand as the fight ends. You do not see what.",
       "By the time you look, it is gone. The skin is white-pink where it should not be.",
@@ -72,7 +127,13 @@
   },
   "white_hair_above_temple": {
     "category": "body",
-    "trigger": {"at": ["combat_victory"], "min_level": 4, "chance": 0.02},
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "min_level": 4,
+      "chance": 0.02
+    },
     "effect": null,
     "lines": [
       "You touch your temple, after. There is a white hair where there was none.",
@@ -82,8 +143,17 @@
   },
   "small_scar_under_jaw": {
     "category": "body",
-    "trigger": {"at": ["combat_low_hp"], "chance": 0.04},
-    "effect": {"stat": "defense", "delta": 1, "flag": "scar_under_jaw"},
+    "trigger": {
+      "at": [
+        "combat_low_hp"
+      ],
+      "chance": 0.04
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "scar_under_jaw"
+    },
     "lines": [
       "Something opened the skin under your jaw and the skin closed itself fast.",
       "You did not notice when. The scar is a small ledge. Your fingers will find it",
@@ -93,8 +163,17 @@
   },
   "loose_back_tooth": {
     "category": "body",
-    "trigger": {"at": ["combat_victory"], "min_level": 3, "chance": 0.018},
-    "effect": {"stat": "max_stamina", "delta": -1},
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "min_level": 3,
+      "chance": 0.018
+    },
+    "effect": {
+      "stat": "max_stamina",
+      "delta": -1
+    },
     "lines": [
       "After the fight, a back tooth is loose. You did not notice the blow that did it.",
       "You touch it with your tongue. It will not go back. You will lose it later.",
@@ -104,8 +183,17 @@
   },
   "calluses_finally": {
     "category": "body",
-    "trigger": {"at": ["combat_victory"], "min_level": 5, "chance": 0.025},
-    "effect": {"stat": "attack", "delta": 1},
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "min_level": 5,
+      "chance": 0.025
+    },
+    "effect": {
+      "stat": "attack",
+      "delta": 1
+    },
     "lines": [
       "Your hands have finally gone hard where they need to be hard.",
       "You did not notice. You notice now. Holding the weapon does not hurt today.",
@@ -115,8 +203,22 @@
   },
   "limp_after_choir": {
     "category": "body",
-    "trigger": {"at": ["zone_arrival"], "location": ["mourncross", "choir"], "min_visits": 2, "chance": 0.03},
-    "effect": {"stat": "max_stamina", "delta": -2, "flag": "limp_right"},
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "mourncross",
+        "choir"
+      ],
+      "min_visits": 2,
+      "chance": 0.03
+    },
+    "effect": {
+      "stat": "max_stamina",
+      "delta": -2,
+      "flag": "limp_right"
+    },
     "lines": [
       "You walk down the choir's nave and realize your right leg is slow.",
       "It did not used to be. Something at the gauntlet took it. You did not notice.",
@@ -126,8 +228,16 @@
   },
   "certain_the_pall_knows": {
     "category": "mind",
-    "trigger": {"at": ["combat_low_hp"], "min_level": 4, "chance": 0.025},
-    "effect": {"flag": "certain_pall_knows"},
+    "trigger": {
+      "at": [
+        "combat_low_hp"
+      ],
+      "min_level": 4,
+      "chance": 0.025
+    },
+    "effect": {
+      "flag": "certain_pall_knows"
+    },
     "lines": [
       "You are nearly down. You feel — and you know without seeing — that the Pall",
       "has just looked at you, briefly, from somewhere very far away. The look is gone.",
@@ -136,8 +246,18 @@
   },
   "doubt_that_atrel_is_real": {
     "category": "mind",
-    "trigger": {"at": ["discovery_read"], "location": ["last_altar"], "chance": 0.02},
-    "effect": {"flag": "doubts_atrel"},
+    "trigger": {
+      "at": [
+        "discovery_read"
+      ],
+      "location": [
+        "last_altar"
+      ],
+      "chance": 0.02
+    },
+    "effect": {
+      "flag": "doubts_atrel"
+    },
     "lines": [
       "You read. As you do, something in you wonders if you have been told a story.",
       "Maybe Atrél is the kingdom's coping mechanism. Maybe the small altar is theatre.",
@@ -146,8 +266,19 @@
   },
   "cannot_defend_in_the_choir": {
     "category": "mind",
-    "trigger": {"at": ["zone_arrival"], "location": ["choir"], "min_visits": 3, "chance": 0.025},
-    "effect": {"flag": "no_defend_in_choir"},
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "choir"
+      ],
+      "min_visits": 3,
+      "chance": 0.025
+    },
+    "effect": {
+      "flag": "no_defend_in_choir"
+    },
     "lines": [
       "Something about this place — the air, the height of the ceiling, the unsung hymn —",
       "decides for you that defending here is the wrong shape of action. You cannot do it.",
@@ -157,8 +288,19 @@
   },
   "certainty_about_the_wolves": {
     "category": "mind",
-    "trigger": {"at": ["combat_victory"], "location": ["forest"], "min_visits": 2, "chance": 0.03},
-    "effect": {"flag": "knows_wolves_were_dogs"},
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "location": [
+        "forest"
+      ],
+      "min_visits": 2,
+      "chance": 0.03
+    },
+    "effect": {
+      "flag": "knows_wolves_were_dogs"
+    },
     "lines": [
       "Walking away from the wolf you just killed, you become certain — without proof —",
       "that this animal used to wear a collar. You can see the wear-line in its fur.",
@@ -167,8 +309,19 @@
   },
   "fear_of_the_summit_stair": {
     "category": "mind",
-    "trigger": {"at": ["zone_arrival"], "location": ["mountain"], "min_visits": 3, "chance": 0.02},
-    "effect": {"flag": "fears_the_stair"},
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "mountain"
+      ],
+      "min_visits": 3,
+      "chance": 0.02
+    },
+    "effect": {
+      "flag": "fears_the_stair"
+    },
     "lines": [
       "You crest a switchback and freeze. You cannot say why. Your legs simply",
       "decide they are not going further today. You sit. The grey snow falls on you.",
@@ -177,7 +330,16 @@
   },
   "knew_the_engineer_would_smile": {
     "category": "mind",
-    "trigger": {"at": ["zone_arrival"], "location": ["reach"], "min_visits": 2, "chance": 0.02},
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "reach"
+      ],
+      "min_visits": 2,
+      "chance": 0.02
+    },
     "effect": null,
     "lines": [
       "You walk into the Reach knowing — without checking — that the Engineer will",
@@ -187,8 +349,19 @@
   },
   "the_cat_now_sits_closer": {
     "category": "bond",
-    "trigger": {"at": ["zone_arrival"], "location": ["village"], "min_visits": 4, "chance": 0.035},
-    "effect": {"flag": "cat_sits_closer"},
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "min_visits": 4,
+      "chance": 0.035
+    },
+    "effect": {
+      "flag": "cat_sits_closer"
+    },
     "lines": [
       "The cat by the hearth, the same blue cat, has shifted. She is sitting closer to",
       "where you usually sit. By a hand's width. She did not used to. She does now.",
@@ -197,8 +370,20 @@
   },
   "wolf_knows_your_scent": {
     "category": "bond",
-    "trigger": {"at": ["combat_victory"], "location": ["forest"], "chance": 0.03},
-    "effect": {"flag": "wolf_knows_you", "stat": "defense", "delta": 1},
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "location": [
+        "forest"
+      ],
+      "chance": 0.03
+    },
+    "effect": {
+      "flag": "wolf_knows_you",
+      "stat": "defense",
+      "delta": 1
+    },
     "lines": [
       "A wolf — not the one you just killed; one watching from the trees — sees you.",
       "She does not move. She knows you now. She will not be at the next Witherwood",
@@ -208,8 +393,19 @@
   },
   "small_un_remembers_you": {
     "category": "bond",
-    "trigger": {"at": ["zone_arrival"], "location": ["hidden_hold"], "min_visits": 2, "chance": 0.05},
-    "effect": {"flag": "small_un_remembers"},
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "hidden_hold"
+      ],
+      "min_visits": 2,
+      "chance": 0.05
+    },
+    "effect": {
+      "flag": "small_un_remembers"
+    },
     "lines": [
       "The Small Un, today, looks up when you walk in. They do not look up for everyone.",
       "They have decided that you are someone. They will not forget. Atrél will not get",
@@ -218,7 +414,16 @@
   },
   "tree_leans_toward_you": {
     "category": "bond",
-    "trigger": {"at": ["zone_arrival"], "location": ["forest"], "min_visits": 5, "chance": 0.025},
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "forest"
+      ],
+      "min_visits": 5,
+      "chance": 0.025
+    },
     "effect": null,
     "lines": [
       "The third tree from the road north has shifted very slightly. It is leaning",
@@ -228,8 +433,19 @@
   },
   "halna_will_save_you_a_cut": {
     "category": "bond",
-    "trigger": {"at": ["combat_victory"], "location": ["forest"], "min_level": 4, "chance": 0.02},
-    "effect": {"flag": "halna_saves_meat"},
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "location": [
+        "forest"
+      ],
+      "min_level": 4,
+      "chance": 0.02
+    },
+    "effect": {
+      "flag": "halna_saves_meat"
+    },
     "lines": [
       "After the fight, you pass Halna at her log. She does not look up. She does say,",
       "to no one, that the next meat she dresses she will save you a cut. She means it.",
@@ -239,7 +455,16 @@
   },
   "tessa_knows_your_step": {
     "category": "bond",
-    "trigger": {"at": ["discovery_read"], "location": ["forest"], "requires_flag": "discoveries_seen", "chance": 0.04},
+    "trigger": {
+      "at": [
+        "discovery_read"
+      ],
+      "location": [
+        "forest"
+      ],
+      "requires_flag": "discoveries_seen",
+      "chance": 0.04
+    },
     "effect": null,
     "lines": [
       "The Atrél-marker — Tessa's marker, you know now — registers your step the way",
@@ -249,8 +474,22 @@
   },
   "cat_no_longer_comes": {
     "category": "broken",
-    "trigger": {"at": ["zone_arrival"], "location": ["village"], "min_visits": 3, "denies_mark": ["the_cat_now_sits_closer"], "chance": 0.018},
-    "effect": {"flag": "cat_does_not_come"},
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "min_visits": 3,
+      "denies_mark": [
+        "the_cat_now_sits_closer"
+      ],
+      "chance": 0.018
+    },
+    "effect": {
+      "flag": "cat_does_not_come"
+    },
     "lines": [
       "The cat by the hearth does not look at you today. She will not look at you again",
       "this character. You did something. You do not know what. Atrél did not take this;",
@@ -259,8 +498,19 @@
   },
   "old_halna_will_not_nod": {
     "category": "broken",
-    "trigger": {"at": ["zone_arrival"], "location": ["forest"], "min_visits": 5, "chance": 0.015},
-    "effect": {"flag": "halna_doesnt_nod"},
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "forest"
+      ],
+      "min_visits": 5,
+      "chance": 0.015
+    },
+    "effect": {
+      "flag": "halna_doesnt_nod"
+    },
     "lines": [
       "Halna will not nod at you when you pass her fallen pine. Not today. Not again.",
       "The nod was a small thing. It is gone. You do not know which of the wolves she",
@@ -269,8 +519,16 @@
   },
   "you_no_longer_dream": {
     "category": "broken",
-    "trigger": {"at": ["save_action"], "min_level": 5, "chance": 0.015},
-    "effect": {"flag": "no_dreams"},
+    "trigger": {
+      "at": [
+        "save_action"
+      ],
+      "min_level": 5,
+      "chance": 0.015
+    },
+    "effect": {
+      "flag": "no_dreams"
+    },
     "lines": [
       "You save. You realize, as you close the page, that you have not had a dream in",
       "many nights. You used to. The dreams have left you. They will not come back.",
@@ -279,8 +537,19 @@
   },
   "insomniac_no_longer_counts_you": {
     "category": "broken",
-    "trigger": {"at": ["zone_arrival"], "location": ["village"], "requires_flag": "the_counted", "chance": 0.02},
-    "effect": {"flag": "uncounted"},
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "requires_flag": "the_counted",
+      "chance": 0.02
+    },
+    "effect": {
+      "flag": "uncounted"
+    },
     "lines": [
       "The Insomniac is still counting on her beam. She is not counting you, today.",
       "She used to. You used to be a dark mark. Today you are no mark at all.",
@@ -289,8 +558,19 @@
   },
   "the_bell_no_longer_finds_you": {
     "category": "broken",
-    "trigger": {"at": ["zone_arrival"], "location": ["mourncross"], "min_visits": 4, "chance": 0.02},
-    "effect": {"flag": "bell_does_not_reach"},
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "mourncross"
+      ],
+      "min_visits": 4,
+      "chance": 0.02
+    },
+    "effect": {
+      "flag": "bell_does_not_reach"
+    },
     "lines": [
       "The Bellward's bell, that has been ringing your every hour since you arrived,",
       "stops finding you. You hear it ring; the sound passes through you. It does not",
@@ -299,7 +579,15 @@
   },
   "you_lose_a_glove": {
     "category": "broken",
-    "trigger": {"at": ["zone_arrival"], "location": ["cave"], "chance": 0.025},
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "cave"
+      ],
+      "chance": 0.025
+    },
     "effect": null,
     "lines": [
       "You realize, in the Gullet's wet, that you no longer have your left glove.",
@@ -309,8 +597,19 @@
   },
   "found_a_warm_pebble": {
     "category": "found",
-    "trigger": {"at": ["zone_arrival"], "location": ["forest", "reach"], "chance": 0.04},
-    "effect": {"consumable": "Warm Pebble"},
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "forest",
+        "reach"
+      ],
+      "chance": 0.04
+    },
+    "effect": {
+      "consumable": "Warm Pebble"
+    },
     "lines": [
       "Your hand brushes a pebble on the path. It is warmer than the air. You pick it",
       "up. It does not cool. You put it in your pocket. Atrél has not asked for it.",
@@ -320,7 +619,15 @@
   },
   "found_a_button": {
     "category": "found",
-    "trigger": {"at": ["zone_arrival"], "location": ["drowned_holds"], "chance": 0.03},
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "drowned_holds"
+      ],
+      "chance": 0.03
+    },
     "effect": null,
     "lines": [
       "There is a small wooden button in the silt at your boot. Worn, bored through.",
@@ -330,7 +637,15 @@
   },
   "found_a_thread": {
     "category": "found",
-    "trigger": {"at": ["zone_arrival"], "location": ["hidden_hold"], "chance": 0.05},
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "hidden_hold"
+      ],
+      "chance": 0.05
+    },
     "effect": null,
     "lines": [
       "On the path between the bakery and the Small Un's, a thread of dyed wool —",
@@ -340,8 +655,15 @@
   },
   "found_a_coin_wedged_in_a_stone": {
     "category": "found",
-    "trigger": {"at": ["discovery_read"], "chance": 0.025},
-    "effect": {"flag": "carried_a_coin"},
+    "trigger": {
+      "at": [
+        "discovery_read"
+      ],
+      "chance": 0.025
+    },
+    "effect": {
+      "flag": "carried_a_coin"
+    },
     "lines": [
       "Tucked under a stone where you sat to read, a coin. Karst minting. The edges",
       "soft. Someone's, once. Yours now. You will give it back, one day, if you find",
@@ -350,7 +672,15 @@
   },
   "found_a_feather_in_the_choir": {
     "category": "found",
-    "trigger": {"at": ["zone_arrival"], "location": ["choir"], "chance": 0.03},
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "choir"
+      ],
+      "chance": 0.03
+    },
     "effect": null,
     "lines": [
       "On the south aisle's bench, where the column eats the word 'name,' a single",
@@ -360,8 +690,19 @@
   },
   "found_a_bread_crust_in_kerris_pack": {
     "category": "found",
-    "trigger": {"at": ["zone_arrival"], "location": ["hidden_hold"], "min_visits": 2, "chance": 0.04},
-    "effect": {"consumable": "Kerris's Crust"},
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "hidden_hold"
+      ],
+      "min_visits": 2,
+      "chance": 0.04
+    },
+    "effect": {
+      "consumable": "Kerris's Crust"
+    },
     "lines": [
       "Kerris's pack is open by the oven. There is a crust in it, set aside. He has",
       "left it for you. He will not say so. He will not look up when you take it.",
@@ -371,7 +712,17 @@
   },
   "river_takes_your_knot": {
     "category": "lost",
-    "trigger": {"at": ["zone_arrival"], "location": ["reach", "drowned_holds"], "min_visits": 2, "chance": 0.03},
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "reach",
+        "drowned_holds"
+      ],
+      "min_visits": 2,
+      "chance": 0.03
+    },
     "effect": null,
     "lines": [
       "You realize, three steps after the crossing, that the knot you tied in your cloak",
@@ -381,8 +732,17 @@
   },
   "lost_your_smallest_coin": {
     "category": "lost",
-    "trigger": {"at": ["zone_arrival"], "chance": 0.02},
-    "effect": {"stat": "max_stamina", "delta": 0, "flag": "lost_small_coin"},
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "chance": 0.02
+    },
+    "effect": {
+      "stat": "max_stamina",
+      "delta": 0,
+      "flag": "lost_small_coin"
+    },
     "lines": [
       "Counting your purse in passing, you find the smallest copper is gone.",
       "You do not remember when it left. It was the one your father gave you,",
@@ -392,7 +752,13 @@
   },
   "lost_a_small_song": {
     "category": "lost",
-    "trigger": {"at": ["save_action"], "min_level": 4, "chance": 0.018},
+    "trigger": {
+      "at": [
+        "save_action"
+      ],
+      "min_level": 4,
+      "chance": 0.018
+    },
     "effect": null,
     "lines": [
       "You hum, while saving, a tune you have hummed all your life. The third note",
@@ -402,7 +768,15 @@
   },
   "lost_the_taste_of_salt": {
     "category": "lost",
-    "trigger": {"at": ["zone_arrival"], "location": ["cave"], "chance": 0.02},
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "cave"
+      ],
+      "chance": 0.02
+    },
     "effect": null,
     "lines": [
       "You taste the wet of the Gullet on your lips. There is no salt in it. You realize",
@@ -412,8 +786,20 @@
   },
   "lost_your_left_glove": {
     "category": "lost",
-    "trigger": {"at": ["zone_arrival"], "location": ["cave", "mountain"], "chance": 0.02},
-    "effect": {"stat": "defense", "delta": -1},
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "cave",
+        "mountain"
+      ],
+      "chance": 0.02
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": -1
+    },
     "lines": [
       "Your left glove is gone. You do not remember when. The hand will be cold.",
       "The hand will harden. The hand will be slower to block, until it learns.",
@@ -423,7 +809,13 @@
   },
   "lost_the_word_for_kindness": {
     "category": "lost",
-    "trigger": {"at": ["discovery_read"], "min_level": 5, "chance": 0.012},
+    "trigger": {
+      "at": [
+        "discovery_read"
+      ],
+      "min_level": 5,
+      "chance": 0.012
+    },
     "effect": null,
     "lines": [
       "You reach for the word kindness while reading. You cannot find it. You know its",
@@ -433,8 +825,19 @@
   },
   "promised_to_come_back_to_the_stump": {
     "category": "promise_kept",
-    "trigger": {"at": ["discovery_read"], "location": ["forest"], "requires_flag": "discoveries_seen", "chance": 0.04},
-    "effect": {"flag": "promised_stump"},
+    "trigger": {
+      "at": [
+        "discovery_read"
+      ],
+      "location": [
+        "forest"
+      ],
+      "requires_flag": "discoveries_seen",
+      "chance": 0.04
+    },
+    "effect": {
+      "flag": "promised_stump"
+    },
     "lines": [
       "Reading at Halna's stump, you decide — without saying so aloud — that you will",
       "come back to it. Tomorrow, or the day after. Halna does not need you to. You",
@@ -443,8 +846,18 @@
   },
   "promised_to_say_the_name": {
     "category": "promise_kept",
-    "trigger": {"at": ["discovery_read"], "location": ["sealed_chamber"], "chance": 0.04},
-    "effect": {"flag": "promised_to_say_a_name"},
+    "trigger": {
+      "at": [
+        "discovery_read"
+      ],
+      "location": [
+        "sealed_chamber"
+      ],
+      "chance": 0.04
+    },
+    "effect": {
+      "flag": "promised_to_say_a_name"
+    },
     "lines": [
       "You read the wall behind one of the five chairs. You decide, quietly, that if",
       "you reach the Summit you will say their name aloud. Just the one. You do not",
@@ -453,8 +866,19 @@
   },
   "promised_to_write_a_line": {
     "category": "promise_kept",
-    "trigger": {"at": ["zone_arrival"], "location": ["village"], "requires_flag": "hearth_keepers_book_seen", "chance": 0.05},
-    "effect": {"flag": "promised_hearth_line"},
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "requires_flag": "hearth_keepers_book_seen",
+      "chance": 0.05
+    },
+    "effect": {
+      "flag": "promised_hearth_line"
+    },
     "lines": [
       "You walk past the hearth. You decide you will write a line in the book before",
       "you leave this village this run. You do not need to tell the hearth-keeper.",
@@ -463,8 +887,19 @@
   },
   "promised_to_lay_flowers": {
     "category": "promise_kept",
-    "trigger": {"at": ["discovery_read"], "location": ["forest", "reach"], "chance": 0.03},
-    "effect": {"flag": "promised_flowers"},
+    "trigger": {
+      "at": [
+        "discovery_read"
+      ],
+      "location": [
+        "forest",
+        "reach"
+      ],
+      "chance": 0.03
+    },
+    "effect": {
+      "flag": "promised_flowers"
+    },
     "lines": [
       "You decide, at a small grave you have read, that you will lay one flower here",
       "before this run ends. One. Small. The flower does not have to be impressive.",
@@ -473,8 +908,19 @@
   },
   "promised_to_remember_kerris": {
     "category": "promise_kept",
-    "trigger": {"at": ["zone_arrival"], "location": ["hidden_hold"], "min_visits": 3, "chance": 0.04},
-    "effect": {"flag": "promised_kerris"},
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "hidden_hold"
+      ],
+      "min_visits": 3,
+      "chance": 0.04
+    },
+    "effect": {
+      "flag": "promised_kerris"
+    },
     "lines": [
       "Walking past the bakery, you decide you will remember Kerris's name no matter",
       "what Atrél takes from you. You write the name in your cloak's seam, in pencil.",
@@ -483,8 +929,19 @@
   },
   "promised_atrel_a_grief": {
     "category": "promise_kept",
-    "trigger": {"at": ["zone_arrival"], "location": ["last_altar", "village"], "chance": 0.03},
-    "effect": {"flag": "promised_atrel_grief"},
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "last_altar",
+        "village"
+      ],
+      "chance": 0.03
+    },
+    "effect": {
+      "flag": "promised_atrel_grief"
+    },
     "lines": [
       "You decide — quietly, walking past his altar — that next time you pass here,",
       "you will set one small grief down. You know which. You will not name it now.",
@@ -493,8 +950,21 @@
   },
   "broke_the_stump_promise": {
     "category": "promise_broken",
-    "trigger": {"at": ["zone_arrival"], "location": ["mountain"], "requires_flag": "promised_stump", "chance": 0.08},
-    "effect": {"stat": "max_hp", "delta": -2, "flag": "broke_stump_promise"},
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "mountain"
+      ],
+      "requires_flag": "promised_stump",
+      "chance": 0.08
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": -2,
+      "flag": "broke_stump_promise"
+    },
     "lines": [
       "You realize, on the climb, that you did not go back to Halna's stump. You",
       "promised yourself you would. You did not. There is no harm done; it is a stump.",
@@ -505,8 +975,21 @@
   },
   "broke_the_name_promise": {
     "category": "promise_broken",
-    "trigger": {"at": ["zone_arrival"], "location": ["summit"], "requires_flag": "promised_to_say_a_name", "chance": 0.10},
-    "effect": {"stat": "attack", "delta": -1, "flag": "broke_name_promise"},
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "summit"
+      ],
+      "requires_flag": "promised_to_say_a_name",
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "attack",
+      "delta": -1,
+      "flag": "broke_name_promise"
+    },
     "lines": [
       "You stand at the Summit. You forgot which name. You promised to say one. You",
       "cannot. It is, of course, exactly the one Atrél will keep for you, now. The",
@@ -516,8 +999,16 @@
   },
   "broke_the_flowers_promise": {
     "category": "promise_broken",
-    "trigger": {"at": ["combat_low_hp"], "requires_flag": "promised_flowers", "chance": 0.06},
-    "effect": {"flag": "broke_flowers_promise"},
+    "trigger": {
+      "at": [
+        "combat_low_hp"
+      ],
+      "requires_flag": "promised_flowers",
+      "chance": 0.06
+    },
+    "effect": {
+      "flag": "broke_flowers_promise"
+    },
     "lines": [
       "You are bleeding. You remember, abruptly, the flower you promised to lay.",
       "You do not have a flower. You do not have time. You will not have a flower",
@@ -526,7 +1017,14 @@
   },
   "broke_kerris_promise": {
     "category": "promise_broken",
-    "trigger": {"at": ["save_action"], "requires_flag": "promised_kerris", "min_level": 6, "chance": 0.04},
+    "trigger": {
+      "at": [
+        "save_action"
+      ],
+      "requires_flag": "promised_kerris",
+      "min_level": 6,
+      "chance": 0.04
+    },
     "effect": null,
     "lines": [
       "You save. You realize Kerris's name is no longer in your cloak's seam. It must",
@@ -536,8 +1034,22 @@
   },
   "broke_the_hearth_line_promise": {
     "category": "promise_broken",
-    "trigger": {"at": ["zone_arrival"], "location": ["mountain", "summit"], "requires_flag": "promised_hearth_line", "chance": 0.07},
-    "effect": {"stat": "max_stamina", "delta": -1, "flag": "broke_hearth_promise"},
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "mountain",
+        "summit"
+      ],
+      "requires_flag": "promised_hearth_line",
+      "chance": 0.07
+    },
+    "effect": {
+      "stat": "max_stamina",
+      "delta": -1,
+      "flag": "broke_hearth_promise"
+    },
     "lines": [
       "You realize, far from the village, that you did not write the line. The book is",
       "still on the hearth. It is still open. Someone else will write the next one.",
@@ -547,7 +1059,14 @@
   },
   "broke_atrel_promise": {
     "category": "promise_broken",
-    "trigger": {"at": ["save_action"], "requires_flag": "promised_atrel_grief", "min_level": 6, "chance": 0.03},
+    "trigger": {
+      "at": [
+        "save_action"
+      ],
+      "requires_flag": "promised_atrel_grief",
+      "min_level": 6,
+      "chance": 0.03
+    },
     "effect": null,
     "lines": [
       "You save. You realize — too late, again — that you did not bring the grief to",
@@ -558,8 +1077,18 @@
   },
   "almost_saw_a_face": {
     "category": "half_truth",
-    "trigger": {"at": ["combat_low_hp"], "location": ["choir"], "chance": 0.04},
-    "effect": {"flag": "almost_saw_face"},
+    "trigger": {
+      "at": [
+        "combat_low_hp"
+      ],
+      "location": [
+        "choir"
+      ],
+      "chance": 0.04
+    },
+    "effect": {
+      "flag": "almost_saw_face"
+    },
     "lines": [
       "At the edge of your vision, in the gauntlet, a face. Just a face. You did not",
       "see whose. You did not have time to look. The face is gone. You know it was someone.",
@@ -568,7 +1097,16 @@
   },
   "almost_heard_your_name": {
     "category": "half_truth",
-    "trigger": {"at": ["zone_arrival"], "location": ["reach", "drowned_holds"], "chance": 0.025},
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "reach",
+        "drowned_holds"
+      ],
+      "chance": 0.025
+    },
     "effect": null,
     "lines": [
       "The river is speaking. You almost hear your name in it. Not your name; close to it.",
@@ -578,7 +1116,16 @@
   },
   "almost_remembered_a_smell": {
     "category": "half_truth",
-    "trigger": {"at": ["zone_arrival"], "location": ["hidden_hold"], "min_visits": 2, "chance": 0.03},
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "hidden_hold"
+      ],
+      "min_visits": 2,
+      "chance": 0.03
+    },
     "effect": null,
     "lines": [
       "Walking past Kerris's oven, you almost remember a smell that is older than you.",
@@ -588,8 +1135,19 @@
   },
   "almost_understood_atrel": {
     "category": "half_truth",
-    "trigger": {"at": ["discovery_read"], "location": ["last_altar", "choir"], "chance": 0.025},
-    "effect": {"flag": "almost_understood_atrel"},
+    "trigger": {
+      "at": [
+        "discovery_read"
+      ],
+      "location": [
+        "last_altar",
+        "choir"
+      ],
+      "chance": 0.025
+    },
+    "effect": {
+      "flag": "almost_understood_atrel"
+    },
     "lines": [
       "You almost understand what Atrél is doing. You almost see the shape of it. You",
       "do not, in the end. The almost-understanding stays with you. It is a kind of",
@@ -598,8 +1156,19 @@
   },
   "almost_chose_to_turn_back": {
     "category": "half_truth",
-    "trigger": {"at": ["zone_arrival"], "location": ["mountain"], "min_visits": 2, "chance": 0.04},
-    "effect": {"flag": "almost_turned_back"},
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "mountain"
+      ],
+      "min_visits": 2,
+      "chance": 0.04
+    },
+    "effect": {
+      "flag": "almost_turned_back"
+    },
     "lines": [
       "On the climb, your foot decided — once, between two steps — to turn around.",
       "You did not. You climbed. The decision is in you, though. You almost did. You",
@@ -608,19 +1177,43 @@
   },
   "almost_saw_the_pall_apologise": {
     "category": "half_truth",
-    "trigger": {"at": ["combat_low_hp"], "location": ["mountain", "summit"], "min_level": 6, "chance": 0.03},
-    "effect": {"flag": "almost_saw_pall_apologise"},
+    "trigger": {
+      "at": [
+        "combat_low_hp"
+      ],
+      "location": [
+        "mountain",
+        "summit"
+      ],
+      "min_level": 6,
+      "chance": 0.03
+    },
+    "effect": {
+      "flag": "almost_saw_pall_apologise"
+    },
     "lines": [
       "You are nearly down. The grey, for half a breath, shifts in a shape that looks",
       "like an old man bowing. You blink. The grey is the grey again. Hunger never bows.",
       "The almost-bowing is yours. It is a heavy thing. Atrél nods at you. He does not bow."
     ]
   },
-
   "halna_marked_you_at_eleven": {
     "category": "bond",
-    "trigger": {"at": ["zone_arrival"], "location": ["forest"], "min_visits": 3, "chance": 0.025},
-    "effect": {"stat": "attack", "delta": 1, "flag": "halna_marked_you"},
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "forest"
+      ],
+      "min_visits": 3,
+      "chance": 0.025
+    },
+    "effect": {
+      "stat": "attack",
+      "delta": 1,
+      "flag": "halna_marked_you"
+    },
     "lines": [
       "Halna watches you walk past her fallen pine. She does not nod. She does not speak.",
       "But your grip, when you pick up your weapon again later, feels older. As if she",
@@ -630,7 +1223,16 @@
   },
   "halna_gave_you_the_quiet_word": {
     "category": "bond",
-    "trigger": {"at": ["combat_victory"], "location": ["forest"], "min_visits": 2, "chance": 0.022},
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "location": [
+        "forest"
+      ],
+      "min_visits": 2,
+      "chance": 0.022
+    },
     "effect": null,
     "lines": [
       "Halna, after the fight, says one word to you. Quiet. You do not hear which.",
@@ -640,8 +1242,20 @@
   },
   "halna_will_not_see_you_anymore": {
     "category": "broken",
-    "trigger": {"at": ["zone_arrival"], "location": ["forest"], "min_visits": 6, "chance": 0.015},
-    "effect": {"stat": "max_hp", "delta": -2},
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "forest"
+      ],
+      "min_visits": 6,
+      "chance": 0.015
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": -2
+    },
     "lines": [
       "Halna looks past you today. Tomorrow she will look past you again. You did something.",
       "You may not know what. The wolf at the stump knows. Halna does not let you know.",
@@ -651,8 +1265,19 @@
   },
   "halna_left_you_a_strip_of_meat": {
     "category": "found",
-    "trigger": {"at": ["zone_arrival"], "location": ["forest"], "requires_flag": "halna_saves_meat", "chance": 0.10},
-    "effect": {"consumable": "Health Potion"},
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "forest"
+      ],
+      "requires_flag": "halna_saves_meat",
+      "chance": 0.1
+    },
+    "effect": {
+      "consumable": "Health Potion"
+    },
     "lines": [
       "On the flat stone by Halna's log, today, a strip of dressed venison wrapped in",
       "leaves. She is not at the log. She has gone hunting. You take the meat. It will",
@@ -662,8 +1287,19 @@
   },
   "halna_told_you_about_her_daughter": {
     "category": "bond",
-    "trigger": {"at": ["combat_victory"], "location": ["forest"], "min_level": 5, "chance": 0.012},
-    "effect": {"flag": "knows_halnas_daughter"},
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "location": [
+        "forest"
+      ],
+      "min_level": 5,
+      "chance": 0.012
+    },
+    "effect": {
+      "flag": "knows_halnas_daughter"
+    },
     "lines": [
       "Walking back past Halna's pine, you stop. She is sitting. She is not working.",
       "She tells you, without looking at you, that her daughter went into the wood",
@@ -671,11 +1307,24 @@
       "You will carry this. You will not tell it. The wood is the only one who needs it."
     ]
   },
-
   "helka_lifted_her_elbow": {
     "category": "bond",
-    "trigger": {"at": ["combat_victory"], "location": ["reach", "last_dyke"], "requires_flag": "last_reaper_down", "chance": 0.5},
-    "effect": {"stat": "max_hp", "delta": 5, "flag": "helka_lifted"},
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "location": [
+        "reach",
+        "last_dyke"
+      ],
+      "requires_flag": "last_reaper_down",
+      "chance": 0.5
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 5,
+      "flag": "helka_lifted"
+    },
     "lines": [
       "You come back to the Engineer's bridge. Helka is standing. Her left arm is out of",
       "the mud. The mud-line on her sleeve has darkened to dry. She is holding a beam.",
@@ -685,8 +1334,21 @@
   },
   "helka_taught_you_a_knot": {
     "category": "bond",
-    "trigger": {"at": ["zone_arrival"], "location": ["reach"], "min_visits": 2, "chance": 0.025},
-    "effect": {"stat": "defense", "delta": 1, "flag": "knows_kitchen_knot"},
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "reach"
+      ],
+      "min_visits": 2,
+      "chance": 0.025
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "knows_kitchen_knot"
+    },
     "lines": [
       "Helka shows you a knot. With her left hand, which is the one in the mud. She does",
       "not lift the elbow. She uses the wrist only. The knot holds beams against rivers.",
@@ -696,7 +1358,16 @@
   },
   "helka_gave_you_her_chisel": {
     "category": "found",
-    "trigger": {"at": ["zone_arrival"], "location": ["reach"], "min_visits": 4, "chance": 0.02},
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "reach"
+      ],
+      "min_visits": 4,
+      "chance": 0.02
+    },
     "effect": null,
     "lines": [
       "Helka, today, presses a chisel into your hand. Short, brass, worn smooth.",
@@ -706,8 +1377,22 @@
   },
   "the_reach_remembers_your_step": {
     "category": "mind",
-    "trigger": {"at": ["zone_arrival"], "location": ["reach", "drowned_holds"], "min_visits": 4, "chance": 0.02},
-    "effect": {"stat": "max_stamina", "delta": 1, "flag": "reach_knows_step"},
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "reach",
+        "drowned_holds"
+      ],
+      "min_visits": 4,
+      "chance": 0.02
+    },
+    "effect": {
+      "stat": "max_stamina",
+      "delta": 1,
+      "flag": "reach_knows_step"
+    },
     "lines": [
       "You walk into the Reach and the water flattens itself for half a heartbeat.",
       "It does not always do this. It does this for you, now. You will walk less heavy",
@@ -717,7 +1402,19 @@
   },
   "helka_will_not_lift_her_elbow_for_you": {
     "category": "broken",
-    "trigger": {"at": ["zone_arrival"], "location": ["reach"], "min_visits": 5, "denies_mark": ["helka_lifted_her_elbow"], "chance": 0.012},
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "reach"
+      ],
+      "min_visits": 5,
+      "denies_mark": [
+        "helka_lifted_her_elbow"
+      ],
+      "chance": 0.012
+    },
     "effect": null,
     "lines": [
       "Helka does not look at you today. Her elbow is in the mud. You did not break the",
@@ -725,11 +1422,23 @@
       "the third one. Helka is still where she was. The not-lifting is yours to carry."
     ]
   },
-
   "lampkeeper_recognised_you": {
     "category": "bond",
-    "trigger": {"at": ["zone_arrival"], "location": ["mourncross"], "min_visits": 3, "chance": 0.025},
-    "effect": {"stat": "max_hp", "delta": 3, "flag": "lampkeeper_knows"},
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "mourncross"
+      ],
+      "min_visits": 3,
+      "chance": 0.025
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 3,
+      "flag": "lampkeeper_knows"
+    },
     "lines": [
       "The Lampkeeper looks up from his unlit lamp when you arrive. He has not looked up",
       "for anyone, in a long time. He sees you. He says, quietly: 'I have written your",
@@ -739,7 +1448,16 @@
   },
   "the_lamp_caught_when_you_passed": {
     "category": "half_truth",
-    "trigger": {"at": ["zone_arrival"], "location": ["mourncross"], "min_visits": 5, "chance": 0.012},
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "mourncross"
+      ],
+      "min_visits": 5,
+      "chance": 0.012
+    },
     "effect": null,
     "lines": [
       "One of the north-quarter lamps, today, catches as you walk under it. Just a flicker.",
@@ -749,7 +1467,16 @@
   },
   "lampkeeper_handed_you_her_drawing": {
     "category": "found",
-    "trigger": {"at": ["zone_arrival"], "location": ["mourncross"], "min_visits": 4, "chance": 0.018},
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "mourncross"
+      ],
+      "min_visits": 4,
+      "chance": 0.018
+    },
     "effect": null,
     "lines": [
       "The Lampkeeper passes you, today, a folded paper. A child's drawing. A lamp. Tapped.",
@@ -759,7 +1486,16 @@
   },
   "you_forgot_the_word_for_lamp": {
     "category": "forgetting",
-    "trigger": {"at": ["save_action"], "location": ["mourncross"], "min_level": 5, "chance": 0.018},
+    "trigger": {
+      "at": [
+        "save_action"
+      ],
+      "location": [
+        "mourncross"
+      ],
+      "min_level": 5,
+      "chance": 0.018
+    },
     "effect": null,
     "lines": [
       "You save. You realize you no longer have the word for what the Lampkeeper tends.",
@@ -769,7 +1505,19 @@
   },
   "lampkeeper_will_not_look_up_for_you": {
     "category": "broken",
-    "trigger": {"at": ["zone_arrival"], "location": ["mourncross"], "min_visits": 7, "denies_mark": ["lampkeeper_recognised_you"], "chance": 0.012},
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "mourncross"
+      ],
+      "min_visits": 7,
+      "denies_mark": [
+        "lampkeeper_recognised_you"
+      ],
+      "chance": 0.012
+    },
     "effect": null,
     "lines": [
       "The Lampkeeper does not look up today. Or tomorrow. Or again. You did something.",
@@ -777,11 +1525,21 @@
       "He may take it back. He may not. You will keep walking past him. He will keep tending."
     ]
   },
-
   "penitent_named_you": {
     "category": "bond",
-    "trigger": {"at": ["zone_arrival"], "location": ["mountain"], "min_visits": 3, "chance": 0.022},
-    "effect": {"flag": "penitent_named_you"},
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "mountain"
+      ],
+      "min_visits": 3,
+      "chance": 0.022
+    },
+    "effect": {
+      "flag": "penitent_named_you"
+    },
     "lines": [
       "The Old Penitent looks at you, today, from across the snow, and says one word.",
       "You did not know he had a name for you. He has not had one. He has one now.",
@@ -790,8 +1548,20 @@
   },
   "the_climb_marked_your_lungs": {
     "category": "body",
-    "trigger": {"at": ["combat_low_hp"], "location": ["mountain"], "chance": 0.04},
-    "effect": {"stat": "max_stamina", "delta": -2, "flag": "climb_marked_lungs"},
+    "trigger": {
+      "at": [
+        "combat_low_hp"
+      ],
+      "location": [
+        "mountain"
+      ],
+      "chance": 0.04
+    },
+    "effect": {
+      "stat": "max_stamina",
+      "delta": -2,
+      "flag": "climb_marked_lungs"
+    },
     "lines": [
       "After the fight, your breath does not come the way it did. The Climb is in your lungs.",
       "It is not fatal. It is not leaving. The Penitent, far below, does not look up.",
@@ -801,8 +1571,16 @@
   },
   "you_taste_ash_when_you_save": {
     "category": "mind",
-    "trigger": {"at": ["save_action"], "min_level": 6, "chance": 0.025},
-    "effect": {"flag": "tastes_ash"},
+    "trigger": {
+      "at": [
+        "save_action"
+      ],
+      "min_level": 6,
+      "chance": 0.025
+    },
+    "effect": {
+      "flag": "tastes_ash"
+    },
     "lines": [
       "You write your save. The pencil tastes of ash. So does your mouth. So does the wind.",
       "The Penitent's grey has gotten into your senses. It is not unpleasant. It is not pleasant.",
@@ -811,8 +1589,19 @@
   },
   "penitent_left_you_a_scavver_fang": {
     "category": "found",
-    "trigger": {"at": ["zone_arrival"], "location": ["mountain"], "min_visits": 3, "chance": 0.025},
-    "effect": {"consumable": "Scavver Fang"},
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "mountain"
+      ],
+      "min_visits": 3,
+      "chance": 0.025
+    },
+    "effect": {
+      "consumable": "Scavver Fang"
+    },
     "lines": [
       "On the flat rock by the Penitent, today, a single scavver fang. Set carefully.",
       "He has left it for you. He has not used it himself. He cannot taste anything now.",
@@ -822,7 +1611,17 @@
   },
   "penitent_told_you_his_wifes_name": {
     "category": "bond",
-    "trigger": {"at": ["zone_arrival"], "location": ["mountain"], "min_visits": 6, "requires_flag": "discoveries_seen", "chance": 0.015},
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "mountain"
+      ],
+      "min_visits": 6,
+      "requires_flag": "discoveries_seen",
+      "chance": 0.015
+    },
     "effect": null,
     "lines": [
       "The Penitent, today, says one word to you. 'Maren.' His wife's name. He has kept",
@@ -830,11 +1629,23 @@
       "to his last names. He has chosen which one to hand off. You will keep it for him."
     ]
   },
-
   "talva_let_you_read_a_letter": {
     "category": "bond",
-    "trigger": {"at": ["zone_arrival"], "location": ["hidden_hold"], "min_visits": 3, "chance": 0.022},
-    "effect": {"stat": "defense", "delta": 1, "flag": "talva_trusted_you"},
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "hidden_hold"
+      ],
+      "min_visits": 3,
+      "chance": 0.022
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "talva_trusted_you"
+    },
     "lines": [
       "Tálva, today, sets a letter on the bench between you. From her great-grandmother.",
       "The hand is steady. The chamber's air, sealed in, is still in the folds. You read.",
@@ -844,8 +1655,20 @@
   },
   "talva_pressed_a_satchel_into_your_hand": {
     "category": "promise_kept",
-    "trigger": {"at": ["zone_arrival"], "location": ["hidden_hold"], "min_level": 5, "min_visits": 4, "chance": 0.025},
-    "effect": {"flag": "carrying_talvas_satchel"},
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "hidden_hold"
+      ],
+      "min_level": 5,
+      "min_visits": 4,
+      "chance": 0.025
+    },
+    "effect": {
+      "flag": "carrying_talvas_satchel"
+    },
     "lines": [
       "Tálva presses the satchel into your hand today. The case, ready to carry.",
       "She does not say go. She does not say take it. She does not say anything.",
@@ -854,8 +1677,21 @@
   },
   "small_un_tied_a_knot_in_your_cloak": {
     "category": "bond",
-    "trigger": {"at": ["zone_arrival"], "location": ["hidden_hold"], "min_visits": 4, "chance": 0.035},
-    "effect": {"stat": "max_hp", "delta": 2, "flag": "small_un_knotted_cloak"},
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "hidden_hold"
+      ],
+      "min_visits": 4,
+      "chance": 0.035
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 2,
+      "flag": "small_un_knotted_cloak"
+    },
     "lines": [
       "The Small Un, as you leave, tugs the corner of your cloak. They have tied something.",
       "It is a kitchen knot. You did not teach them. They have learned. They have tied",
@@ -865,8 +1701,19 @@
   },
   "kerris_remembered_to_save_you_bread": {
     "category": "found",
-    "trigger": {"at": ["zone_arrival"], "location": ["hidden_hold"], "min_visits": 5, "chance": 0.04},
-    "effect": {"consumable": "Kerris's Crust"},
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "hidden_hold"
+      ],
+      "min_visits": 5,
+      "chance": 0.04
+    },
+    "effect": {
+      "consumable": "Kerris's Crust"
+    },
     "lines": [
       "Kerris's pack is open again. There is bread set aside. He does not look up.",
       "He has decided to save you bread on the days you come. Today is one of those days.",
@@ -876,7 +1723,16 @@
   },
   "you_carry_a_thread_of_the_small_uns_drawing": {
     "category": "found",
-    "trigger": {"at": ["zone_arrival"], "location": ["hidden_hold"], "min_visits": 3, "chance": 0.025},
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "hidden_hold"
+      ],
+      "min_visits": 3,
+      "chance": 0.025
+    },
     "effect": null,
     "lines": [
       "The Small Un hands you a thread of charcoal. From their drawing of you. The one with",
@@ -884,11 +1740,23 @@
       "carry the thread. You will not lose it. It is your two-faced day, in a thread."
     ]
   },
-
   "cael_carved_your_name_above_hers": {
     "category": "promise_kept",
-    "trigger": {"at": ["zone_arrival"], "location": ["bone_tomb"], "min_visits": 2, "chance": 0.02},
-    "effect": {"stat": "max_hp", "delta": 5, "flag": "cael_carved_you"},
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "bone_tomb"
+      ],
+      "min_visits": 2,
+      "chance": 0.02
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 5,
+      "flag": "cael_carved_you"
+    },
     "lines": [
       "Cael, when you arrive, has used the chisel. Above her name — KESS daughter of Aral",
       "— there is a half-letter. Yours. She is preparing. She is not yet handing off.",
@@ -898,8 +1766,22 @@
   },
   "the_stone_remembered_your_step": {
     "category": "bond",
-    "trigger": {"at": ["zone_arrival"], "location": ["bone_tomb", "pre_pall_shrine"], "min_visits": 2, "chance": 0.018},
-    "effect": {"stat": "defense", "delta": 1, "flag": "stone_knows_step"},
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "bone_tomb",
+        "pre_pall_shrine"
+      ],
+      "min_visits": 2,
+      "chance": 0.018
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "stone_knows_step"
+    },
     "lines": [
       "Walking into the Bone Tomb today, the stone shifts very slightly to take your foot.",
       "Not a great deal. A hand's width. The next time you set a boot here, it will fit.",
@@ -909,7 +1791,16 @@
   },
   "you_heard_cael_say_kess": {
     "category": "bond",
-    "trigger": {"at": ["zone_arrival"], "location": ["bone_tomb"], "min_visits": 3, "chance": 0.020},
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "bone_tomb"
+      ],
+      "min_visits": 3,
+      "chance": 0.02
+    },
     "effect": null,
     "lines": [
       "Cael, today, says her sister's name aloud. Out of the stone. You hear it. KESS.",
@@ -919,8 +1810,20 @@
   },
   "cael_taught_you_the_first_name": {
     "category": "promise_kept",
-    "trigger": {"at": ["zone_arrival"], "location": ["bone_tomb"], "min_level": 6, "min_visits": 3, "chance": 0.012},
-    "effect": {"flag": "knows_first_seal_name"},
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "bone_tomb"
+      ],
+      "min_level": 6,
+      "min_visits": 3,
+      "chance": 0.012
+    },
+    "effect": {
+      "flag": "knows_first_seal_name"
+    },
     "lines": [
       "Cael whispers, through the stone, the first seal's actual name. NO-NAME's real one.",
       "She did not have it. She has had it for fifty winters; she found it scratched into",
@@ -929,7 +1832,19 @@
   },
   "cael_will_not_meet_your_eyes": {
     "category": "broken",
-    "trigger": {"at": ["zone_arrival"], "location": ["bone_tomb"], "min_visits": 5, "denies_mark": ["cael_carved_your_name_above_hers"], "chance": 0.01},
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "bone_tomb"
+      ],
+      "min_visits": 5,
+      "denies_mark": [
+        "cael_carved_your_name_above_hers"
+      ],
+      "chance": 0.01
+    },
     "effect": null,
     "lines": [
       "Cael's eyes do not meet yours today. She has decided you are not the one.",
@@ -937,11 +1852,24 @@
       "You will not become the seal. Someone else will. It is alright. It is alright."
     ]
   },
-
   "atrel_blessed_you_silently": {
     "category": "bond",
-    "trigger": {"at": ["zone_arrival"], "location": ["last_altar"], "min_visits": 2, "chance": 0.03},
-    "effect": {"stat": "max_hp", "delta": 4, "stat2": "attack", "flag": "atrel_blessed"},
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "last_altar"
+      ],
+      "min_visits": 2,
+      "chance": 0.03
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 4,
+      "stat2": "attack",
+      "flag": "atrel_blessed"
+    },
     "lines": [
       "Atrél lifts a hand a few inches as you enter. He does not look up. He is doing a small",
       "rite. You happen to be in its path. He has, without meaning to, blessed you a little.",
@@ -951,7 +1879,16 @@
   },
   "atrel_handed_you_an_unsigned_page": {
     "category": "found",
-    "trigger": {"at": ["zone_arrival"], "location": ["last_altar"], "min_visits": 3, "chance": 0.02},
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "last_altar"
+      ],
+      "min_visits": 3,
+      "chance": 0.02
+    },
     "effect": null,
     "lines": [
       "Atrél, today, hands you a page. Folded. Unsigned. He says only: 'In case you find',",
@@ -961,8 +1898,21 @@
   },
   "you_set_a_grief_at_atrels_altar": {
     "category": "promise_kept",
-    "trigger": {"at": ["zone_arrival"], "location": ["last_altar"], "requires_flag": "promised_atrel_grief", "chance": 0.5},
-    "effect": {"stat": "max_hp", "delta": 6, "flag": "atrel_received_your_grief"},
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "last_altar"
+      ],
+      "requires_flag": "promised_atrel_grief",
+      "chance": 0.5
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 6,
+      "flag": "atrel_received_your_grief"
+    },
     "lines": [
       "You set the grief down on the altar. You do not say what. Atrél does not ask.",
       "He bows. Just enough to be a bow. He puts the grief on the altar with the others.",
@@ -972,8 +1922,22 @@
   },
   "atrel_forgot_a_pain_for_you": {
     "category": "bond",
-    "trigger": {"at": ["zone_arrival"], "location": ["last_altar"], "min_level": 7, "min_visits": 4, "chance": 0.015},
-    "effect": {"stat": "max_stamina", "delta": 2, "flag": "atrel_forgot_pain"},
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "last_altar"
+      ],
+      "min_level": 7,
+      "min_visits": 4,
+      "chance": 0.015
+    },
+    "effect": {
+      "stat": "max_stamina",
+      "delta": 2,
+      "flag": "atrel_forgot_pain"
+    },
     "lines": [
       "Atrél, when you arrive, says: 'I had a pain. I held it for a long time. I will not",
       "hold it anymore. I am — small as I am — passing it back to the world. Not to you.'",
@@ -983,7 +1947,16 @@
   },
   "atrel_will_not_take_yours_today": {
     "category": "broken",
-    "trigger": {"at": ["zone_arrival"], "location": ["last_altar"], "min_visits": 5, "chance": 0.015},
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "last_altar"
+      ],
+      "min_visits": 5,
+      "chance": 0.015
+    },
     "effect": null,
     "lines": [
       "Atrél, today, lifts a hand to stop you. 'Not today. I am too full. Bring me yours",
@@ -991,11 +1964,21 @@
       "You will come back. Or you will not. Atrél will be here either way. He has time."
     ]
   },
-
   "hearthkeeper_set_you_extra_bread": {
     "category": "found",
-    "trigger": {"at": ["zone_arrival"], "location": ["village"], "min_visits": 3, "chance": 0.03},
-    "effect": {"consumable": "Health Potion"},
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "min_visits": 3,
+      "chance": 0.03
+    },
+    "effect": {
+      "consumable": "Health Potion"
+    },
     "lines": [
       "The hearth-keeper, when you sit down today, sets an extra piece of bread on your",
       "plate. She does not say a word. You eat. You feel it later, in a fight, where the",
@@ -1005,8 +1988,21 @@
   },
   "hearthkeeper_noticed_your_limp": {
     "category": "bond",
-    "trigger": {"at": ["zone_arrival"], "location": ["village"], "requires_flag": "limp_right", "chance": 0.5},
-    "effect": {"stat": "defense", "delta": 1, "flag": "hearth_noticed_limp"},
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "requires_flag": "limp_right",
+      "chance": 0.5
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "hearth_noticed_limp"
+    },
     "lines": [
       "The hearth-keeper looks at how you walk in tonight. She does not say anything.",
       "She moves your usual cup an inch to the right, so you can reach it without leaning.",
@@ -1016,7 +2012,16 @@
   },
   "you_wrote_in_the_book_after_all": {
     "category": "promise_kept",
-    "trigger": {"at": ["zone_arrival"], "location": ["village"], "requires_flag": "promised_hearth_line", "chance": 0.5},
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "requires_flag": "promised_hearth_line",
+      "chance": 0.5
+    },
     "effect": null,
     "lines": [
       "The book is on the corner of the hearth. The pencil is on the mantel. You write.",
@@ -1026,7 +2031,16 @@
   },
   "the_fire_was_warmer_for_you": {
     "category": "half_truth",
-    "trigger": {"at": ["zone_arrival"], "location": ["village"], "min_visits": 6, "chance": 0.015},
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "min_visits": 6,
+      "chance": 0.015
+    },
     "effect": null,
     "lines": [
       "You sit by the hearth and the fire, today, is a degree warmer than it should be.",
@@ -1036,7 +2050,16 @@
   },
   "hearthkeeper_left_the_book_open_to_your_page": {
     "category": "bond",
-    "trigger": {"at": ["zone_arrival"], "location": ["village"], "requires_flag": "hearth_lines_written", "chance": 0.05},
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "requires_flag": "hearth_lines_written",
+      "chance": 0.05
+    },
     "effect": null,
     "lines": [
       "The book, today, is open. To the page with your line. The hearth-keeper has been",
@@ -1044,11 +2067,23 @@
       "page she has turned from. It is enough. She will go on reading it when you leave."
     ]
   },
-
   "the_reader_acknowledged_you": {
     "category": "bond",
-    "trigger": {"at": ["zone_arrival"], "location": ["village"], "requires_flag": "read_with_reader", "chance": 0.04},
-    "effect": {"stat": "max_hp", "delta": 3, "flag": "reader_acknowledged"},
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "requires_flag": "read_with_reader",
+      "chance": 0.04
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 3,
+      "flag": "reader_acknowledged"
+    },
     "lines": [
       "The Reader, today, looks up from the page. Briefly. The look is not for everyone.",
       "It is for you. They nod once. They go back to reading. You will be a little harder",
@@ -1058,7 +2093,17 @@
   },
   "the_reader_wrote_a_line_for_you": {
     "category": "found",
-    "trigger": {"at": ["zone_arrival"], "location": ["village"], "requires_flag": "read_with_reader", "min_visits": 4, "chance": 0.025},
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "requires_flag": "read_with_reader",
+      "min_visits": 4,
+      "chance": 0.025
+    },
     "effect": null,
     "lines": [
       "The Reader, today, sets a folded paper at your spot before you arrive. A single line.",
@@ -1068,8 +2113,19 @@
   },
   "you_have_been_in_piranesis_notes": {
     "category": "mind",
-    "trigger": {"at": ["zone_arrival"], "location": ["village"], "min_level": 6, "chance": 0.018},
-    "effect": {"flag": "in_piranesis_notes"},
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "min_level": 6,
+      "chance": 0.018
+    },
+    "effect": {
+      "flag": "in_piranesis_notes"
+    },
     "lines": [
       "You realize — without checking — that you have been in Piranesi's notes for some time.",
       "Not by name. By gait. By when you arrive. By what you read. You are being kept track of.",
@@ -1078,8 +2134,21 @@
   },
   "the_insomniac_lent_you_her_count": {
     "category": "bond",
-    "trigger": {"at": ["zone_arrival"], "location": ["village"], "requires_flag": "the_counted", "chance": 0.03},
-    "effect": {"stat": "max_stamina", "delta": 2, "flag": "insomniac_lent_count"},
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "requires_flag": "the_counted",
+      "chance": 0.03
+    },
+    "effect": {
+      "stat": "max_stamina",
+      "delta": 2,
+      "flag": "insomniac_lent_count"
+    },
     "lines": [
       "The Insomniac, today, breaks her count to look at you. She tells you, quietly,",
       "the number of climbers she has counted who looked like you. Five. You will sleep",
@@ -1089,7 +2158,17 @@
   },
   "the_insomniac_marked_you_blue": {
     "category": "half_truth",
-    "trigger": {"at": ["zone_arrival"], "location": ["village"], "requires_flag": "the_counted", "min_visits": 5, "chance": 0.015},
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "requires_flag": "the_counted",
+      "min_visits": 5,
+      "chance": 0.015
+    },
     "effect": null,
     "lines": [
       "There is a sixth blue mark on the Insomniac's beam, today. It is in a different blue.",
@@ -1099,7 +2178,17 @@
   },
   "piranesis_pencil_pointed_at_you": {
     "category": "half_truth",
-    "trigger": {"at": ["zone_arrival"], "location": ["village"], "requires_flag": "read_with_reader", "min_visits": 6, "chance": 0.018},
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "requires_flag": "read_with_reader",
+      "min_visits": 6,
+      "chance": 0.018
+    },
     "effect": null,
     "lines": [
       "The Reader's pencil, set on the desk corner, is pointing at you when you arrive.",
@@ -1109,8 +2198,16 @@
   },
   "you_dreamt_in_piranesis_voice": {
     "category": "mind",
-    "trigger": {"at": ["save_action"], "requires_flag": "in_piranesis_notes", "chance": 0.04},
-    "effect": {"flag": "dreamt_in_piranesis_voice"},
+    "trigger": {
+      "at": [
+        "save_action"
+      ],
+      "requires_flag": "in_piranesis_notes",
+      "chance": 0.04
+    },
+    "effect": {
+      "flag": "dreamt_in_piranesis_voice"
+    },
     "lines": [
       "You save. You realize the dream you had last night was narrated. In someone's voice.",
       "Calm. Older than the road. The voice was describing what you were doing. From outside.",
@@ -1119,7 +2216,16 @@
   },
   "insomniac_counted_your_cat": {
     "category": "bond",
-    "trigger": {"at": ["zone_arrival"], "location": ["village"], "requires_flag": "the_counted", "chance": 0.025},
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "requires_flag": "the_counted",
+      "chance": 0.025
+    },
     "effect": null,
     "lines": [
       "The Insomniac says, today: 'I have added a blue mark for your cat. It is the cat",
@@ -1129,7 +2235,20 @@
   },
   "insomniac_will_not_count_you_today": {
     "category": "broken",
-    "trigger": {"at": ["zone_arrival"], "location": ["village"], "requires_flag": "the_counted", "min_visits": 7, "denies_mark": ["the_insomniac_lent_you_her_count"], "chance": 0.012},
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "requires_flag": "the_counted",
+      "min_visits": 7,
+      "denies_mark": [
+        "the_insomniac_lent_you_her_count"
+      ],
+      "chance": 0.012
+    },
     "effect": null,
     "lines": [
       "The Insomniac, today, stops counting when you walk in. She waits. She starts again",
@@ -1139,8 +2258,22 @@
   },
   "insomniac_taught_you_to_count_too": {
     "category": "bond",
-    "trigger": {"at": ["zone_arrival"], "location": ["village"], "requires_flag": "the_counted", "min_visits": 4, "chance": 0.02},
-    "effect": {"stat": "max_stamina", "delta": 1, "flag": "knows_how_to_count"},
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "requires_flag": "the_counted",
+      "min_visits": 4,
+      "chance": 0.02
+    },
+    "effect": {
+      "stat": "max_stamina",
+      "delta": 1,
+      "flag": "knows_how_to_count"
+    },
     "lines": [
       "The Insomniac shows you, today, how to keep a tally on the back of your own teeth.",
       "Quietly. With the tongue. She has done this for forty years. You will use it later,",
@@ -1148,10 +2281,15 @@
       "  (+1 Max Stamina, permanently — knowing how to count yourself is a kind of rest.)"
     ]
   },
-
   "near_death_saw_your_grandmother": {
     "category": "half_truth",
-    "trigger": {"at": ["combat_low_hp"], "min_level": 3, "chance": 0.5},
+    "trigger": {
+      "at": [
+        "combat_low_hp"
+      ],
+      "min_level": 3,
+      "chance": 0.5
+    },
     "effect": null,
     "lines": [
       "You are nearly down. At the edge of your sight, briefly, a face you have not seen",
@@ -1161,8 +2299,17 @@
   },
   "near_death_one_hp_left": {
     "category": "body",
-    "trigger": {"at": ["combat_low_hp"], "chance": 0.4},
-    "effect": {"stat": "max_hp", "delta": -1, "flag": "one_hp_left_once"},
+    "trigger": {
+      "at": [
+        "combat_low_hp"
+      ],
+      "chance": 0.4
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": -1,
+      "flag": "one_hp_left_once"
+    },
     "lines": [
       "You survived. Just. The thing that nearly opened you carved a thin line down your side.",
       "It will not heal back to where it was. The line is the line. You are a little smaller.",
@@ -1172,8 +2319,16 @@
   },
   "near_death_heard_the_pall_breathe": {
     "category": "mind",
-    "trigger": {"at": ["combat_low_hp"], "min_level": 5, "chance": 0.5},
-    "effect": {"flag": "heard_pall_breathe"},
+    "trigger": {
+      "at": [
+        "combat_low_hp"
+      ],
+      "min_level": 5,
+      "chance": 0.5
+    },
+    "effect": {
+      "flag": "heard_pall_breathe"
+    },
     "lines": [
       "You are at one HP. In the silence between heartbeats, you hear something breathing.",
       "Not the enemy. Not you. Something far away and very large. It breathes once, in.",
@@ -1182,7 +2337,12 @@
   },
   "near_death_dropped_a_word": {
     "category": "forgetting",
-    "trigger": {"at": ["combat_low_hp"], "chance": 0.4},
+    "trigger": {
+      "at": [
+        "combat_low_hp"
+      ],
+      "chance": 0.4
+    },
     "effect": null,
     "lines": [
       "You shouted something to keep yourself upright. You do not remember what you shouted.",
@@ -1192,8 +2352,18 @@
   },
   "near_death_taste_of_iron": {
     "category": "body",
-    "trigger": {"at": ["combat_low_hp"], "min_level": 4, "chance": 0.4},
-    "effect": {"stat": "attack", "delta": 1, "flag": "taste_of_iron"},
+    "trigger": {
+      "at": [
+        "combat_low_hp"
+      ],
+      "min_level": 4,
+      "chance": 0.4
+    },
+    "effect": {
+      "stat": "attack",
+      "delta": 1,
+      "flag": "taste_of_iron"
+    },
     "lines": [
       "You taste iron. Yours. Your own mouth. You spit. The mouth tastes of iron from now on.",
       "It is not pleasant. It is not unpleasant. It is the taste of having stood. You will",
@@ -1203,8 +2373,17 @@
   },
   "near_death_left_a_tooth": {
     "category": "body",
-    "trigger": {"at": ["combat_low_hp"], "min_level": 4, "chance": 0.3},
-    "effect": {"stat": "max_hp", "delta": -2},
+    "trigger": {
+      "at": [
+        "combat_low_hp"
+      ],
+      "min_level": 4,
+      "chance": 0.3
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": -2
+    },
     "lines": [
       "You realize after the fight you have lost a tooth. Not the loose one — a different one.",
       "You did not notice the blow. The tooth is on the ground somewhere. You will not look.",
@@ -1214,8 +2393,16 @@
   },
   "near_death_kept_yourself_quiet": {
     "category": "mind",
-    "trigger": {"at": ["combat_low_hp"], "min_level": 3, "chance": 0.4},
-    "effect": {"flag": "stays_quiet_in_pain"},
+    "trigger": {
+      "at": [
+        "combat_low_hp"
+      ],
+      "min_level": 3,
+      "chance": 0.4
+    },
+    "effect": {
+      "flag": "stays_quiet_in_pain"
+    },
     "lines": [
       "You did not cry out, even at the worst of it. You did not know you could not cry out.",
       "You know now. The silence is yours. It will be a tool. It will also be a weight. Both.",
@@ -1224,8 +2411,16 @@
   },
   "near_death_made_a_promise_aloud": {
     "category": "promise_kept",
-    "trigger": {"at": ["combat_low_hp"], "min_level": 4, "chance": 0.4},
-    "effect": {"flag": "near_death_promise"},
+    "trigger": {
+      "at": [
+        "combat_low_hp"
+      ],
+      "min_level": 4,
+      "chance": 0.4
+    },
+    "effect": {
+      "flag": "near_death_promise"
+    },
     "lines": [
       "Through the blood in your mouth, you said something. A promise. To no one specific.",
       "About what you will do, after this, if you survive this. You survived. The promise stays.",
@@ -1234,8 +2429,17 @@
   },
   "near_death_chose_to_keep_going": {
     "category": "bond",
-    "trigger": {"at": ["combat_low_hp"], "chance": 0.5},
-    "effect": {"stat": "max_hp", "delta": 2, "flag": "chose_to_keep_going"},
+    "trigger": {
+      "at": [
+        "combat_low_hp"
+      ],
+      "chance": 0.5
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 2,
+      "flag": "chose_to_keep_going"
+    },
     "lines": [
       "Halfway through the worst of it, you made a small decision. Quiet. To yourself.",
       "  'I am going to keep going.' You did not say it out loud. You did not need to.",
@@ -1245,7 +2449,16 @@
   },
   "near_death_the_cat_saw_you": {
     "category": "half_truth",
-    "trigger": {"at": ["combat_low_hp"], "location": ["village", "forest"], "chance": 0.3},
+    "trigger": {
+      "at": [
+        "combat_low_hp"
+      ],
+      "location": [
+        "village",
+        "forest"
+      ],
+      "chance": 0.3
+    },
     "effect": null,
     "lines": [
       "The cat — the same blue cat — was watching the whole time. From a tree, in the wood;",
@@ -1253,11 +2466,19 @@
       "She has decided about you, now. You will not know what she has decided. You will know."
     ]
   },
-
   "wound_did_not_close_right": {
     "category": "body",
-    "trigger": {"at": ["combat_victory"], "min_level": 3, "chance": 0.3},
-    "effect": {"stat": "max_hp", "delta": -2},
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "min_level": 3,
+      "chance": 0.3
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": -2
+    },
     "lines": [
       "A wound from this fight has not closed the way wounds usually close. There is a small",
       "pucker. The skin will not stretch flat there. You will feel it when you raise your arm.",
@@ -1267,8 +2488,18 @@
   },
   "blade_calluses_built_up": {
     "category": "body",
-    "trigger": {"at": ["combat_victory"], "min_level": 4, "chance": 0.3},
-    "effect": {"stat": "attack", "delta": 1, "flag": "blade_calluses"},
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "min_level": 4,
+      "chance": 0.3
+    },
+    "effect": {
+      "stat": "attack",
+      "delta": 1,
+      "flag": "blade_calluses"
+    },
     "lines": [
       "Your grip has set. The calluses where the hilt sits have done their work today.",
       "You will not feel the hilt again the way you used to feel it. It is part of your hand.",
@@ -1277,8 +2508,18 @@
   },
   "ear_did_not_recover_fully": {
     "category": "body",
-    "trigger": {"at": ["combat_victory"], "min_level": 5, "chance": 0.18},
-    "effect": {"stat": "defense", "delta": -1, "flag": "left_ear_dim"},
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "min_level": 5,
+      "chance": 0.18
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": -1,
+      "flag": "left_ear_dim"
+    },
     "lines": [
       "Something rang too close to your left ear today. The ringing has stopped. The hearing",
       "in that ear has not come all the way back. It will not. Atrél has not asked for it.",
@@ -1288,8 +2529,18 @@
   },
   "shoulder_is_lower_now": {
     "category": "body",
-    "trigger": {"at": ["combat_victory"], "min_level": 6, "chance": 0.15},
-    "effect": {"stat": "max_stamina", "delta": -1, "flag": "left_shoulder_low"},
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "min_level": 6,
+      "chance": 0.15
+    },
+    "effect": {
+      "stat": "max_stamina",
+      "delta": -1,
+      "flag": "left_shoulder_low"
+    },
     "lines": [
       "Something in your left shoulder has settled. It used to be even. It is not, anymore.",
       "The arm works. The arm is slower to lift than the other. You will swing with the other.",
@@ -1298,8 +2549,18 @@
   },
   "knuckles_set_into_a_shape": {
     "category": "body",
-    "trigger": {"at": ["combat_victory"], "min_level": 5, "chance": 0.20},
-    "effect": {"stat": "attack", "delta": 1, "flag": "knuckles_set"},
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "min_level": 5,
+      "chance": 0.2
+    },
+    "effect": {
+      "stat": "attack",
+      "delta": 1,
+      "flag": "knuckles_set"
+    },
     "lines": [
       "Your knuckles, when you flex your fingers, have set into the shape they make when",
       "you hold your weapon. The fingers can still uncurl. They prefer the held shape now.",
@@ -1309,7 +2570,13 @@
   },
   "broken_fingernail_that_will_not_grow_back": {
     "category": "body",
-    "trigger": {"at": ["combat_victory"], "min_level": 4, "chance": 0.15},
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "min_level": 4,
+      "chance": 0.15
+    },
     "effect": null,
     "lines": [
       "A fingernail tore off in the fight. The bed is healing. The nail is not growing back.",
@@ -1319,8 +2586,18 @@
   },
   "knee_did_not_set_right": {
     "category": "body",
-    "trigger": {"at": ["combat_victory"], "min_level": 5, "chance": 0.18},
-    "effect": {"stat": "max_stamina", "delta": -1, "flag": "knee_clicks"},
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "min_level": 5,
+      "chance": 0.18
+    },
+    "effect": {
+      "stat": "max_stamina",
+      "delta": -1,
+      "flag": "knee_clicks"
+    },
     "lines": [
       "Your right knee, after this fight, clicks when you bend it. It did not used to.",
       "It will do this for the rest of your life. It does not hurt. It only clicks. Atrél",
@@ -1330,8 +2607,18 @@
   },
   "bruise_that_did_not_fade": {
     "category": "body",
-    "trigger": {"at": ["combat_victory"], "min_level": 4, "chance": 0.16},
-    "effect": {"stat": "defense", "delta": -1, "flag": "permanent_bruise"},
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "min_level": 4,
+      "chance": 0.16
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": -1,
+      "flag": "permanent_bruise"
+    },
     "lines": [
       "There is a bruise on your forearm that is not fading. It has stayed dark for a week.",
       "It will stay dark. It is, somehow, in the bone now. It will be tender when struck.",
@@ -1340,8 +2627,18 @@
   },
   "twisted_back_on_a_bad_step": {
     "category": "body",
-    "trigger": {"at": ["combat_low_hp"], "min_level": 5, "chance": 0.18},
-    "effect": {"stat": "max_stamina", "delta": -2, "flag": "twisted_back"},
+    "trigger": {
+      "at": [
+        "combat_low_hp"
+      ],
+      "min_level": 5,
+      "chance": 0.18
+    },
+    "effect": {
+      "stat": "max_stamina",
+      "delta": -2,
+      "flag": "twisted_back"
+    },
     "lines": [
       "You stepped wrong, sometime in the worst of it. You did not notice when. Your back",
       "is twisted now. It will twist for the rest of this character. You will compensate.",
@@ -1351,8 +2648,22 @@
   },
   "something_settled_in_your_throat": {
     "category": "body",
-    "trigger": {"at": ["combat_low_hp"], "location": ["cave", "choir", "mountain"], "chance": 0.18},
-    "effect": {"stat": "max_hp", "delta": -2, "flag": "throat_dim"},
+    "trigger": {
+      "at": [
+        "combat_low_hp"
+      ],
+      "location": [
+        "cave",
+        "choir",
+        "mountain"
+      ],
+      "chance": 0.18
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": -2,
+      "flag": "throat_dim"
+    },
     "lines": [
       "After the fight, there is a tickle in your throat that will not clear. You cough.",
       "It stays. It is in there for as long as you fight. Atrél does not take throats.",
@@ -1360,11 +2671,20 @@
       "  (-2 Max HP, permanently — something has settled where it should not have.)"
     ]
   },
-
   "you_did_not_sleep_after": {
     "category": "mind",
-    "trigger": {"at": ["combat_victory"], "min_level": 4, "chance": 0.20},
-    "effect": {"stat": "max_stamina", "delta": -1, "flag": "no_post_fight_sleep"},
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "min_level": 4,
+      "chance": 0.2
+    },
+    "effect": {
+      "stat": "max_stamina",
+      "delta": -1,
+      "flag": "no_post_fight_sleep"
+    },
     "lines": [
       "You won. You did not sleep that night. You closed your eyes; the fight was still going.",
       "You will not sleep right after a fight again. The body has decided. The body is wrong",
@@ -1374,8 +2694,18 @@
   },
   "stamina_came_back_wrong": {
     "category": "body",
-    "trigger": {"at": ["combat_victory"], "min_level": 5, "chance": 0.18},
-    "effect": {"stat": "max_stamina", "delta": -2, "flag": "stamina_uneven"},
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "min_level": 5,
+      "chance": 0.18
+    },
+    "effect": {
+      "stat": "max_stamina",
+      "delta": -2,
+      "flag": "stamina_uneven"
+    },
     "lines": [
       "Your wind came back, after. But it came back uneven. You can breathe deep. You cannot",
       "hold it as long as you used to. You did not notice when this changed. It has changed.",
@@ -1385,8 +2715,18 @@
   },
   "you_learned_to_pace": {
     "category": "mind",
-    "trigger": {"at": ["combat_victory"], "min_level": 3, "chance": 0.25},
-    "effect": {"stat": "max_stamina", "delta": 1, "flag": "learned_to_pace"},
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "min_level": 3,
+      "chance": 0.25
+    },
+    "effect": {
+      "stat": "max_stamina",
+      "delta": 1,
+      "flag": "learned_to_pace"
+    },
     "lines": [
       "Walking away from this fight, you realize you paced yourself well. Not by trying.",
       "Your body did it without you. You will do this again, without trying. It is yours now.",
@@ -1395,8 +2735,18 @@
   },
   "the_long_run_was_in_you": {
     "category": "body",
-    "trigger": {"at": ["combat_victory"], "min_level": 4, "chance": 0.18},
-    "effect": {"stat": "max_stamina", "delta": 1, "flag": "long_run_inside"},
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "min_level": 4,
+      "chance": 0.18
+    },
+    "effect": {
+      "stat": "max_stamina",
+      "delta": 1,
+      "flag": "long_run_inside"
+    },
     "lines": [
       "You found, today, a kind of running you did not know you had. Not fast. Long. You can",
       "do this for an hour. You will be able to do it again. The legs have decided.",
@@ -1405,8 +2755,17 @@
   },
   "exhaustion_left_a_residue": {
     "category": "body",
-    "trigger": {"at": ["combat_victory"], "min_level": 5, "chance": 0.15},
-    "effect": {"stat": "max_stamina", "delta": -1},
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "min_level": 5,
+      "chance": 0.15
+    },
+    "effect": {
+      "stat": "max_stamina",
+      "delta": -1
+    },
     "lines": [
       "Something in this fight burned a residue into your limbs. Small. Persistent.",
       "It will not leave. It is not pain; it is the after-shape of having gone all the way out.",
@@ -1416,8 +2775,22 @@
   },
   "you_breathed_in_grey_too_deep": {
     "category": "body",
-    "trigger": {"at": ["combat_victory"], "location": ["mountain", "summit", "choir"], "chance": 0.25},
-    "effect": {"stat": "max_hp", "delta": -2, "flag": "lungs_have_grey"},
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "location": [
+        "mountain",
+        "summit",
+        "choir"
+      ],
+      "chance": 0.25
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": -2,
+      "flag": "lungs_have_grey"
+    },
     "lines": [
       "You inhaled too deep when the grey was close. Some of it stayed. It is in your lungs.",
       "You can still breathe. You will cough at odd times. The grey is in there. The grey",
@@ -1426,8 +2799,16 @@
   },
   "you_held_your_breath_too_long": {
     "category": "body",
-    "trigger": {"at": ["combat_low_hp"], "chance": 0.25},
-    "effect": {"stat": "max_stamina", "delta": -1},
+    "trigger": {
+      "at": [
+        "combat_low_hp"
+      ],
+      "chance": 0.25
+    },
+    "effect": {
+      "stat": "max_stamina",
+      "delta": -1
+    },
     "lines": [
       "You held your breath through the worst of it. Too long. Something in your chest noticed.",
       "It will pinch sometimes, in fights. You will breathe more carefully from now on.",
@@ -1436,8 +2817,16 @@
   },
   "you_learned_the_two_count": {
     "category": "mind",
-    "trigger": {"at": ["combat_victory"], "min_level": 4, "chance": 0.20},
-    "effect": {"flag": "knows_two_count"},
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "min_level": 4,
+      "chance": 0.2
+    },
+    "effect": {
+      "flag": "knows_two_count"
+    },
     "lines": [
       "You found, in this fight, a two-count rhythm. Strike. Wait. Strike. Wait. It works.",
       "You will use it again. You will use it in fights that do not deserve it. Habits stick.",
@@ -1446,8 +2835,18 @@
   },
   "you_swung_when_you_should_have_defended": {
     "category": "mind",
-    "trigger": {"at": ["combat_low_hp"], "min_level": 5, "chance": 0.25},
-    "effect": {"stat": "max_hp", "delta": -1, "flag": "swing_first_habit"},
+    "trigger": {
+      "at": [
+        "combat_low_hp"
+      ],
+      "min_level": 5,
+      "chance": 0.25
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": -1,
+      "flag": "swing_first_habit"
+    },
     "lines": [
       "You realize, after, that you swung when defending would have saved you the worst of it.",
       "You did it again. You always do. It is a habit. The kingdom has noticed. So has Atrél.",
@@ -1457,8 +2856,18 @@
   },
   "you_defended_when_you_should_have_swung": {
     "category": "mind",
-    "trigger": {"at": ["combat_low_hp"], "min_level": 5, "chance": 0.20},
-    "effect": {"stat": "max_stamina", "delta": -1, "flag": "defend_first_habit"},
+    "trigger": {
+      "at": [
+        "combat_low_hp"
+      ],
+      "min_level": 5,
+      "chance": 0.2
+    },
+    "effect": {
+      "stat": "max_stamina",
+      "delta": -1,
+      "flag": "defend_first_habit"
+    },
     "lines": [
       "You realize, after, that you defended when a swing would have ended it cleaner.",
       "You did it again. You always do. The fight went longer than it had to. Stamina spent.",
@@ -1466,11 +2875,20 @@
       "  (-1 Max Stamina, permanently. The habit has begun to cost you.)"
     ]
   },
-
   "weapon_remembered_the_first_blood": {
     "category": "bond",
-    "trigger": {"at": ["combat_victory"], "min_level": 3, "chance": 0.18},
-    "effect": {"stat": "attack", "delta": 1, "flag": "weapon_remembers_first_blood"},
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "min_level": 3,
+      "chance": 0.18
+    },
+    "effect": {
+      "stat": "attack",
+      "delta": 1,
+      "flag": "weapon_remembers_first_blood"
+    },
     "lines": [
       "Your weapon, after, sits a little differently in your hand. It has learned what it",
       "is for. It will not need to learn again. It will swing a hair faster. The hair matters.",
@@ -1479,7 +2897,13 @@
   },
   "weapon_took_a_notch": {
     "category": "found",
-    "trigger": {"at": ["combat_victory"], "min_level": 4, "chance": 0.15},
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "min_level": 4,
+      "chance": 0.15
+    },
     "effect": null,
     "lines": [
       "Your weapon has taken a notch. Small. On the edge. From a blow you did not see coming.",
@@ -1489,8 +2913,18 @@
   },
   "weapon_grew_an_edge_you_did_not_grind": {
     "category": "bond",
-    "trigger": {"at": ["combat_victory"], "min_level": 5, "chance": 0.12},
-    "effect": {"stat": "attack", "delta": 2, "flag": "weapon_self_sharpened"},
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "min_level": 5,
+      "chance": 0.12
+    },
+    "effect": {
+      "stat": "attack",
+      "delta": 2,
+      "flag": "weapon_self_sharpened"
+    },
     "lines": [
       "Your weapon has an edge today that you did not put there. You did not grind it.",
       "You did not sharpen it. The edge is there. It is sharper than your weapon should be.",
@@ -1500,7 +2934,13 @@
   },
   "weapon_made_a_sound_it_never_made_before": {
     "category": "half_truth",
-    "trigger": {"at": ["combat_victory"], "min_level": 5, "chance": 0.12},
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "min_level": 5,
+      "chance": 0.12
+    },
     "effect": null,
     "lines": [
       "In the middle of the fight, your weapon made a sound it has never made before.",
@@ -1510,8 +2950,16 @@
   },
   "weapon_did_not_want_to_strike": {
     "category": "mind",
-    "trigger": {"at": ["combat_low_hp"], "min_level": 6, "chance": 0.10},
-    "effect": {"flag": "weapon_resists_once"},
+    "trigger": {
+      "at": [
+        "combat_low_hp"
+      ],
+      "min_level": 6,
+      "chance": 0.1
+    },
+    "effect": {
+      "flag": "weapon_resists_once"
+    },
     "lines": [
       "Your weapon resisted you, today. Once. For a half-breath, you could not bring it down.",
       "Then you could. The strike landed. You won. The resistance is in the weapon now too.",
@@ -1520,7 +2968,13 @@
   },
   "weapon_kept_a_drop_of_blood_in_its_seam": {
     "category": "found",
-    "trigger": {"at": ["combat_victory"], "min_level": 4, "chance": 0.15},
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "min_level": 4,
+      "chance": 0.15
+    },
     "effect": null,
     "lines": [
       "There is a drop of dried blood in the seam of the hilt where the wood meets the brass.",
@@ -1530,8 +2984,18 @@
   },
   "weapon_balanced_itself": {
     "category": "bond",
-    "trigger": {"at": ["combat_victory"], "min_level": 6, "chance": 0.10},
-    "effect": {"stat": "defense", "delta": 1, "flag": "weapon_balanced"},
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "min_level": 6,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "weapon_balanced"
+    },
     "lines": [
       "Walking back, you realize the weapon hangs from your belt different than it did this morning.",
       "Better. Balanced. As if it had been swinging back and forth all your life and finally settled.",
@@ -1541,8 +3005,18 @@
   },
   "weapon_outlasted_a_grip_you_lost": {
     "category": "body",
-    "trigger": {"at": ["combat_low_hp"], "min_level": 5, "chance": 0.15},
-    "effect": {"stat": "attack", "delta": 1, "flag": "lost_a_finger_grip"},
+    "trigger": {
+      "at": [
+        "combat_low_hp"
+      ],
+      "min_level": 5,
+      "chance": 0.15
+    },
+    "effect": {
+      "stat": "attack",
+      "delta": 1,
+      "flag": "lost_a_finger_grip"
+    },
     "lines": [
       "You dropped the weapon, briefly. Two fingers gave out. They came back. They are not",
       "as strong as the other three, anymore. The weapon understood. The weapon waited for",
@@ -1552,8 +3026,16 @@
   },
   "weapon_taught_you_a_thing": {
     "category": "bond",
-    "trigger": {"at": ["combat_victory"], "min_level": 4, "chance": 0.15},
-    "effect": {"flag": "weapon_taught_you"},
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "min_level": 4,
+      "chance": 0.15
+    },
+    "effect": {
+      "flag": "weapon_taught_you"
+    },
     "lines": [
       "Mid-fight, the weapon moved without you asking. It pulled your arm a quarter-turn",
       "into a better angle. You did not know that angle. You know it now. The weapon does too.",
@@ -1562,8 +3044,18 @@
   },
   "weapon_lost_a_small_amount_of_its_weight": {
     "category": "half_truth",
-    "trigger": {"at": ["combat_victory"], "min_level": 7, "chance": 0.08},
-    "effect": {"stat": "max_stamina", "delta": 1, "flag": "weapon_lighter"},
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "min_level": 7,
+      "chance": 0.08
+    },
+    "effect": {
+      "stat": "max_stamina",
+      "delta": 1,
+      "flag": "weapon_lighter"
+    },
     "lines": [
       "The weapon weighs less today than it did yesterday. You did not file anything off.",
       "Nothing has come off it. It weighs less. You will swing it a little faster. The world",
@@ -1571,11 +3063,18 @@
       "  (+1 Max Stamina, permanently — a lighter weapon is a longer fight before tiredness.)"
     ]
   },
-
   "the_pall_smelled_you_through_the_fight": {
     "category": "mind",
-    "trigger": {"at": ["combat_low_hp"], "min_level": 5, "chance": 0.15},
-    "effect": {"flag": "marked_pall_smells_you"},
+    "trigger": {
+      "at": [
+        "combat_low_hp"
+      ],
+      "min_level": 5,
+      "chance": 0.15
+    },
+    "effect": {
+      "flag": "marked_pall_smells_you"
+    },
     "lines": [
       "After. You realize: the Pall noticed your blood today. From far up the Climb. You do",
       "not know how you know. You know. The Pall is aware of you, by smell, in a thin way.",
@@ -1584,8 +3083,18 @@
   },
   "kingdom_noticed_you_did_not_potion": {
     "category": "mind",
-    "trigger": {"at": ["combat_low_hp"], "min_level": 4, "chance": 0.20},
-    "effect": {"stat": "max_hp", "delta": 2, "flag": "noticed_no_potion"},
+    "trigger": {
+      "at": [
+        "combat_low_hp"
+      ],
+      "min_level": 4,
+      "chance": 0.2
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 2,
+      "flag": "noticed_no_potion"
+    },
     "lines": [
       "You had a potion. You did not drink it. You fought through. The kingdom noticed.",
       "Not officially. Quietly. Atrél's small ledger has a small line for it. The kingdom",
@@ -1595,8 +3104,18 @@
   },
   "kingdom_noticed_you_potioned_at_once": {
     "category": "mind",
-    "trigger": {"at": ["combat_low_hp"], "min_level": 4, "chance": 0.20},
-    "effect": {"stat": "defense", "delta": 1, "flag": "noticed_quick_potion"},
+    "trigger": {
+      "at": [
+        "combat_low_hp"
+      ],
+      "min_level": 4,
+      "chance": 0.2
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "noticed_quick_potion"
+    },
     "lines": [
       "You drank a potion the moment things turned. Wisely. The kingdom noticed that too.",
       "Atrél's small ledger has another small line for it. Wisdom is also a kind of honesty.",
@@ -1606,7 +3125,16 @@
   },
   "the_wood_held_its_breath_for_you": {
     "category": "half_truth",
-    "trigger": {"at": ["combat_victory"], "location": ["forest"], "min_visits": 3, "chance": 0.20},
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "location": [
+        "forest"
+      ],
+      "min_visits": 3,
+      "chance": 0.2
+    },
     "effect": null,
     "lines": [
       "The Witherwood went quiet during the worst part of this fight. Not the silence of a",
@@ -1616,7 +3144,17 @@
   },
   "the_river_dimmed_for_you": {
     "category": "half_truth",
-    "trigger": {"at": ["combat_victory"], "location": ["reach", "drowned_holds"], "min_visits": 2, "chance": 0.20},
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "location": [
+        "reach",
+        "drowned_holds"
+      ],
+      "min_visits": 2,
+      "chance": 0.2
+    },
     "effect": null,
     "lines": [
       "The river — the Reach's river — went still during the worst part of this fight.",
@@ -1626,7 +3164,13 @@
   },
   "your_first_kill_caught_up_to_you": {
     "category": "forgetting",
-    "trigger": {"at": ["combat_victory"], "min_level": 6, "chance": 0.12},
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "min_level": 6,
+      "chance": 0.12
+    },
     "effect": null,
     "lines": [
       "After the fight, the face of your very first kill — the gaunt wolf, the bandit, the boar,",
@@ -1636,8 +3180,18 @@
   },
   "you_finished_a_fight_with_a_steady_hand": {
     "category": "mind",
-    "trigger": {"at": ["combat_victory"], "min_level": 3, "chance": 0.25},
-    "effect": {"stat": "attack", "delta": 1, "flag": "steady_hand"},
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "min_level": 3,
+      "chance": 0.25
+    },
+    "effect": {
+      "stat": "attack",
+      "delta": 1,
+      "flag": "steady_hand"
+    },
     "lines": [
       "Your hand did not shake at the end. You expected it to. It did not. The hand has",
       "decided about the steadiness. It will be steady from now on, after the worst of it.",
@@ -1646,8 +3200,16 @@
   },
   "you_won_too_loud": {
     "category": "broken",
-    "trigger": {"at": ["combat_victory"], "min_level": 5, "chance": 0.15},
-    "effect": {"flag": "won_too_loud"},
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "min_level": 5,
+      "chance": 0.15
+    },
+    "effect": {
+      "flag": "won_too_loud"
+    },
     "lines": [
       "You shouted, in the moment of winning. Triumphal. Something in the wood heard it and",
       "decided about you. Not Halna. Not the Pall. Something older. You will not get back",
@@ -1656,8 +3218,18 @@
   },
   "you_won_too_quiet": {
     "category": "bond",
-    "trigger": {"at": ["combat_victory"], "min_level": 5, "chance": 0.15},
-    "effect": {"stat": "defense", "delta": 1, "flag": "won_quietly"},
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "min_level": 5,
+      "chance": 0.15
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "won_quietly"
+    },
     "lines": [
       "You did not say anything when you won. You sheathed and walked. The wood noticed.",
       "Atrél noticed. The small kindnesses noticed. You will be granted a small thing for it.",
@@ -1666,18 +3238,34 @@
   },
   "an_enemy_apologised_as_it_fell": {
     "category": "half_truth",
-    "trigger": {"at": ["combat_victory"], "min_level": 5, "chance": 0.10},
-    "effect": {"flag": "an_enemy_apologised"},
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "min_level": 5,
+      "chance": 0.1
+    },
+    "effect": {
+      "flag": "an_enemy_apologised"
+    },
     "lines": [
       "The thing you killed today said one word as it went down. You think it said: sorry.",
       "It may have said: stop. It may have said something in a language you do not speak.",
       "You will not know. The word is yours. The thing is gone. Atrél has the word now."
     ]
   },
-
   "reach_water_remembered_your_face": {
     "category": "half_truth",
-    "trigger": {"at": ["zone_arrival"], "location": ["reach"], "min_visits": 2, "chance": 0.20},
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "reach"
+      ],
+      "min_visits": 2,
+      "chance": 0.2
+    },
     "effect": null,
     "lines": [
       "The Reach water, today, is still. It is still in a particular way — the way water is",
@@ -1687,8 +3275,21 @@
   },
   "reach_silt_in_your_boots": {
     "category": "body",
-    "trigger": {"at": ["combat_victory"], "location": ["reach", "drowned_holds"], "chance": 0.25},
-    "effect": {"stat": "max_stamina", "delta": -1, "flag": "silt_in_boots"},
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "location": [
+        "reach",
+        "drowned_holds"
+      ],
+      "chance": 0.25
+    },
+    "effect": {
+      "stat": "max_stamina",
+      "delta": -1,
+      "flag": "silt_in_boots"
+    },
     "lines": [
       "There is silt in your boots after this fight. You shake them out. It is still there.",
       "It will be there for the rest of this character. You will walk a little heavier.",
@@ -1697,8 +3298,21 @@
   },
   "reach_taught_you_to_wade": {
     "category": "mind",
-    "trigger": {"at": ["zone_arrival"], "location": ["reach"], "min_visits": 3, "chance": 0.22},
-    "effect": {"stat": "defense", "delta": 1, "flag": "knows_how_to_wade"},
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "reach"
+      ],
+      "min_visits": 3,
+      "chance": 0.22
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "knows_how_to_wade"
+    },
     "lines": [
       "You walked the floodfield today without misstepping. You did not used to know how.",
       "Your knees have learned. They will keep this knowledge. The Reach has taught you.",
@@ -1707,7 +3321,16 @@
   },
   "reach_kept_your_step": {
     "category": "bond",
-    "trigger": {"at": ["zone_arrival"], "location": ["reach"], "min_visits": 4, "chance": 0.18},
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "reach"
+      ],
+      "min_visits": 4,
+      "chance": 0.18
+    },
     "effect": null,
     "lines": [
       "Walking the Reach today, your step matched the step of someone who walked here before.",
@@ -1717,7 +3340,16 @@
   },
   "reach_drowned_a_song_you_loved": {
     "category": "forgetting",
-    "trigger": {"at": ["zone_arrival"], "location": ["reach"], "min_level": 4, "chance": 0.18},
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "reach"
+      ],
+      "min_level": 4,
+      "chance": 0.18
+    },
     "effect": null,
     "lines": [
       "Crossing the Reach, you hum a song you have always known. The first verse gets through.",
@@ -1727,8 +3359,21 @@
   },
   "reach_helka_set_a_bench_for_you": {
     "category": "bond",
-    "trigger": {"at": ["zone_arrival"], "location": ["reach"], "min_visits": 5, "chance": 0.15},
-    "effect": {"stat": "max_stamina", "delta": 1, "flag": "helka_set_a_bench"},
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "reach"
+      ],
+      "min_visits": 5,
+      "chance": 0.15
+    },
+    "effect": {
+      "stat": "max_stamina",
+      "delta": 1,
+      "flag": "helka_set_a_bench"
+    },
     "lines": [
       "Helka has dragged a bench to the edge of the floodfield, by your usual crossing.",
       "She did not say so. You see it. It is dry. It is for sitting. You sit a moment. You",
@@ -1737,7 +3382,16 @@
   },
   "reach_river_took_your_hairband": {
     "category": "lost",
-    "trigger": {"at": ["zone_arrival"], "location": ["reach", "drowned_holds"], "chance": 0.22},
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "reach",
+        "drowned_holds"
+      ],
+      "chance": 0.22
+    },
     "effect": null,
     "lines": [
       "The river took something small today. Your hairband, or a bootlace, or a button.",
@@ -1747,8 +3401,19 @@
   },
   "reach_promised_the_field_a_grain": {
     "category": "promise_kept",
-    "trigger": {"at": ["zone_arrival"], "location": ["reach"], "min_visits": 3, "chance": 0.18},
-    "effect": {"flag": "promised_field_grain"},
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "reach"
+      ],
+      "min_visits": 3,
+      "chance": 0.18
+    },
+    "effect": {
+      "flag": "promised_field_grain"
+    },
     "lines": [
       "Walking past the drowned furrows, you decide to bring back one grain of barley.",
       "From the Reach's storehouse, when it is rebuilt. To set on the field. To start.",
@@ -1757,7 +3422,19 @@
   },
   "reach_did_not_promise_the_field": {
     "category": "broken",
-    "trigger": {"at": ["zone_arrival"], "location": ["reach"], "min_visits": 5, "denies_mark": ["reach_promised_the_field_a_grain"], "chance": 0.10},
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "reach"
+      ],
+      "min_visits": 5,
+      "denies_mark": [
+        "reach_promised_the_field_a_grain"
+      ],
+      "chance": 0.1
+    },
     "effect": null,
     "lines": [
       "You walk past the drowned furrows. They are still drowned. You did not promise them",
@@ -1767,18 +3444,37 @@
   },
   "reach_you_almost_drowned": {
     "category": "half_truth",
-    "trigger": {"at": ["combat_low_hp"], "location": ["reach", "drowned_holds"], "chance": 0.30},
-    "effect": {"flag": "almost_drowned"},
+    "trigger": {
+      "at": [
+        "combat_low_hp"
+      ],
+      "location": [
+        "reach",
+        "drowned_holds"
+      ],
+      "chance": 0.3
+    },
+    "effect": {
+      "flag": "almost_drowned"
+    },
     "lines": [
       "At the worst of the fight, your boot caught and you went down. The water closed once.",
       "You came up. You won. You almost did not. The water has had a small taste of your face.",
       "It will know you, from now on, by the taste. The river is patient. It does not forget."
     ]
   },
-
   "holds_doorpost_remembered_a_name": {
     "category": "half_truth",
-    "trigger": {"at": ["zone_arrival"], "location": ["drowned_holds"], "min_visits": 2, "chance": 0.20},
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "drowned_holds"
+      ],
+      "min_visits": 2,
+      "chance": 0.2
+    },
     "effect": null,
     "lines": [
       "Walking past a doorpost today, the wood was warmer than the air. You touched it.",
@@ -1788,8 +3484,20 @@
   },
   "holds_dead_hand_caught_your_sleeve": {
     "category": "body",
-    "trigger": {"at": ["combat_low_hp"], "location": ["drowned_holds"], "chance": 0.20},
-    "effect": {"stat": "max_hp", "delta": -1, "flag": "dead_hand_caught_you"},
+    "trigger": {
+      "at": [
+        "combat_low_hp"
+      ],
+      "location": [
+        "drowned_holds"
+      ],
+      "chance": 0.2
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": -1,
+      "flag": "dead_hand_caught_you"
+    },
     "lines": [
       "Something in the lane caught your sleeve as you fought. You did not look. You finished.",
       "When you looked down later, there was a wet handprint on your cuff. Five fingers.",
@@ -1799,8 +3507,19 @@
   },
   "holds_you_added_a_name_to_a_post": {
     "category": "promise_kept",
-    "trigger": {"at": ["zone_arrival"], "location": ["drowned_holds"], "min_visits": 3, "chance": 0.18},
-    "effect": {"flag": "wrote_a_name_on_a_post"},
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "drowned_holds"
+      ],
+      "min_visits": 3,
+      "chance": 0.18
+    },
+    "effect": {
+      "flag": "wrote_a_name_on_a_post"
+    },
     "lines": [
       "You decided, walking past a doorpost today, to write a name on it. You did. In chalk.",
       "The chalk will wash off in the next rain. The post will remember the name in its wood.",
@@ -1809,7 +3528,16 @@
   },
   "holds_bread_bowl_warmed_when_you_passed": {
     "category": "half_truth",
-    "trigger": {"at": ["zone_arrival"], "location": ["drowned_holds"], "min_visits": 3, "chance": 0.15},
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "drowned_holds"
+      ],
+      "min_visits": 3,
+      "chance": 0.15
+    },
     "effect": null,
     "lines": [
       "There is an old wooden bread bowl in one of the kitchens of the Holds. It is empty.",
@@ -1819,7 +3547,16 @@
   },
   "holds_you_forgot_a_grandmother": {
     "category": "forgetting",
-    "trigger": {"at": ["zone_arrival"], "location": ["drowned_holds"], "min_level": 5, "chance": 0.20},
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "drowned_holds"
+      ],
+      "min_level": 5,
+      "chance": 0.2
+    },
     "effect": null,
     "lines": [
       "Walking the Holds, you think — without trying — of your grandmother. You can see her",
@@ -1829,8 +3566,21 @@
   },
   "holds_recognized_your_grief": {
     "category": "bond",
-    "trigger": {"at": ["zone_arrival"], "location": ["drowned_holds"], "min_visits": 4, "chance": 0.15},
-    "effect": {"stat": "defense", "delta": 1, "flag": "holds_know_your_grief"},
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "drowned_holds"
+      ],
+      "min_visits": 4,
+      "chance": 0.15
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "holds_know_your_grief"
+    },
     "lines": [
       "The Holds went quiet for you today. Not silent — quiet. The way a house goes quiet when",
       "a person comes in carrying something they are not ready to set down. The Holds have",
@@ -1839,8 +3589,21 @@
   },
   "holds_blamed_you_for_living": {
     "category": "mind",
-    "trigger": {"at": ["zone_arrival"], "location": ["drowned_holds"], "min_visits": 6, "chance": 0.10},
-    "effect": {"stat": "max_hp", "delta": -2, "flag": "holds_blamed_you"},
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "drowned_holds"
+      ],
+      "min_visits": 6,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": -2,
+      "flag": "holds_blamed_you"
+    },
     "lines": [
       "You felt it today, walking through. The Holds, briefly, blamed you for being alive.",
       "It was not personal. It is what they do, sometimes, to the living. It is what un-fed",
@@ -1850,7 +3613,16 @@
   },
   "holds_you_walked_a_street_that_was_a_street": {
     "category": "half_truth",
-    "trigger": {"at": ["zone_arrival"], "location": ["drowned_holds"], "min_visits": 4, "chance": 0.18},
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "drowned_holds"
+      ],
+      "min_visits": 4,
+      "chance": 0.18
+    },
     "effect": null,
     "lines": [
       "Walking down one of the lanes today, the lane was a lane again. Briefly. The doors",
@@ -1860,8 +3632,19 @@
   },
   "holds_eron_almost_spoke": {
     "category": "half_truth",
-    "trigger": {"at": ["discovery_read"], "location": ["drowned_holds"], "requires_flag": "carried_a_coin", "chance": 0.30},
-    "effect": {"flag": "eron_almost_spoke"},
+    "trigger": {
+      "at": [
+        "discovery_read"
+      ],
+      "location": [
+        "drowned_holds"
+      ],
+      "requires_flag": "carried_a_coin",
+      "chance": 0.3
+    },
+    "effect": {
+      "flag": "eron_almost_spoke"
+    },
     "lines": [
       "Reading a doorpost, you almost hear a child's voice say a single word. You do not catch",
       "what. The voice is gone. You think the child was Eron. You will not know. Atrél has the",
@@ -1870,7 +3653,15 @@
   },
   "holds_you_carry_a_shard_of_pottery": {
     "category": "found",
-    "trigger": {"at": ["zone_arrival"], "location": ["drowned_holds"], "chance": 0.20},
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "drowned_holds"
+      ],
+      "chance": 0.2
+    },
     "effect": null,
     "lines": [
       "A piece of pottery, small, the colour of brackmere clay, is in your pocket when you",
@@ -1878,10 +3669,18 @@
       "shard knows the shape of the bowl it came from. The bowl is, somewhere, also patient."
     ]
   },
-
   "gullet_older_hand_set_a_thing_aside": {
     "category": "found",
-    "trigger": {"at": ["zone_arrival"], "location": ["cave"], "min_visits": 2, "chance": 0.20},
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "cave"
+      ],
+      "min_visits": 2,
+      "chance": 0.2
+    },
     "effect": null,
     "lines": [
       "In the alcove, today, the Older Hand has set a single thing aside, separate from the",
@@ -1891,7 +3690,15 @@
   },
   "gullet_dropped_a_word_into_the_throat": {
     "category": "forgetting",
-    "trigger": {"at": ["zone_arrival"], "location": ["cave"], "chance": 0.20},
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "cave"
+      ],
+      "chance": 0.2
+    },
     "effect": null,
     "lines": [
       "You spoke a word, today, in the Gullet. Out loud. You did not mean to. The throat",
@@ -1901,8 +3708,18 @@
   },
   "gullet_breathed_your_name": {
     "category": "mind",
-    "trigger": {"at": ["combat_low_hp"], "location": ["cave"], "chance": 0.18},
-    "effect": {"flag": "gullet_breathed_your_name"},
+    "trigger": {
+      "at": [
+        "combat_low_hp"
+      ],
+      "location": [
+        "cave"
+      ],
+      "chance": 0.18
+    },
+    "effect": {
+      "flag": "gullet_breathed_your_name"
+    },
     "lines": [
       "The Gullet, low in your ear, breathed your name. Just once. Not the Pall. The throat",
       "itself. It does this. It tries names on. It has tried yours. It has decided about it.",
@@ -1911,8 +3728,21 @@
   },
   "gullet_you_helped_carry_a_kettle": {
     "category": "bond",
-    "trigger": {"at": ["zone_arrival"], "location": ["cave"], "min_visits": 3, "chance": 0.20},
-    "effect": {"stat": "max_hp", "delta": 2, "flag": "helped_older_hand"},
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "cave"
+      ],
+      "min_visits": 3,
+      "chance": 0.2
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 2,
+      "flag": "helped_older_hand"
+    },
     "lines": [
       "The Older Hand was carrying a kettle up from somewhere deeper. You picked up the",
       "other handle without being asked. They nodded. You set the kettle on the slab.",
@@ -1922,7 +3752,15 @@
   },
   "gullet_lost_a_word_to_the_air": {
     "category": "lost",
-    "trigger": {"at": ["save_action"], "location": ["cave"], "chance": 0.20},
+    "trigger": {
+      "at": [
+        "save_action"
+      ],
+      "location": [
+        "cave"
+      ],
+      "chance": 0.2
+    },
     "effect": null,
     "lines": [
       "You save in the Gullet's wet. The air pulls one word out of your save. You did not",
@@ -1932,8 +3770,20 @@
   },
   "gullet_marked_your_skin": {
     "category": "body",
-    "trigger": {"at": ["combat_victory"], "location": ["cave"], "chance": 0.20},
-    "effect": {"stat": "max_hp", "delta": -2, "flag": "gullet_pale_patch"},
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "location": [
+        "cave"
+      ],
+      "chance": 0.2
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": -2,
+      "flag": "gullet_pale_patch"
+    },
     "lines": [
       "There is a pale patch on your forearm now. The skin will not take colour back.",
       "It is small. It is the colour of the rock that has no lichen. The Gullet has chosen.",
@@ -1942,7 +3792,17 @@
   },
   "gullet_found_a_button_pair": {
     "category": "found",
-    "trigger": {"at": ["zone_arrival"], "location": ["cave"], "requires_flag": "discoveries_seen", "min_visits": 4, "chance": 0.15},
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "cave"
+      ],
+      "requires_flag": "discoveries_seen",
+      "min_visits": 4,
+      "chance": 0.15
+    },
     "effect": null,
     "lines": [
       "The Older Hand sets a wooden button on the slab today. The pair to the one in your",
@@ -1952,8 +3812,21 @@
   },
   "gullet_older_hand_looked_at_you": {
     "category": "bond",
-    "trigger": {"at": ["zone_arrival"], "location": ["cave"], "min_visits": 5, "chance": 0.10},
-    "effect": {"stat": "defense", "delta": 1, "flag": "older_hand_looked"},
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "cave"
+      ],
+      "min_visits": 5,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "older_hand_looked"
+    },
     "lines": [
       "The Older Hand looked at you today. Not from the corner; squarely. They have not looked",
       "at anyone in many years. You will not see their face well. The look has decided about you.",
@@ -1962,7 +3835,16 @@
   },
   "gullet_mawmother_braced_for_you": {
     "category": "half_truth",
-    "trigger": {"at": ["combat_low_hp"], "location": ["cave"], "min_level": 5, "chance": 0.12},
+    "trigger": {
+      "at": [
+        "combat_low_hp"
+      ],
+      "location": [
+        "cave"
+      ],
+      "min_level": 5,
+      "chance": 0.12
+    },
     "effect": null,
     "lines": [
       "The Maw-Mother, in the deep, braced. Not against you. For you. She bracing for whoever",
@@ -1972,8 +3854,21 @@
   },
   "gullet_did_not_take_what_was_yours": {
     "category": "mind",
-    "trigger": {"at": ["zone_arrival"], "location": ["cave"], "min_visits": 4, "chance": 0.18},
-    "effect": {"stat": "attack", "delta": 1, "flag": "left_the_gullets_things"},
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "cave"
+      ],
+      "min_visits": 4,
+      "chance": 0.18
+    },
+    "effect": {
+      "stat": "attack",
+      "delta": 1,
+      "flag": "left_the_gullets_things"
+    },
     "lines": [
       "You did not take any of the Older Hand's gatherings today. You could have. You did not.",
       "The Older Hand noticed. They did not say so. They moved one of the things, slightly,",
@@ -1981,10 +3876,18 @@
       "  (+1 Attack, permanently — being trusted is a kind of edge.)"
     ]
   },
-
   "mourncross_open_door_closed": {
     "category": "half_truth",
-    "trigger": {"at": ["zone_arrival"], "location": ["mourncross"], "min_visits": 2, "chance": 0.20},
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "mourncross"
+      ],
+      "min_visits": 2,
+      "chance": 0.2
+    },
     "effect": null,
     "lines": [
       "An open door in Mourncross — they are all open — closed today as you walked past it.",
@@ -1994,7 +3897,16 @@
   },
   "mourncross_lamp_lit_briefly": {
     "category": "half_truth",
-    "trigger": {"at": ["zone_arrival"], "location": ["mourncross"], "min_visits": 3, "chance": 0.18},
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "mourncross"
+      ],
+      "min_visits": 3,
+      "chance": 0.18
+    },
     "effect": null,
     "lines": [
       "A lamp in the north quarter caught when you passed under it. It went out again as you",
@@ -2004,8 +3916,21 @@
   },
   "mourncross_census_added_your_name": {
     "category": "bond",
-    "trigger": {"at": ["discovery_read"], "location": ["mourncross"], "min_visits": 4, "chance": 0.15},
-    "effect": {"stat": "max_hp", "delta": 2, "flag": "census_added_you"},
+    "trigger": {
+      "at": [
+        "discovery_read"
+      ],
+      "location": [
+        "mourncross"
+      ],
+      "min_visits": 4,
+      "chance": 0.15
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 2,
+      "flag": "census_added_you"
+    },
     "lines": [
       "The Mourncross census, on a page you have not read, has your name added. Recently.",
       "In a clerk's hand. You did not write it. The clerk is dead. The clerk has done this anyway.",
@@ -2014,8 +3939,24 @@
   },
   "mourncross_census_struck_your_name_through": {
     "category": "broken",
-    "trigger": {"at": ["discovery_read"], "location": ["mourncross"], "denies_mark": ["mourncross_census_added_your_name"], "min_visits": 6, "chance": 0.10},
-    "effect": {"stat": "max_hp", "delta": -3, "flag": "census_struck_through"},
+    "trigger": {
+      "at": [
+        "discovery_read"
+      ],
+      "location": [
+        "mourncross"
+      ],
+      "denies_mark": [
+        "mourncross_census_added_your_name"
+      ],
+      "min_visits": 6,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": -3,
+      "flag": "census_struck_through"
+    },
     "lines": [
       "Your name has been struck through on the census. Not added — struck. The clerk's hand,",
       "again. The same hand. They wrote you in and then drew the line. You will not know why.",
@@ -2025,8 +3966,21 @@
   },
   "mourncross_breathed_the_capital_air": {
     "category": "body",
-    "trigger": {"at": ["zone_arrival"], "location": ["mourncross"], "min_visits": 5, "chance": 0.18},
-    "effect": {"stat": "max_stamina", "delta": -1, "flag": "capital_air_in_lungs"},
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "mourncross"
+      ],
+      "min_visits": 5,
+      "chance": 0.18
+    },
+    "effect": {
+      "stat": "max_stamina",
+      "delta": -1,
+      "flag": "capital_air_in_lungs"
+    },
     "lines": [
       "You inhaled, in the capital, the air of the capital. It is thicker than other air.",
       "It is heavy with not-talking. Your lungs have some of it now. They will be slower,",
@@ -2036,8 +3990,21 @@
   },
   "mourncross_one_hour_of_light": {
     "category": "bond",
-    "trigger": {"at": ["zone_arrival"], "location": ["mourncross"], "min_visits": 4, "chance": 0.15},
-    "effect": {"stat": "defense", "delta": 1, "flag": "stood_in_the_light"},
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "mourncross"
+      ],
+      "min_visits": 4,
+      "chance": 0.15
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "stood_in_the_light"
+    },
     "lines": [
       "You were in the small square between the houses today, during the eighth-to-ninth hour.",
       "The light was on you for a few minutes. You did not move. You let it be light on you.",
@@ -2046,8 +4013,21 @@
   },
   "mourncross_chairman_looked_at_you": {
     "category": "mind",
-    "trigger": {"at": ["zone_arrival"], "location": ["sealed_chamber"], "min_visits": 2, "chance": 0.18},
-    "effect": {"stat": "max_hp", "delta": -1, "flag": "chairman_looked_at_you"},
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "sealed_chamber"
+      ],
+      "min_visits": 2,
+      "chance": 0.18
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": -1,
+      "flag": "chairman_looked_at_you"
+    },
     "lines": [
       "The Chairman, in the sealed chair, turned his eyes to you today. Briefly. He does not",
       "turn his eyes. He turned them for you. He recognised something. You will not know what.",
@@ -2057,7 +4037,16 @@
   },
   "mourncross_heard_bell_for_someone": {
     "category": "half_truth",
-    "trigger": {"at": ["zone_arrival"], "location": ["mourncross"], "min_visits": 5, "chance": 0.15},
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "mourncross"
+      ],
+      "min_visits": 5,
+      "chance": 0.15
+    },
     "effect": null,
     "lines": [
       "The Bellward rang the curfew bell, today, while you were standing in the lane.",
@@ -2067,8 +4056,21 @@
   },
   "mourncross_left_a_flower_on_the_wall": {
     "category": "promise_kept",
-    "trigger": {"at": ["zone_arrival"], "location": ["sealed_chamber"], "min_level": 4, "chance": 0.15},
-    "effect": {"stat": "max_hp", "delta": 3, "flag": "left_a_flower_for_the_five"},
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "sealed_chamber"
+      ],
+      "min_level": 4,
+      "chance": 0.15
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 3,
+      "flag": "left_a_flower_for_the_five"
+    },
     "lines": [
       "You set a flower at the base of one of the five chairs today. You did not pick which one.",
       "You let the wall pick. The wall picked Ena's. The flower is small. It is enough.",
@@ -2077,7 +4079,19 @@
   },
   "mourncross_did_not_leave_the_flower": {
     "category": "broken",
-    "trigger": {"at": ["zone_arrival"], "location": ["sealed_chamber"], "min_visits": 4, "denies_mark": ["mourncross_left_a_flower_on_the_wall"], "chance": 0.10},
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "sealed_chamber"
+      ],
+      "min_visits": 4,
+      "denies_mark": [
+        "mourncross_left_a_flower_on_the_wall"
+      ],
+      "chance": 0.1
+    },
     "effect": null,
     "lines": [
       "You walked past the five chairs without leaving anything today. You meant to. You did not.",
@@ -2085,10 +4099,18 @@
       "You will leave one, eventually. You may. You may not. The wall is patient. The wall waits."
     ]
   },
-
   "choir_almost_sang_you": {
     "category": "half_truth",
-    "trigger": {"at": ["zone_arrival"], "location": ["choir"], "min_visits": 2, "chance": 0.20},
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "choir"
+      ],
+      "min_visits": 2,
+      "chance": 0.2
+    },
     "effect": null,
     "lines": [
       "The Choir, today, almost made a sound when you walked in. A held note. It did not finish.",
@@ -2098,8 +4120,21 @@
   },
   "choir_cantor_recognized_your_step": {
     "category": "mind",
-    "trigger": {"at": ["zone_arrival"], "location": ["choir"], "min_visits": 3, "chance": 0.18},
-    "effect": {"stat": "max_hp", "delta": -1, "flag": "cantor_knows_your_step"},
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "choir"
+      ],
+      "min_visits": 3,
+      "chance": 0.18
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": -1,
+      "flag": "cantor_knows_your_step"
+    },
     "lines": [
       "Cantor Vael, on his dais, turned his head a quarter-inch when you walked in. He has",
       "recognised you. He does this. He recognises any climber who has read his last sermon.",
@@ -2109,8 +4144,19 @@
   },
   "choir_you_lost_a_note": {
     "category": "lost",
-    "trigger": {"at": ["zone_arrival"], "location": ["choir"], "chance": 0.18},
-    "effect": {"stat": "max_stamina", "delta": -1},
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "choir"
+      ],
+      "chance": 0.18
+    },
+    "effect": {
+      "stat": "max_stamina",
+      "delta": -1
+    },
     "lines": [
       "You walked through the south aisle and a note you had been holding, in your throat,",
       "left you. You did not know you were holding it. The Choir has it now. It will not",
@@ -2120,8 +4166,21 @@
   },
   "choir_kept_the_third_line": {
     "category": "promise_kept",
-    "trigger": {"at": ["zone_arrival"], "location": ["choir"], "requires_flag": "lost_verse_known", "chance": 0.20},
-    "effect": {"stat": "attack", "delta": 1, "flag": "kept_third_line"},
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "choir"
+      ],
+      "requires_flag": "lost_verse_known",
+      "chance": 0.2
+    },
+    "effect": {
+      "stat": "attack",
+      "delta": 1,
+      "flag": "kept_third_line"
+    },
     "lines": [
       "You walked through the Choir today singing — quietly, inside — the third line of the",
       "Verse. The Choir heard. It did not take the line. It let you keep it. It does this rarely.",
@@ -2130,7 +4189,16 @@
   },
   "choir_pillar_ate_your_word": {
     "category": "forgetting",
-    "trigger": {"at": ["zone_arrival"], "location": ["choir"], "min_visits": 3, "chance": 0.20},
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "choir"
+      ],
+      "min_visits": 3,
+      "chance": 0.2
+    },
     "effect": null,
     "lines": [
       "You whispered something near the column in the south transept. The column ate it.",
@@ -2140,8 +4208,19 @@
   },
   "choir_almost_completed_the_rite": {
     "category": "half_truth",
-    "trigger": {"at": ["combat_low_hp"], "location": ["choir"], "min_level": 6, "chance": 0.10},
-    "effect": {"flag": "almost_completed_rite"},
+    "trigger": {
+      "at": [
+        "combat_low_hp"
+      ],
+      "location": [
+        "choir"
+      ],
+      "min_level": 6,
+      "chance": 0.1
+    },
+    "effect": {
+      "flag": "almost_completed_rite"
+    },
     "lines": [
       "You bled, in the Choir, and the rite — the long un-remembering — almost found a path",
       "through your bleeding to finish itself again. It did not. You stopped bleeding in time.",
@@ -2150,8 +4229,21 @@
   },
   "choir_set_a_grief_at_atrels_side_altar": {
     "category": "promise_kept",
-    "trigger": {"at": ["zone_arrival"], "location": ["choir"], "min_level": 4, "chance": 0.15},
-    "effect": {"stat": "max_hp", "delta": 3, "flag": "set_grief_at_side_altar"},
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "choir"
+      ],
+      "min_level": 4,
+      "chance": 0.15
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 3,
+      "flag": "set_grief_at_side_altar"
+    },
     "lines": [
       "At the side-altar in the south aisle — Atrél's — you set a grief down. Not the heavy",
       "one. A small one. The right size for the altar. You walk out of the Choir a hair lighter.",
@@ -2160,7 +4252,16 @@
   },
   "choir_atrel_held_your_grief_briefly": {
     "category": "bond",
-    "trigger": {"at": ["zone_arrival"], "location": ["choir"], "min_visits": 4, "chance": 0.15},
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "choir"
+      ],
+      "min_visits": 4,
+      "chance": 0.15
+    },
     "effect": null,
     "lines": [
       "Atrél, today, did not take anything. He only held what you brought, briefly, and set",
@@ -2170,8 +4271,21 @@
   },
   "choir_warmed_for_you": {
     "category": "half_truth",
-    "trigger": {"at": ["zone_arrival"], "location": ["choir"], "min_visits": 6, "chance": 0.12},
-    "effect": {"stat": "defense", "delta": 1, "flag": "choir_warmed"},
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "choir"
+      ],
+      "min_visits": 6,
+      "chance": 0.12
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "choir_warmed"
+    },
     "lines": [
       "The air in the Choir was a degree warmer for you today. Not for anyone else. For you.",
       "The Choir has been a cold place for centuries. It made an exception today. It will not",
@@ -2180,13 +4294,1067 @@
   },
   "choir_you_unsung_your_name": {
     "category": "forgetting",
-    "trigger": {"at": ["save_action"], "location": ["choir"], "min_level": 6, "chance": 0.10},
-    "effect": {"stat": "max_hp", "delta": -2, "flag": "unsung_your_name"},
+    "trigger": {
+      "at": [
+        "save_action"
+      ],
+      "location": [
+        "choir"
+      ],
+      "min_level": 6,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": -2,
+      "flag": "unsung_your_name"
+    },
     "lines": [
       "You wrote your save and the Choir, briefly, un-sang your name. Atrél has it now.",
       "Your name is the same name. It is a little less heard. The rite is honest with you.",
       "It would not be honest with everyone. You are, in this small way, treated as one of its own.",
       "  (-2 Max HP, permanently. To be un-sung is a wound, even briefly.)"
+    ]
+  },
+  "bone_tomb_cael_stones_warmed_for_you": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "bone_tomb"
+      ],
+      "chance": 0.18
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "cael_stones_lean_to_you"
+    },
+    "lines": [
+      "You knelt at the tomb today and the cold stone, after a count, gave you a faint warmth.",
+      "Not heat. Attention. Cael's stones lean toward a foot they have heard before, and they have",
+      "heard yours. The dead are not gentle. But they can be steady. They are steady for you now.",
+      "  (+1 Defense, permanently — the Bone Tomb's stones recognize your weight.)"
+    ]
+  },
+  "bone_tomb_you_knelt_against_the_wall": {
+    "category": "body",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "bone_tomb"
+      ],
+      "chance": 0.18
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": -1,
+      "flag": "bone_tomb_took_a_breath"
+    },
+    "lines": [
+      "Speaking through stone is not free. You leaned against the wall for a long count and the",
+      "wall took a thread of your breath in trade. You did not notice when. You noticed after.",
+      "Something in your chest is slightly thinner than it was. It will be thinner from now on.",
+      "  (-1 Max HP, permanently — the stone took a thread of breath.)"
+    ]
+  },
+  "bone_tomb_cael_spoke_your_name_into_stone": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "bone_tomb"
+      ],
+      "min_visits": 2,
+      "chance": 0.2
+    },
+    "effect": {
+      "flag": "name_in_the_wall"
+    },
+    "lines": [
+      "Cael, speaking from the stone, said your name. Not asked it. Said it. The wall heard.",
+      "The wall keeps things. Your name is in the wall now, in a particular pocket of",
+      "particular dust. It is not the only thing the wall has of yours. But it is one thing."
+    ]
+  },
+  "bone_tomb_kept_a_breath": {
+    "category": "forgetting",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "bone_tomb"
+      ],
+      "chance": 0.15
+    },
+    "effect": null,
+    "lines": [
+      "You sighed once, against the wall, the kind of sigh that releases a thing. The wall took",
+      "it. You walked out. The sigh did not come with you. You will not find it again. Whatever",
+      "it was you let go in that breath is the wall's, now. The tomb keeps such things."
+    ]
+  },
+  "bone_tomb_stone_almost_answered_first": {
+    "category": "mind",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "bone_tomb"
+      ],
+      "min_visits": 2,
+      "chance": 0.15
+    },
+    "effect": {
+      "flag": "stone_answered_first"
+    },
+    "lines": [
+      "You opened your mouth to speak and the stone — for one beat, only one — spoke first. A",
+      "word you almost recognized. You forgot it before you could say it back. You will not",
+      "tell anyone. They would not believe it. You barely believe it. But it happened to you."
+    ]
+  },
+  "bone_tomb_older_dead_laughed_at_you": {
+    "category": "broken",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "bone_tomb"
+      ],
+      "chance": 0.14
+    },
+    "effect": {
+      "stat": "max_stamina",
+      "delta": -1,
+      "flag": "tomb_laughter"
+    },
+    "lines": [
+      "Something in the older row of niches laughed when you said the wrong word. A small, dry",
+      "laughter, the laughter of those who have stopped being kind. It rattled you. You have",
+      "less room in your chest for the long breaths now. The dead are allowed to laugh.",
+      "  (-1 Max Stamina, permanently — a laughter you did not want.)"
+    ]
+  },
+  "bone_tomb_held_your_palm_to_the_grave": {
+    "category": "promise_kept",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "bone_tomb"
+      ],
+      "min_visits": 2,
+      "chance": 0.16
+    },
+    "effect": {
+      "flag": "warmed_a_grave"
+    },
+    "lines": [
+      "You put your palm flat against one of the closed niches and held it there until your",
+      "hand had given the stone a little warmth. Then you took your hand back. The grave will",
+      "hold that small heat for the night. You did not have to. You did. It is a thing done."
+    ]
+  },
+  "bone_tomb_did_not_press_the_old_seal": {
+    "category": "promise_broken",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "bone_tomb"
+      ],
+      "min_visits": 2,
+      "chance": 0.12
+    },
+    "effect": {
+      "flag": "skipped_old_seal"
+    },
+    "lines": [
+      "Cael's old seal is on the third wall. You knew it was there. You walked past it today.",
+      "You did not press it. You told yourself you would come back. You did not come back.",
+      "The seal is a small thing. You are a small thing. Small things remember each other."
+    ]
+  },
+  "bone_tomb_bone_dust_in_your_hair": {
+    "category": "body",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "bone_tomb"
+      ],
+      "chance": 0.16
+    },
+    "effect": {
+      "flag": "tomb_dust_on_you"
+    },
+    "lines": [
+      "You walked out with a film of pale dust in your hair. You did not feel it land. The",
+      "innkeeper looked at you a beat too long. You combed it out. Some of it stayed. You will",
+      "carry a little of the Bone Tomb out into the kingdom for the rest of this run."
+    ]
+  },
+  "bone_tomb_third_wall_remembered_your_step": {
+    "category": "found",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "bone_tomb"
+      ],
+      "min_visits": 3,
+      "chance": 0.18
+    },
+    "effect": {
+      "flag": "third_wall_leans"
+    },
+    "lines": [
+      "You walked the row tonight and the third wall leaned, very slightly, toward you as you",
+      "passed it. Not the others. Just the third. It has decided you are someone whose step it",
+      "wishes to feel. The wall has its preferences. You are one of them now."
+    ]
+  },
+  "last_altar_atrels_candle_did_not_flicker": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "last_altar"
+      ],
+      "chance": 0.18
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 2,
+      "flag": "atrel_steady_candle"
+    },
+    "lines": [
+      "Atrél's candle should have flickered when you walked past. The door was open; there was",
+      "a draught. It did not flicker. It stayed steady. You felt steadier too — the way you",
+      "feel steadier when someone you trust is in the room. Atrél is in the room with you now.",
+      "  (+2 Max HP, permanently — a steadiness given to you, and kept.)"
+    ]
+  },
+  "last_altar_you_left_a_thread_for_atrel": {
+    "category": "promise_kept",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "last_altar"
+      ],
+      "min_visits": 2,
+      "chance": 0.16
+    },
+    "effect": {
+      "flag": "left_thread_for_atrel"
+    },
+    "lines": [
+      "You tugged a thread loose from your own sleeve and laid it across the bottom of the",
+      "altar. A small offering. Atrél is the patron of small offerings. Atrél does not ask for",
+      "anything. That is why you give. You left one of your own. It is the altar's now."
+    ]
+  },
+  "pre_pall_shrine_air_was_older": {
+    "category": "forgetting",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "pre_pall_shrine"
+      ],
+      "chance": 0.18
+    },
+    "effect": {
+      "flag": "breathed_pre_pall_air"
+    },
+    "lines": [
+      "You stood in the small room and breathed. The air, today, was older than the kingdom.",
+      "You breathed in a Mournhold that was — the one before the rite, the one that did not",
+      "yet need to forget anything. You forgot at once what that breath had carried. As it must."
+    ]
+  },
+  "last_altar_atrel_borrowed_your_grief": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "last_altar"
+      ],
+      "min_visits": 2,
+      "chance": 0.15
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "atrel_borrowed_grief"
+    },
+    "lines": [
+      "You stood at the altar and Atrél, without asking, took a portion of one of your griefs",
+      "for the count of one slow breath. Then gave it back. It was lighter — not gone, lighter.",
+      "Atrél is patient with the weights you carry. You stand straighter under what is left.",
+      "  (+1 Defense, permanently — a grief held briefly by another.)"
+    ]
+  },
+  "last_altar_floor_warmed_under_your_knee": {
+    "category": "found",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "last_altar"
+      ],
+      "chance": 0.16
+    },
+    "effect": {
+      "flag": "altar_floor_warmed"
+    },
+    "lines": [
+      "You knelt at the altar today. The flagstone under your knee, after a count, was warm —",
+      "not from any candle, not from sun. From you, but back. The altar gave back what you gave,",
+      "with a little kindness added. Atrél does this rarely. Atrél did this for you tonight."
+    ]
+  },
+  "pre_pall_shrine_atrels_first_name_almost_came_to_you": {
+    "category": "half_truth",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "pre_pall_shrine"
+      ],
+      "min_visits": 2,
+      "chance": 0.14
+    },
+    "effect": {
+      "flag": "almost_named_pre_pall_atrel"
+    },
+    "lines": [
+      "Atrél has a name from before the rite, an older one, the one the kingdom said before",
+      "they decided to forget. It almost came to you today. You almost said it. You did not.",
+      "It is gone again. But you almost. That has not happened to anyone you know."
+    ]
+  },
+  "last_altar_you_did_not_kneel": {
+    "category": "promise_broken",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "last_altar"
+      ],
+      "min_visits": 2,
+      "chance": 0.12
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": -1,
+      "flag": "did_not_kneel"
+    },
+    "lines": [
+      "You walked past the altar without kneeling. You were in a hurry. You had your reasons.",
+      "Atrél does not ask for the kneeling. Atrél notes it, though. Something in your chest",
+      "takes a small step away from the altar tonight. It will not step quite back.",
+      "  (-1 Max HP, permanently — a kneel withheld is a kneel withheld.)"
+    ]
+  },
+  "last_altar_kept_your_silence": {
+    "category": "mind",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "last_altar"
+      ],
+      "chance": 0.15
+    },
+    "effect": {
+      "flag": "altar_hushed_with_you"
+    },
+    "lines": [
+      "You stood at the altar for a long count without speaking. The altar stood with you. The",
+      "candle stood with you. The air stood with you. For a long count a small kingdom was",
+      "quiet because you were quiet. Mournhold is rarely quiet. Today, for a count, it was."
+    ]
+  },
+  "last_altar_atrel_set_a_grief_at_your_side": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "last_altar"
+      ],
+      "min_visits": 3,
+      "chance": 0.12
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 3,
+      "flag": "atrel_left_grief_at_your_side"
+    },
+    "lines": [
+      "For the first time, the other way. Atrél, in the dark, set a small grief beside you —",
+      "the way you have set yours beside Atrél. You did not know whose grief. You held it",
+      "anyway. Atrél took it back. You stood taller. Atrél stood taller too. That was today.",
+      "  (+3 Max HP, permanently — a grief held the other way.)"
+    ]
+  },
+  "pre_pall_shrine_old_air_did_not_let_you_go": {
+    "category": "body",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "pre_pall_shrine"
+      ],
+      "min_visits": 2,
+      "chance": 0.13
+    },
+    "effect": {
+      "stat": "max_stamina",
+      "delta": -1,
+      "flag": "pre_pall_air_in_you"
+    },
+    "lines": [
+      "The shrine air is older than your lungs. You breathed it for a long count. When you",
+      "stepped back into the kingdom's air, your lungs took a beat to remember how to be your",
+      "lungs again. A small portion of the older air did not leave. You will breathe it now.",
+      "  (-1 Max Stamina, permanently — older air, harder to let go.)"
+    ]
+  },
+  "summit_you_almost_turned_back": {
+    "category": "broken",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "summit"
+      ],
+      "min_level": 7,
+      "chance": 0.18
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": -1,
+      "flag": "almost_turned_back"
+    },
+    "lines": [
+      "You stood at the last switchback today and the wind came down and almost talked you out",
+      "of the climb. For one count you were sure you would turn back. You did not. Something",
+      "in your chest gave a thread to that almost. The Summit takes the threads. It is patient.",
+      "  (-1 Max HP, permanently — a thread given to the almost.)"
+    ]
+  },
+  "summit_wind_taught_you_a_word": {
+    "category": "found",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "summit"
+      ],
+      "min_level": 7,
+      "chance": 0.14
+    },
+    "effect": {
+      "stat": "attack",
+      "delta": 1,
+      "flag": "summit_wind_word"
+    },
+    "lines": [
+      "The wind, at the last turning, said a single syllable that you understood. You will not",
+      "say it aloud — it is for you, the wind decided. It sits in your mouth now, the way a",
+      "stone sits in a pocket. You will swing harder for it. The wind chose you for this.",
+      "  (+1 Attack, permanently — a word from the wind, kept in your mouth.)"
+    ]
+  },
+  "summit_pall_paused_for_you": {
+    "category": "half_truth",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "summit"
+      ],
+      "min_level": 7,
+      "chance": 0.12
+    },
+    "effect": {
+      "flag": "pall_paused_for_you"
+    },
+    "lines": [
+      "You crested the last shoulder and for one breath the Pall, the kingdom's forgetting,",
+      "paused. As if it considered you. As if it was choosing whether you were worth the",
+      "trouble. It decided. The wind moved again. You will not know what it decided. Yet."
+    ]
+  },
+  "summit_ground_was_softer_than_you_thought": {
+    "category": "mind",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "summit"
+      ],
+      "min_level": 7,
+      "chance": 0.14
+    },
+    "effect": {
+      "flag": "summit_ground_softer"
+    },
+    "lines": [
+      "You expected rock. You found ash, and beneath the ash, ground that was softer than you",
+      "thought. As if the Summit were not a mountain. As if it were a thing that had once been",
+      "alive. You did not say that to anyone. You will not. But you walked the rest of it slower."
+    ]
+  },
+  "summit_you_left_a_button_at_the_step": {
+    "category": "lost",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "summit"
+      ],
+      "min_level": 7,
+      "chance": 0.14
+    },
+    "effect": {
+      "flag": "summit_button_lost"
+    },
+    "lines": [
+      "Somewhere on the last steps, a button came off your sleeve. You did not notice when.",
+      "You noticed after. It is one of the things the Summit will keep. You will not go back",
+      "for it. The wind will pass over it for a long time before it stops being a button."
+    ]
+  },
+  "summit_warden_old_step_remembered_you": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "summit"
+      ],
+      "min_level": 7,
+      "chance": 0.13
+    },
+    "effect": {
+      "flag": "warden_step_knows_you"
+    },
+    "lines": [
+      "On the last switchback the old footing — worn smooth by the previous Warden, who climbed",
+      "this many times — fit your boot as if it had been waiting for you. You stood in another",
+      "climber's place. They were not surprised. The Summit is patient with new feet. It has time."
+    ]
+  },
+  "summit_your_breath_steamed_into_the_pall": {
+    "category": "body",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "summit"
+      ],
+      "min_level": 7,
+      "chance": 0.15
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "breath_into_pall"
+    },
+    "lines": [
+      "Your breath, in the thin air, came out as a thread of steam and went, today, straight",
+      "into the Pall and did not come back. You felt the cold that did not come back, very",
+      "briefly, in your jaw. It hardened you a little. You will be harder to break now.",
+      "  (+1 Defense, permanently — a breath given to the Pall.)"
+    ]
+  },
+  "summit_you_named_someone_to_the_wind": {
+    "category": "promise_kept",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "summit"
+      ],
+      "min_level": 7,
+      "chance": 0.14
+    },
+    "effect": {
+      "flag": "named_someone_to_wind"
+    },
+    "lines": [
+      "You said a name into the Summit wind. Not yours. Someone's. The wind took it without",
+      "comment. It is in the wind now. The wind passes over the kingdom every night. The name",
+      "will pass over the kingdom every night. You did that. You did not have to. You did."
+    ]
+  },
+  "summit_climb_taught_you_a_name_you_already_knew": {
+    "category": "mind",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "summit"
+      ],
+      "min_level": 7,
+      "chance": 0.12
+    },
+    "effect": {
+      "flag": "summit_taught_your_name_spelled_other"
+    },
+    "lines": [
+      "On the climb today, very quietly, the Summit taught you your own name. Spelled different.",
+      "An older spelling. The one the kingdom used before the rite. You will not be able to",
+      "write it down. But you know it now. You have known it for a long time. You did not know."
+    ]
+  },
+  "summit_kept_your_smaller_self": {
+    "category": "forgetting",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "summit"
+      ],
+      "min_level": 7,
+      "chance": 0.1
+    },
+    "effect": {
+      "flag": "smaller_self_at_a_turn"
+    },
+    "lines": [
+      "Somewhere at the third switchback, a smaller you — a younger one — stopped climbing.",
+      "Sat down at the edge. You did not notice when. You went on. Whatever was small in you",
+      "is sitting on a rock at the third switchback now, and is not coming up after you."
+    ]
+  },
+  "hunters_cache_strap_for_you": {
+    "category": "found",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "hunters_cache"
+      ],
+      "chance": 0.16
+    },
+    "effect": {
+      "stat": "max_stamina",
+      "delta": 1,
+      "flag": "cache_strap"
+    },
+    "lines": [
+      "On the second hook from the door, a single leather strap was set aside today — softened",
+      "with use, the right length for your wrist. As if a hunter, long gone, had set it back",
+      "for the next hand. Your hand. You took it. It steadies you when you carry weight now.",
+      "  (+1 Max Stamina, permanently — a strap left by a hand you will not meet.)"
+    ]
+  },
+  "burned_library_remembered_one_page": {
+    "category": "found",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "burned_library"
+      ],
+      "chance": 0.15
+    },
+    "effect": {
+      "flag": "library_page_for_you"
+    },
+    "lines": [
+      "Among the curled-black drifts of the Library, today, one page lay unburned. As if the",
+      "fire had stepped around it for you. You read it. You will not remember the words. You",
+      "will remember the shape of the reading. The Library kept one page for one reader: you."
+    ]
+  },
+  "the_border_air_changed_when_you_crossed": {
+    "category": "half_truth",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "the_border"
+      ],
+      "chance": 0.14
+    },
+    "effect": {
+      "flag": "border_air_changed"
+    },
+    "lines": [
+      "You stepped across the Border today and the air, for one count, was the air of a country",
+      "that is not Mournhold. You breathed it. You did not know what country. You stepped back.",
+      "The air of Mournhold is the same as it was. Yours is not. You have crossed once now."
+    ]
+  },
+  "karst_outpost_kept_a_lookout_for_you": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "karst_outpost"
+      ],
+      "chance": 0.14
+    },
+    "effect": {
+      "flag": "karst_lookout_for_you"
+    },
+    "lines": [
+      "The outpost is abandoned. You know this. Today, as you came up the rise, you had the",
+      "exact feeling that someone was on the wall, looking for you, and lowering their bow",
+      "with relief at the sight of your shape. There was nobody. Someone was. You felt it."
+    ]
+  },
+  "wynne_camp_kettle_was_still_warm": {
+    "category": "lost",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "wynne_camp"
+      ],
+      "chance": 0.15
+    },
+    "effect": {
+      "stat": "max_stamina",
+      "delta": -1,
+      "flag": "wynne_kettle_warm"
+    },
+    "lines": [
+      "You came into Wynne's camp tonight and the kettle on the cold ash was still warm. You",
+      "put your palm to it. Recently warm. Not by your hand. There was nobody. There had been.",
+      "You missed them by a count too small to name. You walked the rest of the night slower.",
+      "  (-1 Max Stamina, permanently — a meeting you missed by inches.)"
+    ]
+  },
+  "margrave_monument_seal_softened_in_your_hand": {
+    "category": "broken",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "margrave_monument"
+      ],
+      "chance": 0.13
+    },
+    "effect": {
+      "flag": "margrave_seal_softened"
+    },
+    "lines": [
+      "You put your hand to the Margrave's old seal today, the carved one, the one that means",
+      "a writ that nobody now honours. It softened in your palm — gave a little, as if it had",
+      "been waiting for a hand. The stone did not break. You did. A little. You can carry that."
+    ]
+  },
+  "hunters_cache_button_pairs_yours": {
+    "category": "found",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "hunters_cache"
+      ],
+      "min_visits": 2,
+      "chance": 0.14
+    },
+    "effect": {
+      "flag": "cache_button_pairs"
+    },
+    "lines": [
+      "On the third nail today there was a button. Bone, scored once. The other half of the",
+      "pair that came off your father's coat in the year you were small enough to ride his",
+      "shoulders. You did not know one half was missing. You know now. Take it. The cache nods."
+    ]
+  },
+  "burned_library_ink_smudge_on_your_thumb": {
+    "category": "body",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "burned_library"
+      ],
+      "min_visits": 2,
+      "chance": 0.14
+    },
+    "effect": {
+      "flag": "library_ink_thumb"
+    },
+    "lines": [
+      "You touched a page that was still, somehow, wet. Ink the colour of an old bruise came",
+      "away on your thumb. It dried there. It is not coming off. You will go on with it. It",
+      "is not large. Someone who looks closely will see it. They will not ask. You will not say."
+    ]
+  },
+  "the_border_signpost_pointed_at_you": {
+    "category": "half_truth",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "the_border"
+      ],
+      "min_visits": 2,
+      "chance": 0.12
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": -1,
+      "flag": "border_signpost_for_you"
+    },
+    "lines": [
+      "At the Border crossing the old signpost, today, was not pointing along the road. It was",
+      "pointing at you. Not the road. Whatever quarter it had marked, you were the quarter now.",
+      "You did not feel honoured. You felt seen. You felt thinner by a thread. You will be.",
+      "  (-1 Max HP, permanently — a thing pointed at you, that should have pointed elsewhere.)"
+    ]
+  },
+  "wynne_camp_fire_circle_had_room": {
+    "category": "promise_kept",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "wynne_camp"
+      ],
+      "min_visits": 2,
+      "chance": 0.16
+    },
+    "effect": {
+      "flag": "wynne_circle_had_room"
+    },
+    "lines": [
+      "The fire circle at Wynne's tonight had a small stone-free patch on the south side, the",
+      "exact size of you sitting cross-legged. You sat. The fire was cold. The patch was yours.",
+      "Whoever sets the circle has left a space for the next one in. The next one was you."
+    ]
+  },
+  "save_you_saved_at_an_old_hour": {
+    "category": "mind",
+    "trigger": {
+      "at": [
+        "save_action"
+      ],
+      "chance": 0.18
+    },
+    "effect": {
+      "flag": "saved_old_hour"
+    },
+    "lines": [
+      "You saved tonight at an hour that was not your usual hour. The disk took the save. The",
+      "saving felt, faintly, the way a stranger feels — your own hand, but at a different",
+      "time of night. You will save at the usual hour next time. The disk noticed you noticing."
+    ]
+  },
+  "save_caught_your_breath_for_you": {
+    "category": "body",
+    "trigger": {
+      "at": [
+        "save_action"
+      ],
+      "chance": 0.16
+    },
+    "effect": {
+      "stat": "max_stamina",
+      "delta": 1,
+      "flag": "save_caught_breath"
+    },
+    "lines": [
+      "You sat to save and your breath, between one moment and the next, caught up with you.",
+      "You had not noticed you were short. You felt the length of your lungs again. The save",
+      "did not do it. The pause did. You will sit a little easier from now on, at every save.",
+      "  (+1 Max Stamina, permanently — a pause that gave you back a breath.)"
+    ]
+  },
+  "discovery_you_read_a_line_you_already_knew": {
+    "category": "half_truth",
+    "trigger": {
+      "at": [
+        "discovery_read"
+      ],
+      "chance": 0.18
+    },
+    "effect": {
+      "flag": "knew_a_line"
+    },
+    "lines": [
+      "On the page today there was a line you knew. The exact words. You had not seen the page",
+      "before. The line was not, you would swear, on the page yesterday. The page kept it for",
+      "you. Or you brought it. Or it was always there, and you have always almost known."
+    ]
+  },
+  "discovery_the_page_dog_eared_itself": {
+    "category": "found",
+    "trigger": {
+      "at": [
+        "discovery_read"
+      ],
+      "chance": 0.15
+    },
+    "effect": {
+      "flag": "page_marked_itself"
+    },
+    "lines": [
+      "When you closed the book the page you had been on was folded down at the corner. You",
+      "did not fold it. The page folded itself, for you, against the next time. It is a",
+      "small kindness. The page is keeping its place for you. You should come back to it."
+    ]
+  },
+  "save_you_saved_with_a_name_in_your_mouth": {
+    "category": "promise_kept",
+    "trigger": {
+      "at": [
+        "save_action"
+      ],
+      "chance": 0.16
+    },
+    "effect": {
+      "flag": "saved_with_name"
+    },
+    "lines": [
+      "You sat to save with a name on your tongue — one of the lost, one of the named-fallen.",
+      "The save took. The name took. The next time you sit at the disk, the name will be",
+      "there too, faintly. You have folded one of theirs in with one of yours. They will keep."
+    ]
+  },
+  "discovery_paper_breathed_with_you": {
+    "category": "body",
+    "trigger": {
+      "at": [
+        "discovery_read"
+      ],
+      "chance": 0.13
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 1,
+      "flag": "page_breathed"
+    },
+    "lines": [
+      "While you read tonight the paper, very faintly, moved with your breathing. As if the",
+      "page were also breathing, and trying to match. You let it. For one count you and the",
+      "page breathed together. You stood up a little less alone. The page is in this with you.",
+      "  (+1 Max HP, permanently — a small companionship from a page.)"
+    ]
+  },
+  "save_remembered_the_last_time_you_saved": {
+    "category": "mind",
+    "trigger": {
+      "at": [
+        "save_action"
+      ],
+      "chance": 0.14
+    },
+    "effect": {
+      "flag": "save_recalled_last"
+    },
+    "lines": [
+      "At the moment of saving tonight you remembered, all at once, exactly where you were the",
+      "last time you sat to save. The chair. The light. The thing you were thinking. The save",
+      "remembered too — gently, on your behalf. The act has begun to know its own history."
+    ]
+  },
+  "save_you_did_not_save_the_part_that_hurt": {
+    "category": "promise_broken",
+    "trigger": {
+      "at": [
+        "save_action"
+      ],
+      "min_visits": 2,
+      "chance": 0.13
+    },
+    "effect": {
+      "flag": "save_omitted_hurt"
+    },
+    "lines": [
+      "You sat to save tonight and you tried, briefly, to save only the parts you were proud",
+      "of. The disk took everything anyway — including the small wound you were trying not",
+      "to keep. The disk does not let you choose. You will not choose at the disk again."
+    ]
+  },
+  "discovery_someone_elses_handwriting_now_yours": {
+    "category": "found",
+    "trigger": {
+      "at": [
+        "discovery_read"
+      ],
+      "min_visits": 2,
+      "chance": 0.14
+    },
+    "effect": {
+      "flag": "stranger_hand_in_yours"
+    },
+    "lines": [
+      "On a page tonight you read a line in someone else's hand — a long-dead clerk, by the",
+      "loops of the letters — and the loops, faintly, were the loops you make when you write.",
+      "You have borrowed something of theirs without asking. You will write that way from now on."
+    ]
+  },
+  "save_dust_in_the_corner": {
+    "category": "forgetting",
+    "trigger": {
+      "at": [
+        "save_action"
+      ],
+      "chance": 0.12
+    },
+    "effect": null,
+    "lines": [
+      "There is dust in the corner of every save you make. Not much. The dust of all the runs",
+      "before this one — yours and the others'. It is gathering. You cannot wipe it away. You",
+      "did not put it there. It does not, in fact, belong to you. But it is in your saves now."
     ]
   }
 }
