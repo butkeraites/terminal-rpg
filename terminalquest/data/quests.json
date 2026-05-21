@@ -4637,5 +4637,230 @@
       "holds_you_walked_a_street_that_was_a_street"
     ],
     "flavor": "A previous you had unmade Mournhold by Reckoning. The new you arrives at the Holds and the houses are empty. Three doorshuts close at your step. End them. The houses stay empty."
+  },
+  "cisterns_a_first": {
+    "name": "The Three Cisterns — The Reach's Drinking",
+    "target_enemy": "drowned_thresher",
+    "needed": 2,
+    "reward_gold": 300,
+    "cleanse_required": 1,
+    "chain_next": "cisterns_b_second",
+    "flavor": "Two threshers stand at the Reach's first cistern. End them. The Reach's drinking is the first of three the kingdom kept."
+  },
+  "cisterns_b_second": {
+    "name": "The Three Cisterns — The Gullet's Throat",
+    "target_enemy": "dark_slime",
+    "needed": 3,
+    "reward_gold": 500,
+    "cleanse_required": 2,
+    "requires_quest": [
+      "cisterns_a_first"
+    ],
+    "chain_next": "cisterns_c_third",
+    "flavor": "Three slimes thicken the Gullet's throat. End them. The kingdom drank from this throat through six winters."
+  },
+  "cisterns_c_third": {
+    "name": "The Three Cisterns — Mourncross's Well",
+    "target_enemy": "gutter_wretch",
+    "needed": 3,
+    "reward_gold": 700,
+    "cleanse_required": 3,
+    "requires_quest": [
+      "cisterns_b_second"
+    ],
+    "chain_next": "cisterns_d_buried",
+    "reward_marks": [
+      "mourncross_breathed_the_capital_air"
+    ],
+    "flavor": "Three wretches squat at the capital's well. End them. The well is one of three the kingdom kept; this was the last."
+  },
+  "cisterns_d_buried": {
+    "name": "The Three Cisterns — The Buried Fourth",
+    "target_enemy": "reliquary_golem",
+    "needed": 1,
+    "reward_gold": 1200,
+    "cleanse_required": 4,
+    "requires_quest": [
+      "cisterns_c_third"
+    ],
+    "reward_chronicle_line": "They walked the kingdom's three cisterns — Reach, Gullet, Mourncross — and found the buried fourth in the Choir. The reliquary golem who guarded it fell.",
+    "reward_marks": [
+      "choir_kept_the_third_line"
+    ],
+    "flavor": "The Choir hid a fourth cistern under its floor. The reliquary golem keeps it. End him. The kingdom will drink again."
+  },
+  "verren_a_voice_in_the_tomb": {
+    "name": "Verren's Voice — Hear It in the Bone Tomb",
+    "target_enemy": "pall_magistrate",
+    "needed": 1,
+    "reward_gold": 500,
+    "cleanse_required": 3,
+    "requires_discovery": [
+      "bone_tomb_column_of_seals"
+    ],
+    "chain_next": "verren_b_voice_in_the_choir",
+    "flavor": "Verren's voice is on the Bone Tomb's column of seals. A magistrate carries an echo of it. End him. Verren's voice will be one count clearer."
+  },
+  "verren_b_voice_in_the_choir": {
+    "name": "Verren's Voice — Hear It in the Choir",
+    "target_enemy": "choirmaster_effigy",
+    "needed": 1,
+    "reward_gold": 700,
+    "cleanse_required": 4,
+    "requires_quest": [
+      "verren_a_voice_in_the_tomb"
+    ],
+    "chain_next": "verren_c_voice_above_snow",
+    "flavor": "An effigy in the Choir hums Verren's voice. End it. Verren will be heard in the Choir for the first time in a century."
+  },
+  "verren_c_voice_above_snow": {
+    "name": "Verren's Voice — Hear It Above the Snowline",
+    "target_enemy": "ice_wraith",
+    "needed": 2,
+    "reward_gold": 800,
+    "cleanse_required": 4,
+    "requires_quest": [
+      "verren_b_voice_in_the_choir"
+    ],
+    "chain_next": "verren_d_voice_at_summit",
+    "reward_marks": [
+      "the_summit_wind_called_your_step"
+    ],
+    "flavor": "Two ice-wraiths above the snowline argue with Verren's voice. End them. Verren will speak in the wind."
+  },
+  "verren_d_voice_at_summit": {
+    "name": "Verren's Voice — Carry It to the Summit",
+    "target_enemy": "shadow_warden",
+    "needed": 1,
+    "reward_gold": 1800,
+    "cleanse_required": 5,
+    "requires_quest": [
+      "verren_c_voice_above_snow"
+    ],
+    "reward_chronicle_line": "They carried Verren's voice from the Bone Tomb, through the Choir and above the snowline, and at the Summit they ended the Shadow Warden with the voice in their throat.",
+    "reward_marks": [
+      "summit_you_named_someone_to_the_wind"
+    ],
+    "flavor": "The Summit's Shadow Warden. End him with Verren's voice in your throat. The kingdom will hear the name."
+  },
+  "vigil_a_take_the_lamp": {
+    "name": "The Lampkeeper's Vigil — Take the Lamp",
+    "target_enemy": "bandit",
+    "needed": 2,
+    "reward_gold": 200,
+    "cleanse_required": 0,
+    "chain_next": "vigil_b_wood_trail",
+    "flavor": "The Lampkeeper at Gravewatch sets out a small lamp for a climber she's worried about. Two bandits at the road's edge had laughed at the lamp. End them. Take the lamp."
+  },
+  "vigil_b_wood_trail": {
+    "name": "The Lampkeeper's Vigil — Follow the Trail Through the Wood",
+    "target_enemy": "wolf",
+    "needed": 3,
+    "reward_gold": 300,
+    "cleanse_required": 0,
+    "requires_quest": [
+      "vigil_a_take_the_lamp"
+    ],
+    "chain_next": "vigil_c_reach_pool",
+    "flavor": "Three wolves walked the trail the missing climber left. End them. The trail will be the missing climber's again."
+  },
+  "vigil_c_reach_pool": {
+    "name": "The Lampkeeper's Vigil — At the Reach's Pool",
+    "target_enemy": "silt_drowner",
+    "needed": 2,
+    "reward_gold": 500,
+    "cleanse_required": 1,
+    "requires_quest": [
+      "vigil_b_wood_trail"
+    ],
+    "chain_next": "vigil_d_gullet_find",
+    "flavor": "Two silt-drowners at the Reach's pool — the same pool the missing climber had stopped at. End them. The pool will be still after."
+  },
+  "vigil_d_gullet_find": {
+    "name": "The Lampkeeper's Vigil — At the Gullet's Mouth",
+    "target_enemy": "cave_troll",
+    "needed": 1,
+    "reward_gold": 1000,
+    "cleanse_required": 2,
+    "requires_quest": [
+      "vigil_c_reach_pool"
+    ],
+    "reward_chronicle_line": "They followed the Lampkeeper's lamp from the wood through the Reach to the Gullet's mouth, ended the troll who had taken the missing climber's coat, and the Lampkeeper had her lamp back, and a name to set in her tally.",
+    "reward_marks": [
+      "lamp2_gave_you_oil_for_the_climb"
+    ],
+    "flavor": "A troll at the Gullet's mouth wears the missing climber's coat. End him. Take the coat. The Lampkeeper will know."
+  },
+  "disc_atrel_marker_pall": {
+    "name": "The Pall Reads Atrél's Marker",
+    "target_enemy": "hollow_procession",
+    "needed": 3,
+    "reward_gold": 500,
+    "cleanse_required": 3,
+    "requires_discovery": [
+      "atrel_marker"
+    ],
+    "reward_marks": [
+      "mourncross_a_widow_set_a_chair_out"
+    ],
+    "flavor": "Once you have read Atrél's marker, three of Mourncross's procession recognize the gesture. End them."
+  },
+  "disc_seal_register_clerk": {
+    "name": "The Clerk's Seal Register and the Library Warden",
+    "target_enemy": "library_warden",
+    "needed": 1,
+    "reward_gold": 700,
+    "cleanse_required": 3,
+    "requires_discovery": [
+      "clerks_seal_register"
+    ],
+    "reward_chronicle_line": "They read the clerk's seal register and returned to end the warden whose name was crossed out of it.",
+    "flavor": "The clerk's seal register names a warden. End that warden. The register stays kept."
+  },
+  "mark_holds_bread_warmed": {
+    "name": "After the Holds' Bread Bowl Warmed",
+    "target_enemy": "forager_boy",
+    "needed": 2,
+    "reward_gold": 350,
+    "cleanse_required": 1,
+    "requires_mark": "holds_bread_bowl_warmed_when_you_passed",
+    "reward_marks": [
+      "holds_recognized_your_grief"
+    ],
+    "flavor": "The Holds' bread bowl warmed once when you passed. Two forager boys want the bread for themselves. End them."
+  },
+  "mark_mourn_chair_set": {
+    "name": "After a Chair Was Set for You at Mourncross",
+    "target_enemy": "pall_magistrate",
+    "needed": 1,
+    "reward_gold": 600,
+    "cleanse_required": 3,
+    "requires_mark": "mourncross_a_widow_set_a_chair_out",
+    "reward_consumables": [
+      "The Last Bread"
+    ],
+    "flavor": "Once a widow at Mourncross set a chair for you. A magistrate wants the chair as evidence. End him."
+  },
+  "mark_choir_lost_note_callback": {
+    "name": "After You Lost a Note II",
+    "target_enemy": "censer_shade",
+    "needed": 1,
+    "reward_gold": 400,
+    "cleanse_required": 4,
+    "requires_mark": "choir_you_lost_a_note",
+    "reward_marks": [
+      "music_the_choir_air_was_thinner_for_a_song"
+    ],
+    "flavor": "Once you lost a note in the Choir. A censer-shade carries it still. End it. The note will return."
+  },
+  "mark_summit_button_left": {
+    "name": "After You Left a Button at the Summit Step",
+    "target_enemy": "ashen_penitent",
+    "needed": 1,
+    "reward_gold": 1300,
+    "cleanse_required": 5,
+    "requires_mark": "summit_you_left_a_button_at_the_step",
+    "reward_chronicle_line": "Once they had left a button at the Summit step, the Penitent at the upper stone could not refuse them. They ended him.",
+    "flavor": "Once you left a button at the Summit step. The Penitent knows the gesture. End him. The button stays."
   }
 }
