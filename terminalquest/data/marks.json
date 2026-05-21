@@ -615,5 +615,537 @@
       "like an old man bowing. You blink. The grey is the grey again. Hunger never bows.",
       "The almost-bowing is yours. It is a heavy thing. Atrél nods at you. He does not bow."
     ]
+  },
+
+  "halna_marked_you_at_eleven": {
+    "category": "bond",
+    "trigger": {"at": ["zone_arrival"], "location": ["forest"], "min_visits": 3, "chance": 0.025},
+    "effect": {"stat": "attack", "delta": 1, "flag": "halna_marked_you"},
+    "lines": [
+      "Halna watches you walk past her fallen pine. She does not nod. She does not speak.",
+      "But your grip, when you pick up your weapon again later, feels older. As if she",
+      "passed her hands' knowledge through her watching. You did not ask. She did anyway.",
+      "  (+1 Attack, permanently — Halna has taught you without saying so.)"
+    ]
+  },
+  "halna_gave_you_the_quiet_word": {
+    "category": "bond",
+    "trigger": {"at": ["combat_victory"], "location": ["forest"], "min_visits": 2, "chance": 0.022},
+    "effect": null,
+    "lines": [
+      "Halna, after the fight, says one word to you. Quiet. You do not hear which.",
+      "You know it is a name. You know it is hers. You will not repeat it. The wood",
+      "will not let you. The word is yours now. It is also still hers. Words can be both."
+    ]
+  },
+  "halna_will_not_see_you_anymore": {
+    "category": "broken",
+    "trigger": {"at": ["zone_arrival"], "location": ["forest"], "min_visits": 6, "chance": 0.015},
+    "effect": {"stat": "max_hp", "delta": -2},
+    "lines": [
+      "Halna looks past you today. Tomorrow she will look past you again. You did something.",
+      "You may not know what. The wolf at the stump knows. Halna does not let you know.",
+      "The unseen will weigh in you. The wood is not on your side anymore. Not against you.",
+      "  (-2 Max HP, permanently. To be unseen is a wound.)"
+    ]
+  },
+  "halna_left_you_a_strip_of_meat": {
+    "category": "found",
+    "trigger": {"at": ["zone_arrival"], "location": ["forest"], "requires_flag": "halna_saves_meat", "chance": 0.10},
+    "effect": {"consumable": "Health Potion"},
+    "lines": [
+      "On the flat stone by Halna's log, today, a strip of dressed venison wrapped in",
+      "leaves. She is not at the log. She has gone hunting. You take the meat. It will",
+      "hold. It will keep one of your wounds shut, later, when you need it to.",
+      "  (Health Potion added to your inventory — Halna's promise, kept.)"
+    ]
+  },
+  "halna_told_you_about_her_daughter": {
+    "category": "bond",
+    "trigger": {"at": ["combat_victory"], "location": ["forest"], "min_level": 5, "chance": 0.012},
+    "effect": {"flag": "knows_halnas_daughter"},
+    "lines": [
+      "Walking back past Halna's pine, you stop. She is sitting. She is not working.",
+      "She tells you, without looking at you, that her daughter went into the wood",
+      "thirty winters ago. She does not say more. You do not ask. The telling is enough.",
+      "You will carry this. You will not tell it. The wood is the only one who needs it."
+    ]
+  },
+
+  "helka_lifted_her_elbow": {
+    "category": "bond",
+    "trigger": {"at": ["combat_victory"], "location": ["reach", "last_dyke"], "requires_flag": "last_reaper_down", "chance": 0.5},
+    "effect": {"stat": "max_hp", "delta": 5, "flag": "helka_lifted"},
+    "lines": [
+      "You come back to the Engineer's bridge. Helka is standing. Her left arm is out of",
+      "the mud. The mud-line on her sleeve has darkened to dry. She is holding a beam.",
+      "She does not thank you. She nods once. She sets the beam into the third dyke's slot.",
+      "  (+5 Max HP, permanently. Her vow has been kept. Yours has been honored.)"
+    ]
+  },
+  "helka_taught_you_a_knot": {
+    "category": "bond",
+    "trigger": {"at": ["zone_arrival"], "location": ["reach"], "min_visits": 2, "chance": 0.025},
+    "effect": {"stat": "defense", "delta": 1, "flag": "knows_kitchen_knot"},
+    "lines": [
+      "Helka shows you a knot. With her left hand, which is the one in the mud. She does",
+      "not lift the elbow. She uses the wrist only. The knot holds beams against rivers.",
+      "It will hold cloth against your skin, when something tries to open you, later.",
+      "  (+1 Defense, permanently — the kitchen knot, kept warm against your bones.)"
+    ]
+  },
+  "helka_gave_you_her_chisel": {
+    "category": "found",
+    "trigger": {"at": ["zone_arrival"], "location": ["reach"], "min_visits": 4, "chance": 0.02},
+    "effect": null,
+    "lines": [
+      "Helka, today, presses a chisel into your hand. Short, brass, worn smooth.",
+      "  'I will not need this. I have the long one. Take it. Carve a name somewhere.'",
+      "You will. You will carve a name where the stone is hardest. The chisel will take it."
+    ]
+  },
+  "the_reach_remembers_your_step": {
+    "category": "mind",
+    "trigger": {"at": ["zone_arrival"], "location": ["reach", "drowned_holds"], "min_visits": 4, "chance": 0.02},
+    "effect": {"stat": "max_stamina", "delta": 1, "flag": "reach_knows_step"},
+    "lines": [
+      "You walk into the Reach and the water flattens itself for half a heartbeat.",
+      "It does not always do this. It does this for you, now. You will walk less heavy",
+      "in the Reach. You will sleep less heavy after. The water has decided.",
+      "  (+1 Max Stamina, permanently — the river has taken your weight.)"
+    ]
+  },
+  "helka_will_not_lift_her_elbow_for_you": {
+    "category": "broken",
+    "trigger": {"at": ["zone_arrival"], "location": ["reach"], "min_visits": 5, "denies_mark": ["helka_lifted_her_elbow"], "chance": 0.012},
+    "effect": null,
+    "lines": [
+      "Helka does not look at you today. Her elbow is in the mud. You did not break the",
+      "Reaper. You did not come back. The beams are still at the dyke. The dyke is still",
+      "the third one. Helka is still where she was. The not-lifting is yours to carry."
+    ]
+  },
+
+  "lampkeeper_recognised_you": {
+    "category": "bond",
+    "trigger": {"at": ["zone_arrival"], "location": ["mourncross"], "min_visits": 3, "chance": 0.025},
+    "effect": {"stat": "max_hp", "delta": 3, "flag": "lampkeeper_knows"},
+    "lines": [
+      "The Lampkeeper looks up from his unlit lamp when you arrive. He has not looked up",
+      "for anyone, in a long time. He sees you. He says, quietly: 'I have written your",
+      "name. Mine is back too. We are both — for the moment — ourselves. Walk well.'",
+      "  (+3 Max HP, permanently — to be seen by someone who has lost so much is a balm.)"
+    ]
+  },
+  "the_lamp_caught_when_you_passed": {
+    "category": "half_truth",
+    "trigger": {"at": ["zone_arrival"], "location": ["mourncross"], "min_visits": 5, "chance": 0.012},
+    "effect": null,
+    "lines": [
+      "One of the north-quarter lamps, today, catches as you walk under it. Just a flicker.",
+      "The Lampkeeper, who is far down the lane, does not see. You see. You did not tap it.",
+      "Lamps the daughter lit, once, sometimes remember. You will not say which lamp it was."
+    ]
+  },
+  "lampkeeper_handed_you_her_drawing": {
+    "category": "found",
+    "trigger": {"at": ["zone_arrival"], "location": ["mourncross"], "min_visits": 4, "chance": 0.018},
+    "effect": null,
+    "lines": [
+      "The Lampkeeper passes you, today, a folded paper. A child's drawing. A lamp. Tapped.",
+      "  'My daughter drew this. I have kept it. I want one more person to have seen it.'",
+      "You look. You hand it back. He folds it again. You will remember the tap. He will not."
+    ]
+  },
+  "you_forgot_the_word_for_lamp": {
+    "category": "forgetting",
+    "trigger": {"at": ["save_action"], "location": ["mourncross"], "min_level": 5, "chance": 0.018},
+    "effect": null,
+    "lines": [
+      "You save. You realize you no longer have the word for what the Lampkeeper tends.",
+      "You can describe it. You cannot name it. The word is at Atrél's altar.",
+      "The Lampkeeper, if you saw him now, would have to point. You would understand the pointing."
+    ]
+  },
+  "lampkeeper_will_not_look_up_for_you": {
+    "category": "broken",
+    "trigger": {"at": ["zone_arrival"], "location": ["mourncross"], "min_visits": 7, "denies_mark": ["lampkeeper_recognised_you"], "chance": 0.012},
+    "effect": null,
+    "lines": [
+      "The Lampkeeper does not look up today. Or tomorrow. Or again. You did something.",
+      "You may not know what. The Pall took something from him you do not yet know about.",
+      "He may take it back. He may not. You will keep walking past him. He will keep tending."
+    ]
+  },
+
+  "penitent_named_you": {
+    "category": "bond",
+    "trigger": {"at": ["zone_arrival"], "location": ["mountain"], "min_visits": 3, "chance": 0.022},
+    "effect": {"flag": "penitent_named_you"},
+    "lines": [
+      "The Old Penitent looks at you, today, from across the snow, and says one word.",
+      "You did not know he had a name for you. He has not had one. He has one now.",
+      "He will not say it again. You will not know it. The word is his. It is also yours."
+    ]
+  },
+  "the_climb_marked_your_lungs": {
+    "category": "body",
+    "trigger": {"at": ["combat_low_hp"], "location": ["mountain"], "chance": 0.04},
+    "effect": {"stat": "max_stamina", "delta": -2, "flag": "climb_marked_lungs"},
+    "lines": [
+      "After the fight, your breath does not come the way it did. The Climb is in your lungs.",
+      "It is not fatal. It is not leaving. The Penitent, far below, does not look up.",
+      "He knows. He carried this for forty winters. You will carry it for as long as you climb.",
+      "  (-2 Max Stamina, permanently. The Climb is in you now.)"
+    ]
+  },
+  "you_taste_ash_when_you_save": {
+    "category": "mind",
+    "trigger": {"at": ["save_action"], "min_level": 6, "chance": 0.025},
+    "effect": {"flag": "tastes_ash"},
+    "lines": [
+      "You write your save. The pencil tastes of ash. So does your mouth. So does the wind.",
+      "The Penitent's grey has gotten into your senses. It is not unpleasant. It is not pleasant.",
+      "It is the colour of where you have been. It will not leave. You will save again."
+    ]
+  },
+  "penitent_left_you_a_scavver_fang": {
+    "category": "found",
+    "trigger": {"at": ["zone_arrival"], "location": ["mountain"], "min_visits": 3, "chance": 0.025},
+    "effect": {"consumable": "Scavver Fang"},
+    "lines": [
+      "On the flat rock by the Penitent, today, a single scavver fang. Set carefully.",
+      "He has left it for you. He has not used it himself. He cannot taste anything now.",
+      "Take it. It is a small dead thing. It remembers small things best.",
+      "  (Scavver Fang added — narrative-only item. Some things you carry are not for using.)"
+    ]
+  },
+  "penitent_told_you_his_wifes_name": {
+    "category": "bond",
+    "trigger": {"at": ["zone_arrival"], "location": ["mountain"], "min_visits": 6, "requires_flag": "discoveries_seen", "chance": 0.015},
+    "effect": null,
+    "lines": [
+      "The Penitent, today, says one word to you. 'Maren.' His wife's name. He has kept",
+      "the word. He has given it to you. He cannot keep it any longer; the Pall is close",
+      "to his last names. He has chosen which one to hand off. You will keep it for him."
+    ]
+  },
+
+  "talva_let_you_read_a_letter": {
+    "category": "bond",
+    "trigger": {"at": ["zone_arrival"], "location": ["hidden_hold"], "min_visits": 3, "chance": 0.022},
+    "effect": {"stat": "defense", "delta": 1, "flag": "talva_trusted_you"},
+    "lines": [
+      "Tálva, today, sets a letter on the bench between you. From her great-grandmother.",
+      "The hand is steady. The chamber's air, sealed in, is still in the folds. You read.",
+      "Tálva does not ask what you think. Some things she does not need to ask about anymore.",
+      "  (+1 Defense, permanently. The case is in you too now.)"
+    ]
+  },
+  "talva_pressed_a_satchel_into_your_hand": {
+    "category": "promise_kept",
+    "trigger": {"at": ["zone_arrival"], "location": ["hidden_hold"], "min_level": 5, "min_visits": 4, "chance": 0.025},
+    "effect": {"flag": "carrying_talvas_satchel"},
+    "lines": [
+      "Tálva presses the satchel into your hand today. The case, ready to carry.",
+      "She does not say go. She does not say take it. She does not say anything.",
+      "You walk out of the hold with it. The weight is uneven. It will become familiar."
+    ]
+  },
+  "small_un_tied_a_knot_in_your_cloak": {
+    "category": "bond",
+    "trigger": {"at": ["zone_arrival"], "location": ["hidden_hold"], "min_visits": 4, "chance": 0.035},
+    "effect": {"stat": "max_hp", "delta": 2, "flag": "small_un_knotted_cloak"},
+    "lines": [
+      "The Small Un, as you leave, tugs the corner of your cloak. They have tied something.",
+      "It is a kitchen knot. You did not teach them. They have learned. They have tied",
+      "it into your cloak so it will stay with you. You will not undo it. Not ever.",
+      "  (+2 Max HP, permanently — the third knot, in your cloak, kept for warmth.)"
+    ]
+  },
+  "kerris_remembered_to_save_you_bread": {
+    "category": "found",
+    "trigger": {"at": ["zone_arrival"], "location": ["hidden_hold"], "min_visits": 5, "chance": 0.04},
+    "effect": {"consumable": "Kerris's Crust"},
+    "lines": [
+      "Kerris's pack is open again. There is bread set aside. He does not look up.",
+      "He has decided to save you bread on the days you come. Today is one of those days.",
+      "Take the crust. It will keep. It is from the bread Mira's mother taught her to bake.",
+      "  (Kerris's Crust added — heals 25 HP once.)"
+    ]
+  },
+  "you_carry_a_thread_of_the_small_uns_drawing": {
+    "category": "found",
+    "trigger": {"at": ["zone_arrival"], "location": ["hidden_hold"], "min_visits": 3, "chance": 0.025},
+    "effect": null,
+    "lines": [
+      "The Small Un hands you a thread of charcoal. From their drawing of you. The one with",
+      "two faces. They do not say which face the thread is from. You do not ask. You will",
+      "carry the thread. You will not lose it. It is your two-faced day, in a thread."
+    ]
+  },
+
+  "cael_carved_your_name_above_hers": {
+    "category": "promise_kept",
+    "trigger": {"at": ["zone_arrival"], "location": ["bone_tomb"], "min_visits": 2, "chance": 0.02},
+    "effect": {"stat": "max_hp", "delta": 5, "flag": "cael_carved_you"},
+    "lines": [
+      "Cael, when you arrive, has used the chisel. Above her name — KESS daughter of Aral",
+      "— there is a half-letter. Yours. She is preparing. She is not yet handing off.",
+      "  'I have started writing it,' she says. 'In case. You may not sit. You may.'",
+      "  (+5 Max HP, permanently — the seal has decided you are at least possible.)"
+    ]
+  },
+  "the_stone_remembered_your_step": {
+    "category": "bond",
+    "trigger": {"at": ["zone_arrival"], "location": ["bone_tomb", "pre_pall_shrine"], "min_visits": 2, "chance": 0.018},
+    "effect": {"stat": "defense", "delta": 1, "flag": "stone_knows_step"},
+    "lines": [
+      "Walking into the Bone Tomb today, the stone shifts very slightly to take your foot.",
+      "Not a great deal. A hand's width. The next time you set a boot here, it will fit.",
+      "You will not stumble in this room. The stone has decided to keep you upright.",
+      "  (+1 Defense, permanently — the stone is on your side, by a margin.)"
+    ]
+  },
+  "you_heard_cael_say_kess": {
+    "category": "bond",
+    "trigger": {"at": ["zone_arrival"], "location": ["bone_tomb"], "min_visits": 3, "chance": 0.020},
+    "effect": null,
+    "lines": [
+      "Cael, today, says her sister's name aloud. Out of the stone. You hear it. KESS.",
+      "She has not said it aloud in centuries. She is using your visit to say it.",
+      "You will carry the saying. Kess will be remembered, in you, for as long as you remember."
+    ]
+  },
+  "cael_taught_you_the_first_name": {
+    "category": "promise_kept",
+    "trigger": {"at": ["zone_arrival"], "location": ["bone_tomb"], "min_level": 6, "min_visits": 3, "chance": 0.012},
+    "effect": {"flag": "knows_first_seal_name"},
+    "lines": [
+      "Cael whispers, through the stone, the first seal's actual name. NO-NAME's real one.",
+      "She did not have it. She has had it for fifty winters; she found it scratched into",
+      "the chisel handle. You will not say it aloud here. You will know it. It will weigh."
+    ]
+  },
+  "cael_will_not_meet_your_eyes": {
+    "category": "broken",
+    "trigger": {"at": ["zone_arrival"], "location": ["bone_tomb"], "min_visits": 5, "denies_mark": ["cael_carved_your_name_above_hers"], "chance": 0.01},
+    "effect": null,
+    "lines": [
+      "Cael's eyes do not meet yours today. She has decided you are not the one.",
+      "She is not angry. She is sad. She will keep sitting. You will keep climbing.",
+      "You will not become the seal. Someone else will. It is alright. It is alright."
+    ]
+  },
+
+  "atrel_blessed_you_silently": {
+    "category": "bond",
+    "trigger": {"at": ["zone_arrival"], "location": ["last_altar"], "min_visits": 2, "chance": 0.03},
+    "effect": {"stat": "max_hp", "delta": 4, "stat2": "attack", "flag": "atrel_blessed"},
+    "lines": [
+      "Atrél lifts a hand a few inches as you enter. He does not look up. He is doing a small",
+      "rite. You happen to be in its path. He has, without meaning to, blessed you a little.",
+      "He realizes. He shrugs. He keeps doing the rite. You may walk out lighter today.",
+      "  (+4 Max HP, permanently — a small god's accidental kindness, kept.)"
+    ]
+  },
+  "atrel_handed_you_an_unsigned_page": {
+    "category": "found",
+    "trigger": {"at": ["zone_arrival"], "location": ["last_altar"], "min_visits": 3, "chance": 0.02},
+    "effect": null,
+    "lines": [
+      "Atrél, today, hands you a page. Folded. Unsigned. He says only: 'In case you find',",
+      "'someone who will need it. Do not read it yet. It is not for you. Carry it.'",
+      "You take it. You do not unfold it. You will know when. Atrél trusts your knowing."
+    ]
+  },
+  "you_set_a_grief_at_atrels_altar": {
+    "category": "promise_kept",
+    "trigger": {"at": ["zone_arrival"], "location": ["last_altar"], "requires_flag": "promised_atrel_grief", "chance": 0.5},
+    "effect": {"stat": "max_hp", "delta": 6, "flag": "atrel_received_your_grief"},
+    "lines": [
+      "You set the grief down on the altar. You do not say what. Atrél does not ask.",
+      "He bows. Just enough to be a bow. He puts the grief on the altar with the others.",
+      "You walk out into the cold of the Choir. The weight is gone. Some weights stay gone.",
+      "  (+6 Max HP, permanently. The small rite is what it was made for.)"
+    ]
+  },
+  "atrel_forgot_a_pain_for_you": {
+    "category": "bond",
+    "trigger": {"at": ["zone_arrival"], "location": ["last_altar"], "min_level": 7, "min_visits": 4, "chance": 0.015},
+    "effect": {"stat": "max_stamina", "delta": 2, "flag": "atrel_forgot_pain"},
+    "lines": [
+      "Atrél, when you arrive, says: 'I had a pain. I held it for a long time. I will not",
+      "hold it anymore. I am — small as I am — passing it back to the world. Not to you.'",
+      "  'But the world is also you, here. I am sorry. I will be quieter for a while.'",
+      "  (+2 Max Stamina, permanently — Atrél has let go of one. The room is lighter.)"
+    ]
+  },
+  "atrel_will_not_take_yours_today": {
+    "category": "broken",
+    "trigger": {"at": ["zone_arrival"], "location": ["last_altar"], "min_visits": 5, "chance": 0.015},
+    "effect": null,
+    "lines": [
+      "Atrél, today, lifts a hand to stop you. 'Not today. I am too full. Bring me yours",
+      "again later. I am sorry. I am a small god. I have been carrying many small ones.'",
+      "You will come back. Or you will not. Atrél will be here either way. He has time."
+    ]
+  },
+
+  "hearthkeeper_set_you_extra_bread": {
+    "category": "found",
+    "trigger": {"at": ["zone_arrival"], "location": ["village"], "min_visits": 3, "chance": 0.03},
+    "effect": {"consumable": "Health Potion"},
+    "lines": [
+      "The hearth-keeper, when you sit down today, sets an extra piece of bread on your",
+      "plate. She does not say a word. You eat. You feel it later, in a fight, where the",
+      "extra was. Bread becomes its eaters. The hearth-keeper did the kindness silently.",
+      "  (Health Potion added — Gravewatch bread carried through your bones.)"
+    ]
+  },
+  "hearthkeeper_noticed_your_limp": {
+    "category": "bond",
+    "trigger": {"at": ["zone_arrival"], "location": ["village"], "requires_flag": "limp_right", "chance": 0.5},
+    "effect": {"stat": "defense", "delta": 1, "flag": "hearth_noticed_limp"},
+    "lines": [
+      "The hearth-keeper looks at how you walk in tonight. She does not say anything.",
+      "She moves your usual cup an inch to the right, so you can reach it without leaning.",
+      "She has noticed. She has not made it a thing. She has only set the cup where it is needed.",
+      "  (+1 Defense, permanently — to be quietly noticed is to be a little harder to break.)"
+    ]
+  },
+  "you_wrote_in_the_book_after_all": {
+    "category": "promise_kept",
+    "trigger": {"at": ["zone_arrival"], "location": ["village"], "requires_flag": "promised_hearth_line", "chance": 0.5},
+    "effect": null,
+    "lines": [
+      "The book is on the corner of the hearth. The pencil is on the mantel. You write.",
+      "You do not show the hearth-keeper. She does not ask. She knows you have written.",
+      "You may rewrite tomorrow. The book has room. The fire is the same fire. — Hearth-keeper."
+    ]
+  },
+  "the_fire_was_warmer_for_you": {
+    "category": "half_truth",
+    "trigger": {"at": ["zone_arrival"], "location": ["village"], "min_visits": 6, "chance": 0.015},
+    "effect": null,
+    "lines": [
+      "You sit by the hearth and the fire, today, is a degree warmer than it should be.",
+      "You do not say so. The hearth-keeper does not say so. The fire knows. The fire is",
+      "the same fire it has been for the village's whole life. It has decided about you."
+    ]
+  },
+  "hearthkeeper_left_the_book_open_to_your_page": {
+    "category": "bond",
+    "trigger": {"at": ["zone_arrival"], "location": ["village"], "requires_flag": "hearth_lines_written", "chance": 0.05},
+    "effect": null,
+    "lines": [
+      "The book, today, is open. To the page with your line. The hearth-keeper has been",
+      "reading it. She does not say so. She turns a page when you sit down. You see what",
+      "page she has turned from. It is enough. She will go on reading it when you leave."
+    ]
+  },
+
+  "the_reader_acknowledged_you": {
+    "category": "bond",
+    "trigger": {"at": ["zone_arrival"], "location": ["village"], "requires_flag": "read_with_reader", "chance": 0.04},
+    "effect": {"stat": "max_hp", "delta": 3, "flag": "reader_acknowledged"},
+    "lines": [
+      "The Reader, today, looks up from the page. Briefly. The look is not for everyone.",
+      "It is for you. They nod once. They go back to reading. You will be a little harder",
+      "to break tomorrow. The pencil — Piranesi's pencil — has been writing your name.",
+      "  (+3 Max HP, permanently. The Reader has marked you in their margin.)"
+    ]
+  },
+  "the_reader_wrote_a_line_for_you": {
+    "category": "found",
+    "trigger": {"at": ["zone_arrival"], "location": ["village"], "requires_flag": "read_with_reader", "min_visits": 4, "chance": 0.025},
+    "effect": null,
+    "lines": [
+      "The Reader, today, sets a folded paper at your spot before you arrive. A single line.",
+      "  'I have been watching the way you walk. You walk like someone who is still here.'",
+      "  'I have been here longer than the wood. Walk well. — Piranesi's older hand.'"
+    ]
+  },
+  "you_have_been_in_piranesis_notes": {
+    "category": "mind",
+    "trigger": {"at": ["zone_arrival"], "location": ["village"], "min_level": 6, "chance": 0.018},
+    "effect": {"flag": "in_piranesis_notes"},
+    "lines": [
+      "You realize — without checking — that you have been in Piranesi's notes for some time.",
+      "Not by name. By gait. By when you arrive. By what you read. You are being kept track of.",
+      "You do not mind. The Reader is the gentlest accountant in the kingdom. It is alright."
+    ]
+  },
+  "the_insomniac_lent_you_her_count": {
+    "category": "bond",
+    "trigger": {"at": ["zone_arrival"], "location": ["village"], "requires_flag": "the_counted", "chance": 0.03},
+    "effect": {"stat": "max_stamina", "delta": 2, "flag": "insomniac_lent_count"},
+    "lines": [
+      "The Insomniac, today, breaks her count to look at you. She tells you, quietly,",
+      "the number of climbers she has counted who looked like you. Five. You will sleep",
+      "less heavy tonight, for being five of someone. The counting goes on without your number.",
+      "  (+2 Max Stamina, permanently. Counted, then released.)"
+    ]
+  },
+  "the_insomniac_marked_you_blue": {
+    "category": "half_truth",
+    "trigger": {"at": ["zone_arrival"], "location": ["village"], "requires_flag": "the_counted", "min_visits": 5, "chance": 0.015},
+    "effect": null,
+    "lines": [
+      "There is a sixth blue mark on the Insomniac's beam, today. It is in a different blue.",
+      "  'That one is for you,' she says, without looking up. 'It is a different blue.'",
+      "  'You are not a cat. You are not a climber either. You are a different kind of beam-mark.'"
+    ]
+  },
+  "piranesis_pencil_pointed_at_you": {
+    "category": "half_truth",
+    "trigger": {"at": ["zone_arrival"], "location": ["village"], "requires_flag": "read_with_reader", "min_visits": 6, "chance": 0.018},
+    "effect": null,
+    "lines": [
+      "The Reader's pencil, set on the desk corner, is pointing at you when you arrive.",
+      "Not quite at your chest. At your right hand. The Reader does not look up. The pencil",
+      "has been doing this since you arrived, you realize. You will not move it. It is fine."
+    ]
+  },
+  "you_dreamt_in_piranesis_voice": {
+    "category": "mind",
+    "trigger": {"at": ["save_action"], "requires_flag": "in_piranesis_notes", "chance": 0.04},
+    "effect": {"flag": "dreamt_in_piranesis_voice"},
+    "lines": [
+      "You save. You realize the dream you had last night was narrated. In someone's voice.",
+      "Calm. Older than the road. The voice was describing what you were doing. From outside.",
+      "You will dream in this voice again, sometimes. It is alright. You are being read."
+    ]
+  },
+  "insomniac_counted_your_cat": {
+    "category": "bond",
+    "trigger": {"at": ["zone_arrival"], "location": ["village"], "requires_flag": "the_counted", "chance": 0.025},
+    "effect": null,
+    "lines": [
+      "The Insomniac says, today: 'I have added a blue mark for your cat. It is the cat",
+      "you have been thinking of. I do not need to know which one. Some climbers',",
+      "  'come with a cat in their head. I count those, too. I count many things. Yours is on.'"
+    ]
+  },
+  "insomniac_will_not_count_you_today": {
+    "category": "broken",
+    "trigger": {"at": ["zone_arrival"], "location": ["village"], "requires_flag": "the_counted", "min_visits": 7, "denies_mark": ["the_insomniac_lent_you_her_count"], "chance": 0.012},
+    "effect": null,
+    "lines": [
+      "The Insomniac, today, stops counting when you walk in. She waits. She starts again",
+      "when you leave the room. She has paused on you. Not against you — pausing. She has",
+      "decided you do not need a count today. The not-counting is its own kind of held."
+    ]
+  },
+  "insomniac_taught_you_to_count_too": {
+    "category": "bond",
+    "trigger": {"at": ["zone_arrival"], "location": ["village"], "requires_flag": "the_counted", "min_visits": 4, "chance": 0.02},
+    "effect": {"stat": "max_stamina", "delta": 1, "flag": "knows_how_to_count"},
+    "lines": [
+      "The Insomniac shows you, today, how to keep a tally on the back of your own teeth.",
+      "Quietly. With the tongue. She has done this for forty years. You will use it later,",
+      "in fights, to count what is left of you. The counting will keep you from losing track.",
+      "  (+1 Max Stamina, permanently — knowing how to count yourself is a kind of rest.)"
+    ]
   }
 }
