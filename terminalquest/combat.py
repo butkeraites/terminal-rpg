@@ -55,56 +55,11 @@ CLASS_CONSUMABLE = {
 
 # Quest catalog — picked up at the Gravewatch Quest Board, completed by kills,
 # claimed back at the board for gold + a class-themed consumable.
-QUESTS = {
-    "wolf_cull": {
-        "name": "Cull the Gaunt Wolves",
-        "target_enemy": "wolf",
-        "needed": 3,
-        "reward_gold": 100,
-        "cleanse_required": 0,
-        "flavor": "The wolves at the wood-edge have learned the taste of people. Thin them.",
-    },
-    "scavver_purge": {
-        "name": "Purge the Scavvers",
-        "target_enemy": "goblin",
-        "needed": 4,
-        "reward_gold": 80,
-        "cleanse_required": 0,
-        "flavor": "They are crawling closer to the village fire each night.",
-    },
-    "bandit_hunt": {
-        "name": "Bring the Cutthroats to Heel",
-        "target_enemy": "bandit",
-        "needed": 3,
-        "reward_gold": 150,
-        "cleanse_required": 0,
-        "flavor": "Three farms have gone silent this month.",
-    },
-    "drowned_thresher_quiet": {
-        "name": "Lay the Drowned Threshers to Rest",
-        "target_enemy": "drowned_thresher",
-        "needed": 4,
-        "reward_gold": 250,
-        "cleanse_required": 1,
-        "flavor": "They still reap. Stop them and the Reach can be sown again.",
-    },
-    "magistrate_unmade": {
-        "name": "Unseat the Pall-Sworn Magistrates",
-        "target_enemy": "pall_magistrate",
-        "needed": 3,
-        "reward_gold": 400,
-        "cleanse_required": 2,
-        "flavor": "Mourncross will not be itself while they keep passing sentence.",
-    },
-    "warden_hunt": {
-        "name": "Hunt the Stone Sentinels",
-        "target_enemy": "stone_golem",
-        "needed": 3,
-        "reward_gold": 600,
-        "cleanse_required": 3,
-        "flavor": "They guard tombs whose names have worn off. Free them.",
-    },
-}
+#
+# Lives in ``terminalquest/data/quests.json`` and is loaded into
+# ``state.content.quests`` alongside the rest of the content. ``_track_quest_kill``
+# reads from that dict, not from a Python constant — designers can add or tune
+# quests by editing the JSON.
 
 
 def _maybe_drop_trophy(state, enemy):
@@ -135,8 +90,9 @@ def _track_quest_kill(state, enemy):
     npc_kills[target] = npc_kills.get(target, 0) + 1
     active = state.flags.get("active_quests", [])
     progress = state.flags.setdefault("quest_progress", {})
+    quests = state.content.quests
     for quest_id in active:
-        quest = QUESTS.get(quest_id)
+        quest = quests.get(quest_id)
         if quest and quest["target_enemy"] == target:
             progress[quest_id] = progress.get(quest_id, 0) + 1
             if progress[quest_id] == quest["needed"]:

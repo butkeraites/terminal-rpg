@@ -39,7 +39,7 @@ class Content:
 
     def __init__(self, classes, abilities, enemies, locations, components, armor,
                  companions, accessories, pets, hirelings, npcs, dialogues,
-                 marks=None):
+                 marks=None, quests=None):
         self.classes = classes
         self.abilities = abilities
         self.enemies = enemies
@@ -55,6 +55,11 @@ class Content:
         # v1.51 — irreversible per-character events (the Marks system).
         # An empty dict is valid; the engine no-ops when the pool is empty.
         self.marks = marks or {}
+        # Post-1000: the Gravewatch Quest Board's cleanse-gated bounties,
+        # previously a Python constant in combat.py, moved to data/quests.json
+        # for parity with the rest of the content-driven design. An empty dict
+        # is valid; quest_board() shows an empty menu and is otherwise inert.
+        self.quests = quests or {}
 
     def validate(self):
         """Raise ValueError if the data files are internally inconsistent."""
@@ -93,6 +98,7 @@ class Content:
         self._validate_components()
         for dialogue_id, tree in self.dialogues.items():
             dialogue.validate_tree(tree, dialogue_id)
+        self._validate_quests()
 
     def _validate_locations(self):
         """Check the location graph: connections, encounters, acts, reachability."""
@@ -169,6 +175,43 @@ class Content:
                 f"locations unreachable from the crossroads: {sorted(unreachable)}"
             )
 
+    def _validate_quests(self):
+        """Check every Quest Board bounty references a real enemy.
+
+        Each quest needs ``name``, ``target_enemy`` (must exist in enemies.json),
+        ``needed`` (positive int), ``reward_gold`` (non-negative int), and
+        ``cleanse_required`` (non-negative int).
+        """
+        required = ("name", "target_enemy", "needed", "reward_gold",
+                    "cleanse_required")
+        for qid, quest in self.quests.items():
+            for field in required:
+                if field not in quest:
+                    raise ValueError(
+                        f"quest '{qid}' is missing required field '{field}'"
+                    )
+            te = quest["target_enemy"]
+            if te not in self.enemies:
+                raise ValueError(
+                    f"quest '{qid}' targets unknown enemy '{te}'"
+                )
+            if not (isinstance(quest["needed"], int) and quest["needed"] > 0):
+                raise ValueError(
+                    f"quest '{qid}' has invalid 'needed' value {quest['needed']!r}"
+                )
+            if not (isinstance(quest["reward_gold"], int)
+                    and quest["reward_gold"] >= 0):
+                raise ValueError(
+                    f"quest '{qid}' has invalid 'reward_gold' value "
+                    f"{quest['reward_gold']!r}"
+                )
+            if not (isinstance(quest["cleanse_required"], int)
+                    and quest["cleanse_required"] >= 0):
+                raise ValueError(
+                    f"quest '{qid}' has invalid 'cleanse_required' value "
+                    f"{quest['cleanse_required']!r}"
+                )
+
     def _validate_components(self):
         """Check every weapon slot exists and components grant only real stats."""
         for slot in WEAPON_SLOTS:
@@ -210,6 +253,13 @@ def load_content():
     # it without re-walking the parent dict.
     for mark_id, mark in marks_raw.items():
         mark["id"] = mark_id
+    try:
+        quests_raw = _load("quests.json")
+    except ContentError:
+        # quests.json is optional — post-1000 the file ships, but the engine
+        # handles its absence as an empty pool (the Quest Board shows
+        # *no bounties posted*).
+        quests_raw = {}
     content = Content(
         classes=_load("classes.json"),
         abilities=_load("abilities.json"),
@@ -224,6 +274,7 @@ def load_content():
         npcs=_load("npcs.json"),
         dialogues=_load("dialogues.json"),
         marks=marks_raw,
+        quests=quests_raw,
     )
     content.validate()
     return content

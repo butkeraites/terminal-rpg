@@ -9,7 +9,7 @@ from . import chronicle, endings, marks, saves
 from . import dialogue as _dialogue
 from .accessory import make_accessory
 from .armor import make_armor
-from .combat import CLASS_CONSUMABLE, QUESTS, _consumable_label, run_combat
+from .combat import CLASS_CONSUMABLE, _consumable_label, run_combat
 from .companion import make_companion
 from .enemy import make_enemy, make_hollowed, make_warden
 from .hireling import make_hireling
@@ -417,7 +417,7 @@ def _quest_status(state, quest_id):
     if quest_id not in state.flags.get("active_quests", []):
         return "available"
     progress = state.flags.get("quest_progress", {}).get(quest_id, 0)
-    if progress >= QUESTS[quest_id]["needed"]:
+    if progress >= state.content.quests[quest_id]["needed"]:
         return "completable"
     return "active"
 
@@ -431,7 +431,7 @@ def quest_board(state):
     """
     player, io = state.player, state.io
     cleanses = chronicle.cleanses(state.chronicle_dir)
-    catalog = [(qid, q) for qid, q in QUESTS.items()
+    catalog = [(qid, q) for qid, q in state.content.quests.items()
                if q.get("cleanse_required", 0) <= cleanses]
     io.clear()
     io.show_slow("📜 The Quest Board — slips of vellum pinned with rust nails.\n")

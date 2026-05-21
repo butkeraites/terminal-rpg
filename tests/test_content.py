@@ -169,3 +169,44 @@ def test_validate_rejects_a_non_positive_progression_level():
     content.classes["warrior"]["progression"][0]["level"] = 0
     with pytest.raises(ValueError):
         content.validate()
+
+
+def test_quests_load_and_target_real_enemies():
+    """quests.json is loaded as Content.quests and every target_enemy exists."""
+    content = load_content()
+    assert content.quests, "quests.json should ship with the game"
+    for qid, quest in content.quests.items():
+        assert quest["target_enemy"] in content.enemies, (
+            f"quest {qid!r} targets unknown enemy {quest['target_enemy']!r}")
+        assert isinstance(quest["needed"], int) and quest["needed"] > 0
+        assert isinstance(quest["reward_gold"], int) and quest["reward_gold"] >= 0
+        assert isinstance(quest["cleanse_required"], int)
+        assert quest["cleanse_required"] >= 0
+
+
+def test_validate_rejects_quest_targeting_unknown_enemy():
+    """A quest with a typo in target_enemy must fail content validation."""
+    content = load_content()
+    content.quests["bogus_quest"] = {
+        "name": "Hunt the Imaginary",
+        "target_enemy": "this_enemy_does_not_exist",
+        "needed": 1,
+        "reward_gold": 1,
+        "cleanse_required": 0,
+    }
+    with pytest.raises(ValueError):
+        content.validate()
+
+
+def test_validate_rejects_quest_missing_required_field():
+    """A quest missing 'needed' (or any required field) fails validation."""
+    content = load_content()
+    content.quests["incomplete"] = {
+        "name": "Half a Quest",
+        "target_enemy": "wolf",
+        # 'needed' deliberately omitted
+        "reward_gold": 50,
+        "cleanse_required": 0,
+    }
+    with pytest.raises(ValueError):
+        content.validate()
