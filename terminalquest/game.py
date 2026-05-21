@@ -156,6 +156,11 @@ def create_character(content, io, chronicle_dir):
     class_id, class_def = choose_class(content, io)
     player = Player(name, class_id, class_def, content)
     flags = {}
+    # v1.63 — mark a run that follows previous successful characters so marks
+    # tied to "what the kingdom kept for you from before" can fire only for
+    # players who actually have a previous-character history.
+    if chronicle.cleanses(chronicle_dir) > 0:
+        flags["is_reborn"] = True
     if len(chronicle.endings_seen(chronicle_dir)) >= MIRROR_CLIMB_THRESHOLD:
         io.show("\n🪞 You have climbed Mournhold as several others. There is")
         io.show("   a path back through your own steps. The Mirror Climb opens")

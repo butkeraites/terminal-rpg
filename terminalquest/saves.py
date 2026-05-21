@@ -95,6 +95,12 @@ def load_game(slot, content, io, rng, save_dir=DEFAULT_SAVE_DIR):
     # Merge sidecar marks (no-op if the file does not exist).
     from . import marks as _marks  # local import to avoid cycle
     _marks.merge_sidecar_into_player(state.player, state.chronicle_dir)
+    # v1.63 — refresh the cross-run "is_reborn" flag each load. Cleanses can
+    # advance between session-restarts; older saves that predate the flag
+    # should pick it up too.
+    from . import chronicle as _chronicle
+    if _chronicle.cleanses(state.chronicle_dir) > 0:
+        state.flags["is_reborn"] = True
     return state
 
 

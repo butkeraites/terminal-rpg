@@ -12996,5 +12996,1146 @@
       "was heavy. You stood up under it. The Pall took it back. You are ready. The Pall knows.",
       "  (+3 Max HP, permanently — a Pall-burden carried briefly by you, proving the keeper.)"
     ]
+  },
+  "reborn_a_younger_you_left_a_knife_for_this_you": {
+    "category": "found",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "requires_flag": "is_reborn",
+      "min_level": 3,
+      "chance": 0.14
+    },
+    "effect": {
+      "stat": "attack",
+      "delta": 1,
+      "flag": "reborn_left_knife"
+    },
+    "lines": [
+      "Tonight you stooped to a niche in a wall — the kind only you would think to look in —",
+      "and found a small knife. The handle was wrapped in the way you wrap handles. A younger",
+      "you put it there, for someone. The someone is you. The knife fits your hand exactly.",
+      "  (+1 Attack, permanently — a knife left by an earlier you, found tonight by this you.)"
+    ]
+  },
+  "reborn_a_pouch_with_your_initials": {
+    "category": "found",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "requires_flag": "is_reborn",
+      "min_level": 3,
+      "chance": 0.13
+    },
+    "effect": {
+      "stat": "max_stamina",
+      "delta": 1,
+      "flag": "reborn_pouch"
+    },
+    "lines": [
+      "Today on a path you found a small leather pouch — worn smooth, the strap stitched in a",
+      "particular pattern. The pattern is your stitching. The initials inside are yours. Some",
+      "previous you dropped this here, hoping. You took it. The pouch is back with you again.",
+      "  (+1 Max Stamina, permanently — a pouch you stitched in a previous life, recovered.)"
+    ]
+  },
+  "reborn_a_note_in_your_own_handwriting": {
+    "category": "mind",
+    "trigger": {
+      "at": [
+        "discovery_read"
+      ],
+      "requires_flag": "is_reborn",
+      "chance": 0.14
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 1,
+      "flag": "reborn_note"
+    },
+    "lines": [
+      "Tonight, in a page you found, a note was pinned at the margin in your handwriting. The",
+      "note was a single sentence: *go to the second altar, kneel slowly.* You did not know",
+      "what the sentence meant. Some other you did. You will, when the time comes, know.",
+      "  (+1 Max HP, permanently — a sentence written by a previous you for this you to find.)"
+    ]
+  },
+  "reborn_a_grave_was_warm_for_you": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "requires_flag": "is_reborn",
+      "min_level": 4,
+      "chance": 0.13
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "reborn_grave_warm"
+    },
+    "lines": [
+      "Tonight you knelt at a grave — a particular one, in Gravewatch's small yard — and the",
+      "stone, under your palm, was warm. As if the one inside had been waiting. You read the",
+      "name. The name was yours. The name was an earlier yours. The warmth was the recognition.",
+      "  (+1 Defense, permanently — a grave that warmed for you because you, once, were inside.)"
+    ]
+  },
+  "reborn_a_button_in_the_road_dust_was_yours": {
+    "category": "found",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "requires_flag": "is_reborn",
+      "chance": 0.12
+    },
+    "effect": {
+      "flag": "reborn_button_dust"
+    },
+    "lines": [
+      "Tonight you stooped to pick up a button on the road. Bone, scored once. The other half",
+      "of the pair on your coat. Your coat. The same coat. A previous you wore it. A previous",
+      "you dropped the button. The button has come home. You sewed it back on at the inn."
+    ]
+  },
+  "reborn_a_blade_remembered_a_grip_before_yours": {
+    "category": "half_truth",
+    "trigger": {
+      "at": [
+        "combat_low_hp"
+      ],
+      "requires_flag": "is_reborn",
+      "min_level": 4,
+      "chance": 0.11
+    },
+    "effect": {
+      "flag": "reborn_blade_old_grip"
+    },
+    "lines": [
+      "Mid-fight tonight your weapon, for one count, sat differently in your hand — as if a",
+      "different palm than yours had held it last. Not different. Earlier. A previous you. The",
+      "grip steadied. The strike landed. The blade remembered being held by someone like you."
+    ]
+  },
+  "reborn_an_old_potion_in_a_locked_drawer": {
+    "category": "found",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "requires_flag": "is_reborn",
+      "min_level": 4,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 1,
+      "flag": "reborn_locked_potion"
+    },
+    "lines": [
+      "Tonight in Gravewatch's shop the keeper unlocked a low drawer and took out a potion",
+      "they had been holding. A previous you had left it on credit, never come back to claim",
+      "it. The keeper had kept it. They gave it to you. *Yours,* they said. You took it. It was.",
+      "  (+1 Max HP, permanently — a potion paid for by a previous you, held against your return.)"
+    ]
+  },
+  "reborn_a_grove_held_a_carved_name": {
+    "category": "promise_kept",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "forest"
+      ],
+      "requires_flag": "is_reborn",
+      "min_level": 3,
+      "chance": 0.11
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 1,
+      "flag": "reborn_carved_name"
+    },
+    "lines": [
+      "Tonight in the Witherwood you came to a tree with a carving — a name, your name, cut",
+      "in a hand younger than yours but recognizable. A previous you carved it. The wood has",
+      "grown around the cut. The name is permanent now. The kingdom keeps it for the next you.",
+      "  (+1 Max HP, permanently — a name a younger you carved that has grown into the wood.)"
+    ]
+  },
+  "reborn_the_road_has_a_smoother_step_for_you": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "requires_flag": "is_reborn",
+      "min_level": 3,
+      "chance": 0.12
+    },
+    "effect": {
+      "stat": "max_stamina",
+      "delta": 1,
+      "flag": "reborn_road_smoother"
+    },
+    "lines": [
+      "The roads of Mournhold know your step — not from this run, from before. They know how",
+      "you set your boot. They give you, today, the smoother edges. Older travellers do not",
+      "get this. Older travellers have not been you before. The kingdom recognizes the foot.",
+      "  (+1 Max Stamina, permanently — a road that has been walked by your previous feet.)"
+    ]
+  },
+  "reborn_a_locked_box_at_the_inn_was_yours": {
+    "category": "found",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "requires_flag": "is_reborn",
+      "min_visits": 3,
+      "chance": 0.11
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "reborn_locked_box"
+    },
+    "lines": [
+      "Tonight at Gravewatch's inn the innkeeper, without saying, handed you a small key. *He",
+      "left it for the next you,* she said. The box it opens is in your old room. Inside: a",
+      "small jet earring, a folded letter, two coppers. You read the letter. It said nothing.",
+      "  (+1 Defense, permanently — a box at the inn that a previous you left for this you.)"
+    ]
+  },
+  "reborn_a_hollowed_walked_in_your_shape": {
+    "category": "half_truth",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "requires_flag": "is_reborn",
+      "min_level": 4,
+      "chance": 0.12
+    },
+    "effect": {
+      "flag": "hollowed_in_your_shape"
+    },
+    "lines": [
+      "Tonight on the road you saw a Hollowed at a distance. The shape of it — the lean, the",
+      "shoulder, the way it set its head — was your shape. A previous you, risen, walking. You",
+      "did not approach. It did not approach. You went around. The kingdom is full of you now."
+    ]
+  },
+  "reborn_a_hollowed_recognized_your_walk": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "requires_flag": "is_reborn",
+      "min_level": 5,
+      "chance": 0.11
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "hollowed_recognized_walk"
+    },
+    "lines": [
+      "Tonight a Hollowed — at the edge of the path, in dim light — recognized your walk. The",
+      "Hollowed had been you. The Hollowed did not attack. It tilted its head. Considered. Then",
+      "stepped back. Some courtesy survives in the kingdom of the dead. You walked past whole.",
+      "  (+1 Defense, permanently — a Hollowed that had been you and granted you safe passage.)"
+    ]
+  },
+  "reborn_you_killed_a_hollowed_who_was_you": {
+    "category": "broken",
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "requires_flag": "is_reborn",
+      "min_level": 5,
+      "chance": 0.11
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": -2,
+      "flag": "killed_yourself"
+    },
+    "lines": [
+      "Tonight in the fight you killed a Hollowed and, at the killing stroke, recognized the",
+      "face — yours. An earlier yours. You finished it. You had to. The kingdom does not let",
+      "the unresolved rest until they are put down. You laid the body out. You said the name.",
+      "  (-2 Max HP, permanently — a Hollowed that had been you, put down by you.)"
+    ]
+  },
+  "reborn_you_laid_a_hollowed_who_was_you_to_rest": {
+    "category": "promise_kept",
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "requires_flag": "is_reborn",
+      "min_level": 5,
+      "chance": 0.11
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 2,
+      "flag": "laid_yourself_to_rest"
+    },
+    "lines": [
+      "Tonight you laid one of your own Hollowed to rest properly. You had to. You did it",
+      "properly. The kingdom's old way — palms folded, the small words, the eye closed. The",
+      "version of you in the Hollowed body went quiet. It thanked you, soundlessly. You stood up.",
+      "  (+2 Max HP, permanently — a self of yours laid properly to rest by the next self.)"
+    ]
+  },
+  "reborn_a_hollowed_left_a_token_for_you": {
+    "category": "found",
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "requires_flag": "is_reborn",
+      "min_level": 5,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "attack",
+      "delta": 1,
+      "flag": "hollowed_left_token"
+    },
+    "lines": [
+      "When the Hollowed went down tonight, in its hand was a small object — a worn token,",
+      "the kind a previous you might have carried. It was. The Hollowed had been holding it",
+      "for you. Your hand closed around it. The token is yours again. You will not lose it.",
+      "  (+1 Attack, permanently — a token kept by your own Hollow until you came to take it.)"
+    ]
+  },
+  "reborn_two_hollowed_passed_you_in_recognition": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "requires_flag": "is_reborn",
+      "min_level": 6,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "two_hollowed_passed"
+    },
+    "lines": [
+      "Tonight two Hollowed passed you on the road. Both had been you. They walked together.",
+      "They nodded as you went by. Not hostile. Not friendly. The way old comrades nod when",
+      "the next watch passes. You nodded back. You are a small order in the kingdom now.",
+      "  (+1 Defense, permanently — a recognition from two of your own past selves.)"
+    ]
+  },
+  "reborn_a_hollowed_left_a_message_carved_in_a_tree": {
+    "category": "mind",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "forest",
+        "mountain"
+      ],
+      "requires_flag": "is_reborn",
+      "min_level": 4,
+      "chance": 0.11
+    },
+    "effect": {
+      "stat": "attack",
+      "delta": 1,
+      "flag": "hollowed_carved_message"
+    },
+    "lines": [
+      "Today in the forest you found a message — carved into a trunk, in the hand of a",
+      "previous you. The carving was rough, the hand half-gone, but the words were clear:",
+      "*don't trust the second emissary at the Border.* You will remember. Your hand will too.",
+      "  (+1 Attack, permanently — a warning a Hollow of yours carved for the next you.)"
+    ]
+  },
+  "reborn_a_hollowed_was_kneeling_at_atrels_altar": {
+    "category": "half_truth",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "last_altar"
+      ],
+      "requires_flag": "is_reborn",
+      "chance": 0.1
+    },
+    "effect": {
+      "flag": "hollowed_at_altar"
+    },
+    "lines": [
+      "Tonight at Atrél's altar there was a Hollowed kneeling — yours, by the shoulders. You",
+      "did not interrupt. You knelt at the other side. Atrél stood near both of you. The",
+      "Hollowed left without speaking. Atrél placed a hand, briefly, on your head. You went on."
+    ]
+  },
+  "reborn_you_apologized_to_a_hollowed_who_was_you": {
+    "category": "promise_kept",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "requires_flag": "is_reborn",
+      "min_level": 6,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 1,
+      "flag": "apologized_to_self"
+    },
+    "lines": [
+      "Tonight you apologised to a Hollowed of yours. For the climb you didn't finish, the",
+      "fights you fled, the choices you made that put them in the ground. The Hollowed",
+      "listened. The Hollowed did not, properly, accept. The Hollowed did not reject either.",
+      "  (+1 Max HP, permanently — an apology owed to one of your past selves, delivered.)"
+    ]
+  },
+  "reborn_a_hollowed_held_your_hand_for_a_count": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "save_action"
+      ],
+      "requires_flag": "is_reborn",
+      "min_level": 5,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 2,
+      "flag": "hollowed_held_hand"
+    },
+    "lines": [
+      "Tonight at the saving-place a Hollowed of yours came to the edge of the lamp-light and",
+      "— for one count — held your hand. Briefly. Without pressure. As an older sibling would",
+      "hold a younger's hand at a wake. Then it went back into the dark. You slept warmer.",
+      "  (+2 Max HP, permanently — a hand-hold from one of your own past selves.)"
+    ]
+  },
+  "reborn_read_your_own_chronicle_line": {
+    "category": "mind",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "requires_flag": "is_reborn",
+      "min_visits": 2,
+      "chance": 0.13
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "read_own_chronicle"
+    },
+    "lines": [
+      "Tonight in the Chronicle room you found the page of a previous you. You read the whole",
+      "line — short, dry, the kingdom's clerk-style. *Fell in the Sodden Reach. Did not return.",
+      "Their pack was returned to the Crossroads.* You knew the line. You stood up under it.",
+      "  (+1 Defense, permanently — a Chronicle line about a previous you, read in full.)"
+    ]
+  },
+  "reborn_the_chronicle_added_a_margin_note_for_you": {
+    "category": "found",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "requires_flag": "is_reborn",
+      "chance": 0.11
+    },
+    "effect": {
+      "stat": "attack",
+      "delta": 1,
+      "flag": "chronicle_margin_note"
+    },
+    "lines": [
+      "Tonight in the Chronicle you found, in the margin of a previous you's page, a small",
+      "note in another hand: *don't repeat the third turn of the Cantor fight.* The clerk had",
+      "been kind. The note has been waiting for you. You will not. Your hand has been warned.",
+      "  (+1 Attack, permanently — a margin-warning from the Chronicle clerk to your next self.)"
+    ]
+  },
+  "reborn_a_previous_yous_handwriting_changed": {
+    "category": "half_truth",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "requires_flag": "is_reborn",
+      "min_visits": 3,
+      "chance": 0.1
+    },
+    "effect": {
+      "flag": "chronicle_hand_changed"
+    },
+    "lines": [
+      "Tonight in the Chronicle you went back to a previous you's page and the handwriting,",
+      "today, was slightly different. Smaller. Tireder. The clerk recopies, sometimes — when",
+      "the ink fades. The clerk recopied today. The ink, in this version, is more tired. You stood by it."
+    ]
+  },
+  "reborn_chronicle_left_the_cause_of_death_blank": {
+    "category": "broken",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "requires_flag": "is_reborn",
+      "chance": 0.11
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": -1,
+      "flag": "chronicle_cause_blank"
+    },
+    "lines": [
+      "Tonight in the Chronicle the cause-of-death line for one of your previous you was",
+      "blank. Not even *unknown.* Blank. The clerk had not been able to find a way to say it.",
+      "You did not press. You closed the book. You walked out a little quieter than you came.",
+      "  (-1 Max HP, permanently — a previous you whose end the Chronicle could not record.)"
+    ]
+  },
+  "reborn_chronicle_clerk_remembered_your_face": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "requires_flag": "is_reborn",
+      "min_visits": 3,
+      "chance": 0.12
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 1,
+      "flag": "chronicle_clerk_face"
+    },
+    "lines": [
+      "Tonight the Chronicle clerk — old, dry, kindless to most — looked up at you when you",
+      "came in and her face did the small thing it does when she recognises a returning",
+      "climber. She has known many of you. She has known you. You both nodded. She turned a page for you.",
+      "  (+1 Max HP, permanently — recognition from the Chronicle clerk who has known many of you.)"
+    ]
+  },
+  "reborn_chronicle_kept_a_drawing_of_yours": {
+    "category": "found",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "requires_flag": "is_reborn",
+      "min_visits": 4,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 1,
+      "flag": "chronicle_drawing"
+    },
+    "lines": [
+      "Tonight tucked into a previous you's Chronicle page was a small folded drawing — a",
+      "rough sketch, in pencil. You drew it. You don't remember drawing it. It is a hand.",
+      "Yours? Someone else's. It is the kind of drawing one makes for a person one cannot say it to.",
+      "  (+1 Max HP, permanently — a drawing a previous you made and could not give to anyone but the page.)"
+    ]
+  },
+  "reborn_chronicle_under_your_page_was_blank": {
+    "category": "half_truth",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "requires_flag": "is_reborn",
+      "min_visits": 3,
+      "chance": 0.09
+    },
+    "effect": {
+      "flag": "chronicle_under_blank"
+    },
+    "lines": [
+      "Tonight you flipped the Chronicle to where this you's page would, eventually, be. The",
+      "page was blank. The kingdom is not yet sure of you. You closed the book before the",
+      "page could begin to fill itself. You will, you decided, give it a good line. You promised."
+    ]
+  },
+  "reborn_chronicle_held_your_companions_name_too": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "requires_flag": "is_reborn",
+      "min_visits": 4,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "chronicle_companion_too"
+    },
+    "lines": [
+      "Tonight in the Chronicle, on a previous you's page, you saw — for the first time — a",
+      "second name. The companion that walked with that you. Their name was in the page too.",
+      "You said both names aloud. The page warmed faintly. The Chronicle kept the pair together.",
+      "  (+1 Defense, permanently — a Chronicle page that held you and your companion as a pair.)"
+    ]
+  },
+  "reborn_chronicle_first_line_was_in_your_hand": {
+    "category": "promise_kept",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "requires_flag": "is_reborn",
+      "min_visits": 3,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "chronicle_first_line_yours"
+    },
+    "lines": [
+      "Tonight at the Crossroads-marker Chronicle book, the *first line on the first page* —",
+      "the one every new character reads — was in your handwriting. You had written it for",
+      "yourself, long ago. You read it tonight. You finally understood what it had meant.",
+      "  (+1 Defense, permanently — the Chronicle's first line is yours; you wrote it for the next you.)"
+    ]
+  },
+  "reborn_chronicle_clerk_gave_you_a_blank_page": {
+    "category": "promise_kept",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "requires_flag": "is_reborn",
+      "min_visits": 4,
+      "chance": 0.09
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 1,
+      "flag": "chronicle_blank_page"
+    },
+    "lines": [
+      "Tonight the Chronicle clerk — without saying — tore out a single blank page and gave",
+      "it to you. *For when you need to.* She did not say what. You folded it into your coat.",
+      "You will write on it when the time comes. The kingdom has set aside a page for your hand.",
+      "  (+1 Max HP, permanently — a blank Chronicle page given to you by hands that know your run.)"
+    ]
+  },
+  "reborn_smith_knew_your_grip": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "requires_flag": "is_reborn",
+      "min_visits": 2,
+      "chance": 0.12
+    },
+    "effect": {
+      "stat": "attack",
+      "delta": 1,
+      "flag": "smith_knew_grip"
+    },
+    "lines": [
+      "Tonight the smith, taking your weapon, did not need to ask which grip you preferred.",
+      "She knew. A previous you had told her, years ago. She set the angle. She remembered",
+      "for you. Your weapon will swing the right way from now on without your asking.",
+      "  (+1 Attack, permanently — a smith who knew your grip from a previous life of yours.)"
+    ]
+  },
+  "reborn_innkeeper_kept_your_old_room": {
+    "category": "found",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "requires_flag": "is_reborn",
+      "min_visits": 2,
+      "chance": 0.13
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 1,
+      "flag": "innkeeper_old_room"
+    },
+    "lines": [
+      "Tonight the innkeeper, without asking, gave you the same key she gave a previous you.",
+      "The room is unchanged. Your bed is on the side of the room you used to take. Your hook",
+      "is on the left of the door, the way you set it before. The inn kept the shape of you.",
+      "  (+1 Max HP, permanently — a room kept ready by an innkeeper for the shape of you.)"
+    ]
+  },
+  "reborn_a_pet_recognized_you_at_the_pen": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "requires_flag": "is_reborn",
+      "chance": 0.12
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "pet_recognized_reborn"
+    },
+    "lines": [
+      "Tonight at the Beastmaster's pen one of the pets — a small one, scarred along the eye —",
+      "saw you across the yard and came running. It had been a previous you's. It still",
+      "remembered. The Beastmaster watched without comment. You knelt. The pet pressed its head.",
+      "  (+1 Defense, permanently — a pet that remembered you from a previous life and ran to you.)"
+    ]
+  },
+  "reborn_a_widow_called_you_by_a_previous_name": {
+    "category": "half_truth",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "requires_flag": "is_reborn",
+      "min_visits": 3,
+      "chance": 0.1
+    },
+    "effect": {
+      "flag": "widow_old_name"
+    },
+    "lines": [
+      "Tonight in Gravewatch's square a widow, looking up from her bench, called you — for one",
+      "count — by the name of a previous you. The name a previous you had asked her to call",
+      "them. She corrected herself. She did not need to. You waved. You went on. You felt the keeping."
+    ]
+  },
+  "reborn_atrel_remembered_a_grief_you_set_aside": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "last_altar"
+      ],
+      "requires_flag": "is_reborn",
+      "chance": 0.11
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 2,
+      "flag": "atrel_kept_grief"
+    },
+    "lines": [
+      "Tonight at Atrél's altar Atrél, without your speaking, brought out a small folded grief",
+      "a previous you had set aside at this altar before falling. Atrél had kept it. You took",
+      "it back. You will carry it for the rest of this run, or set it down again, your choice.",
+      "  (+2 Max HP, permanently — a grief returned to you by Atrél after a previous life of yours.)"
+    ]
+  },
+  "reborn_a_hireling_who_walked_with_you_before": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "requires_flag": "is_reborn",
+      "min_visits": 3,
+      "chance": 0.11
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "old_hireling_returned"
+    },
+    "lines": [
+      "Tonight at the hireling hall there was an older one — scarred, lean, the kind who has",
+      "outlived their employers. They walked with a previous you to the Drowned Holds. They",
+      "lived. They remember. They lowered their rate when they saw you. You hired them.",
+      "  (+1 Defense, permanently — a hireling who walked with a previous you and lowered their rate for this you.)"
+    ]
+  },
+  "reborn_halna_kept_a_cut_for_you": {
+    "category": "promise_kept",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "requires_flag": "is_reborn",
+      "min_visits": 3,
+      "chance": 0.11
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 1,
+      "flag": "halna_kept_cut_reborn"
+    },
+    "lines": [
+      "Tonight Halna, at her stall, had a particular cut of meat held back behind the counter",
+      "— the one a previous you had ordered. She had been keeping it. *I knew you'd come,*",
+      "she said. She did not charge. You ate it that evening. You ate well. You slept full.",
+      "  (+1 Max HP, permanently — a cut of meat kept by Halna for whoever you turned out to be.)"
+    ]
+  },
+  "reborn_cael_called_you_by_a_name_youd_used_before": {
+    "category": "mind",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "bone_tomb"
+      ],
+      "requires_flag": "is_reborn",
+      "min_visits": 2,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "cael_old_name"
+    },
+    "lines": [
+      "Tonight Cael, through the stone, called you by a name you had used in a previous life",
+      "— before you came back. Cael had not been told. The stone knew. You answered to the",
+      "name. Cael said it was correct. The stone keeps such things. You stood up steadier.",
+      "  (+1 Defense, permanently — Cael saying through the stone the name you used as a previous you.)"
+    ]
+  },
+  "reborn_lampkeeper_set_a_lamp_for_your_walk_back": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "crossroads"
+      ],
+      "requires_flag": "is_reborn",
+      "min_visits": 3,
+      "chance": 0.11
+    },
+    "effect": {
+      "stat": "max_stamina",
+      "delta": 1,
+      "flag": "lampkeeper_set_lamp"
+    },
+    "lines": [
+      "Tonight at the Crossroads the lampkeeper had set out one extra lamp. *For when you go",
+      "back,* she said. She had been doing this for previous yous. Several. You walked back",
+      "through the lit path. The lamps shone for you. You stand straighter in their light from now on.",
+      "  (+1 Max Stamina, permanently — extra lamps set out by the keeper for your walk back.)"
+    ]
+  },
+  "reborn_helka_set_a_bench_in_your_size": {
+    "category": "found",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "reach"
+      ],
+      "requires_flag": "is_reborn",
+      "chance": 0.11
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 1,
+      "flag": "helka_bench_reborn"
+    },
+    "lines": [
+      "Tonight at Helka's bench by the Reach the wood — between the last visit and this one —",
+      "had been moved to your sitting-height. Higher than she sets it for most. A previous you",
+      "had sat there often. She remembered. She set the bench to your length. You sat at home.",
+      "  (+1 Max HP, permanently — a bench set to the height of you by hands that remembered.)"
+    ]
+  },
+  "reborn_you_knew_the_first_swing_of_a_stranger": {
+    "category": "mind",
+    "trigger": {
+      "at": [
+        "combat_low_hp"
+      ],
+      "requires_flag": "is_reborn",
+      "min_level": 4,
+      "chance": 0.13
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "knew_first_swing"
+    },
+    "lines": [
+      "Tonight against an enemy you had never seen, you knew — exactly — when their first",
+      "swing would come. You blocked it without thinking. The body knew. A previous you had",
+      "blocked the same swing, on a different night, and the body had remembered the count.",
+      "  (+1 Defense, permanently — a body that knows a swing it did not, this run, see come.)"
+    ]
+  },
+  "reborn_a_potion_chose_itself_at_the_right_moment": {
+    "category": "found",
+    "trigger": {
+      "at": [
+        "combat_low_hp"
+      ],
+      "requires_flag": "is_reborn",
+      "min_level": 4,
+      "chance": 0.11
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 1,
+      "flag": "potion_chose"
+    },
+    "lines": [
+      "Tonight in the bad beat your hand went into your pouch and came up with the exact right",
+      "potion — not the one nearest, not the one you thought you wanted. The right one. The",
+      "previous you that died had wished, in the dying, that they had taken that one. They got their wish.",
+      "  (+1 Max HP, permanently — a potion chosen by a hand that has died wishing for it before.)"
+    ]
+  },
+  "reborn_you_did_not_take_a_route_you_used_to": {
+    "category": "promise_kept",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "requires_flag": "is_reborn",
+      "min_level": 4,
+      "chance": 0.11
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "avoided_old_route"
+    },
+    "lines": [
+      "Tonight at a branching you came to the path a previous you took — the one that ended",
+      "in the fall — and you stopped. Your body would not let you take it again. You took the",
+      "other path. The other path was the right path. You did not know. The body knew.",
+      "  (+1 Defense, permanently — a route refused by a body that remembered taking it badly.)"
+    ]
+  },
+  "reborn_you_drew_steel_one_count_earlier_than_before": {
+    "category": "mind",
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "requires_flag": "is_reborn",
+      "min_level": 5,
+      "chance": 0.12
+    },
+    "effect": {
+      "stat": "attack",
+      "delta": 1,
+      "flag": "drew_one_count_earlier"
+    },
+    "lines": [
+      "Tonight you drew steel one count earlier than a previous you would have, against the",
+      "same enemy. The count made the difference. The enemy went down. The previous you had",
+      "drawn at the second count, and had died of the wait. The wait will not repeat.",
+      "  (+1 Attack, permanently — a count of draw learned by the body across runs.)"
+    ]
+  },
+  "reborn_you_spoke_a_word_before_a_room_knew_you": {
+    "category": "found",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "requires_flag": "is_reborn",
+      "min_level": 4,
+      "chance": 0.1
+    },
+    "effect": {
+      "flag": "spoke_word_first"
+    },
+    "lines": [
+      "Tonight you entered a room and, before the room knew you were there, you said a word —",
+      "quiet, a greeting, the kind of word the kingdom uses with the rooms it has not seen in",
+      "a long count. The room recognized the word from a previous you. The room let you in."
+    ]
+  },
+  "reborn_you_did_not_pick_up_an_object_you_used_to": {
+    "category": "promise_kept",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "requires_flag": "is_reborn",
+      "min_level": 5,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "did_not_pick_object"
+    },
+    "lines": [
+      "Tonight you walked past a small bright object on the path — the kind that catches the",
+      "eye. A previous you picked one up here. It was a trap. You knew not to. You walked on.",
+      "The body remembered the bite. You did not get bitten. The trap will be on the path still.",
+      "  (+1 Defense, permanently — a small bright thing left alone because a previous you was bitten by it.)"
+    ]
+  },
+  "reborn_you_held_back_a_blow_for_someone_who_would_become_a_friend": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "combat_victory"
+      ],
+      "requires_flag": "is_reborn",
+      "min_level": 5,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 2,
+      "flag": "held_back_for_friend"
+    },
+    "lines": [
+      "Tonight in a fight you held back the killing blow — without quite knowing why — on a",
+      "figure you would, two days later, find at Gravewatch's inn buying you an ale. A previous",
+      "you had killed them. A previous you had regretted it. Your hand has been taught patience.",
+      "  (+2 Max HP, permanently — a kill held back by hands taught by a previous you's regret.)"
+    ]
+  },
+  "reborn_you_named_a_pet_in_a_name_you_already_had_used": {
+    "category": "half_truth",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "requires_flag": "has_pet",
+      "min_level": 4,
+      "chance": 0.1
+    },
+    "effect": {
+      "flag": "pet_named_old"
+    },
+    "lines": [
+      "Tonight you said your pet's name — and realised, after, that the name was one a",
+      "previous you had given to a previous pet. The name had stayed in you. The pet, today,",
+      "responded to it as if they had always been called this. The kingdom has decided about names."
+    ]
+  },
+  "reborn_you_walked_a_zone_in_one_fewer_step": {
+    "category": "body",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "requires_flag": "is_reborn",
+      "min_level": 4,
+      "chance": 0.11
+    },
+    "effect": {
+      "stat": "max_stamina",
+      "delta": 1,
+      "flag": "one_fewer_step"
+    },
+    "lines": [
+      "Tonight you walked a zone you had walked many times — across many runs — and you",
+      "walked it in one fewer step than you have ever walked it in before. The shape of the",
+      "zone has shrunk for you, by one step. The kingdom rewards the climber who has paid in selves.",
+      "  (+1 Max Stamina, permanently — a zone walked by you in one fewer step than ever before.)"
+    ]
+  },
+  "reborn_you_knew_what_to_say_to_an_npc_you_had_failed_before": {
+    "category": "promise_kept",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "requires_flag": "is_reborn",
+      "min_level": 5,
+      "chance": 0.11
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 2,
+      "flag": "knew_what_to_say_npc"
+    },
+    "lines": [
+      "Tonight you had a conversation with an NPC that a previous you had failed — said the",
+      "wrong thing, walked away, never came back. This you, in the same conversation, knew",
+      "exactly what to say. They opened to you. They told you the thing the previous you needed to hear.",
+      "  (+2 Max HP, permanently — a conversation a previous you failed, this you completed.)"
+    ]
   }
 }
