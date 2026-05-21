@@ -10676,5 +10676,491 @@
     "cleanse_required": 1,
     "requires_mark": "a_smaller_grief_came_off_you",
     "flavor": "A smaller grief came off you. Two threshers had been the grief's silt. End them."
+  },
+  "p3_pall_door_step": {
+    "name": "After the Pall Stepped Through Your Door",
+    "target_enemy": "shadow_warden",
+    "needed": 1,
+    "reward_gold": 2400,
+    "cleanse_required": 5,
+    "requires_mark": "pall_arrived_at_your_door_too_quietly",
+    "flavor": "The Pall stepped through your door once. The Shadow Warden was on the other side. End him."
+  },
+  "p3_pall_meal_table": {
+    "name": "After the Pall Sat at Your Table",
+    "target_enemy": "ashen_penitent",
+    "needed": 1,
+    "reward_gold": 1400,
+    "cleanse_required": 4,
+    "requires_mark": "pall_blessed_one_of_your_meals",
+    "flavor": "The Pall sat at your table for the blessing. A Penitent above the snowline had set the third chair. End him."
+  },
+  "p3_pall_collar_thread": {
+    "name": "After the Pall Left a Thread in Your Collar",
+    "target_enemy": "ice_wraith",
+    "needed": 4,
+    "reward_gold": 800,
+    "cleanse_required": 4,
+    "requires_mark": "pall_breathed_into_your_collar",
+    "flavor": "The Pall left a thread of itself in your collar. Four ice-wraiths above the snowline pulled at the thread. End them."
+  },
+  "p3_pall_step_double": {
+    "name": "After the Pall Matched Step Twice",
+    "target_enemy": "ashen_penitent",
+    "needed": 2,
+    "reward_gold": 1400,
+    "cleanse_required": 5,
+    "requires_mark": "pall_began_to_match_its_step_to_yours",
+    "flavor": "The Pall matched your step twice now. Two Penitents above the snowline counted both. End them."
+  },
+  "p3_pall_face_named": {
+    "name": "After You Named the Pall's Face",
+    "target_enemy": "shadow_warden",
+    "needed": 1,
+    "reward_gold": 2700,
+    "cleanse_required": 5,
+    "requires_mark": "pall_began_to_show_you_its_face",
+    "flavor": "You named the Pall's face once it showed. The Shadow Warden wore the name. End him."
+  },
+  "p3_pall_air_pocket": {
+    "name": "After the Pall Carved a Pocket of Air",
+    "target_enemy": "censer_shade",
+    "needed": 4,
+    "reward_gold": 800,
+    "cleanse_required": 4,
+    "requires_mark": "pall_briefly_held_the_air_around_you",
+    "flavor": "The Pall carved a pocket of air around you. Four censer-shades had been carving the rest. End them."
+  },
+  "p3_pall_silenced_speak": {
+    "name": "After the Pall Made One of the Silenced Speak",
+    "target_enemy": "hollow_procession",
+    "needed": 2,
+    "reward_gold": 800,
+    "cleanse_required": 3,
+    "requires_mark": "pall_briefly_held_the_air_around_you",
+    "flavor": "The Pall made one of the silenced speak briefly. Two of the procession had hoped for permanence. End them."
+  },
+  "p3_pall_atrel_softer": {
+    "name": "After Atrél's Words Were Softer Near the Pall",
+    "target_enemy": "choirmaster_effigy",
+    "needed": 2,
+    "reward_gold": 700,
+    "cleanse_required": 4,
+    "requires_mark": "pall_began_to_match_its_step_to_yours",
+    "flavor": "Atrél's words were softer near the Pall once. Two effigies tried to make them louder. End them."
+  },
+  "p3_pall_let_you_go": {
+    "name": "After the Pall Let You Walk Past",
+    "target_enemy": "wolf",
+    "needed": 5,
+    "reward_gold": 600,
+    "cleanse_required": 1,
+    "requires_mark": "pall_began_to_show_you_its_face",
+    "flavor": "The Pall let you walk past once. Five wolves of the wood had hoped for the holding-back. End them."
+  },
+  "st_stun_again_count": {
+    "name": "After Stun Took Another Count",
+    "target_enemy": "bandit",
+    "needed": 3,
+    "reward_gold": 400,
+    "cleanse_required": 0,
+    "requires_mark": "status_stun_a_count_was_taken_from_your_day",
+    "flavor": "Stun took another count. Three bandits had filled the first count. End them."
+  },
+  "st_burn_match_two": {
+    "name": "After the Match Refused Twice",
+    "target_enemy": "wolf",
+    "needed": 3,
+    "reward_gold": 400,
+    "cleanse_required": 0,
+    "requires_mark": "status_burn_a_match_does_not_light_easily_for_you_now",
+    "flavor": "The match refused to light twice now. Three wolves of the wood had hoped for the cold. End them."
+  },
+  "st_bleed_chronicle_two": {
+    "name": "After Bleed Stained Two Pages",
+    "target_enemy": "library_warden",
+    "needed": 1,
+    "reward_gold": 700,
+    "cleanse_required": 3,
+    "requires_mark": "status_bleed_left_a_stain_on_a_chronicle_page",
+    "flavor": "Your bleed stained a second Chronicle page. A warden wanted them blank. End him."
+  },
+  "st_stun_humming_two": {
+    "name": "After You Hummed Through Stun Twice",
+    "target_enemy": "censer_shade",
+    "needed": 3,
+    "reward_gold": 700,
+    "cleanse_required": 4,
+    "requires_mark": "status_stun_left_you_humming",
+    "flavor": "Stun left you humming a second time. Three censer-shades knew the tune. End them."
+  },
+  "st_burn_anger_kindled": {
+    "name": "After Burn Kindled Another Old Anger",
+    "target_enemy": "red_beard",
+    "needed": 2,
+    "reward_gold": 600,
+    "cleanse_required": 2,
+    "requires_mark": "status_burn_kindled_an_old_anger",
+    "flavor": "Burn kindled another old anger. Two Red Beards had been its first sparks. End them."
+  },
+  "st_burn_ash_kindness": {
+    "name": "After Burn Left a Second Kindness in the Ash",
+    "target_enemy": "drowned_thresher",
+    "needed": 2,
+    "reward_gold": 500,
+    "cleanse_required": 1,
+    "requires_mark": "status_burn_left_a_kindness_in_the_ash",
+    "flavor": "Burn left another kindness in the ash. Two threshers had been the ash's makers. End them."
+  },
+  "st_bleed_name_again": {
+    "name": "After Naming Stopped Bleed Again",
+    "target_enemy": "hollow_procession",
+    "needed": 1,
+    "reward_gold": 700,
+    "cleanse_required": 3,
+    "requires_mark": "status_bleed_the_blood_stopped_when_you_named_someone",
+    "flavor": "Naming someone stopped your bleed again. One of the procession had been the named. End it."
+  },
+  "st_stun_npc_thanked_two": {
+    "name": "After an NPC Thanked You Twice",
+    "target_enemy": "bandit",
+    "needed": 2,
+    "reward_gold": 350,
+    "cleanse_required": 0,
+    "requires_mark": "status_stun_an_npc_thanked_you_for_coming_back",
+    "flavor": "An NPC at Gravewatch thanked you for coming back a second time. Two bandits had counted you out twice. End them."
+  },
+  "st_bleed_press_cloth_two": {
+    "name": "After Pressing the Cloth Twice",
+    "target_enemy": "wolf",
+    "needed": 4,
+    "reward_gold": 500,
+    "cleanse_required": 0,
+    "requires_mark": "status_bleed_taught_you_to_press_the_cloth",
+    "flavor": "You pressed the cloth a second time. Four wolves had hoped the first attempt fail. End them."
+  },
+  "rb2_blade_grip_after_use": {
+    "name": "After the Blade Wore the Grip Again",
+    "target_enemy": "ashen_penitent",
+    "needed": 1,
+    "reward_gold": 1400,
+    "cleanse_required": 5,
+    "requires_mark": "reborn_a_blade_remembered_a_grip_before_yours",
+    "flavor": "The blade wore your previous grip again. A Penitent above the snowline knew both. End him."
+  },
+  "rb2_button_picked_up": {
+    "name": "Reborn Picked Up Their Old Button",
+    "target_enemy": "wolf",
+    "needed": 3,
+    "reward_gold": 400,
+    "cleanse_required": 0,
+    "requires_mark": "reborn_a_button_in_the_road_dust_was_yours",
+    "flavor": "A previous button picked up. Three wolves on the road had been the previous fall. End them."
+  },
+  "rb2_grave_warm_third": {
+    "name": "After the Grave Was Warm a Third Time",
+    "target_enemy": "hollow_procession",
+    "needed": 1,
+    "reward_gold": 700,
+    "cleanse_required": 3,
+    "requires_mark": "reborn_a_grave_was_warm_for_you",
+    "flavor": "The grave was warm a third time on arrival. One of the procession knew the heat-makers. End it."
+  },
+  "rb2_grove_carved_two": {
+    "name": "After the Grove Held Two Names",
+    "target_enemy": "wolf",
+    "needed": 2,
+    "reward_gold": 400,
+    "cleanse_required": 0,
+    "requires_mark": "reborn_a_grove_held_a_carved_name",
+    "flavor": "The grove held two names now — yours and a previous you. Two wolves read both. End them."
+  },
+  "rb2_hollowed_recognized_two": {
+    "name": "After a Hollowed Recognized You Twice",
+    "target_enemy": "hollow_procession",
+    "needed": 1,
+    "reward_gold": 800,
+    "cleanse_required": 3,
+    "requires_mark": "reborn_a_hollowed_recognized_your_walk",
+    "flavor": "A Hollowed recognized your walk a second time. One of the procession mimicked the walk. End it."
+  },
+  "rb2_hollowed_shape_two": {
+    "name": "After a Hollowed Walked in Your Shape Twice",
+    "target_enemy": "hollow_bellward",
+    "needed": 1,
+    "reward_gold": 1300,
+    "cleanse_required": 3,
+    "requires_mark": "reborn_a_hollowed_walked_in_your_shape",
+    "flavor": "A Hollowed walked in your shape twice. The Hollow Bellward took the shape as caller. End her."
+  },
+  "rb2_locked_box_again": {
+    "name": "Reborn's Box Opened Itself",
+    "target_enemy": "bandit",
+    "needed": 2,
+    "reward_gold": 400,
+    "cleanse_required": 0,
+    "requires_mark": "reborn_a_locked_box_at_the_inn_was_yours",
+    "flavor": "The locked box at the inn opened itself for you. Two bandits had been at the lock. End them."
+  },
+  "rb2_hireling_remembered_twice": {
+    "name": "A Hireling Remembered You Twice",
+    "target_enemy": "wolf",
+    "needed": 3,
+    "reward_gold": 450,
+    "cleanse_required": 0,
+    "requires_mark": "reborn_a_hireling_who_walked_with_you_before",
+    "flavor": "A hireling remembered your previous gait a second time. Three wolves had been the doubled witnesses. End them."
+  },
+  "rb2_atrel_grief_held": {
+    "name": "Atrél Held a Grief Across Runs",
+    "target_enemy": "choirmaster_effigy",
+    "needed": 2,
+    "reward_gold": 800,
+    "cleanse_required": 4,
+    "requires_mark": "reborn_atrel_remembered_a_grief_you_set_aside",
+    "flavor": "Atrél held a grief across runs for you. Two effigies tried to take it back. End them."
+  },
+  "rb2_pet_recognized_two": {
+    "name": "Reborn Pet's Second Recognition",
+    "target_enemy": "wolf",
+    "needed": 3,
+    "reward_gold": 400,
+    "cleanse_required": 0,
+    "requires_mark": "reborn_a_pet_recognized_you_at_the_pen",
+    "flavor": "The pet at the pen recognized you a second time. Three wolves had been the previous prey. End them."
+  },
+  "dd2_blank_page_two": {
+    "name": "After Two Blank Pages Were Yours",
+    "target_enemy": "library_warden",
+    "needed": 1,
+    "reward_gold": 900,
+    "cleanse_required": 3,
+    "requires_mark": "discovery_a_blank_page_was_meant_for_you_to_write",
+    "flavor": "Two blank pages were meant for you to write. A warden tried to fill one. End him."
+  },
+  "dd2_doodle_two": {
+    "name": "After Two Doodles Were Your Face",
+    "target_enemy": "library_warden",
+    "needed": 1,
+    "reward_gold": 800,
+    "cleanse_required": 3,
+    "requires_mark": "discovery_a_clerks_doodle_was_your_face",
+    "flavor": "Two clerks' doodles were your face. A warden wanted them blank. End him."
+  },
+  "dd2_diagram_two": {
+    "name": "After Two Diagrams Changed Position",
+    "target_enemy": "reliquary_golem",
+    "needed": 1,
+    "reward_gold": 1200,
+    "cleanse_required": 4,
+    "requires_mark": "discovery_a_diagram_changed_position_on_the_page",
+    "flavor": "Two diagrams changed position. A golem in the Choir had been the changer. End it."
+  },
+  "dd2_paragraph_letter_two": {
+    "name": "After Two Paragraphs Were Letters",
+    "target_enemy": "library_warden",
+    "needed": 1,
+    "reward_gold": 1000,
+    "cleanse_required": 3,
+    "requires_mark": "discovery_a_paragraph_was_a_letter_to_you",
+    "flavor": "Two paragraphs were letters to you. A warden held them both back. End him."
+  },
+  "dd2_old_tongue_two": {
+    "name": "After Two Paragraphs in the Old Tongue",
+    "target_enemy": "shrine_keeper",
+    "needed": 1,
+    "reward_gold": 1200,
+    "cleanse_required": 4,
+    "requires_mark": "discovery_a_paragraph_was_in_the_old_tongue",
+    "flavor": "Two paragraphs in the old tongue surfaced. The Shrine Keeper wanted the tongue dead. End him."
+  },
+  "dd2_flower_pressed_two": {
+    "name": "After Another Pressed Flower Fell",
+    "target_enemy": "bandit",
+    "needed": 2,
+    "reward_gold": 350,
+    "cleanse_required": 0,
+    "requires_mark": "discovery_a_pressed_flower_fell_out",
+    "flavor": "Another pressed flower fell out of a book. Two bandits eyed the petals. End them."
+  },
+  "dd2_page_smell_kitchen_two": {
+    "name": "After Another Page Smelled Like a Kitchen",
+    "target_enemy": "library_warden",
+    "needed": 1,
+    "reward_gold": 700,
+    "cleanse_required": 3,
+    "requires_mark": "discovery_a_page_smelled_of_a_kitchen",
+    "flavor": "Another page smelled like a kitchen. A warden had been the wrong cook. End him."
+  },
+  "dd2_page_torn_safety_two": {
+    "name": "After Another Page Was Torn for Safety",
+    "target_enemy": "library_warden",
+    "needed": 1,
+    "reward_gold": 800,
+    "cleanse_required": 3,
+    "requires_mark": "discovery_a_page_had_been_torn_out_for_safety",
+    "flavor": "Another page was torn out for safety. A warden noted the gap. End him."
+  },
+  "ee3_purify_witherwood_third": {
+    "name": "After Purify, the Wood Recognized III",
+    "target_enemy": "pack_lead",
+    "needed": 1,
+    "reward_gold": 1000,
+    "cleanse_required": 1,
+    "requires_mark": "ending_purify_you_started_being_recognized_in_the_witherwood",
+    "flavor": "The Witherwood recognized you a third time after Purify. The pack lead bowed. End him."
+  },
+  "ee3_atrel_robe_warmth_ii": {
+    "name": "After the Robe's Warmth Spread",
+    "target_enemy": "choirmaster_effigy",
+    "needed": 3,
+    "reward_gold": 700,
+    "cleanse_required": 4,
+    "requires_mark": "ending_atrel_peace_a_priest_robe_kept_you_warm",
+    "flavor": "Atrél's robe-warmth spread to other climbers. Three effigies tried to redirect the warmth. End them."
+  },
+  "ee3_atrel_unhollowed_iii": {
+    "name": "After an Unhollowed Thanked You III",
+    "target_enemy": "hollow_procession",
+    "needed": 3,
+    "reward_gold": 800,
+    "cleanse_required": 3,
+    "requires_mark": "ending_atrel_peace_an_unhollowed_thanked_you",
+    "flavor": "Another unhollowed thanked you. Three of the procession heard the thanks. End them."
+  },
+  "ee3_warden_chair_iii": {
+    "name": "After Three Chairs Empty for You",
+    "target_enemy": "ashen_penitent",
+    "needed": 1,
+    "reward_gold": 1500,
+    "cleanse_required": 5,
+    "requires_mark": "ending_warden_you_left_a_chair_at_the_inn_empty",
+    "flavor": "Three chairs at three inns stay empty for you across runs. A Penitent above the snowline counted them all. End him."
+  },
+  "ee3_warden_keeper_silence_iii": {
+    "name": "After the Silence Spread",
+    "target_enemy": "shadow_warden",
+    "needed": 1,
+    "reward_gold": 2500,
+    "cleanse_required": 5,
+    "requires_mark": "ending_warden_you_started_carrying_a_keeper_silence",
+    "flavor": "Your keeper-silence spread to two other climbers. The new Shadow Warden noticed. End him."
+  },
+  "ee3_warden_pall_steps_iii": {
+    "name": "After the Pall Walked With You a Third Time",
+    "target_enemy": "shadow_warden",
+    "needed": 1,
+    "reward_gold": 2700,
+    "cleanse_required": 5,
+    "requires_mark": "ending_warden_the_pall_walked_three_steps_with_you",
+    "flavor": "The Pall walked with you a third time. The new Warden could not get the Pall's attention. End him."
+  },
+  "ee3_hidden_truth_summit_iii": {
+    "name": "After the Summit Met You a Third Way",
+    "target_enemy": "shadow_warden",
+    "needed": 1,
+    "reward_gold": 2600,
+    "cleanse_required": 5,
+    "requires_mark": "ending_hidden_truth_the_summit_will_meet_you_differently",
+    "flavor": "The Summit met you a third way after the Hidden Truth. The Warden tried each meeting in turn. End him."
+  },
+  "ee3_atrel_kingdom_quieter_iii": {
+    "name": "After Kingdom Was Quieter Three Times",
+    "target_enemy": "drowned_thresher",
+    "needed": 6,
+    "reward_gold": 800,
+    "cleanse_required": 1,
+    "requires_mark": "ending_atrel_peace_kingdom_quieter_in_your_step",
+    "flavor": "The kingdom was quieter in your step three times now. Six threshers ignored the quiet. End them."
+  },
+  "ee3_warden_keeper_song_iii": {
+    "name": "After the Keeper-Song Was a Tune",
+    "target_enemy": "ashen_penitent",
+    "needed": 2,
+    "reward_gold": 1500,
+    "cleanse_required": 5,
+    "requires_mark": "ending_warden_a_keeper_song_started_to_form_in_you",
+    "flavor": "The keeper-song was a tune you could hum. Two Penitents hummed along, wrong. End them."
+  },
+  "ee3_atrel_argue_iii": {
+    "name": "After Atrél Did Not Argue III",
+    "target_enemy": "censer_shade",
+    "needed": 4,
+    "reward_gold": 800,
+    "cleanse_required": 4,
+    "requires_mark": "ending_warden_atrel_did_not_argue_with_you_tonight",
+    "flavor": "Atrél did not argue with you a third night. Four censer-shades waited for the argument. End them."
+  },
+  "ee3_chronicle_warden_iii": {
+    "name": "After the Chronicle Wrote a New Warden Line",
+    "target_enemy": "shadow_warden",
+    "needed": 1,
+    "reward_gold": 2500,
+    "cleanse_required": 5,
+    "requires_mark": "ending_warden_the_chronicle_kept_a_line_open_for_warden",
+    "flavor": "The Chronicle wrote a new Warden line for the new climber. The new Warden read the old one. End him."
+  },
+  "ee3_lampkeeper_warden_iv": {
+    "name": "After Two Lampkeepers Called You Warden",
+    "target_enemy": "shadow_warden",
+    "needed": 1,
+    "reward_gold": 2500,
+    "cleanse_required": 5,
+    "requires_mark": "ending_warden_a_lampkeeper_called_you_warden",
+    "flavor": "Two Lampkeepers across two villages call you Warden. The new Warden could not be called. End him."
+  },
+  "ee3_warden_breath_pall_iii": {
+    "name": "After Your Breath Eased the Pall a Third Time",
+    "target_enemy": "ice_wraith",
+    "needed": 5,
+    "reward_gold": 900,
+    "cleanse_required": 4,
+    "requires_mark": "ending_warden_your_breath_steamed_the_pall_air_easier",
+    "flavor": "Your breath eased the Pall a third time. Five ice-wraiths above the snowline took offense. End them."
+  },
+  "ee3_warden_understood_role_ii": {
+    "name": "After You Understood the Role Earlier",
+    "target_enemy": "shadow_warden",
+    "needed": 1,
+    "reward_gold": 2500,
+    "cleanse_required": 5,
+    "requires_mark": "ending_warden_you_understood_the_role_was_waiting",
+    "flavor": "You understood the keeper-role was waiting earlier this run. The new Warden didn't. End him."
+  },
+  "ee3_warden_summit_softer_ii": {
+    "name": "After the Summit Was Softer Twice",
+    "target_enemy": "stone_golem",
+    "needed": 3,
+    "reward_gold": 1400,
+    "cleanse_required": 5,
+    "requires_mark": "ending_warden_the_summit_ground_will_be_softer_under_your_boot",
+    "flavor": "The Summit ground was softer under your boot twice. Three stone-golems wanted the ground hard. End them."
+  },
+  "ee3_hidden_priest_recognized_iii": {
+    "name": "After the Choir's Priest Recognized You IV",
+    "target_enemy": "cantor_vael",
+    "needed": 1,
+    "reward_gold": 2400,
+    "cleanse_required": 5,
+    "requires_mark": "ending_hidden_truth_a_priest_at_the_choir_recognized_you",
+    "flavor": "The Choir's priest recognized you a fourth time. The Cantor would have argued each time. End him."
+  },
+  "ee3_atrel_grief_companion_ii": {
+    "name": "After Companion Carried Grief Twice",
+    "target_enemy": "censer_shade",
+    "needed": 3,
+    "reward_gold": 700,
+    "cleanse_required": 4,
+    "requires_mark": "ending_atrel_peace_kept_a_grief_for_a_companion_too",
+    "flavor": "You kept a grief for the companion twice now. Three censer-shades had hoped to take both. End them."
+  },
+  "ee3_atrel_first_grief_ii": {
+    "name": "After the First Grief Lifted Easily Twice",
+    "target_enemy": "choirmaster_effigy",
+    "needed": 2,
+    "reward_gold": 800,
+    "cleanse_required": 4,
+    "requires_mark": "ending_atrel_peace_first_grief_set_aside_easily",
+    "flavor": "The first grief lifted easily a second time. Two effigies in the Choir noticed your eased shoulders. End them."
   }
 }
