@@ -1855,5 +1855,253 @@
     ],
     "reward_chronicle_line": "A previous one of them had finished the climb. The Summit recognized their step. They ended the Warden the way previous selves had once been ended.",
     "flavor": "A previous you climbed here. The Summit knows your step. End the Warden. The climb will know the name the previous you carried."
+  },
+  "after_mira_recipe": {
+    "name": "After Mira's Recipe",
+    "target_enemy": "wolf",
+    "needed": 3,
+    "reward_gold": 250,
+    "cleanse_required": 0,
+    "requires_discovery": [
+      "mira_recipe"
+    ],
+    "reward_consumables": [
+      "The Last Bread"
+    ],
+    "flavor": "Mira's recipe asks for three wolves' worth of clean fat. Bring them. She will bake. The Hold will eat."
+  },
+  "after_lis_made_it": {
+    "name": "After Lis Made It",
+    "target_enemy": "goblin",
+    "needed": 4,
+    "reward_gold": 300,
+    "cleanse_required": 0,
+    "requires_discovery": [
+      "lis_made_it"
+    ],
+    "reward_marks": [
+      "holds_doorpost_remembered_a_name"
+    ],
+    "flavor": "Lis made a small thing. Four goblins took the small things. End them. Lis will know."
+  },
+  "after_small_uns_drawing": {
+    "name": "After the Small One's Drawing",
+    "target_enemy": "bandit",
+    "needed": 3,
+    "reward_gold": 250,
+    "cleanse_required": 0,
+    "requires_discovery": [
+      "small_uns_drawing"
+    ],
+    "reward_marks": [
+      "mourncross_a_child_left_a_drawing_for_you"
+    ],
+    "flavor": "The small one drew three bandits, each with a different face. End them. The drawing will be a finished drawing."
+  },
+  "after_talvas_case": {
+    "name": "After Tálva's Case",
+    "target_enemy": "pall_magistrate",
+    "needed": 1,
+    "reward_gold": 600,
+    "cleanse_required": 3,
+    "requires_discovery": [
+      "talvas_case"
+    ],
+    "reward_chronicle_line": "Once they had read Tálva's case, they walked back to Mourncross and ended the magistrate who had heard it last.",
+    "flavor": "Tálva's case names the magistrate who heard it last. End him. The case will be a closed case."
+  },
+  "after_ondreks_spoon": {
+    "name": "After You Held Ondrek's Spoon",
+    "target_enemy": "drowned_thresher",
+    "needed": 2,
+    "reward_gold": 400,
+    "cleanse_required": 1,
+    "requires_discovery": [
+      "ondreks_spoon"
+    ],
+    "reward_marks": [
+      "holds_recognized_your_grief"
+    ],
+    "flavor": "Ondrek's spoon is in your pack. Two threshers in the Reach ate from spoons like this. End them. Ondrek will know."
+  },
+  "hold_walk_a_wolf": {
+    "name": "The Hold's Walk Begins — A Wolf",
+    "target_enemy": "wolf",
+    "needed": 1,
+    "reward_gold": 150,
+    "cleanse_required": 0,
+    "requires_discovery": [
+      "miras_cloth"
+    ],
+    "chain_next": "hold_walk_b_thresher",
+    "flavor": "Mira's cloth has a wolf-hair on it. Find the wolf. The Hold is walking back through the kingdom; you walk with it."
+  },
+  "hold_walk_b_thresher": {
+    "name": "The Hold's Walk — A Thresher",
+    "target_enemy": "drowned_thresher",
+    "needed": 1,
+    "reward_gold": 250,
+    "cleanse_required": 1,
+    "requires_quest": [
+      "hold_walk_a_wolf"
+    ],
+    "chain_next": "hold_walk_c_slime",
+    "flavor": "The cloth has silt on its hem. A thresher in the Reach. End it. The cloth knows where it has been."
+  },
+  "hold_walk_c_slime": {
+    "name": "The Hold's Walk — A Slime",
+    "target_enemy": "dark_slime",
+    "needed": 1,
+    "reward_gold": 400,
+    "cleanse_required": 2,
+    "requires_quest": [
+      "hold_walk_b_thresher"
+    ],
+    "chain_next": "hold_walk_d_procession",
+    "flavor": "There is salt in the cloth's weave — the Gullet's salt. A slime ate part of it. End it. The cloth will be cleaner."
+  },
+  "hold_walk_d_procession": {
+    "name": "The Hold's Walk — A Procession",
+    "target_enemy": "hollow_procession",
+    "needed": 1,
+    "reward_gold": 700,
+    "cleanse_required": 3,
+    "requires_quest": [
+      "hold_walk_c_slime"
+    ],
+    "reward_chronicle_line": "Mira's cloth had walked the kingdom — wolf, thresher, slime, procession. They walked the same path, and the cloth was clean.",
+    "reward_marks": [
+      "holds_you_walked_a_street_that_was_a_street"
+    ],
+    "flavor": "The cloth's last thread points to a Mourncross procession. End one. The cloth was once a kingdom; it has walked through one again."
+  },
+  "after_lost_verse_4": {
+    "name": "After You Knew the Fourth Lost Verse",
+    "target_enemy": "censer_shade",
+    "needed": 2,
+    "reward_gold": 700,
+    "cleanse_required": 4,
+    "requires_discovery": [
+      "lost_verse_4"
+    ],
+    "reward_marks": [
+      "choir_kept_the_third_line"
+    ],
+    "flavor": "Two censer-shades carry the fourth lost verse in their smoke. End them. The verse will be in air instead."
+  },
+  "after_bone_tomb_seals": {
+    "name": "After the Column of Seals",
+    "target_enemy": "reliquary_golem",
+    "needed": 1,
+    "reward_gold": 900,
+    "cleanse_required": 4,
+    "requires_discovery": [
+      "bone_tomb_column_of_seals"
+    ],
+    "reward_consumables": [
+      "The Last Bread"
+    ],
+    "flavor": "The Bone Tomb's column of seals names a Choir golem. End it. The column will lose one rune; the kingdom will gain one breath."
+  },
+  "after_border_lichen": {
+    "name": "After the Border Lichen Post",
+    "target_enemy": "ashen_penitent",
+    "needed": 1,
+    "reward_gold": 800,
+    "cleanse_required": 4,
+    "requires_discovery": [
+      "border_lichen_post"
+    ],
+    "reward_marks": [
+      "the_climb_marked_your_lungs"
+    ],
+    "flavor": "The Border lichen grows on the post the same way it grows on a Penitent's stone. End the Penitent. The Border will know it is bordered."
+  },
+  "after_karst_grain": {
+    "name": "After You Took a Karst Grain",
+    "target_enemy": "drowned_thresher",
+    "needed": 2,
+    "reward_gold": 500,
+    "cleanse_required": 2,
+    "requires_discovery": [
+      "karst_grain"
+    ],
+    "reward_marks": [
+      "reach_promised_the_field_a_grain"
+    ],
+    "flavor": "Karst's grain is in your pocket. Two threshers in the Reach would have eaten it. End them. The grain will be planted."
+  },
+  "after_tace_sled_rail": {
+    "name": "After You Held Tace's Sled-Rail",
+    "target_enemy": "ice_wraith",
+    "needed": 3,
+    "reward_gold": 700,
+    "cleanse_required": 4,
+    "requires_discovery": [
+      "tace_sled_rail"
+    ],
+    "reward_consumables": [
+      "The Last Bread",
+      "The Last Bread"
+    ],
+    "flavor": "Tace's sled-rail is iron-cold in your hand. Three ice-wraiths above the snowline used to be sled-mates of Tace's. End them."
+  },
+  "after_readers_pencil": {
+    "name": "After the Reader's Pencil",
+    "target_enemy": "library_warden",
+    "needed": 1,
+    "reward_gold": 800,
+    "cleanse_required": 3,
+    "requires_discovery": [
+      "readers_pencil"
+    ],
+    "reward_marks": [
+      "library_warden_a_page_came_loose_for_you"
+    ],
+    "flavor": "The reader's pencil has been sharpened for one warden. End him. The reader will sharpen again, for a kinder use."
+  },
+  "after_small_altar": {
+    "name": "After the Small Altar at Gravewatch",
+    "target_enemy": "shrine_keeper",
+    "needed": 1,
+    "reward_gold": 1000,
+    "cleanse_required": 4,
+    "requires_discovery": [
+      "gravewatch_small_altar"
+    ],
+    "reward_chronicle_line": "Once they had touched the small altar at Gravewatch, the Pre-Pall Shrine's Keeper turned his head when they entered, and they ended him without ceremony.",
+    "flavor": "The small altar at Gravewatch's edge marks the climber. The Pre-Pall Shrine's Keeper turns his head. End him."
+  },
+  "after_hearthkeepers_book": {
+    "name": "After the Hearthkeeper's Book",
+    "target_enemy": "wolf",
+    "needed": 4,
+    "reward_gold": 300,
+    "cleanse_required": 0,
+    "requires_discovery": [
+      "hearthkeepers_book"
+    ],
+    "reward_marks": [
+      "holds_bread_bowl_warmed_when_you_passed"
+    ],
+    "flavor": "The Hearthkeeper's book names four wolves who killed her first hearth. End them. The hearth will warm without them."
+  },
+  "hidden_after_insomniac_tally": {
+    "name": "The Insomniac's Tally Has Your Name",
+    "target_enemy": "bandit",
+    "needed": 2,
+    "reward_gold": 350,
+    "cleanse_required": 0,
+    "hidden": true,
+    "trigger_action": {
+      "type": "flag_set",
+      "params": {
+        "flag_name": "insomniac_tally_seen"
+      }
+    },
+    "reward_marks": [
+      "holds_recognized_your_grief"
+    ],
+    "flavor": "The insomniac's tally counts you among the climbers who did not sleep this winter. Two bandits believe it. End them."
   }
 }
