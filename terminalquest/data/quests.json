@@ -8174,5 +8174,325 @@
     "cleanse_required": 3,
     "requires_mark": "cleric_a_god_glanced_aside_at_you",
     "flavor": "A god glanced aside at you, briefly. Three of the procession noticed the glance. End them."
+  },
+  "rd_stream_thanked": {
+    "name": "After a Stream Thanked You Under a Bridge",
+    "target_enemy": "bandit",
+    "needed": 3,
+    "reward_gold": 350,
+    "cleanse_required": 0,
+    "requires_mark": "road_a_stream_under_a_bridge_thanked_you",
+    "flavor": "A stream under a bridge thanked you for crossing it gently. Three bandits on the road had hoped to muddy the stream after. End them."
+  },
+  "rd_wayside_shrine": {
+    "name": "After a Wayside Shrine Warmed a Step",
+    "target_enemy": "wolf",
+    "needed": 2,
+    "reward_gold": 300,
+    "cleanse_required": 0,
+    "requires_mark": "road_a_wayside_shrine_warmed_a_step",
+    "flavor": "A wayside shrine warmed a step you took past it. Two wolves of the wood had noticed the warmth. End them."
+  },
+  "rd_old_horseshoe": {
+    "name": "After You Found an Old Horseshoe in the Dust",
+    "target_enemy": "bandit",
+    "needed": 2,
+    "reward_gold": 250,
+    "cleanse_required": 0,
+    "requires_mark": "road_an_old_horseshoe_was_in_the_dust",
+    "flavor": "An old horseshoe was in the road's dust. Two bandits had hoped to pick it up first. End them. The horseshoe stays in the dust."
+  },
+  "rd_old_song": {
+    "name": "After an Old Song Walked the Distance",
+    "target_enemy": "wolf",
+    "needed": 3,
+    "reward_gold": 350,
+    "cleanse_required": 0,
+    "requires_mark": "road_an_old_song_walked_the_distance_with_you",
+    "flavor": "An old song walked the distance with you. Three wolves of the wood had been the song's audience before. End them."
+  },
+  "rd_dust_footprint": {
+    "name": "After Dust Kept Your Footprint",
+    "target_enemy": "bandit",
+    "needed": 2,
+    "reward_gold": 300,
+    "cleanse_required": 0,
+    "requires_mark": "road_dust_kept_your_footprint_a_count_too_long",
+    "flavor": "Dust on the road kept your footprint a count too long. Two bandits studied the print. End them."
+  },
+  "rd_not_taken_child": {
+    "name": "After You Did Not Answer a Child",
+    "target_enemy": "bonesong",
+    "needed": 1,
+    "reward_gold": 500,
+    "cleanse_required": 1,
+    "requires_mark": "road_not_taken_did_not_answer_a_child",
+    "flavor": "Once you did not answer a child who spoke to you on the road. A bonesong in the Holds knows the unanswered question. End it.",
+    "reward_chronicle_line": "Once a climber had not answered a child on the road; a Holds bonesong holding the unanswered question fell to the next walk."
+  },
+  "rd_not_taken_apology": {
+    "name": "After You Did Not Apologize",
+    "target_enemy": "doorshut",
+    "needed": 2,
+    "reward_gold": 500,
+    "cleanse_required": 1,
+    "requires_mark": "road_not_taken_did_not_apologize_to_someone_you_owed",
+    "flavor": "Once you did not apologize to someone you owed. Two doorshuts in the Holds know whose doorpost was the owed one's. End them."
+  },
+  "rd_not_taken_widow": {
+    "name": "After You Did Not Ask the Widow's Name",
+    "target_enemy": "pall_magistrate",
+    "needed": 1,
+    "reward_gold": 700,
+    "cleanse_required": 3,
+    "requires_mark": "road_not_taken_did_not_ask_the_widows_name",
+    "flavor": "Once you did not ask the widow her name in Mourncross. A magistrate had been waiting for the asking. End him."
+  },
+  "rd_not_taken_door_closed": {
+    "name": "After You Did Not Close a Door You Had Opened",
+    "target_enemy": "doorshut",
+    "needed": 3,
+    "reward_gold": 600,
+    "cleanse_required": 1,
+    "requires_mark": "road_not_taken_did_not_close_a_door_you_had_opened",
+    "flavor": "Once you did not close a door you had opened. Three doorshuts know the open door's location. End them."
+  },
+  "rd_not_taken_cry": {
+    "name": "After You Did Not Cry When You Could Have",
+    "target_enemy": "censer_shade",
+    "needed": 2,
+    "reward_gold": 600,
+    "cleanse_required": 4,
+    "requires_mark": "road_not_taken_did_not_cry_when_you_could_have",
+    "flavor": "Once you did not cry when you could have. Two censer-shades in the Choir hold the un-cried tears as smoke. End them."
+  },
+  "sv_dust_corner": {
+    "name": "After Saving Left Dust in the Corner",
+    "target_enemy": "wolf",
+    "needed": 2,
+    "reward_gold": 300,
+    "cleanse_required": 0,
+    "requires_mark": "save_dust_in_the_corner",
+    "flavor": "Dust in the corner of the save place kept a shape. Two wolves of the wood had been the shape's makers. End them."
+  },
+  "sv_chalk_doorpost": {
+    "name": "After the Save-Place Chalk Marks Glowed",
+    "target_enemy": "doorshut",
+    "needed": 1,
+    "reward_gold": 500,
+    "cleanse_required": 1,
+    "requires_mark": "save_the_chalk_marks_on_the_doorpost_glowed_faintly",
+    "flavor": "Chalk marks on the save-place doorpost glowed faintly. A doorshut in the Holds wanted to read the chalk. End it."
+  },
+  "sv_dust_shape_under_bed": {
+    "name": "After the Save-Dust Kept a Shape",
+    "target_enemy": "bonesong",
+    "needed": 1,
+    "reward_gold": 400,
+    "cleanse_required": 1,
+    "requires_mark": "save_the_dust_under_the_bed_kept_a_shape",
+    "flavor": "Dust under the save-place bed kept your sleeping shape. A bonesong in the Holds noticed the shape. End it."
+  },
+  "sv_innkeeper_pillow": {
+    "name": "After the Innkeeper Left a Pillow for You",
+    "target_enemy": "bandit",
+    "needed": 3,
+    "reward_gold": 350,
+    "cleanse_required": 0,
+    "requires_mark": "save_the_innkeeper_left_a_pillow_for_you",
+    "flavor": "The innkeeper at the save-place left a pillow for you. Three bandits on the road wanted the pillow. End them."
+  },
+  "sv_room_swept": {
+    "name": "After the Save-Place Room Was Swept",
+    "target_enemy": "wolf",
+    "needed": 2,
+    "reward_gold": 300,
+    "cleanse_required": 0,
+    "requires_mark": "save_the_room_had_been_swept_for_you",
+    "flavor": "The save-place room had been swept clean for you. Two wolves of the wood had hoped to track in mud. End them."
+  },
+  "sv_dream_pall_corridor": {
+    "name": "After You Dreamt of a Pall Corridor",
+    "target_enemy": "ashen_penitent",
+    "needed": 1,
+    "reward_gold": 1300,
+    "cleanse_required": 5,
+    "requires_mark": "save_you_dreamt_of_a_pall_corridor",
+    "flavor": "You dreamt of a Pall corridor at the save place. A Penitent above the snowline had walked the same corridor. End him.",
+    "reward_marks": [
+      "summit_pall_paused_for_you"
+    ]
+  },
+  "sv_dream_priest_robing": {
+    "name": "After You Dreamt of a Priest Robing You",
+    "target_enemy": "choirmaster_effigy",
+    "needed": 1,
+    "reward_gold": 800,
+    "cleanse_required": 4,
+    "requires_mark": "save_you_dreamt_of_a_priest_robing_you",
+    "flavor": "You dreamt of a priest robing you in the Choir. An effigy had been the robing priest. End it. The robe stays your own."
+  },
+  "sv_dream_child_grave": {
+    "name": "After You Dreamt of a Child Naming a Grave",
+    "target_enemy": "hollow_procession",
+    "needed": 1,
+    "reward_gold": 700,
+    "cleanse_required": 3,
+    "requires_mark": "save_you_dreamt_of_a_child_naming_a_grave",
+    "flavor": "You dreamt of a child naming a grave. One of the procession in Mourncross had been the grave's previous holder. End it.",
+    "reward_chronicle_line": "A climber dreamt of a child naming a grave; the procession-member who had been the grave's previous holder fell to the next walk."
+  },
+  "ee_atrel_kingdom_quieter": {
+    "name": "After Atrél's Peace, the Kingdom Quieter in Your Step",
+    "target_enemy": "drowned_thresher",
+    "needed": 4,
+    "reward_gold": 700,
+    "cleanse_required": 1,
+    "requires_mark": "ending_atrel_peace_kingdom_quieter_in_your_step",
+    "flavor": "Across runs, Atrél's Peace had made the kingdom quieter in your step. Four threshers in the Reach had not gotten the memo. End them."
+  },
+  "ee_atrel_priest_robe_warmed": {
+    "name": "After the Priest Robe Kept Warm in the Choir",
+    "target_enemy": "choirmaster_effigy",
+    "needed": 1,
+    "reward_gold": 700,
+    "cleanse_required": 4,
+    "requires_mark": "ending_atrel_peace_a_priest_robe_kept_you_warm",
+    "flavor": "A priest robe had kept you warm in the Choir across runs. An effigy took the warmth as evidence. End it."
+  },
+  "ee_atrel_kept_grief_companion": {
+    "name": "After You Kept a Grief for a Companion II",
+    "target_enemy": "censer_shade",
+    "needed": 2,
+    "reward_gold": 600,
+    "cleanse_required": 4,
+    "requires_mark": "ending_atrel_peace_kept_a_grief_for_a_companion_too",
+    "flavor": "Across runs, you kept a grief for a companion. Two censer-shades had hoped to take the kept grief. End them."
+  },
+  "ee_warden_keeper_song": {
+    "name": "After a Keeper-Song Started Forming",
+    "target_enemy": "ashen_penitent",
+    "needed": 1,
+    "reward_gold": 1500,
+    "cleanse_required": 5,
+    "requires_mark": "ending_warden_a_keeper_song_started_to_form_in_you",
+    "flavor": "A keeper-song started to form in you across runs. A Penitent above the snowline could already hum it. End him."
+  },
+  "ee_warden_atrel_not_argue": {
+    "name": "After Atrél Did Not Argue With You Tonight",
+    "target_enemy": "censer_shade",
+    "needed": 2,
+    "reward_gold": 700,
+    "cleanse_required": 4,
+    "requires_mark": "ending_warden_atrel_did_not_argue_with_you_tonight",
+    "flavor": "Atrél did not argue with you tonight across runs. Two censer-shades had been waiting for the argument. End them."
+  },
+  "ee_warden_chronicle_line_open": {
+    "name": "After the Chronicle Kept a Line Open for Warden",
+    "target_enemy": "shadow_warden",
+    "needed": 1,
+    "reward_gold": 2300,
+    "cleanse_required": 5,
+    "requires_mark": "ending_warden_the_chronicle_kept_a_line_open_for_warden",
+    "flavor": "The Chronicle kept a line open for a Warden's note. The new Shadow Warden reads the line. End him in the reading.",
+    "reward_chronicle_line": "The Chronicle had kept a line open for a Warden's note across runs; the new Warden read the line, and fell at it."
+  },
+  "ee_hidden_truth_summit_meet": {
+    "name": "After the Summit Will Meet You Differently",
+    "target_enemy": "shadow_warden",
+    "needed": 1,
+    "reward_gold": 2400,
+    "cleanse_required": 5,
+    "requires_mark": "ending_hidden_truth_the_summit_will_meet_you_differently",
+    "flavor": "The Summit will meet you differently across runs. The Shadow Warden knows the change. End him in it.",
+    "reward_marks": [
+      "summit_warden_old_step_remembered_you"
+    ]
+  },
+  "ee_hidden_truth_priest_recognized_ii": {
+    "name": "After the Choir's Priest Recognized You II",
+    "target_enemy": "cantor_vael",
+    "needed": 1,
+    "reward_gold": 2200,
+    "cleanse_required": 5,
+    "requires_mark": "ending_hidden_truth_a_priest_at_the_choir_recognized_you",
+    "flavor": "Across runs, the Choir's priest had recognized you. The Cantor would have argued the recognition. End him.",
+    "reward_chronicle_line": "The Choir's priest had recognized them; the Cantor who would have argued the recognition fell to the recognized step."
+  },
+  "ee_purify_witherwood_recognized": {
+    "name": "After Purify, the Witherwood Recognized You II",
+    "target_enemy": "pack_lead",
+    "needed": 1,
+    "reward_gold": 900,
+    "cleanse_required": 1,
+    "requires_mark": "ending_purify_you_started_being_recognized_in_the_witherwood",
+    "flavor": "The Witherwood recognized you across runs after Purify. The pack lead had been keeping the recognition from spreading. End him."
+  },
+  "ee_warden_step_softer_under_boot": {
+    "name": "After the Summit Ground Was Softer Under Your Boot",
+    "target_enemy": "stone_golem",
+    "needed": 2,
+    "reward_gold": 1300,
+    "cleanse_required": 5,
+    "requires_mark": "ending_warden_the_summit_ground_will_be_softer_under_your_boot",
+    "flavor": "Across runs after Warden, the Summit ground was softer under your boot. Two stone-golems had hoped to break the soft ground. End them."
+  },
+  "ee_warden_lampkeeper_warden": {
+    "name": "After the Lampkeeper Called You Warden II",
+    "target_enemy": "shadow_warden",
+    "needed": 1,
+    "reward_gold": 2400,
+    "cleanse_required": 5,
+    "requires_mark": "ending_warden_a_lampkeeper_called_you_warden",
+    "flavor": "Across runs, the Lampkeeper called you Warden. The new Shadow Warden could not be called the same. End him. The title stays yours."
+  },
+  "ee_warden_pall_walked_three": {
+    "name": "After the Pall Walked Three Steps II",
+    "target_enemy": "ashen_penitent",
+    "needed": 2,
+    "reward_gold": 1700,
+    "cleanse_required": 5,
+    "requires_mark": "ending_warden_the_pall_walked_three_steps_with_you",
+    "flavor": "Across runs, the Pall walked three steps with you. Two Penitents above the snowline counted the steps. End them."
+  },
+  "ee_reborn_warden_chronicle": {
+    "name": "Reborn After the Warden's Chronicle Line",
+    "target_enemy": "pall_magistrate",
+    "needed": 2,
+    "reward_gold": 1100,
+    "cleanse_required": 3,
+    "requires_mark": "ending_warden_the_chronicle_kept_a_line_open_for_warden",
+    "flavor": "A Reborn climber, whose Chronicle held a Warden's line open. Two magistrates wanted the line crossed out. End them."
+  },
+  "ee_reborn_breath_steamed_pall": {
+    "name": "Reborn After Your Breath Steamed the Pall",
+    "target_enemy": "ice_wraith",
+    "needed": 4,
+    "reward_gold": 900,
+    "cleanse_required": 4,
+    "requires_mark": "ending_warden_your_breath_steamed_the_pall_air_easier",
+    "flavor": "Across runs, your breath steamed the Pall air easier. Four ice-wraiths above the snowline knew the breath. End them."
+  },
+  "ee_reborn_kingdom_quieter": {
+    "name": "Reborn After Kingdom Quieter",
+    "target_enemy": "drowned_thresher",
+    "needed": 3,
+    "reward_gold": 700,
+    "cleanse_required": 1,
+    "requires_mark": "ending_atrel_peace_kingdom_quieter_in_your_step",
+    "flavor": "A Reborn climber whose previous self had quieted the kingdom. Three threshers had not adjusted to the quiet. End them."
+  },
+  "ee_mother_appetite": {
+    "name": "After the Mother Appetite Came Into You",
+    "target_enemy": "maw_mother",
+    "needed": 1,
+    "reward_gold": 2000,
+    "cleanse_required": 4,
+    "requires_mark": "mother_appetite_came_into_you",
+    "flavor": "The Mother Appetite came into you once. The Maw-Mother in the Gullet knows the answering hunger. End her. The appetite leaves with her.",
+    "reward_marks": [
+      "gullet_mawmother_braced_for_you"
+    ],
+    "reward_chronicle_line": "A climber had taken the Mother Appetite into themselves briefly; the Maw-Mother in the Gullet ended at the answering hunger."
   }
 }
