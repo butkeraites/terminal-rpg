@@ -425,12 +425,20 @@ def _quest_status(state, quest_id):
 def _quest_is_visible(quest, state, cleanses):
     """Return True if this quest should appear on the board for this player.
 
-    Phase-1 Batch-1/3 gates: cleanse_required, requires_quest (all must be
-    in completed_quests), denies_quest (none may be in completed_quests).
-    Other gates (requires_mark, requires_class, etc.) land in Batch-4.
+    Phase-1 gates honoured here:
+      Batch-1 / -3 — cleanse_required, requires_quest, denies_quest.
+      Batch-4    — min_level, requires_class, requires_flag(s),
+                   requires_mark(s), requires_ending.
+
+    Hidden quests (``hidden: true``) never show up regardless — they wait
+    for an explicit trigger (Batch-7).
     """
+    if quest.get("hidden"):
+        return False
     if quest.get("cleanse_required", 0) > cleanses:
         return False
+
+    # Chain gates (Batch-3)
     completed = set(state.flags.get("completed_quests", []))
     needs = quest.get("requires_quest") or []
     if needs and not all(qid in completed for qid in needs):
@@ -438,6 +446,41 @@ def _quest_is_visible(quest, state, cleanses):
     denies = quest.get("denies_quest") or []
     if any(qid in completed for qid in denies):
         return False
+
+    # Level gate (Batch-4)
+    min_level = quest.get("min_level")
+    if min_level is not None and state.player.level < min_level:
+        return False
+
+    # Class gate (Batch-4)
+    classes = quest.get("requires_class") or []
+    if classes and state.player.class_id not in classes:
+        return False
+
+    # Flag gates (Batch-4) — single string and list-of-strings both supported.
+    rflag = quest.get("requires_flag")
+    if rflag and not state.flags.get(rflag):
+        return False
+    for f in (quest.get("requires_flags") or []):
+        if not state.flags.get(f):
+            return False
+
+    # Mark gates (Batch-4) — read from player.marks (a list).
+    player_marks = set(getattr(state.player, "marks", []) or [])
+    rmark = quest.get("requires_mark")
+    if rmark and rmark not in player_marks:
+        return False
+    for m in (quest.get("requires_marks") or []):
+        if m not in player_marks:
+            return False
+
+    # Ending gate (Batch-4) — Chronicle's endings_seen across runs.
+    endings_needed = quest.get("requires_ending") or []
+    if endings_needed:
+        seen = chronicle.endings_seen(state.chronicle_dir)
+        if not all(eid in seen for eid in endings_needed):
+            return False
+
     return True
 
 

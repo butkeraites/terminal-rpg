@@ -1,4 +1,5 @@
 """The location graph: travel, signposting, encounters, the boss and the shop."""
+import pytest
 from conftest import StubRandom, make_state
 
 from terminalquest import chronicle, locations
@@ -914,6 +915,149 @@ def test_denies_quest_hides_alternative_branch(content, tmp_path):
     rendered = "\n".join(state.io.output)
     assert "Left Fork" in rendered  # claimed, but still listed as 'done'
     assert "Right Fork" not in rendered  # permanently denied
+
+
+# --- Phase-1 Batch-4: mark / class / level / flag / ending gates ----------
+#
+# These all extend _quest_is_visible. Each test isolates one gate.
+
+def _hidden_test_quest(**fields):
+    """Return a minimal-but-valid quest dict you can layer fields on."""
+    q = {
+        "name": "Gated Quest",
+        "target_enemy": "wolf",
+        "needed": 1,
+        "reward_gold": 10,
+        "cleanse_required": 0,
+        "flavor": "Test.",
+    }
+    q.update(fields)
+    return q
+
+
+def _board_render(content, player, tmp_path, **state_flags):
+    """Open the quest_board headlessly and return rendered text."""
+    state = make_state(player, content, ScriptedIO(["99"]), StubRandom(),
+                       chronicle_dir=tmp_path)
+    state.flags.update(state_flags)
+    try:
+        locations.quest_board(state)
+    except AssertionError:
+        pass
+    return "\n".join(state.io.output)
+
+
+def test_quest_visibility_min_level_gate(content, tmp_path):
+    """min_level keeps a quest off the board until the player reaches it."""
+    content.quests["high_lvl_q"] = _hidden_test_quest(
+        name="High Level Only", min_level=5)
+    player = _player(content)
+    player.level = 4
+    assert "High Level Only" not in _board_render(content, player, tmp_path)
+    player.level = 5
+    assert "High Level Only" in _board_render(content, player, tmp_path)
+
+
+def test_quest_visibility_class_gate(content, tmp_path):
+    """requires_class limits the quest to specific classes."""
+    content.quests["cleric_q"] = _hidden_test_quest(
+        name="For the Cleric", requires_class=["cleric"])
+    warrior = _player(content)  # default warrior
+    assert "For the Cleric" not in _board_render(content, warrior, tmp_path)
+    # And a cleric can see it.
+    from terminalquest.player import Player
+    cleric = Player("Cleric", "cleric", content.classes["cleric"], content)
+    assert "For the Cleric" in _board_render(content, cleric, tmp_path)
+
+
+def test_quest_visibility_requires_flag(content, tmp_path):
+    """requires_flag hides a quest until the named flag is truthy."""
+    content.quests["needs_flag_q"] = _hidden_test_quest(
+        name="The Counted's Errand", requires_flag="the_counted")
+    player = _player(content)
+    assert "The Counted's Errand" not in _board_render(content, player, tmp_path)
+    assert "The Counted's Errand" in _board_render(
+        content, player, tmp_path, the_counted=True)
+
+
+def test_quest_visibility_requires_flags_list(content, tmp_path):
+    """requires_flags requires ALL listed flags to be truthy."""
+    content.quests["needs_both_q"] = _hidden_test_quest(
+        name="Both Flags",
+        requires_flags=["flag_a", "flag_b"])
+    player = _player(content)
+    assert "Both Flags" not in _board_render(content, player, tmp_path,
+                                              flag_a=True)
+    assert "Both Flags" in _board_render(content, player, tmp_path,
+                                          flag_a=True, flag_b=True)
+
+
+def test_quest_visibility_requires_mark(content, tmp_path):
+    """requires_mark hides a quest until the named mark has fired on this character."""
+    if not content.marks:
+        pytest.skip("marks pool empty")
+    real_mark = next(iter(content.marks))
+    content.quests["mark_gated_q"] = _hidden_test_quest(
+        name="Mark Gated", requires_mark=real_mark)
+    player = _player(content)
+    # Without the mark — invisible.
+    assert "Mark Gated" not in _board_render(content, player, tmp_path)
+    # Now mark them.
+    player.marks.append(real_mark)
+    assert "Mark Gated" in _board_render(content, player, tmp_path)
+
+
+def test_quest_visibility_requires_marks_list(content, tmp_path):
+    """requires_marks requires ALL listed marks."""
+    if len(content.marks) < 2:
+        pytest.skip("need at least 2 marks for this test")
+    a, b = list(content.marks)[:2]
+    content.quests["two_marks_q"] = _hidden_test_quest(
+        name="Two Marks", requires_marks=[a, b])
+    player = _player(content)
+    player.marks.append(a)
+    assert "Two Marks" not in _board_render(content, player, tmp_path)
+    player.marks.append(b)
+    assert "Two Marks" in _board_render(content, player, tmp_path)
+
+
+def test_quest_visibility_requires_ending(content, tmp_path):
+    """requires_ending checks the Chronicle's endings_seen across runs."""
+    from terminalquest import chronicle
+    content.quests["ending_gated_q"] = _hidden_test_quest(
+        name="After the Peace", requires_ending=["atrel_peace"])
+    player = _player(content)
+    # Chronicle empty — invisible.
+    assert "After the Peace" not in _board_render(content, player, tmp_path)
+    # Record the ending and re-open.
+    chronicle.add_ending_seen("atrel_peace", tmp_path)
+    assert "After the Peace" in _board_render(content, player, tmp_path)
+
+
+def test_quest_visibility_hidden_field_always_excluded(content, tmp_path):
+    """A hidden:true quest never shows on the board regardless of gates."""
+    content.quests["hidden_q"] = _hidden_test_quest(
+        name="A Hidden Slip", hidden=True)
+    player = _player(content)
+    # Should never appear, even with all other gates trivially passing.
+    assert "A Hidden Slip" not in _board_render(content, player, tmp_path)
+
+
+def test_quest_visibility_gates_compose(content, tmp_path):
+    """A quest with multiple gates only appears when ALL pass."""
+    content.quests["composed_q"] = _hidden_test_quest(
+        name="Composed",
+        min_level=3,
+        requires_class=["warrior"],
+        requires_flag="ready_for_it",
+    )
+    player = _player(content)  # warrior, level 1, no flag
+    assert "Composed" not in _board_render(content, player, tmp_path)
+    player.level = 3
+    assert "Composed" not in _board_render(content, player, tmp_path)
+    player.level = 3
+    assert "Composed" in _board_render(content, player, tmp_path,
+                                        ready_for_it=True)
 
 
 def test_chain_claim_emits_new_slip_pinned_notification(content, tmp_path):
