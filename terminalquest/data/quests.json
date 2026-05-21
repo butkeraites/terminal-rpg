@@ -4862,5 +4862,214 @@
     "requires_mark": "summit_you_left_a_button_at_the_step",
     "reward_chronicle_line": "Once they had left a button at the Summit step, the Penitent at the upper stone could not refuse them. They ended him.",
     "flavor": "Once you left a button at the Summit step. The Penitent knows the gesture. End him. The button stays."
+  },
+  "dh2_after_eron_almost_spoke": {
+    "name": "After Eron Almost Spoke",
+    "target_enemy": "bonesong",
+    "needed": 2,
+    "reward_gold": 500,
+    "cleanse_required": 1,
+    "requires_mark": "holds_eron_almost_spoke",
+    "reward_marks": [
+      "holds_recognized_your_grief"
+    ],
+    "reward_chronicle_line": "Once a child's voice had almost spoken to them at a doorpost, they returned and ended the two bonesongs that had been carrying the unsaid word.",
+    "flavor": "A child's voice almost spoke to you at a doorpost. Two bonesongs swallowed the rest of the word. End them. The word will not come back, but the almost will."
+  },
+  "dh2_doorpost_remembered_callback": {
+    "name": "After a Doorpost Remembered a Name",
+    "target_enemy": "doorshut",
+    "needed": 3,
+    "reward_gold": 450,
+    "cleanse_required": 1,
+    "requires_mark": "holds_doorpost_remembered_a_name",
+    "reward_marks": [
+      "holds_you_added_a_name_to_a_post"
+    ],
+    "flavor": "A doorpost held the warmth of a hand that was not yours. Three doorshuts want the post to forget. End them. The post will keep remembering."
+  },
+  "dh2_street_that_was_a_street": {
+    "name": "After You Walked a Street That Was a Street",
+    "target_enemy": "reedwife",
+    "needed": 1,
+    "reward_gold": 500,
+    "cleanse_required": 2,
+    "requires_mark": "holds_you_walked_a_street_that_was_a_street",
+    "reward_marks": [
+      "holds_doorpost_remembered_a_name"
+    ],
+    "reward_chronicle_line": "They had once walked a lane in the Drowned Holds that was, briefly, a lane again. They returned and ended the reedwife who had washed the lane back into the water.",
+    "flavor": "For a few counts, a lane in the Holds was a lane. A reedwife is washing it back into water. End her. The seeing will stay."
+  },
+  "dh2_bread_bowl_warmed_ii": {
+    "name": "The Bread Bowl Warmed for You Twice",
+    "target_enemy": "forager_boy",
+    "needed": 3,
+    "reward_gold": 400,
+    "cleanse_required": 1,
+    "requires_mark": "holds_bread_bowl_warmed_when_you_passed",
+    "reward_consumables": [
+      "The Last Bread"
+    ],
+    "flavor": "Once the old bread bowl in the kitchen warmed when you passed. Three forager boys are at the bowl now, hands cupped. End them. The bowl will warm a second time."
+  },
+  "dh2_forager_boy_brackmere_clay": {
+    "name": "The Forager Boy With Brackmere Clay on His Hands",
+    "target_enemy": "forager_boy",
+    "needed": 1,
+    "reward_gold": 350,
+    "cleanse_required": 0,
+    "requires_discovery": [
+      "famine_brackmere_child"
+    ],
+    "reward_marks": [
+      "holds_you_carry_a_shard_of_pottery"
+    ],
+    "flavor": "One of the forager boys has Brackmere clay caked under his nails. He scratched the bedtime list off a kitchen wall. End him. The list will be a list."
+  },
+  "dh2_forager_boy_quiet_kill": {
+    "name": "End the Forager Boy in One Round",
+    "target_enemy": "forager_boy",
+    "completion_condition": "killed_in_one_round",
+    "needed": 2,
+    "reward_gold": 500,
+    "cleanse_required": 1,
+    "reward_marks": [
+      "holds_recognized_your_grief"
+    ],
+    "flavor": "Two forager boys. Each ended in one round. The Holds prefer it — the boys did not want a long death. They wanted a quick one and bread."
+  },
+  "dh2_forager_boy_named_at_death": {
+    "name": "Name the Forager Boy as He Falls",
+    "target_enemy": "forager_boy",
+    "completion_condition": "named_them_at_death",
+    "needed": 1,
+    "reward_gold": 450,
+    "cleanse_required": 1,
+    "requires_mark": "holds_eron_almost_spoke",
+    "reward_marks": [
+      "holds_doorpost_remembered_a_name"
+    ],
+    "reward_chronicle_line": "Once they had heard a child's voice almost speak, they returned and named the forager boy as he fell. The Holds carried the name to the doorposts.",
+    "flavor": "A forager boy. Speak his name as the killing blow lands. You do not know his name. You say one. The Holds will accept the one you say."
+  },
+  "dh2_erons_coat_in_water": {
+    "name": "Eron's Coat, in the Water",
+    "target_enemy": "reedwife",
+    "needed": 1,
+    "reward_gold": 600,
+    "cleanse_required": 2,
+    "requires_mark": "holds_eron_almost_spoke",
+    "reward_consumables": [
+      "The Last Bread"
+    ],
+    "reward_chronicle_line": "A reedwife had been washing a child's coat — Eron's, the Bellward's son — in the wash that was no longer a wash. They ended her. The coat was hung to dry in the wind that was no longer a wind.",
+    "flavor": "A reedwife is washing a small coat at the old wash. It is Eron's. The Bellward's son. End her. The coat will hang in a wind that is almost a wind."
+  },
+  "dh2_erons_doorpost": {
+    "name": "Eron's Doorpost",
+    "target_enemy": "doorshut",
+    "needed": 2,
+    "reward_gold": 550,
+    "cleanse_required": 1,
+    "requires_marks": [
+      "holds_eron_almost_spoke",
+      "holds_doorpost_remembered_a_name"
+    ],
+    "reward_marks": [
+      "holds_you_added_a_name_to_a_post"
+    ],
+    "flavor": "The doorpost that warmed at your hand was Eron's family doorpost. Two doorshuts keep it shut against the carving. End them. Carve his name. The post will keep it."
+  },
+  "dh2_eron_almost_spoke_again": {
+    "name": "The Almost-Hearing, a Second Time",
+    "target_enemy": "bonesong",
+    "needed": 4,
+    "reward_gold": 650,
+    "cleanse_required": 2,
+    "requires_marks": [
+      "holds_eron_almost_spoke",
+      "holds_recognized_your_grief"
+    ],
+    "reward_chronicle_line": "The almost-hearing came a second time at the doorpost; they ended four bonesongs that had been pitching against it, and the almost stayed an almost.",
+    "flavor": "You hear Eron's voice almost speak a second time. Four bonesongs are pitching against the almost. End them. The almost will hold."
+  },
+  "dh2_brackmere_carrots_at_the_ends": {
+    "name": "The Carrots at the Ends",
+    "target_enemy": "reedwife",
+    "needed": 2,
+    "reward_gold": 400,
+    "cleanse_required": 1,
+    "requires_discovery": [
+      "famine_brackmere_child"
+    ],
+    "flavor": "Two reedwives at the wash carry the end-pieces of carrots in their apron-pockets. The Brackmere child wrote about them on day 9. End the reedwives. The child's last meal will be uneaten by them at least."
+  },
+  "dh2_brackmere_bedtime_list": {
+    "name": "The Bedtime List, Returned to the Kitchen",
+    "target_enemy": "bonesong",
+    "needed": 3,
+    "reward_gold": 550,
+    "cleanse_required": 1,
+    "requires_discovery": [
+      "famine_brackmere_child"
+    ],
+    "reward_marks": [
+      "holds_bread_bowl_warmed_when_you_passed"
+    ],
+    "flavor": "Three bonesongs hum the bedtime list in their throats — the wrong nights, the wrong meals. End them. The list will go back to the kitchen where the child wrote it."
+  },
+  "dh2_brackmere_mama_was_quiet": {
+    "name": "Mama Was Quiet Now",
+    "target_enemy": "red_beard",
+    "needed": 1,
+    "reward_gold": 700,
+    "cleanse_required": 2,
+    "requires_discovery": [
+      "famine_brackmere_child"
+    ],
+    "reward_chronicle_line": "On day 9, the Brackmere child wrote that Mama was quiet now. They returned to the holds and ended the Red Beard who had refused her the bread.",
+    "flavor": "A Red Beard from the smith's row — the same row Mama walked from — refused her a slice the day she went quiet. End him. The quiet was not his to keep."
+  },
+  "dh2_warrior_door_against_the_water": {
+    "name": "The Warrior's Door Against the Water",
+    "target_enemy": "doorshut",
+    "needed": 4,
+    "reward_gold": 600,
+    "cleanse_required": 1,
+    "requires_class": [
+      "warrior"
+    ],
+    "reward_marks": [
+      "holds_you_walked_a_street_that_was_a_street"
+    ],
+    "flavor": "Four doorshuts have held their doors against the water for a hundred winters. A warrior leans on each one until the door yields back. End them. The lane will be a lane."
+  },
+  "dh2_mage_bread_bowl_pitch": {
+    "name": "The Mage's Pitch at the Bread Bowl",
+    "target_enemy": "bonesong",
+    "needed": 3,
+    "reward_gold": 550,
+    "cleanse_required": 1,
+    "requires_class": [
+      "mage"
+    ],
+    "reward_marks": [
+      "holds_bread_bowl_warmed_when_you_passed"
+    ],
+    "flavor": "Three bonesongs in the kitchen with the warm bowl. A mage pitches each one against the bowl's small heat. They lose. The bowl warms a third count."
+  },
+  "dh2_reborn_forager_carried_your_shard": {
+    "name": "A Forager Boy Who Carried the Previous You's Shard",
+    "target_enemy": "forager_boy",
+    "needed": 1,
+    "reward_gold": 600,
+    "cleanse_required": 1,
+    "requires_flag": "is_reborn",
+    "reward_marks": [
+      "holds_you_carry_a_shard_of_pottery"
+    ],
+    "reward_chronicle_line": "A forager boy in the Drowned Holds carried the brackmere-clay shard a previous one of them had once palmed. The new self returned, ended the boy, and put the shard back in the same pocket.",
+    "flavor": "A forager boy carries the shard of pottery a previous you palmed in the kitchen. End him. The shard goes back to the same pocket."
   }
 }
