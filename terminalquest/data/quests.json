@@ -6348,5 +6348,357 @@
     "requires_class": [
       "warrior"
     ]
+  },
+  "gw2_lamp2_first_name": {
+    "name": "After You Heard the Lampkeeper's First Name",
+    "target_enemy": "wolf",
+    "needed": 2,
+    "reward_gold": 300,
+    "cleanse_required": 0,
+    "requires_mark": "lamp2_told_you_her_first_name",
+    "flavor": "The Lampkeeper told you her first name once. Two wolves of the wood have learned the name. End them. The name stays the Lampkeeper's.",
+    "reward_marks": [
+      "lamp2_told_you_which_lamp_remembers_who"
+    ]
+  },
+  "gw2_lamp2_which_lamp": {
+    "name": "After You Learned Which Lamp Remembers Who",
+    "target_enemy": "bandit",
+    "needed": 3,
+    "reward_gold": 350,
+    "cleanse_required": 0,
+    "requires_mark": "lamp2_told_you_which_lamp_remembers_who",
+    "flavor": "The Lampkeeper showed you which lamp remembers which climber. Three bandits on the road tested the remembering. End them. The lamps know."
+  },
+  "gw2_lampkeeper_recognised": {
+    "name": "After the Lampkeeper Recognised You",
+    "target_enemy": "giant_bat",
+    "needed": 3,
+    "reward_gold": 400,
+    "cleanse_required": 0,
+    "requires_mark": "lampkeeper_recognised_you",
+    "flavor": "The Lampkeeper recognised you on your return. Three carrion bats took the recognition as the day's name. End them."
+  },
+  "gw2_lamp_handed_drawing": {
+    "name": "After the Lampkeeper Handed You Her Drawing",
+    "target_enemy": "goblin",
+    "needed": 4,
+    "reward_gold": 400,
+    "cleanse_required": 1,
+    "requires_mark": "lampkeeper_handed_you_her_drawing",
+    "flavor": "The Lampkeeper handed you a drawing she had made of a climber she'd lost. Four goblins are between you and the place in the drawing. End them. The drawing will arrive.",
+    "reward_chronicle_line": "The Lampkeeper had handed them a drawing of a lost climber; the place in it was reached by ending four goblins between Gravewatch and the spot."
+  },
+  "gw2_lampkeeper_will_not_look": {
+    "name": "After the Lampkeeper Would Not Look Up",
+    "target_enemy": "bandit",
+    "needed": 1,
+    "reward_gold": 250,
+    "cleanse_required": 0,
+    "requires_mark": "lampkeeper_will_not_look_up_for_you",
+    "flavor": "The Lampkeeper did not look up at you once. A bandit on the road noticed her not looking. End him. She will look up next time."
+  },
+  "gw2_hearth2_room": {
+    "name": "After the Hearthkeeper Gave You a Room",
+    "target_enemy": "wolf",
+    "needed": 3,
+    "reward_gold": 300,
+    "cleanse_required": 0,
+    "requires_mark": "hearth2_gave_you_a_room_for_free_one_night",
+    "flavor": "The Hearthkeeper gave you a room for free one night. Three wolves of the wood smelled the warmth. End them. The next free night is yours.",
+    "reward_marks": [
+      "hearth2_kept_a_breakfast_for_you"
+    ]
+  },
+  "gw2_hearth2_breakfast": {
+    "name": "After the Hearthkeeper Kept a Breakfast for You",
+    "target_enemy": "bandit",
+    "needed": 2,
+    "reward_gold": 350,
+    "cleanse_required": 0,
+    "requires_mark": "hearth2_kept_a_breakfast_for_you",
+    "flavor": "A breakfast had been kept for you at the hearth. Two bandits had hoped it was theirs. End them. The breakfast keeps."
+  },
+  "gw2_hearth2_chair_by_fire": {
+    "name": "After the Hearthkeeper Set a Chair by the Fire",
+    "target_enemy": "goblin",
+    "needed": 3,
+    "reward_gold": 350,
+    "cleanse_required": 0,
+    "requires_mark": "hearth2_set_a_chair_by_the_fire_for_you",
+    "flavor": "A chair by the fire was set out for you. Three goblins were of the kind who would push it back. End them. The chair stays where it sits."
+  },
+  "gw2_hearth2_winter_story": {
+    "name": "After You Heard the Winter Story at the Hearth",
+    "target_enemy": "drowned_thresher",
+    "needed": 2,
+    "reward_gold": 500,
+    "cleanse_required": 1,
+    "requires_mark": "hearth2_told_you_about_the_winter_at_gravewatch",
+    "flavor": "The Hearthkeeper told you about the winter at Gravewatch — the year the kettle never quite cooled. Two threshers in the Reach know the story too. End them. The kettle keeps its warmth.",
+    "reward_marks": [
+      "holds_bread_bowl_warmed_when_you_passed"
+    ]
+  },
+  "gw2_hearthkeeper_book_open": {
+    "name": "After the Hearthkeeper Left the Book Open to Your Page",
+    "target_enemy": "library_warden",
+    "needed": 1,
+    "reward_gold": 800,
+    "cleanse_required": 3,
+    "requires_mark": "hearthkeeper_left_the_book_open_to_your_page",
+    "flavor": "The Hearthkeeper left her book open to a page about you. A library-warden wanted the page for the Pall's records. End him. The page stays in the Hearthkeeper's book."
+  },
+  "gw2_cat_brought_mouse": {
+    "name": "After the Hearth-Cat Brought You a Mouse",
+    "target_enemy": "wolf",
+    "needed": 3,
+    "reward_gold": 250,
+    "cleanse_required": 0,
+    "requires_mark": "pet_hearth_cat_brought_you_a_mouse",
+    "flavor": "Gravewatch's hearth-cat brought you a mouse. Three wolves of the wood considered the gesture an offering. End them. The cat will know.",
+    "reward_chronicle_line": "A village cat had brought a mouse to a climber; three wolves at the wood's edge fell for misreading the gesture."
+  },
+  "gw2_cat_curled_at_grief": {
+    "name": "After the Hearth-Cat Curled at Your Grief",
+    "target_enemy": "hollow_procession",
+    "needed": 1,
+    "reward_gold": 600,
+    "cleanse_required": 3,
+    "requires_mark": "pet_hearth_cat_curled_at_a_grief",
+    "flavor": "A village cat curled at the grief you set down. One of the procession in Mourncross noticed the easing. End it.",
+    "reward_marks": [
+      "holds_recognized_your_grief"
+    ]
+  },
+  "gw2_cat_taught_hour_off": {
+    "name": "After the Hearth-Cat Taught You to Take an Hour Off",
+    "target_enemy": "bandit",
+    "needed": 2,
+    "reward_gold": 250,
+    "cleanse_required": 0,
+    "requires_mark": "pet_hearth_cat_taught_you_to_take_an_hour_off",
+    "flavor": "A village cat taught you to take an hour off. Two bandits had not been taught the same lesson. End them. The hour will be yours."
+  },
+  "gw2_insomniac_counted_cat": {
+    "name": "After the Insomniac Counted Your Cat",
+    "target_enemy": "wolf",
+    "needed": 2,
+    "reward_gold": 250,
+    "cleanse_required": 0,
+    "requires_mark": "insomniac_counted_your_cat",
+    "flavor": "The Insomniac of Gravewatch counted a cat as yours. Two wolves had thought the cat was theirs. End them. The count holds."
+  },
+  "gw2_insomniac_not_today": {
+    "name": "After the Insomniac Refused to Count You Today",
+    "target_enemy": "bandit",
+    "needed": 1,
+    "reward_gold": 300,
+    "cleanse_required": 0,
+    "requires_mark": "insomniac_will_not_count_you_today",
+    "flavor": "The Insomniac decided not to count you today. A bandit on the road decided you were therefore not counted at all. End him. The count resumes tomorrow."
+  },
+  "gw2_mage_lamp_lit": {
+    "name": "After a Lamp Lit Without You Saying",
+    "target_enemy": "choirmaster_effigy",
+    "needed": 1,
+    "reward_gold": 700,
+    "cleanse_required": 4,
+    "requires_mark": "mage_a_lamp_lit_without_you_saying",
+    "flavor": "A lamp lit at Gravewatch without you saying. An effigy in the Choir had set the unsaying. End it. The lamp will continue to light.",
+    "requires_class": [
+      "mage"
+    ]
+  },
+  "gw2_warden_lampkeeper_called": {
+    "name": "After the Lampkeeper Called You Warden",
+    "target_enemy": "shadow_warden",
+    "needed": 1,
+    "reward_gold": 2200,
+    "cleanse_required": 5,
+    "requires_mark": "ending_warden_a_lampkeeper_called_you_warden",
+    "flavor": "Across runs, you had been the Warden once. The Lampkeeper still calls you that. End the new Shadow Warden — the Lampkeeper's word will stay the word.",
+    "reward_marks": [
+      "summit_warden_old_step_remembered_you"
+    ],
+    "reward_chronicle_line": "A Lampkeeper had called them Warden across runs; the new Shadow Warden ended for the name, and the Lampkeeper kept using it."
+  },
+  "br_karst_bird_circled": {
+    "name": "After a Bird Circled Three Times at Karst",
+    "target_enemy": "ice_wraith",
+    "needed": 2,
+    "reward_gold": 700,
+    "cleanse_required": 4,
+    "requires_mark": "border_karst_a_bird_circled_three_times",
+    "flavor": "A bird circled three times above the Karst Outpost while you stood there. Two ice-wraiths above the snowline counted the circling. End them. The bird will circle for someone else next time."
+  },
+  "br_karst_chair_facing": {
+    "name": "After a Chair Was Set Facing Yours at Karst",
+    "target_enemy": "ashen_penitent",
+    "needed": 1,
+    "reward_gold": 1200,
+    "cleanse_required": 5,
+    "requires_mark": "border_karst_a_chair_was_set_facing_yours",
+    "flavor": "A chair at Karst had been set facing yours, briefly. A Penitent above the snowline noticed the facing. End him. The chair stays.",
+    "reward_marks": [
+      "the_border_air_changed_when_you_crossed"
+    ]
+  },
+  "br_karst_kettle_warm": {
+    "name": "After the Karst Kettle Was Still Warm",
+    "target_enemy": "mountain_ogre",
+    "needed": 2,
+    "reward_gold": 800,
+    "cleanse_required": 4,
+    "requires_mark": "border_karst_a_kettle_was_still_warm",
+    "flavor": "The kettle at Karst was still warm when you arrived. Two ogres on the bare ridge knew the warmth was meant for you. End them."
+  },
+  "br_karst_emissary_token": {
+    "name": "After You Held an Old Emissary's Token at Karst",
+    "target_enemy": "stone_golem",
+    "needed": 1,
+    "reward_gold": 1500,
+    "cleanse_required": 5,
+    "requires_mark": "border_karst_an_old_emissary_token",
+    "flavor": "An old emissary's token was in your hand at Karst. A stone-golem at the upper step remembered the emissary. End him.",
+    "reward_chronicle_line": "An old emissary's token had passed through their hand at Karst; the stone-golem above the snowline fell to the remembering."
+  },
+  "br_karst_lookout": {
+    "name": "After the Karst Lookout Remembered You",
+    "target_enemy": "ice_wraith",
+    "needed": 3,
+    "reward_gold": 900,
+    "cleanse_required": 4,
+    "requires_mark": "border_karst_lookout_remembered_you",
+    "flavor": "The Karst lookout remembered you. Three ice-wraiths above the snow-line had been the lookout's friends once. End them."
+  },
+  "br_margrave_bell_left": {
+    "name": "After a Bell Rang When You Left the Margrave's Monument",
+    "target_enemy": "margrave_censor",
+    "needed": 1,
+    "reward_gold": 1400,
+    "cleanse_required": 4,
+    "requires_mark": "border_margrave_a_bell_rang_when_you_left",
+    "flavor": "A bell rang when you left the Margrave's Monument. The Margrave Censor rang it. End him. The bell will be a bell again.",
+    "reward_marks": [
+      "border_margrave_a_dead_lord_thanked_you"
+    ]
+  },
+  "br_margrave_writ": {
+    "name": "After You Carried an Old Writ from the Margrave",
+    "target_enemy": "pall_magistrate",
+    "needed": 1,
+    "reward_gold": 900,
+    "cleanse_required": 3,
+    "requires_mark": "border_margrave_an_old_writ_was_in_your_pocket",
+    "flavor": "An old writ from the Margrave was in your pocket. A magistrate in Mourncross wanted to read it. End him. The writ stays sealed."
+  },
+  "br_margrave_stone_softened": {
+    "name": "After the Margrave Stone Softened to Your Kneel",
+    "target_enemy": "margrave_censor",
+    "needed": 1,
+    "reward_gold": 1500,
+    "cleanse_required": 4,
+    "requires_mark": "border_margrave_the_stone_softened_to_your_kneel",
+    "flavor": "The Margrave's stone softened to your kneel. The Censor felt the softening. End him. The stone will keep the kneel.",
+    "reward_chronicle_line": "The Margrave's stone had softened to their kneel; the Censor ended in the soft place, and the kneel stayed."
+  },
+  "br_wynne_post_message": {
+    "name": "After a Message Was Carved in the Wynne Post",
+    "target_enemy": "devoured_captain",
+    "needed": 1,
+    "reward_gold": 1300,
+    "cleanse_required": 4,
+    "requires_mark": "border_wynne_a_message_was_carved_in_the_post",
+    "flavor": "A message for you had been carved in the Wynne Camp post. The Devoured Captain had read it before you. End him.",
+    "reward_marks": [
+      "border_wynne_a_friend_camped_here_once"
+    ]
+  },
+  "br_wynne_song_wind": {
+    "name": "After a Song Carried on the Wynne Wind",
+    "target_enemy": "ice_wraith",
+    "needed": 2,
+    "reward_gold": 700,
+    "cleanse_required": 4,
+    "requires_mark": "border_wynne_a_song_carried_on_the_wind",
+    "flavor": "A song carried on the wind at Wynne. Two ice-wraiths above the snow-line had been the song's singers. End them. The song stays carried."
+  },
+  "br_wynne_arrowhead": {
+    "name": "After an Arrowhead Was in the Wynne Post",
+    "target_enemy": "bandit",
+    "needed": 3,
+    "reward_gold": 400,
+    "cleanse_required": 0,
+    "requires_mark": "border_wynne_an_arrowhead_in_the_post",
+    "flavor": "An arrowhead was set into the Wynne Camp post. Three bandits on the road had been its previous targets. End them."
+  },
+  "br_wynne_fire_circle": {
+    "name": "After the Wynne Fire Circle Had Room",
+    "target_enemy": "devoured_captain",
+    "needed": 1,
+    "reward_gold": 1100,
+    "cleanse_required": 4,
+    "requires_mark": "wynne_camp_fire_circle_had_room",
+    "flavor": "The Wynne Camp fire circle had room for you, briefly. The Devoured Captain remembered the room. End him."
+  },
+  "br_air_changed": {
+    "name": "After the Border Air Changed",
+    "target_enemy": "shrine_keeper",
+    "needed": 1,
+    "reward_gold": 1100,
+    "cleanse_required": 4,
+    "requires_mark": "the_border_air_changed_when_you_crossed",
+    "flavor": "The Border air changed when you crossed it. The Pre-Pall Shrine Keeper felt the change. End him. The Border will keep the change."
+  },
+  "br_signpost_pointed": {
+    "name": "After the Border Signpost Pointed at You",
+    "target_enemy": "censer_shade",
+    "needed": 3,
+    "reward_gold": 800,
+    "cleanse_required": 4,
+    "requires_mark": "the_border_signpost_pointed_at_you",
+    "flavor": "The Border signpost pointed at you. Three censer-shades in the Choir took the pointing as a name. End them. The signpost rests."
+  },
+  "br_signpost_back_home": {
+    "name": "After the Karst Signpost Pointed Back Home",
+    "target_enemy": "wolf",
+    "needed": 4,
+    "reward_gold": 400,
+    "cleanse_required": 0,
+    "requires_mark": "border_karst_signpost_pointed_back_home",
+    "flavor": "The Karst signpost pointed back toward home. Four wolves of the wood knew the direction. End them. The way home stays.",
+    "reward_chronicle_line": "A signpost at Karst had pointed back toward home; four wolves at the wood's edge had been making the way longer."
+  },
+  "br_margrave_seal_softened": {
+    "name": "After the Margrave Monument's Seal Softened in Your Hand",
+    "target_enemy": "shadow_warden",
+    "needed": 1,
+    "reward_gold": 2400,
+    "cleanse_required": 5,
+    "requires_mark": "margrave_monument_seal_softened_in_your_hand",
+    "flavor": "The Margrave's seal softened in your hand. The Shadow Warden at the Summit knew the softening. End him.",
+    "reward_marks": [
+      "summit_warden_old_step_remembered_you"
+    ]
+  },
+  "br_karst_lookout_for_you": {
+    "name": "After Karst Outpost Kept a Lookout for You",
+    "target_enemy": "ashen_penitent",
+    "needed": 2,
+    "reward_gold": 1500,
+    "cleanse_required": 5,
+    "requires_mark": "karst_outpost_kept_a_lookout_for_you",
+    "flavor": "The Karst Outpost kept a lookout for you across runs. Two Penitents above the snowline knew the lookout. End them."
+  },
+  "br_wynne_kettle_warm": {
+    "name": "After the Wynne Kettle Was Still Warm",
+    "target_enemy": "devoured_captain",
+    "needed": 1,
+    "reward_gold": 1400,
+    "cleanse_required": 4,
+    "requires_mark": "wynne_camp_kettle_was_still_warm",
+    "flavor": "The Wynne kettle was still warm. The Devoured Captain remembered drinking from it. End him. The kettle stays warm.",
+    "reward_chronicle_line": "The Wynne kettle had stayed warm for them across runs; the Devoured Captain ended, and the kettle held its heat."
   }
 }
