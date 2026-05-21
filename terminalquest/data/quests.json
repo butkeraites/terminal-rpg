@@ -2495,5 +2495,182 @@
     ],
     "reward_chronicle_line": "Once they had once unmade Mournhold by Reckoning, the Reach's Last Reaper was colder by one count, and they took him in that count.",
     "flavor": "Across runs, the Reckoning marks you. The Reach is colder by one count for you. The Reaper feels the cold. End him."
+  },
+  "bat_wings_for_the_grave_lamp": {
+    "name": "Bat-Wings for the Grave Lamp",
+    "target_trophy": "bat_wing",
+    "needed": 4,
+    "reward_gold": 200,
+    "cleanse_required": 2,
+    "reward_consumables": [
+      "The Last Bread"
+    ],
+    "flavor": "The grave-lamp at Gravewatch needs four bat-wings to burn through the long count. Four. The lamp will burn quieter."
+  },
+  "after_gullet_lost_a_word": {
+    "name": "After You Lost a Word to the Gullet's Air",
+    "target_enemy": "dark_slime",
+    "needed": 2,
+    "reward_gold": 350,
+    "cleanse_required": 2,
+    "requires_mark": "gullet_lost_a_word_to_the_air",
+    "reward_marks": [
+      "gullet_breathed_your_name"
+    ],
+    "flavor": "A word of yours fell into the Gullet's air. Two slimes absorbed it. End them. The word will come back to you."
+  },
+  "after_older_hand_set_aside": {
+    "name": "After the Older Hand Set a Thing Aside for You",
+    "target_enemy": "cave_troll",
+    "needed": 1,
+    "reward_gold": 500,
+    "cleanse_required": 2,
+    "requires_mark": "gullet_older_hand_set_a_thing_aside",
+    "reward_consumables": [
+      "The Last Bread",
+      "The Last Bread"
+    ],
+    "flavor": "An older hand set a thing aside for you in the Gullet. A troll wants the thing for himself. End him. The thing is yours."
+  },
+  "after_older_hand_looked_at_you": {
+    "name": "After the Older Hand Looked at You",
+    "target_enemy": "giant_bat",
+    "needed": 3,
+    "reward_gold": 300,
+    "cleanse_required": 2,
+    "requires_mark": "gullet_older_hand_looked_at_you",
+    "reward_marks": [
+      "gullet_did_not_take_what_was_yours"
+    ],
+    "flavor": "The older hand looked at you once, and three bats took note. End them. The look will be forgotten by everyone except you."
+  },
+  "after_found_a_button_pair": {
+    "name": "After You Found a Button Pair in the Gullet",
+    "target_enemy": "dark_slime",
+    "needed": 1,
+    "reward_gold": 350,
+    "cleanse_required": 2,
+    "requires_mark": "gullet_found_a_button_pair",
+    "reward_chronicle_line": "Once they had found a pair of buttons in the Gullet, they ended the slime that had nearly absorbed them and kept the pair.",
+    "flavor": "A pair of buttons in your pocket from the Gullet. A slime wants them whole. End the slime. The buttons stay paired."
+  },
+  "after_gullet_marked_your_skin": {
+    "name": "After the Gullet Marked Your Skin",
+    "target_enemy": "maw_mother",
+    "needed": 1,
+    "reward_gold": 1100,
+    "cleanse_required": 3,
+    "requires_mark": "gullet_marked_your_skin",
+    "reward_marks": [
+      "gullet_mawmother_braced_for_you"
+    ],
+    "reward_chronicle_line": "Once the Gullet had marked their skin, the Maw-Mother braced when they entered, and they took her in the bracing.",
+    "flavor": "The Gullet's mark is on your skin. The Maw-Mother sees the mark, and braces. End her in the brace. The mark fades after."
+  },
+  "after_kettle_carry_second": {
+    "name": "After You Carried a Second Kettle",
+    "target_enemy": "cave_troll",
+    "needed": 2,
+    "reward_gold": 500,
+    "cleanse_required": 3,
+    "requires_mark": "gullet_you_helped_carry_a_kettle",
+    "reward_marks": [
+      "gullet_older_hand_set_a_thing_aside"
+    ],
+    "flavor": "You carried one kettle once. The Gullet asks for a second, this time past two trolls. End them. The kettle will be the second kettle a climber has carried this winter."
+  },
+  "gullet_companion_kill_troll": {
+    "name": "The Sworn Closes the Troll",
+    "target_enemy": "cave_troll",
+    "completion_condition": "companion_landed_kill",
+    "needed": 1,
+    "reward_gold": 700,
+    "cleanse_required": 2,
+    "flavor": "A cave-troll. Your sworn lands the killing blow. The Gullet respects sworn-kills."
+  },
+  "gullet_fled_then_returned": {
+    "name": "Flee, Then Return",
+    "target_enemy": "dark_slime",
+    "completion_condition": "fled_then_returned",
+    "needed": 1,
+    "reward_gold": 600,
+    "cleanse_required": 2,
+    "flavor": "A slime. Flee the first fight. Return. End it. The Gullet respects climbers who have learned the trick of leaving."
+  },
+  "gullet_killed_during_stun": {
+    "name": "End Them While They Are Stunned",
+    "target_enemy": "giant_bat",
+    "completion_condition": "killed_during_stun",
+    "needed": 2,
+    "reward_gold": 400,
+    "cleanse_required": 2,
+    "flavor": "Two bats. The killing blow lands while each is stunned. The kingdom's old hunters did it this way for cleaner pelts."
+  },
+  "gullet_no_potions_in_zone": {
+    "name": "No Potions in the Gullet, Trolls Edition",
+    "target_enemy": "cave_troll",
+    "completion_condition": "no_potions_in_zone",
+    "needed": 1,
+    "reward_gold": 800,
+    "cleanse_required": 3,
+    "flavor": "A troll. No potion crossed your lips while in the Gullet — harder this time, because the troll bites deep."
+  },
+  "rogues_silent_slimes": {
+    "name": "The Rogue's Silent Slimes",
+    "target_enemy": "dark_slime",
+    "needed": 5,
+    "reward_gold": 500,
+    "cleanse_required": 2,
+    "requires_class": [
+      "rogue"
+    ],
+    "reward_marks": [
+      "gullet_did_not_take_what_was_yours"
+    ],
+    "flavor": "Five slimes, none of them aware. Only a rogue moves through the Gullet that quietly."
+  },
+  "rangers_trail_finder": {
+    "name": "The Ranger's Trail Through the Gullet",
+    "target_enemy": "cave_troll",
+    "needed": 2,
+    "reward_gold": 600,
+    "cleanse_required": 2,
+    "requires_class": [
+      "ranger"
+    ],
+    "reward_consumables": [
+      "The Last Bread"
+    ],
+    "flavor": "Two trolls. The ranger finds the trail that lets her take both without doubling back. The Gullet's old guides did it this way."
+  },
+  "hidden_older_hand_witnessed": {
+    "name": "The Older Hand Witnessed Your Step",
+    "target_enemy": "giant_bat",
+    "needed": 2,
+    "reward_gold": 250,
+    "cleanse_required": 0,
+    "hidden": true,
+    "trigger_action": {
+      "type": "zone_visited",
+      "params": {
+        "zone_id": "cave"
+      }
+    },
+    "reward_marks": [
+      "gullet_older_hand_looked_at_you"
+    ],
+    "flavor": "The older hand in the Gullet sees you step. Two bats notice the older hand noticing. End them. The hand will see again."
+  },
+  "after_atrel_peace_maw_quieter": {
+    "name": "After Atrél's Peace, the Maw Is Quieter",
+    "target_enemy": "maw_mother",
+    "needed": 1,
+    "reward_gold": 1300,
+    "cleanse_required": 3,
+    "requires_ending": [
+      "atrel_peace"
+    ],
+    "reward_chronicle_line": "Once they had made Atrél's Peace, the Maw-Mother was quieter by one count when she fell, and they could hear themselves think.",
+    "flavor": "Across runs, Atrél's Peace marks you. The Maw-Mother is quieter by one count for you. End her. The quiet remains."
   }
 }
