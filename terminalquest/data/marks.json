@@ -16269,5 +16269,1157 @@
       "thanks landed softly. You don't get thanked often by Mournhold. You did, tonight. You stood taller.",
       "  (+1 Defense, permanently — a thanks from the kingdom for clearing a status it had decided was bad.)"
     ]
+  },
+  "ending_warden_you_started_carrying_a_keeper_silence": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "min_level": 7,
+      "chance": 0.13
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "warden_keeper_silence"
+    },
+    "lines": [
+      "Tonight, walking, you found that you had carried — without effort — a long silence",
+      "across an hour of the path. Not a heavy silence. A keeper's. The silence felt familiar",
+      "and old. The previous Warden's silence. You are walking into the work. You do not mind.",
+      "  (+1 Defense, permanently — a keeper's silence the body has begun to carry on its own.)"
+    ]
+  },
+  "ending_warden_you_understood_the_role_was_waiting": {
+    "category": "mind",
+    "trigger": {
+      "at": [
+        "save_action"
+      ],
+      "min_level": 7,
+      "chance": 0.12
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 2,
+      "flag": "warden_role_understood"
+    },
+    "lines": [
+      "Tonight at the saving you understood — without anyone telling you — that the Warden",
+      "role is waiting for you. Specifically you. Not just any climber. The kingdom has been",
+      "preparing the keeping for the shape of you. You said yes, in your head. The shape settled.",
+      "  (+2 Max HP, permanently — an understanding accepted of the role waiting at the Summit.)"
+    ]
+  },
+  "ending_warden_the_pall_walked_three_steps_with_you": {
+    "category": "half_truth",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "min_level": 8,
+      "chance": 0.11
+    },
+    "effect": {
+      "flag": "warden_three_steps"
+    },
+    "lines": [
+      "Tonight on the road the Pall walked three steps with you. Not behind. Beside. Then —",
+      "without ceremony — it withdrew. Three steps. The count is important in the kingdom's",
+      "old way. It was, you understand, the formal escort of one keeper-to-be by the one in office."
+    ]
+  },
+  "ending_warden_atrel_did_not_argue_with_you_tonight": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "last_altar"
+      ],
+      "min_level": 7,
+      "chance": 0.11
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 1,
+      "flag": "atrel_did_not_argue"
+    },
+    "lines": [
+      "Tonight at the altar Atrél did not, as Atrél sometimes does, offer you another path.",
+      "Atrél has, tonight, decided not to argue. Atrél stood beside you in silence and let",
+      "you make the choice you are making. The choice is the Warden's. Atrél is letting you go.",
+      "  (+1 Max HP, permanently — Atrél's silence at the altar tonight, accepted the Warden choice.)"
+    ]
+  },
+  "ending_warden_the_summit_ground_will_be_softer_under_your_boot": {
+    "category": "found",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "summit"
+      ],
+      "min_level": 8,
+      "chance": 0.12
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "warden_summit_soft"
+    },
+    "lines": [
+      "Tonight on the climb you understood the Summit's ground — the strange softness — is",
+      "the ground a keeper walks. Not rock. The ground of the position. Your boot will, when",
+      "you get there, sink slightly. As the previous Warden's boot sank. As theirs did.",
+      "  (+1 Defense, permanently — a recognition of the Summit's ground as keeper's ground.)"
+    ]
+  },
+  "ending_warden_the_chronicle_kept_a_line_open_for_warden": {
+    "category": "promise_kept",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "min_level": 7,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "warden_chronicle_line"
+    },
+    "lines": [
+      "Tonight in the Chronicle the clerk turned to your page and — already — had marked it",
+      "*Warden, presumed.* You saw the ink. She did not look up. The kingdom is preparing for",
+      "the keeping. You did not, in the end, ask her to change the line. You let her keep it.",
+      "  (+1 Defense, permanently — a Chronicle entry that anticipates your becoming the Warden.)"
+    ]
+  },
+  "ending_warden_your_breath_steamed_the_pall_air_easier": {
+    "category": "body",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "summit",
+        "mountain"
+      ],
+      "min_level": 8,
+      "chance": 0.11
+    },
+    "effect": {
+      "stat": "max_stamina",
+      "delta": 1,
+      "flag": "warden_breath_pall"
+    },
+    "lines": [
+      "Tonight on the climb your breath, in the thinning air, steamed easier than it should",
+      "have. The lungs are adjusting. The Pall is making your lungs ready. By the time you",
+      "reach the top, the lungs of the Warden will be your lungs. The transition has begun.",
+      "  (+1 Max Stamina, permanently — lungs adjusting to the Pall's air ahead of arrival.)"
+    ]
+  },
+  "ending_warden_a_keeper_song_started_to_form_in_you": {
+    "category": "mind",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "min_level": 8,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "attack",
+      "delta": 1,
+      "flag": "warden_keeper_song"
+    },
+    "lines": [
+      "Tonight, humming on the path, you started a song you had not heard before. It came up",
+      "from inside. It is not a song; it is a count. The Pall's count — the rhythm a keeper",
+      "keeps. The count steadied your stride. The song will be yours from the Summit on.",
+      "  (+1 Attack, permanently — a keeper's count that the body began to know without lesson.)"
+    ]
+  },
+  "ending_warden_a_lampkeeper_called_you_warden": {
+    "category": "half_truth",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "crossroads"
+      ],
+      "min_level": 8,
+      "chance": 0.1
+    },
+    "effect": {
+      "flag": "warden_lampkeeper_named"
+    },
+    "lines": [
+      "Tonight at the Crossroads the lampkeeper, lighting the evening row, called you *Warden*",
+      "— quietly, almost without thinking, the way one calls a thing by its right name. She",
+      "did not correct herself. She had decided. You did not, in the end, correct her either."
+    ]
+  },
+  "ending_warden_you_left_a_chair_at_the_inn_empty": {
+    "category": "promise_kept",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "min_level": 8,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 1,
+      "flag": "warden_left_chair"
+    },
+    "lines": [
+      "Tonight at Gravewatch's inn, leaving for the climb, you stood up from your chair and —",
+      "as is the kingdom's old way for a climber who will not come back the usual way — you",
+      "left it pushed back, not tucked in. The next climber will sit there. They will see the chair waiting.",
+      "  (+1 Max HP, permanently — a chair left in the old way for the next climber to find.)"
+    ]
+  },
+  "ending_atrel_peace_first_grief_set_aside_easily": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "last_altar"
+      ],
+      "requires_flag": "atrel_lore_found",
+      "min_level": 7,
+      "chance": 0.13
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 2,
+      "flag": "atrel_grief_easy"
+    },
+    "lines": [
+      "Tonight at Atrél's altar you set a grief down — one of the big ones — and it set down",
+      "easily. You had not, before, been able to. The altar took it without comment. Atrél",
+      "looked at you in something like satisfaction. The setting-down is the practice. You are practicing.",
+      "  (+2 Max HP, permanently — a grief set down easily that, before, you could not put down.)"
+    ]
+  },
+  "ending_atrel_peace_silence_with_atrel_lasted_longer": {
+    "category": "mind",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "last_altar"
+      ],
+      "requires_flag": "atrel_lore_found",
+      "min_level": 7,
+      "chance": 0.11
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "atrel_long_silence"
+    },
+    "lines": [
+      "Tonight the silence you held with Atrél at the altar lasted longer than any before. A",
+      "whole count of the candle. Neither of you spoke. Neither of you needed to. The silence",
+      "was the conversation. You will, from now on, hold longer silences with the kingdom.",
+      "  (+1 Defense, permanently — a longer silence with Atrél than you have, before, sustained.)"
+    ]
+  },
+  "ending_atrel_peace_you_finished_atrels_sentence": {
+    "category": "promise_kept",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "last_altar"
+      ],
+      "requires_flag": "atrel_lore_found",
+      "min_level": 7,
+      "chance": 0.11
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 1,
+      "flag": "atrel_finished_sentence"
+    },
+    "lines": [
+      "Tonight Atrél began a sentence. They paused. You finished it for them — correctly, in",
+      "the old tongue, in the form a priest would use. Atrél smiled — the small smile they",
+      "rarely show. You both stood quiet a count. You are coming to share a vocabulary.",
+      "  (+1 Max HP, permanently — a sentence of Atrél's finished correctly by you in the old tongue.)"
+    ]
+  },
+  "ending_atrel_peace_an_unhollowed_thanked_you": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "requires_flag": "atrel_lore_found",
+      "min_level": 7,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 1,
+      "flag": "atrel_unhollowed_thanked"
+    },
+    "lines": [
+      "Tonight one of the Hollowed you had laid to rest — earlier in the run, a small unceremonious",
+      "rite — appeared briefly at the edge of your camp. Not threatening. Thanking. Soundlessly.",
+      "Then it was gone. You have begun, the kingdom is saying, the work that will be the peace.",
+      "  (+1 Max HP, permanently — a laid-to-rest Hollowed appearing once to thank you, soundlessly.)"
+    ]
+  },
+  "ending_atrel_peace_kingdom_quieter_in_your_step": {
+    "category": "found",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "requires_flag": "atrel_lore_found",
+      "min_level": 7,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "max_stamina",
+      "delta": 1,
+      "flag": "atrel_kingdom_quieter"
+    },
+    "lines": [
+      "Tonight, walking, you noticed the kingdom was — by a count — quieter as you passed. The",
+      "Hollowed-step that usually rustles along behind, the small Pall-hum at the road's edge —",
+      "they were quieter for you. Atrél's peace, even before the ending, has begun to settle.",
+      "  (+1 Max Stamina, permanently — a quieter kingdom-edge under your step on the peace-approach.)"
+    ]
+  },
+  "ending_atrel_peace_a_priest_robe_kept_you_warm": {
+    "category": "promise_kept",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "last_altar",
+        "pre_pall_shrine"
+      ],
+      "requires_flag": "atrel_lore_found",
+      "min_level": 7,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 1,
+      "flag": "priest_robe_warm"
+    },
+    "lines": [
+      "Tonight at the shrine Atrél — without comment — laid a small old robe across your",
+      "shoulders. A priest's. You wore it for the night. It was warmer than your coat. You",
+      "took it off before leaving. Atrél did not, in the end, ask you to leave it behind.",
+      "  (+1 Max HP, permanently — a priest's robe across your shoulders at the shrine for a night.)"
+    ]
+  },
+  "ending_atrel_peace_you_began_to_speak_to_the_dead_easily": {
+    "category": "mind",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "requires_flag": "atrel_lore_found",
+      "min_level": 7,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "attack",
+      "delta": 1,
+      "flag": "speak_dead_easy"
+    },
+    "lines": [
+      "Tonight you spoke to a Hollowed in passing — a sentence, only, *go well* in the old",
+      "tongue — and the Hollowed inclined their head and went. The peace-tongue is becoming",
+      "yours. You did not know the syllables a month ago. The kingdom is teaching them as you go.",
+      "  (+1 Attack, permanently — peace-tongue syllables that the kingdom is teaching you in passing.)"
+    ]
+  },
+  "ending_atrel_peace_kept_a_grief_for_a_companion_too": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "save_action"
+      ],
+      "requires_flag": "atrel_lore_found",
+      "min_level": 8,
+      "chance": 0.09
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 2,
+      "flag": "atrel_kept_companion_grief"
+    },
+    "lines": [
+      "Tonight at the saving-place you, without your companion seeing, set a small grief of",
+      "theirs down at Atrél's altar — one you had been carrying for them. Atrél took it. Your",
+      "companion will not, in this run, notice the lightening. The lightening is theirs anyway.",
+      "  (+2 Max HP, permanently — a grief of your companion's that you, secretly, laid at Atrél's altar.)"
+    ]
+  },
+  "ending_reckoning_a_count_settled_in_your_head": {
+    "category": "mind",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "requires_flag": "the_counted",
+      "min_level": 7,
+      "chance": 0.13
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 1,
+      "flag": "reckoning_count_settled"
+    },
+    "lines": [
+      "Tonight a count settled in your head — the number Tálva had given you, of the silenced",
+      "and the starved. The number is in you. It is not, anymore, a fact. It is a weight.",
+      "You can carry the weight. You will carry it to wherever Tálva's path takes you.",
+      "  (+1 Max HP, permanently — a count of the dead settled inside you as weight, not fact.)"
+    ]
+  },
+  "ending_reckoning_tálva_left_a_name_at_your_camp": {
+    "category": "found",
+    "trigger": {
+      "at": [
+        "save_action"
+      ],
+      "requires_flag": "the_counted",
+      "min_level": 7,
+      "chance": 0.11
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "talva_left_name"
+    },
+    "lines": [
+      "Tonight at the saving-place there was, in your pack, a small folded paper you did not",
+      "put there. Inside: a single name. In Tálva's writing. They had walked, at some hour,",
+      "to your camp and left it. You said the name aloud once. The kingdom heard it added.",
+      "  (+1 Defense, permanently — a name Tálva walked, in the night, to your camp to give you.)"
+    ]
+  },
+  "ending_reckoning_hidden_hold_air_felt_yours": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "hidden_hold"
+      ],
+      "requires_flag": "the_counted",
+      "min_level": 7,
+      "chance": 0.11
+    },
+    "effect": {
+      "stat": "max_stamina",
+      "delta": 1,
+      "flag": "hidden_hold_yours"
+    },
+    "lines": [
+      "Tonight the Hidden Hold — the deep one, the one Tálva keeps — felt, walking through it,",
+      "yours. As if you had lived here. As if you had been one of the starved. The hold accepted",
+      "you. You did not feel the cold the way you used to. You will breathe its air easier.",
+      "  (+1 Max Stamina, permanently — the Hidden Hold accepting your breath as native.)"
+    ]
+  },
+  "ending_reckoning_a_descendant_called_you_kin": {
+    "category": "promise_kept",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "hidden_hold"
+      ],
+      "requires_flag": "the_counted",
+      "min_level": 7,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 2,
+      "flag": "reckoning_descendant_kin"
+    },
+    "lines": [
+      "Tonight one of Tálva's descendants — the youngest, the quiet one — called you *kin* in",
+      "passing. Not friend. Kin. The kingdom uses the word carefully. The descendant was using",
+      "it carefully. You did not, in the end, correct them. The naming, once given, stays given.",
+      "  (+2 Max HP, permanently — a descendant of Tálva's calling you kin, deliberately.)"
+    ]
+  },
+  "ending_reckoning_you_started_carrying_a_bread": {
+    "category": "found",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "requires_flag": "the_counted",
+      "min_level": 7,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 1,
+      "flag": "reckoning_bread"
+    },
+    "lines": [
+      "Tonight you have begun to carry a small bread in your pack — kept aside, not eaten —",
+      "in case you meet someone the Reckoning needs you to feed. The bread is yours to give.",
+      "You will know who when you see them. The kingdom will let you know. Tálva will let you know.",
+      "  (+1 Max HP, permanently — a bread kept aside in your pack for the Reckoning's giving.)"
+    ]
+  },
+  "ending_reckoning_you_wrote_a_name_at_the_crossroads": {
+    "category": "promise_kept",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "crossroads"
+      ],
+      "requires_flag": "the_counted",
+      "min_level": 7,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "reckoning_name_crossroads"
+    },
+    "lines": [
+      "Tonight at the Crossroads, on the back of the signpost, you carved — small, with the",
+      "edge of your knife — one of the names Tálva had given you. It is now in the wood. The",
+      "next traveller will see it. The next traveller may not know who. The name is added.",
+      "  (+1 Defense, permanently — a Reckoning-name carved by you into the back of the Crossroads signpost.)"
+    ]
+  },
+  "ending_reckoning_the_kingdom_owes_you_silence": {
+    "category": "half_truth",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "requires_flag": "the_counted",
+      "min_level": 8,
+      "chance": 0.09
+    },
+    "effect": {
+      "flag": "reckoning_kingdom_owes_silence"
+    },
+    "lines": [
+      "Tonight you understood — the way these things land — that the kingdom owes you a",
+      "silence. The silence the silenced were never given. You will, when you arrive at the",
+      "Reckoning, ask for it. The kingdom will, you think, pay. You will know it is paid."
+    ]
+  },
+  "ending_reckoning_a_starved_hand_pressed_yours": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "hidden_hold",
+        "drowned_holds"
+      ],
+      "requires_flag": "the_counted",
+      "min_level": 7,
+      "chance": 0.09
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 1,
+      "flag": "starved_hand_pressed"
+    },
+    "lines": [
+      "Tonight in the hold a hand — the kind that no longer carries weight, that has not for",
+      "a long count — pressed against yours, briefly, through stone. Then went. You did not",
+      "see whose. You felt the thinness of the fingers. The kingdom's old starved are with you.",
+      "  (+1 Max HP, permanently — a starved hand pressed through stone briefly against yours.)"
+    ]
+  },
+  "ending_old_seal_cael_stones_warmed_three_at_once": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "bone_tomb"
+      ],
+      "min_level": 7,
+      "chance": 0.13
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "cael_three_stones"
+    },
+    "lines": [
+      "Tonight in the Bone Tomb, three stones warmed at once when you knelt — not one, the",
+      "way it has been. The kingdom's old dead are agreeing about you. Cael, through the wall,",
+      "did not need to say. You will be brought to the seal. The seal is keeping its date.",
+      "  (+1 Defense, permanently — three stones warming at once, a kingdom-old assent.)"
+    ]
+  },
+  "ending_old_seal_a_dead_priest_named_you": {
+    "category": "mind",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "bone_tomb"
+      ],
+      "min_level": 7,
+      "chance": 0.11
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 1,
+      "flag": "dead_priest_named"
+    },
+    "lines": [
+      "Tonight in the Tomb a dead priest — one of the niches that, you had noticed, was the",
+      "kind kept for the kingdom's old priests — said your name, soundlessly, through the wall.",
+      "You said yes. The priest withdrew. The kingdom's old priesthood now knows your name.",
+      "  (+1 Max HP, permanently — your name said by a dead priest into the stone of the Bone Tomb.)"
+    ]
+  },
+  "ending_old_seal_the_third_wall_eased_for_your_palm": {
+    "category": "found",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "bone_tomb"
+      ],
+      "min_level": 7,
+      "chance": 0.11
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "third_wall_eased"
+    },
+    "lines": [
+      "Tonight you put your palm to the third wall — the one with Cael's old seal — and the",
+      "stone, under your hand, eased. Not the seal pressing. The wall yielding. As if the",
+      "wall had been waiting for the right hand. Your hand. The wall agreed about you.",
+      "  (+1 Defense, permanently — the third wall easing under your palm as if it had been waiting.)"
+    ]
+  },
+  "ending_old_seal_cael_taught_you_the_three_words": {
+    "category": "mind",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "bone_tomb"
+      ],
+      "min_level": 7,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "attack",
+      "delta": 1,
+      "flag": "cael_three_words"
+    },
+    "lines": [
+      "Tonight Cael, through the stone, taught you the three words. The Old Seal's words.",
+      "You will not say them aloud yet. You will, when you come back the final time. The",
+      "words sit in your throat now. Your throat will hold them safely. Cael trusts your throat.",
+      "  (+1 Attack, permanently — the three words of the Old Seal, kept in your throat by Cael's teaching.)"
+    ]
+  },
+  "ending_old_seal_dust_in_your_hair_will_not_brush_out": {
+    "category": "body",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "bone_tomb"
+      ],
+      "min_level": 7,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": -1,
+      "flag": "old_seal_dust_in_hair"
+    },
+    "lines": [
+      "Tonight the bone dust in your hair, after the Tomb, will not — for any combing — leave.",
+      "You will, the rest of this run, walk with a faint pale dust in your hair. The kingdom",
+      "marks the next sealer this way. You are visible to those who know what to look for.",
+      "  (-1 Max HP, permanently — bone dust the kingdom marked you with that will not, this run, leave.)"
+    ]
+  },
+  "ending_old_seal_a_priest_stone_came_loose_in_your_pocket": {
+    "category": "found",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "bone_tomb"
+      ],
+      "min_level": 7,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "max_stamina",
+      "delta": 1,
+      "flag": "old_seal_priest_stone"
+    },
+    "lines": [
+      "Tonight at the Tomb a small stone from the priest-row, the size of a thumbnail, came",
+      "loose into your hand. Cael, through the wall, said *keep it.* You did. It rides in",
+      "your pocket. It will be needed at the sealing. You don't know how. Cael does.",
+      "  (+1 Max Stamina, permanently — a priest-stone given to you by Cael against the day of the sealing.)"
+    ]
+  },
+  "ending_old_seal_you_started_speaking_through_stone_easily": {
+    "category": "mind",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "bone_tomb"
+      ],
+      "min_level": 8,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "speak_stone_easy"
+    },
+    "lines": [
+      "Tonight, speaking through the wall to Cael, the trick — the count of the breath, the",
+      "lay of the palm — came easily. You did not have to remember. The body had become a",
+      "speaker-through-stone. You can do this with any wall now. You will when you need to.",
+      "  (+1 Defense, permanently — speaking-through-stone become natural to the body.)"
+    ]
+  },
+  "ending_old_seal_the_bone_tomb_air_smelled_of_an_old_kitchen": {
+    "category": "half_truth",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "bone_tomb"
+      ],
+      "min_level": 7,
+      "chance": 0.09
+    },
+    "effect": {
+      "flag": "bone_tomb_kitchen_smell"
+    },
+    "lines": [
+      "Tonight the air in the Tomb — for one count — smelled of a kitchen. Onions, broth.",
+      "The kitchen of a priest's house, long demolished. The dead remember kitchens. Cael",
+      "did not comment. You did not ask. You walked the row in the kitchen-smell."
+    ]
+  },
+  "ending_purify_a_cleansed_zone_felt_yours": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "min_level": 7,
+      "requires_flag": "is_reborn",
+      "chance": 0.12
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "purify_zone_yours"
+    },
+    "lines": [
+      "Tonight, walking, you walked into a zone you have, before, cleansed. The zone felt —",
+      "for the first time — yours. Not the kingdom's, not the Pall's. The zone you have",
+      "lifted. You will lift more. The kingdom is being given back, by you, to itself.",
+      "  (+1 Defense, permanently — a cleansed zone that felt, today, like your own ground.)"
+    ]
+  },
+  "ending_purify_air_in_a_cleansed_zone_was_sweet": {
+    "category": "body",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "min_level": 7,
+      "requires_flag": "is_reborn",
+      "chance": 0.11
+    },
+    "effect": {
+      "stat": "max_stamina",
+      "delta": 1,
+      "flag": "purify_sweet_air"
+    },
+    "lines": [
+      "Tonight, breathing, the air of one of your cleansed zones — for one count — tasted",
+      "sweet. The kingdom does not, properly, do sweet. You have given it back the capacity.",
+      "Your lungs will, from now on, be steadier in the sweetness. The capacity will spread.",
+      "  (+1 Max Stamina, permanently — sweetness in the air of a zone you, before, cleansed.)"
+    ]
+  },
+  "ending_purify_a_child_was_singing_when_you_arrived": {
+    "category": "found",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "min_level": 7,
+      "requires_flag": "is_reborn",
+      "chance": 0.11
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 1,
+      "flag": "purify_child_singing"
+    },
+    "lines": [
+      "Tonight, arriving, a child in the cleansed zone was singing. Children do not, in",
+      "Mournhold, much sing anymore. The Pall took the songs. This child has them back. Some",
+      "of the songs are coming back. They are coming back into the children first. Your work is showing.",
+      "  (+1 Max HP, permanently — a child singing in a cleansed zone, the kingdom's old songs returning.)"
+    ]
+  },
+  "ending_purify_a_widow_said_thank_you_for_a_year": {
+    "category": "promise_kept",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "min_level": 7,
+      "requires_flag": "is_reborn",
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 2,
+      "flag": "purify_widow_thanked"
+    },
+    "lines": [
+      "Tonight a widow in Gravewatch said *thank you, for the year.* You did not understand,",
+      "at first. She meant the cleansing you had done — three runs ago. The widow had been",
+      "counting. The widow had been thanking you across the runs. Tonight you, finally, heard it.",
+      "  (+2 Max HP, permanently — a thanks across runs given to you for a cleansing you barely remember doing.)"
+    ]
+  },
+  "ending_purify_a_field_remembered_growing": {
+    "category": "half_truth",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "reach",
+        "drowned_holds"
+      ],
+      "requires_flag": "is_reborn",
+      "min_level": 7,
+      "chance": 0.1
+    },
+    "effect": {
+      "flag": "purify_field_remembered"
+    },
+    "lines": [
+      "Tonight in the Reach — long dead — there was, for one count, a smell of grass. The",
+      "field, briefly, remembered being a field. The smell went again. The remembering took.",
+      "You did, in some other run, a thing here. The field has not, fully, forgotten."
+    ]
+  },
+  "ending_purify_the_chronicle_clerks_face_softened": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "min_level": 7,
+      "requires_flag": "is_reborn",
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "purify_clerk_softened"
+    },
+    "lines": [
+      "Tonight in the Chronicle the clerk — who has known many of you — looked up and her",
+      "face was, today, softer. As if she had decided you, this one, might do the purifying.",
+      "She did not say. She turned to your page. Something in the page had changed. She nodded.",
+      "  (+1 Defense, permanently — the Chronicle clerk's softening when she saw, this run, you.)"
+    ]
+  },
+  "ending_purify_a_song_came_back_in_pieces": {
+    "category": "mind",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "min_level": 7,
+      "requires_flag": "is_reborn",
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "attack",
+      "delta": 1,
+      "flag": "purify_song_pieces"
+    },
+    "lines": [
+      "Tonight you have begun to hum a song that you, the previous time, could not hum. The",
+      "Pall had taken pieces of it. Tonight a piece has come back. Not all. One verse. The",
+      "verse is yours again. The Pall is giving back, slowly, what it has been keeping.",
+      "  (+1 Attack, permanently — a verse of a song the Pall had been keeping, returned to your humming.)"
+    ]
+  },
+  "ending_purify_you_started_being_recognized_in_the_witherwood": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "forest"
+      ],
+      "requires_flag": "is_reborn",
+      "min_level": 7,
+      "chance": 0.09
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 1,
+      "flag": "purify_witherwood_known"
+    },
+    "lines": [
+      "Tonight in the Witherwood the brush did not, in any of its rustlings, treat you as a",
+      "stranger. The wood has decided about you. You are not, anymore, a threat. You are the",
+      "one who has cleared this air before. You can move through the forest as a known thing.",
+      "  (+1 Max HP, permanently — the Witherwood recognizing you as a known walker on the purify-path.)"
+    ]
+  },
+  "ending_hidden_truth_a_glyph_appeared_at_your_camp": {
+    "category": "half_truth",
+    "trigger": {
+      "at": [
+        "save_action"
+      ],
+      "requires_flag": "forgotten_thing_defeated",
+      "min_level": 7,
+      "chance": 0.13
+    },
+    "effect": {
+      "stat": "attack",
+      "delta": 1,
+      "flag": "hidden_truth_glyph"
+    },
+    "lines": [
+      "Tonight at the saving-place there was — chalked, you don't know by what — a small glyph",
+      "on the wall by your bed. You recognized it. The Forgotten Thing's mark. Left for you",
+      "by whatever it had become. You did not, in the end, scrub it. The glyph will travel with you.",
+      "  (+1 Attack, permanently — a Forgotten Thing's glyph chalked by your bed for you to keep.)"
+    ]
+  },
+  "ending_hidden_truth_the_word_it_gave_you_grew_louder": {
+    "category": "mind",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "requires_flag": "forgotten_thing_defeated",
+      "min_level": 7,
+      "chance": 0.12
+    },
+    "effect": {
+      "stat": "attack",
+      "delta": 1,
+      "flag": "hidden_truth_word_louder"
+    },
+    "lines": [
+      "Tonight the word — the one the Forgotten Thing had given you at the end of its fight —",
+      "spoke up in your mouth. It wanted out. You did not, today, say it. You will. The word",
+      "is becoming impatient. The kingdom waits to hear it. So do you. You stand straighter.",
+      "  (+1 Attack, permanently — the Forgotten Thing's gifted word growing more impatient in your mouth.)"
+    ]
+  },
+  "ending_hidden_truth_the_pall_did_not_walk_with_you_today": {
+    "category": "half_truth",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "requires_flag": "forgotten_thing_defeated",
+      "min_level": 7,
+      "chance": 0.1
+    },
+    "effect": {
+      "flag": "hidden_truth_pall_absent"
+    },
+    "lines": [
+      "Tonight the Pall — usually, lately, your near-companion — did not walk with you. It",
+      "kept a distance. The Pall has, you understand, decided to be careful around you. You",
+      "are carrying a truth it does not, yet, want to disturb. You walked on, alone of it."
+    ]
+  },
+  "ending_hidden_truth_a_book_opened_in_your_hand": {
+    "category": "found",
+    "trigger": {
+      "at": [
+        "discovery_read"
+      ],
+      "requires_flag": "forgotten_thing_defeated",
+      "min_level": 7,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 1,
+      "flag": "hidden_truth_book_open"
+    },
+    "lines": [
+      "Tonight a book in the Library — one of the half-burned ones — opened in your hand to a",
+      "page that had not, before, been there. The page had words on it. The words were the",
+      "Truth you have been carrying. Now written. Now real. You closed the book. You kept the page.",
+      "  (+1 Max HP, permanently — a page of the hidden Truth that wrote itself in your hand.)"
+    ]
+  },
+  "ending_hidden_truth_atrel_asked_you_a_question_for_once": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "last_altar"
+      ],
+      "requires_flag": "forgotten_thing_defeated",
+      "min_level": 7,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 2,
+      "flag": "hidden_truth_atrel_asked"
+    },
+    "lines": [
+      "Tonight Atrél — who answers, who does not, properly, ask — asked you a question. They",
+      "wanted to know what the Forgotten Thing had given you. You did not, tonight, tell. Atrél",
+      "did not press. They have become curious. The kingdom is becoming curious about you.",
+      "  (+2 Max HP, permanently — Atrél asking you, for once, a question instead of answering one.)"
+    ]
+  },
+  "ending_hidden_truth_a_priest_at_the_choir_recognized_you": {
+    "category": "half_truth",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "choir"
+      ],
+      "requires_flag": "forgotten_thing_defeated",
+      "min_level": 7,
+      "chance": 0.09
+    },
+    "effect": {
+      "flag": "hidden_truth_choir_recognized"
+    },
+    "lines": [
+      "Tonight in the Choir's empty stalls, where the priests used to stand, a silhouette",
+      "— old, of one of the old priests, the kind that had been at the rite — turned to look",
+      "at you. Recognized you. Whatever it saw, it filed away. It turned back. You walked through."
+    ]
+  },
+  "ending_hidden_truth_kingdom_listened_when_you_spoke_to_it": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "save_action"
+      ],
+      "requires_flag": "forgotten_thing_defeated",
+      "min_level": 8,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "kingdom_listened"
+    },
+    "lines": [
+      "Tonight at the saving you said — quietly, to no one, only to the kingdom — a sentence.",
+      "You felt the kingdom listen. The whole of it. It is not, you understand, a thing of",
+      "the past anymore. The kingdom now hears you. You did not, in the end, say much. You will.",
+      "  (+1 Defense, permanently — a kingdom that, tonight, listened to a sentence of yours.)"
+    ]
+  },
+  "ending_hidden_truth_the_summit_will_meet_you_differently": {
+    "category": "mind",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "summit"
+      ],
+      "requires_flag": "forgotten_thing_defeated",
+      "min_level": 8,
+      "chance": 0.09
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 2,
+      "flag": "summit_meet_differently"
+    },
+    "lines": [
+      "Tonight on the Summit you felt that the place is no longer expecting the Warden's",
+      "successor. The place is expecting somebody else. You. Carrying the Truth. The Summit",
+      "has had to reset its preparations. The Pall is, for the first time, uncertain. So are you. Good.",
+      "  (+2 Max HP, permanently — a Summit that has had, in your hands, to reset its preparations.)"
+    ]
   }
 }
