@@ -821,6 +821,32 @@
          "each line crossed out as the wolf went grey, and stopped knowing her,",
          "and started knowing only the smell of people.",
          "The last unmarked line at the bottom: 'I will keep counting. There are fewer now.'"
+       ]},
+      {"type": "discovery", "id": "hunters_cache_collars", "label": "🪵 A row of collars hung from a beam",
+       "lines": [
+         "🪵 Inside the hollowed pine, above the fire, a beam set into the bark.",
+         "Hanging from it: a row of collars. Leather, mostly. One braided rope.",
+         "Halna has been bringing them in from the wood for ten winters.",
+         "",
+         "Each collar still has a name on it, burned into the leather or scratched",
+         "into the metal of the buckle. Some are gnawed. Some are not.",
+         "",
+         "  PETTI         (a baker's dog, by the buckle's brass-mark)",
+         "  WILBURROW     (a child's hand, on a leather strip too small for an adult's)",
+         "  CRUMB         (a kitchen dog. Found near the bakery in the Drowned Holds.)",
+         "  STAR          (no surname tag. Bigger collar. A house-dog, probably.)",
+         "  BREAD-EATER   (a joke name, carved by a hand that did not survive the joke.)",
+         "  THE BLUE ONE  (no name. The wolf was blue around the eyes. Halna named it.)",
+         "",
+         "Underneath, on a separate board, Halna has written:",
+         "",
+         "  'The wolves of the Witherwood were dogs. They were a great many dogs.'",
+         "  'When the gates were sealed, no one fed them. They went into the wood.'",
+         "  'They forgot they were dogs. The wood was patient with them. The wood let them.'",
+         "  'But they still wore the collars. I take the collars off when I find them.'",
+         "  'I do not let a wolf walk around with the name a person gave it. That is unkind.'",
+         "  'I bring the collars here. Someone, some day, may know one of them.'",
+         "  'A name belonging to a dog is, when you find it, a person remembered.'"
        ]}
     ]
   },
