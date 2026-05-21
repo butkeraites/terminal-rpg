@@ -7666,5 +7666,1010 @@
       "You will, in pieces. You stood straighter, with the telling waiting in you, ready.",
       "  (+1 Defense, permanently — a telling you are carrying for a kingdom that cannot ask.)"
     ]
+  },
+  "grew_into_a_breath_you_did_not_know_you_had": {
+    "category": "body",
+    "trigger": {
+      "at": [
+        "level_up"
+      ],
+      "min_level": 2,
+      "chance": 0.18
+    },
+    "effect": {
+      "stat": "max_stamina",
+      "delta": 1,
+      "flag": "first_extra_breath"
+    },
+    "lines": [
+      "Something opened a little wider in your chest tonight. A breath you didn't know you had",
+      "room for. The kingdom is making more room in you, for the things it's about to ask. The",
+      "extra room will be there when you need it. The kingdom is patient. You are growing.",
+      "  (+1 Max Stamina, permanently — a breath the kingdom made room for in you.)"
+    ]
+  },
+  "learned_to_count_the_pause_between_blows": {
+    "category": "mind",
+    "trigger": {
+      "at": [
+        "level_up"
+      ],
+      "min_level": 2,
+      "chance": 0.16
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "learned_pause"
+    },
+    "lines": [
+      "Between your last fight and this growing, your body learned the count between an enemy's",
+      "breath and their next swing. You can't say the count aloud. Your hands know it. Your",
+      "hands have been carrying it for you. From now on, every fight is a count you can hear.",
+      "  (+1 Defense, permanently — a count learned in the body, kept in the body.)"
+    ]
+  },
+  "first_grey_hair_came_in": {
+    "category": "body",
+    "trigger": {
+      "at": [
+        "level_up"
+      ],
+      "min_level": 2,
+      "chance": 0.13
+    },
+    "effect": {
+      "flag": "first_grey"
+    },
+    "lines": [
+      "Tonight, when you grew, a single grey hair came in at the temple. You felt it land. You",
+      "did not look at it. You will not look at it. It is yours now. You earned it in the time",
+      "between the last fight and this growing. The kingdom marks its growing this way, sometimes."
+    ]
+  },
+  "someone_at_the_inn_called_you_friend": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "level_up"
+      ],
+      "min_level": 2,
+      "chance": 0.13
+    },
+    "effect": {
+      "flag": "called_friend_once"
+    },
+    "lines": [
+      "In Gravewatch tonight, between the last fight and this growing, someone called you",
+      "*friend*. You did not know them. They knew you, somehow. You did not correct them. They",
+      "may have meant it. You felt it land. You have not been called *friend* in this kingdom before."
+    ]
+  },
+  "a_door_you_passed_remembered_you": {
+    "category": "half_truth",
+    "trigger": {
+      "at": [
+        "level_up"
+      ],
+      "min_level": 2,
+      "chance": 0.12
+    },
+    "effect": {
+      "flag": "door_recognized_you"
+    },
+    "lines": [
+      "A door you passed tonight — one of the closed ones in Gravewatch — opened a little, as",
+      "if to see who was going by, then closed again. The door was not on a hinge that swings",
+      "on its own. The door has decided to recognize your step. You will pass it again. It knows."
+    ]
+  },
+  "your_old_name_almost_came_back": {
+    "category": "forgetting",
+    "trigger": {
+      "at": [
+        "level_up"
+      ],
+      "min_level": 2,
+      "chance": 0.11
+    },
+    "effect": {
+      "flag": "old_name_at_distance"
+    },
+    "lines": [
+      "When you grew, your older name — the one before you came to Mournhold, the one in your",
+      "mother's tongue — came up to the surface of your mouth and then went again. It is still",
+      "there. The Pall has not taken it yet. You will not say it now. You will save it for later."
+    ]
+  },
+  "learned_to_carry_a_kind_thought_with_you": {
+    "category": "promise_kept",
+    "trigger": {
+      "at": [
+        "level_up"
+      ],
+      "min_level": 2,
+      "chance": 0.13
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 1,
+      "flag": "kind_thought_pocket"
+    },
+    "lines": [
+      "You came up to this growing with a kind thought in your pocket — the kind thing someone",
+      "said to you between fights — and the thought has decided to come the rest of the way",
+      "with you. It will be in your pocket from now on. You can take it out and warm your hands.",
+      "  (+1 Max HP, permanently — a kind thought that decided to stay in your pocket.)"
+    ]
+  },
+  "lost_a_taste_for_a_food_you_liked": {
+    "category": "lost",
+    "trigger": {
+      "at": [
+        "level_up"
+      ],
+      "min_level": 2,
+      "chance": 0.11
+    },
+    "effect": {
+      "flag": "lost_a_taste"
+    },
+    "lines": [
+      "Sometime in the growing tonight you stopped wanting a food you used to want. You don't",
+      "know which food. You will sit down to a meal one of these days and notice the absence",
+      "of the wanting. It will be a small grief. The grief is also the growing. Both are yours."
+    ]
+  },
+  "the_kingdom_named_you_in_the_register": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "level_up"
+      ],
+      "min_level": 2,
+      "chance": 0.12
+    },
+    "effect": {
+      "flag": "in_the_register"
+    },
+    "lines": [
+      "Tonight, in the small ledger Gravewatch keeps of those who have stayed long enough to",
+      "be counted, your name was added. You did not know the ledger existed. Someone added you.",
+      "You will not be told who. Someone has decided that you have stayed. You stayed. They saw."
+    ]
+  },
+  "a_first_scar_settled_into_your_skin": {
+    "category": "body",
+    "trigger": {
+      "at": [
+        "level_up"
+      ],
+      "min_level": 2,
+      "chance": 0.14
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "first_scar_set"
+    },
+    "lines": [
+      "Somewhere on you a wound from the last fights — small, you barely noticed — has tonight",
+      "decided to be a scar. The skin around it has folded into the shape it will keep. You",
+      "are, as of now, the kind of person who has a scar in that place. You will know it always.",
+      "  (+1 Defense, permanently — a first scar that settled while you grew.)"
+    ]
+  },
+  "voice_dropped_a_little_in_the_throat": {
+    "category": "mind",
+    "trigger": {
+      "at": [
+        "level_up"
+      ],
+      "min_level": 3,
+      "chance": 0.15
+    },
+    "effect": {
+      "flag": "voice_dropped"
+    },
+    "lines": [
+      "Tonight when you next speak — and you will, soon — your voice will sit a little lower",
+      "in your throat. Not deeper. Quieter. The kingdom is teaching you how to be heard by the",
+      "people who have already decided to listen. Strangers will lean in. You will not raise your voice."
+    ]
+  },
+  "the_pall_logged_your_step_for_the_first_time": {
+    "category": "half_truth",
+    "trigger": {
+      "at": [
+        "level_up"
+      ],
+      "min_level": 3,
+      "chance": 0.12
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": -1,
+      "flag": "pall_logged_step"
+    },
+    "lines": [
+      "Tonight you grew enough that the Pall, the kingdom's forgetting, took notice. Made a",
+      "small entry, somewhere, of your step. It will not take any of you yet. It is keeping a",
+      "record. Records are how it begins. Your chest will feel the entry, faintly, from now on.",
+      "  (-1 Max HP, permanently — the Pall has begun to keep a small log of your step.)"
+    ]
+  },
+  "recognized_your_own_reflection_late": {
+    "category": "broken",
+    "trigger": {
+      "at": [
+        "level_up"
+      ],
+      "min_level": 3,
+      "chance": 0.12
+    },
+    "effect": {
+      "flag": "reflection_late"
+    },
+    "lines": [
+      "You caught your reflection in a window tonight after growing and, for one count, did",
+      "not know who you were looking at. It was you. You knew it was you. There was a count",
+      "before you knew. The count will keep happening. It will be longer next time. You can carry that."
+    ]
+  },
+  "one_of_your_kin_dreamed_of_you": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "level_up"
+      ],
+      "min_level": 3,
+      "chance": 0.12
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 1,
+      "flag": "kin_dreamed_of_you"
+    },
+    "lines": [
+      "Tonight, somewhere — a town you have not been to, a window you have not stood under — a",
+      "kin of yours dreamed of you. They will not remember the dream in the morning. They will",
+      "carry a small certainty that you are alive. That certainty will reach you. It already has.",
+      "  (+1 Max HP, permanently — a dream from a kin you have not seen in a long count.)"
+    ]
+  },
+  "the_first_time_someone_lowered_their_eyes_at_you": {
+    "category": "found",
+    "trigger": {
+      "at": [
+        "level_up"
+      ],
+      "min_level": 3,
+      "chance": 0.13
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "first_lowered_eyes"
+    },
+    "lines": [
+      "In Gravewatch tonight, between the last fight and this growing, an older one met your",
+      "eyes and then lowered theirs. Not in fear. In respect. It has not happened to you before.",
+      "You are, now, the kind of figure who is met that way. You will be met that way more.",
+      "  (+1 Defense, permanently — the first time an older one lowered their eyes for you.)"
+    ]
+  },
+  "learned_to_pause_before_drawing_steel": {
+    "category": "mind",
+    "trigger": {
+      "at": [
+        "level_up"
+      ],
+      "min_level": 3,
+      "chance": 0.13
+    },
+    "effect": {
+      "stat": "attack",
+      "delta": 1,
+      "flag": "learned_pause_before_draw"
+    },
+    "lines": [
+      "You have learned, between the last fight and this, to pause before drawing your weapon",
+      "— a count. Not hesitation. Discernment. The pause has, in two fights now, kept you from",
+      "drawing on someone who was not going to swing. Your hand is wiser. Your hand will not unlearn.",
+      "  (+1 Attack, permanently — a pause that has made your draw more meaningful.)"
+    ]
+  },
+  "the_innkeeper_called_you_by_your_first_name": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "level_up"
+      ],
+      "min_level": 3,
+      "chance": 0.14
+    },
+    "effect": {
+      "flag": "innkeeper_first_name"
+    },
+    "lines": [
+      "Tonight in Gravewatch the innkeeper, without thinking, called you by your first name",
+      "across the room. The room turned to look. You looked back. The innkeeper looked away. The",
+      "first name is yours. The room knows now. The kingdom is making space for you to be known."
+    ]
+  },
+  "a_smaller_grief_came_off_you": {
+    "category": "promise_kept",
+    "trigger": {
+      "at": [
+        "level_up"
+      ],
+      "min_level": 3,
+      "chance": 0.13
+    },
+    "effect": {
+      "stat": "max_stamina",
+      "delta": 1,
+      "flag": "smaller_grief_off"
+    },
+    "lines": [
+      "When you grew tonight, a smaller grief you had been carrying — one of the small ones,",
+      "the daily ones, the kind that wear you down — came off. Cleanly. You don't know where",
+      "it went. You will not miss it. The kingdom takes some griefs at the growings. This was one.",
+      "  (+1 Max Stamina, permanently — a daily grief that came off when you grew.)"
+    ]
+  },
+  "forgot_the_name_of_your_first_pet": {
+    "category": "forgetting",
+    "trigger": {
+      "at": [
+        "level_up"
+      ],
+      "min_level": 3,
+      "chance": 0.11
+    },
+    "effect": {
+      "flag": "first_pet_name_gone"
+    },
+    "lines": [
+      "Between the last fight and tonight, the name of the first animal you ever loved as a",
+      "child — the soft name you said into its fur — has gone. You reached for it tonight. It",
+      "was not there. The Pall takes those names. The animal does not need it anymore. You do."
+    ]
+  },
+  "the_road_under_your_feet_recognized_you": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "level_up"
+      ],
+      "min_level": 3,
+      "chance": 0.12
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "road_knows_step"
+    },
+    "lines": [
+      "Somewhere in the growing tonight the road — the main one, the road from the Crossroads",
+      "out into the kingdom — decided it knew you. Recognized your step. Will press a little",
+      "softer under your boot from now on. The road has a memory of feet. You are in it now.",
+      "  (+1 Defense, permanently — the road has decided to be gentler under your boots.)"
+    ]
+  },
+  "the_pall_called_you_by_the_wrong_name": {
+    "category": "half_truth",
+    "trigger": {
+      "at": [
+        "level_up"
+      ],
+      "min_level": 5,
+      "chance": 0.14
+    },
+    "effect": {
+      "flag": "pall_wrong_name"
+    },
+    "lines": [
+      "Tonight, in a moment of growing, you heard — quietly, somewhere — the Pall say a name.",
+      "Not yours. Close to yours, but not. A name that was almost the one your mother gave you.",
+      "The Pall is learning to say you. It will not say you right. You are glad of that, today."
+    ]
+  },
+  "the_kingdom_made_room_in_its_chronicle_for_you": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "level_up"
+      ],
+      "min_level": 5,
+      "chance": 0.13
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 2,
+      "flag": "chronicle_room"
+    },
+    "lines": [
+      "Tonight, at this growing, the Chronicle — the small book Gravewatch keeps of those who",
+      "have walked far enough — made a line for you. A whole line, with the date and the kind",
+      "of growing. You will not see the line. But you have been given a line. You stand taller.",
+      "  (+2 Max HP, permanently — a line in the Chronicle, yours, kept by the kingdom for you.)"
+    ]
+  },
+  "learned_to_walk_with_the_dead": {
+    "category": "mind",
+    "trigger": {
+      "at": [
+        "level_up"
+      ],
+      "min_level": 5,
+      "chance": 0.13
+    },
+    "effect": {
+      "stat": "max_stamina",
+      "delta": 1,
+      "flag": "walk_with_dead"
+    },
+    "lines": [
+      "Between the last growing and this one, you have learned to walk past graves without",
+      "your step changing. Not callous. Just steady. The dead are now part of the country you",
+      "walk through, not interruptions to it. Your stride is even. You will keep your stride.",
+      "  (+1 Max Stamina, permanently — a stride that does not break for the dead.)"
+    ]
+  },
+  "lost_a_friend_who_did_not_come_to_meet_you": {
+    "category": "promise_broken",
+    "trigger": {
+      "at": [
+        "level_up"
+      ],
+      "min_level": 5,
+      "chance": 0.12
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": -1,
+      "flag": "friend_did_not_come"
+    },
+    "lines": [
+      "Tonight, between the last fight and this growing, you crossed Gravewatch's square and",
+      "a friend — yours, you knew them well — did not see you, did not call. Looked through.",
+      "It is the friend. It is not you. You walked on. The friendship has cooled. You felt it cool.",
+      "  (-1 Max HP, permanently — a friend who, when they should have looked, did not.)"
+    ]
+  },
+  "a_god_marked_a_page_about_you": {
+    "category": "found",
+    "trigger": {
+      "at": [
+        "level_up"
+      ],
+      "min_level": 5,
+      "chance": 0.11
+    },
+    "effect": {
+      "stat": "attack",
+      "delta": 1,
+      "flag": "god_page_marked"
+    },
+    "lines": [
+      "Tonight, while you grew, you had the briefest sense — the count of one heartbeat — that",
+      "a god, somewhere, was writing a page about you. Not Atrél. A larger one. The god turned",
+      "the page. You felt the turn. You will not be told what the page said. You stood up.",
+      "  (+1 Attack, permanently — a page in a god's book, marked at your growing.)"
+    ]
+  },
+  "the_witherwood_remembered_a_younger_step": {
+    "category": "mind",
+    "trigger": {
+      "at": [
+        "level_up"
+      ],
+      "min_level": 5,
+      "chance": 0.12
+    },
+    "effect": {
+      "flag": "witherwood_remembers_young_you"
+    },
+    "lines": [
+      "Tonight the Witherwood — distantly, the way the forest holds these things — remembered",
+      "the version of you that first walked into it, weeks ago. The forest set that version",
+      "aside. Kept it, briefly. You are not that anymore. The forest will keep the version safe."
+    ]
+  },
+  "learned_to_carry_two_griefs_at_once": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "level_up"
+      ],
+      "min_level": 5,
+      "chance": 0.13
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "two_griefs"
+    },
+    "lines": [
+      "Between the last growing and this one, you have learned to hold two griefs in your",
+      "hands at the same time. Not three. Two. They balance. They steady you. Each is heavier",
+      "alone than together. The kingdom teaches you the holding. You will hold for a long time.",
+      "  (+1 Defense, permanently — two griefs balanced against each other in your hands.)"
+    ]
+  },
+  "lost_the_taste_of_your_mothers_bread": {
+    "category": "forgetting",
+    "trigger": {
+      "at": [
+        "level_up"
+      ],
+      "min_level": 5,
+      "chance": 0.12
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": -1,
+      "flag": "mothers_bread_gone"
+    },
+    "lines": [
+      "Somewhere in this growing, the taste of your mother's bread — the kind she made on the",
+      "long winter mornings, the kind that does not exist anywhere else — has gone from you. You",
+      "reached for the taste tonight. It was not there. Your mother is gone. The taste has gone too.",
+      "  (-1 Max HP, permanently — a taste you cannot get back from a kitchen that is closed.)"
+    ]
+  },
+  "a_grave_in_gravewatch_was_dug_for_no_one_in_particular": {
+    "category": "half_truth",
+    "trigger": {
+      "at": [
+        "level_up"
+      ],
+      "min_level": 5,
+      "chance": 0.11
+    },
+    "effect": {
+      "flag": "grave_dug_for_no_one"
+    },
+    "lines": [
+      "Tonight, while you grew, a small grave was dug at the edge of Gravewatch. Not for",
+      "anyone, yet. The gravediggers don't always wait. Sometimes they prepare. Tonight one was",
+      "prepared. You do not need to ask whose. The kingdom prepares for those who climb high."
+    ]
+  },
+  "learned_to_say_a_prayer_for_someone_alive": {
+    "category": "promise_kept",
+    "trigger": {
+      "at": [
+        "level_up"
+      ],
+      "min_level": 5,
+      "chance": 0.13
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 2,
+      "flag": "prayer_for_living"
+    },
+    "lines": [
+      "Between the last growing and this one, you have learned to pray for someone who is",
+      "still alive — to ask, quietly, for their safekeeping. It is harder than praying for the",
+      "dead. The dead don't move. You have learned the prayer. You will say it more from now on.",
+      "  (+2 Max HP, permanently — a prayer-shape you have made for the living.)"
+    ]
+  },
+  "the_summit_started_to_listen": {
+    "category": "half_truth",
+    "trigger": {
+      "at": [
+        "level_up"
+      ],
+      "min_level": 7,
+      "chance": 0.14
+    },
+    "effect": {
+      "flag": "summit_listening"
+    },
+    "lines": [
+      "Tonight, at this growing, the Summit — far above you, beyond the Ashen Climb — started",
+      "to listen for your step. It will hear you when you come now. It has begun preparing the",
+      "ground at the very top. The ground is being made ready for you. The wind has begun to wait."
+    ]
+  },
+  "someone_who_loved_you_let_you_go": {
+    "category": "promise_kept",
+    "trigger": {
+      "at": [
+        "level_up"
+      ],
+      "min_level": 7,
+      "chance": 0.12
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 3,
+      "flag": "someone_let_you_go"
+    },
+    "lines": [
+      "Tonight, between the last fight and this growing, someone — a friend, a sibling, an",
+      "old lover, you will not be told which — let you go. They had been holding on. They saw,",
+      "tonight, that they could not keep you. The letting go reached you. They wished you well.",
+      "  (+3 Max HP, permanently — a letting-go given to you by someone who loved you well.)"
+    ]
+  },
+  "learned_to_speak_to_the_dead_without_apology": {
+    "category": "mind",
+    "trigger": {
+      "at": [
+        "level_up"
+      ],
+      "min_level": 7,
+      "chance": 0.13
+    },
+    "effect": {
+      "stat": "attack",
+      "delta": 1,
+      "flag": "speak_to_dead_no_apology"
+    },
+    "lines": [
+      "You have learned, between the last growing and this one, to speak to the dead — at",
+      "graves, at the Sealed Chamber, in the Bone Tomb — without apology. You did, once. You",
+      "don't anymore. You speak to them as you would speak to any older one. They prefer it.",
+      "  (+1 Attack, permanently — a directness that the dead, it turns out, would rather have.)"
+    ]
+  },
+  "your_step_began_to_match_the_wardens": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "level_up"
+      ],
+      "min_level": 7,
+      "chance": 0.13
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "step_matches_warden"
+    },
+    "lines": [
+      "The previous Warden walked the Crossroads in their last good year with a particular",
+      "stride — long, even, head up. Tonight, when you grew, your stride began to fit theirs.",
+      "Older ones in Gravewatch will see it. They will not say. They will look at you longer.",
+      "  (+1 Defense, permanently — a stride you have grown into without choosing to.)"
+    ]
+  },
+  "the_pall_offered_you_a_small_kindness": {
+    "category": "half_truth",
+    "trigger": {
+      "at": [
+        "level_up"
+      ],
+      "min_level": 7,
+      "chance": 0.11
+    },
+    "effect": {
+      "stat": "max_stamina",
+      "delta": 1,
+      "flag": "pall_small_kindness"
+    },
+    "lines": [
+      "Tonight the Pall — the kingdom's forgetting, your eventual home — gave you a small,",
+      "surprising kindness. It let you keep the memory of a face you would otherwise have lost",
+      "tonight. The face is your grandmother's. The Pall does not have to. It did. You wonder why.",
+      "  (+1 Max Stamina, permanently — a face the Pall let you keep, for now.)"
+    ]
+  },
+  "the_kingdom_called_you_friend_in_the_old_tongue": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "level_up"
+      ],
+      "min_level": 7,
+      "chance": 0.12
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 2,
+      "flag": "old_tongue_friend"
+    },
+    "lines": [
+      "Tonight, in a sentence the older ones in Gravewatch use when they don't think anyone is",
+      "listening, you were called *friend* — but in the old tongue, the one before the rite.",
+      "The word is heavier in the old tongue. You understood. You are now a friend in that way.",
+      "  (+2 Max HP, permanently — a friendship named in the tongue the kingdom used to use.)"
+    ]
+  },
+  "lost_one_full_year_of_yourself": {
+    "category": "lost",
+    "trigger": {
+      "at": [
+        "level_up"
+      ],
+      "min_level": 7,
+      "chance": 0.11
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": -2,
+      "flag": "lost_a_year"
+    },
+    "lines": [
+      "Tonight, when you grew, the Pall — without ceremony — took one full year of your life.",
+      "Not from the front. From the middle. You will not be able to say which year. You will",
+      "feel its absence in the way a song without one of its verses still plays, but is shorter.",
+      "  (-2 Max HP, permanently — one full year of yourself, taken to make room for the growing.)"
+    ]
+  },
+  "learned_to_finish_a_meal_alone": {
+    "category": "broken",
+    "trigger": {
+      "at": [
+        "level_up"
+      ],
+      "min_level": 7,
+      "chance": 0.11
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": -1,
+      "flag": "ate_alone_well"
+    },
+    "lines": [
+      "Between the last growing and this one, you have learned to finish a meal alone without",
+      "any sadness at the empty chair across from you. The empty chair is part of the eating,",
+      "now. It will be from now on. The kingdom teaches the eating. You ate. You stood up.",
+      "  (-1 Max HP, permanently — an empty chair you have come to be peaceful with.)"
+    ]
+  },
+  "the_bell_at_mourncross_remembered_your_name": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "level_up"
+      ],
+      "min_level": 7,
+      "chance": 0.12
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "mourncross_bell_remembers"
+    },
+    "lines": [
+      "Tonight, between the last fight and this growing, the south bell at Mourncross — the",
+      "one that had been silenced by the Bellward — rang one count of itself, softly, for",
+      "you. Nobody else heard. The bell, tonight, remembered your name. It will remember.",
+      "  (+1 Defense, permanently — the bell at Mourncross has spoken once for you.)"
+    ]
+  },
+  "learned_to_outlast_a_winter_in_one_night": {
+    "category": "mind",
+    "trigger": {
+      "at": [
+        "level_up"
+      ],
+      "min_level": 7,
+      "chance": 0.12
+    },
+    "effect": {
+      "stat": "max_stamina",
+      "delta": 1,
+      "flag": "outlasted_a_winter"
+    },
+    "lines": [
+      "Tonight, in this growing, you have outlasted — in one night — what your younger self",
+      "would have needed a winter to bear. You don't know what; the body knows what. The",
+      "endurance is in you now. The endurance will keep being in you. You can sit any vigil now.",
+      "  (+1 Max Stamina, permanently — an endurance learned in one night that a winter taught your body.)"
+    ]
+  },
+  "your_step_will_be_the_pall_one_day": {
+    "category": "half_truth",
+    "trigger": {
+      "at": [
+        "level_up"
+      ],
+      "min_level": 9,
+      "chance": 0.13
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "step_becoming_pall"
+    },
+    "lines": [
+      "Tonight, in this growing, you understood — without anyone telling you — that the Pall",
+      "is somebody. Not a force. Somebody. Somebody who walked up. The Summit is where you",
+      "agree to become it. Your step, now, has started to be the step it will be at the Summit.",
+      "  (+1 Defense, permanently — a step that has begun, quietly, to become the Pall's step.)"
+    ]
+  },
+  "learned_to_carry_the_kingdom": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "level_up"
+      ],
+      "min_level": 9,
+      "chance": 0.12
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 3,
+      "flag": "kingdom_in_your_hands"
+    },
+    "lines": [
+      "Between the last growing and this one, the kingdom — Mournhold, the dead one, the",
+      "drowned one — has settled into your hands. You are carrying it now. You did not ask.",
+      "It has chosen you to carry it the rest of the way. It is heavier than you thought.",
+      "  (+3 Max HP, permanently — a kingdom that has settled into your hands at this growing.)"
+    ]
+  },
+  "the_warden_who_is_to_be_began_to_recognize_themselves": {
+    "category": "mind",
+    "trigger": {
+      "at": [
+        "level_up"
+      ],
+      "min_level": 9,
+      "chance": 0.12
+    },
+    "effect": {
+      "flag": "next_warden_recognizes_self"
+    },
+    "lines": [
+      "Tonight you walked past a window in Gravewatch and a reflection — not yours, but yours-",
+      "to-come — looked back. The Warden you will be saw the climber you are. You did not",
+      "look away. They did not look away. You both knew. The Summit is closer than the map says."
+    ]
+  },
+  "the_last_voice_of_atrel_arrived_for_you": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "level_up"
+      ],
+      "min_level": 9,
+      "chance": 0.11
+    },
+    "effect": {
+      "stat": "max_stamina",
+      "delta": 2,
+      "flag": "atrels_last_voice"
+    },
+    "lines": [
+      "Atrél, who has stood beside you in the small altars, who has held your griefs at the",
+      "side altar — tonight Atrél's last voice in the world spoke to you. Just to you. A whole",
+      "sentence in the old tongue, slowly, so you would have it. You will have it for the Summit.",
+      "  (+2 Max Stamina, permanently — a sentence from Atrél kept whole inside you for what comes.)"
+    ]
+  },
+  "lost_the_face_of_the_friend_who_loved_you_most": {
+    "category": "forgetting",
+    "trigger": {
+      "at": [
+        "level_up"
+      ],
+      "min_level": 9,
+      "chance": 0.12
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": -2,
+      "flag": "lost_best_friends_face"
+    },
+    "lines": [
+      "The Pall, tonight, took the face of the friend who has loved you longest. You can say",
+      "their name. You know the name. You cannot see the face. You will not be able to, again,",
+      "until the end. The Pall returns these things, sometimes, at the Summit. Until then, no.",
+      "  (-2 Max HP, permanently — a face the Pall has taken from you for safekeeping until the end.)"
+    ]
+  },
+  "the_summit_wind_called_your_step": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "level_up"
+      ],
+      "min_level": 9,
+      "chance": 0.13
+    },
+    "effect": {
+      "stat": "attack",
+      "delta": 1,
+      "flag": "summit_wind_called_step"
+    },
+    "lines": [
+      "Tonight in your sleep — or in the place between sleep and growing — the Summit wind",
+      "called your step. Not in words. In the way wind calls feet. Your feet answered. They",
+      "are pointed up the mountain now, whether you turn them or not. You will go. You have agreed.",
+      "  (+1 Attack, permanently — feet that have answered a wind from the kingdom's roof.)"
+    ]
+  },
+  "learned_to_pity_an_enemy_without_letting_them_live": {
+    "category": "mind",
+    "trigger": {
+      "at": [
+        "level_up"
+      ],
+      "min_level": 9,
+      "chance": 0.11
+    },
+    "effect": {
+      "stat": "attack",
+      "delta": 1,
+      "flag": "pity_without_mercy"
+    },
+    "lines": [
+      "Between the last growing and this one, you have learned to pity an enemy without",
+      "letting that pity stop your hand. It is a difficult skill. Most who try it become cruel.",
+      "You have not. You will not. The pity will travel with you and the killing will too. Both.",
+      "  (+1 Attack, permanently — a pity that does not interfere with the necessary work.)"
+    ]
+  },
+  "the_chronicle_made_you_its_keeper": {
+    "category": "promise_kept",
+    "trigger": {
+      "at": [
+        "level_up"
+      ],
+      "min_level": 9,
+      "chance": 0.12
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "chronicle_keeper"
+    },
+    "lines": [
+      "Tonight the Chronicle of Gravewatch — the small book of the fallen, the one only the",
+      "older ones add to — has put a particular page aside for you. When you fall, your",
+      "writing will be on that page. The page is being kept. The book has chosen its next keeper.",
+      "  (+1 Defense, permanently — a page in the Chronicle kept open for your hand.)"
+    ]
+  },
+  "the_kingdom_began_calling_you_by_a_title": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "level_up"
+      ],
+      "min_level": 9,
+      "chance": 0.12
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 2,
+      "flag": "kingdom_titled_you"
+    },
+    "lines": [
+      "Tonight, between the last fight and this growing, the older ones of Gravewatch began —",
+      "quietly, behind their hands — to call you by a small title. Not Warden, yet. A word",
+      "the kingdom uses for the climber who is going to make it. You will be called the title.",
+      "  (+2 Max HP, permanently — a title the kingdom has begun to use for you, gently.)"
+    ]
+  },
+  "you_made_your_peace_with_being_the_next_warden": {
+    "category": "promise_kept",
+    "trigger": {
+      "at": [
+        "level_up"
+      ],
+      "min_level": 9,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "peace_with_warden"
+    },
+    "lines": [
+      "Tonight, after the growing, you sat alone for a long count and made your peace with",
+      "what you have understood about the Warden cycle. You will go up. You will become it.",
+      "You have agreed. The agreement settled into you. You stood up. You will sleep well tonight.",
+      "  (+1 Defense, permanently — an agreement with the role the kingdom is offering you.)"
+    ]
   }
 }

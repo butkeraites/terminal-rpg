@@ -656,6 +656,8 @@ def _grant_rewards(state, enemy):
             io.show(f"🎓 You have learned {content.abilities[value]['name']}!")
         io.show(f"HP: {player.max_hp} | Attack: {player.attack} | "
                 f"Defense: {player.defense} | Stamina: {player.max_stamina}")
+        # Marks fire at level-up — what you became when you grew.
+        marks.roll_at(state, "level_up")
 
 
 def run_combat(state, enemy, *, refresh_after=True):

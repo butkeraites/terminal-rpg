@@ -209,6 +209,7 @@ _BASE_RATES = {
     "combat_low_hp":    0.20,  # the recklessness site, higher by design
     "save_action":      0.05,
     "discovery_read":   0.07,
+    "level_up":         0.35,  # rare event, generous rate — every grow is a moment
 }
 
 
