@@ -63,7 +63,11 @@ CLASS_CONSUMABLE = {
 
 
 def _maybe_drop_trophy(state, enemy):
-    """Roll the trophy-drop chance and append the named trophy to player.trophies."""
+    """Roll the trophy-drop chance and append the named trophy to player.trophies.
+
+    If the drop lands, also tick any active trophy-target quest whose
+    ``target_trophy`` matches — Phase-1 Batch-2 of the quest engine.
+    """
     trophy = state.content.enemies.get(getattr(enemy, "enemy_id", ""), {}).get("trophy")
     if trophy is None:
         return
@@ -73,6 +77,27 @@ def _maybe_drop_trophy(state, enemy):
     player.trophies[trophy] = player.trophies.get(trophy, 0) + 1
     state.io.show(f"🪶 You take a {trophy.replace('_', ' ')} from the dead. "
                   f"({player.trophies[trophy]} carried)")
+    _track_quest_trophy(state, trophy)
+
+
+def _track_quest_trophy(state, trophy):
+    """Tick every active quest whose ``target_trophy`` matches the given trophy.
+
+    Trophy-target quests are a Phase-1 Batch-2 quest type (see docs/QUESTS.md).
+    The progress counter lives in the same ``state.flags['quest_progress']``
+    dict as kill-target quests, keyed by quest_id, and counts monotonic
+    drops — Beastmaster spending of trophies does not reduce quest progress.
+    """
+    active = state.flags.get("active_quests", [])
+    progress = state.flags.setdefault("quest_progress", {})
+    quests = state.content.quests
+    for quest_id in active:
+        quest = quests.get(quest_id)
+        if quest and quest.get("target_trophy") == trophy:
+            progress[quest_id] = progress.get(quest_id, 0) + 1
+            if progress[quest_id] == quest["needed"]:
+                state.io.show(f"\n📜 {quest['name']} — complete. "
+                              f"Return to the Quest Board to claim your reward.")
 
 
 def _track_quest_kill(state, enemy):
@@ -82,6 +107,10 @@ def _track_quest_kill(state, enemy):
     NPC's per-target kill count (state.flags['npc_kills']). The latter is
     a single dict keyed by enemy_id so any NPC asking for kills of that
     enemy reads the same total.
+
+    Quests with ``target_trophy`` instead of ``target_enemy`` are handled
+    by ``_track_quest_trophy`` from inside ``_maybe_drop_trophy`` — see
+    Phase-1 Batch-2 in docs/QUESTS.md.
     """
     target = getattr(enemy, "enemy_id", None)
     if target is None:
@@ -93,7 +122,7 @@ def _track_quest_kill(state, enemy):
     quests = state.content.quests
     for quest_id in active:
         quest = quests.get(quest_id)
-        if quest and quest["target_enemy"] == target:
+        if quest and quest.get("target_enemy") == target:
             progress[quest_id] = progress.get(quest_id, 0) + 1
             if progress[quest_id] == quest["needed"]:
                 state.io.show(f"\n📜 {quest['name']} — complete. "

@@ -713,6 +713,102 @@ def test_quest_board_picks_up_and_completes_a_quest(content, tmp_path):
     assert "Warrior's Breath" in player.consumables  # class consumable awarded
 
 
+def test_trophy_quest_progress_ticks_when_trophy_drops(content, tmp_path):
+    """Phase-1 Batch-2: a quest with target_trophy ticks when the trophy drops.
+
+    Trophy-target quests are a new shape introduced post-1000. The progress
+    counter shares ``state.flags['quest_progress']`` with kill-target quests
+    (keyed by quest_id) and is incremented inside ``_maybe_drop_trophy``
+    whenever a matching trophy is added to ``player.trophies``.
+    """
+    from terminalquest import combat
+    from terminalquest.enemy import make_enemy
+    # Inject a synthetic trophy-target quest pointing at a trophy we know
+    # drops from an actual enemy. wolf drops 'wolf_pelt' in v1.69 data.
+    trophy_name = next(
+        e["trophy"] for eid, e in content.enemies.items()
+        if eid == "wolf" and e.get("trophy"))
+    content.quests["test_pelt_quest"] = {
+        "name": "Hides for the Tanner",
+        "target_trophy": trophy_name,
+        "needed": 2,
+        "reward_gold": 50,
+        "cleanse_required": 0,
+        "flavor": "The tanner needs pelts. Bring her two.",
+    }
+    player = _player(content)
+    state = make_state(player, content, ScriptedIO(), StubRandom(rnd=0.0),
+                       chronicle_dir=tmp_path)
+    state.flags.setdefault("active_quests", []).append("test_pelt_quest")
+    # StubRandom(rnd=0.0) makes every TROPHY_DROP_CHANCE roll succeed.
+    enemy = make_enemy("wolf", content)
+    combat._maybe_drop_trophy(state, enemy)
+    assert player.trophies.get(trophy_name, 0) == 1
+    assert state.flags["quest_progress"]["test_pelt_quest"] == 1
+    combat._maybe_drop_trophy(state, enemy)
+    assert state.flags["quest_progress"]["test_pelt_quest"] == 2
+
+
+def test_trophy_quest_progress_survives_spending(content, tmp_path):
+    """Spending trophies at the Beastmaster must NOT roll back quest progress.
+
+    The counter is monotonic — Beastmaster purchases reduce ``player.trophies``
+    but progress is tracked separately in ``quest_progress``.
+    """
+    from terminalquest import combat
+    from terminalquest.enemy import make_enemy
+    trophy_name = next(
+        e["trophy"] for eid, e in content.enemies.items()
+        if eid == "wolf" and e.get("trophy"))
+    content.quests["another_pelt_quest"] = {
+        "name": "Pelts for the Outpost",
+        "target_trophy": trophy_name,
+        "needed": 3,
+        "reward_gold": 50,
+        "cleanse_required": 0,
+        "flavor": "Three pelts. No fewer.",
+    }
+    player = _player(content)
+    state = make_state(player, content, ScriptedIO(), StubRandom(rnd=0.0),
+                       chronicle_dir=tmp_path)
+    state.flags["active_quests"] = ["another_pelt_quest"]
+    enemy = make_enemy("wolf", content)
+    for _ in range(2):
+        combat._maybe_drop_trophy(state, enemy)
+    # Simulate the Beastmaster spending — reduce the player's trophy stash
+    # but the quest progress must stand.
+    player.trophies[trophy_name] = 0
+    assert state.flags["quest_progress"]["another_pelt_quest"] == 2
+
+
+def test_quest_board_renders_trophy_target_in_progress_tag(content, tmp_path):
+    """Quest_board UI must show the trophy name (not target_enemy) for trophy quests."""
+    trophy_name = next(
+        e["trophy"] for eid, e in content.enemies.items()
+        if eid == "wolf" and e.get("trophy"))
+    content.quests["render_test_q"] = {
+        "name": "Render Test",
+        "target_trophy": trophy_name,
+        "needed": 5,
+        "reward_gold": 10,
+        "cleanse_required": 0,
+        "flavor": "Just a UI test.",
+    }
+    player = _player(content)
+    io = ScriptedIO(["7"])  # immediately Leave (number depends on catalog size)
+    state = make_state(player, content, io, StubRandom(),
+                       chronicle_dir=tmp_path)
+    state.flags["active_quests"] = ["render_test_q"]
+    state.flags["quest_progress"] = {"render_test_q": 2}
+    try:
+        locations.quest_board(state)
+    except AssertionError:
+        pass  # ScriptedIO ran out is fine; we only need the rendering pass.
+    rendered = "\n".join(io.output)
+    assert trophy_name in rendered
+    assert "2/5" in rendered
+
+
 def test_class_consumable_applies_status_in_combat(content):
     """Drinking Warrior's Breath grants the player the braced status."""
     from terminalquest import combat, status

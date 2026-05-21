@@ -440,14 +440,19 @@ def quest_board(state):
         for index, (quest_id, quest) in enumerate(catalog, start=1):
             status = _quest_status(state, quest_id)
             progress = state.flags.get("quest_progress", {}).get(quest_id, 0)
+            # Phase-1 Batch-2: trophy-target quests display their trophy
+            # name in the progress tag, not target_enemy.
+            target_label = (quest.get("target_enemy")
+                            or quest.get("target_trophy")
+                            or "?")
             tag = {
                 "available":   f"[{quest['reward_gold']}g + a class flask]",
-                "active":      f"[{progress}/{quest['needed']} {quest['target_enemy']}s]",
+                "active":      f"[{progress}/{quest['needed']} {target_label}s]",
                 "completable": "[READY TO CLAIM]",
                 "claimed":     "[done]",
             }[status]
             io.show(f"\n{index}. {quest['name']}  {tag}")
-            io.show(f"   {quest['flavor']}")
+            io.show(f"   {quest.get('flavor', '')}")
         io.show(f"\n{len(catalog) + 1}. Leave")
         choice = io.ask("\nWhat would you like? ")
         if choice == str(len(catalog) + 1):
