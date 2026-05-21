@@ -675,5 +675,222 @@
     ],
     "reward_chronicle_line": "After they had once made Atrél's Peace, the Gullet's Maw-Mother knew them on sight, and braced. They took her anyway.",
     "flavor": "Across runs, Atrél's Peace marks you. The Maw-Mother knows you from before the peace. She braces, this time. End her anyway."
+  },
+  "pall_magistrates_three": {
+    "name": "Three Pall-Magistrates Will Hold No More Court",
+    "target_enemy": "pall_magistrate",
+    "needed": 3,
+    "reward_gold": 500,
+    "cleanse_required": 3,
+    "flavor": "Three magistrates still hold court in the empty halls. End their sittings. The dead deserve a verdict."
+  },
+  "hollow_procession_eight": {
+    "name": "The Procession of Eight",
+    "target_enemy": "hollow_procession",
+    "needed": 8,
+    "reward_gold": 450,
+    "cleanse_required": 3,
+    "flavor": "Eight hollow ones walk the funeral lap. They have walked it since the rite. End the lap."
+  },
+  "gutter_wretches_six": {
+    "name": "Six Gutters of the Capital",
+    "target_enemy": "gutter_wretch",
+    "needed": 6,
+    "reward_gold": 350,
+    "cleanse_required": 3,
+    "flavor": "Six wretches in the gutters. The capital's old guard cleared them every dawn. Clear them once."
+  },
+  "the_hollow_bellward_must_fall": {
+    "name": "The Hollow Bellward Must Fall",
+    "target_enemy": "hollow_bellward",
+    "needed": 1,
+    "reward_gold": 900,
+    "cleanse_required": 3,
+    "reward_chronicle_line": "They climbed to the high bell of Mourncross and ended the Bellward who had been ringing it for a hundred winters.",
+    "flavor": "The bell has rung for a hundred winters and no one has come. End the ringer. The bell will not need to ring after."
+  },
+  "census_a_read_the_census": {
+    "name": "The Census Climber — Read the Census",
+    "target_enemy": "gutter_wretch",
+    "needed": 2,
+    "reward_gold": 250,
+    "cleanse_required": 0,
+    "requires_discovery": [
+      "mourncross_census"
+    ],
+    "chain_next": "census_b_add_your_name",
+    "flavor": "Two wretches squat on the census-stones. Take them. The names underneath are still legible."
+  },
+  "census_b_add_your_name": {
+    "name": "The Census Climber — Add Your Name",
+    "target_enemy": "pall_magistrate",
+    "needed": 1,
+    "reward_gold": 400,
+    "cleanse_required": 0,
+    "requires_quest": [
+      "census_a_read_the_census"
+    ],
+    "denies_quest": [
+      "census_b_strike_it_through"
+    ],
+    "chain_next": "census_c_added_keep_walking",
+    "reward_marks": [
+      "mourncross_census_added_your_name"
+    ],
+    "flavor": "A magistrate guards the census-quill. Take him. Add your name to the list of the kingdom that still remembers itself."
+  },
+  "census_b_strike_it_through": {
+    "name": "The Census Climber — Strike It Through",
+    "target_enemy": "pall_magistrate",
+    "needed": 1,
+    "reward_gold": 450,
+    "cleanse_required": 0,
+    "requires_quest": [
+      "census_a_read_the_census"
+    ],
+    "denies_quest": [
+      "census_b_add_your_name"
+    ],
+    "chain_next": "census_c_struck_keep_walking",
+    "reward_marks": [
+      "mourncross_census_struck_your_name_through"
+    ],
+    "flavor": "A magistrate guards the census-quill. Take him. Strike your name through the list. The Pall hears names; refuse to be heard."
+  },
+  "census_c_added_keep_walking": {
+    "name": "The Census Climber — The Witness Keeps Walking",
+    "target_enemy": "hollow_procession",
+    "needed": 3,
+    "reward_gold": 600,
+    "cleanse_required": 0,
+    "requires_quest": [
+      "census_b_add_your_name"
+    ],
+    "reward_chronicle_line": "They added their name to the census of Mourncross, and three hollow ones stepped out of the procession to greet a witness.",
+    "flavor": "You added your name. The procession knows a witness when it sees one. Three of them step out to test you. End the test."
+  },
+  "census_c_struck_keep_walking": {
+    "name": "The Census Climber — The Refused Keeps Walking",
+    "target_enemy": "hollow_procession",
+    "needed": 3,
+    "reward_gold": 600,
+    "cleanse_required": 0,
+    "requires_quest": [
+      "census_b_strike_it_through"
+    ],
+    "reward_chronicle_line": "They struck their name through the census of Mourncross, and three hollow ones stepped out of the procession to greet someone who would not be greeted.",
+    "flavor": "You struck your name. The procession knows a refusal when it sees one. Three of them step out to test the refusal. End them."
+  },
+  "bellwards_card_to_eron": {
+    "name": "The Bellward's Card for Eron",
+    "target_enemy": "hollow_procession",
+    "needed": 2,
+    "reward_gold": 350,
+    "cleanse_required": 3,
+    "requires_discovery": [
+      "bellwards_card"
+    ],
+    "reward_marks": [
+      "bellward_son_eron_will_know"
+    ],
+    "flavor": "The Bellward kept a card for his son Eron, in his pocket. Two of the procession carry copies. Find the original."
+  },
+  "lampkeepers_oil": {
+    "name": "The Lampkeeper's Oil",
+    "target_enemy": "gutter_wretch",
+    "needed": 4,
+    "reward_gold": 250,
+    "cleanse_required": 3,
+    "requires_discovery": [
+      "lampkeeper_notebook"
+    ],
+    "reward_consumables": [
+      "The Last Bread"
+    ],
+    "flavor": "The lampkeeper's notebook names four wretches who carry her stolen oil-flasks. Take them. The lamps will be lit again."
+  },
+  "the_scuffmark_walks_again": {
+    "name": "The Scuffmark Walks Again",
+    "target_enemy": "hollow_procession",
+    "needed": 1,
+    "reward_gold": 200,
+    "cleanse_required": 0,
+    "requires_discovery": [
+      "mourncross_scuffmarks"
+    ],
+    "reward_marks": [
+      "mourncross_an_unread_name_caught_your_eye"
+    ],
+    "flavor": "The scuffmarks on the cobbles match a single procession's gait. Find the gait. End the procession. The cobbles will be still."
+  },
+  "after_the_chair_was_set_out": {
+    "name": "After a Widow Set a Chair Out",
+    "target_enemy": "pall_magistrate",
+    "needed": 1,
+    "reward_gold": 300,
+    "cleanse_required": 3,
+    "requires_mark": "mourncross_a_widow_set_a_chair_out",
+    "reward_consumables": [
+      "The Last Bread"
+    ],
+    "flavor": "Once a widow in Mourncross set a chair out for you. A magistrate wants the chair as evidence. He will not have it."
+  },
+  "after_the_house_was_lit": {
+    "name": "After an Empty House Was Lit",
+    "target_enemy": "hollow_bellward",
+    "needed": 1,
+    "reward_gold": 700,
+    "cleanse_required": 3,
+    "requires_mark": "mourncross_an_empty_house_was_lit",
+    "reward_marks": [
+      "bellward_bell_rang_for_you"
+    ],
+    "reward_chronicle_line": "An empty house had lit for them once; they returned and the Hollow Bellward rang her bell, and they ended her ringing.",
+    "flavor": "Once you saw an empty house in Mourncross with a lit window. The Bellward saw it too. End her, and the light stays."
+  },
+  "companion_kill_a_magistrate": {
+    "name": "Let the Sworn Strike the Last Blow",
+    "target_enemy": "pall_magistrate",
+    "completion_condition": "companion_landed_kill",
+    "needed": 1,
+    "reward_gold": 400,
+    "cleanse_required": 3,
+    "flavor": "Bring your sworn. Bring the magistrate down to nothing. The last blow belongs to your sworn. The Pall hates a sworn-kill."
+  },
+  "first_strike_in_the_capital": {
+    "name": "First Strike, Mourncross",
+    "target_enemy": "hollow_procession",
+    "completion_condition": "first_strike_yours",
+    "needed": 3,
+    "reward_gold": 350,
+    "cleanse_required": 3,
+    "flavor": "Three of the procession, and the first blow in each fight is yours. The Pall hears who struck first."
+  },
+  "after_old_seal_in_the_capital": {
+    "name": "After the Old Seal, the Capital Knows You",
+    "target_enemy": "hollow_bellward",
+    "needed": 1,
+    "reward_gold": 800,
+    "cleanse_required": 3,
+    "requires_ending": [
+      "old_seal"
+    ],
+    "reward_marks": [
+      "bellward_second_phase_was_a_father"
+    ],
+    "reward_chronicle_line": "Once they had once made The Old Seal, the Hollow Bellward met their second phase as a father, and they ended him anyway.",
+    "flavor": "Across runs, The Old Seal marks you. The Hollow Bellward's second phase is a father, now, not a Bellward. End him anyway."
+  },
+  "clerics_funeral_for_a_capital": {
+    "name": "The Funeral the Capital Never Had",
+    "target_enemy": "hollow_procession",
+    "needed": 7,
+    "reward_gold": 500,
+    "cleanse_required": 3,
+    "requires_class": [
+      "cleric"
+    ],
+    "reward_chronicle_line": "A cleric walked Mourncross and gave seven of the procession a funeral. The kingdom's old clerics would have done the same.",
+    "flavor": "Seven of the procession. A cleric's hand is the only hand that lays them down so they stay laid."
   }
 }
