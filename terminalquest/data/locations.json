@@ -29,7 +29,41 @@
     ],
     "connections": ["crossroads"],
     "services": ["shop", "inn", "smith", "quartermaster", "pact_broker", "echo_trader", "night_hunt", "quest_board", "survivor", "beastmaster", "hireling_hall", "reader", "insomniac", "caretaker"],
-    "npc_services": ["scholar"]
+    "npc_services": ["scholar"],
+    "encounters": [
+      {"type": "discovery", "id": "insomniac_tally", "label": "📜 A column of marks on the beam behind the hearth",
+       "lines": [
+         "📜 On a beam behind Gravewatch's hearth, where the smoke has darkened the wood,",
+         "a column of small marks. Made with the nib of a charcoal stick over decades.",
+         "Most are dark. Some are lighter. A few in the middle are red. There are also",
+         "five small blue ones, off to the side, and a single very long line in black",
+         "that runs almost the height of the beam.",
+         "",
+         "The Insomniac, if you ask, looks at the beam without standing up:",
+         "",
+         "  'I count. I always count. Different things.'",
+         "  'The dark ones are the climbers who came back to Gravewatch.'",
+         "  'The light ones are the climbers who did not.'",
+         "  'The red ones, in the middle, are the climbers I do not know yet.'",
+         "  'They have not come back, but they have not stopped not-coming-back, either.'",
+         "  'I will know in time.'",
+         "",
+         "  'The five blue ones are cats I have counted on the windowsill.'",
+         "  'They were all the same cat. The cat does not know they were all the same cat.'",
+         "  'I do.'",
+         "",
+         "  'The long line is the nights I have not slept.'",
+         "  'I do not count those one at a time. I would have run out of beam.'",
+         "  'When the line reaches the top of the beam I will start a new beam.'",
+         "  'I have not had to. Beams in this village were cut long for the cold.'",
+         "",
+         "She pauses. She does not look at you. She is counting, even now.",
+         "",
+         "  'You climbed in once,' she says. 'You climbed out, and then in again.'",
+         "  'You are a dark mark. You may also be a light mark, one day. I will see.'",
+         "  'It is alright either way. The counting is the thing that goes on.'"
+       ]}
+    ]
   },
   "forest": {
     "name": "The Witherwood",
