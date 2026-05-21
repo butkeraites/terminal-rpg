@@ -533,6 +533,28 @@
          "Older hand, scratched into the lintel: 'I have re-marked this doorpost for six visits.'",
          "'The water comes and washes the name off. Someone comes after and writes it back.'",
          "'I do not know who. I have not been here while they were. I am glad of them.'"
+       ]},
+      {"type": "discovery", "id": "erons_doorpost", "label": "📜 A doorpost in Brackmere with one name added back",
+       "lines": [
+         "📜 At the corner of what was once a kitchen door — the door is gone; the post stands —",
+         "a name has been written back. Recently. In careful ink, by someone who came from outside.",
+         "",
+         "                    ERON.  Aged 8.  Visiting from the capital.",
+         "                    He was here when the gates closed. He is the bellward's son.",
+         "                    His grandmother was Brackmere-born. They came for the brewing.",
+         "                    They did not return. He died, with her, in the second month.",
+         "                    She had been a girl in this house. She wrote on this post once",
+         "                    when she was small. She had a green ribbon. The ribbon is here.",
+         "",
+         "Tied to the post: a small piece of dyed wool. Green. Almost grey now. The colour of",
+         "what was once green. The grandmother kept it. She must have given it to Eron",
+         "in the second month, when there was nothing else. Eron must have tied it here",
+         "before he sat down for the last time. The post is the only thing of his that survived.",
+         "",
+         "Below the name and the ribbon, in the same older hand — the Reader's hand:",
+         "  'The bellward, his father, has been ringing the bell for centuries asking where he is.'",
+         "  'Eron is here. I have written him back into the post. The bellward cannot read this.'",
+         "  'It is here for you. If you take a name back up the road, take his. — Older Hand.'"
        ]}
     ]
   },
