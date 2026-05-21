@@ -955,7 +955,36 @@
     "connections": ["the_border"],
     "encounters": [
       {"type": "dialogue", "dialogue_id": "margrave_emissary", "label": "🏛️  Speak with the Margrave's Emissary"},
-      {"type": "combat", "enemies": ["margrave_censor"], "label": "⚔️  Face the Margrave's Censor"}
+      {"type": "combat", "enemies": ["margrave_censor"], "label": "⚔️  Face the Margrave's Censor"},
+      {"type": "discovery", "id": "margrave_real_census", "label": "📜 A cracked stone behind the monument",
+       "lines": [
+         "📜 Around the back of the Margrave's polished monument, where the guards' eyes do not bend,",
+         "there is a second stone. Smaller. Granite, not marble. Cracked across the face.",
+         "The refugees who paid — who lived — have been writing on it, secretly, for three winters.",
+         "",
+         "They have been writing the names of the ones who could not pay.",
+         "",
+         "      KESSEN, of Brackmere, with her two boys.",
+         "      OLD MARR, who held coins out and was told they were not enough.",
+         "      A TANNER FROM THE REACH, name forgotten — please write him.",
+         "      THE WOMAN WHO COUGHED. SHE WAS FROM A HOLD WHOSE NAME WE NEVER LEARNED.",
+         "      THE TWO BOYS WHO SHARED A LOAF. THE LOAF WAS TWO COPPERS. THEY HAD ONE.",
+         "      ROHAN, who paid for himself and then died of the cold he caught in the queue.",
+         "      A GRANDMOTHER WHO INSISTED HER GRANDCHILD GO FIRST.",
+         "          THE GRANDCHILD WROTE THAT LINE. THE GRANDMOTHER DID NOT MAKE IT.",
+         "      A MAN WHO LOOKED LIKE HE COULD HAVE BEEN ANYONE'S FATHER. HE WAS SOMEONE'S.",
+         "",
+         "The list goes on. Dozens of names. Dozens of unnamed, but described.",
+         "",
+         "Below, in many hands, a sentence has been added and added to, like a vow:",
+         "  'The monument says: the merciful Margrave. The stone behind it says: this is who",
+         "   the mercy did not reach. The two stones are the same monument. The Margrave",
+         "   does not know about the second stone yet. We will not stop writing on it.'",
+         "",
+         "At the bottom, in a careful, very small hand:",
+         "  'When the third winter ends, we will turn the stone around. The monument will",
+         "   become a stone we read from both sides. We will not move it. We will only turn it.'"
+       ]}
     ]
   },
   "hidden_hold": {
