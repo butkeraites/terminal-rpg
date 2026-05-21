@@ -8671,5 +8671,1132 @@
       "You have agreed. The agreement settled into you. You stood up. You will sleep well tonight.",
       "  (+1 Defense, permanently — an agreement with the role the kingdom is offering you.)"
     ]
+  },
+  "crossroads_signpost_added_a_name": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "crossroads"
+      ],
+      "min_visits": 2,
+      "chance": 0.15
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "signpost_named_you"
+    },
+    "lines": [
+      "The signpost at the Crossroads has a row of small carvings down its back, each one a",
+      "name. You walked past tonight and the post had, since yesterday, gained one. A small",
+      "set of marks at the bottom. Your initials. Someone has been carving you in. You stood taller.",
+      "  (+1 Defense, permanently — initials cut into a signpost by hands you do not know.)"
+    ]
+  },
+  "crossroads_a_cart_passed_with_the_dead": {
+    "category": "half_truth",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "crossroads"
+      ],
+      "min_visits": 2,
+      "chance": 0.14
+    },
+    "effect": {
+      "flag": "saw_dead_cart"
+    },
+    "lines": [
+      "A cart passed you at the Crossroads tonight — slow, covered, the driver in the kingdom's",
+      "old grey. You stepped aside. You did not look. You knew. The cart goes from the high",
+      "places down to Gravewatch. Tonight it had one passenger. Tonight, the passenger was someone."
+    ]
+  },
+  "crossroads_lantern_caught_your_step": {
+    "category": "found",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "crossroads"
+      ],
+      "chance": 0.13
+    },
+    "effect": {
+      "stat": "max_stamina",
+      "delta": 1,
+      "flag": "crossroads_lantern_step"
+    },
+    "lines": [
+      "The hanging lantern at the Crossroads — the one that should not have any oil left —",
+      "swung tonight when you arrived. As if to greet. As if to count one more in. You looked",
+      "up. The wick had a small steady flame. There was no wind. The lantern is glad you came.",
+      "  (+1 Max Stamina, permanently — a lantern that decided to be glad of your arrival.)"
+    ]
+  },
+  "crossroads_kept_a_seat_by_the_milestone": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "crossroads"
+      ],
+      "min_visits": 3,
+      "chance": 0.14
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 1,
+      "flag": "milestone_seat"
+    },
+    "lines": [
+      "On the second milestone-stone at the Crossroads, the flat top where travellers sit, the",
+      "moss has thinned tonight in a particular shape — you sitting on it, cross-legged, head",
+      "down. The Crossroads has been keeping the seat for you. You sat. The moss did not flatten.",
+      "  (+1 Max HP, permanently — a seat kept for you by a hub that does not keep seats.)"
+    ]
+  },
+  "crossroads_road_remembered_your_first_pass": {
+    "category": "mind",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "crossroads"
+      ],
+      "min_visits": 4,
+      "chance": 0.13
+    },
+    "effect": {
+      "flag": "road_recalled_first"
+    },
+    "lines": [
+      "Tonight, walking through the Crossroads, you remembered — with a clarity you had not",
+      "asked for — the first time you stood here. Younger. Lighter. Less afraid. Less ready.",
+      "The road brought the memory up for you. The road keeps such things. The road shared one."
+    ]
+  },
+  "crossroads_an_old_one_blessed_you_in_passing": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "crossroads"
+      ],
+      "min_visits": 2,
+      "chance": 0.13
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "crossroads_old_blessing"
+    },
+    "lines": [
+      "An old one passed you at the Crossroads tonight, going the other way — bent, slow, the",
+      "kind of walk that has nowhere left to go. They blessed you in passing. A small word.",
+      "An old word. You did not catch the word. The blessing landed anyway. You walked on lighter.",
+      "  (+1 Defense, permanently — a blessing from a stranger old enough not to be wasting it.)"
+    ]
+  },
+  "crossroads_left_a_coin_for_the_road": {
+    "category": "promise_kept",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "crossroads"
+      ],
+      "min_visits": 2,
+      "chance": 0.13
+    },
+    "effect": {
+      "flag": "left_coin_for_road"
+    },
+    "lines": [
+      "Tonight at the Crossroads you set one small coin down at the foot of the signpost. You",
+      "did not need to. You did. The coin is the road's now. The road takes coins. It pays them",
+      "back, not in coin, in small kindnesses. The road will keep one of those kindnesses for you."
+    ]
+  },
+  "crossroads_a_step_behind_you_was_not_yours": {
+    "category": "half_truth",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "crossroads"
+      ],
+      "min_visits": 3,
+      "chance": 0.11
+    },
+    "effect": {
+      "flag": "step_behind_not_yours"
+    },
+    "lines": [
+      "Tonight at the Crossroads you heard, for one count, a second step behind your step.",
+      "Not an echo. Different rhythm. You turned. Nobody. You walked on. The second step kept",
+      "with you, faintly, until the next zone. The road keeps company for those who walk far enough."
+    ]
+  },
+  "crossroads_milestone_warmed_against_your_back": {
+    "category": "body",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "crossroads"
+      ],
+      "min_visits": 2,
+      "chance": 0.12
+    },
+    "effect": {
+      "stat": "max_stamina",
+      "delta": 1,
+      "flag": "milestone_warmed"
+    },
+    "lines": [
+      "You leaned against the second milestone tonight at the Crossroads to catch your breath.",
+      "The stone, after a count, was a little warm under your back. Not from sun. Stone-warmth.",
+      "The kind of warmth that comes from a thing that has decided to be kind. You stood up easier.",
+      "  (+1 Max Stamina, permanently — a milestone that warmed itself slightly against your back.)"
+    ]
+  },
+  "crossroads_a_grave_at_the_third_branch": {
+    "category": "found",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "crossroads"
+      ],
+      "min_visits": 2,
+      "chance": 0.12
+    },
+    "effect": {
+      "flag": "third_branch_grave"
+    },
+    "lines": [
+      "At the third branching of the Crossroads tonight you noticed a small grave you had not",
+      "seen before — half-tucked into the verge, the marker barely a hand high. Old. You knelt.",
+      "You read the name. You will not say it. You knew the name. The grave nodded back at you."
+    ]
+  },
+  "crossroads_kept_your_coat_dry_when_it_rained": {
+    "category": "found",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "crossroads"
+      ],
+      "min_visits": 3,
+      "chance": 0.11
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 1,
+      "flag": "rain_passed_around"
+    },
+    "lines": [
+      "Tonight, between zones, rain found the Crossroads. It rained on the milestones. It rained",
+      "on the signpost. It did not rain on you. A small circle around you stayed dry. You walked",
+      "through. The road has decided you are not, tonight, going to be wet. The road has its preferences.",
+      "  (+1 Max HP, permanently — a rain that decided not to fall on you, the once.)"
+    ]
+  },
+  "crossroads_signpost_pointed_to_your_old_home": {
+    "category": "broken",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "crossroads"
+      ],
+      "min_visits": 3,
+      "chance": 0.11
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": -1,
+      "flag": "signpost_to_home"
+    },
+    "lines": [
+      "The signpost at the Crossroads tonight, for one count, had a fifth arm — pointing",
+      "toward the road home, the one you took to get here, the road that does not, anymore,",
+      "lead anywhere you can return to. You looked. The fifth arm went again. You walked on.",
+      "  (-1 Max HP, permanently — a road that no longer leads home, named on the signpost once for you.)"
+    ]
+  },
+  "crossroads_a_dog_followed_you_to_the_branching": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "crossroads"
+      ],
+      "min_visits": 2,
+      "chance": 0.12
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 1,
+      "flag": "dog_to_branching"
+    },
+    "lines": [
+      "A dog — a grey one, lean, the kind that lives at crossroads — followed you from the",
+      "Gravewatch road tonight as far as the first branching. It sat. Watched you choose. Went",
+      "back when you had chosen. The dog approves of the choice. The dog will watch you again.",
+      "  (+1 Max HP, permanently — a grey dog at a crossroads, the once, watching for you.)"
+    ]
+  },
+  "crossroads_a_song_caught_in_your_throat": {
+    "category": "mind",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "crossroads"
+      ],
+      "min_visits": 2,
+      "chance": 0.11
+    },
+    "effect": {
+      "flag": "song_caught_at_branch"
+    },
+    "lines": [
+      "Tonight at the Crossroads, between zones, you had a song in your mouth — the first you",
+      "had sung in this run. Two lines. Then it stopped. The Crossroads took it. It is going",
+      "to live at the Crossroads now. People who pass through will, sometimes, hum the song."
+    ]
+  },
+  "crossroads_your_shadow_was_one_count_late": {
+    "category": "half_truth",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "crossroads"
+      ],
+      "min_visits": 3,
+      "chance": 0.1
+    },
+    "effect": {
+      "flag": "shadow_late_crossroads"
+    },
+    "lines": [
+      "Tonight, when you stopped at the Crossroads to read the signpost, your shadow — by the",
+      "lantern at the second milestone — caught up with you a count after you stopped. You saw",
+      "it land. You did not say. The shadow will, from now on, be a little behind you here."
+    ]
+  },
+  "village_chronicle_room_doors_eased_for_you": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "min_visits": 3,
+      "chance": 0.13
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "chronicle_door_eased"
+    },
+    "lines": [
+      "The Chronicle is kept in a small room at the back of Gravewatch's hall. The door is",
+      "old. It sticks. Tonight, when you went past, it eased for you — opened a half-finger,",
+      "as if remembering you had once read what was kept inside. The Chronicle wants you to come back.",
+      "  (+1 Defense, permanently — a door that has decided to be easier for your hand.)"
+    ]
+  },
+  "village_inn_set_aside_a_bowl_for_you": {
+    "category": "found",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "min_visits": 2,
+      "chance": 0.14
+    },
+    "effect": {
+      "stat": "max_stamina",
+      "delta": 1,
+      "flag": "inn_bowl_set_aside"
+    },
+    "lines": [
+      "Tonight at Gravewatch's inn there was, on the high shelf, a small bowl with your name",
+      "carved on the rim. You had not eaten there before. You ate from it. The innkeeper said",
+      "nothing. The bowl has waited for you. The bowl will go on waiting. You ate full tonight.",
+      "  (+1 Max Stamina, permanently — a bowl set aside by someone who knew you would come.)"
+    ]
+  },
+  "village_a_gravedigger_nodded_at_you": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "min_visits": 3,
+      "chance": 0.13
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "gravedigger_nodded"
+    },
+    "lines": [
+      "The gravediggers of Gravewatch don't, properly, nod at anyone. They have a job. They do",
+      "it. Tonight one of them — the older one, the one with the scar along the brow — nodded",
+      "at you as you passed. A small nod. A recognition. A respect. You nodded back. You stood taller.",
+      "  (+1 Defense, permanently — a nod from one whose work is the kingdom's quiet bottom layer.)"
+    ]
+  },
+  "village_a_widow_pressed_a_pebble_into_your_hand": {
+    "category": "promise_kept",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "min_visits": 2,
+      "chance": 0.12
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 1,
+      "flag": "widow_pebble"
+    },
+    "lines": [
+      "A widow in Gravewatch's square pressed a small pebble into your hand tonight without",
+      "speaking. Smooth. Warm from her pocket. The kind of pebble people give in the kingdom",
+      "to those they have decided to mourn ahead of time. You kept it. It rides in your coat.",
+      "  (+1 Max HP, permanently — a mourning-pebble given to you by a hand that has practice.)"
+    ]
+  },
+  "village_chronicle_added_a_face_for_you": {
+    "category": "mind",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "min_visits": 4,
+      "chance": 0.11
+    },
+    "effect": {
+      "flag": "chronicle_added_face"
+    },
+    "lines": [
+      "Tonight in the Chronicle a face appeared — a small ink drawing in the margin — that you",
+      "recognized. A face from a previous run, a face you had thought you had let go of. The",
+      "Chronicle keeps faces, too. The face is yours to find when you need it. You closed the book."
+    ]
+  },
+  "village_innkeeper_kept_your_seat_warm": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "min_visits": 3,
+      "chance": 0.12
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 1,
+      "flag": "inn_seat_warm"
+    },
+    "lines": [
+      "The innkeeper at Gravewatch tonight kept your seat — the one by the second window, the",
+      "one with the cushion that has flattened to your shape — empty for you all evening. You",
+      "sat. The cushion was warm. As if someone had only just got up. The innkeeper, you think.",
+      "  (+1 Max HP, permanently — a seat kept warm for you by hands that have other work.)"
+    ]
+  },
+  "village_a_dead_friend_was_at_the_window": {
+    "category": "half_truth",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "min_visits": 4,
+      "chance": 0.1
+    },
+    "effect": {
+      "flag": "dead_friend_window"
+    },
+    "lines": [
+      "Tonight you passed Gravewatch's third house — empty since the year before last — and",
+      "in the upstairs window, briefly, was a friend who died last winter. They saw you. They",
+      "didn't wave. They were glad you were walking past. You walked on. The window was empty after."
+    ]
+  },
+  "village_smith_quenched_for_you": {
+    "category": "found",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "min_visits": 2,
+      "chance": 0.12
+    },
+    "effect": {
+      "stat": "attack",
+      "delta": 1,
+      "flag": "smith_quench_for_you"
+    },
+    "lines": [
+      "The Smith was at the trough as you passed Gravewatch tonight — quenching a blade. Not",
+      "yours. She held the blade in the water a count too long, deliberately, and looked up at",
+      "you while it cooled. As if to teach. You watched. You learned. Your hand will know now.",
+      "  (+1 Attack, permanently — a quenching the Smith timed for you to see, the once.)"
+    ]
+  },
+  "village_a_child_asked_your_name": {
+    "category": "promise_kept",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "min_visits": 3,
+      "chance": 0.12
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 2,
+      "flag": "child_asked_name"
+    },
+    "lines": [
+      "A child in Gravewatch's square asked your name tonight. Looked you in the eye. Asked.",
+      "You told them. They repeated it. They will remember it. You felt it land in a child's",
+      "memory — a different kind of keeping. The child will not, in their long life, forget you.",
+      "  (+2 Max HP, permanently — a child who asked your name, was answered, and will keep it.)"
+    ]
+  },
+  "village_a_bell_was_rung_for_a_living_one": {
+    "category": "half_truth",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "village"
+      ],
+      "min_visits": 4,
+      "chance": 0.1
+    },
+    "effect": {
+      "flag": "bell_for_living"
+    },
+    "lines": [
+      "Gravewatch's bell rang once tonight — not at the hour. The kingdom rings the bell for",
+      "the dead. Tonight it rang for someone alive. You don't know who. You guessed. You did",
+      "not ask. Bells, sometimes, ring early. The bell apologized to the air. The air accepted."
+    ]
+  },
+  "sealed_chamber_a_silenced_one_named_you": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "sealed_chamber"
+      ],
+      "min_visits": 2,
+      "chance": 0.16
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 2,
+      "flag": "silenced_named_you"
+    },
+    "lines": [
+      "You stood in the chamber tonight and one of the silenced, behind their stone — Verren,",
+      "you knew — said your name. Soundlessly. The way the silenced speak. The name landed in",
+      "you whole. The silenced had been silenced. They are speaking, very slowly, for you again.",
+      "  (+2 Max HP, permanently — a name returned to you by one whose name was taken away.)"
+    ]
+  },
+  "sealed_chamber_air_was_thinner_than_room_allowed": {
+    "category": "body",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "sealed_chamber"
+      ],
+      "min_visits": 2,
+      "chance": 0.14
+    },
+    "effect": {
+      "stat": "max_stamina",
+      "delta": -1,
+      "flag": "sealed_air_thin"
+    },
+    "lines": [
+      "The air in the chamber tonight was thinner than the room should have made it. As if",
+      "the kingdom's old wrong had taken a portion of the breathable air with it when it",
+      "sealed the door. You breathed. Your breathing will be shorter from now on. You can carry it.",
+      "  (-1 Max Stamina, permanently — an air the kingdom had taken some of, before you went in.)"
+    ]
+  },
+  "sealed_chamber_you_added_a_name_to_the_floor": {
+    "category": "promise_kept",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "sealed_chamber"
+      ],
+      "min_visits": 2,
+      "chance": 0.13
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "added_name_to_floor"
+    },
+    "lines": [
+      "Tonight you scratched, with the edge of your knife, a single name into the dust on the",
+      "floor of the chamber. Not one of theirs. A name of someone you have loved who is alive.",
+      "The silenced read it, in their silenced way. They thanked you. The dust will keep it.",
+      "  (+1 Defense, permanently — a living name laid in the dust where dead names are kept.)"
+    ]
+  },
+  "sealed_chamber_chairman_almost_addressed_you": {
+    "category": "half_truth",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "sealed_chamber"
+      ],
+      "min_visits": 2,
+      "chance": 0.11
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": -1,
+      "flag": "chairman_almost"
+    },
+    "lines": [
+      "The Chairman, who sat at the head of the table in this chamber and ordered the sealing,",
+      "almost turned tonight. His silhouette, at the head, almost faced you. The room held its",
+      "breath. The Chairman, in the end, did not turn. You felt his almost. Some of you stayed in the room.",
+      "  (-1 Max HP, permanently — the Chairman almost looking at you takes a thread of you.)"
+    ]
+  },
+  "sealed_chamber_one_of_the_silenced_thanked_you_for_coming": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "sealed_chamber"
+      ],
+      "min_visits": 3,
+      "chance": 0.13
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "silenced_thanked_visit"
+    },
+    "lines": [
+      "Tonight, before you left, one of the silenced — the one second from the wall, the one",
+      "whose name the kingdom forgot first — thanked you for coming. Soundlessly. The thanks",
+      "landed in your chest. You stood up taller. They are not, anymore, alone in their forgetting.",
+      "  (+1 Defense, permanently — a thanks given to you by one who was told never to speak.)"
+    ]
+  },
+  "bone_tomb_cael_dialed_their_voice_for_you": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "bone_tomb"
+      ],
+      "min_visits": 3,
+      "chance": 0.13
+    },
+    "effect": {
+      "stat": "max_stamina",
+      "delta": 1,
+      "flag": "cael_dialed_voice"
+    },
+    "lines": [
+      "Speaking through stone is hard work. Tonight Cael, at your visit, made their voice as",
+      "soft as the stone would carry — almost just a vibration, almost just the air. They were",
+      "tired. They spoke anyway. They had been waiting. You stayed long. They were glad.",
+      "  (+1 Max Stamina, permanently — a soft voice through stone, kept low for your ear.)"
+    ]
+  },
+  "bone_tomb_a_dead_uncle_remembered_you": {
+    "category": "half_truth",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "bone_tomb"
+      ],
+      "min_visits": 2,
+      "chance": 0.12
+    },
+    "effect": {
+      "flag": "uncle_remembered"
+    },
+    "lines": [
+      "Among the rows tonight there was, briefly, a niche that held a name very close to one",
+      "of your uncles. Your uncle is not buried here. Your uncle is buried elsewhere. The Bone",
+      "Tomb, tonight, opened a small space for him. Out of respect for you. You stood by it."
+    ]
+  },
+  "bone_tomb_you_laid_your_palm_on_an_unnamed_one": {
+    "category": "promise_kept",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "bone_tomb"
+      ],
+      "min_visits": 2,
+      "chance": 0.13
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 1,
+      "flag": "palm_to_unnamed"
+    },
+    "lines": [
+      "Tonight you knelt at one of the unnamed niches — the row at the far wall, the row of",
+      "those whose names the kingdom did not, at the time of burying, know — and laid your",
+      "palm flat. You held it there. The niche took a little of your warmth. You stood up emptier.",
+      "  (+1 Max HP, permanently — a warmth given to one whose name had not been waited for.)"
+    ]
+  },
+  "bone_tomb_an_old_word_came_out_of_the_stone": {
+    "category": "found",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "bone_tomb"
+      ],
+      "min_visits": 3,
+      "chance": 0.12
+    },
+    "effect": {
+      "stat": "attack",
+      "delta": 1,
+      "flag": "tomb_old_word"
+    },
+    "lines": [
+      "From the third wall tonight, while you stood, an old word came out of the stone and",
+      "into the air. Soft. You don't speak the old tongue. You understood it anyway. It was a",
+      "word for *welcome*. You did not say thank you aloud. The word knew. The stone kept it back.",
+      "  (+1 Attack, permanently — a *welcome* in the old tongue, given to you by the stone.)"
+    ]
+  },
+  "bone_tomb_someone_added_a_petal": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "bone_tomb"
+      ],
+      "min_visits": 2,
+      "chance": 0.11
+    },
+    "effect": {
+      "flag": "tomb_petal"
+    },
+    "lines": [
+      "Someone — you don't know who — has been adding small dried petals to a particular niche",
+      "in the Bone Tomb. Tonight, while you stood there, another one was added. You did not",
+      "see the hand. The petal landed quietly. You added one of yours. There are two now."
+    ]
+  },
+  "mourncross_an_empty_house_was_lit": {
+    "category": "half_truth",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "mourncross"
+      ],
+      "min_visits": 2,
+      "chance": 0.13
+    },
+    "effect": {
+      "flag": "empty_house_lit"
+    },
+    "lines": [
+      "Tonight at Mourncross — the empty capital, every window dark these long years — one",
+      "house, the third on the second street, was lit. One small lamp, in an upper room. You",
+      "did not go in. You walked past slowly. The lamp went out as you cleared the corner."
+    ]
+  },
+  "mourncross_an_unnamed_grave_called_your_name": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "mourncross"
+      ],
+      "min_visits": 3,
+      "chance": 0.13
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 1,
+      "flag": "unnamed_grave_called"
+    },
+    "lines": [
+      "Walking the second graveyard at Mourncross tonight, an unnamed grave — one of the many,",
+      "the marker blank, the soil settled — called your name. Soundlessly, the way the dead",
+      "speak in this city. You stopped. You knelt. You stayed a count. The grave did not name itself.",
+      "  (+1 Max HP, permanently — an unnamed grave that called you specifically.)"
+    ]
+  },
+  "mourncross_a_door_opened_for_a_count": {
+    "category": "found",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "mourncross"
+      ],
+      "min_visits": 2,
+      "chance": 0.12
+    },
+    "effect": {
+      "flag": "mourncross_door_opened"
+    },
+    "lines": [
+      "Tonight a door — one of the closed ones, the kind that hasn't opened since the Pall",
+      "came down — opened a hand's-width for one count and then closed. You saw inside. A",
+      "hearth, kept up. Bread on the table. Then the door was shut. You walked on. You knew."
+    ]
+  },
+  "mourncross_your_step_woke_a_room": {
+    "category": "half_truth",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "mourncross"
+      ],
+      "min_visits": 2,
+      "chance": 0.11
+    },
+    "effect": {
+      "flag": "step_woke_a_room"
+    },
+    "lines": [
+      "On the third street tonight, as you walked, a room above you woke — the lamp lit, a",
+      "voice said one word that wasn't a word, footsteps crossed the floor. You walked past.",
+      "By the time you looked up, the lamp was out. The room had been waiting a long time for you."
+    ]
+  },
+  "mourncross_a_widow_set_a_chair_out": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "mourncross"
+      ],
+      "min_visits": 3,
+      "chance": 0.13
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "mourncross_widow_chair"
+    },
+    "lines": [
+      "Tonight, in a doorway on the fourth street, a chair had been set out — small, low, the",
+      "kind a widow puts out for the next visitor she expects. Nobody was in. You sat in the",
+      "chair for one count. You stood up. The widow, somewhere in the empty house, was glad.",
+      "  (+1 Defense, permanently — a chair set out by a widow for a visitor she was, in fact, expecting.)"
+    ]
+  },
+  "mourncross_an_unread_name_caught_your_eye": {
+    "category": "found",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "mourncross"
+      ],
+      "min_visits": 3,
+      "chance": 0.12
+    },
+    "effect": {
+      "stat": "attack",
+      "delta": 1,
+      "flag": "unread_name_caught"
+    },
+    "lines": [
+      "On a doorpost in Mourncross tonight you saw — fresh, in chalk — a name. You walked closer.",
+      "The chalk was your hand's chalk. The name was one you would have written. You don't",
+      "remember writing it. Someone you have been writing has, briefly, used your hand here.",
+      "  (+1 Attack, permanently — a name written, in your hand, by someone you don't remember being.)"
+    ]
+  },
+  "mourncross_the_capital_air_smelled_of_a_kitchen": {
+    "category": "mind",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "mourncross"
+      ],
+      "min_visits": 2,
+      "chance": 0.11
+    },
+    "effect": {
+      "flag": "mourncross_kitchen_air"
+    },
+    "lines": [
+      "Tonight, walking Mourncross, you smelled — for one count, on a particular corner — the",
+      "kitchen of a house that no longer exists. Bread. Onions. The kind of cooking that gets",
+      "done for many people. The smell went. You knew the kitchen. You couldn't have. You did."
+    ]
+  },
+  "mourncross_an_old_council_member_nodded_at_you": {
+    "category": "half_truth",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "mourncross"
+      ],
+      "min_visits": 3,
+      "chance": 0.11
+    },
+    "effect": {
+      "flag": "council_nod"
+    },
+    "lines": [
+      "Tonight on the square at Mourncross — the council square, empty since the Pall — a",
+      "silhouette in a council robe nodded at you. Briefly. From the steps. Then it was not",
+      "there. The council has not met in the lifetime of this kingdom. One of them noted your passing."
+    ]
+  },
+  "mourncross_a_child_left_a_drawing_for_you": {
+    "category": "found",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "mourncross"
+      ],
+      "min_visits": 3,
+      "chance": 0.12
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 2,
+      "flag": "mourncross_drawing"
+    },
+    "lines": [
+      "Tucked into the lintel of a doorway tonight there was a small piece of paper. A child's",
+      "drawing. You. Looking up. Recognizable. The paper was new. There are no children in",
+      "Mourncross. There were, once. One of them, tonight, has reached forward and given you this.",
+      "  (+2 Max HP, permanently — a drawing of you by a child of the empty capital, kept in your coat.)"
+    ]
+  },
+  "mourncross_a_window_had_a_face_at_it_for_one_count": {
+    "category": "half_truth",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "mourncross"
+      ],
+      "min_visits": 2,
+      "chance": 0.1
+    },
+    "effect": {
+      "flag": "mourncross_face_window"
+    },
+    "lines": [
+      "On the second street, the fourth window, for one count tonight, there was a face. Old.",
+      "Kind. Patient. Watching you walk past. Then there was no face. You did not turn back.",
+      "The face was not yours. It was somebody. The capital is full of these. You walked on slower."
+    ]
+  },
+  "a_grave_at_your_back_warmed_you": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "min_level": 5,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 1,
+      "flag": "grave_warmed_back"
+    },
+    "lines": [
+      "Tonight at some point in your travel you stopped to rest and sat with your back against",
+      "what you took for a wall. It was a grave-stone. The grave-stone warmed against your back",
+      "anyway. You stood up. You did not apologise. The dead, sometimes, are glad to be leaned on.",
+      "  (+1 Max HP, permanently — a grave-stone that decided to warm against your back.)"
+    ]
+  },
+  "passed_a_named_grave_and_said_the_name": {
+    "category": "promise_kept",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "min_level": 5,
+      "chance": 0.13
+    },
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "said_a_name"
+    },
+    "lines": [
+      "Tonight you passed a named grave — a stone with a clear name on it — and you said the",
+      "name aloud, quietly, as you went by. You did not know the person. The name was said.",
+      "The grave heard. The kingdom heard. A name said aloud is one fewer name on the road to forgotten.",
+      "  (+1 Defense, permanently — a name said aloud by someone who did not have to say it.)"
+    ]
+  },
+  "the_kingdoms_dead_held_a_silence_for_you": {
+    "category": "bond",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "min_level": 7,
+      "chance": 0.1
+    },
+    "effect": {
+      "stat": "max_stamina",
+      "delta": 1,
+      "flag": "dead_held_silence"
+    },
+    "lines": [
+      "Tonight at some count in your travel the dead — all of the kingdom's dead, all at once —",
+      "held a count of silence. You did not hear them stop. You felt them stop. You held",
+      "still in the silence with them. The silence ended. You walked on. You stood different.",
+      "  (+1 Max Stamina, permanently — a silence held for you by every dead one in the kingdom.)"
+    ]
+  },
+  "a_hollowed_did_not_attack_you_today": {
+    "category": "half_truth",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "min_level": 5,
+      "chance": 0.09
+    },
+    "effect": {
+      "flag": "hollowed_let_you_pass"
+    },
+    "lines": [
+      "Tonight in your travel a Hollowed — one of the unresolved dead, walking, the kind that",
+      "normally swings at any living thing — saw you, recognized something, and turned aside.",
+      "It went the other way. You watched it go. The Hollowed had been someone. They knew you."
+    ]
+  },
+  "you_left_a_pebble_on_an_unnamed_marker": {
+    "category": "promise_kept",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "min_level": 5,
+      "chance": 0.12
+    },
+    "effect": {
+      "stat": "max_hp",
+      "delta": 1,
+      "flag": "pebble_unnamed_marker"
+    },
+    "lines": [
+      "Tonight at some point in your travel you picked up a small pebble from the path and",
+      "set it on the top of an unnamed grave-marker — the kind that has only a date, no name.",
+      "The kingdom has many. You added one pebble to one. The pebble will stay. So will the gesture.",
+      "  (+1 Max HP, permanently — a pebble set on an unnamed marker by your hand.)"
+    ]
   }
 }
