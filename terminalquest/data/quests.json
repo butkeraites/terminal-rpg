@@ -2868,5 +2868,181 @@
     ],
     "reward_chronicle_line": "Once they had once made The Old Seal, Mourncross was less hollow by one count for them, and five of the procession ended easier.",
     "flavor": "Across runs, The Old Seal marks you. The procession is less hollow by one count for you. Five of them. End them easier."
+  },
+  "after_choir_almost_sang_you": {
+    "name": "After the Choir Almost Sang You",
+    "target_enemy": "choirmaster_effigy",
+    "needed": 1,
+    "reward_gold": 800,
+    "cleanse_required": 4,
+    "requires_mark": "choir_almost_sang_you",
+    "reward_marks": [
+      "choir_kept_the_third_line"
+    ],
+    "flavor": "The Choir almost sang you into the rite. An effigy carries your half-sung name. End the effigy. The name will be yours."
+  },
+  "after_lost_a_note": {
+    "name": "After You Lost a Note in the Choir",
+    "target_enemy": "censer_shade",
+    "needed": 3,
+    "reward_gold": 500,
+    "cleanse_required": 4,
+    "requires_mark": "choir_you_lost_a_note",
+    "reward_marks": [
+      "music_the_choir_air_was_thinner_for_a_song"
+    ],
+    "flavor": "A note of yours dropped in the Choir. Three censer-shades carry it in their smoke. End them. The note will return."
+  },
+  "after_feather": {
+    "name": "After You Found a Feather in the Choir",
+    "target_enemy": "choirmaster_effigy",
+    "needed": 1,
+    "reward_gold": 600,
+    "cleanse_required": 4,
+    "requires_mark": "found_a_feather_in_the_choir",
+    "reward_consumables": [
+      "The Last Bread"
+    ],
+    "flavor": "A feather is in your pack from the Choir. An effigy wants the feather as a relic. End the effigy. The feather stays."
+  },
+  "after_left_thread": {
+    "name": "After You Left a Thread for Atrél",
+    "target_enemy": "reliquary_golem",
+    "needed": 1,
+    "reward_gold": 800,
+    "cleanse_required": 4,
+    "requires_mark": "last_altar_you_left_a_thread_for_atrel",
+    "reward_marks": [
+      "choir_atrel_held_your_grief_briefly"
+    ],
+    "flavor": "A thread of yours waits on Atrél's altar. A golem holds the thread as evidence. End the golem. The thread is offered."
+  },
+  "after_set_grief": {
+    "name": "After You Set a Grief at Atrél's Altar",
+    "target_enemy": "censer_shade",
+    "needed": 2,
+    "reward_gold": 500,
+    "cleanse_required": 4,
+    "requires_mark": "you_set_a_grief_at_atrels_altar",
+    "reward_marks": [
+      "choir_set_a_grief_at_atrels_side_altar"
+    ],
+    "flavor": "A grief of yours sits at Atrél's altar. Two censer-shades want to absorb it. End them. The grief stays where it is."
+  },
+  "after_cannot_defend": {
+    "name": "After You Could Not Defend in the Choir",
+    "target_enemy": "reliquary_golem",
+    "needed": 1,
+    "reward_gold": 900,
+    "cleanse_required": 4,
+    "requires_mark": "cannot_defend_in_the_choir",
+    "reward_chronicle_line": "Once they had been unable to defend in the Choir; they returned and ended the golem that had been there for the failed defense.",
+    "flavor": "Once you could not defend in the Choir. A golem stood there while the Choir struck. End the golem. The defense will hold next time."
+  },
+  "after_altar_candle": {
+    "name": "After Atrél's Candle Did Not Flicker",
+    "target_enemy": "choirmaster_effigy",
+    "needed": 1,
+    "reward_gold": 700,
+    "cleanse_required": 4,
+    "requires_mark": "last_altar_atrels_candle_did_not_flicker",
+    "reward_marks": [
+      "last_altar_atrel_set_a_grief_at_your_side"
+    ],
+    "flavor": "Atrél's candle did not flicker for you. An effigy wants the candle's flame to fail. End the effigy. The flame holds."
+  },
+  "choir_no_potions": {
+    "name": "No Potions in the Choir",
+    "target_enemy": "choirmaster_effigy",
+    "completion_condition": "no_potions_in_zone",
+    "needed": 1,
+    "reward_gold": 700,
+    "cleanse_required": 4,
+    "flavor": "An effigy. No potion crossed your lips while in the Choir. The Choir respects climbers who refuse the easy break."
+  },
+  "choir_first_strike": {
+    "name": "First Strike Against the Censer",
+    "target_enemy": "censer_shade",
+    "completion_condition": "first_strike_yours",
+    "needed": 2,
+    "reward_gold": 500,
+    "cleanse_required": 4,
+    "flavor": "Two censer-shades. The first blow in each fight is yours. The Choir hates a first strike from outside."
+  },
+  "choir_companion_kill_effigy": {
+    "name": "Let the Sworn Bring the Effigy Down",
+    "target_enemy": "choirmaster_effigy",
+    "completion_condition": "companion_landed_kill",
+    "needed": 1,
+    "reward_gold": 700,
+    "cleanse_required": 4,
+    "flavor": "An effigy. Your sworn lands the killing blow. The Choir hates sworn-kills more than first strikes."
+  },
+  "choir_thrown_kill": {
+    "name": "Thrown Against the Censer",
+    "target_enemy": "censer_shade",
+    "completion_condition": "killed_with_thrown",
+    "needed": 1,
+    "reward_gold": 400,
+    "cleanse_required": 4,
+    "flavor": "A censer-shade. Killed with a thrown weapon — no swung metal. The Choir's old wardens did it this way."
+  },
+  "hidden_priest_recognized": {
+    "name": "A Priest at the Choir Recognized You",
+    "target_enemy": "choirmaster_effigy",
+    "needed": 1,
+    "reward_gold": 700,
+    "cleanse_required": 0,
+    "hidden": true,
+    "trigger_action": {
+      "type": "zone_visited",
+      "params": {
+        "zone_id": "choir"
+      }
+    },
+    "reward_marks": [
+      "ending_hidden_truth_a_priest_at_the_choir_recognized_you"
+    ],
+    "flavor": "Your first step in the Choir — a priest's effigy raised its head one count too sharply. End it. It recognized you."
+  },
+  "mages_counter_pitch": {
+    "name": "The Mage's Counter-Pitch",
+    "target_enemy": "choirmaster_effigy",
+    "needed": 3,
+    "reward_gold": 700,
+    "cleanse_required": 4,
+    "requires_class": [
+      "mage"
+    ],
+    "reward_chronicle_line": "A mage walked the Unanswered Choir and pitched three counter-songs against three effigies. The third line was hers, then.",
+    "flavor": "Three effigies, sung against. Only a mage knows the pitch that makes the Choir's effigies sing wrong."
+  },
+  "after_hidden_truth_choir": {
+    "name": "After the Hidden Truth, the Choir Already Knows",
+    "target_enemy": "cantor_vael",
+    "needed": 1,
+    "reward_gold": 1500,
+    "cleanse_required": 4,
+    "requires_ending": [
+      "hidden_truth"
+    ],
+    "reward_marks": [
+      "choir_almost_completed_the_rite"
+    ],
+    "reward_chronicle_line": "Once they had once known the hidden truth, Cantor Vael did not sing when they entered the Choir, and they took him in his silence.",
+    "flavor": "Across runs, the Hidden Truth marks you. Cantor Vael does not sing when you enter. End him in the silence."
+  },
+  "reborn_hollowed_at_altar": {
+    "name": "A Previous You Was a Hollowed at Atrél's Altar",
+    "target_enemy": "choirmaster_effigy",
+    "needed": 1,
+    "reward_gold": 1100,
+    "cleanse_required": 4,
+    "requires_flag": "is_reborn",
+    "reward_marks": [
+      "reborn_a_hollowed_was_kneeling_at_atrels_altar"
+    ],
+    "reward_chronicle_line": "A previous one of them had been a Hollowed kneeling at Atrél's altar in the Choir. The new self ended the effigy that had once stood next to them.",
+    "flavor": "A previous you knelt at Atrél's altar as a Hollowed. One effigy stood there next to the previous you. End it."
   }
 }
