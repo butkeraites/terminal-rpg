@@ -192,6 +192,22 @@ def apply_effect(state, mark):
 
 # --- Firing --------------------------------------------------------------
 
+# v1.53 — per-fire-site BASE rate. The pool grows toward 1000; we cannot
+# let a 1-5% per-mark chance compound to ~100% fire-on-every-arrival.
+# Instead: gate at the fire-site first (BASE_RATE), THEN sample one mark
+# from the eligible pool weighted by each mark's ``chance`` field. The
+# per-mark ``chance`` becomes a relative weight, not an absolute probability.
+#
+# Target spread: a 30–50 fire-site run produces 5–15 marks total.
+_BASE_RATES = {
+    "zone_arrival":     0.10,
+    "combat_victory":   0.08,
+    "combat_low_hp":    0.20,  # the recklessness site, higher by design
+    "save_action":      0.05,
+    "discovery_read":   0.07,
+}
+
+
 def fire_mark(state, mark):
     """Apply the mark — *atomic save first*, then narrative.
 
@@ -214,10 +230,9 @@ def fire_mark(state, mark):
 def roll_at(state, fire_site):
     """Roll the mark pool at the given fire site.
 
-    Walks every loaded mark; if any are eligible AND their per-site roll
-    succeeds, fires the first one that passes (sorted by id so the order
-    is stable across runs given the same RNG sequence). Returns the fired
-    mark's id, or None.
+    Two-stage: first roll the per-fire-site BASE_RATE to decide whether
+    ANY mark fires; if so, sample one from the eligible pool weighted by
+    each mark's ``chance`` field. Returns the fired mark's id, or None.
 
     Cheap to call from any code path — the function is a no-op when the
     content has no marks pool loaded.
@@ -225,17 +240,38 @@ def roll_at(state, fire_site):
     pool = getattr(state.content, "marks", None)
     if not pool:
         return None
+    base = _BASE_RATES.get(fire_site, 0.05)
     rng = state.rng
+    if rng.random() >= base:
+        return None
+    # Collect eligible marks with their weights. Sort by id so the
+    # cumulative-weight selection is deterministic given the same RNG.
+    eligible_marks = []
+    weights = []
+    cumulative = 0.0
     for mark in sorted(pool.values(), key=lambda m: m["id"]):
         if not eligible(state, mark, fire_site):
             continue
-        chance = mark.get("trigger", {}).get("chance", 0.0)
-        if chance <= 0:
+        weight = float(mark.get("trigger", {}).get("chance", 0.0))
+        if weight <= 0:
             continue
-        if rng.random() < chance:
+        eligible_marks.append(mark)
+        weights.append(weight)
+        cumulative += weight
+    if not eligible_marks:
+        return None
+    # Sample one via cumulative-weight walk. rng.random() ∈ [0,1).
+    target = rng.random() * cumulative
+    running = 0.0
+    for mark, weight in zip(eligible_marks, weights):
+        running += weight
+        if target < running:
             fire_mark(state, mark)
             return mark["id"]
-    return None
+    # Numeric edge: pick the last one if floating-point pushed us past.
+    chosen = eligible_marks[-1]
+    fire_mark(state, chosen)
+    return chosen["id"]
 
 
 def describe(player, marks_pool):

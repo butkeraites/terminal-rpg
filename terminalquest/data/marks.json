@@ -1147,5 +1147,531 @@
       "in fights, to count what is left of you. The counting will keep you from losing track.",
       "  (+1 Max Stamina, permanently — knowing how to count yourself is a kind of rest.)"
     ]
+  },
+
+  "near_death_saw_your_grandmother": {
+    "category": "half_truth",
+    "trigger": {"at": ["combat_low_hp"], "min_level": 3, "chance": 0.5},
+    "effect": null,
+    "lines": [
+      "You are nearly down. At the edge of your sight, briefly, a face you have not seen",
+      "in many years. Your grandmother. She does not say anything. She does not need to.",
+      "She holds the door open. You decide not to walk through it. You straighten. You fight."
+    ]
+  },
+  "near_death_one_hp_left": {
+    "category": "body",
+    "trigger": {"at": ["combat_low_hp"], "chance": 0.4},
+    "effect": {"stat": "max_hp", "delta": -1, "flag": "one_hp_left_once"},
+    "lines": [
+      "You survived. Just. The thing that nearly opened you carved a thin line down your side.",
+      "It will not heal back to where it was. The line is the line. You are a little smaller.",
+      "Atrél, who keeps the small ones, files it. He does not bow. He does not need to.",
+      "  (-1 Max HP, permanently. You stood up. Not all of you did.)"
+    ]
+  },
+  "near_death_heard_the_pall_breathe": {
+    "category": "mind",
+    "trigger": {"at": ["combat_low_hp"], "min_level": 5, "chance": 0.5},
+    "effect": {"flag": "heard_pall_breathe"},
+    "lines": [
+      "You are at one HP. In the silence between heartbeats, you hear something breathing.",
+      "Not the enemy. Not you. Something far away and very large. It breathes once, in.",
+      "Then nothing. You fight on. You will hear that breath again. You will know what it is."
+    ]
+  },
+  "near_death_dropped_a_word": {
+    "category": "forgetting",
+    "trigger": {"at": ["combat_low_hp"], "chance": 0.4},
+    "effect": null,
+    "lines": [
+      "You shouted something to keep yourself upright. You do not remember what you shouted.",
+      "Atrél heard. He has filed it. The word kept you on your feet. You will not need it again.",
+      "It is on the altar. It is in good company. It was a small word. It did what it was for."
+    ]
+  },
+  "near_death_taste_of_iron": {
+    "category": "body",
+    "trigger": {"at": ["combat_low_hp"], "min_level": 4, "chance": 0.4},
+    "effect": {"stat": "attack", "delta": 1, "flag": "taste_of_iron"},
+    "lines": [
+      "You taste iron. Yours. Your own mouth. You spit. The mouth tastes of iron from now on.",
+      "It is not pleasant. It is not unpleasant. It is the taste of having stood. You will",
+      "swing harder, after, because the taste is yours and you do not let go of it.",
+      "  (+1 Attack, permanently. Iron is in you now.)"
+    ]
+  },
+  "near_death_left_a_tooth": {
+    "category": "body",
+    "trigger": {"at": ["combat_low_hp"], "min_level": 4, "chance": 0.3},
+    "effect": {"stat": "max_hp", "delta": -2},
+    "lines": [
+      "You realize after the fight you have lost a tooth. Not the loose one — a different one.",
+      "You did not notice the blow. The tooth is on the ground somewhere. You will not look.",
+      "Atrél will find it. He keeps a small jar. The jar is mostly teeth.",
+      "  (-2 Max HP, permanently. The tooth is gone. You are still here.)"
+    ]
+  },
+  "near_death_kept_yourself_quiet": {
+    "category": "mind",
+    "trigger": {"at": ["combat_low_hp"], "min_level": 3, "chance": 0.4},
+    "effect": {"flag": "stays_quiet_in_pain"},
+    "lines": [
+      "You did not cry out, even at the worst of it. You did not know you could not cry out.",
+      "You know now. The silence is yours. It will be a tool. It will also be a weight. Both.",
+      "Atrél prefers the cryings-out. He has fewer of those to file. He will miss yours."
+    ]
+  },
+  "near_death_made_a_promise_aloud": {
+    "category": "promise_kept",
+    "trigger": {"at": ["combat_low_hp"], "min_level": 4, "chance": 0.4},
+    "effect": {"flag": "near_death_promise"},
+    "lines": [
+      "Through the blood in your mouth, you said something. A promise. To no one specific.",
+      "About what you will do, after this, if you survive this. You survived. The promise stays.",
+      "You will remember it at the wrong times. It will not let you sleep without checking on it."
+    ]
+  },
+  "near_death_chose_to_keep_going": {
+    "category": "bond",
+    "trigger": {"at": ["combat_low_hp"], "chance": 0.5},
+    "effect": {"stat": "max_hp", "delta": 2, "flag": "chose_to_keep_going"},
+    "lines": [
+      "Halfway through the worst of it, you made a small decision. Quiet. To yourself.",
+      "  'I am going to keep going.' You did not say it out loud. You did not need to.",
+      "Atrél heard. The wood heard. Your bones heard. You will be a little harder tomorrow.",
+      "  (+2 Max HP, permanently — the decision is in your marrow now.)"
+    ]
+  },
+  "near_death_the_cat_saw_you": {
+    "category": "half_truth",
+    "trigger": {"at": ["combat_low_hp"], "location": ["village", "forest"], "chance": 0.3},
+    "effect": null,
+    "lines": [
+      "The cat — the same blue cat — was watching the whole time. From a tree, in the wood;",
+      "from a windowsill, in the village. She did not blink. She did not move. She watched.",
+      "She has decided about you, now. You will not know what she has decided. You will know."
+    ]
+  },
+
+  "wound_did_not_close_right": {
+    "category": "body",
+    "trigger": {"at": ["combat_victory"], "min_level": 3, "chance": 0.3},
+    "effect": {"stat": "max_hp", "delta": -2},
+    "lines": [
+      "A wound from this fight has not closed the way wounds usually close. There is a small",
+      "pucker. The skin will not stretch flat there. You will feel it when you raise your arm.",
+      "Atrél has not asked for it. The wound is yours. It will be yours.",
+      "  (-2 Max HP, permanently. Some wounds keep being wounds.)"
+    ]
+  },
+  "blade_calluses_built_up": {
+    "category": "body",
+    "trigger": {"at": ["combat_victory"], "min_level": 4, "chance": 0.3},
+    "effect": {"stat": "attack", "delta": 1, "flag": "blade_calluses"},
+    "lines": [
+      "Your grip has set. The calluses where the hilt sits have done their work today.",
+      "You will not feel the hilt again the way you used to feel it. It is part of your hand.",
+      "  (+1 Attack, permanently. The hand has learned a permanent shape.)"
+    ]
+  },
+  "ear_did_not_recover_fully": {
+    "category": "body",
+    "trigger": {"at": ["combat_victory"], "min_level": 5, "chance": 0.18},
+    "effect": {"stat": "defense", "delta": -1, "flag": "left_ear_dim"},
+    "lines": [
+      "Something rang too close to your left ear today. The ringing has stopped. The hearing",
+      "in that ear has not come all the way back. It will not. Atrél has not asked for it.",
+      "You will turn your right side to the world from now on. The kingdom is not symmetric.",
+      "  (-1 Defense, permanently — a half-deaf side is a slower-blocking side.)"
+    ]
+  },
+  "shoulder_is_lower_now": {
+    "category": "body",
+    "trigger": {"at": ["combat_victory"], "min_level": 6, "chance": 0.15},
+    "effect": {"stat": "max_stamina", "delta": -1, "flag": "left_shoulder_low"},
+    "lines": [
+      "Something in your left shoulder has settled. It used to be even. It is not, anymore.",
+      "The arm works. The arm is slower to lift than the other. You will swing with the other.",
+      "  (-1 Max Stamina, permanently — uneven bodies tire sooner.)"
+    ]
+  },
+  "knuckles_set_into_a_shape": {
+    "category": "body",
+    "trigger": {"at": ["combat_victory"], "min_level": 5, "chance": 0.20},
+    "effect": {"stat": "attack", "delta": 1, "flag": "knuckles_set"},
+    "lines": [
+      "Your knuckles, when you flex your fingers, have set into the shape they make when",
+      "you hold your weapon. The fingers can still uncurl. They prefer the held shape now.",
+      "They will return to it without being asked.",
+      "  (+1 Attack, permanently — the hand is a weapon-hand now.)"
+    ]
+  },
+  "broken_fingernail_that_will_not_grow_back": {
+    "category": "body",
+    "trigger": {"at": ["combat_victory"], "min_level": 4, "chance": 0.15},
+    "effect": null,
+    "lines": [
+      "A fingernail tore off in the fight. The bed is healing. The nail is not growing back.",
+      "Some fingernails do this. They have decided. You did not ask them.",
+      "Atrél has the nail. He has set it carefully. Small things, kept."
+    ]
+  },
+  "knee_did_not_set_right": {
+    "category": "body",
+    "trigger": {"at": ["combat_victory"], "min_level": 5, "chance": 0.18},
+    "effect": {"stat": "max_stamina", "delta": -1, "flag": "knee_clicks"},
+    "lines": [
+      "Your right knee, after this fight, clicks when you bend it. It did not used to.",
+      "It will do this for the rest of your life. It does not hurt. It only clicks. Atrél",
+      "has heard it. He has not asked for it. Some sounds are yours alone.",
+      "  (-1 Max Stamina, permanently — the clicking knee tires you a beat sooner.)"
+    ]
+  },
+  "bruise_that_did_not_fade": {
+    "category": "body",
+    "trigger": {"at": ["combat_victory"], "min_level": 4, "chance": 0.16},
+    "effect": {"stat": "defense", "delta": -1, "flag": "permanent_bruise"},
+    "lines": [
+      "There is a bruise on your forearm that is not fading. It has stayed dark for a week.",
+      "It will stay dark. It is, somehow, in the bone now. It will be tender when struck.",
+      "  (-1 Defense, permanently — the bruise has decided to be a soft spot.)"
+    ]
+  },
+  "twisted_back_on_a_bad_step": {
+    "category": "body",
+    "trigger": {"at": ["combat_low_hp"], "min_level": 5, "chance": 0.18},
+    "effect": {"stat": "max_stamina", "delta": -2, "flag": "twisted_back"},
+    "lines": [
+      "You stepped wrong, sometime in the worst of it. You did not notice when. Your back",
+      "is twisted now. It will twist for the rest of this character. You will compensate.",
+      "Atrél will not take this. The back is mechanical. He only takes the small forgotten ones.",
+      "  (-2 Max Stamina, permanently. The compensating tires you sooner.)"
+    ]
+  },
+  "something_settled_in_your_throat": {
+    "category": "body",
+    "trigger": {"at": ["combat_low_hp"], "location": ["cave", "choir", "mountain"], "chance": 0.18},
+    "effect": {"stat": "max_hp", "delta": -2, "flag": "throat_dim"},
+    "lines": [
+      "After the fight, there is a tickle in your throat that will not clear. You cough.",
+      "It stays. It is in there for as long as you fight. Atrél does not take throats.",
+      "Throats are too useful. You will be quieter when speaking. The Pall has not noticed.",
+      "  (-2 Max HP, permanently — something has settled where it should not have.)"
+    ]
+  },
+
+  "you_did_not_sleep_after": {
+    "category": "mind",
+    "trigger": {"at": ["combat_victory"], "min_level": 4, "chance": 0.20},
+    "effect": {"stat": "max_stamina", "delta": -1, "flag": "no_post_fight_sleep"},
+    "lines": [
+      "You won. You did not sleep that night. You closed your eyes; the fight was still going.",
+      "You will not sleep right after a fight again. The body has decided. The body is wrong",
+      "to decide this, but it has. You will be more tired in the mornings after fights.",
+      "  (-1 Max Stamina, permanently. Sleep after fights is gone.)"
+    ]
+  },
+  "stamina_came_back_wrong": {
+    "category": "body",
+    "trigger": {"at": ["combat_victory"], "min_level": 5, "chance": 0.18},
+    "effect": {"stat": "max_stamina", "delta": -2, "flag": "stamina_uneven"},
+    "lines": [
+      "Your wind came back, after. But it came back uneven. You can breathe deep. You cannot",
+      "hold it as long as you used to. You did not notice when this changed. It has changed.",
+      "Atrél does not have your wind. The wind has just become a different wind.",
+      "  (-2 Max Stamina, permanently. The breath is shorter now.)"
+    ]
+  },
+  "you_learned_to_pace": {
+    "category": "mind",
+    "trigger": {"at": ["combat_victory"], "min_level": 3, "chance": 0.25},
+    "effect": {"stat": "max_stamina", "delta": 1, "flag": "learned_to_pace"},
+    "lines": [
+      "Walking away from this fight, you realize you paced yourself well. Not by trying.",
+      "Your body did it without you. You will do this again, without trying. It is yours now.",
+      "  (+1 Max Stamina, permanently. The body has learned a small wisdom.)"
+    ]
+  },
+  "the_long_run_was_in_you": {
+    "category": "body",
+    "trigger": {"at": ["combat_victory"], "min_level": 4, "chance": 0.18},
+    "effect": {"stat": "max_stamina", "delta": 1, "flag": "long_run_inside"},
+    "lines": [
+      "You found, today, a kind of running you did not know you had. Not fast. Long. You can",
+      "do this for an hour. You will be able to do it again. The legs have decided.",
+      "  (+1 Max Stamina, permanently — long legs in a kingdom that needs them.)"
+    ]
+  },
+  "exhaustion_left_a_residue": {
+    "category": "body",
+    "trigger": {"at": ["combat_victory"], "min_level": 5, "chance": 0.15},
+    "effect": {"stat": "max_stamina", "delta": -1},
+    "lines": [
+      "Something in this fight burned a residue into your limbs. Small. Persistent.",
+      "It will not leave. It is not pain; it is the after-shape of having gone all the way out.",
+      "You will not go all the way out again the same way. The going-out has marked you.",
+      "  (-1 Max Stamina, permanently. The reserve is smaller now.)"
+    ]
+  },
+  "you_breathed_in_grey_too_deep": {
+    "category": "body",
+    "trigger": {"at": ["combat_victory"], "location": ["mountain", "summit", "choir"], "chance": 0.25},
+    "effect": {"stat": "max_hp", "delta": -2, "flag": "lungs_have_grey"},
+    "lines": [
+      "You inhaled too deep when the grey was close. Some of it stayed. It is in your lungs.",
+      "You can still breathe. You will cough at odd times. The grey is in there. The grey",
+      "  (-2 Max HP, permanently. The Pall is in you, by a thumbnail.)"
+    ]
+  },
+  "you_held_your_breath_too_long": {
+    "category": "body",
+    "trigger": {"at": ["combat_low_hp"], "chance": 0.25},
+    "effect": {"stat": "max_stamina", "delta": -1},
+    "lines": [
+      "You held your breath through the worst of it. Too long. Something in your chest noticed.",
+      "It will pinch sometimes, in fights. You will breathe more carefully from now on.",
+      "  (-1 Max Stamina, permanently. Holding has its cost.)"
+    ]
+  },
+  "you_learned_the_two_count": {
+    "category": "mind",
+    "trigger": {"at": ["combat_victory"], "min_level": 4, "chance": 0.20},
+    "effect": {"flag": "knows_two_count"},
+    "lines": [
+      "You found, in this fight, a two-count rhythm. Strike. Wait. Strike. Wait. It works.",
+      "You will use it again. You will use it in fights that do not deserve it. Habits stick.",
+      "Atrél has filed the moment you found it. He likes the small competencies. He files those."
+    ]
+  },
+  "you_swung_when_you_should_have_defended": {
+    "category": "mind",
+    "trigger": {"at": ["combat_low_hp"], "min_level": 5, "chance": 0.25},
+    "effect": {"stat": "max_hp", "delta": -1, "flag": "swing_first_habit"},
+    "lines": [
+      "You realize, after, that you swung when defending would have saved you the worst of it.",
+      "You did it again. You always do. It is a habit. The kingdom has noticed. So has Atrél.",
+      "He has set aside a small place for the swings that were not necessary. Not yours yet.",
+      "  (-1 Max HP, permanently. The habit has begun to cost you.)"
+    ]
+  },
+  "you_defended_when_you_should_have_swung": {
+    "category": "mind",
+    "trigger": {"at": ["combat_low_hp"], "min_level": 5, "chance": 0.20},
+    "effect": {"stat": "max_stamina", "delta": -1, "flag": "defend_first_habit"},
+    "lines": [
+      "You realize, after, that you defended when a swing would have ended it cleaner.",
+      "You did it again. You always do. The fight went longer than it had to. Stamina spent.",
+      "Atrél has filed the over-defenses. They are also small. They also add up.",
+      "  (-1 Max Stamina, permanently. The habit has begun to cost you.)"
+    ]
+  },
+
+  "weapon_remembered_the_first_blood": {
+    "category": "bond",
+    "trigger": {"at": ["combat_victory"], "min_level": 3, "chance": 0.18},
+    "effect": {"stat": "attack", "delta": 1, "flag": "weapon_remembers_first_blood"},
+    "lines": [
+      "Your weapon, after, sits a little differently in your hand. It has learned what it",
+      "is for. It will not need to learn again. It will swing a hair faster. The hair matters.",
+      "  (+1 Attack, permanently — the weapon and you are agreed about something now.)"
+    ]
+  },
+  "weapon_took_a_notch": {
+    "category": "found",
+    "trigger": {"at": ["combat_victory"], "min_level": 4, "chance": 0.15},
+    "effect": null,
+    "lines": [
+      "Your weapon has taken a notch. Small. On the edge. From a blow you did not see coming.",
+      "It will not affect the cut. You will see it for the rest of your weapon's life.",
+      "It is a small private memorial to today. Atrél has not asked for it."
+    ]
+  },
+  "weapon_grew_an_edge_you_did_not_grind": {
+    "category": "bond",
+    "trigger": {"at": ["combat_victory"], "min_level": 5, "chance": 0.12},
+    "effect": {"stat": "attack", "delta": 2, "flag": "weapon_self_sharpened"},
+    "lines": [
+      "Your weapon has an edge today that you did not put there. You did not grind it.",
+      "You did not sharpen it. The edge is there. It is sharper than your weapon should be.",
+      "Some weapons do this. Yours has decided to. You will not ask why.",
+      "  (+2 Attack, permanently. The weapon has chosen.)"
+    ]
+  },
+  "weapon_made_a_sound_it_never_made_before": {
+    "category": "half_truth",
+    "trigger": {"at": ["combat_victory"], "min_level": 5, "chance": 0.12},
+    "effect": null,
+    "lines": [
+      "In the middle of the fight, your weapon made a sound it has never made before.",
+      "A small ringing. Old. Older than the iron it is made of. You did not stop to listen.",
+      "The sound is in the weapon now. It will not make the sound again. The sound stays in it."
+    ]
+  },
+  "weapon_did_not_want_to_strike": {
+    "category": "mind",
+    "trigger": {"at": ["combat_low_hp"], "min_level": 6, "chance": 0.10},
+    "effect": {"flag": "weapon_resists_once"},
+    "lines": [
+      "Your weapon resisted you, today. Once. For a half-breath, you could not bring it down.",
+      "Then you could. The strike landed. You won. The resistance is in the weapon now too.",
+      "You will not always have the same hand on the hilt. Sometimes you will have to insist."
+    ]
+  },
+  "weapon_kept_a_drop_of_blood_in_its_seam": {
+    "category": "found",
+    "trigger": {"at": ["combat_victory"], "min_level": 4, "chance": 0.15},
+    "effect": null,
+    "lines": [
+      "There is a drop of dried blood in the seam of the hilt where the wood meets the brass.",
+      "You cannot clean it out. It is too deep. It will stay there for as long as you carry the weapon.",
+      "It is not yours. It is someone's. The seam has decided to keep it. Atrél has not asked."
+    ]
+  },
+  "weapon_balanced_itself": {
+    "category": "bond",
+    "trigger": {"at": ["combat_victory"], "min_level": 6, "chance": 0.10},
+    "effect": {"stat": "defense", "delta": 1, "flag": "weapon_balanced"},
+    "lines": [
+      "Walking back, you realize the weapon hangs from your belt different than it did this morning.",
+      "Better. Balanced. As if it had been swinging back and forth all your life and finally settled.",
+      "You did not adjust it. It adjusted. It will not need adjusting again.",
+      "  (+1 Defense, permanently — a weapon that hangs right is a weapon that does not pull you off-line.)"
+    ]
+  },
+  "weapon_outlasted_a_grip_you_lost": {
+    "category": "body",
+    "trigger": {"at": ["combat_low_hp"], "min_level": 5, "chance": 0.15},
+    "effect": {"stat": "attack", "delta": 1, "flag": "lost_a_finger_grip"},
+    "lines": [
+      "You dropped the weapon, briefly. Two fingers gave out. They came back. They are not",
+      "as strong as the other three, anymore. The weapon understood. The weapon waited for",
+      "the three fingers to be enough. The three fingers were enough. The two are slower now.",
+      "  (+1 Attack, permanently — the three remaining fingers swing harder to compensate.)"
+    ]
+  },
+  "weapon_taught_you_a_thing": {
+    "category": "bond",
+    "trigger": {"at": ["combat_victory"], "min_level": 4, "chance": 0.15},
+    "effect": {"flag": "weapon_taught_you"},
+    "lines": [
+      "Mid-fight, the weapon moved without you asking. It pulled your arm a quarter-turn",
+      "into a better angle. You did not know that angle. You know it now. The weapon does too.",
+      "Some weapons teach. Yours has chosen to. It will not teach the same lesson twice."
+    ]
+  },
+  "weapon_lost_a_small_amount_of_its_weight": {
+    "category": "half_truth",
+    "trigger": {"at": ["combat_victory"], "min_level": 7, "chance": 0.08},
+    "effect": {"stat": "max_stamina", "delta": 1, "flag": "weapon_lighter"},
+    "lines": [
+      "The weapon weighs less today than it did yesterday. You did not file anything off.",
+      "Nothing has come off it. It weighs less. You will swing it a little faster. The world",
+      "is not symmetric. Some weapons just decide to lighten. Yours has decided to.",
+      "  (+1 Max Stamina, permanently — a lighter weapon is a longer fight before tiredness.)"
+    ]
+  },
+
+  "the_pall_smelled_you_through_the_fight": {
+    "category": "mind",
+    "trigger": {"at": ["combat_low_hp"], "min_level": 5, "chance": 0.15},
+    "effect": {"flag": "marked_pall_smells_you"},
+    "lines": [
+      "After. You realize: the Pall noticed your blood today. From far up the Climb. You do",
+      "not know how you know. You know. The Pall is aware of you, by smell, in a thin way.",
+      "It will not stop being aware. You are on its list now. Not high. But on it."
+    ]
+  },
+  "kingdom_noticed_you_did_not_potion": {
+    "category": "mind",
+    "trigger": {"at": ["combat_low_hp"], "min_level": 4, "chance": 0.20},
+    "effect": {"stat": "max_hp", "delta": 2, "flag": "noticed_no_potion"},
+    "lines": [
+      "You had a potion. You did not drink it. You fought through. The kingdom noticed.",
+      "Not officially. Quietly. Atrél's small ledger has a small line for it. The kingdom",
+      "will be a touch more honest with you, from now on. You earned this. Quietly.",
+      "  (+2 Max HP, permanently — the kingdom has decided you do not flinch easily.)"
+    ]
+  },
+  "kingdom_noticed_you_potioned_at_once": {
+    "category": "mind",
+    "trigger": {"at": ["combat_low_hp"], "min_level": 4, "chance": 0.20},
+    "effect": {"stat": "defense", "delta": 1, "flag": "noticed_quick_potion"},
+    "lines": [
+      "You drank a potion the moment things turned. Wisely. The kingdom noticed that too.",
+      "Atrél's small ledger has another small line for it. Wisdom is also a kind of honesty.",
+      "The kingdom will spare you, a little, in the next fight. Quietly. You earned this.",
+      "  (+1 Defense, permanently — a wise drinker is a slower-bleeder.)"
+    ]
+  },
+  "the_wood_held_its_breath_for_you": {
+    "category": "half_truth",
+    "trigger": {"at": ["combat_victory"], "location": ["forest"], "min_visits": 3, "chance": 0.20},
+    "effect": null,
+    "lines": [
+      "The Witherwood went quiet during the worst part of this fight. Not the silence of a",
+      "wood about to ambush you. The silence of a wood that is paying attention. You won.",
+      "The wood breathed back. You will not be alone in the wood from now on. Quietly."
+    ]
+  },
+  "the_river_dimmed_for_you": {
+    "category": "half_truth",
+    "trigger": {"at": ["combat_victory"], "location": ["reach", "drowned_holds"], "min_visits": 2, "chance": 0.20},
+    "effect": null,
+    "lines": [
+      "The river — the Reach's river — went still during the worst part of this fight.",
+      "You did not see it from where you stood. The Engineer saw, from the bridge. She did not",
+      "say anything. The river was paying attention. It paid attention to you. You will know."
+    ]
+  },
+  "your_first_kill_caught_up_to_you": {
+    "category": "forgetting",
+    "trigger": {"at": ["combat_victory"], "min_level": 6, "chance": 0.12},
+    "effect": null,
+    "lines": [
+      "After the fight, the face of your very first kill — the gaunt wolf, the bandit, the boar,",
+      "whichever it was — comes back to you. You cannot quite see it. Atrél has been holding",
+      "it for you all this time. He is letting you have it back, briefly, then taking it again."
+    ]
+  },
+  "you_finished_a_fight_with_a_steady_hand": {
+    "category": "mind",
+    "trigger": {"at": ["combat_victory"], "min_level": 3, "chance": 0.25},
+    "effect": {"stat": "attack", "delta": 1, "flag": "steady_hand"},
+    "lines": [
+      "Your hand did not shake at the end. You expected it to. It did not. The hand has",
+      "decided about the steadiness. It will be steady from now on, after the worst of it.",
+      "  (+1 Attack, permanently. A steady hand is the kingdom's small applause.)"
+    ]
+  },
+  "you_won_too_loud": {
+    "category": "broken",
+    "trigger": {"at": ["combat_victory"], "min_level": 5, "chance": 0.15},
+    "effect": {"flag": "won_too_loud"},
+    "lines": [
+      "You shouted, in the moment of winning. Triumphal. Something in the wood heard it and",
+      "decided about you. Not Halna. Not the Pall. Something older. You will not get back",
+      "the listening you used to have. The wood will be a beat less honest with you. A beat."
+    ]
+  },
+  "you_won_too_quiet": {
+    "category": "bond",
+    "trigger": {"at": ["combat_victory"], "min_level": 5, "chance": 0.15},
+    "effect": {"stat": "defense", "delta": 1, "flag": "won_quietly"},
+    "lines": [
+      "You did not say anything when you won. You sheathed and walked. The wood noticed.",
+      "Atrél noticed. The small kindnesses noticed. You will be granted a small thing for it.",
+      "  (+1 Defense, permanently — quiet winners are harder for the world to predict.)"
+    ]
+  },
+  "an_enemy_apologised_as_it_fell": {
+    "category": "half_truth",
+    "trigger": {"at": ["combat_victory"], "min_level": 5, "chance": 0.10},
+    "effect": {"flag": "an_enemy_apologised"},
+    "lines": [
+      "The thing you killed today said one word as it went down. You think it said: sorry.",
+      "It may have said: stop. It may have said something in a language you do not speak.",
+      "You will not know. The word is yours. The thing is gone. Atrél has the word now."
+    ]
   }
 }
