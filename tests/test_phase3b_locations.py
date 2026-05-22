@@ -243,7 +243,10 @@ class TestCompositionDispatch:
         state.flags["active_quests"] = ["test_compose"]
         state.io = ScriptedIO(["C4", "commit"])
         gold_before = state.player.gold
-        with patch.object(locations.composer, "compose", return_value=True):
+        # _run_composition_quest moved to quests.py; patch the composer
+        # via that module since locations no longer imports composer directly.
+        from terminalquest import quests as _quests
+        with patch.object(_quests.composer, "compose", return_value=True):
             locations._run_composition_quest(state, ("test_compose", quest))
         # Quest moved out of active, gold granted
         assert "test_compose" in state.flags["completed_quests"]
@@ -257,7 +260,8 @@ class TestCompositionDispatch:
                 "voice": "bell", "altar": "village", "hints": []},
         }
         state.flags["active_quests"] = ["x"]
-        with patch.object(locations.composer, "compose", return_value=False):
+        from terminalquest import quests as _quests
+        with patch.object(_quests.composer, "compose", return_value=False):
             locations._run_composition_quest(state, ("x", quest))
         # Still active, not completed
         assert "x" in state.flags["active_quests"]
