@@ -8,3 +8,9 @@ dist/
 .coverage
 .coverage.*
 htmlcov/
+
+# Design archive — local-only working files. Polished assets (cover.png)
+# are added explicitly. The 7 MB raw cover render is not versioned.
+/design/cover_raw.png
+/design/samples/
+/design/.DS_Store

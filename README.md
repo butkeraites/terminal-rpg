@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="design/cover.png" alt="Mournhold — Sight, Sound, and the Composer" width="630">
+</p>
+
 # Mournhold
 
 > *A hermetic, terminal-based grimdark roguelike RPG. Pure Python 3, no runtime
