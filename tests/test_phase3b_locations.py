@@ -163,8 +163,10 @@ class TestRunSummary:
         # for an ending pick — feed it the first option.
         state.io = ScriptedIO(["1"])
         # Some configurations may have multiple endings available; mock
-        # the choose_and_render to avoid combinatorial trouble.
-        with patch.object(locations.endings, "choose_and_render"):
+        # the choose_and_render to avoid combinatorial trouble. The
+        # function now lives in endings_screens after the v2.3 extraction.
+        from terminalquest import endings as _endings
+        with patch.object(_endings, "choose_and_render"):
             locations._victory_screen(state)
 
 
