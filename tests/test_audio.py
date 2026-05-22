@@ -113,10 +113,18 @@ def test_ensure_assets_warns_on_first_launch(tmp_path):
 
 def test_ensure_assets_silent_when_cached(tmp_path):
     """Second launch — assets already on disk — must not print anything."""
+    from terminalquest import boss_music_synth
     from terminalquest.ui import ScriptedIO
-    # Pre-populate the cache so ensure_assets has nothing to do.
+    # Pre-populate both the ambient and the boss caches so ensure_assets
+    # has nothing to do.
     for name in audio_synth.PALETTES:
         (tmp_path / f"{name}.wav").write_bytes(b"placeholder")
+    bosses_dir = tmp_path / "bosses"
+    bosses_dir.mkdir()
+    for boss_id in boss_music_synth.THEMES:
+        if boss_id in boss_music_synth.DYNAMIC_THEMES:
+            continue
+        (bosses_dir / f"{boss_id}.wav").write_bytes(b"placeholder")
     engine = AudioEngine(enabled=True, cache_dir=tmp_path)
     io = ScriptedIO()
     engine.ensure_assets(io=io)

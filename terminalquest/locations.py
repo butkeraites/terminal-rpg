@@ -6,6 +6,7 @@ location, offers its services, encounters and travel routes, and runs
 until the player dies, wins, or quits.
 """
 from . import banners as _banners
+from . import boss_music_synth as _boss_music
 from . import chronicle, endings, marks, saves
 from . import dialogue as _dialogue
 from .accessory import make_accessory
@@ -1399,6 +1400,24 @@ def run_encounter(state, encounter, fallen, wardens):
         enemies = [make_enemy(eid, content, state.flags)
                    for eid in encounter["enemies"]]
 
+    # Boss-music handoff: if this encounter is a boss fight AND the
+    # boss has a music theme, swap from ambient to the boss's theme. The
+    # Shadow Warden uses runtime context (which bosses this run defeated)
+    # so its quotes are dynamic; every other boss just plays its cached
+    # WAV. Disabled audio is a no-op.
+    boss_theme_id = None
+    if encounter.get("boss"):
+        for eid in encounter.get("enemies", []):
+            if eid in _boss_music.BOSS_IDS:
+                boss_theme_id = eid
+                break
+    if boss_theme_id is not None:
+        state.audio.play_boss(
+            boss_theme_id,
+            context={"defeated_bosses":
+                     list(state.flags.get("bosses_defeated", []))},
+        )
+
     outcome = None
     enemy = None
     last_index = len(enemies) - 1
@@ -1414,6 +1433,11 @@ def run_encounter(state, encounter, fallen, wardens):
             if not is_last and outcome != "defeat":
                 state.player.stamina = state.player.max_stamina
             break
+
+    # Boss fight over — restore the zone's ambient drone. play_zone is a
+    # no-op if audio is disabled or if the zone was already playing.
+    if boss_theme_id is not None:
+        state.audio.play_zone(state.current_location)
 
     if outcome == "enemy_fled":
         io.show(f"\nThe {enemy.name} escaped. You earn nothing this time.")
@@ -1440,6 +1464,13 @@ def run_encounter(state, encounter, fallen, wardens):
     if outcome == "victory" and not encounter.get("boss"):
         _offer_drop(state)
     if encounter.get("boss") and outcome == "victory":
+        # Record the kill so subsequent boss fights (most notably the
+        # Shadow Warden, who quotes only the bosses this run defeated)
+        # know about it.
+        if boss_theme_id is not None:
+            defeated = state.flags.setdefault("bosses_defeated", [])
+            if boss_theme_id not in defeated:
+                defeated.append(boss_theme_id)
         return "boss_victory"
     return outcome
 
