@@ -6,7 +6,7 @@ location, offers its services, encounters and travel routes, and runs
 until the player dies, wins, or quits.
 """
 from . import banners as _banners
-from . import chronicle, marks, saves
+from . import chronicle, marks
 # Ending screens were extracted to endings_screens.py. Re-export every
 # moved name so external callers (and tests) that wrote
 # ``locations._warden_screen`` keep working. Importing this module also
@@ -121,10 +121,22 @@ from .encounters import (  # noqa: F401
     _run_npc,
     run_encounter,
 )
+# Travel + menu helpers (try_travel, _save_menu, _inspect_weapon, grave
+# search, label helpers) moved to travel.py. Re-export every name so
+# external callers and tests that wrote `locations.try_travel` keep
+# working.
+from .travel import (  # noqa: F401
+    SIGNPOST_THRESHOLD,
+    _encounter_label,
+    _grave_here,
+    _inspect_weapon,
+    _save_menu,
+    _search_grave,
+    _travel_label,
+    try_travel,
+)
 from .ui import hud, show_stats
-from .weapon import WEAPON_SLOTS
 
-SIGNPOST_THRESHOLD = 2
 
 
 _SERVICE_LABELS = {
@@ -169,141 +181,7 @@ FAMILIAR_VISITS = 5
 # (Encounter dispatch moved to terminalquest/encounters.py — re-exported at top.)
 
 
-def try_travel(state, dest_id):
-    """Travel to a connected location, applying gates and warnings.
-
-    Returns True if the player travelled, False if blocked or turned back.
-    """
-    player, content, io = state.player, state.content, state.io
-    dest = content.locations[dest_id]
-    if dest.get("boss"):
-        unlock = dest.get("unlock_level", 1)
-        if player.level < unlock:
-            io.show(f"\n🔒 {dest['name']} is sealed. "
-                    f"Reach level {unlock} to challenge it.")
-            io.pause(1)
-            return False
-    else:
-        rec = dest.get("recommended_level", 1)
-        if rec - player.level > SIGNPOST_THRESHOLD:
-            io.show(f"\n⚠️  {dest['name']} is recommended for level {rec}+. "
-                    f"At level {player.level}, this will be deadly.")
-            io.show("1. Travel anyway")
-            io.show("2. Turn back")
-            if io.ask("\nYour choice? ") != "1":
-                io.show("\nYou turn back, leaving that road for another day.")
-                io.pause(1)
-                return False
-    state.current_location = dest_id
-    # Phase-1 Batch-7: arrival into a new zone may trigger a hidden quest.
-    scan_hidden_quest_triggers(state)
-    return True
-
-
-# (Ending screens moved to terminalquest/endings_screens.py — re-exported at top.)
-
-def _save_menu(state):
-    io = state.io
-    saved = saves.list_saves()
-    io.show("\nSave slots:")
-    for slot in saves.SLOTS:
-        io.show(f"{slot}. {saved.get(slot, '(empty)')}")
-    io.show("4. Cancel")
-    choice = io.ask("\nSave to which slot? ")
-    if choice in ("1", "2", "3"):
-        saves.save_game(state, int(choice))
-        io.show(f"\n💾 Game saved to slot {choice}.")
-        # v1.51 — saving is a fire site. Atrél is the kingdom's audit log.
-        marks.roll_at(state, "save_action")
-        # Phase-1 Batch-7: the saving sometimes reveals a slip.
-        scan_hidden_quest_triggers(state)
-    elif choice != "4":
-        io.show("\n❌ Invalid choice!")
-    io.pause(1)
-
-
-def _encounter_label(encounter, content):
-    """A menu label for one encounter.
-
-    An encounter may carry an explicit ``label`` (mini-bosses, discoveries);
-    otherwise a boss is named and a plain combat pool is 'Search for a fight'.
-    """
-    if "label" in encounter:
-        return encounter["label"]
-    if encounter.get("boss"):
-        name = content.enemies[encounter["enemies"][0]]["name"]
-        return f"⚔️  Challenge the {name}"
-    return "⚔️  Search for a fight"
-
-
-def _travel_label(dest, player):
-    """A menu label for travelling to ``dest``, with gating annotations."""
-    name = dest["name"]
-    if dest.get("boss"):
-        unlock = dest.get("unlock_level", 1)
-        if player.level >= unlock:
-            return f"⚔️  Travel to {name}  [BOSS]"
-        return f"🔒 {name}  [BOSS — requires level {unlock}]"
-    rec = dest.get("recommended_level")
-    suffix = f"  (recommended Lv {rec})" if rec else ""
-    return f"Travel to {name}{suffix}"
-
-
-def _grave_here(state, loc, fallen):
-    """True if this zone holds an unsearched grave from this act's fallen."""
-    if loc.get("kind") != "zone" or loc.get("boss"):
-        return False
-    if state.current_location in state.flags.get("graves_searched", []):
-        return False
-    act = loc.get("act")
-    return act is not None and any(_entry_act(state, e) == act for e in fallen)
-
-
-def _search_grave(state, fallen):
-    """Search the current zone for the remains of one who fell in this act."""
-    player, io = state.player, state.io
-    act = state.content.locations[state.current_location].get("act")
-    entry = state.rng.choice([e for e in fallen if _entry_act(state, e) == act])
-    p = entry["player"]
-    fell_at = state.content.locations.get(entry.get("location", ""), {})
-    place = fell_at.get("name", "the grey")
-    io.show_slow(f"\n🪦 Half-buried in the grey earth: {p['name']} the {p['class_name']}.")
-    io.show(f"{place} took them at level {p['level']}. It will take you too, in time.")
-    # v1.16: a line they left behind, if they left one.
-    last_words = entry.get("last_words", "")
-    if last_words:
-        io.show("")
-        io.show_slow("A scrap of paper, folded once, weighted with a stone:")
-        io.show_slow(f"   '{last_words}'")
-    coins = min(p.get("gold", 0), 40)
-    if coins:
-        player.gold += coins
-        io.show(f"You prise {coins} coins from the cold — they have no use for them now.")
-    else:
-        io.show("They left nothing behind. The dead here rarely do.")
-    io.pause(1)
-    state.flags.setdefault("graves_searched", []).append(state.current_location)
-
-
-def _inspect_weapon(state):
-    """Show the equipped weapon — its bonuses, and each component's flavor."""
-    io, player = state.io, state.player
-    weapon = player.equipment.get("weapon")
-    io.clear()
-    if weapon is None:
-        io.show("\nYou carry no weapon. Your hands will have to do.")
-        io.pause(1)
-        return
-    io.show(f"\n🗡️  {weapon.name}")
-    io.show(f"   {weapon.summary()}\n")
-    for slot in WEAPON_SLOTS:
-        component = state.content.components[slot][weapon.components[slot]]
-        io.show(f"  {slot.title()}: {component['name']}")
-        io.show(f"    {component['flavor']}")
-    io.pause(2)
-
-
-# (SQ services moved to terminalquest/sq_services.py — re-exported at top.)
+# (Travel + menu helpers moved to terminalquest/travel.py — re-exported at top.)
 
 
 def _service_is_visible(state, service):
