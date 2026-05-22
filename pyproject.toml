@@ -47,3 +47,7 @@ exclude_lines = [
 ]
 skip_covered = false
 show_missing = true
+# CI gate. `coverage report` exits non-zero below this number, blocking
+# deploys / merges. Set during the v2.3 quality push (74% → 95%) and
+# pinned to the level reached so we don't regress.
+fail_under = 95

@@ -32,6 +32,32 @@ jobs:
       - name: Test
         run: pytest -q
 
+  coverage:
+    name: coverage gate (≥95%)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e ".[dev]"
+          pip install "coverage>=7"
+
+      - name: Run tests under coverage
+        run: python -m coverage run --source=terminalquest -m pytest -q
+
+      - name: Enforce coverage threshold
+        # `fail_under = 95` is set in pyproject.toml; this step fails the
+        # build if total coverage drops below that. Treat the floor as a
+        # ratchet: when we push higher, bump it.
+        run: python -m coverage report
+
   balance:
     name: balance regression check
     runs-on: ubuntu-latest
