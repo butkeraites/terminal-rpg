@@ -12296,5 +12296,545 @@
     "cleanse_required": 1,
     "requires_mark": "companion_lost_a_glove_for_you",
     "flavor": "Two hirelings lost gloves fetching for you. Three silt-drowners wear the gloves now. End them."
+  },
+  "b59_pet_ash_killed_ii": {
+    "name": "After the Ash Hound Killed Twice",
+    "target_enemy": "wolf",
+    "needed": 4,
+    "reward_gold": 500,
+    "cleanse_required": 0,
+    "requires_mark": "pet_ash_hound_killed_for_you",
+    "flavor": "The ash hound killed for you twice. Four wolves had considered the hound prey. End them."
+  },
+  "b59_pet_magpie_warned_ii": {
+    "name": "After the Magpie Warned Twice",
+    "target_enemy": "bandit",
+    "needed": 2,
+    "reward_gold": 450,
+    "cleanse_required": 0,
+    "requires_mark": "pet_magpie_warned_you_at_the_worst_beat",
+    "flavor": "The magpie warned at the worst beat twice now. Two bandits had counted on the best. End them."
+  },
+  "b59_pet_magpie_word_ii": {
+    "name": "After the Magpie Said Two Words",
+    "target_enemy": "pall_magistrate",
+    "needed": 2,
+    "reward_gold": 700,
+    "cleanse_required": 3,
+    "requires_mark": "pet_magpie_said_a_word",
+    "flavor": "The magpie said two words this time. Two magistrates wanted them as evidence. End them."
+  },
+  "b59_pet_pricklehog_kitchen_ii": {
+    "name": "After the Pricklehog Warmed Two Kitchens",
+    "target_enemy": "doorshut",
+    "needed": 3,
+    "reward_gold": 500,
+    "cleanse_required": 1,
+    "requires_mark": "pet_pricklehog_warmed_a_kitchen_for_you",
+    "flavor": "The pricklehog warmed two kitchens. Three doorshuts had hoped to close on both. End them."
+  },
+  "b59_pet_ash_followed_grief_ii": {
+    "name": "After the Ash Hound Followed Two Griefs",
+    "target_enemy": "hollow_procession",
+    "needed": 2,
+    "reward_gold": 700,
+    "cleanse_required": 3,
+    "requires_mark": "pet_ash_hound_followed_your_grief",
+    "flavor": "The ash hound followed two griefs. Two of the procession had been holding each. End them."
+  },
+  "b59_pet_ash_warmed_boots_ii": {
+    "name": "After the Ash Hound Warmed Boots Twice",
+    "target_enemy": "ice_wraith",
+    "needed": 3,
+    "reward_gold": 600,
+    "cleanse_required": 4,
+    "requires_mark": "pet_ash_hound_warmed_your_boots",
+    "flavor": "The ash hound warmed your boots twice. Three ice-wraiths noted the warmer step. End them."
+  },
+  "b59_pet_cat_taught_ii": {
+    "name": "After the Cat Taught You Twice",
+    "target_enemy": "bandit",
+    "needed": 3,
+    "reward_gold": 350,
+    "cleanse_required": 0,
+    "requires_mark": "pet_hearth_cat_taught_you_to_take_an_hour_off",
+    "flavor": "The hearth-cat taught you twice to take an hour off. Three bandits had hoped no hours off. End them."
+  },
+  "b59_pet_cat_grief_ii": {
+    "name": "After the Cat Curled at Two Griefs",
+    "target_enemy": "hollow_procession",
+    "needed": 2,
+    "reward_gold": 700,
+    "cleanse_required": 3,
+    "requires_mark": "pet_hearth_cat_curled_at_a_grief",
+    "flavor": "The hearth-cat curled at two griefs. Two of the procession noted the easings. End them."
+  },
+  "b59_pet_cat_mouse_ii": {
+    "name": "After the Cat Brought Two Mice",
+    "target_enemy": "wolf",
+    "needed": 4,
+    "reward_gold": 400,
+    "cleanse_required": 0,
+    "requires_mark": "pet_hearth_cat_brought_you_a_mouse",
+    "flavor": "The hearth-cat brought you two mice. Four wolves considered the gestures. End them."
+  },
+  "b59_reborn_forgot_first_pet": {
+    "name": "After You Forgot the First Pet's Name",
+    "target_enemy": "bonesong",
+    "needed": 2,
+    "reward_gold": 600,
+    "cleanse_required": 1,
+    "requires_mark": "forgot_the_name_of_your_first_pet",
+    "flavor": "You forgot your first pet's name. Two bonesongs had absorbed it. End them."
+  },
+  "b59_forgot_road_ii": {
+    "name": "After You Forgot Another Road",
+    "target_enemy": "bandit",
+    "needed": 4,
+    "reward_gold": 500,
+    "cleanse_required": 0,
+    "requires_mark": "forgot_a_road",
+    "flavor": "You forgot another road. Four bandits walked it without you. End them."
+  },
+  "b59_forgot_song_ii": {
+    "name": "After You Forgot Another Song",
+    "target_enemy": "censer_shade",
+    "needed": 2,
+    "reward_gold": 700,
+    "cleanse_required": 4,
+    "requires_mark": "forgot_a_song",
+    "flavor": "You forgot another song. Two censer-shades held the music. End them."
+  },
+  "b59_forgot_word_ii": {
+    "name": "After You Forgot Another Word",
+    "target_enemy": "library_warden",
+    "needed": 1,
+    "reward_gold": 900,
+    "cleanse_required": 3,
+    "requires_mark": "forgot_a_word_you_loved",
+    "flavor": "You forgot another word you loved. A warden had crossed both. End him."
+  },
+  "b59_forgot_first_friend_ii": {
+    "name": "After You Forgot Your First Friend II",
+    "target_enemy": "bonesong",
+    "needed": 2,
+    "reward_gold": 700,
+    "cleanse_required": 1,
+    "requires_mark": "forgot_your_first_friend",
+    "flavor": "You forgot your first friend a second count. Two bonesongs in the Holds carried both names. End them."
+  },
+  "b59_lost_friend_didnt_come_ii": {
+    "name": "After Another Friend Did Not Come",
+    "target_enemy": "hollow_procession",
+    "needed": 2,
+    "reward_gold": 700,
+    "cleanse_required": 3,
+    "requires_mark": "lost_a_friend_who_did_not_come_to_meet_you",
+    "flavor": "Another friend did not come to meet you. Two of the procession kept the friend back. End them."
+  },
+  "b59_lost_small_song_ii": {
+    "name": "After Another Small Song Lost",
+    "target_enemy": "censer_shade",
+    "needed": 3,
+    "reward_gold": 700,
+    "cleanse_required": 4,
+    "requires_mark": "lost_a_small_song",
+    "flavor": "Another small song lost. Three censer-shades carried both as smoke. End them."
+  },
+  "b59_lost_year_ii": {
+    "name": "After You Lost Another Year of Yourself",
+    "target_enemy": "shadow_warden",
+    "needed": 1,
+    "reward_gold": 2400,
+    "cleanse_required": 5,
+    "requires_mark": "lost_one_full_year_of_yourself",
+    "flavor": "You lost another year of yourself. The Shadow Warden knew both years. End him."
+  },
+  "b59_lost_mothers_bread_ii": {
+    "name": "After Lost Mothers Bread II",
+    "target_enemy": "drowned_thresher",
+    "needed": 3,
+    "reward_gold": 600,
+    "cleanse_required": 1,
+    "requires_mark": "lost_the_taste_of_your_mothers_bread",
+    "flavor": "You lost the taste of your mother's bread a second time. Three threshers had been the second flour. End them."
+  },
+  "b59_lost_face_ii": {
+    "name": "After You Lost Another Friend's Face",
+    "target_enemy": "bonesong",
+    "needed": 2,
+    "reward_gold": 700,
+    "cleanse_required": 1,
+    "requires_mark": "lost_the_face_of_the_friend_who_loved_you_most",
+    "flavor": "You lost another friend's face. Two bonesongs absorbed each. End them."
+  },
+  "b59_lost_kindness_word": {
+    "name": "After You Lost the Word for Kindness",
+    "target_enemy": "library_warden",
+    "needed": 1,
+    "reward_gold": 900,
+    "cleanse_required": 3,
+    "requires_mark": "lost_the_word_for_kindness",
+    "flavor": "You lost the word for kindness. A warden had crossed it. End him."
+  },
+  "b59_child_path_ii": {
+    "name": "After a Child Walked With You II",
+    "target_enemy": "wolf",
+    "needed": 4,
+    "reward_gold": 500,
+    "cleanse_required": 0,
+    "requires_mark": "children_a_child_walked_part_of_your_path_with_you",
+    "flavor": "A child walked part of your path with you twice. Four wolves of the wood saw both. End them."
+  },
+  "b59_child_lullaby_ii": {
+    "name": "After Another Lullaby Was Sung",
+    "target_enemy": "hollow_procession",
+    "needed": 2,
+    "reward_gold": 800,
+    "cleanse_required": 3,
+    "requires_mark": "children_a_child_was_singing_the_old_lullaby",
+    "flavor": "Another child sang the old lullaby. Two of the procession stopped to listen. End them."
+  },
+  "b59_child_seat_ii": {
+    "name": "After Another Seat Was Given",
+    "target_enemy": "bandit",
+    "needed": 3,
+    "reward_gold": 400,
+    "cleanse_required": 0,
+    "requires_mark": "children_a_child_gave_you_their_seat_at_a_table",
+    "flavor": "Another child gave you their seat. Three bandits had watched both tables. End them."
+  },
+  "b59_child_pebble_ii": {
+    "name": "After Another Pebble Was Offered",
+    "target_enemy": "bandit",
+    "needed": 2,
+    "reward_gold": 300,
+    "cleanse_required": 0,
+    "requires_mark": "children_a_child_offered_you_a_pebble",
+    "flavor": "Another child offered you a pebble. Two bandits laughed at both. End them."
+  },
+  "b59_music_widow_humming_ii": {
+    "name": "After Two Widows Were Humming",
+    "target_enemy": "pall_magistrate",
+    "needed": 2,
+    "reward_gold": 800,
+    "cleanse_required": 3,
+    "requires_mark": "music_a_widow_was_humming_again",
+    "flavor": "Two widows in Mourncross were humming. Two magistrates wanted both silent. End them."
+  },
+  "b59_music_kettle_steady_ii": {
+    "name": "After Two Kettle Songs Steadied",
+    "target_enemy": "wolf",
+    "needed": 3,
+    "reward_gold": 350,
+    "cleanse_required": 0,
+    "requires_mark": "music_a_kettle_song_steadied_you",
+    "flavor": "Two kettle songs steadied you. Three wolves had been counting on unsteady. End them."
+  },
+  "b59_music_silence_landed_ii": {
+    "name": "After Silence Landed Twice",
+    "target_enemy": "censer_shade",
+    "needed": 3,
+    "reward_gold": 700,
+    "cleanse_required": 4,
+    "requires_mark": "music_a_silence_landed_correctly",
+    "flavor": "Silence landed correctly twice. Three censer-shades had been trying to fill both. End them."
+  },
+  "b59_music_bell_no_reason_ii": {
+    "name": "After Two Bells Rang for No Reason",
+    "target_enemy": "hollow_bellward",
+    "needed": 1,
+    "reward_gold": 1200,
+    "cleanse_required": 3,
+    "requires_mark": "music_a_bell_rang_for_no_specific_reason",
+    "flavor": "Two bells at Gravewatch rang for no specific reason. The Hollow Bellward heard both. End her."
+  },
+  "b59_child_warm_pastry_ii": {
+    "name": "After Two Warm Pastries Were Handed",
+    "target_enemy": "wolf",
+    "needed": 4,
+    "reward_gold": 400,
+    "cleanse_required": 0,
+    "requires_mark": "children_a_child_handed_you_a_warm_pastry",
+    "flavor": "Two children handed you warm pastries. Four wolves smelled the warmth from the road. End them."
+  },
+  "b59_child_new_word_ii": {
+    "name": "After Two New Words Were Taught",
+    "target_enemy": "library_warden",
+    "needed": 1,
+    "reward_gold": 800,
+    "cleanse_required": 3,
+    "requires_mark": "children_a_child_taught_you_a_new_word",
+    "flavor": "Two children taught you new words. A library-warden wanted both crossed out. End him."
+  },
+  "b60_smith_long_iii": {
+    "name": "After Three Long Blades Were Left",
+    "target_enemy": "bandit",
+    "needed": 4,
+    "reward_gold": 600,
+    "cleanse_required": 1,
+    "requires_mark": "smith_a_long_one_was_left_for_you",
+    "flavor": "Three long blades on the smith's counter for you. Four bandits had hoped for one. End them."
+  },
+  "b60_smith_spark_iii": {
+    "name": "After the Forge Sparked Thrice",
+    "target_enemy": "wolf",
+    "needed": 4,
+    "reward_gold": 500,
+    "cleanse_required": 0,
+    "requires_mark": "smith_a_spark_lit_for_you",
+    "flavor": "Three sparks at the forge for you. Four wolves had hoped no fire. End them."
+  },
+  "b60_smith_grip_iii": {
+    "name": "After Three Grips Remembered",
+    "target_enemy": "ashen_penitent",
+    "needed": 1,
+    "reward_gold": 1400,
+    "cleanse_required": 4,
+    "requires_mark": "smith_a_weapon_remembered_a_grip",
+    "flavor": "Three grips remembered by the weapon. A Penitent knew all three. End him."
+  },
+  "b60_save_ceremonial_ii": {
+    "name": "After Saving Felt Ceremonial II",
+    "target_enemy": "censer_shade",
+    "needed": 3,
+    "reward_gold": 700,
+    "cleanse_required": 4,
+    "requires_mark": "save_the_saving_itself_felt_ceremonial",
+    "flavor": "Saving felt ceremonial a second time. Three censer-shades had been the second silence. End them."
+  },
+  "b60_save_no_dream_ii": {
+    "name": "After Two Dreamless Nights",
+    "target_enemy": "wolf",
+    "needed": 4,
+    "reward_gold": 500,
+    "cleanse_required": 0,
+    "requires_mark": "save_you_did_not_dream_at_all",
+    "flavor": "You did not dream two nights running. Four wolves had been waiting in unmade dreams. End them."
+  },
+  "b60_save_kingdom_breathing_ii": {
+    "name": "After You Dreamt Kingdom Breathing II",
+    "target_enemy": "shadow_warden",
+    "needed": 1,
+    "reward_gold": 2300,
+    "cleanse_required": 5,
+    "requires_mark": "save_you_dreamt_of_the_kingdom_breathing",
+    "flavor": "You dreamt of the kingdom breathing a second time. The Shadow Warden was the second breath. End him."
+  },
+  "b60_save_atrels_face_ii": {
+    "name": "After You Dreamt Atrél's First Face II",
+    "target_enemy": "choirmaster_effigy",
+    "needed": 2,
+    "reward_gold": 900,
+    "cleanse_required": 4,
+    "requires_mark": "save_you_dreamt_of_atrels_first_face",
+    "flavor": "You dreamt of Atrél's first face twice. Two effigies wanted the second to be the false one. End them."
+  },
+  "b60_save_house_dream_ii": {
+    "name": "After Another House You Used to Live In",
+    "target_enemy": "pall_magistrate",
+    "needed": 1,
+    "reward_gold": 800,
+    "cleanse_required": 3,
+    "requires_mark": "save_you_dreamt_of_a_house_you_used_to_live_in",
+    "flavor": "You dreamt of another house you used to live in. A magistrate judged the second house too. End him."
+  },
+  "b60_save_child_dream_ii": {
+    "name": "After Another Child You Might Have Had",
+    "target_enemy": "hollow_procession",
+    "needed": 1,
+    "reward_gold": 800,
+    "cleanse_required": 3,
+    "requires_mark": "save_you_dreamt_of_a_child_you_might_have_had",
+    "flavor": "You dreamt of another child you might have had. One of the procession knew the second name. End it."
+  },
+  "b60_save_companion_watch_ii": {
+    "name": "After Two First Watches at Save",
+    "target_enemy": "bandit",
+    "needed": 3,
+    "reward_gold": 400,
+    "cleanse_required": 0,
+    "requires_mark": "save_a_companion_kept_first_watch",
+    "flavor": "The companion kept two first watches. Three bandits hoped to test both. End them."
+  },
+  "b60_hl2_familiar_face_iii": {
+    "name": "After a Third Familiar Face",
+    "target_enemy": "hollow_procession",
+    "needed": 3,
+    "reward_gold": 800,
+    "cleanse_required": 3,
+    "requires_mark": "hollowed_a_familiar_face_was_under_the_hollow",
+    "flavor": "A third familiar face was under a Hollowed. Three of the procession knew the previous two. End them."
+  },
+  "b60_hl2_child_once_ii": {
+    "name": "After Two Hollowed Had Been Children",
+    "target_enemy": "hollow_procession",
+    "needed": 2,
+    "reward_gold": 800,
+    "cleanse_required": 3,
+    "requires_mark": "hollowed_had_been_a_child_once",
+    "flavor": "Two Hollowed had been children once. Two of the procession knew both childhoods. End them."
+  },
+  "b60_hl2_first_kill_ii": {
+    "name": "After Two Hollowed First Kills Unsettled",
+    "target_enemy": "hollow_procession",
+    "needed": 2,
+    "reward_gold": 800,
+    "cleanse_required": 3,
+    "requires_mark": "hollowed_first_kill_did_not_settle_well",
+    "flavor": "Two first Hollowed kills unsettled in you. Two of the procession noted both. End them."
+  },
+  "b60_hl2_breath_count_ii": {
+    "name": "After Two Hollowed Taught You a Count",
+    "target_enemy": "hollow_procession",
+    "needed": 3,
+    "reward_gold": 700,
+    "cleanse_required": 3,
+    "requires_mark": "hollowed_breath_taught_you_a_count",
+    "flavor": "Two Hollowed taught you counts of breath. Three of the procession kept both counts. End them."
+  },
+  "b60_hl2_breath_warmer_ii": {
+    "name": "After Two Hollowed Breaths Were Warmer",
+    "target_enemy": "hollow_procession",
+    "needed": 2,
+    "reward_gold": 800,
+    "cleanse_required": 3,
+    "requires_mark": "hollowed_breath_was_warmer_than_yours",
+    "flavor": "Two Hollowed breaths were warmer than yours. Two of the procession had kept both heats. End them."
+  },
+  "b60_bt_uncle_ii": {
+    "name": "After Two Dead Uncles Remembered You",
+    "target_enemy": "shrine_keeper",
+    "needed": 1,
+    "reward_gold": 1300,
+    "cleanse_required": 4,
+    "requires_mark": "bone_tomb_a_dead_uncle_remembered_you",
+    "flavor": "Two dead uncles in the Bone Tomb remembered you. The Shrine Keeper had been the silencer. End him."
+  },
+  "b60_bt_old_word_ii": {
+    "name": "After Two Old Words Came Out",
+    "target_enemy": "library_warden",
+    "needed": 1,
+    "reward_gold": 900,
+    "cleanse_required": 3,
+    "requires_mark": "bone_tomb_an_old_word_came_out_of_the_stone",
+    "flavor": "Two old words came out of the stone. A library-warden had wanted both lost. End him."
+  },
+  "b60_bt_cael_dialled_ii": {
+    "name": "After Cael Dialled Voice Twice",
+    "target_enemy": "shrine_keeper",
+    "needed": 1,
+    "reward_gold": 1200,
+    "cleanse_required": 4,
+    "requires_mark": "bone_tomb_cael_dialed_their_voice_for_you",
+    "flavor": "Cael dialled their voice for you twice. The Shrine Keeper drowned each. End him."
+  },
+  "b60_bt_cael_name_stone_ii": {
+    "name": "After Cael Spoke Two Names",
+    "target_enemy": "reliquary_golem",
+    "needed": 1,
+    "reward_gold": 1400,
+    "cleanse_required": 4,
+    "requires_mark": "bone_tomb_cael_spoke_your_name_into_stone",
+    "flavor": "Cael spoke two names into stone. A reliquary golem kept the second. End it."
+  },
+  "b60_bt_palm_grave_ii": {
+    "name": "After You Held Palm to Two Graves",
+    "target_enemy": "hollow_procession",
+    "needed": 3,
+    "reward_gold": 800,
+    "cleanse_required": 3,
+    "requires_mark": "bone_tomb_held_your_palm_to_the_grave",
+    "flavor": "You held your palm to two graves. Three of the procession felt the warmth. End them."
+  },
+  "b60_nd_chose_keep_going_ii": {
+    "name": "After You Chose to Keep Going II",
+    "target_enemy": "ashen_penitent",
+    "needed": 2,
+    "reward_gold": 1400,
+    "cleanse_required": 5,
+    "requires_mark": "near_death_chose_to_keep_going",
+    "flavor": "You chose to keep going twice. Two Penitents had hoped for stopping. End them."
+  },
+  "b60_nd_promise_aloud_ii": {
+    "name": "After Two Aloud Promises",
+    "target_enemy": "hollow_procession",
+    "needed": 2,
+    "reward_gold": 800,
+    "cleanse_required": 3,
+    "requires_mark": "near_death_made_a_promise_aloud",
+    "flavor": "Near-death made two promises aloud. Two of the procession listened. End them."
+  },
+  "b60_nd_grandmother_ii": {
+    "name": "After You Saw Your Grandmother II",
+    "target_enemy": "hollow_procession",
+    "needed": 2,
+    "reward_gold": 800,
+    "cleanse_required": 3,
+    "requires_mark": "near_death_saw_your_grandmother",
+    "flavor": "Near-death let you see your grandmother twice. Two of the procession had been keeping her. End them."
+  },
+  "b60_nd_pall_breathed_ii": {
+    "name": "After Pall Breathed at You II",
+    "target_enemy": "shadow_warden",
+    "needed": 1,
+    "reward_gold": 2400,
+    "cleanse_required": 5,
+    "requires_mark": "near_death_heard_the_pall_breathe",
+    "flavor": "Near-death let you hear the Pall breathe again. The Shadow Warden was both exhalations. End him."
+  },
+  "b60_learn_kingdom_ii": {
+    "name": "After You Carried the Kingdom II",
+    "target_enemy": "shadow_warden",
+    "needed": 1,
+    "reward_gold": 2500,
+    "cleanse_required": 5,
+    "requires_mark": "learned_to_carry_the_kingdom",
+    "flavor": "You carried the kingdom a second time. The Shadow Warden tested both carries. End him."
+  },
+  "b60_learn_two_griefs_ii": {
+    "name": "After Two Griefs Carried II",
+    "target_enemy": "censer_shade",
+    "needed": 4,
+    "reward_gold": 800,
+    "cleanse_required": 4,
+    "requires_mark": "learned_to_carry_two_griefs_at_once",
+    "flavor": "You carried two griefs at once a second time. Four censer-shades had hoped one drop. End them."
+  },
+  "b60_learn_count_pause_ii": {
+    "name": "After You Counted the Pause Twice",
+    "target_enemy": "ashen_penitent",
+    "needed": 2,
+    "reward_gold": 1300,
+    "cleanse_required": 4,
+    "requires_mark": "learned_to_count_the_pause_between_blows",
+    "flavor": "You counted the pause twice. Two Penitents counted differently. End them."
+  },
+  "b60_vl_bell_living_ii": {
+    "name": "After Two Bells Rang for Living Ones",
+    "target_enemy": "hollow_bellward",
+    "needed": 1,
+    "reward_gold": 1400,
+    "cleanse_required": 3,
+    "requires_mark": "village_a_bell_was_rung_for_a_living_one",
+    "flavor": "Two bells rang for living ones — both you. The Hollow Bellward heard both. End her."
+  },
+  "b60_vl_widow_pebble_iii": {
+    "name": "After Three Widow's Pebbles",
+    "target_enemy": "pall_magistrate",
+    "needed": 2,
+    "reward_gold": 900,
+    "cleanse_required": 3,
+    "requires_mark": "village_a_widow_pressed_a_pebble_into_your_hand",
+    "flavor": "Three widows in Mourncross have pressed pebbles into your hand. Two magistrates wanted all three. End them."
+  },
+  "b60_vl_dead_friend_window_ii": {
+    "name": "After Two Dead Friends at Two Windows",
+    "target_enemy": "hollow_procession",
+    "needed": 2,
+    "reward_gold": 900,
+    "cleanse_required": 3,
+    "requires_mark": "village_a_dead_friend_was_at_the_window",
+    "flavor": "Two dead friends at two Gravewatch windows. Two of the procession had been the keepers. End them."
   }
 }
