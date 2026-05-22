@@ -30,3 +30,20 @@ line-length = 100
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 pythonpath = ["."]
+
+[tool.coverage.run]
+source = ["terminalquest"]
+branch = false
+
+[tool.coverage.report]
+# Lines genuinely not worth covering — keep the list tight.
+exclude_lines = [
+    "pragma: no cover",
+    "if TYPE_CHECKING:",
+    "if typing.TYPE_CHECKING:",
+    'if __name__ == "__main__":',
+    "raise NotImplementedError",
+    "def __repr__",
+]
+skip_covered = false
+show_missing = true
