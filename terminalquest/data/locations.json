@@ -177,7 +177,7 @@
     "recommended_level": 1,
     "intro": [
       "🌲 The Witherwood, where the trees have given up the pretence of being alive.",
-      "This is only the realm's edge; the grey blew in here first, and thinnest.",
+      "This is only the realm's edge — the first ground the kingdom lost.",
       "The wood still half-remembers being green. It will not remember much longer."
     ],
     "intro_familiar": [
@@ -279,8 +279,8 @@
     "recommended_level": 2,
     "intro": [
       "🌊 The Sodden Reach — the farmland the floodwater rose up to take back.",
-      "This country fed a kingdom once. Now it drowns the grain it grows,",
-      "again and again, like a thing trying to apologise and not knowing how."
+      "This country fed a kingdom once. Now it drowns the grain it grows.",
+      "The Weir Engineer can be heard sometimes, hammering at a dyke that will not hold."
     ],
     "intro_familiar": [
       "🌊 The Reach. You have waded these floodfields. You know which step takes you under.",
@@ -402,8 +402,8 @@
     "recommended_level": 3,
     "intro": [
       "🌊 The Drowned Holds — the villages the Reach took down with it.",
-      "The streets are still streets. The doors are still shut. The dead",
-      "are still in the rooms behind them. The water is grief, kept liquid."
+      "In one hold, a candle still burns in a window. You can see it from the path.",
+      "No one has come to extinguish it. No one will. The water keeps it lit."
     ],
     "intro_familiar": [
       "🌊 The Drowned Holds. You have walked these streets that are still streets.",
@@ -580,7 +580,7 @@
     "intro": [
       "🕳️  The Gullet — a wound in the rock that breathes cold air, and wet.",
       "Everything the drowned country loses, it loses down through here.",
-      "The Pall is the kingdom's own hunger. This is the kingdom's throat."
+      "The Pall is the kingdom's own hunger. The Gullet feeds it."
     ],
     "intro_familiar": [
       "🕳️  The Gullet. The cold air still rises. You have learned how to walk against it.",
@@ -684,7 +684,7 @@
     "recommended_level": 5,
     "intro": [
       "🏛️  Mourncross, the capital — not burned, not broken, only emptied.",
-      "Every door stands open. Every hearth is cold. Every name is gone.",
+      "The bells in the cathedral have not been rung since.",
       "The city did not fall. It was forgotten, all in one breath, and obeyed."
     ],
     "intro_familiar": [
@@ -825,7 +825,7 @@
     "intro": [
       "⛪ The Unanswered Choir — the cathedral where a kingdom knelt to forget.",
       "The rite was performed here, in full, and it was answered after a fashion.",
-      "What knelt for absolution rose up as the Pall. It has been singing since."
+      "The choir has been singing since. There is no one in it."
     ],
     "intro_familiar": [
       "⛪ The Unanswered Choir. You know which pew is broken, which window catches the dawn.",
@@ -1006,8 +1006,8 @@
     "recommended_level": 7,
     "intro": [
       "⛰️  The Ashen Climb. Grey snow falls here, and it has never once been snow.",
-      "This is the last ground that is still ground. What lived on this slope",
-      "did not die so much as forget the difference, and go on climbing."
+      "This is the last ground that is still ground.",
+      "What lived on this slope went on climbing without remembering it had a body."
     ],
     "intro_familiar": [
       "⛰️  The Ashen Climb. The grey snow falls the way it has fallen every time.",
