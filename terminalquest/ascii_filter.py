@@ -6,6 +6,8 @@ tag. The labels next to stat numbers (added in v0.6) carry most of the
 meaning either way; this is the belt-and-braces option for terminals so
 old they show '?' even with UTF-8 forced on.
 """
+from __future__ import annotations
+
 
 # Order matters: variant-selectors first, so "⚔️" matches before "⚔".
 ASCII_FALLBACKS = (

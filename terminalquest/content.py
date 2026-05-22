@@ -4,6 +4,8 @@ All gameplay content (classes, abilities, enemies, locations) lives in
 ``terminalquest/data/*.json`` so designers can extend the game without
 touching Python. This module is the only place that reads those files.
 """
+
+from __future__ import annotations
 import json
 from pathlib import Path
 

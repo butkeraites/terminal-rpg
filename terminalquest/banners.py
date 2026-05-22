@@ -12,6 +12,8 @@ When ``io.ascii_mode`` is on, the box-drawing and shading characters are
 substituted for their ASCII equivalents so terminals without unicode font
 support still get a recognisable banner instead of tofu boxes.
 """
+from __future__ import annotations
+
 
 _ASCII_FALLBACKS = {
     "─": "-", "━": "-", "═": "=",

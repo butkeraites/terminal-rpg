@@ -3,6 +3,8 @@
 A combatant stores active effects as ``{effect_name: turns_remaining}``.
 Damage-over-time effects deal flat damage that ignores defense.
 """
+from __future__ import annotations
+
 
 # Flat damage dealt per turn by each damage-over-time effect.
 DOT_DAMAGE = {"poison": 5, "burn": 7, "bleed": 6}

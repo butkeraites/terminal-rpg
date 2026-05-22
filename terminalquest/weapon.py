@@ -9,6 +9,8 @@ Each weapon may also receive a one-time ``upgrade`` from the Smith at
 Gravewatch. An upgrade grants an extra stat bonus and may also hook into
 combat — see ``WEAPON_UPGRADES``.
 """
+from __future__ import annotations
+
 
 WEAPON_SLOTS = ("head", "haft", "core", "inscription")
 

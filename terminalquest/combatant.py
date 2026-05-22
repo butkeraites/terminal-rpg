@@ -1,4 +1,6 @@
 """Shared base class for the Player and Enemy."""
+
+from __future__ import annotations
 from . import status
 
 

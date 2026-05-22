@@ -17,6 +17,8 @@ audit. ``locations.py`` re-exports every name defined here for
 backwards compatibility with code (and tests) that referenced
 ``locations._warden_screen`` and friends directly.
 """
+
+from __future__ import annotations
 from . import chronicle, endings, marks
 
 

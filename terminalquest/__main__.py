@@ -1,4 +1,6 @@
 """Entry point for ``python -m terminalquest``."""
+
+from __future__ import annotations
 import argparse
 
 from .game import main

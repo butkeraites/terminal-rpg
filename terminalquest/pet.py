@@ -9,6 +9,7 @@ that fires from combat at the top of each round.
 Pets are acquired at the Beastmaster (gold) or by trading enemy trophies.
 Once bought, they are permanently owned across all future runs.
 """
+from __future__ import annotations
 
 
 class Pet:

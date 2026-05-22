@@ -9,6 +9,8 @@ that name menu entries.
 Everything is re-exported from ``locations.py`` so existing callers
 (and the dispatch lines inside ``location_loop``) keep working.
 """
+
+from __future__ import annotations
 from . import marks, saves
 from .encounters import _entry_act
 from .quests import scan_hidden_quest_triggers

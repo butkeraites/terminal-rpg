@@ -7,6 +7,7 @@ do not take damage — they are spirit-aid, not vulnerable allies. One
 companion per run; the existing one must be released before a new one can
 be hired.
 """
+from __future__ import annotations
 
 
 class Companion:

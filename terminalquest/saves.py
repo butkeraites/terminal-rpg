@@ -8,6 +8,8 @@ stays hermetic.
 A save stores a whole ``GameState`` (the player plus the current location
 and world flags). ``_migrate`` upgrades older payloads forward in place.
 """
+
+from __future__ import annotations
 import json
 import os
 import tempfile

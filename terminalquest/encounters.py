@@ -22,6 +22,8 @@ Configuration constants for these behaviours (roll chances, NPC roster,
 discovery flag map) live here too. Everything is re-exported from
 locations.py so existing callers and tests keep working.
 """
+
+from __future__ import annotations
 from . import boss_music_synth as _boss_music
 from . import chronicle, marks
 from . import dialogue as _dialogue

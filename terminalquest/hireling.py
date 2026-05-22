@@ -10,6 +10,8 @@ If a hireling dies, they are gone for the rest of the run — and the
 Chronicle records 'fallen_hireling' so a random combat encounter can later
 spawn them as a Forsaken Sworn (a beefed-up enemy bearing their name).
 """
+
+from __future__ import annotations
 from .combatant import Combatant
 
 

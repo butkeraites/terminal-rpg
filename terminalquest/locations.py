@@ -5,6 +5,8 @@ The world is a graph of locations loaded from ``data/locations.json``.
 location, offers its services, encounters and travel routes, and runs
 until the player dies, wins, or quits.
 """
+
+from __future__ import annotations
 from . import banners as _banners
 from . import chronicle, marks
 # Ending screens were extracted to endings_screens.py. Re-export every

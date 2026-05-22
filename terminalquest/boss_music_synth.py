@@ -17,6 +17,8 @@ Run directly to populate the cache or to A/B compare themes:
     python3 -m terminalquest.boss_music_synth      # render all to cache
     python3 -m terminalquest.boss_music_synth shadow_warden  # render one
 """
+
+from __future__ import annotations
 import argparse
 import math
 import pathlib

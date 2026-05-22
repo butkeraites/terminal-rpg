@@ -13,6 +13,8 @@ Mark conventions:
   Name†   a past character fell here (any number, just shown as one †)
   Name    normal
 """
+from __future__ import annotations
+
 
 # Hand-set template. ``{key}`` placeholders are substituted with marked,
 # centred labels by render(). Keep slot widths in sync with the labels in

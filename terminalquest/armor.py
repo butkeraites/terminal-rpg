@@ -6,6 +6,7 @@ Gravewatch. An equipped armor adds its ``stats`` (defense, max_hp) and its
 ``dodge_chance`` to the player. A successful dodge bypasses the minimum-1
 damage floor: the hit lands for zero.
 """
+from __future__ import annotations
 
 
 class Armor:

@@ -1,4 +1,6 @@
 """The player character and its progression logic."""
+
+from __future__ import annotations
 import uuid
 
 from .accessory import Accessory

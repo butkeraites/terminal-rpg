@@ -1,4 +1,6 @@
 """Enemy combatants, built from content data."""
+
+from __future__ import annotations
 from .combatant import Combatant
 
 

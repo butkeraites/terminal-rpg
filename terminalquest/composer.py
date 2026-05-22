@@ -15,6 +15,8 @@ False if the player walks away.
 Hints are soft — the last hint typically gives the answer outright. The
 kingdom is mourning, not testing.
 """
+
+from __future__ import annotations
 from . import boss_music_synth as _synth
 
 # Mode → list of semitone offsets from the root

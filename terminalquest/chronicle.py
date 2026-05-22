@@ -9,6 +9,8 @@ Shadow Warden they became.
 The chronicle is a keepsake, never load-bearing: a missing or corrupt
 file simply reads as no past characters, and a failed write is swallowed.
 """
+
+from __future__ import annotations
 import json
 import os
 import tempfile

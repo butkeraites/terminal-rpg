@@ -8,6 +8,8 @@ turn. Using a potion is no longer a free action.
 testable with ``ScriptedIO``. Damage/AI helpers are pure functions of
 their arguments and an injected ``random.Random`` for determinism.
 """
+
+from __future__ import annotations
 from . import marks, status
 from .player import LEVEL_BOONS
 

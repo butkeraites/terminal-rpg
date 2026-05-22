@@ -10,6 +10,8 @@ Run directly to populate the cache or to A/B compare palettes:
     python3 -m terminalquest.audio_synth         # render all to ~/.terminalquest/audio
     python3 -m terminalquest.audio_synth --list  # print recipes, no audio
 """
+
+from __future__ import annotations
 import argparse
 import math
 import pathlib

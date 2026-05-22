@@ -3,6 +3,8 @@
 When stdout is not a TTY — under pytest, or when piped — every helper
 returns its input unchanged, so captured output stays plain text.
 """
+
+from __future__ import annotations
 import sys
 
 ENABLED = sys.stdout.isatty()

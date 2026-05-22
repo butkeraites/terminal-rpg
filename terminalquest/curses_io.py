@@ -20,6 +20,8 @@ What this v2 still does NOT do — follow-up PRs:
 The default game (``python -m terminalquest`` with no flags) is unchanged.
 ``ScriptedIO`` is unaffected — only ``--tui`` constructs ``CursesIO``.
 """
+
+from __future__ import annotations
 import time
 
 from . import map_panel

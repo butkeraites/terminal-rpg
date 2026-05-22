@@ -13,6 +13,8 @@ Endings register themselves in ``locations.py`` at module load — they live
 where their render functions live. ``endings.choose_and_render`` is what
 ``_victory_screen`` calls.
 """
+from __future__ import annotations
+
 
 # Each entry: (id, menu_label, render_fn, requires_predicate)
 _ENDINGS = []

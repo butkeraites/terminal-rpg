@@ -11,6 +11,8 @@ Pricing / tuning constants for the vendors live here too — they're
 re-exported from ``locations.py`` so existing callers and content
 references keep working.
 """
+
+from __future__ import annotations
 from . import chronicle
 from .accessory import make_accessory
 from .armor import make_armor

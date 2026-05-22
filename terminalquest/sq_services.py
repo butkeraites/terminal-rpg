@@ -14,6 +14,8 @@ the Last Altar service unlocked by ``lost_verse_known``.
 Extracted from locations.py during the v2.3 quality audit. Every name is
 re-exported from locations.py so existing callers (and tests) keep working.
 """
+
+from __future__ import annotations
 from . import chronicle, marks
 
 

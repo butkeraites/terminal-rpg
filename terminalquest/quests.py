@@ -19,6 +19,8 @@ The cluster is re-exported by ``locations.py`` so existing code that
 wrote ``locations.quest_board`` or ``locations.scan_hidden_quest_triggers``
 keeps working unchanged.
 """
+
+from __future__ import annotations
 from . import chronicle, composer, marks
 from .combat import CLASS_CONSUMABLE
 from .ui import hud

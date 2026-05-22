@@ -18,6 +18,7 @@ lines slowly, prompts the player to pick a response, follows ``next``, and
 optionally sets a state flag on choice. ``next: null`` (or missing) ends the
 conversation. Flags persist via the normal state.flags save/load.
 """
+from __future__ import annotations
 
 
 def run_dialogue(state, tree, start_node="initial"):

@@ -4,6 +4,8 @@ A small JSON at ``~/.terminalquest/settings.json`` keeps choices that
 should outlive a run but don't belong in the Chronicle — chiefly the
 emoji-rendering preference set by the first-launch smoke test.
 """
+
+from __future__ import annotations
 import json
 import os
 import tempfile

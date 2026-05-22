@@ -7,6 +7,8 @@ captures output, letting the whole game loop run headless under pytest.
 time — set by the first-launch smoke test for users whose terminals can't
 render emoji glyphs at all.
 """
+
+from __future__ import annotations
 import sys
 import time
 

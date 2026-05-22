@@ -18,6 +18,8 @@ Track transitions (ambient → boss → ambient) are crossfaded by spawning
 the new player and scheduling the old to die ~1 s later. Both tracks have
 built-in 0.5 s fades, so the overlap reads as one fading into the other.
 """
+
+from __future__ import annotations
 import os
 import shutil
 import subprocess

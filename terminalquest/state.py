@@ -7,6 +7,8 @@ save/load — ``player``, ``current_location``, ``flags`` and the run
 ``seed`` are persisted; ``content``, ``io``, ``rng`` and ``audio`` are
 runtime-injected.
 """
+
+from __future__ import annotations
 from . import chronicle
 from .audio import AudioEngine
 from .player import Player

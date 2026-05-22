@@ -5,6 +5,7 @@ bought (with Echo currency) at the Echo Trader, it is permanently owned
 across every future run via the Chronicle, and can be equipped to a trinket
 or ring slot for its passive stat bonus.
 """
+from __future__ import annotations
 
 
 class Accessory:

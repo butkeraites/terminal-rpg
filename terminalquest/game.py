@@ -1,4 +1,6 @@
 """Game bootstrap: title screen, character creation, and the entry point."""
+
+from __future__ import annotations
 import os
 import random
 import sys
