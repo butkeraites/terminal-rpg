@@ -711,91 +711,72 @@ def _grant_rewards(state, enemy):
         marks.roll_at(state, "level_up")
 
 
-def run_combat(state, enemy, *, refresh_after=True):
-    """Fight ``enemy`` to a conclusion.
+def _print_combat_status(player, enemy, io):
+    """Print the per-round HUD for both combatants and the enemy's statuses."""
+    io.show(f"\n{player.name}: {player.hp}/{player.max_hp} HP | "
+            f"⚡{player.stamina}/{player.max_stamina} | "
+            f"⚔️{player.attack} 🛡️{player.defense}")
+    io.show(f"{enemy.name}: {enemy.hp}/{enemy.max_hp} HP | "
+            f"⚔️{enemy.attack} 🛡️{enemy.defense}")
+    enemy_effects = status.describe(enemy)
+    if enemy_effects:
+        io.show(f"{enemy.name} status: {enemy_effects}")
 
-    Returns one of: 'victory', 'defeat', 'fled', 'enemy_fled'.
-    Combat-only status effects are cleared on exit. Stamina is restored to
-    full unless ``refresh_after=False`` — used by chained encounters where
-    the player has no rest between sub-fights.
 
-    Phase-1 Batch-6: at the start of the fight, ``_init_combat_conditions``
-    resets the per-fight tracker; conditional-combat quests read it after
-    ``_grant_rewards`` via ``_track_quest_condition``.
+def _player_round(state, enemy):
+    """Run the player's half-turn.
+
+    Returns an outcome string when the round short-circuits the fight
+    ('defeat' from DoT, 'fled' from the menu), or ``None`` to continue.
     """
     player, content, io, rng = state.player, state.content, state.io, state.rng
-    article = "" if enemy.unique else "A "
-    io.show_slow(f"\n⚔️  {article}{enemy.name} comes for you.")
-    if enemy.flavor:
-        io.show_slow(enemy.flavor)
+    stunned = status.has_status(player, "stun")
+    if stunned:
+        # Phase-1 Batch-6: player got stunned at any point — condition fails.
+        state.flags["combat_conditions"]["no_stun_during_fight"] = False
+    if not _resolve_start_of_turn(player, io):
+        return "defeat"
+    stamina_before = player.stamina
+    player.restore_stamina(STAMINA_PER_TURN)
+    gained = player.stamina - stamina_before
+    if gained > 0:
+        io.show(f"⚡ You catch your breath. (+{gained} stamina, "
+                f"{player.stamina}/{player.max_stamina})")
+    _tick_pet_regen(player, io)
+    _tick_cat_companion(state)
+    if stunned:
+        io.show("\n💫 You are stunned and lose your turn!")
+    else:
+        if _player_turn(player, enemy, content, io, rng) == "fled":
+            return "fled"
+    return None
 
-    _init_combat_conditions(state)
-    outcome = None
-    while outcome is None:
-        # Round counter for the 'killed_in_one_round' condition. We tick
-        # at the top of each iteration; round 2 means we've already had
-        # a full round 1 without finishing the enemy.
-        if state.flags.get("_combat_round", 1) >= 2:
-            state.flags["combat_conditions"]["killed_in_one_round"] = False
-        io.show(f"\n{player.name}: {player.hp}/{player.max_hp} HP | "
-                f"⚡{player.stamina}/{player.max_stamina} | "
-                f"⚔️{player.attack} 🛡️{player.defense}")
-        io.show(f"{enemy.name}: {enemy.hp}/{enemy.max_hp} HP | "
-                f"⚔️{enemy.attack} 🛡️{enemy.defense}")
-        enemy_effects = status.describe(enemy)
-        if enemy_effects:
-            io.show(f"{enemy.name} status: {enemy_effects}")
 
-        # --- player turn ---
-        stunned = status.has_status(player, "stun")
-        if stunned:
-            # Phase-1 Batch-6: player got stunned at any point — condition fails.
-            state.flags["combat_conditions"]["no_stun_during_fight"] = False
-        if not _resolve_start_of_turn(player, io):
-            outcome = "defeat"
-            break
-        stamina_before = player.stamina
-        player.restore_stamina(STAMINA_PER_TURN)
-        gained = player.stamina - stamina_before
-        if gained > 0:
-            io.show(f"⚡ You catch your breath. (+{gained} stamina, "
-                    f"{player.stamina}/{player.max_stamina})")
-        _tick_pet_regen(player, io)
-        _tick_cat_companion(state)
-        if stunned:
-            io.show("\n💫 You are stunned and lose your turn!")
-        else:
-            if _player_turn(player, enemy, content, io, rng) == "fled":
-                outcome = "fled"
-                break
-        if not enemy.is_alive():
-            outcome = "victory"
-            break
+def _enemy_round(state, enemy):
+    """Run the enemy's half-turn.
 
-        # --- companion + hireling turn (between player and enemy) ---
-        _companion_act(state, enemy)
-        if not enemy.is_alive():
-            outcome = "victory"
-            break
-        _hireling_act(state, enemy)
+    Returns 'victory' if start-of-turn DoT finished the enemy, 'enemy_fled'
+    if the enemy chose to bolt, or ``None`` to continue the loop.
+    """
+    player, io, rng = state.player, state.io, state.rng
+    enemy_stunned = status.has_status(enemy, "stun")
+    if not _resolve_start_of_turn(enemy, io):
+        return "victory"
+    if enemy_stunned:
+        io.show(f"\n💫 {enemy.name} is stunned and loses its turn!")
+    elif _enemy_turn(enemy, player, io, rng) == "fled":
+        return "enemy_fled"
+    return None
 
-        # --- enemy turn ---
-        enemy_stunned = status.has_status(enemy, "stun")
-        if not _resolve_start_of_turn(enemy, io):
-            outcome = "victory"
-            break
-        if enemy_stunned:
-            io.show(f"\n💫 {enemy.name} is stunned and loses its turn!")
-        elif _enemy_turn(enemy, player, io, rng) == "fled":
-            outcome = "enemy_fled"
-            break
-        if not player.is_alive():
-            outcome = "defeat"
-            break
-        # Round complete — increment counter for the killed_in_one_round
-        # condition.
-        state.flags["_combat_round"] = state.flags.get("_combat_round", 1) + 1
 
+def _post_combat(state, enemy, outcome, refresh_after):
+    """Post-fight bookkeeping: hireling death, victory rewards, marks rolls,
+    status clear, stamina restore.
+
+    Mutates ``state`` in place. Returns nothing; ``run_combat`` returns the
+    outcome it already has.
+    """
+    player = state.player
     # Phase-1 Batch-6: detect hireling death BEFORE the quest engine reads
     # conditions. A hireling that fell this fight violates no_hireling_death,
     # so a quest gated on that condition must NOT tick.
@@ -827,4 +808,63 @@ def run_combat(state, enemy, *, refresh_after=True):
     player.statuses.clear()
     if refresh_after:
         player.stamina = player.max_stamina
+
+
+def run_combat(state, enemy, *, refresh_after=True):
+    """Fight ``enemy`` to a conclusion.
+
+    Returns one of: 'victory', 'defeat', 'fled', 'enemy_fled'.
+    Combat-only status effects are cleared on exit. Stamina is restored to
+    full unless ``refresh_after=False`` — used by chained encounters where
+    the player has no rest between sub-fights.
+
+    Phase-1 Batch-6: at the start of the fight, ``_init_combat_conditions``
+    resets the per-fight tracker; conditional-combat quests read it after
+    ``_grant_rewards`` via ``_track_quest_condition``.
+
+    The loop is a thin orchestrator over four helpers that each own one
+    phase: ``_print_combat_status`` (HUD), ``_player_round`` (player's
+    half-turn), companion/hireling acts, ``_enemy_round`` (enemy's
+    half-turn), and ``_post_combat`` (rewards + cleanup).
+    """
+    player, io = state.player, state.io
+    article = "" if enemy.unique else "A "
+    io.show_slow(f"\n⚔️  {article}{enemy.name} comes for you.")
+    if enemy.flavor:
+        io.show_slow(enemy.flavor)
+
+    _init_combat_conditions(state)
+    outcome = None
+    while outcome is None:
+        # Round counter for the 'killed_in_one_round' condition. Round 2
+        # means we've already had a full round 1 without finishing the enemy.
+        if state.flags.get("_combat_round", 1) >= 2:
+            state.flags["combat_conditions"]["killed_in_one_round"] = False
+        _print_combat_status(player, enemy, io)
+
+        outcome = _player_round(state, enemy)
+        if outcome is not None:
+            break
+        if not enemy.is_alive():
+            outcome = "victory"
+            break
+
+        # Companion + hireling act between player and enemy
+        _companion_act(state, enemy)
+        if not enemy.is_alive():
+            outcome = "victory"
+            break
+        _hireling_act(state, enemy)
+
+        outcome = _enemy_round(state, enemy)
+        if outcome is not None:
+            break
+        if not player.is_alive():
+            outcome = "defeat"
+            break
+
+        # Round complete — increment for the killed_in_one_round condition.
+        state.flags["_combat_round"] = state.flags.get("_combat_round", 1) + 1
+
+    _post_combat(state, enemy, outcome, refresh_after)
     return outcome
