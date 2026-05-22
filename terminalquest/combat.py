@@ -40,13 +40,6 @@ CONSUMABLE_EFFECTS = {
     "the Last Bread":        {"heal_full": True, "stamina_full": True},
 }
 
-# Legacy alias kept so the existing shop and tests can still read potion heals.
-POTION_HEAL = {name: CONSUMABLE_EFFECTS[name]["heal"]
-               for name in CONSUMABLE_EFFECTS
-               if "heal" in CONSUMABLE_EFFECTS[name]}
-POTION_RESTORES_STAMINA = {name for name, e in CONSUMABLE_EFFECTS.items()
-                           if e.get("stamina_full")}
-
 CLASS_CONSUMABLE = {
     "warrior": "Warrior's Breath",
     "rogue":   "Rogue's Vial",

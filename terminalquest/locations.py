@@ -218,9 +218,6 @@ def _service_is_visible(state, service):
     return True
 
 
-CAT_THRESHOLDS = (10, 25, 50, 100)
-
-
 def _build_options(state, loc, fallen):
     """Build the ordered list of ``(label, (kind, arg))`` menu entries.
 
