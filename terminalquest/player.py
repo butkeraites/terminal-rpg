@@ -1,7 +1,9 @@
 """The player character and its progression logic."""
 
 from __future__ import annotations
+
 import uuid
+from typing import TYPE_CHECKING, Any
 
 from .accessory import Accessory
 from .armor import Armor
@@ -11,6 +13,9 @@ from .hireling import Hireling
 from .pet import Pet
 from .weapon import Weapon, make_weapon
 
+if TYPE_CHECKING:
+    from .content import Content
+
 STARTING_GOLD = 50
 STARTING_XP_TO_LEVEL = 100
 LEVEL_XP_GROWTH = 1.5
@@ -18,7 +23,7 @@ LEVEL_XP_GROWTH = 1.5
 # Every level-up grants this baseline, plus one player-chosen boon.
 LEVEL_BASELINE = {"max_hp": 10, "attack": 2, "defense": 1, "max_stamina": 1}
 
-LEVEL_BOONS = {
+LEVEL_BOONS: dict[str, dict[str, Any]] = {
     "vigor": {"name": "Vigor", "blurb": "+25 Max HP", "gains": {"max_hp": 25}},
     "might": {"name": "Might", "blurb": "+7 Attack", "gains": {"attack": 7}},
     "bulwark": {"name": "Bulwark", "blurb": "+4 Defense, +3 Stamina",
@@ -35,7 +40,32 @@ POTION_ITEMS = ("Health Potion", "Greater Potion", "Sovereign Potion",
 class Player(Combatant):
     """The hero. Built from a class definition loaded from content."""
 
-    def __init__(self, name, class_id, class_def, content):
+    class_id: str
+    class_name: str
+    level: int
+    max_stamina: int
+    stamina: int
+    crit_bonus: float
+    dodge_chance: float
+    gold: int
+    xp: int
+    xp_to_level: int
+    consumables: list[str]
+    equipment: dict[str, Any]
+    abilities: list[str]
+    companion: Companion | None
+    hireling: Hireling | None
+    trophies: dict[str, int]
+    marks: list[str]
+    run_id: str
+
+    def __init__(
+        self,
+        name: str,
+        class_id: str,
+        class_def: dict[str, Any],
+        content: Content,
+    ) -> None:
         super().__init__()
         self.name = name
         self.class_id = class_id
@@ -68,13 +98,13 @@ class Player(Combatant):
         self.hp = self.max_hp
         self.stamina = self.max_stamina
 
-    def heal(self, amount):
+    def heal(self, amount: int) -> None:
         self.hp = min(self.max_hp, self.hp + amount)
 
-    def restore_stamina(self, amount):
+    def restore_stamina(self, amount: int) -> None:
         self.stamina = min(self.max_stamina, self.stamina + amount)
 
-    def equip_weapon(self, weapon):
+    def equip_weapon(self, weapon: Weapon) -> None:
         """Equip ``weapon``, replacing any current one, and apply its stat bonuses.
 
         The weapon's component-stats and its one-time upgrade bonus are both
@@ -88,7 +118,7 @@ class Player(Combatant):
         for stat, amount in weapon.upgrade_stat_bonus().items():
             setattr(self, stat, getattr(self, stat) + amount)
 
-    def unequip_weapon(self):
+    def unequip_weapon(self) -> Weapon | None:
         """Remove and return the equipped weapon, undoing its stat bonuses."""
         weapon = self.equipment.pop("weapon", None)
         if weapon is not None:
@@ -100,7 +130,7 @@ class Player(Combatant):
             self.stamina = min(self.stamina, self.max_stamina)
         return weapon
 
-    def equip_armor(self, armor):
+    def equip_armor(self, armor: Armor) -> None:
         """Equip ``armor``, replacing any current piece, and apply its bonuses."""
         self.unequip_armor()
         self.equipment["armor"] = armor
@@ -108,7 +138,7 @@ class Player(Combatant):
             setattr(self, stat, getattr(self, stat) + amount)
         self.dodge_chance += armor.dodge_chance
 
-    def unequip_armor(self):
+    def unequip_armor(self) -> Armor | None:
         """Remove and return the equipped armor, undoing its bonuses."""
         armor = self.equipment.pop("armor", None)
         if armor is not None:
@@ -118,14 +148,14 @@ class Player(Combatant):
             self.hp = min(self.hp, self.max_hp)
         return armor
 
-    def equip_accessory(self, accessory):
+    def equip_accessory(self, accessory: Accessory) -> None:
         """Equip a trinket or ring in its slot, applying its bonuses."""
         self.unequip_accessory(accessory.slot)
         self.equipment[accessory.slot] = accessory
         for stat, amount in accessory.stats.items():
             setattr(self, stat, getattr(self, stat) + amount)
 
-    def unequip_accessory(self, slot):
+    def unequip_accessory(self, slot: str) -> Accessory | None:
         """Remove and return the accessory in ``slot`` (trinket|ring), undoing its bonuses."""
         accessory = self.equipment.pop(slot, None)
         if accessory is not None:
@@ -135,7 +165,7 @@ class Player(Combatant):
             self.stamina = min(self.stamina, self.max_stamina)
         return accessory
 
-    def equip_pet(self, pet):
+    def equip_pet(self, pet: Pet) -> None:
         """Equip a pet (a 5th equipment slot), applying its passive bonuses.
 
         Pets behave like accessories — stat contributions are tracked here
@@ -147,7 +177,7 @@ class Player(Combatant):
         for stat, amount in pet.stats.items():
             setattr(self, stat, getattr(self, stat) + amount)
 
-    def unequip_pet(self):
+    def unequip_pet(self) -> Pet | None:
         """Remove and return the equipped pet, undoing its bonuses."""
         pet = self.equipment.pop("pet", None)
         if pet is not None:
@@ -157,7 +187,7 @@ class Player(Combatant):
             self.stamina = min(self.stamina, self.max_stamina)
         return pet
 
-    def gain_xp(self, amount):
+    def gain_xp(self, amount: int) -> int:
         """Add XP and advance levels. Returns the number of levels gained.
 
         Stat gains are applied separately via ``apply_level_up`` so the
@@ -172,7 +202,7 @@ class Player(Combatant):
             levels += 1
         return levels
 
-    def apply_baseline(self):
+    def apply_baseline(self) -> None:
         """Apply one level's baseline stat gains. Restores HP and stamina."""
         self.max_hp += LEVEL_BASELINE["max_hp"]
         self.attack += LEVEL_BASELINE["attack"]
@@ -181,7 +211,7 @@ class Player(Combatant):
         self.hp = self.max_hp
         self.stamina = self.max_stamina
 
-    def apply_boon(self, boon_id):
+    def apply_boon(self, boon_id: str) -> None:
         """Apply one level-up boon's bonus stat gains. Restores HP and stamina."""
         for stat, amount in LEVEL_BOONS[boon_id]["gains"].items():
             if stat == "max_hp":
@@ -195,7 +225,7 @@ class Player(Combatant):
         self.hp = self.max_hp
         self.stamina = self.max_stamina
 
-    def apply_level_up(self, boon_id):
+    def apply_level_up(self, boon_id: str) -> None:
         """Apply one level's baseline gains plus the chosen boon.
 
         Restores HP and stamina to full, as a level-up always has.
@@ -203,21 +233,21 @@ class Player(Combatant):
         self.apply_baseline()
         self.apply_boon(boon_id)
 
-    def learn_ability(self, ability_id):
+    def learn_ability(self, ability_id: str) -> None:
         """Add a new ability to the player's known list (no-op if already known)."""
         if ability_id not in self.abilities:
             self.abilities.append(ability_id)
 
-    def learnable_abilities(self, content):
+    def learnable_abilities(self, content: Content) -> list[str]:
         """Ability ids the player has unlocked by level but has not yet learned."""
         progression = content.classes[self.class_id].get("progression", [])
         return [entry["ability"] for entry in progression
                 if entry["level"] <= self.level and entry["ability"] not in self.abilities]
 
-    def potion_count(self):
+    def potion_count(self) -> int:
         return sum(self.consumables.count(name) for name in POTION_ITEMS)
 
-    def to_dict(self):
+    def to_dict(self) -> dict[str, Any]:
         """Serialize to a plain dict for saving."""
         equipment = {}
         if "weapon" in self.equipment:
@@ -256,7 +286,7 @@ class Player(Combatant):
         }
 
     @classmethod
-    def from_dict(cls, data):
+    def from_dict(cls, data: dict[str, Any]) -> Player:
         """Rebuild a Player from a saved dict."""
         player = cls.__new__(cls)
         Combatant.__init__(player)

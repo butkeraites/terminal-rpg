@@ -1,6 +1,7 @@
 """Shared base class for the Player and Enemy."""
 
 from __future__ import annotations
+
 from . import status
 
 
@@ -11,10 +12,19 @@ class Combatant:
     ``defense`` before ``take_damage`` is called.
     """
 
-    def __init__(self):
+    # Common fields subclasses are expected to set. Declared here so
+    # callers can rely on the attribute names existing on any Combatant.
+    name: str
+    hp: int
+    max_hp: int
+    attack: int
+    defense: int
+    statuses: dict[str, int]
+
+    def __init__(self) -> None:
         self.statuses = {}
 
-    def take_damage(self, damage, attacker_mult=1.0):
+    def take_damage(self, damage: int, attacker_mult: float = 1.0) -> int:
         """Apply ``damage`` after defense and status modifiers; min 1.
 
         ``attacker_mult`` is the attacker's outgoing-damage multiplier
@@ -27,5 +37,5 @@ class Combatant:
         self.hp -= actual
         return actual
 
-    def is_alive(self):
+    def is_alive(self) -> bool:
         return self.hp > 0

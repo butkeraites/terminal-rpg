@@ -1,10 +1,19 @@
 """Enemy combatants, built from content data."""
 
 from __future__ import annotations
+
+from typing import TYPE_CHECKING, Any
+
 from .combatant import Combatant
 
+if TYPE_CHECKING:
+    from .content import Content
 
-def resolve_flavor(entity_def, state_flags):
+
+def resolve_flavor(
+    entity_def: dict[str, Any],
+    state_flags: dict[str, Any] | None,
+) -> str:
     """Return the flavor line, picking ``flavor_after`` variants when their
     state flag is set.
 
@@ -24,7 +33,23 @@ def resolve_flavor(entity_def, state_flags):
 class Enemy(Combatant):
     """A hostile combatant. ``ai`` selects its behaviour in combat."""
 
-    def __init__(self, enemy_id, enemy_def, state_flags=None):
+    enemy_id: str
+    xp_reward: int
+    gold_reward: int
+    ai: str
+    ability: dict[str, Any] | None
+    flavor: str
+    unique: bool
+    winding_up: str | None
+    turns_taken: int
+    enraged: bool
+
+    def __init__(
+        self,
+        enemy_id: str,
+        enemy_def: dict[str, Any],
+        state_flags: dict[str, Any] | None = None,
+    ) -> None:
         super().__init__()
         self.enemy_id = enemy_id
         self.name = enemy_def["name"]
@@ -50,12 +75,16 @@ class Enemy(Combatant):
         self.enraged = False
 
 
-def make_enemy(enemy_id, content, state_flags=None):
+def make_enemy(
+    enemy_id: str,
+    content: Content,
+    state_flags: dict[str, Any] | None = None,
+) -> Enemy:
     """Construct a fresh Enemy instance from loaded content."""
     return Enemy(enemy_id, content.enemies[enemy_id], state_flags)
 
 
-def make_hollowed(entry):
+def make_hollowed(entry: dict[str, Any]) -> Enemy:
     """Build a Hollowed — a Pall-twisted past character — from a Chronicle entry."""
     p = entry["player"]
     return Enemy("hollowed", {
@@ -71,7 +100,7 @@ def make_hollowed(entry):
     })
 
 
-def make_warden(entry, content):
+def make_warden(entry: dict[str, Any], content: Content) -> Enemy:
     """The Shadow Warden as a past victor — kept by the Pall, wearing their face.
 
     Mechanically the tuned boss; narratively the last character who won.

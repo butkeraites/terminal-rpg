@@ -9,17 +9,45 @@ runtime-injected.
 """
 
 from __future__ import annotations
+
+from pathlib import Path
+from random import Random
+from typing import TYPE_CHECKING, Any
+
 from . import chronicle
 from .audio import AudioEngine
 from .player import Player
+
+if TYPE_CHECKING:
+    from .content import Content
+    from .ui import GameIO
 
 
 class GameState:
     """Mutable state for a single playthrough."""
 
-    def __init__(self, player, content, io, rng,
-                 current_location="crossroads", flags=None, chronicle_dir=None,
-                 seed=None, audio=None):
+    player: Player
+    content: Content
+    io: GameIO
+    rng: Random
+    current_location: str
+    flags: dict[str, Any]
+    chronicle_dir: Path
+    seed: str | None
+    audio: AudioEngine
+
+    def __init__(
+        self,
+        player: Player,
+        content: Content,
+        io: GameIO,
+        rng: Random,
+        current_location: str = "crossroads",
+        flags: dict[str, Any] | None = None,
+        chronicle_dir: Path | None = None,
+        seed: str | None = None,
+        audio: AudioEngine | None = None,
+    ) -> None:
         self.player = player
         self.content = content
         self.io = io
@@ -35,7 +63,7 @@ class GameState:
         # checking — tests and headless runs land on the disabled default.
         self.audio = audio if audio is not None else AudioEngine(enabled=False)
 
-    def to_dict(self):
+    def to_dict(self) -> dict[str, Any]:
         """Serialize the persistable fields to a plain dict."""
         return {
             "current_location": self.current_location,
@@ -45,7 +73,13 @@ class GameState:
         }
 
     @classmethod
-    def from_dict(cls, data, content, io, rng):
+    def from_dict(
+        cls,
+        data: dict[str, Any],
+        content: Content,
+        io: GameIO,
+        rng: Random,
+    ) -> GameState:
         """Rebuild a GameState from a saved dict plus the runtime environment."""
         return cls(
             Player.from_dict(data["player"]),

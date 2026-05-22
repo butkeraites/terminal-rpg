@@ -9,29 +9,38 @@ render emoji glyphs at all.
 """
 
 from __future__ import annotations
+
 import sys
 import time
+from typing import TYPE_CHECKING, Iterable
 
 from . import ascii_filter, color, status
+
+if TYPE_CHECKING:
+    from .content import Content
+    from .player import Player
 
 
 class GameIO:
     """Real-terminal input/output."""
 
-    def __init__(self, animate=True, ascii_mode=False):
+    animate: bool
+    ascii_mode: bool
+
+    def __init__(self, animate: bool = True, ascii_mode: bool = False) -> None:
         self.animate = animate
         self.ascii_mode = ascii_mode
 
-    def _filter(self, text):
+    def _filter(self, text: str) -> str:
         """Strip emoji glyphs to ASCII bracket-tags when ascii_mode is on."""
         if not self.ascii_mode:
             return text
         return ascii_filter.to_ascii(text)
 
-    def show(self, text=""):
+    def show(self, text: str = "") -> None:
         print(self._filter(text))
 
-    def show_slow(self, text, delay=0.02):
+    def show_slow(self, text: str, delay: float = 0.02) -> None:
         """Print text character-by-character for dramatic effect."""
         text = self._filter(text)
         if not self.animate:
@@ -43,16 +52,20 @@ class GameIO:
             time.sleep(delay)
         print()
 
-    def ask(self, prompt):
+    def ask(self, prompt: str) -> str:
         return input(self._filter(prompt)).strip()
 
-    def pause(self, seconds=1.0):
+    def pause(self, seconds: float = 1.0) -> None:
         time.sleep(seconds)
 
-    def clear(self):
+    def clear(self) -> None:
         print("\n" * 2)
 
-    def set_location(self, loc_id, ghost_locs=None):
+    def set_location(
+        self,
+        loc_id: str,
+        ghost_locs: Iterable[str] | None = None,
+    ) -> None:
         """Hook for TUIs to redraw a map panel. Default is no-op.
 
         The line-based GameIO has no map to update; CursesIO (and any
@@ -60,7 +73,7 @@ class GameIO:
         """
         pass
 
-    def set_status(self, text):
+    def set_status(self, text: str) -> None:
         """Hook for TUIs to update a status bar. Default is no-op.
 
         The line-based GameIO prints the hud inline every iteration, so it
@@ -68,7 +81,7 @@ class GameIO:
         """
         pass
 
-    def show_through_stone(self, text):
+    def show_through_stone(self, text: str) -> None:
         """Render a line as if spoken through ossified stone — Cael's voice.
 
         v0.12 Arc V mechanic: Cael's mouth is full of stone. Her words come
@@ -92,38 +105,45 @@ class GameIO:
 class ScriptedIO(GameIO):
     """Test double: replays a list of inputs and records all output."""
 
-    def __init__(self, inputs=None, ascii_mode=False):
+    inputs: list[str]
+    output: list[str]
+
+    def __init__(
+        self,
+        inputs: Iterable[str] | None = None,
+        ascii_mode: bool = False,
+    ) -> None:
         super().__init__(animate=False, ascii_mode=ascii_mode)
         self.inputs = list(inputs or [])
         self.output = []
 
-    def show(self, text=""):
+    def show(self, text: str = "") -> None:
         self.output.append(self._filter(str(text)))
 
-    def show_slow(self, text, delay=0.02):
+    def show_slow(self, text: str, delay: float = 0.02) -> None:
         self.output.append(self._filter(str(text)))
 
-    def show_through_stone(self, text):
+    def show_through_stone(self, text: str) -> None:
         prefix = "::  " if self.ascii_mode else "▒  "
         self.output.append(prefix + self._filter(str(text)))
 
-    def ask(self, prompt):
+    def ask(self, prompt: str) -> str:
         if not self.inputs:
             raise AssertionError("ScriptedIO ran out of inputs")
         return self.inputs.pop(0)
 
-    def pause(self, seconds=1.0):
+    def pause(self, seconds: float = 1.0) -> None:
         pass
 
-    def clear(self):
+    def clear(self) -> None:
         pass
 
-    def text(self):
+    def text(self) -> str:
         """All captured output joined into a single string."""
         return "\n".join(self.output)
 
 
-def hud(player):
+def hud(player: Player) -> str:
     """A compact one-line status bar shown across the game's screens."""
     hp = f"{player.hp}/{player.max_hp}"
     if player.hp <= player.max_hp * 0.3:
@@ -134,7 +154,11 @@ def hud(player):
             f"  💰 {player.gold}  🎒 {player.potion_count()}")
 
 
-def show_stats(io, player, content=None):
+def show_stats(
+    io: GameIO,
+    player: Player,
+    content: Content | None = None,
+) -> None:
     """Render the player's full stat sheet.
 
     v1.51 — if a content bundle is provided AND the player carries any marks,

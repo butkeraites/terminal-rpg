@@ -20,6 +20,7 @@ built-in 0.5 s fades, so the overlap reads as one fading into the other.
 """
 
 from __future__ import annotations
+
 import os
 import shutil
 import subprocess
@@ -27,18 +28,22 @@ import sys
 import tempfile
 import threading
 from pathlib import Path
+from typing import TYPE_CHECKING, Any
 
 from . import audio_synth, boss_music_synth
+
+if TYPE_CHECKING:
+    from .ui import GameIO
 
 CACHE_DIR = Path.home() / ".terminalquest" / "audio"
 CROSSFADE_S = 1.0
 
 
-def _have(cmd):
+def _have(cmd: str) -> bool:
     return shutil.which(cmd) is not None
 
 
-def _unix_player_cmd():
+def _unix_player_cmd() -> list[str] | None:
     """Return the player command (list of args) for unix-likes, or None."""
     if sys.platform == "darwin" and _have("afplay"):
         return ["afplay"]
@@ -54,7 +59,13 @@ class _Playback:
     """One running loop — a thread that respawns the player on exit until
     stop() is called. Failures are silent."""
 
-    def __init__(self, cmd, path):
+    cmd: list[str]
+    path: Path
+    stop_event: threading.Event
+    proc: subprocess.Popen[bytes] | None
+    thread: threading.Thread
+
+    def __init__(self, cmd: list[str], path: Path) -> None:
         self.cmd = cmd
         self.path = path
         self.stop_event = threading.Event()
@@ -62,7 +73,7 @@ class _Playback:
         self.thread = threading.Thread(target=self._loop, daemon=True)
         self.thread.start()
 
-    def _loop(self):
+    def _loop(self) -> None:
         failures = 0
         while not self.stop_event.is_set():
             try:
@@ -86,7 +97,7 @@ class _Playback:
             if self.stop_event.wait(0.02):
                 return
 
-    def stop(self):
+    def stop(self) -> None:
         self.stop_event.set()
         proc, self.proc = self.proc, None
         if proc is not None:
@@ -104,7 +115,14 @@ class AudioEngine:
     """Plays one looping track at a time (ambient drone or boss theme).
     Thread-safe, silent on error, supports crossfade between tracks."""
 
-    def __init__(self, enabled=False, cache_dir=None):
+    enabled: bool
+    cache_dir: Path
+
+    def __init__(
+        self,
+        enabled: bool = False,
+        cache_dir: Path | str | None = None,
+    ) -> None:
         self.enabled = enabled
         self.cache_dir = Path(cache_dir) if cache_dir else CACHE_DIR
         self._lock = threading.Lock()
@@ -119,7 +137,7 @@ class AudioEngine:
 
     # ── lifecycle ──────────────────────────────────────────────────────
 
-    def ensure_assets(self, io=None):
+    def ensure_assets(self, io: GameIO | None = None) -> None:
         """Render every palette + non-dynamic boss WAV into the cache if
         missing. Idempotent. Failure is silent.
 
@@ -150,7 +168,7 @@ class AudioEngine:
 
     # ── playback ───────────────────────────────────────────────────────
 
-    def play_zone(self, zone_id):
+    def play_zone(self, zone_id: str) -> None:
         """Switch to the drone for ``zone_id``. Crossfades from whatever
         is playing now. No-op if already on it or if disabled."""
         if not self.enabled:
@@ -167,7 +185,11 @@ class AudioEngine:
             self._current_key = zone_id
             self._crossfade_to(path)
 
-    def play_boss(self, boss_id, context=None):
+    def play_boss(
+        self,
+        boss_id: str,
+        context: dict[str, Any] | None = None,
+    ) -> None:
         """Switch to the boss theme. ``context`` is an optional dict; for
         the Shadow Warden, ``context['defeated_bosses']`` is the list of
         enemy ids defeated this run — the Warden quotes only those.
@@ -193,7 +215,7 @@ class AudioEngine:
             self._current_key = key
             self._crossfade_to(path)
 
-    def stop(self):
+    def stop(self) -> None:
         """Stop all playbacks immediately. Idempotent."""
         with self._lock:
             for playback in self._active:
@@ -201,7 +223,12 @@ class AudioEngine:
             self._active = []
             self._current_key = None
 
-    def play_composition(self, notes, voice="voice", note_seconds=0.7):
+    def play_composition(
+        self,
+        notes: list[str],
+        voice: str = "voice",
+        note_seconds: float = 0.7,
+    ) -> None:
         """Play a one-shot melody synchronously, layered over whatever is
         currently playing. Used by the composer for melody quests — the
         player hears their typed notes immediately, then continues.
@@ -246,17 +273,21 @@ class AudioEngine:
             except OSError:
                 pass
 
-    def mute(self):
+    def mute(self) -> None:
         self.enabled = False
         self.stop()
 
-    def unmute(self, io=None):
+    def unmute(self, io: GameIO | None = None) -> None:
         self.enabled = True
         self.ensure_assets(io=io)
 
     # ── internals ──────────────────────────────────────────────────────
 
-    def _boss_wav_path(self, boss_id, defeated_bosses):
+    def _boss_wav_path(
+        self,
+        boss_id: str,
+        defeated_bosses: list[str],
+    ) -> Path | None:
         """Resolve the WAV path for a boss. Renders dynamic themes fresh."""
         bosses_dir = self.cache_dir / "bosses"
         if boss_id in boss_music_synth.DYNAMIC_THEMES:
@@ -275,7 +306,7 @@ class AudioEngine:
             return path
         return bosses_dir / f"{boss_id}.wav"
 
-    def _crossfade_to(self, path):
+    def _crossfade_to(self, path: Path) -> None:
         """Start a new playback; schedule current ones to die after CROSSFADE_S.
         Caller must hold ``self._lock``."""
         if sys.platform == "win32":
@@ -297,7 +328,7 @@ class AudioEngine:
                         self._active = [p for p in self._active if p not in old]
             threading.Timer(CROSSFADE_S, _kill_old).start()
 
-    def _win_play(self, path):
+    def _win_play(self, path: Path) -> None:
         """Windows fallback — winsound is single-track, no crossfade. Hard
         cut: stop everything, then play. Caller must hold ``self._lock``."""
         for playback in self._active:

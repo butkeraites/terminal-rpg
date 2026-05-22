@@ -6,8 +6,10 @@ touching Python. This module is the only place that reads those files.
 """
 
 from __future__ import annotations
+
 import json
 from pathlib import Path
+from typing import Any
 
 from . import dialogue, status
 from .weapon import WEAPON_SLOTS
@@ -53,7 +55,7 @@ class ContentError(ValueError):
     """Raised when a data file is missing or malformed."""
 
 
-def _load(name):
+def _load(name: str) -> dict[str, Any]:
     path = DATA_DIR / name
     try:
         return json.loads(path.read_text(encoding="utf-8"))
@@ -63,12 +65,47 @@ def _load(name):
         raise ContentError(f"{name} is not valid JSON: {exc}") from exc
 
 
+# Each top-level content collection is a dict mapping id → entry-dict.
+# The entry shapes are documented in data/<name>.json and validated by
+# Content.validate(); the type alias here just names the common pattern.
+ContentDict = dict[str, dict[str, Any]]
+
+
 class Content:
     """An immutable bundle of all loaded game content."""
 
-    def __init__(self, classes, abilities, enemies, locations, components, armor,
-                 companions, accessories, pets, hirelings, npcs, dialogues,
-                 marks=None, quests=None):
+    classes: ContentDict
+    abilities: ContentDict
+    enemies: ContentDict
+    locations: ContentDict
+    components: dict[str, ContentDict]
+    armor: ContentDict
+    companions: ContentDict
+    accessories: ContentDict
+    pets: ContentDict
+    hirelings: ContentDict
+    npcs: ContentDict
+    dialogues: ContentDict
+    marks: ContentDict
+    quests: ContentDict
+
+    def __init__(
+        self,
+        classes: ContentDict,
+        abilities: ContentDict,
+        enemies: ContentDict,
+        locations: ContentDict,
+        components: dict[str, ContentDict],
+        armor: ContentDict,
+        companions: ContentDict,
+        accessories: ContentDict,
+        pets: ContentDict,
+        hirelings: ContentDict,
+        npcs: ContentDict,
+        dialogues: ContentDict,
+        marks: ContentDict | None = None,
+        quests: ContentDict | None = None,
+    ) -> None:
         self.classes = classes
         self.abilities = abilities
         self.enemies = enemies
@@ -90,7 +127,7 @@ class Content:
         # is valid; quest_board() shows an empty menu and is otherwise inert.
         self.quests = quests or {}
 
-    def validate(self):
+    def validate(self) -> None:
         """Raise ValueError if the data files are internally inconsistent."""
         for class_id, cls in self.classes.items():
             for ability_id in cls["abilities"]:
@@ -563,7 +600,7 @@ class Content:
                         )
 
 
-def load_content():
+def load_content() -> Content:
     """Load and validate every content file, returning a Content bundle."""
     try:
         marks_raw = _load("marks.json")
