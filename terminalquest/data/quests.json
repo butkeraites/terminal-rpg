@@ -16436,5 +16436,725 @@
     "cleanse_required": 4,
     "requires_mark": "weapon_kept_a_blood_drop_against_your_palm",
     "flavor": "Blood-Drop in Palm. The kingdom marks it. Take them."
+  },
+  "b71_00_youbreathedingreyto": {
+    "name": "Breathed Grey II",
+    "target_enemy": "censer_shade",
+    "needed": 4,
+    "reward_gold": 800,
+    "cleanse_required": 4,
+    "requires_mark": "you_breathed_in_grey_too_deep",
+    "flavor": "Breathed Grey II. The kingdom marks it. Take them."
+  },
+  "b71_01_youcarryathreadoft": {
+    "name": "Small One's Thread II",
+    "target_enemy": "wolf",
+    "needed": 3,
+    "reward_gold": 400,
+    "cleanse_required": 0,
+    "requires_mark": "you_carry_a_thread_of_the_small_uns_drawing",
+    "flavor": "Small One's Thread II. The kingdom marks it. Take them."
+  },
+  "b71_02_youdefendedwhenyous": {
+    "name": "Defended Twice",
+    "target_enemy": "ashen_penitent",
+    "needed": 2,
+    "reward_gold": 1300,
+    "cleanse_required": 4,
+    "requires_mark": "you_defended_when_you_should_have_swung",
+    "flavor": "Defended Twice. The kingdom marks it. Take them."
+  },
+  "b71_03_youdidnotsleepafter": {
+    "name": "Five Sleepless Nights",
+    "target_enemy": "wolf",
+    "needed": 5,
+    "reward_gold": 600,
+    "cleanse_required": 0,
+    "requires_mark": "you_did_not_sleep_after",
+    "flavor": "Five Sleepless Nights. The kingdom marks it. Take them."
+  },
+  "b71_04_youfinishedafightwi": {
+    "name": "Four Steady-Hand Finishes",
+    "target_enemy": "bandit",
+    "needed": 5,
+    "reward_gold": 600,
+    "cleanse_required": 0,
+    "requires_mark": "you_finished_a_fight_with_a_steady_hand",
+    "flavor": "Four Steady-Hand Finishes. The kingdom marks it. Take them."
+  },
+  "b71_05_youforgotthewordfor": {
+    "name": "Word for Lamp Lost III",
+    "target_enemy": "library_warden",
+    "needed": 1,
+    "reward_gold": 1000,
+    "cleanse_required": 3,
+    "requires_mark": "you_forgot_the_word_for_lamp",
+    "flavor": "Word for Lamp Lost III. The kingdom marks it. Take them."
+  },
+  "b71_06_youheardcaelsaykess": {
+    "name": "Cael Said Kess Twice",
+    "target_enemy": "shrine_keeper",
+    "needed": 1,
+    "reward_gold": 1200,
+    "cleanse_required": 4,
+    "requires_mark": "you_heard_cael_say_kess",
+    "flavor": "Cael Said Kess Twice. The kingdom marks it. Take them."
+  },
+  "b71_07_youheldyourbreathto": {
+    "name": "Held Breath Too Long Twice",
+    "target_enemy": "ice_wraith",
+    "needed": 4,
+    "reward_gold": 900,
+    "cleanse_required": 4,
+    "requires_mark": "you_held_your_breath_too_long",
+    "flavor": "Held Breath Too Long Twice. The kingdom marks it. Take them."
+  },
+  "b71_08_statusburnastrangers": {
+    "name": "Three Cloaks Thrown",
+    "target_enemy": "bandit",
+    "needed": 4,
+    "reward_gold": 500,
+    "cleanse_required": 0,
+    "requires_mark": "status_burn_a_strangers_cloak_was_thrown_over_you",
+    "flavor": "Three Cloaks Thrown. The kingdom marks it. Take them."
+  },
+  "b71_09_statusburnkeptacind": {
+    "name": "Three Cinders Kept",
+    "target_enemy": "drowned_thresher",
+    "needed": 4,
+    "reward_gold": 700,
+    "cleanse_required": 1,
+    "requires_mark": "status_burn_kept_a_cinder_in_your_pocket",
+    "flavor": "Three Cinders Kept. The kingdom marks it. Take them."
+  },
+  "b71_10_statusburnkindledan": {
+    "name": "Five Old Angers",
+    "target_enemy": "red_beard",
+    "needed": 5,
+    "reward_gold": 900,
+    "cleanse_required": 2,
+    "requires_mark": "status_burn_kindled_an_old_anger",
+    "flavor": "Five Old Angers. The kingdom marks it. Take them."
+  },
+  "b71_11_statusburnleftakind": {
+    "name": "Four Kindnesses in Ash",
+    "target_enemy": "wolf",
+    "needed": 6,
+    "reward_gold": 700,
+    "cleanse_required": 0,
+    "requires_mark": "status_burn_left_a_kindness_in_the_ash",
+    "flavor": "Four Kindnesses in Ash. The kingdom marks it. Take them."
+  },
+  "b71_12_statusbleedadogfoll": {
+    "name": "Three Dogs Followed Home",
+    "target_enemy": "wolf",
+    "needed": 5,
+    "reward_gold": 600,
+    "cleanse_required": 0,
+    "requires_mark": "status_bleed_a_dog_followed_you_back_to_town",
+    "flavor": "Three Dogs Followed Home. The kingdom marks it. Take them."
+  },
+  "b71_13_statusbleedawidowre": {
+    "name": "Three Widow-Recognitions",
+    "target_enemy": "pall_magistrate",
+    "needed": 3,
+    "reward_gold": 900,
+    "cleanse_required": 3,
+    "requires_mark": "status_bleed_a_widow_recognized_the_pattern",
+    "flavor": "Three Widow-Recognitions. The kingdom marks it. Take them."
+  },
+  "b71_14_statusbleedcameback": {
+    "name": "Three Bleed-Dreams",
+    "target_enemy": "bonesong",
+    "needed": 3,
+    "reward_gold": 700,
+    "cleanse_required": 1,
+    "requires_mark": "status_bleed_came_back_in_a_dream",
+    "flavor": "Three Bleed-Dreams. The kingdom marks it. Take them."
+  },
+  "b71_15_statusbleedkeptadro": {
+    "name": "Four Drops on Chin",
+    "target_enemy": "doorshut",
+    "needed": 4,
+    "reward_gold": 600,
+    "cleanse_required": 1,
+    "requires_mark": "status_bleed_kept_a_drop_on_your_chin",
+    "flavor": "Four Drops on Chin. The kingdom marks it. Take them."
+  },
+  "b71_16_statusbleedleftapri": {
+    "name": "Four Doorframe Prints",
+    "target_enemy": "doorshut",
+    "needed": 4,
+    "reward_gold": 650,
+    "cleanse_required": 1,
+    "requires_mark": "status_bleed_left_a_print_on_a_doorframe",
+    "flavor": "Four Doorframe Prints. The kingdom marks it. Take them."
+  },
+  "b71_17_statusbleedleftasta": {
+    "name": "Five Stained Pages",
+    "target_enemy": "library_warden",
+    "needed": 1,
+    "reward_gold": 1100,
+    "cleanse_required": 3,
+    "requires_mark": "status_bleed_left_a_stain_on_a_chronicle_page",
+    "flavor": "Five Stained Pages. The kingdom marks it. Take them."
+  },
+  "b71_18_roaddustkeptyourfoo": {
+    "name": "Dust Kept Five Footprints",
+    "target_enemy": "bandit",
+    "needed": 4,
+    "reward_gold": 500,
+    "cleanse_required": 0,
+    "requires_mark": "road_dust_kept_your_footprint_a_count_too_long",
+    "flavor": "Dust Kept Five Footprints. The kingdom marks it. Take them."
+  },
+  "b71_19_roadablackbirdlityo": {
+    "name": "Six Blackbird Dusks",
+    "target_enemy": "bandit",
+    "needed": 6,
+    "reward_gold": 700,
+    "cleanse_required": 0,
+    "requires_mark": "road_a_blackbird_lit_your_way_at_dusk",
+    "flavor": "Six Blackbird Dusks. The kingdom marks it. Take them."
+  },
+  "b71_20_roadalampcameonat": {
+    "name": "Six Lamps on Arrival",
+    "target_enemy": "bandit",
+    "needed": 6,
+    "reward_gold": 700,
+    "cleanse_required": 0,
+    "requires_mark": "road_a_lamp_came_on_at_your_arrival",
+    "flavor": "Six Lamps on Arrival. The kingdom marks it. Take them."
+  },
+  "b71_21_roadamilestonerecogn": {
+    "name": "Five Milestone Recognitions",
+    "target_enemy": "wolf",
+    "needed": 6,
+    "reward_gold": 700,
+    "cleanse_required": 0,
+    "requires_mark": "road_a_milestone_recognized_your_step",
+    "flavor": "Five Milestone Recognitions. The kingdom marks it. Take them."
+  },
+  "b71_22_roadamilewasshorter": {
+    "name": "Five Shorter Miles",
+    "target_enemy": "wolf",
+    "needed": 7,
+    "reward_gold": 800,
+    "cleanse_required": 0,
+    "requires_mark": "road_a_mile_was_shorter_than_it_had_been",
+    "flavor": "Five Shorter Miles. The kingdom marks it. Take them."
+  },
+  "b71_23_roadastreamunderab": {
+    "name": "Five Streams Thanked",
+    "target_enemy": "wolf",
+    "needed": 5,
+    "reward_gold": 600,
+    "cleanse_required": 0,
+    "requires_mark": "road_a_stream_under_a_bridge_thanked_you",
+    "flavor": "Five Streams Thanked. The kingdom marks it. Take them."
+  },
+  "b71_24_roadatravellerpassed": {
+    "name": "Five Silent Nods",
+    "target_enemy": "bandit",
+    "needed": 4,
+    "reward_gold": 500,
+    "cleanse_required": 0,
+    "requires_mark": "road_a_traveller_passed_in_silent_nod",
+    "flavor": "Five Silent Nods. The kingdom marks it. Take them."
+  },
+  "b71_25_roadawaysideshrinew": {
+    "name": "Five Wayside Shrines",
+    "target_enemy": "bandit",
+    "needed": 5,
+    "reward_gold": 600,
+    "cleanse_required": 0,
+    "requires_mark": "road_a_wayside_shrine_warmed_a_step",
+    "flavor": "Five Wayside Shrines. The kingdom marks it. Take them."
+  },
+  "b71_26_roadanoldhorseshoew": {
+    "name": "Five Old Horseshoes",
+    "target_enemy": "wolf",
+    "needed": 4,
+    "reward_gold": 500,
+    "cleanse_required": 0,
+    "requires_mark": "road_an_old_horseshoe_was_in_the_dust",
+    "flavor": "Five Old Horseshoes. The kingdom marks it. Take them."
+  },
+  "b71_27_roadanoldsongwalked": {
+    "name": "Five Old Songs",
+    "target_enemy": "bandit",
+    "needed": 5,
+    "reward_gold": 600,
+    "cleanse_required": 0,
+    "requires_mark": "road_an_old_song_walked_the_distance_with_you",
+    "flavor": "Five Old Songs. The kingdom marks it. Take them."
+  },
+  "b71_28_roadnottakendidnot": {
+    "name": "Five Doors Left Open",
+    "target_enemy": "doorshut",
+    "needed": 5,
+    "reward_gold": 800,
+    "cleanse_required": 1,
+    "requires_mark": "road_not_taken_did_not_close_a_door_you_had_opened",
+    "flavor": "Five Doors Left Open. The kingdom marks it. Take them."
+  },
+  "b71_29_roadnottakendidnot": {
+    "name": "Four Un-Cried Tears",
+    "target_enemy": "censer_shade",
+    "needed": 4,
+    "reward_gold": 900,
+    "cleanse_required": 4,
+    "requires_mark": "road_not_taken_did_not_cry_when_you_could_have",
+    "flavor": "Four Un-Cried Tears. The kingdom marks it. Take them."
+  },
+  "b71_30_roadnottakendidnot": {
+    "name": "Four Un-Drunk Wells",
+    "target_enemy": "drowned_thresher",
+    "needed": 4,
+    "reward_gold": 700,
+    "cleanse_required": 1,
+    "requires_mark": "road_not_taken_did_not_drink_at_a_well",
+    "flavor": "Four Un-Drunk Wells. The kingdom marks it. Take them."
+  },
+  "b71_31_roadnottakendidnot": {
+    "name": "Four Un-Eaten Meals",
+    "target_enemy": "bandit",
+    "needed": 4,
+    "reward_gold": 600,
+    "cleanse_required": 0,
+    "requires_mark": "road_not_taken_did_not_eat_at_the_open_kitchen",
+    "flavor": "Four Un-Eaten Meals. The kingdom marks it. Take them."
+  },
+  "b71_32_roadnottakendidnot": {
+    "name": "Four Refused Carryings",
+    "target_enemy": "censer_shade",
+    "needed": 4,
+    "reward_gold": 900,
+    "cleanse_required": 4,
+    "requires_mark": "road_not_taken_did_not_let_a_companion_carry_a_grief",
+    "flavor": "Four Refused Carryings. The kingdom marks it. Take them."
+  },
+  "b71_33_roadnottakendidnot": {
+    "name": "Three Upper Rooms Skipped",
+    "target_enemy": "ice_wraith",
+    "needed": 5,
+    "reward_gold": 1100,
+    "cleanse_required": 4,
+    "requires_mark": "road_not_taken_did_not_climb_to_the_upper_room",
+    "flavor": "Three Upper Rooms Skipped. The kingdom marks it. Take them."
+  },
+  "b71_34_roadnottakenwalkedp": {
+    "name": "Three Walks Past the Altar",
+    "target_enemy": "choirmaster_effigy",
+    "needed": 3,
+    "reward_gold": 1100,
+    "cleanse_required": 4,
+    "requires_mark": "road_not_taken_walked_past_atrels_altar_without_kneeling",
+    "flavor": "Three Walks Past the Altar. The kingdom marks it. Take them."
+  },
+  "b71_35_roadnottakendidnot": {
+    "name": "Three Unburnt Papers",
+    "target_enemy": "library_warden",
+    "needed": 1,
+    "reward_gold": 1000,
+    "cleanse_required": 3,
+    "requires_mark": "road_not_taken_did_not_burn_an_old_paper",
+    "flavor": "Three Unburnt Papers. The kingdom marks it. Take them."
+  },
+  "b71_36_roadnottakendidnot": {
+    "name": "Three Things Eyed but Unbought",
+    "target_enemy": "bandit",
+    "needed": 4,
+    "reward_gold": 500,
+    "cleanse_required": 0,
+    "requires_mark": "road_not_taken_did_not_buy_a_thing_you_eyed",
+    "flavor": "Three Things Eyed but Unbought. The kingdom marks it. Take them."
+  },
+  "b71_37_roadnottakendidnot": {
+    "name": "Three Unanswered Children",
+    "target_enemy": "bonesong",
+    "needed": 3,
+    "reward_gold": 800,
+    "cleanse_required": 1,
+    "requires_mark": "road_not_taken_did_not_answer_a_child",
+    "flavor": "Three Unanswered Children. The kingdom marks it. Take them."
+  },
+  "b71_38_roadnottakendidnot": {
+    "name": "Three Unapologized Owes",
+    "target_enemy": "doorshut",
+    "needed": 4,
+    "reward_gold": 800,
+    "cleanse_required": 1,
+    "requires_mark": "road_not_taken_did_not_apologize_to_someone_you_owed",
+    "flavor": "Three Unapologized Owes. The kingdom marks it. Take them."
+  },
+  "b71_39_roadnottakendidnot": {
+    "name": "Three Widows' Names Unasked",
+    "target_enemy": "pall_magistrate",
+    "needed": 3,
+    "reward_gold": 1000,
+    "cleanse_required": 3,
+    "requires_mark": "road_not_taken_did_not_ask_the_widows_name",
+    "flavor": "Three Widows' Names Unasked. The kingdom marks it. Take them."
+  },
+  "b72_00_pallarrivedatyourdo": {
+    "name": "Pall at Door V",
+    "target_enemy": "shadow_warden",
+    "needed": 1,
+    "reward_gold": 2800,
+    "cleanse_required": 5,
+    "requires_mark": "pall_arrived_at_your_door_too_quietly",
+    "flavor": "Pall at Door V. The kingdom marks it. Take them."
+  },
+  "b72_01_pallbegantomatchits": {
+    "name": "Step Matched V",
+    "target_enemy": "ashen_penitent",
+    "needed": 4,
+    "reward_gold": 1800,
+    "cleanse_required": 5,
+    "requires_mark": "pall_began_to_match_its_step_to_yours",
+    "flavor": "Step Matched V. The kingdom marks it. Take them."
+  },
+  "b72_02_pallbegantoshowyou": {
+    "name": "Pall's Face IV",
+    "target_enemy": "shadow_warden",
+    "needed": 1,
+    "reward_gold": 3000,
+    "cleanse_required": 5,
+    "requires_mark": "pall_began_to_show_you_its_face",
+    "flavor": "Pall's Face IV. The kingdom marks it. Take them."
+  },
+  "b72_03_pallblessedoneofyou": {
+    "name": "Five Pall-Blessed Meals",
+    "target_enemy": "wolf",
+    "needed": 6,
+    "reward_gold": 800,
+    "cleanse_required": 1,
+    "requires_mark": "pall_blessed_one_of_your_meals",
+    "flavor": "Five Pall-Blessed Meals. The kingdom marks it. Take them."
+  },
+  "b72_04_pallbreathedintoyour": {
+    "name": "Pall Breathed V at Collar",
+    "target_enemy": "ice_wraith",
+    "needed": 6,
+    "reward_gold": 1100,
+    "cleanse_required": 4,
+    "requires_mark": "pall_breathed_into_your_collar",
+    "flavor": "Pall Breathed V at Collar. The kingdom marks it. Take them."
+  },
+  "b72_05_pallbrieflyheldthea": {
+    "name": "Air Held Five Times",
+    "target_enemy": "censer_shade",
+    "needed": 7,
+    "reward_gold": 1100,
+    "cleanse_required": 4,
+    "requires_mark": "pall_briefly_held_the_air_around_you",
+    "flavor": "Air Held Five Times. The kingdom marks it. Take them."
+  },
+  "b72_06_endingwardenalampkee": {
+    "name": "Lampkeepers Called You VI",
+    "target_enemy": "shadow_warden",
+    "needed": 1,
+    "reward_gold": 2800,
+    "cleanse_required": 5,
+    "requires_mark": "ending_warden_a_lampkeeper_called_you_warden",
+    "flavor": "Lampkeepers Called You VI. The kingdom marks it. Take them."
+  },
+  "b72_07_endingwardenakeeper": {
+    "name": "Keeper-Song Verse V",
+    "target_enemy": "ashen_penitent",
+    "needed": 4,
+    "reward_gold": 1600,
+    "cleanse_required": 5,
+    "requires_mark": "ending_warden_a_keeper_song_started_to_form_in_you",
+    "flavor": "Keeper-Song Verse V. The kingdom marks it. Take them."
+  },
+  "b72_08_endingwardenatreldid": {
+    "name": "Atrél Quiet Five Nights",
+    "target_enemy": "censer_shade",
+    "needed": 8,
+    "reward_gold": 900,
+    "cleanse_required": 4,
+    "requires_mark": "ending_warden_atrel_did_not_argue_with_you_tonight",
+    "flavor": "Atrél Quiet Five Nights. The kingdom marks it. Take them."
+  },
+  "b72_09_endingwardenthechron": {
+    "name": "Chronicle Line VI",
+    "target_enemy": "shadow_warden",
+    "needed": 1,
+    "reward_gold": 2800,
+    "cleanse_required": 5,
+    "requires_mark": "ending_warden_the_chronicle_kept_a_line_open_for_warden",
+    "flavor": "Chronicle Line VI. The kingdom marks it. Take them."
+  },
+  "b72_10_endingwardenthepall": {
+    "name": "Pall Walked Five Times",
+    "target_enemy": "shadow_warden",
+    "needed": 1,
+    "reward_gold": 2800,
+    "cleanse_required": 5,
+    "requires_mark": "ending_warden_the_pall_walked_three_steps_with_you",
+    "flavor": "Pall Walked Five Times. The kingdom marks it. Take them."
+  },
+  "b72_11_endingwardenthesummi": {
+    "name": "Summit Softer VI",
+    "target_enemy": "stone_golem",
+    "needed": 6,
+    "reward_gold": 1600,
+    "cleanse_required": 5,
+    "requires_mark": "ending_warden_the_summit_ground_will_be_softer_under_your_boot",
+    "flavor": "Summit Softer VI. The kingdom marks it. Take them."
+  },
+  "b72_12_endingwardenyouleft": {
+    "name": "Five Empty Chairs",
+    "target_enemy": "ashen_penitent",
+    "needed": 4,
+    "reward_gold": 1600,
+    "cleanse_required": 5,
+    "requires_mark": "ending_warden_you_left_a_chair_at_the_inn_empty",
+    "flavor": "Five Empty Chairs. The kingdom marks it. Take them."
+  },
+  "b72_13_endingwardenyoustart": {
+    "name": "Silence Wider Still",
+    "target_enemy": "shadow_warden",
+    "needed": 1,
+    "reward_gold": 2800,
+    "cleanse_required": 5,
+    "requires_mark": "ending_warden_you_started_carrying_a_keeper_silence",
+    "flavor": "Silence Wider Still. The kingdom marks it. Take them."
+  },
+  "b72_14_endingwardenyouunder": {
+    "name": "Role Understood V",
+    "target_enemy": "shadow_warden",
+    "needed": 1,
+    "reward_gold": 2800,
+    "cleanse_required": 5,
+    "requires_mark": "ending_warden_you_understood_the_role_was_waiting",
+    "flavor": "Role Understood V. The kingdom marks it. Take them."
+  },
+  "b72_15_endingwardenyourbrea": {
+    "name": "Breath Eased Pall VI",
+    "target_enemy": "ice_wraith",
+    "needed": 8,
+    "reward_gold": 1100,
+    "cleanse_required": 4,
+    "requires_mark": "ending_warden_your_breath_steamed_the_pall_air_easier",
+    "flavor": "Breath Eased Pall VI. The kingdom marks it. Take them."
+  },
+  "b72_16_endingatrelpeaceapr": {
+    "name": "Robe Warmth V",
+    "target_enemy": "choirmaster_effigy",
+    "needed": 5,
+    "reward_gold": 1000,
+    "cleanse_required": 4,
+    "requires_mark": "ending_atrel_peace_a_priest_robe_kept_you_warm",
+    "flavor": "Robe Warmth V. The kingdom marks it. Take them."
+  },
+  "b72_17_endingatrelpeaceanu": {
+    "name": "Unhollowed Thanks V",
+    "target_enemy": "hollow_procession",
+    "needed": 6,
+    "reward_gold": 1000,
+    "cleanse_required": 3,
+    "requires_mark": "ending_atrel_peace_an_unhollowed_thanked_you",
+    "flavor": "Unhollowed Thanks V. The kingdom marks it. Take them."
+  },
+  "b72_18_endingatrelpeacefirs": {
+    "name": "First Grief Lifted V",
+    "target_enemy": "choirmaster_effigy",
+    "needed": 5,
+    "reward_gold": 1000,
+    "cleanse_required": 4,
+    "requires_mark": "ending_atrel_peace_first_grief_set_aside_easily",
+    "flavor": "First Grief Lifted V. The kingdom marks it. Take them."
+  },
+  "b72_19_endingatrelpeacekept": {
+    "name": "Companion-Grief V",
+    "target_enemy": "censer_shade",
+    "needed": 6,
+    "reward_gold": 1000,
+    "cleanse_required": 4,
+    "requires_mark": "ending_atrel_peace_kept_a_grief_for_a_companion_too",
+    "flavor": "Companion-Grief V. The kingdom marks it. Take them."
+  },
+  "b72_20_endingatrelpeaceking": {
+    "name": "Kingdom Quieter VI",
+    "target_enemy": "drowned_thresher",
+    "needed": 9,
+    "reward_gold": 1100,
+    "cleanse_required": 1,
+    "requires_mark": "ending_atrel_peace_kingdom_quieter_in_your_step",
+    "flavor": "Kingdom Quieter VI. The kingdom marks it. Take them."
+  },
+  "b72_21_endingpurifyyoustart": {
+    "name": "Witherwood Recognition VI",
+    "target_enemy": "pack_lead",
+    "needed": 3,
+    "reward_gold": 1400,
+    "cleanse_required": 2,
+    "requires_mark": "ending_purify_you_started_being_recognized_in_the_witherwood",
+    "flavor": "Witherwood Recognition VI. The kingdom marks it. Take them."
+  },
+  "b72_22_endinghiddentruthap": {
+    "name": "Priest Recognition VII",
+    "target_enemy": "cantor_vael",
+    "needed": 1,
+    "reward_gold": 2700,
+    "cleanse_required": 5,
+    "requires_mark": "ending_hidden_truth_a_priest_at_the_choir_recognized_you",
+    "flavor": "Priest Recognition VII. The kingdom marks it. Take them."
+  },
+  "b72_23_endinghiddentruththe": {
+    "name": "Summit Met Six Ways",
+    "target_enemy": "shadow_warden",
+    "needed": 1,
+    "reward_gold": 2900,
+    "cleanse_required": 5,
+    "requires_mark": "ending_hidden_truth_the_summit_will_meet_you_differently",
+    "flavor": "Summit Met Six Ways. The kingdom marks it. Take them."
+  },
+  "b72_24_rebornabladeremember": {
+    "name": "Blade's Sixth Grip",
+    "target_enemy": "ashen_penitent",
+    "needed": 1,
+    "reward_gold": 1700,
+    "cleanse_required": 5,
+    "requires_mark": "reborn_a_blade_remembered_a_grip_before_yours",
+    "flavor": "Blade's Sixth Grip. The kingdom marks it. Take them."
+  },
+  "b72_25_rebornagravewaswarm": {
+    "name": "Seven Warm Graves",
+    "target_enemy": "hollow_procession",
+    "needed": 5,
+    "reward_gold": 1100,
+    "cleanse_required": 3,
+    "requires_mark": "reborn_a_grave_was_warm_for_you",
+    "flavor": "Seven Warm Graves. The kingdom marks it. Take them."
+  },
+  "b72_26_rebornahirelingwhow": {
+    "name": "Six Hirelings Recognized",
+    "target_enemy": "wolf",
+    "needed": 6,
+    "reward_gold": 700,
+    "cleanse_required": 0,
+    "requires_mark": "reborn_a_hireling_who_walked_with_you_before",
+    "flavor": "Six Hirelings Recognized. The kingdom marks it. Take them."
+  },
+  "b72_27_rebornapetrecognized": {
+    "name": "Six Pets Recognized",
+    "target_enemy": "wolf",
+    "needed": 6,
+    "reward_gold": 700,
+    "cleanse_required": 0,
+    "requires_mark": "reborn_a_pet_recognized_you_at_the_pen",
+    "flavor": "Six Pets Recognized. The kingdom marks it. Take them."
+  },
+  "b72_28_rebornatrelremembered": {
+    "name": "Six Griefs Held",
+    "target_enemy": "choirmaster_effigy",
+    "needed": 6,
+    "reward_gold": 1200,
+    "cleanse_required": 4,
+    "requires_mark": "reborn_atrel_remembered_a_grief_you_set_aside",
+    "flavor": "Six Griefs Held. The kingdom marks it. Take them."
+  },
+  "b72_29_rebornchronicleheldy": {
+    "name": "Chronicle Holds Six Lines",
+    "target_enemy": "shadow_warden",
+    "needed": 1,
+    "reward_gold": 2800,
+    "cleanse_required": 5,
+    "requires_mark": "reborn_chronicle_held_your_companions_name_too",
+    "flavor": "Chronicle Holds Six Lines. The kingdom marks it. Take them."
+  },
+  "b72_30_rebornabuttoninthe": {
+    "name": "Five Buttons",
+    "target_enemy": "bandit",
+    "needed": 5,
+    "reward_gold": 600,
+    "cleanse_required": 0,
+    "requires_mark": "reborn_a_button_in_the_road_dust_was_yours",
+    "flavor": "Five Buttons. The kingdom marks it. Take them."
+  },
+  "b72_31_rebornagroveheldac": {
+    "name": "Six Carved Names",
+    "target_enemy": "wolf",
+    "needed": 6,
+    "reward_gold": 700,
+    "cleanse_required": 0,
+    "requires_mark": "reborn_a_grove_held_a_carved_name",
+    "flavor": "Six Carved Names. The kingdom marks it. Take them."
+  },
+  "b72_32_rebornahollowedheld": {
+    "name": "Four Hollowed Hands",
+    "target_enemy": "hollow_procession",
+    "needed": 4,
+    "reward_gold": 1000,
+    "cleanse_required": 3,
+    "requires_mark": "reborn_a_hollowed_held_your_hand_for_a_count",
+    "flavor": "Four Hollowed Hands. The kingdom marks it. Take them."
+  },
+  "b72_33_rebornahollowedleft": {
+    "name": "Four Hollowed Tokens",
+    "target_enemy": "bandit",
+    "needed": 5,
+    "reward_gold": 600,
+    "cleanse_required": 0,
+    "requires_mark": "reborn_a_hollowed_left_a_token_for_you",
+    "flavor": "Four Hollowed Tokens. The kingdom marks it. Take them."
+  },
+  "b72_34_rebornahollowedrecog": {
+    "name": "Five Walk-Recognitions",
+    "target_enemy": "hollow_procession",
+    "needed": 4,
+    "reward_gold": 900,
+    "cleanse_required": 3,
+    "requires_mark": "reborn_a_hollowed_recognized_your_walk",
+    "flavor": "Five Walk-Recognitions. The kingdom marks it. Take them."
+  },
+  "b72_35_rebornahollowedwalke": {
+    "name": "Four Hollowed Shapes",
+    "target_enemy": "hollow_bellward",
+    "needed": 1,
+    "reward_gold": 1600,
+    "cleanse_required": 3,
+    "requires_mark": "reborn_a_hollowed_walked_in_your_shape",
+    "flavor": "Four Hollowed Shapes. The kingdom marks it. Take them."
+  },
+  "b72_36_rebornalockedboxat": {
+    "name": "Four Locked Boxes",
+    "target_enemy": "bandit",
+    "needed": 4,
+    "reward_gold": 550,
+    "cleanse_required": 0,
+    "requires_mark": "reborn_a_locked_box_at_the_inn_was_yours",
+    "flavor": "Four Locked Boxes. The kingdom marks it. Take them."
+  },
+  "b72_37_rebornahollowedleft": {
+    "name": "Three Hollowed Messages",
+    "target_enemy": "wolf",
+    "needed": 5,
+    "reward_gold": 700,
+    "cleanse_required": 0,
+    "requires_mark": "reborn_a_hollowed_left_a_message_carved_in_a_tree",
+    "flavor": "Three Hollowed Messages. The kingdom marks it. Take them."
+  },
+  "b72_38_crossroadskeptaseat": {
+    "name": "Three Milestones with Seats",
+    "target_enemy": "bandit",
+    "needed": 4,
+    "reward_gold": 550,
+    "cleanse_required": 0,
+    "requires_mark": "crossroads_kept_a_seat_by_the_milestone",
+    "flavor": "Three Milestones with Seats. The kingdom marks it. Take them."
+  },
+  "b72_39_crossroadskeptyourco": {
+    "name": "Three Coats Kept Dry",
+    "target_enemy": "wolf",
+    "needed": 5,
+    "reward_gold": 600,
+    "cleanse_required": 0,
+    "requires_mark": "crossroads_kept_your_coat_dry_when_it_rained",
+    "flavor": "Three Coats Kept Dry. The kingdom marks it. Take them."
   }
 }
