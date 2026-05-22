@@ -3,7 +3,7 @@ import os
 import random
 import sys
 
-from . import __version__, chronicle, saves, settings
+from . import __version__, banners, chronicle, saves, settings
 from .content import load_content
 from .locations import location_loop
 from .player import Player
@@ -152,6 +152,11 @@ def create_character(content, io, chronicle_dir):
     but the climb is the climb of someone who has done it as several others
     already and remembers them all.
     """
+    # Returning climbers get the "again, then" banner before naming the new
+    # character. First-ever runs (no chronicle yet) skip it — there is no
+    # "again" the first time.
+    if chronicle.load(chronicle_dir):
+        banners.print_banner(io, "new_run")
     name = io.ask("\nEnter your hero's name: ") or "Hero"
     class_id, class_def = choose_class(content, io)
     player = Player(name, class_id, class_def, content)
@@ -273,9 +278,7 @@ def run(io=None, content=None, rng=None, chronicle_dir=None, seed=None):
     chronicle_dir = chronicle_dir or chronicle.DEFAULT_DIR
 
     io.clear()
-    io.show_slow("=" * 50)
-    io.show_slow("⚔️  MOURNHOLD ⚔️", delay=0.05)
-    io.show_slow("=" * 50)
+    banners.print_banner(io, "title")
     io.show(f"v{__version__}\n")
 
     # v1.8 — show after-images for endings the player has reached. The

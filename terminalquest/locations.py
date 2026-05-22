@@ -5,6 +5,7 @@ The world is a graph of locations loaded from ``data/locations.json``.
 location, offers its services, encounters and travel routes, and runs
 until the player dies, wins, or quits.
 """
+from . import banners as _banners
 from . import chronicle, endings, marks, saves
 from . import dialogue as _dialogue
 from .accessory import make_accessory
@@ -2562,6 +2563,9 @@ def location_loop(state):
             chronicle.add_zone_visit(state.current_location, state.chronicle_dir)
         io.clear()
         if arrived:
+            # Banner prints on every arrival — the kingdom announcing itself
+            # each time, not just once per run. Repetition is the texture.
+            _banners.print_banner(io, state.current_location)
             # Intro variants stack: intro_familiar (after FAMILIAR_VISITS+ cross-
             # run visits to this zone) is most specific; intro_cleansed (after
             # any completed run) is next; intro is the cold open.
@@ -2661,6 +2665,7 @@ def location_loop(state):
     # v1.51 — the character is gone; the marks die with them. Clear sidecar.
     marks.clear_sidecar(state.chronicle_dir, state.player.run_id)
     io.clear()
+    _banners.print_banner(io, "death")
     io.show_slow("💀 The Pall takes another. It always does.")
     _run_summary(state)
     io.show("\nGame Over!")
