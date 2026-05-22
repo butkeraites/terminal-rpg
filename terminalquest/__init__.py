@@ -1,3 +1,3 @@
 """Mournhold — a hermetic, offline grimdark terminal RPG."""
 
-__version__ = "2.25.0"
+__version__ = "2.26.0"
