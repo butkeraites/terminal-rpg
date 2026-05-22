@@ -4,9 +4,11 @@
 loaded content, the IO channel, the RNG, the current location, and a
 ``flags`` dict reserved for future quest/world state. It is the unit of
 save/load — ``player``, ``current_location``, ``flags`` and the run
-``seed`` are persisted; ``content``, ``io`` and ``rng`` are runtime-injected.
+``seed`` are persisted; ``content``, ``io``, ``rng`` and ``audio`` are
+runtime-injected.
 """
 from . import chronicle
+from .audio import AudioEngine
 from .player import Player
 
 
@@ -15,7 +17,7 @@ class GameState:
 
     def __init__(self, player, content, io, rng,
                  current_location="crossroads", flags=None, chronicle_dir=None,
-                 seed=None):
+                 seed=None, audio=None):
         self.player = player
         self.content = content
         self.io = io
@@ -26,6 +28,10 @@ class GameState:
         self.chronicle_dir = chronicle_dir or chronicle.DEFAULT_DIR
         # The run's RNG seed — surfaced to the player and recorded.
         self.seed = seed
+        # Ambient audio. A disabled engine is a perfect no-op, so callers
+        # can always safely do ``state.audio.play_zone(...)`` without
+        # checking — tests and headless runs land on the disabled default.
+        self.audio = audio if audio is not None else AudioEngine(enabled=False)
 
     def to_dict(self):
         """Serialize the persistable fields to a plain dict."""

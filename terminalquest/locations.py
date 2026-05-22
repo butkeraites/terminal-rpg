@@ -2563,6 +2563,10 @@ def location_loop(state):
             chronicle.add_zone_visit(state.current_location, state.chronicle_dir)
         io.clear()
         if arrived:
+            # Ambient drone follows the player from zone to zone. A disabled
+            # engine is a no-op, so the headless test path and audio-off
+            # players cost nothing.
+            state.audio.play_zone(state.current_location)
             # Banner prints on every arrival — the kingdom announcing itself
             # each time, not just once per run. Repetition is the texture.
             _banners.print_banner(io, state.current_location)

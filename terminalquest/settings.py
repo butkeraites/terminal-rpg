@@ -15,6 +15,7 @@ _FILENAME = "settings.json"
 DEFAULTS = {
     "ascii_mode": False,        # render emojis as bracket-text instead of glyphs
     "emoji_test_done": False,   # first-launch smoke test has been answered
+    "audio_enabled": False,     # play per-zone ambient drones (opt-in)
 }
 
 

@@ -4,6 +4,7 @@ import random
 import sys
 
 from . import __version__, banners, chronicle, saves, settings
+from .audio import AudioEngine
 from .content import load_content
 from .locations import location_loop
 from .player import Player
@@ -221,16 +222,34 @@ def load_menu(content, io, rng):
     return None
 
 
-def settings_menu(io):
-    """Toggle display settings from the title screen."""
+def settings_menu(io, prefs=None, engine=None):
+    """Toggle display settings from the title screen.
+
+    ``prefs``/``engine`` are optional — if either is None the audio toggle
+    is hidden, which keeps the function callable from older test paths.
+    """
     while True:
-        state = "ON" if io.animate else "OFF"
-        io.show(f"\n1. Text animation: {state}")
-        io.show("2. Back")
+        anim = "ON" if io.animate else "OFF"
+        io.show(f"\n1. Text animation: {anim}")
+        if prefs is not None and engine is not None:
+            audio_state = "ON" if prefs.get("audio_enabled") else "OFF"
+            io.show(f"2. Ambient sound: {audio_state}")
+            io.show("3. Back")
+        else:
+            io.show("2. Back")
         choice = io.ask("\nYour choice? ")
         if choice == "1":
             io.animate = not io.animate
-        elif choice == "2":
+        elif choice == "2" and prefs is not None and engine is not None:
+            new_value = not prefs.get("audio_enabled", False)
+            prefs["audio_enabled"] = new_value
+            settings.save(prefs)
+            if new_value:
+                engine.unmute(io=io)
+            else:
+                engine.mute()
+        elif (choice == "3" and prefs is not None) or (
+                choice == "2" and prefs is None):
             return
         else:
             io.show("\n❌ Invalid choice!")
@@ -265,17 +284,30 @@ def chronicle_screen(io, content, chronicle_dir):
     io.pause(2)
 
 
-def run(io=None, content=None, rng=None, chronicle_dir=None, seed=None):
-    """Run the game from the title screen. Arguments are injectable for tests."""
+def run(io=None, content=None, rng=None, chronicle_dir=None, seed=None,
+        no_audio=False):
+    """Run the game from the title screen. Arguments are injectable for tests.
+
+    ``no_audio`` comes from the CLI; tests pass io/rng/etc directly and
+    leave it False.
+    """
+    prefs = None
     if io is None:
         prefs = settings.load()
         io = GameIO(ascii_mode=prefs["ascii_mode"])
         _emoji_smoke_test(io, prefs)
+    if prefs is None:
+        prefs = settings.load()
     content = content or load_content()
     if seed is None:
         seed = _new_seed()
     rng = rng or random.Random(seed)
     chronicle_dir = chronicle_dir or chronicle.DEFAULT_DIR
+
+    # Audio engine — opt-in via settings, --no-audio always wins.
+    audio_on = bool(prefs.get("audio_enabled")) and not no_audio
+    engine = AudioEngine(enabled=audio_on)
+    engine.ensure_assets(io=io)
 
     io.clear()
     banners.print_banner(io, "title")
@@ -306,31 +338,39 @@ def run(io=None, content=None, rng=None, chronicle_dir=None, seed=None):
         if choice == "1":
             player, starting_flags = create_character(content, io, chronicle_dir)
             io.show(f"\n🎲 This run is seeded: {seed}")
-            location_loop(GameState(player, content, io, rng,
-                                    chronicle_dir=chronicle_dir, seed=seed,
-                                    flags=starting_flags))
+            try:
+                location_loop(GameState(player, content, io, rng,
+                                        chronicle_dir=chronicle_dir, seed=seed,
+                                        flags=starting_flags, audio=engine))
+            finally:
+                engine.stop()
             return
         elif choice == "2":
             state = load_menu(content, io, rng)
             if state is not None:
+                state.audio = engine
                 if state.seed:
                     io.show(f"\n🎲 This run is seeded: {state.seed}")
-                location_loop(state)
+                try:
+                    location_loop(state)
+                finally:
+                    engine.stop()
                 return
         elif choice == "3":
             chronicle_screen(io, content, chronicle_dir)
         elif choice == "4":
-            settings_menu(io)
+            settings_menu(io, prefs=prefs, engine=engine)
         elif choice == "5":
             io.show("\n👋 Farewell, adventurer!")
+            engine.stop()
             return
         else:
             io.show("\n❌ Invalid choice!")
 
 
-def main():
+def main(no_audio=False):
     _configure_console_for_unicode()
-    run()
+    run(no_audio=no_audio)
     # Hold the window open so the final screen (victory, Reborn, defeat
     # summary, the title-screen Farewell, or the world-map "Thanks for
     # playing!") doesn't flash by unread. This matters on Windows
