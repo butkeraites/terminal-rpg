@@ -50,6 +50,22 @@ class GameIO:
     def clear(self):
         print("\n" * 2)
 
+    def set_location(self, loc_id, ghost_locs=None):
+        """Hook for TUIs to redraw a map panel. Default is no-op.
+
+        The line-based GameIO has no map to update; CursesIO (and any
+        future TUI) overrides this to refresh its side panel.
+        """
+        pass
+
+    def set_status(self, text):
+        """Hook for TUIs to update a status bar. Default is no-op.
+
+        The line-based GameIO prints the hud inline every iteration, so it
+        has no separate bar to update.
+        """
+        pass
+
     def show_through_stone(self, text):
         """Render a line as if spoken through ossified stone — Cael's voice.
 

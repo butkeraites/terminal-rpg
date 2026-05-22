@@ -285,11 +285,11 @@ def chronicle_screen(io, content, chronicle_dir):
 
 
 def run(io=None, content=None, rng=None, chronicle_dir=None, seed=None,
-        no_audio=False):
+        no_audio=False, tui=False):
     """Run the game from the title screen. Arguments are injectable for tests.
 
-    ``no_audio`` comes from the CLI; tests pass io/rng/etc directly and
-    leave it False.
+    ``no_audio`` and ``tui`` come from the CLI; tests pass io/rng/etc directly
+    and leave those False.
     """
     prefs = None
     if io is None:
@@ -368,9 +368,15 @@ def run(io=None, content=None, rng=None, chronicle_dir=None, seed=None,
             io.show("\n❌ Invalid choice!")
 
 
-def main(no_audio=False):
+def main(no_audio=False, tui=False):
     _configure_console_for_unicode()
-    run(no_audio=no_audio)
+    if tui:
+        # Curses owns the terminal — defer to the TUI scaffold which sets up
+        # the windows and calls run() with a CursesIO injected.
+        from .curses_io import run_with_tui
+        run_with_tui(no_audio=no_audio)
+    else:
+        run(no_audio=no_audio)
     # Hold the window open so the final screen (victory, Reborn, defeat
     # summary, the title-screen Farewell, or the world-map "Thanks for
     # playing!") doesn't flash by unread. This matters on Windows

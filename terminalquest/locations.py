@@ -2567,6 +2567,10 @@ def location_loop(state):
             # engine is a no-op, so the headless test path and audio-off
             # players cost nothing.
             state.audio.play_zone(state.current_location)
+            # Tell the TUI's map panel where we are and where past climbers
+            # lie. On non-TUI io this is a no-op.
+            ghost_locs = [e.get("location") for e in fallen if e.get("location")]
+            io.set_location(state.current_location, ghost_locs)
             # Banner prints on every arrival — the kingdom announcing itself
             # each time, not just once per run. Repetition is the texture.
             _banners.print_banner(io, state.current_location)
@@ -2591,6 +2595,13 @@ def location_loop(state):
             arrived = False
         io.show(f"\n📍 {loc['name']}")
         io.show(hud(player))
+        # TUI status bar mirrors the inline hud — colour codes stripped because
+        # curses renders ANSI escapes as literal text. No-op on line-mode io.
+        io.set_status(
+            f"{player.name} · Lv{player.level} · "
+            f"❤ {player.hp}/{player.max_hp} · "
+            f"⚡ {player.stamina}/{player.max_stamina} · "
+            f"💰 {player.gold} · {loc['name']}")
 
         options = _build_options(state, loc, fallen)
         for index, (label, _action) in enumerate(options, start=1):
