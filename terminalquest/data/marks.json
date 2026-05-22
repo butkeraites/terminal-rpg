@@ -421,9 +421,9 @@
     },
     "effect": null,
     "lines": [
-      "The third tree from the road north has shifted very slightly. It is leaning",
-      "toward you. It is not the wind. The tree has been a tree a long time and",
-      "has decided. You did not earn this. It is yours anyway. Carry it gently."
+      "The third tree from the road north has shifted very slightly. Its shadow at noon",
+      "now falls across the path where last week it fell beside. The tree has been a tree",
+      "a long time and has decided. You did not earn this. Carry it gently."
     ]
   },
   "halna_will_save_you_a_cut": {
@@ -462,9 +462,9 @@
     },
     "effect": null,
     "lines": [
-      "The Atrél-marker — Tessa's marker, you know now — registers your step the way",
-      "soil registers rain. It is not a magic. It is a smaller thing. The marker knows you.",
-      "When you pass it again, the stone will be a degree warmer than the air around it."
+      "The Atrél-marker — Tessa's marker, you know now — registers your step the way soil",
+      "registers rain. When you pass it again, the stone will be a degree warmer than the",
+      "air around it. You put your palm flat against it without meaning to. It is warm."
     ]
   },
   "cat_no_longer_comes": {
@@ -694,9 +694,9 @@
       "consumable": "Kerris's Crust"
     },
     "lines": [
-      "Kerris's pack is open by the oven. There is a crust in it, set aside. He has",
-      "left it for you. He will not say so. He will not look up when you take it.",
-      "It will keep. It is from the bread Mira's recipe was for. It is enough for once.",
+      "Kerris's pack is open by the oven. A crust sits on top, separate from the rest, with",
+      "a folded napkin under it. He has left it for you. When you take it, he does not look",
+      "up from the dough. The crust is from the bread Mira's recipe was for. It is enough for once.",
       "  (Kerris's Crust added — a one-use heal of 25 HP.)"
     ]
   },
@@ -805,9 +805,9 @@
     },
     "effect": null,
     "lines": [
-      "You reach for the word kindness while reading. You cannot find it. You know its",
-      "shape; you know what it means; you cannot say it. Atrél has the word itself.",
-      "He has bowed. The kindness is still in you. It will work without its name."
+      "You reach for the word *kindness* while reading. The shape is there in your mouth,",
+      "the meaning is there behind the ribs, but the word itself has walked away. Atrél has",
+      "it. He has bowed. The kindness is still in you. It will work without its name."
     ]
   },
   "promised_to_come_back_to_the_stump": {
@@ -996,9 +996,9 @@
       "flag": "broke_flowers_promise"
     },
     "lines": [
-      "You are bleeding. You remember, abruptly, the flower you promised to lay.",
-      "You do not have a flower. You do not have time. You will not have a flower",
-      "again this run. The promise is broken. The grave is the same grave. It waits."
+      "You are bleeding. You remember, abruptly, the flower you promised to lay at the",
+      "grave above the Crossroads. There are no flowers in your pack and no time to find",
+      "one. The grave will wait. You will not, in this run, lay anything on it. It waits."
     ]
   },
   "broke_kerris_promise": {
@@ -1282,9 +1282,10 @@
       "flag": "knows_halnas_daughter"
     },
     "lines": [
-      "Walking back past Halna's pine, you stop. She is sitting. She is not working.",
-      "She tells you, without looking at you, that her daughter went into the wood",
-      "thirty winters ago. She does not say more. You do not ask. The telling is enough."
+      "Walking back past Halna's pine, you stop. She is sitting with her knife loose in",
+      "her lap, the needles around her. Without looking up, she tells you her daughter went",
+      "into the wood thirty winters ago, and what colour her cloak was. Then she trims a",
+      "branch and is working again. The telling is enough."
     ]
   },
   "helka_lifted_her_elbow": {
@@ -1542,9 +1543,9 @@
       "flag": "climb_marked_lungs"
     },
     "lines": [
-      "After the fight, your breath does not come the way it did. The Climb is in your lungs.",
-      "It is not fatal. It is not leaving. The Penitent, far below, does not look up.",
-      "He knows. He carried this for forty winters. You will carry it for as long as you climb.",
+      "After the fight, your breath catches at the top of the third stair where it did",
+      "not catch before. The Climb is in your lungs now — a small grit between the ribs,",
+      "the colour of the rock above the snowline. The Penitent, far below, does not look up.",
       "  (-2 Max Stamina, permanently. The Climb is in you now.)"
     ]
   },
@@ -1561,9 +1562,9 @@
       "flag": "tastes_ash"
     },
     "lines": [
-      "You write your save. The pencil tastes of ash. So does your mouth. So does the wind.",
-      "The Penitent's grey has gotten into your senses. It is not unpleasant. It is not pleasant.",
-      "It is the colour of where you have been. It will not leave. You will save again."
+      "You write your save. The pencil tastes of ash. So does your mouth. So does the wind",
+      "that comes in under the door. The Penitent's grey has settled into the back of your",
+      "throat the way snow settles in a low corner. It will stay there. You will save again."
     ]
   },
   "penitent_left_you_a_scavver_fang": {
@@ -1603,9 +1604,10 @@
     },
     "effect": null,
     "lines": [
-      "The Penitent, today, says one word to you. 'Maren.' His wife's name. He has kept",
-      "the word. He has given it to you. He cannot keep it any longer; the Pall is close",
-      "to his last names. He has chosen which one to hand off. You will keep it for him."
+      "The Penitent, today, says one word to you. *Maren.* His wife's name. He says it",
+      "quietly, into the snow at his feet, and then he is climbing again. He has carried",
+      "the word forty winters. He has handed it to you because the Pall is close to his last.",
+      "You will keep it for him."
     ]
   },
   "talva_let_you_read_a_letter": {
@@ -1737,7 +1739,7 @@
     },
     "lines": [
       "Cael, when you arrive, has used the chisel. Above her name — KESS daughter of Aral",
-      "— there is a half-letter. Yours. She is preparing. She is not yet handing off.",
+      "— there is a half-letter. The first stroke of yours. She is preparing the wall.",
       "  'I have started writing it,' she says. 'In case. You may not sit. You may.'",
       "  (+5 Max HP, permanently — the seal has decided you are at least possible.)"
     ]
@@ -1803,8 +1805,9 @@
     },
     "lines": [
       "Cael whispers, through the stone, the first seal's actual name. NO-NAME's real one.",
-      "She did not have it. She has had it for fifty winters; she found it scratched into",
-      "the chisel handle. You will not say it aloud here. You will know it. It will weigh."
+      "She found it fifty winters ago, scratched into the wooden handle of her chisel by a",
+      "thumbnail that was not hers. She will not say it aloud here. You will not either.",
+      "You will know it. It will weigh."
     ]
   },
   "cael_will_not_meet_your_eyes": {
@@ -2146,9 +2149,10 @@
     },
     "effect": null,
     "lines": [
-      "There is a sixth blue mark on the Insomniac's beam, today. It is in a different blue.",
-      "  'That one is for you,' she says, without looking up. 'It is a different blue.'",
-      "  'You are not a cat. You are not a climber either. You are a different kind of beam-mark.'"
+      "There is a sixth blue mark on the Insomniac's beam, today, in a different blue than",
+      "the others — colder, the colour of the lake at the inner curve of winter.",
+      "  'That one is for you,' she says, without looking up. 'A different blue for a different",
+      "  kind of beam-mark.' She does not say what kind. She does not need to."
     ]
   },
   "piranesis_pencil_pointed_at_you": {
@@ -2337,9 +2341,9 @@
       "flag": "taste_of_iron"
     },
     "lines": [
-      "You taste iron. Yours. Your own mouth. You spit. The mouth tastes of iron from now on.",
-      "It is not pleasant. It is not unpleasant. It is the taste of having stood. You will",
-      "swing harder, after, because the taste is yours and you do not let go of it.",
+      "You taste iron. Yours. Your own mouth. You spit and the spit is dark on the stone.",
+      "The mouth tastes of iron from now on, faintly, even at the inn, even at breakfast.",
+      "You will swing harder, after. The taste is yours. You do not let go of what is yours.",
       "  (+1 Attack, permanently. Iron is in you now.)"
     ]
   },
@@ -2588,8 +2592,9 @@
       "flag": "permanent_bruise"
     },
     "lines": [
-      "There is a bruise on your forearm that is not fading. It has stayed dark for a week.",
-      "It will stay dark. It is, somehow, in the bone now. It will be tender when struck.",
+      "There is a bruise on your forearm that is not fading. It has stayed dark for a week,",
+      "the colour of wet bark, the size of a thumbprint. It is in the bone now. It will be",
+      "tender when struck — a small soft thing the bone has decided to keep open.",
       "  (-1 Defense, permanently — the bruise has decided to be a soft spot.)"
     ]
   },
@@ -2892,9 +2897,9 @@
       "flag": "weapon_self_sharpened"
     },
     "lines": [
-      "Your weapon has an edge today that you did not put there. You did not grind it.",
-      "You did not sharpen it. The edge is there. It is sharper than your weapon should be.",
-      "Some weapons do this. Yours has decided to. You will not ask why.",
+      "Your weapon has an edge today that you did not put there. Drawn a thumb along it",
+      "in the dark and felt it draw blood from your thumb, clean. The leather of the haft",
+      "has settled to your grip the same week. Some weapons do this. Yours has decided to.",
       "  (+2 Attack, permanently. The weapon has chosen.)"
     ]
   },
@@ -3336,8 +3341,9 @@
       "flag": "helka_set_a_bench"
     },
     "lines": [
-      "Helka has dragged a bench to the edge of the floodfield, by your usual crossing.",
-      "She did not say so. You see it. It is dry. It is for sitting. You sit a moment. You",
+      "Helka has dragged a bench to the edge of the floodfield, by your usual crossing. The",
+      "wood is dry on top, mud-smeared at the legs. She did not say so. You sit a moment.",
+      "The bench takes your weight without complaint, the way a thing made for sitting does.",
       "  (+1 Max Stamina, permanently — a place to sit is a place to come back to.)"
     ]
   },
@@ -3566,8 +3572,8 @@
     },
     "lines": [
       "You felt it today, walking through. The Holds, briefly, blamed you for being alive.",
-      "It was not personal. It is what they do, sometimes, to the living. It is what un-fed",
-      "places do. You will carry the blame a little. You will keep walking. It will pass.",
+      "It came in the air the way damp comes in a coat — small, settled, a weight on the",
+      "shoulders the body recognised before the mind did. Un-fed places do this. You walked on.",
       "  (-2 Max HP, permanently. The Holds have rested some of their weight on you.)"
     ]
   },
@@ -3643,8 +3649,9 @@
     "effect": null,
     "lines": [
       "In the alcove, today, the Older Hand has set a single thing aside, separate from the",
-      "one-of-each. Beside it: a folded paper. 'I lifted this one for the person who finds it.",
-      "It is not a household. It is yours. — The Older Hand.' You take it. It will fit your hand."
+      "one-of-each: a small tin cup with the handle wrapped in waxed thread. Beside it, a",
+      "folded paper. *I lifted this one for the person who finds it. It is yours. — The Older Hand.*",
+      "You take the cup. It fits your hand the way the right thing always does."
     ]
   },
   "gullet_dropped_a_word_into_the_throat": {
@@ -3742,8 +3749,9 @@
       "flag": "gullet_pale_patch"
     },
     "lines": [
-      "There is a pale patch on your forearm now. The skin will not take colour back.",
-      "It is small. It is the colour of the rock that has no lichen. The Gullet has chosen.",
+      "There is a pale patch on your forearm now, the size of a thumbnail, where the skin",
+      "will not take colour back. It is the colour of the rock in the Gullet that grows no",
+      "lichen — a chalked grey, a little warmer than bone. The Gullet has chosen.",
       "  (-2 Max HP, permanently. The throat has put a small piece of itself on you.)"
     ]
   },
@@ -3937,9 +3945,9 @@
       "flag": "capital_air_in_lungs"
     },
     "lines": [
-      "You inhaled, in the capital, the air of the capital. It is thicker than other air.",
-      "It is heavy with not-talking. Your lungs have some of it now. They will be slower,",
-      "later, when you need them quick. The capital takes a little from everyone who breathes it.",
+      "You inhaled, in the capital, the air of the capital. It is thicker than other air —",
+      "heavy with not-talking, with the small sweat of the kept silences. Your lungs have",
+      "some of it now. Later, when you need them quick, they will be slower by a count.",
       "  (-1 Max Stamina, permanently — Mournhold's air is, in you now.)"
     ]
   },
@@ -5122,9 +5130,9 @@
       "flag": "border_signpost_for_you"
     },
     "lines": [
-      "At the Border crossing the old signpost, today, was not pointing along the road. It was",
-      "pointing at you. Not the road. Whatever quarter it had marked, you were the quarter now.",
-      "You did not feel honoured. You felt seen. You felt thinner by a thread. You will be.",
+      "At the Border crossing the old signpost, today, was not pointing along the road. It",
+      "was pointing at you — the iron arm bent a thumbnail off-true, the rust at the joint",
+      "fresh. Whatever quarter it had marked, you were the quarter now. You walked on.",
       "  (-1 Max HP, permanently — a thing pointed at you, that should have pointed elsewhere.)"
     ]
   },
@@ -5546,7 +5554,7 @@
       "flag": "blade_has_a_name"
     },
     "lines": [
-      "Tonight, in the dark before sleep, you said a name to your blade. Not yours. Someone",
+      "In the dark before sleep, you said a name to your blade. Not yours. Someone",
       "you could not keep alive. The blade took the name. The next time you draw it, the name",
       "will be on the steel. Steel takes names well. Steel cannot betray the names it takes.",
       "  (+1 Attack, permanently — a name given to your blade, in the dark.)"
@@ -5755,7 +5763,7 @@
       "flag": "stole_own"
     },
     "lines": [
-      "Tonight you took a small thing from a sill that, you realised after, was a thing of",
+      "You took a small thing from a sill that, you realised after, was a thing of",
       "yours — left there a long time ago, by you, when you were younger. You took it from",
       "your own younger self. The thing is yours. You took it from yourself. You will pay.",
       "  (-1 Max HP, permanently — a theft from a self who could not protest.)"
@@ -6417,7 +6425,7 @@
       "flag": "blessed_a_door"
     },
     "lines": [
-      "Tonight you blessed a door in Gravewatch as you passed it — quietly, almost without",
+      "You blessed a door in Gravewatch as you passed it — quietly, almost without",
       "thinking. The door took the blessing. The hinge will be easier from now on for whoever",
       "opens it. You did not know whose door. It does not matter. The door knows."
     ]
@@ -7513,9 +7521,9 @@
       "flag": "library_ash_in_coat"
     },
     "lines": [
-      "Library ash got into the fold of your coat tonight. It is fine — finer than wood-ash.",
-      "It will not come out. It rides with you now. Every time you put the coat on, you will",
-      "be putting on a part of the Library. You did not ask for it. You will not refuse it.",
+      "Library ash got into the fold of your coat tonight — finer than wood-ash, the colour",
+      "of milk gone grey. It rides in the seam at the back of the collar where the wool",
+      "thickens. Every time you put the coat on, you put on a part of the Library.",
       "  (-1 Max Stamina, permanently — a small weight of burned pages, kept by your coat.)"
     ]
   },
@@ -7681,7 +7689,7 @@
       "flag": "first_grey"
     },
     "lines": [
-      "Tonight, when you grew, a single grey hair came in at the temple. You felt it land. You",
+      "When you grew, a single grey hair came in at the temple. You felt it land. You",
       "did not look at it. You will not look at it. It is yours now. You earned it in the time",
       "between the last fight and this growing. The kingdom marks its growing this way, sometimes."
     ]
@@ -7849,7 +7857,7 @@
       "flag": "pall_logged_step"
     },
     "lines": [
-      "Tonight you grew enough that the Pall, the kingdom's forgetting, took notice. Made a",
+      "You grew enough that the Pall, the kingdom's forgetting, took notice. Made a",
       "small entry, somewhere, of your step. It will not take any of you yet. It is keeping a",
       "record. Records are how it begins. Your chest will feel the entry, faintly, from now on.",
       "  (-1 Max HP, permanently — the Pall has begun to keep a small log of your step.)"
@@ -7888,7 +7896,7 @@
       "flag": "kin_dreamed_of_you"
     },
     "lines": [
-      "Tonight, somewhere — a town you have not been to, a window you have not stood under — a",
+      "Somewhere — a town you have not been to, a window you have not stood under — a",
       "kin of yours dreamed of you. They will not remember the dream in the morning. They will",
       "carry a small certainty that you are alive. That certainty will reach you. It already has.",
       "  (+1 Max HP, permanently — a dream from a kin you have not seen in a long count.)"
@@ -7949,7 +7957,7 @@
       "flag": "innkeeper_first_name"
     },
     "lines": [
-      "Tonight in Gravewatch the innkeeper, without thinking, called you by your first name",
+      "In Gravewatch the innkeeper, without thinking, called you by your first name",
       "across the room. The room turned to look. You looked back. The innkeeper looked away. The",
       "first name is yours. The room knows now. The kingdom is making space for you to be known."
     ]
@@ -8027,7 +8035,7 @@
       "flag": "pall_wrong_name"
     },
     "lines": [
-      "Tonight, in a moment of growing, you heard — quietly, somewhere — the Pall say a name.",
+      "In a moment of growing, you heard — quietly, somewhere — the Pall say a name.",
       "Not yours. Close to yours, but not. A name that was almost the one your mother gave you.",
       "The Pall is learning to say you. It will not say you right. You are glad of that, today."
     ]
@@ -8047,7 +8055,7 @@
       "flag": "chronicle_room"
     },
     "lines": [
-      "Tonight, at this growing, the Chronicle — the small book Gravewatch keeps of those who",
+      "At this growing, the Chronicle — the small book Gravewatch keeps of those who",
       "have walked far enough — made a line for you. A whole line, with the date and the kind",
       "of growing. You will not see the line. But you have been given a line. You stand taller.",
       "  (+2 Max HP, permanently — a line in the Chronicle, yours, kept by the kingdom for you.)"
@@ -8090,8 +8098,8 @@
     },
     "lines": [
       "Tonight, between the last fight and this growing, you crossed Gravewatch's square and",
-      "a friend — yours, you knew them well — did not see you, did not call. Looked through.",
-      "It is the friend. It is not you. You walked on. The friendship has cooled. You felt it cool.",
+      "a friend — yours, you knew them well — looked through you. Their eye passed across",
+      "your face the way it passes across a stranger's, and then onto the rain. You walked on.",
       "  (-1 Max HP, permanently — a friend who, when they should have looked, did not.)"
     ]
   },
@@ -8110,7 +8118,7 @@
       "flag": "god_page_marked"
     },
     "lines": [
-      "Tonight, while you grew, you had the briefest sense — the count of one heartbeat — that",
+      "While you grew, you had the briefest sense — the count of one heartbeat — that",
       "a god, somewhere, was writing a page about you. Not Atrél. A larger one. The god turned",
       "the page. You felt the turn. You will not be told what the page said. You stood up.",
       "  (+1 Attack, permanently — a page in a god's book, marked at your growing.)"
@@ -8129,7 +8137,7 @@
       "flag": "witherwood_remembers_young_you"
     },
     "lines": [
-      "Tonight the Witherwood — distantly, the way the forest holds these things — remembered",
+      "The Witherwood — distantly, the way the forest holds these things — remembered",
       "the version of you that first walked into it, weeks ago. The forest set that version",
       "aside. Kept it, briefly. You are not that anymore. The forest will keep the version safe."
     ]
@@ -8189,7 +8197,7 @@
       "flag": "grave_dug_for_no_one"
     },
     "lines": [
-      "Tonight, while you grew, a small grave was dug at the edge of Gravewatch. Not for",
+      "While you grew, a small grave was dug at the edge of Gravewatch. Not for",
       "anyone, yet. The gravediggers don't always wait. Sometimes they prepare. Tonight one was",
       "prepared. You do not need to ask whose. The kingdom prepares for those who climb high."
     ]
@@ -8209,9 +8217,9 @@
       "flag": "prayer_for_living"
     },
     "lines": [
-      "Between the last growing and this one, you have learned to pray for someone who is",
-      "still alive — to ask, quietly, for their safekeeping. It is harder than praying for the",
-      "dead. The dead don't move. You have learned the prayer. You will say it more from now on.",
+      "Between the last growing and this one, you have learned to pray for someone still",
+      "alive — to ask, quietly, for their safekeeping. It is harder than praying for the",
+      "dead; the living move and the prayer has to move with them. You will say it more.",
       "  (+2 Max HP, permanently — a prayer-shape you have made for the living.)"
     ]
   },
@@ -8228,7 +8236,7 @@
       "flag": "summit_listening"
     },
     "lines": [
-      "Tonight, at this growing, the Summit — far above you, beyond the Ashen Climb — started",
+      "At this growing, the Summit — far above you, beyond the Ashen Climb — started",
       "to listen for your step. It will hear you when you come now. It has begun preparing the",
       "ground at the very top. The ground is being made ready for you. The wind has begun to wait."
     ]
@@ -8248,7 +8256,7 @@
       "flag": "someone_let_you_go"
     },
     "lines": [
-      "Tonight, between the last fight and this growing, someone — a friend, a sibling, an",
+      "Between the last fight and this growing, someone — a friend, a sibling, an",
       "old lover, you will not be told which — let you go. They had been holding on. They saw,",
       "tonight, that they could not keep you. The letting go reached you. They wished you well.",
       "  (+3 Max HP, permanently — a letting-go given to you by someone who loved you well.)"
@@ -8311,7 +8319,7 @@
       "flag": "pall_small_kindness"
     },
     "lines": [
-      "Tonight the Pall — the kingdom's forgetting, your eventual home — gave you a small,",
+      "The Pall — the kingdom's forgetting, your eventual home — gave you a small,",
       "surprising kindness. It let you keep the memory of a face you would otherwise have lost",
       "tonight. The face is your grandmother's. The Pall does not have to. It did. You wonder why.",
       "  (+1 Max Stamina, permanently — a face the Pall let you keep, for now.)"
@@ -8332,7 +8340,7 @@
       "flag": "old_tongue_friend"
     },
     "lines": [
-      "Tonight, in a sentence the older ones in Gravewatch use when they don't think anyone is",
+      "In a sentence the older ones in Gravewatch use when they don't think anyone is",
       "listening, you were called *friend* — but in the old tongue, the one before the rite.",
       "The word is heavier in the old tongue. You understood. You are now a friend in that way.",
       "  (+2 Max HP, permanently — a friendship named in the tongue the kingdom used to use.)"
@@ -8353,7 +8361,7 @@
       "flag": "lost_a_year"
     },
     "lines": [
-      "Tonight, when you grew, the Pall — without ceremony — took one full year of your life.",
+      "When you grew, the Pall — without ceremony — took one full year of your life.",
       "Not from the front. From the middle. You will not be able to say which year. You will",
       "feel its absence in the way a song without one of its verses still plays, but is shorter.",
       "  (-2 Max HP, permanently — one full year of yourself, taken to make room for the growing.)"
@@ -8395,7 +8403,7 @@
       "flag": "mourncross_bell_remembers"
     },
     "lines": [
-      "Tonight, between the last fight and this growing, the south bell at Mourncross — the",
+      "Between the last fight and this growing, the south bell at Mourncross — the",
       "one that had been silenced by the Bellward — rang one count of itself, softly, for",
       "you. Nobody else heard. The bell, tonight, remembered your name. It will remember.",
       "  (+1 Defense, permanently — the bell at Mourncross has spoken once for you.)"
@@ -8416,7 +8424,7 @@
       "flag": "outlasted_a_winter"
     },
     "lines": [
-      "Tonight, in this growing, you have outlasted — in one night — what your younger self",
+      "In this growing, you have outlasted — in one night — what your younger self",
       "would have needed a winter to bear. You don't know what; the body knows what. The",
       "endurance is in you now. The endurance will keep being in you. You can sit any vigil now.",
       "  (+1 Max Stamina, permanently — an endurance learned in one night that a winter taught your body.)"
@@ -8437,7 +8445,7 @@
       "flag": "step_becoming_pall"
     },
     "lines": [
-      "Tonight, in this growing, you understood — without anyone telling you — that the Pall",
+      "In this growing, you understood — without anyone telling you — that the Pall",
       "is somebody. Not a force. Somebody. Somebody who walked up. The Summit is where you",
       "agree to become it. Your step, now, has started to be the step it will be at the Summit.",
       "  (+1 Defense, permanently — a step that has begun, quietly, to become the Pall's step.)"
@@ -8459,8 +8467,8 @@
     },
     "lines": [
       "Between the last growing and this one, the kingdom — Mournhold, the dead one, the",
-      "drowned one — has settled into your hands. You are carrying it now. You did not ask.",
-      "It has chosen you to carry it the rest of the way. It is heavier than you thought.",
+      "drowned one — has settled into your hands like a stone you picked up without",
+      "noticing. It is heavier than you thought. You have not, in the time since, set it down.",
       "  (+3 Max HP, permanently — a kingdom that has settled into your hands at this growing.)"
     ]
   },
@@ -8477,7 +8485,7 @@
       "flag": "next_warden_recognizes_self"
     },
     "lines": [
-      "Tonight you walked past a window in Gravewatch and a reflection — not yours, but yours-",
+      "You walked past a window in Gravewatch and a reflection — not yours, but yours-",
       "to-come — looked back. The Warden you will be saw the climber you are. You did not",
       "look away. They did not look away. You both knew. The Summit is closer than the map says."
     ]
@@ -8539,7 +8547,7 @@
       "flag": "summit_wind_called_step"
     },
     "lines": [
-      "Tonight in your sleep — or in the place between sleep and growing — the Summit wind",
+      "In your sleep — or in the place between sleep and growing — the Summit wind",
       "called your step. Not in words. In the way wind calls feet. Your feet answered. They",
       "are pointed up the mountain now, whether you turn them or not. You will go. You have agreed.",
       "  (+1 Attack, permanently — feet that have answered a wind from the kingdom's roof.)"
@@ -8581,7 +8589,7 @@
       "flag": "chronicle_keeper"
     },
     "lines": [
-      "Tonight the Chronicle of Gravewatch — the small book of the fallen, the one only the",
+      "The Chronicle of Gravewatch — the small book of the fallen, the one only the",
       "older ones add to — has put a particular page aside for you. When you fall, your",
       "writing will be on that page. The page is being kept. The book has chosen its next keeper.",
       "  (+1 Defense, permanently — a page in the Chronicle kept open for your hand.)"
@@ -8602,7 +8610,7 @@
       "flag": "kingdom_titled_you"
     },
     "lines": [
-      "Tonight, between the last fight and this growing, the older ones of Gravewatch began —",
+      "Between the last fight and this growing, the older ones of Gravewatch began —",
       "quietly, behind their hands — to call you by a small title. Not Warden, yet. A word",
       "the kingdom uses for the climber who is going to make it. You will be called the title.",
       "  (+2 Max HP, permanently — a title the kingdom has begun to use for you, gently.)"
@@ -8623,7 +8631,7 @@
       "flag": "peace_with_warden"
     },
     "lines": [
-      "Tonight, after the growing, you sat alone for a long count and made your peace with",
+      "After the growing, you sat alone for a long count and made your peace with",
       "what you have understood about the Warden cycle. You will go up. You will become it.",
       "You have agreed. The agreement settled into you. You stood up. You will sleep well tonight.",
       "  (+1 Defense, permanently — an agreement with the role the kingdom is offering you.)"
@@ -8737,7 +8745,7 @@
       "flag": "road_recalled_first"
     },
     "lines": [
-      "Tonight, walking through the Crossroads, you remembered — with a clarity you had not",
+      "Walking through the Crossroads, you remembered — with a clarity you had not",
       "asked for — the first time you stood here. Younger. Lighter. Less afraid. Less ready.",
       "The road brought the memory up for you. The road keeps such things. The road shared one."
     ]
@@ -8782,7 +8790,7 @@
       "flag": "left_coin_for_road"
     },
     "lines": [
-      "Tonight at the Crossroads you set one small coin down at the foot of the signpost. You",
+      "At the Crossroads you set one small coin down at the foot of the signpost. You",
       "did not need to. You did. The coin is the road's now. The road takes coins. It pays them",
       "back, not in coin, in small kindnesses. The road will keep one of those kindnesses for you."
     ]
@@ -8803,7 +8811,7 @@
       "flag": "step_behind_not_yours"
     },
     "lines": [
-      "Tonight at the Crossroads you heard, for one count, a second step behind your step.",
+      "At the Crossroads you heard, for one count, a second step behind your step.",
       "Not an echo. Different rhythm. You turned. Nobody. You walked on. The second step kept",
       "with you, faintly, until the next zone. The road keeps company for those who walk far enough."
     ]
@@ -8871,7 +8879,7 @@
       "flag": "rain_passed_around"
     },
     "lines": [
-      "Tonight, between zones, rain found the Crossroads. It rained on the milestones. It rained",
+      "Between zones, rain found the Crossroads. It rained on the milestones. It rained",
       "on the signpost. It did not rain on you. A small circle around you stayed dry. You walked",
       "through. The road has decided you are not, tonight, going to be wet. The road has its preferences.",
       "  (+1 Max HP, permanently — a rain that decided not to fall on you, the once.)"
@@ -9008,7 +9016,7 @@
       "flag": "inn_bowl_set_aside"
     },
     "lines": [
-      "Tonight at Gravewatch's inn there was, on the high shelf, a small bowl with your name",
+      "At Gravewatch's inn there was, on the high shelf, a small bowl with your name",
       "carved on the rim. You had not eaten there before. You ate from it. The innkeeper said",
       "nothing. The bowl has waited for you. The bowl will go on waiting. You ate full tonight.",
       "  (+1 Max Stamina, permanently — a bowl set aside by someone who knew you would come.)"
@@ -9311,7 +9319,7 @@
       "flag": "silenced_thanked_visit"
     },
     "lines": [
-      "Tonight, before you left, one of the silenced — the one second from the wall, the one",
+      "Before you left, one of the silenced — the one second from the wall, the one",
       "whose name the kingdom forgot first — thanked you for coming. Soundlessly. The thanks",
       "landed in your chest. You stood up taller. They are not, anymore, alone in their forgetting.",
       "  (+1 Defense, permanently — a thanks given to you by one who was told never to speak.)"
@@ -9380,7 +9388,7 @@
       "flag": "palm_to_unnamed"
     },
     "lines": [
-      "Tonight you knelt at one of the unnamed niches — the row at the far wall, the row of",
+      "You knelt at one of the unnamed niches — the row at the far wall, the row of",
       "those whose names the kingdom did not, at the time of burying, know — and laid your",
       "palm flat. You held it there. The niche took a little of your warmth. You stood up emptier.",
       "  (+1 Max HP, permanently — a warmth given to one whose name had not been waited for.)"
@@ -9492,7 +9500,7 @@
       "flag": "mourncross_door_opened"
     },
     "lines": [
-      "Tonight a door — one of the closed ones, the kind that hasn't opened since the Pall",
+      "A door — one of the closed ones, the kind that hasn't opened since the Pall",
       "came down — opened a hand's-width for one count and then closed. You saw inside. A",
       "hearth, kept up. Bread on the table. Then the door was shut. You walked on. You knew."
     ]
@@ -9536,7 +9544,7 @@
       "flag": "mourncross_widow_chair"
     },
     "lines": [
-      "Tonight, in a doorway on the fourth street, a chair had been set out — small, low, the",
+      "In a doorway on the fourth street, a chair had been set out — small, low, the",
       "kind a widow puts out for the next visitor she expects. Nobody was in. You sat in the",
       "chair for one count. You stood up. The widow, somewhere in the empty house, was glad.",
       "  (+1 Defense, permanently — a chair set out by a widow for a visitor she was, in fact, expecting.)"
@@ -9582,7 +9590,7 @@
       "flag": "mourncross_kitchen_air"
     },
     "lines": [
-      "Tonight, walking Mourncross, you smelled — for one count, on a particular corner — the",
+      "Today, walking Mourncross, you smelled — for one count, on a particular corner — the",
       "kitchen of a house that no longer exists. Bread. Onions. The kind of cooking that gets",
       "done for many people. The smell went. You knew the kitchen. You couldn't have. You did."
     ]
@@ -9790,7 +9798,7 @@
       "flag": "companion_old_name"
     },
     "lines": [
-      "Tonight, between zones, your companion said your old name — the one before you came to",
+      "Between zones, your companion said your old name — the one before you came to",
       "Mournhold, the one you had not told them. You did not ask how. They had pieced it",
       "together. They will not say it again unless you ask. They wanted you to know they knew."
     ]
@@ -9896,9 +9904,9 @@
       "flag": "companion_lighter_sleep"
     },
     "lines": [
-      "Travelling with your companion, you have learned to sleep more lightly. You wake at",
-      "the smaller sounds. You are quicker on your feet, quicker to be ready. You are also",
-      "tireder. The lighter sleep is a habit you cannot turn off. It will travel with you.",
+      "Travelling with your companion, you have learned to sleep more lightly — to wake at",
+      "the snap of a twig, at the third breath that is not theirs. You are quicker on your",
+      "feet, quicker to be ready, and tireder by the end of the day than you used to be.",
       "  (-1 Max Stamina, permanently — a lighter sleep that travel together has taught you.)"
     ]
   },
@@ -10070,7 +10078,7 @@
       "flag": "companion_first_name"
     },
     "lines": [
-      "Tonight your companion told you their first name — the soft one, the one from before",
+      "Today, your companion told you their first name — the soft one, the one from before",
       "they were anything, the one their mother had used. They had not said it in a long",
       "count. They said it to you. You said it back. They smiled. You will use it sparingly.",
       "  (+1 Defense, permanently — a first name given to you in trust by your companion.)"
@@ -10177,7 +10185,7 @@
       "flag": "pricklehog_spine"
     },
     "lines": [
-      "Tonight, when an enemy lunged, the Pricklehog rolled — small and round, very fast — and",
+      "When an enemy lunged, the Pricklehog rolled — small and round, very fast — and",
       "the enemy's grab came up with a spine in the palm. The grab broke. You finished. The",
       "Pricklehog uncurled, satisfied. They will share a spine more often now. You will protect them.",
       "  (+1 Defense, permanently — a spine in someone's palm, given by your small kept thing.)"
@@ -10201,7 +10209,7 @@
       "flag": "pricklehog_kitchen"
     },
     "lines": [
-      "Tonight at Gravewatch's inn the Pricklehog sat on the hearth-stone and the kitchen",
+      "At Gravewatch's inn the Pricklehog sat on the hearth-stone and the kitchen",
       "warmed around them — a little. They make small hearths. The cook gave them a crust.",
       "You sat closer. You ate. You were a small household around the small fire for one count.",
       "  (+1 Max HP, permanently — a small hearth made warm by a creature that did not need to.)"
@@ -10262,7 +10270,7 @@
       "flag": "magpie_button"
     },
     "lines": [
-      "Tonight the Magpie landed on your shoulder and, instead of begging, dropped a small",
+      "The Magpie landed on your shoulder and, instead of begging, dropped a small",
       "bone button into your cupped palm. They had been carrying it. They had decided you",
       "should have it. The button is old. It is yours now. It matches one of yours. They saw.",
       "  (+1 Max HP, permanently — a button matched to one of yours by a magpie's careful eye.)"
@@ -10324,7 +10332,7 @@
       "flag": "magpie_word"
     },
     "lines": [
-      "Tonight at the saving-place the Magpie said — clearly, in your voice — one word. Your",
+      "Today, at the saving-place the Magpie said — clearly, in your voice — one word. Your",
       "name. The way you would say it if you were greeting yourself. They have been listening",
       "longer than you knew. You said *yes*. They tilted their head. They are very pleased."
     ]
@@ -10434,7 +10442,7 @@
       "flag": "hireling_blind_side"
     },
     "lines": [
-      "Tonight, in the fight, your hireling stayed at your blind side — the one your sword-",
+      "In the fight, your hireling stayed at your blind side — the one your sword-",
       "arm has trouble watching. They had been doing this for several fights. You noticed,",
       "tonight, that they had been doing it. They are paid. They had decided to do this anyway.",
       "  (+1 Defense, permanently — a blind side watched by paid hands who chose to keep watching.)"
@@ -10500,7 +10508,7 @@
       "flag": "hireling_kit"
     },
     "lines": [
-      "Tonight at the saving-place your hireling brought their whole kit out — the small",
+      "At the saving-place your hireling brought their whole kit out — the small",
       "cooking-pot, the tinder, the second blanket — and set it down by yours. As if it were",
       "yours together. You did not say. They did not say. The camp is one camp now, not two.",
       "  (+1 Max HP, permanently — a kit brought to share by someone who was, last week, hired.)"
@@ -10543,7 +10551,7 @@
       "flag": "hireling_grip"
     },
     "lines": [
-      "Tonight between fights your hireling showed you a grip — for the weapon you carry,",
+      "Between fights your hireling showed you a grip — for the weapon you carry,",
       "the way to hold it that keeps the wrist from bruising on the second swing. A small",
       "thing. A career. You learned it. Your wrist will be steadier. You will fight longer.",
       "  (+1 Attack, permanently — a grip taught by someone whose career was the grip.)"
@@ -10565,7 +10573,7 @@
       "flag": "hireling_almost_left"
     },
     "lines": [
-      "Tonight at the saving-place there was a count — a long pause — where your hireling",
+      "At the saving-place there was a count — a long pause — where your hireling",
       "looked at the gold-line of the count and looked at you and considered whether the pay",
       "was worth it. They stayed. You both knew. They could have gone. They didn't. You felt it.",
       "  (-1 Max HP, permanently — a count where someone considered leaving you for the money.)"
@@ -10700,7 +10708,7 @@
       "flag": "fallen_hireling_chronicled"
     },
     "lines": [
-      "Tonight in the Chronicle room at Gravewatch you saw a fresh line — added since you last",
+      "In the Chronicle room at Gravewatch you saw a fresh line — added since you last",
       "looked. Your hireling's name. Their date. *Walked beside [you].* Whoever keeps the",
       "Chronicle had heard. They had added the line for you. You stood at it a long count.",
       "  (+1 Defense, permanently — a name in the Chronicle for the one who walked beside you and fell.)"
@@ -10747,7 +10755,7 @@
       "flag": "all_three_walking"
     },
     "lines": [
-      "Tonight, walking — companion at one side, hireling at the other, the pet ahead — you",
+      "Walking — companion at one side, hireling at the other, the pet ahead — you",
       "had the count of a small family. You did not say. None of them said. The kingdom",
       "noted. You stood up taller for the rest of the day. You were not, tonight, alone.",
       "  (+2 Max HP, permanently — a small family on the road, the once, by your own gathering.)"
@@ -10815,7 +10823,7 @@
       "flag": "shared_silence"
     },
     "lines": [
-      "Tonight you, your companion, and the pet kept the same silence for a long count of the",
+      "You, your companion, and the pet kept the same silence for a long count of the",
       "walking. Not a tense silence. The good kind. The kind that means everyone is fine. The",
       "pet's ears were forward. Nobody spoke. The road took you all gently. You will keep the silence.",
       "  (+1 Defense, permanently — a shared silence that nobody had to break.)"
@@ -11266,7 +11274,7 @@
       "flag": "armor_grave_knock"
     },
     "lines": [
-      "Tonight, kneeling at a grave to read the name, your chest-piece knocked against the",
+      "Kneeling at a grave to read the name, your chest-piece knocked against the",
       "marker — a small, hollow sound. The marker took the knock. The chest-piece took the",
       "knock back. Some of the dead the marker holds came, very briefly, into the armor. You stood up.",
       "  (-1 Max HP, permanently — a knock against a grave-marker that travelled both ways.)"
@@ -11375,7 +11383,7 @@
       "flag": "armor_friend_shape"
     },
     "lines": [
-      "Tonight at the saving-place you took the armor off and set it down and, for one count,",
+      "Today, at the saving-place you took the armor off and set it down and, for one count,",
       "it kept the shape of someone you used to know. Not yours. Briefly theirs. The armor",
       "knew them. They were a long way away. They were thinking of you. The armor showed you."
     ]
@@ -11599,7 +11607,7 @@
       "flag": "trophy_warm"
     },
     "lines": [
-      "Tonight you walked with a trophy in your pocket — feather, tooth, scale, whatever you",
+      "You walked with a trophy in your pocket — feather, tooth, scale, whatever you",
       "carry — and the pocket, against your thigh, warmed. The trophy is keeping you company.",
       "Trophies do this for those who keep them. You will keep them more carefully from now on.",
       "  (+1 Max Stamina, permanently — a trophy warming the pocket of one who has kept it well.)"
@@ -11727,7 +11735,7 @@
       "flag": "trophy_returned"
     },
     "lines": [
-      "Tonight a stranger came to you and handed back a trophy you had dropped — three zones",
+      "A stranger came to you and handed back a trophy you had dropped — three zones",
       "ago, in the bad fight. They had carried it that whole way to find you. They would not",
       "take payment. They were the friend of someone you had laid to rest. They went on their road."
     ]
@@ -11840,7 +11848,7 @@
       "flag": "consumable_pocket_warm"
     },
     "lines": [
-      "Tonight, walking, you noticed that your potion pouch — the one with the small things",
+      "Walking, you noticed that your potion pouch — the one with the small things",
       "you carry — was warm against your thigh. Not the warmth of body-heat. The warmth of",
       "things that have decided to be ready. They are ready. You walked easier knowing.",
       "  (+1 Max Stamina, permanently — a pouch of consumables that has decided to stand ready.)"
@@ -11882,7 +11890,7 @@
       "flag": "potion_rough"
     },
     "lines": [
-      "Tonight in the bad beat you drank a potion and it caught — went down rough, the way",
+      "In the bad beat you drank a potion and it caught — went down rough, the way",
       "potions do when the bottle has, somewhere along the way, been knocked. The healing came.",
       "The next breath was harder. Your chest will be a little tireder, from now on, after potions.",
       "  (-1 Max Stamina, permanently — a potion that went down rough and took some of your breath.)"
@@ -11950,7 +11958,7 @@
       "flag": "pall_at_your_door"
     },
     "lines": [
-      "Tonight in Gravewatch, going home through the empty square, the air at your door —",
+      "In Gravewatch, going home through the empty square, the air at your door —",
       "the door to where you sleep — was, for one count, quieter than the air around it. The",
       "Pall stood there. It did not enter. It noted the door. It went. The door is marked now."
     ]
@@ -11989,7 +11997,7 @@
       "flag": "pall_breath_collar"
     },
     "lines": [
-      "Tonight, walking, you felt — for one count — a coldness at the back of your collar. As",
+      "Walking, you felt — for one count — a coldness at the back of your collar. As",
       "if a thing without a face had breathed onto your neck. You turned. Nothing. You went on.",
       "Your collar will be a little cooler from now on. A small thread of warmth has left you.",
       "  (-1 Max HP, permanently — a breath into your collar by a thing without a face.)"
@@ -12008,7 +12016,7 @@
       "flag": "pall_called_name"
     },
     "lines": [
-      "Tonight, between zones, you heard your name called — quietly, in nobody's voice. The",
+      "Between zones, you heard your name called — quietly, in nobody's voice. The",
       "voice was not unkind. It was practising. The Pall is learning to call you. You did not",
       "answer. The call faded. The Pall will call again. You will, eventually, not answer."
     ]
@@ -12090,7 +12098,7 @@
       "flag": "pall_marked_doorstep"
     },
     "lines": [
-      "Tonight, crossing a particular doorstep in Gravewatch, your boot — for one count — left",
+      "Crossing a particular doorstep in Gravewatch, your boot — for one count — left",
       "a faint dark mark. Like an ink-print. It faded. The Pall has begun to log where you",
       "have stepped. The Pall is keeping records. Records are how it begins. You stepped on."
     ]
@@ -12166,7 +12174,7 @@
       "flag": "pall_kept_account"
     },
     "lines": [
-      "Tonight at the saving you understood — for one count — that the Pall keeps a daily",
+      "At the saving you understood — for one count — that the Pall keeps a daily",
       "account of you. Not malicious. Clerkly. The day's small choices, the kindnesses, the",
       "small unkindnesses, all tallied. You stood straighter knowing. The Pall is taking notes.",
       "  (+1 Defense, permanently — an awareness that you are watched and accounted for daily.)"
@@ -12187,7 +12195,7 @@
       "flag": "pall_did_not_blink"
     },
     "lines": [
-      "Tonight, mid-walk, you blinked. In the small count of darkness behind your closed eyes,",
+      "Mid-walk, you blinked. In the small count of darkness behind your closed eyes,",
       "the Pall did not also close its eyes. It was watching the dark inside your eyelid. You",
       "opened your eyes. The Pall went. Your lid will be a little tireder from now on.",
       "  (-1 Max HP, permanently — a blink the Pall did not blink with you in.)"
@@ -12245,7 +12253,7 @@
       "flag": "pall_watched_eat"
     },
     "lines": [
-      "Tonight at the inn the Pall watched you eat. The whole meal. Not impatient. Not greedy.",
+      "At the inn the Pall watched you eat. The whole meal. Not impatient. Not greedy.",
       "Curious. As if it had not, in a long time, seen anybody eat. You ate slowly. The Pall",
       "watched the whole way to the bottom of the bowl. Then it went. You did not lose your appetite."
     ]
@@ -12324,7 +12332,7 @@
       "flag": "pall_followed_shadow"
     },
     "lines": [
-      "Tonight in a lit street the Pall, for one count, followed your shadow rather than you —",
+      "In a lit street the Pall, for one count, followed your shadow rather than you —",
       "the lantern-cast shadow walking ahead. The shadow did not notice. You did. The Pall",
       "is making an inventory of the parts of you. The shadow has been inventoried. So have you."
     ]
@@ -12671,7 +12679,7 @@
       "flag": "pall_warmed_room"
     },
     "lines": [
-      "Tonight you walked into a room that should have been cold — abandoned, unheated — and",
+      "You walked into a room that should have been cold — abandoned, unheated — and",
       "the room was warm. Not from a fire. From an attention. The Pall had decided to warm",
       "the room for you, for one count. You stood in the warm air. You did not thank it. The Pall went.",
       "  (+1 Defense, permanently — a warming of cold air done by the Pall as a small mercy.)"
@@ -12740,7 +12748,7 @@
       "flag": "pall_blessed_meal"
     },
     "lines": [
-      "Tonight at the inn, one of your meals — the bread, you think — was blessed. Faintly.",
+      "Today, at the inn, one of your meals — the bread, you think — was blessed. Faintly.",
       "The way the kingdom's old priests used to bless bread, before the rite. The Pall did",
       "it. The Pall remembered, briefly, what it had been before. The blessing held all night.",
       "  (+2 Max HP, permanently — a meal blessed by the Pall in a remembering of who it had been.)"
@@ -12761,7 +12769,7 @@
       "flag": "pall_teaching_keeping"
     },
     "lines": [
-      "Tonight the Pall, walking with you a while, began to teach you — without speaking, the",
+      "Today, the Pall, walking with you a while, began to teach you — without speaking, the",
       "way the Pall teaches — how to keep a forgetting. The mechanics of it. The way the rite",
       "shapes a kingdom's silences. You did not protest. You listened. You will need to know.",
       "  (+1 Defense, permanently — the start of a lesson the Pall is teaching its successor.)"
@@ -12780,7 +12788,7 @@
       "flag": "pall_matched_step"
     },
     "lines": [
-      "Tonight on the road the Pall — for the first time — matched its step to yours. Not",
+      "On the road the Pall — for the first time — matched its step to yours. Not",
       "behind you. Beside. Walking with you. The kingdom would say this is how the Pall",
       "courts a successor. You walked at the same pace. The Pall and you, today, were a pair."
     ]
@@ -12842,7 +12850,7 @@
       "flag": "pall_told_predecessor"
     },
     "lines": [
-      "Tonight at the saving-place the Pall, quietly, told you the name of the climber it had",
+      "At the saving-place the Pall, quietly, told you the name of the climber it had",
       "been before — the one who, generations ago, made the original agreement. You knew the",
       "name. The kingdom had had it. You will not say it now. You will say it at the Summit.",
       "  (+1 Attack, permanently — a name from the Pall, kept in you for the moment of arrival.)"
@@ -12863,7 +12871,7 @@
       "flag": "pall_air_briefly"
     },
     "lines": [
-      "Tonight for one count the Pall let you breathe its air — the air the Pall lives in.",
+      "For one count the Pall let you breathe its air — the air the Pall lives in.",
       "Cold. Old. Steady. Your lungs did not rebel. They handled the air. The Pall let the",
       "breath out of you. Your lungs are now able for the air. The Summit will not stagger you.",
       "  (+1 Max Stamina, permanently — a lungful of the Pall's own air, taken and let go.)"
@@ -12884,7 +12892,7 @@
       "flag": "pall_kind_today"
     },
     "lines": [
-      "Tonight, going to sleep, you took stock. The Pall had been kind to you today. Several",
+      "Going to sleep, you took stock. The Pall had been kind to you today. Several",
       "small kindnesses. You did not used to think of the Pall as kind. Tonight you do. The",
       "Pall is preparing you. Part of preparing you is, today, kindness. You can carry it.",
       "  (+2 Max HP, permanently — a day on which the Pall was kind to you, deliberately.)"
@@ -12923,7 +12931,7 @@
       "flag": "pall_summit_chair"
     },
     "lines": [
-      "Tonight at the saving you understood — clearly, without speaking — that the Pall has",
+      "At the saving you understood — clearly, without speaking — that the Pall has",
       "set aside a place for you. At the top. A chair. The seat is being prepared. The chair",
       "knows your shape already. You did not protest. You walked the next zone steadier.",
       "  (+1 Defense, permanently — a chair set aside at the Summit by the Pall for you.)"
@@ -12944,7 +12952,7 @@
       "flag": "pall_carried_burden"
     },
     "lines": [
-      "Tonight the Pall — briefly, between one zone and the next — gave you one of its",
+      "The Pall — briefly, between one zone and the next — gave you one of its",
       "burdens to carry. The weight of a kingdom's small daily forgetting. You carried it. It",
       "was heavy. You stood up under it. The Pall took it back. You are ready. The Pall knows.",
       "  (+3 Max HP, permanently — a Pall-burden carried briefly by you, proving the keeper.)"
@@ -13009,7 +13017,7 @@
       "flag": "reborn_note"
     },
     "lines": [
-      "Tonight, in a page you found, a note was pinned at the margin in your handwriting. The",
+      "Today, in a page you found, a note was pinned at the margin in your handwriting. The",
       "note was a single sentence: *go to the second altar, kneel slowly.* You did not know",
       "what the sentence meant. Some other you did. You will, when the time comes, know.",
       "  (+1 Max HP, permanently — a sentence written by a previous you for this you to find.)"
@@ -13031,7 +13039,7 @@
       "flag": "reborn_grave_warm"
     },
     "lines": [
-      "Tonight you knelt at a grave — a particular one, in Gravewatch's small yard — and the",
+      "Today, you knelt at a grave — a particular one, in Gravewatch's small yard — and the",
       "stone, under your palm, was warm. As if the one inside had been waiting. You read the",
       "name. The name was yours. The name was an earlier yours. The warmth was the recognition.",
       "  (+1 Defense, permanently — a grave that warmed for you because you, once, were inside.)"
@@ -13118,7 +13126,7 @@
       "flag": "reborn_carved_name"
     },
     "lines": [
-      "Tonight in the Witherwood you came to a tree with a carving — a name, your name, cut",
+      "In the Witherwood you came to a tree with a carving — a name, your name, cut",
       "in a hand younger than yours but recognizable. A previous you carved it. The wood has",
       "grown around the cut. The name is permanent now. The kingdom keeps it for the next you.",
       "  (+1 Max HP, permanently — a name a younger you carved that has grown into the wood.)"
@@ -13165,7 +13173,7 @@
       "flag": "reborn_locked_box"
     },
     "lines": [
-      "Tonight at Gravewatch's inn the innkeeper, without saying, handed you a small key. *He",
+      "Today, at Gravewatch's inn the innkeeper, without saying, handed you a small key. *He",
       "left it for the next you,* she said. The box it opens is in your old room. Inside: a",
       "small jet earring, a folded letter, two coppers. You read the letter. It said nothing.",
       "  (+1 Defense, permanently — a box at the inn that a previous you left for this you.)"
@@ -13185,7 +13193,7 @@
       "flag": "hollowed_in_your_shape"
     },
     "lines": [
-      "Tonight on the road you saw a Hollowed at a distance. The shape of it — the lean, the",
+      "On the road you saw a Hollowed at a distance. The shape of it — the lean, the",
       "shoulder, the way it set its head — was your shape. A previous you, risen, walking. You",
       "did not approach. It did not approach. You went around. The kingdom is full of you now."
     ]
@@ -13206,7 +13214,7 @@
       "flag": "hollowed_recognized_walk"
     },
     "lines": [
-      "Tonight a Hollowed — at the edge of the path, in dim light — recognized your walk. The",
+      "A Hollowed — at the edge of the path, in dim light — recognized your walk. The",
       "Hollowed had been you. The Hollowed did not attack. It tilted its head. Considered. Then",
       "stepped back. Some courtesy survives in the kingdom of the dead. You walked past whole.",
       "  (+1 Defense, permanently — a Hollowed that had been you and granted you safe passage.)"
@@ -13294,7 +13302,7 @@
       "flag": "two_hollowed_passed"
     },
     "lines": [
-      "Tonight two Hollowed passed you on the road. Both had been you. They walked together.",
+      "Two Hollowed passed you on the road. Both had been you. They walked together.",
       "They nodded as you went by. Not hostile. Not friendly. The way old comrades nod when",
       "the next watch passes. You nodded back. You are a small order in the kingdom now.",
       "  (+1 Defense, permanently — a recognition from two of your own past selves.)"
@@ -13410,7 +13418,7 @@
       "flag": "read_own_chronicle"
     },
     "lines": [
-      "Tonight in the Chronicle room you found the page of a previous you. You read the whole",
+      "In the Chronicle room you found the page of a previous you. You read the whole",
       "line — short, dry, the kingdom's clerk-style. *Fell in the Sodden Reach. Did not return.",
       "Their pack was returned to the Crossroads.* You knew the line. You stood up under it.",
       "  (+1 Defense, permanently — a Chronicle line about a previous you, read in full.)"
@@ -13457,7 +13465,7 @@
       "flag": "chronicle_hand_changed"
     },
     "lines": [
-      "Tonight in the Chronicle you went back to a previous you's page and the handwriting,",
+      "In the Chronicle you went back to a previous you's page and the handwriting,",
       "today, was slightly different. Smaller. Tireder. The clerk recopies, sometimes — when",
       "the ink fades. The clerk recopied today. The ink, in this version, is more tired. You stood by it."
     ]
@@ -13553,7 +13561,7 @@
       "flag": "chronicle_under_blank"
     },
     "lines": [
-      "Tonight you flipped the Chronicle to where this you's page would, eventually, be. The",
+      "You flipped the Chronicle to where this you's page would, eventually, be. The",
       "page was blank. The kingdom is not yet sure of you. You closed the book before the",
       "page could begin to fill itself. You will, you decided, give it a good line. You promised."
     ]
@@ -13602,7 +13610,7 @@
       "flag": "chronicle_first_line_yours"
     },
     "lines": [
-      "Tonight at the Crossroads-marker Chronicle book, the *first line on the first page* —",
+      "At the Crossroads-marker Chronicle book, the *first line on the first page* —",
       "the one every new character reads — was in your handwriting. You had written it for",
       "yourself, long ago. You read it tonight. You finally understood what it had meant.",
       "  (+1 Defense, permanently — the Chronicle's first line is yours; you wrote it for the next you.)"
@@ -13652,7 +13660,7 @@
       "flag": "smith_knew_grip"
     },
     "lines": [
-      "Tonight the smith, taking your weapon, did not need to ask which grip you preferred.",
+      "The smith, taking your weapon, did not need to ask which grip you preferred.",
       "She knew. A previous you had told her, years ago. She set the angle. She remembered",
       "for you. Your weapon will swing the right way from now on without your asking.",
       "  (+1 Attack, permanently — a smith who knew your grip from a previous life of yours.)"
@@ -13677,7 +13685,7 @@
       "flag": "innkeeper_old_room"
     },
     "lines": [
-      "Tonight the innkeeper, without asking, gave you the same key she gave a previous you.",
+      "The innkeeper, without asking, gave you the same key she gave a previous you.",
       "The room is unchanged. Your bed is on the side of the room you used to take. Your hook",
       "is on the left of the door, the way you set it before. The inn kept the shape of you.",
       "  (+1 Max HP, permanently — a room kept ready by an innkeeper for the shape of you.)"
@@ -13772,7 +13780,7 @@
       "flag": "old_hireling_returned"
     },
     "lines": [
-      "Tonight at the hireling hall there was an older one — scarred, lean, the kind who has",
+      "At the hireling hall there was an older one — scarred, lean, the kind who has",
       "outlived their employers. They walked with a previous you to the Drowned Holds. They",
       "lived. They remember. They lowered their rate when they saw you. You hired them.",
       "  (+1 Defense, permanently — a hireling who walked with a previous you and lowered their rate for this you.)"
@@ -13847,7 +13855,7 @@
       "flag": "lampkeeper_set_lamp"
     },
     "lines": [
-      "Tonight at the Crossroads the lampkeeper had set out one extra lamp. *For when you go",
+      "At the Crossroads the lampkeeper had set out one extra lamp. *For when you go",
       "back,* she said. She had been doing this for previous yous. Several. You walked back",
       "through the lit path. The lamps shone for you. You stand straighter in their light from now on.",
       "  (+1 Max Stamina, permanently — extra lamps set out by the keeper for your walk back.)"
@@ -13915,7 +13923,7 @@
       "flag": "potion_chose"
     },
     "lines": [
-      "Tonight in the bad beat your hand went into your pouch and came up with the exact right",
+      "In the bad beat your hand went into your pouch and came up with the exact right",
       "potion — not the one nearest, not the one you thought you wanted. The right one. The",
       "previous you that died had wished, in the dying, that they had taken that one. They got their wish.",
       "  (+1 Max HP, permanently — a potion chosen by a hand that has died wishing for it before.)"
@@ -14042,7 +14050,7 @@
       "flag": "pet_named_old"
     },
     "lines": [
-      "Tonight you said your pet's name — and realised, after, that the name was one a",
+      "You said your pet's name — and realised, after, that the name was one a",
       "previous you had given to a previous pet. The name had stayed in you. The pet, today,",
       "responded to it as if they had always been called this. The kingdom has decided about names."
     ]
@@ -14152,10 +14160,10 @@
       "flag": "did_not_kneel_dying"
     },
     "lines": [
-      "On the road today there was a small figure under a tree, breathing slowly. You did not",
-      "stop. You did not know them. You did not have time. You walked on. They went the rest",
-      "of the way alone. Some other run, some other you, would have stopped. This you did not.",
-      "  (-2 Max HP, permanently — a death you walked past while there was still time to sit.)"
+      "On the road today there was a small figure under a tree, breathing slowly. You walked",
+      "on. The shadow of the tree fell across them as the sun went; you saw it from the next",
+      "rise. They went the rest of the way alone. Some other run, some other you, would have",
+      "stopped.   (-2 Max HP, permanently — a death you walked past while there was still time.)"
     ]
   },
   "road_not_taken_did_not_answer_a_child": {
@@ -14703,7 +14711,7 @@
       "flag": "did_not_open_chronicle_page"
     },
     "lines": [
-      "Tonight in the Chronicle room you had — clearly — a particular page in mind to find.",
+      "In the Chronicle room you had — clearly — a particular page in mind to find.",
       "You forgot, when you got there. You read other pages. You left. The page you had been",
       "meaning to find is still there. It will be there when you come back. There is no when."
     ]
@@ -14833,7 +14841,7 @@
       "flag": "did_not_finish_sentence"
     },
     "lines": [
-      "Tonight someone you knew started a sentence — left it hanging in mid-air, looking at",
+      "Someone you knew started a sentence — left it hanging in mid-air, looking at",
       "you to finish it. The right ending was clear. You did not finish. They had to finish",
       "the sentence themselves. They finished it differently than you would have. You missed your turn.",
       "  (-1 Max HP, permanently — a sentence you did not finish that was left, deliberately, open.)"
@@ -15058,7 +15066,7 @@
       "flag": "did_not_let_held"
     },
     "lines": [
-      "Tonight your companion, seeing you tired, opened their arms — the simple gesture, the",
+      "Your companion, seeing you tired, opened their arms — the simple gesture, the",
       "offer of holding. You did not step into it. You patted their shoulder. You went to bed.",
       "Some other you would have stepped in. The companion did not, in this run, hold you.",
       "  (-1 Max HP, permanently — a holding offered you that you did not step into.)"
@@ -15139,7 +15147,7 @@
       "flag": "did_not_burn_paper"
     },
     "lines": [
-      "Tonight at the saving-place there was a paper in your pack — old, of yours, the kind",
+      "At the saving-place there was a paper in your pack — old, of yours, the kind",
       "you have been meaning to burn. You did not burn it. You held it over the candle. You",
       "put it back. The paper will be in your pack still, in your next save. You will not.",
       "  (-1 Max HP, permanently — a paper you should have burned and chose, tonight, to keep.)"
@@ -15160,7 +15168,7 @@
       "flag": "did_not_thank_kingdom"
     },
     "lines": [
-      "Tonight at the saving-place, alone, you had the chance to say *thank you* — quietly,",
+      "At the saving-place, alone, you had the chance to say *thank you* — quietly,",
       "to the kingdom — for the day's small mercies. You did not. You went to bed. The",
       "kingdom did not, in this run, hear from you the thanks. The kingdom keeps these accounts.",
       "  (-1 Max HP, permanently — a thanks you owed the kingdom you walked through.)"
@@ -15227,7 +15235,7 @@
       "flag": "poison_leaf_lesson"
     },
     "lines": [
-      "Tonight, mid-fight, an old voice came up to you — somebody you used to know, who used",
+      "Mid-fight, an old voice came up to you — somebody you used to know, who used",
       "to gather. They told you which leaf to chew when the poison takes. You chewed. The",
       "poison cleared faster. The voice has done you a kindness. You will remember the leaf.",
       "  (+1 Defense, permanently — a leaf-name a long-gone friend told you between strikes.)"
@@ -15370,7 +15378,7 @@
       "flag": "poison_healer_kiss"
     },
     "lines": [
-      "Tonight in Gravewatch a healer — one of the old ones, the kind that the kingdom keeps",
+      "In Gravewatch a healer — one of the old ones, the kind that the kingdom keeps",
       "in alleyways — pressed their dry lips to your forehead after working the last of the",
       "poison out of you. *Walk steady,* they said. You walked. You felt the steadiness held.",
       "  (+2 Max HP, permanently — a healer's dry kiss to your forehead, the kingdom's old way.)"
@@ -15412,7 +15420,7 @@
       "flag": "burn_drop_roll"
     },
     "lines": [
-      "Tonight, mid-burning, your body — without your asking — dropped you to the ground and",
+      "Mid-burning, your body — without your asking — dropped you to the ground and",
       "rolled you. The kingdom's old way of putting out a fire on a person. You did not know",
       "you knew. The roll worked. The flame went. You will, from now on, know the trick.",
       "  (+1 Defense, permanently — the drop-and-roll your body knew in the bad beat without asking.)"
@@ -15472,9 +15480,9 @@
       "flag": "burn_old_anger"
     },
     "lines": [
-      "Tonight the burn went deeper than it should have. Underneath, a thing you had not",
-      "thought of in years — an old anger, the small kind that festers — kindled. You will",
-      "carry the anger forward. It will burn quietly. You can use it. It will use you a little.",
+      "The burn went deeper than it should have. Underneath, an old anger kindled —",
+      "the small kind that festers around an injustice you had set aside fifteen winters",
+      "ago. It will burn quietly, behind the ribs, while you walk. You can use it some.",
       "  (-1 Max HP, permanently — an old anger the fight kindled that will not, now, fully bank.)"
     ]
   },
@@ -15514,7 +15522,7 @@
       "flag": "burn_match_hard"
     },
     "lines": [
-      "Tonight, lighting a candle at the saving-place, the match shook in your hand and the",
+      "Lighting a candle at the saving-place, the match shook in your hand and the",
       "flame would not come. You waited the body out. The body, since the bad burn, does not",
       "make light easily. You will, from now on, take an extra count to start a fire.",
       "  (-1 Max Stamina, permanently — a body that hesitates around small flames since the burning.)"
@@ -15536,8 +15544,8 @@
     },
     "lines": [
       "Tonight you took a small cinder — black, the size of a thumbnail — from the spent fire",
-      "of an enemy. You put it in your pocket. It will not, now, leave the pocket. It is yours.",
-      "It is a small reminder. Your next swing will be — by a count — angrier. The cinder agrees.",
+      "of an enemy. It sits in your pocket and will not come out. Your next swing will be —",
+      "by a count — angrier than the swing before. The cinder agrees with the swing.",
       "  (+1 Attack, permanently — a cinder from a fire that tried to take you, kept in your pocket.)"
     ]
   },
@@ -15601,7 +15609,7 @@
       "flag": "bleed_chin_drop"
     },
     "lines": [
-      "Tonight in the fight a drop of your own blood — from a high wound, near your hairline —",
+      "In the fight a drop of your own blood — from a high wound, near your hairline —",
       "ran down your face and dried on your chin. You did not wipe it. You walked the next zone",
       "with it there. People you passed saw it. They did not comment. They had seen blood before.",
       "  (-1 Max HP, permanently — a drop of your own blood you walked a zone with, deliberately not wiped.)"
@@ -15687,7 +15695,7 @@
       "flag": "bleed_widow_recognized"
     },
     "lines": [
-      "Tonight a widow in the square looked at the way you held your side — the angle of the",
+      "A widow in the square looked at the way you held your side — the angle of the",
       "favouring — and said quietly, *I had a husband who bled in that exact way.* She did not",
       "say what happened to him. You did not ask. She gave you a small dry biscuit. You took it."
     ]
@@ -15731,7 +15739,7 @@
       "flag": "bleed_chronicle_stain"
     },
     "lines": [
-      "Tonight in the Chronicle, turning a page with bloodied hands you had not, fully,",
+      "In the Chronicle, turning a page with bloodied hands you had not, fully,",
       "washed, you left a small print at the margin. The clerk saw. The clerk did not, in",
       "the end, scrub it. *The page has a record now,* she said. *Of you reading.* She turned a page for you.",
       "  (+1 Defense, permanently — a Chronicle margin marked, by your hand, in your own blood.)"
@@ -15776,7 +15784,7 @@
       "flag": "bleed_old_cloth"
     },
     "lines": [
-      "Tonight, after a bleeding fight, you came back into Gravewatch and an old one — at",
+      "After a bleeding fight, you came back into Gravewatch and an old one — at",
       "the gate, sitting — wordlessly handed you a folded clean cloth. They had been waiting",
       "with the cloth for someone who needed it. You took it. You used it. The cloth is yours now.",
       "  (+1 Max HP, permanently — a clean cloth an old one had been keeping for the next bleeder.)"
@@ -15815,7 +15823,7 @@
       "flag": "stun_count_taken"
     },
     "lines": [
-      "Tonight you were stunned, briefly, in the bad beat. The count of seconds you lost is",
+      "You were stunned, briefly, in the bad beat. The count of seconds you lost is",
       "not, properly, in your memory. Your day is shorter by that count. The count is the",
       "kingdom's. You will not, in this run, get it back. You can carry the small absence.",
       "  (-1 Max Stamina, permanently — a count of seconds the stun took out of your day.)"
@@ -16020,7 +16028,7 @@
       "flag": "cure_potion_remembered"
     },
     "lines": [
-      "Tonight a potion you drank — to cure a wound — tasted faintly of one your grandmother",
+      "A potion you drank — to cure a wound — tasted faintly of one your grandmother",
       "used to brew when you were small. The kingdom's potions, you understand, are old recipes",
       "carried forward. Your grandmother's was, somewhere, the same. You stand straighter knowing.",
       "  (+1 Max HP, permanently — a potion whose taste matched one your grandmother once brewed.)"
@@ -16087,7 +16095,7 @@
       "flag": "cure_recognized_plant"
     },
     "lines": [
-      "Tonight, walking, you recognized — without naming — a plant by the path that you could,",
+      "After the road, walking, you recognized — without naming — a plant by the path that you could,",
       "if you ate it, use to cure a poison. The body learned it from a cured poison. Hunters",
       "know the plant. You did not know you had become a hunter. You have, in a small way, become one.",
       "  (+1 Attack, permanently — a wild plant the body learned to recognize from a curing.)"
@@ -16148,7 +16156,7 @@
       "flag": "cure_consumable_kitchen"
     },
     "lines": [
-      "Tonight a curing consumable you ate — a piece of bread, a small fruit — tasted of a",
+      "A curing consumable you ate — a piece of bread, a small fruit — tasted of a",
       "kitchen long gone. Not your grandmother's. Somebody's. The kingdom keeps its old",
       "kitchens in its provisions. You ate the kitchen. It went with you. You did not say."
     ]
@@ -16189,7 +16197,7 @@
       "flag": "cure_kneel_drink"
     },
     "lines": [
-      "Tonight, drinking a curing potion, you knelt — without thinking — the kingdom's old way",
+      "Drinking a curing potion, you knelt — without thinking — the kingdom's old way",
       "of taking medicine. You did not know you knew. The body knew. The body has, somewhere",
       "in it, the manners of an older Mournhold. You stood up under them. You will kneel again.",
       "  (+1 Max HP, permanently — a kneeling-to-drink the body kept from older Mournhold.)"
@@ -16210,7 +16218,7 @@
       "flag": "kingdom_thanked_clear"
     },
     "lines": [
-      "Tonight, after clearing the last of a particularly nasty status — burn, poison, both —",
+      "After clearing the last of a particularly nasty status — burn, poison, both —",
       "you stood and the kingdom, faintly, thanked you. Not Atrél. The kingdom itself. The",
       "thanks landed softly. You don't get thanked often by Mournhold. You did, tonight. You stood taller.",
       "  (+1 Defense, permanently — a thanks from the kingdom for clearing a status it had decided was bad.)"
@@ -16231,7 +16239,7 @@
       "flag": "warden_keeper_silence"
     },
     "lines": [
-      "Tonight, walking, you found that you had carried — without effort — a long silence",
+      "Walking, you found that you had carried — without effort — a long silence",
       "across an hour of the path. Not a heavy silence. A keeper's. The silence felt familiar",
       "and old. The previous Warden's silence. You are walking into the work. You do not mind.",
       "  (+1 Defense, permanently — a keeper's silence the body has begun to carry on its own.)"
@@ -16342,7 +16350,7 @@
       "flag": "warden_chronicle_line"
     },
     "lines": [
-      "Tonight in the Chronicle the clerk turned to your page and — already — had marked it",
+      "In the Chronicle the clerk turned to your page and — already — had marked it",
       "*Warden, presumed.* You saw the ink. She did not look up. The kingdom is preparing for",
       "the keeping. You did not, in the end, ask her to change the line. You let her keep it.",
       "  (+1 Defense, permanently — a Chronicle entry that anticipates your becoming the Warden.)"
@@ -16433,7 +16441,7 @@
       "flag": "warden_left_chair"
     },
     "lines": [
-      "Tonight at Gravewatch's inn, leaving for the climb, you stood up from your chair and —",
+      "After the climb, at Gravewatch's inn, leaving for the climb, you stood up from your chair and —",
       "as is the kingdom's old way for a climber who will not come back the usual way — you",
       "left it pushed back, not tucked in. The next climber will sit there. They will see the chair waiting.",
       "  (+1 Max HP, permanently — a chair left in the old way for the next climber to find.)"
@@ -16483,7 +16491,7 @@
       "flag": "atrel_long_silence"
     },
     "lines": [
-      "Tonight the silence you held with Atrél at the altar lasted longer than any before. A",
+      "The silence you held with Atrél at the altar lasted longer than any before. A",
       "whole count of the candle. Neither of you spoke. Neither of you needed to. The silence",
       "was the conversation. You will, from now on, hold longer silences with the kingdom.",
       "  (+1 Defense, permanently — a longer silence with Atrél than you have, before, sustained.)"
@@ -16508,7 +16516,7 @@
       "flag": "atrel_finished_sentence"
     },
     "lines": [
-      "Tonight Atrél began a sentence. They paused. You finished it for them — correctly, in",
+      "Atrél began a sentence. They paused. You finished it for them — correctly, in",
       "the old tongue, in the form a priest would use. Atrél smiled — the small smile they",
       "rarely show. You both stood quiet a count. You are coming to share a vocabulary.",
       "  (+1 Max HP, permanently — a sentence of Atrél's finished correctly by you in the old tongue.)"
@@ -16530,7 +16538,7 @@
       "flag": "atrel_unhollowed_thanked"
     },
     "lines": [
-      "Tonight one of the Hollowed you had laid to rest — earlier in the run, a small unceremonious",
+      "One of the Hollowed you had laid to rest — earlier in the run, a small unceremonious",
       "rite — appeared briefly at the edge of your camp. Not threatening. Thanking. Soundlessly.",
       "Then it was gone. You have begun, the kingdom is saying, the work that will be the peace.",
       "  (+1 Max HP, permanently — a laid-to-rest Hollowed appearing once to thank you, soundlessly.)"
@@ -16645,9 +16653,9 @@
     },
     "lines": [
       "Tonight a count settled in your head — the number Tálva had given you, of the silenced",
-      "and the starved. The number is in you. It is not, anymore, a fact. It is a weight.",
-      "You can carry the weight. You will carry it to wherever Tálva's path takes you.",
-      "  (+1 Max HP, permanently — a count of the dead settled inside you as weight, not fact.)"
+      "and the starved. It sits behind your ribs the way grain sits in a sack: separate,",
+      "weighted, the shape of itself. You can carry the weight. You will carry it to Tálva's",
+      "end.   (+1 Max HP, permanently — a count of the dead settled inside you as weight, not fact.)"
     ]
   },
   "ending_reckoning_tálva_left_a_name_at_your_camp": {
@@ -16666,7 +16674,7 @@
       "flag": "talva_left_name"
     },
     "lines": [
-      "Tonight at the saving-place there was, in your pack, a small folded paper you did not",
+      "At the saving-place there was, in your pack, a small folded paper you did not",
       "put there. Inside: a single name. In Tálva's writing. They had walked, at some hour,",
       "to your camp and left it. You said the name aloud once. The kingdom heard it added.",
       "  (+1 Defense, permanently — a name Tálva walked, in the night, to your camp to give you.)"
@@ -16716,7 +16724,7 @@
       "flag": "reckoning_descendant_kin"
     },
     "lines": [
-      "Tonight one of Tálva's descendants — the youngest, the quiet one — called you *kin* in",
+      "One of Tálva's descendants — the youngest, the quiet one — called you *kin* in",
       "passing. Not friend. Kin. The kingdom uses the word carefully. The descendant was using",
       "it carefully. You did not, in the end, correct them. The naming, once given, stays given.",
       "  (+2 Max HP, permanently — a descendant of Tálva's calling you kin, deliberately.)"
@@ -16738,7 +16746,7 @@
       "flag": "reckoning_bread"
     },
     "lines": [
-      "Tonight you have begun to carry a small bread in your pack — kept aside, not eaten —",
+      "Today, you have begun to carry a small bread in your pack — kept aside, not eaten —",
       "in case you meet someone the Reckoning needs you to feed. The bread is yours to give.",
       "You will know who when you see them. The kingdom will let you know. Tálva will let you know.",
       "  (+1 Max HP, permanently — a bread kept aside in your pack for the Reckoning's giving.)"
@@ -16763,7 +16771,7 @@
       "flag": "reckoning_name_crossroads"
     },
     "lines": [
-      "Tonight at the Crossroads, on the back of the signpost, you carved — small, with the",
+      "At the Crossroads, on the back of the signpost, you carved — small, with the",
       "edge of your knife — one of the names Tálva had given you. It is now in the wood. The",
       "next traveller will see it. The next traveller may not know who. The name is added.",
       "  (+1 Defense, permanently — a Reckoning-name carved by you into the back of the Crossroads signpost.)"
@@ -16807,7 +16815,7 @@
       "flag": "starved_hand_pressed"
     },
     "lines": [
-      "Tonight in the hold a hand — the kind that no longer carries weight, that has not for",
+      "In the hold a hand — the kind that no longer carries weight, that has not for",
       "a long count — pressed against yours, briefly, through stone. Then went. You did not",
       "see whose. You felt the thinness of the fingers. The kingdom's old starved are with you.",
       "  (+1 Max HP, permanently — a starved hand pressed through stone briefly against yours.)"
@@ -16951,7 +16959,7 @@
       "flag": "old_seal_priest_stone"
     },
     "lines": [
-      "Tonight at the Tomb a small stone from the priest-row, the size of a thumbnail, came",
+      "At the Tomb a small stone from the priest-row, the size of a thumbnail, came",
       "loose into your hand. Cael, through the wall, said *keep it.* You did. It rides in",
       "your pocket. It will be needed at the sealing. You don't know how. Cael does.",
       "  (+1 Max Stamina, permanently — a priest-stone given to you by Cael against the day of the sealing.)"
@@ -16976,8 +16984,8 @@
     },
     "lines": [
       "Tonight, speaking through the wall to Cael, the trick — the count of the breath, the",
-      "lay of the palm — came easily. You did not have to remember. The body had become a",
-      "speaker-through-stone. You can do this with any wall now. You will when you need to.",
+      "lay of the palm against the cold stone — came easily, without your having to remember.",
+      "The body had become a speaker-through-stone. Any wall will do, now, when you need one.",
       "  (+1 Defense, permanently — speaking-through-stone become natural to the body.)"
     ]
   },
@@ -16997,7 +17005,7 @@
       "flag": "bone_tomb_kitchen_smell"
     },
     "lines": [
-      "Tonight the air in the Tomb — for one count — smelled of a kitchen. Onions, broth.",
+      "The air in the Tomb — for one count — smelled of a kitchen. Onions, broth.",
       "The kitchen of a priest's house, long demolished. The dead remember kitchens. Cael",
       "did not comment. You did not ask. You walked the row in the kitchen-smell."
     ]
@@ -17018,7 +17026,7 @@
       "flag": "purify_zone_yours"
     },
     "lines": [
-      "Tonight, walking, you walked into a zone you have, before, cleansed. The zone felt —",
+      "Walking, you walked into a zone you have, before, cleansed. The zone felt —",
       "for the first time — yours. Not the kingdom's, not the Pall's. The zone you have",
       "lifted. You will lift more. The kingdom is being given back, by you, to itself.",
       "  (+1 Defense, permanently — a cleansed zone that felt, today, like your own ground.)"
@@ -17040,7 +17048,7 @@
       "flag": "purify_sweet_air"
     },
     "lines": [
-      "Tonight, breathing, the air of one of your cleansed zones — for one count — tasted",
+      "Breathing, the air of one of your cleansed zones — for one count — tasted",
       "sweet. The kingdom does not, properly, do sweet. You have given it back the capacity.",
       "Your lungs will, from now on, be steadier in the sweetness. The capacity will spread.",
       "  (+1 Max Stamina, permanently — sweetness in the air of a zone you, before, cleansed.)"
@@ -17062,7 +17070,7 @@
       "flag": "purify_child_singing"
     },
     "lines": [
-      "Tonight, arriving, a child in the cleansed zone was singing. Children do not, in",
+      "Arriving, a child in the cleansed zone was singing. Children do not, in",
       "Mournhold, much sing anymore. The Pall took the songs. This child has them back. Some",
       "of the songs are coming back. They are coming back into the children first. Your work is showing.",
       "  (+1 Max HP, permanently — a child singing in a cleansed zone, the kingdom's old songs returning.)"
@@ -17111,7 +17119,7 @@
       "flag": "purify_field_remembered"
     },
     "lines": [
-      "Tonight in the Reach — long dead — there was, for one count, a smell of grass. The",
+      "In the Reach — long dead — there was, for one count, a smell of grass. The",
       "field, briefly, remembered being a field. The smell went again. The remembering took.",
       "You did, in some other run, a thing here. The field has not, fully, forgotten."
     ]
@@ -17183,8 +17191,8 @@
     },
     "lines": [
       "Tonight in the Witherwood the brush did not, in any of its rustlings, treat you as a",
-      "stranger. The wood has decided about you. You are not, anymore, a threat. You are the",
-      "one who has cleared this air before. You can move through the forest as a known thing.",
+      "stranger. The pines leaned the way they lean for the keeper. The wood has decided",
+      "about you — you are the one who has cleared this air before. You can move through as known.",
       "  (+1 Max HP, permanently — the Witherwood recognizing you as a known walker on the purify-path.)"
     ]
   },
@@ -17246,7 +17254,7 @@
       "flag": "hidden_truth_pall_absent"
     },
     "lines": [
-      "Tonight the Pall — usually, lately, your near-companion — did not walk with you. It",
+      "The Pall — usually, lately, your near-companion — did not walk with you. It",
       "kept a distance. The Pall has, you understand, decided to be careful around you. You",
       "are carrying a truth it does not, yet, want to disturb. You walked on, alone of it."
     ]
@@ -17292,7 +17300,7 @@
       "flag": "hidden_truth_atrel_asked"
     },
     "lines": [
-      "Tonight Atrél — who answers, who does not, properly, ask — asked you a question. They",
+      "Atrél — who answers, who does not, properly, ask — asked you a question. They",
       "wanted to know what the Forgotten Thing had given you. You did not, tonight, tell. Atrél",
       "did not press. They have become curious. The kingdom is becoming curious about you.",
       "  (+2 Max HP, permanently — Atrél asking you, for once, a question instead of answering one.)"
@@ -17315,7 +17323,7 @@
       "flag": "hidden_truth_choir_recognized"
     },
     "lines": [
-      "Tonight in the Choir's empty stalls, where the priests used to stand, a silhouette",
+      "In the Choir's empty stalls, where the priests used to stand, a silhouette",
       "— old, of one of the old priests, the kind that had been at the rite — turned to look",
       "at you. Recognized you. Whatever it saw, it filed away. It turned back. You walked through."
     ]
@@ -17361,7 +17369,7 @@
       "flag": "summit_meet_differently"
     },
     "lines": [
-      "Tonight on the Summit you felt that the place is no longer expecting the Warden's",
+      "On the Summit you felt that the place is no longer expecting the Warden's",
       "successor. The place is expecting somebody else. You. Carrying the Truth. The Summit",
       "has had to reset its preparations. The Pall is, for the first time, uncertain. So are you. Good.",
       "  (+2 Max HP, permanently — a Summit that has had, in your hands, to reset its preparations.)"
@@ -17400,7 +17408,7 @@
       "flag": "dreamt_mother_window"
     },
     "lines": [
-      "Tonight at the saving you dreamt your mother at a window. She was looking out, not at",
+      "At the saving you dreamt your mother at a window. She was looking out, not at",
       "you. The window opened to a garden that did not exist. She did not turn. You watched",
       "her watching. The dream was a kindness. You woke held. You stood up easier.",
       "  (+1 Max HP, permanently — a dream of your mother at a window the kingdom let you have.)"
@@ -17463,7 +17471,7 @@
       "flag": "saving_ceremonial"
     },
     "lines": [
-      "Tonight the saving — the act of laying yourself out for the disk, palm flat — felt",
+      "The saving — the act of laying yourself out for the disk, palm flat — felt",
       "ceremonial. Not perfunctory. The kingdom's old laying-down. You took longer than usual.",
       "The disk took the save slowly, in respect. You will, from now on, save in this manner.",
       "  (+1 Defense, permanently — a saving-ritual the body has come to do with proper care.)"
@@ -17484,7 +17492,7 @@
       "flag": "save_name_in_mouth"
     },
     "lines": [
-      "Tonight at waking, after a save, you had a name in your mouth — a name from somewhere,",
+      "At waking, after a save, you had a name in your mouth — a name from somewhere,",
       "not yours, not anyone's you've met this run. You said it once aloud. The name took. The",
       "kingdom kept it. You will, from now on, know the name. You will not know what to do with it.",
       "  (+1 Max HP, permanently — a name in your mouth at waking that the kingdom decided to leave you.)"
@@ -17524,7 +17532,7 @@
       "flag": "dreamt_previous_warden"
     },
     "lines": [
-      "Tonight you dreamt the previous Warden walking — slow, head down, the kingdom around",
+      "You dreamt the previous Warden walking — slow, head down, the kingdom around",
       "them. They turned, in the dream, and saw you watching. They did not, in the dream,",
       "speak. They lifted a hand. You woke. The hand stayed in the air after you were awake."
     ]
@@ -17542,7 +17550,7 @@
       "flag": "save_dust_shape"
     },
     "lines": [
-      "Tonight at the saving-place you noticed the dust under the bed — undisturbed for many",
+      "At the saving-place you noticed the dust under the bed — undisturbed for many",
       "nights — had, in one corner, the shape of a small footprint. Not yours. Smaller. The",
       "kingdom has, in this room, a small companion. You did not, in the end, sweep the dust."
     ]
@@ -17583,7 +17591,7 @@
       "flag": "save_water_bowl"
     },
     "lines": [
-      "Tonight at the saving-place you set, without thinking, a small bowl of water by the",
+      "At the saving-place you set, without thinking, a small bowl of water by the",
       "head of the bed. The kingdom's old way. For the dead who, in the night, might come",
       "thirsty. You did not need to. You did. The bowl was empty in the morning. They came.",
       "  (+1 Defense, permanently — a bowl set out for the dead at the saving-place, drained by morning.)"
@@ -17668,7 +17676,7 @@
       "flag": "dreamt_child_named_grave"
     },
     "lines": [
-      "Tonight you dreamt a child naming a grave — the one in Gravewatch's third row, the",
+      "You dreamt a child naming a grave — the one in Gravewatch's third row, the",
       "unnamed one. The child said the name aloud. You woke with the name in your head. The",
       "child will not, in waking, be there. The name will. You will say it tomorrow at the grave.",
       "  (+1 Defense, permanently — a name given to you, in a dream, for an unnamed grave by a child.)"
@@ -17689,7 +17697,7 @@
       "flag": "kingdom_breathed"
     },
     "lines": [
-      "Tonight you dreamt of the kingdom — the whole of it, every zone, every Pall-corner —",
+      "You dreamt of the kingdom — the whole of it, every zone, every Pall-corner —",
       "breathing. Slow. Long inhales, long exhales. You breathed with it. You woke breathing",
       "to its rhythm. From now on, between zones, you will breathe to the kingdom's rhythm.",
       "  (+1 Max Stamina, permanently — a saving-dream of the kingdom breathing that your lungs caught.)"
@@ -17729,7 +17737,7 @@
       "flag": "woke_word_unsayable"
     },
     "lines": [
-      "Tonight at waking you held a word in your mouth that, when you tried to say it, would",
+      "At waking you held a word in your mouth that, when you tried to say it, would",
       "not come out. The word was not lost. The word was waiting. The word is something the",
       "kingdom does not, yet, want said. You will, when the right moment comes, say it."
     ]
@@ -17791,7 +17799,7 @@
       "flag": "wrote_name_save_corner"
     },
     "lines": [
-      "Tonight at the saving-place you scratched, with your knife on the underside of the",
+      "At the saving-place you scratched, with your knife on the underside of the",
       "saving-table, a single name. Yours. The next person to lift the table will see it.",
       "You are now in the table. The table will, you think, remember the next time you save.",
       "  (+1 Defense, permanently — your name scratched into the underside of a saving-table.)"
@@ -17812,7 +17820,7 @@
       "flag": "dreamt_finishing_well"
     },
     "lines": [
-      "Tonight you dreamt of finishing the climb well. Not the way the climb actually ends.",
+      "You dreamt of finishing the climb well. Not the way the climb actually ends.",
       "A version of the ending where everyone you wanted alive was alive. You stayed in the",
       "dream longer than you should have. You woke knowing the dream was the kingdom's gift.",
       "  (+2 Max HP, permanently — a dream of finishing well the kingdom let you have, for once.)"
@@ -17860,7 +17868,7 @@
       "flag": "save_room_swept"
     },
     "lines": [
-      "Tonight at the inn the room had been recently swept — for you. The floor was clean.",
+      "At the inn the room had been recently swept — for you. The floor was clean.",
       "The corners were clean. There were marks of the broom on the floor in the doorway. The",
       "innkeeper had wanted you to come into a clean room. The kingdom is being kind tonight.",
       "  (+1 Max Stamina, permanently — a room swept for you with care that you noticed and kept.)"
@@ -17881,7 +17889,7 @@
       "flag": "thanked_disk"
     },
     "lines": [
-      "Tonight at the saving, before you slept, you thanked the disk — aloud — for keeping",
+      "At the saving, before you slept, you thanked the disk — aloud — for keeping",
       "what it has been keeping. The disk did not respond. The disk does not. The thanks landed.",
       "The disk will, from now on, take your saves a count more carefully. You will know it does.",
       "  (+1 Defense, permanently — a thanks said aloud to the disk that has been keeping you.)"
@@ -17900,7 +17908,7 @@
       "flag": "page_rearranged"
     },
     "lines": [
-      "Tonight, halfway through a page, the words on it re-arranged themselves under your eye.",
+      "Halfway through a page, the words on it re-arranged themselves under your eye.",
       "Not many — three or four. The new arrangement said a different sentence. You read both.",
       "The page settled. The second sentence is in your head now. The first is in someone else's."
     ]
@@ -17941,7 +17949,7 @@
       "flag": "word_underlined"
     },
     "lines": [
-      "Tonight on a page you read, one word — a small one, in the middle of a sentence — had",
+      "On a page you read, one word — a small one, in the middle of a sentence — had",
       "been carefully underlined. By a hand you don't know. The hand had wanted the next reader",
       "to see this word particularly. You were the next reader. The word is, now, particularly yours.",
       "  (+1 Max HP, permanently — a word underlined for the next reader who turned out to be you.)"
@@ -17960,7 +17968,7 @@
       "flag": "clerk_doodle_your_face"
     },
     "lines": [
-      "Tonight in the margin of a page there was, scribbled, a small face. A clerk's idle",
+      "In the margin of a page there was, scribbled, a small face. A clerk's idle",
       "doodle, perhaps. The face was yours. You don't remember the clerk. The clerk drew",
       "you. The drawing was very careful. The clerk loved you, in some run, in some way."
     ]
@@ -17980,7 +17988,7 @@
       "flag": "pages_warm"
     },
     "lines": [
-      "Tonight the pages of the book were warm under your fingertips. Not just the page you",
+      "Today, the pages of the book were warm under your fingertips. Not just the page you",
       "were reading. The whole book. Body-warm. The book had been held, recently and long, by",
       "somebody who cared about the book. The warmth lingered. You read in the warmth. Easier.",
       "  (+1 Max Stamina, permanently — a book whose pages stayed warm under your reading hand.)"
@@ -18022,7 +18030,7 @@
       "flag": "text_corrected"
     },
     "lines": [
-      "Tonight you re-read a line and the text — for one count — corrected itself. The wrong",
+      "You re-read a line and the text — for one count — corrected itself. The wrong",
       "word slid sideways and the right word came in. You saw the change. The kingdom has",
       "decided this line should be true. You read the corrected version. You will not see the wrong one again.",
       "  (+1 Max HP, permanently — a line corrected, under your eye, by the kingdom's invisible editor.)"
@@ -18043,7 +18051,7 @@
       "flag": "discovery_dead_friend_hand"
     },
     "lines": [
-      "Tonight you recognized the handwriting in the book. A friend's. A friend who is dead",
+      "You recognized the handwriting in the book. A friend's. A friend who is dead",
       "now. They had written this. You did not know they had. You did not know they wrote at",
       "all. You read the whole thing. You sat the count out. You stand straighter for it.",
       "  (+1 Max HP, permanently — a book in your dead friend's hand that you, tonight, read.)"
@@ -18123,7 +18131,7 @@
       "flag": "book_breathed_open"
     },
     "lines": [
-      "Tonight the book, untouched on the table, breathed open — a slight, decided motion — at",
+      "The book, untouched on the table, breathed open — a slight, decided motion — at",
       "the exact page you needed. You did not, in the end, ask how. You read the page. The",
       "book closed when you closed it. The book will do this for you again.",
       "  (+1 Max HP, permanently — a book that has begun to open to the right page for you.)"
@@ -18204,7 +18212,7 @@
       "flag": "discovery_dog_eared_for_you"
     },
     "lines": [
-      "Tonight a page in the book had been folded down at the corner — by a hand other than",
+      "A page in the book had been folded down at the corner — by a hand other than",
       "yours, the kingdom's hand-of-recommendation. You read that page. It was, indeed, the",
       "one you needed. You unfolded the corner before you closed the book. The kingdom does not need credit.",
       "  (+1 Max HP, permanently — a dog-eared page in a book left for you by a hand that knew.)"
@@ -18282,7 +18290,7 @@
       "flag": "chapter_glyph"
     },
     "lines": [
-      "Tonight at a chapter break in the book there was a small glyph — one of the kingdom's",
+      "At a chapter break in the book there was a small glyph — one of the kingdom's",
       "old marks — that had not, on previous readings, been there. The glyph was for you. The",
       "glyph meant *keep going*. You did, in the reading. You will, in the rest of the climb.",
       "  (+1 Attack, permanently — a chapter-break glyph of *keep going* placed in the book for you.)"
@@ -18364,7 +18372,7 @@
       "flag": "discovery_index_for_you"
     },
     "lines": [
-      "Tonight at the back of the book there was an index — by topic — that did not, on",
+      "At the back of the book there was an index — by topic — that did not, on",
       "previous readings, exist. Someone had compiled it for the next reader. The next reader",
       "was you. The index is short. The entries are exactly the things you needed to look up.",
       "  (+1 Max Stamina, permanently — an index someone compiled at the back of a book just for the next reader's eye.)"
@@ -18549,7 +18557,7 @@
       "flag": "helka2_buckle"
     },
     "lines": [
-      "Tonight Helka, between counts of looking at the water, handed you a small bronze",
+      "Helka, between counts of looking at the water, handed you a small bronze",
       "buckle she had made — bone-and-bronze, the kingdom's old way, the kind you cannot buy",
       "anywhere. You put it on your belt. The buckle holds. The buckle will not break.",
       "  (+1 Attack, permanently — a bone-and-bronze buckle Helka made you that does not break.)"
@@ -18645,7 +18653,7 @@
       "flag": "lamp2_let_you_light"
     },
     "lines": [
-      "Tonight the lampkeeper, at dusk, handed you the lighter and let you light one of the",
+      "The lampkeeper, at dusk, handed you the lighter and let you light one of the",
       "Crossroads lamps. The first one. You lit it. The flame caught. The lamp will, from",
       "now on, lean toward you when you arrive. You have, in a small way, joined the lamps.",
       "  (+1 Defense, permanently — a Crossroads lamp you lit at the lampkeeper's giving of the light.)"
@@ -18667,7 +18675,7 @@
       "flag": "lamp2_lamp_assignments"
     },
     "lines": [
-      "Tonight the lampkeeper, walking the row with you, told you which of the Crossroads",
+      "The lampkeeper, walking the row with you, told you which of the Crossroads",
       "lamps remembers which old climber. Each lamp keeps one. You walked the row. You learned",
       "the assignments. You will, in passing, salute the lamps for the climbers they hold."
     ]
@@ -18714,7 +18722,7 @@
       "flag": "lamp2_first_name"
     },
     "lines": [
-      "Tonight the lampkeeper, lighting the last lamp of the row, told you her first name. Not",
+      "The lampkeeper, lighting the last lamp of the row, told you her first name. Not",
       "*lampkeeper.* The one her mother used. You said it back. She blinked. *Yes,* she said.",
       "You will use it sparingly. You will use it when you say goodnight, the last time you come to the row.",
       "  (+1 Max HP, permanently — the lampkeeper's first name, given to you in trust.)"
@@ -18786,7 +18794,7 @@
       "flag": "pen2_pall_brace"
     },
     "lines": [
-      "Tonight the Survivor, between drinks, taught you the small bracing — a tightening of",
+      "The Survivor, between drinks, taught you the small bracing — a tightening of",
       "the chin, a planting of the boot — that the Pall does not, properly, get past. She has",
       "kept herself sane with it for years. You will brace this way from now on. The Pall will note it.",
       "  (+1 Defense, permanently — a Pall-bracing manner taught by the only one who outlasted it as long.)"
@@ -18858,7 +18866,7 @@
       "flag": "talva2_inner_room"
     },
     "lines": [
-      "Tonight Tálva let you into the inner room of the Hidden Hold — the room with the names",
+      "Tálva let you into the inner room of the Hidden Hold — the room with the names",
       "of the starved on its walls. You walked the wall. You said one of the names aloud. Tálva",
       "did not interrupt. You walked back out. You will be welcome in the room from now on.",
       "  (+1 Defense, permanently — the Hidden Hold's inner room opened to you by Tálva's hand.)"
@@ -18906,7 +18914,7 @@
       "flag": "talva2_small_bread"
     },
     "lines": [
-      "Tonight Tálva, before you left, pressed a small loaf into your hand. *For the Reckoning,*",
+      "Today tálva, before you left, pressed a small loaf into your hand. *For the Reckoning,*",
       "she said. *Give it to whoever needs it most.* You took the bread. It rides in your pack.",
       "You will know who when you see them. You will give the bread. You will not eat it yourself.",
       "  (+1 Max HP, permanently — a Reckoning-bread Tálva pressed into your hand for someone else.)"
@@ -18978,7 +18986,7 @@
       "flag": "talva2_silence"
     },
     "lines": [
-      "Tonight Tálva sat with you in silence for a long count. Neither of you spoke. The hold",
+      "Tálva sat with you in silence for a long count. Neither of you spoke. The hold",
       "around you was quiet. The kingdom was quiet. You both kept the silence as if it were",
       "a small prayer. It was. You will, from now on, hold silences longer. So will she.",
       "  (+1 Max Stamina, permanently — a long silence held with Tálva that taught your lungs patience.)"
@@ -19194,7 +19202,7 @@
       "flag": "hearth2_breakfast"
     },
     "lines": [
-      "Tonight in the morning, the hearth-keeper had — even though you slept late — kept",
+      "In the morning, the hearth-keeper had — even though you slept late — kept",
       "breakfast for you under a cloth. The eggs were still warm. The bread was buttered. She",
       "did not, in the end, charge you for the lateness. *Eat,* she said. You ate. You went on.",
       "  (+1 Max Stamina, permanently — a breakfast kept warm for your late waking by the inn-keeper.)"
@@ -19218,7 +19226,7 @@
       "flag": "hearth2_winter_gravewatch"
     },
     "lines": [
-      "Tonight the hearth-keeper told you about the winter she had at Gravewatch when she was",
+      "The hearth-keeper told you about the winter she had at Gravewatch when she was",
       "small — long before the Pall, before the rite. The town had been a town. Children had",
       "played in the square. You listened. The town's older life is in you now. You stood up easier.",
       "  (+1 Max HP, permanently — the hearth-keeper's old-Gravewatch winter, given to you in a telling.)"
@@ -19290,7 +19298,7 @@
       "flag": "reader2_aloud"
     },
     "lines": [
-      "Tonight the Reader read aloud to you for an hour — a passage they had wanted to share,",
+      "Today, the Reader read aloud to you for an hour — a passage they had wanted to share,",
       "a thing they thought you would want to hear. You sat through the whole hour. You did",
       "not speak. The Reader closed the book. You both kept the silence after. You stood up steadier.",
       "  (+1 Max Stamina, permanently — an hour of being read aloud to by the Reader, kept in you.)"
@@ -19384,10 +19392,10 @@
       "flag": "reader2_cry"
     },
     "lines": [
-      "Tonight the Reader, mid-page, let a single tear fall onto the book. They did not wipe",
-      "it. They did not, in the end, hide it from you. You did not, in the end, look away. The",
-      "Reader has decided you are someone in front of whom they can, briefly, cry. You stood with them.",
-      "  (+2 Max HP, permanently — the Reader allowing themselves, in front of you, to cry at a page.)"
+      "Tonight the Reader, mid-page, let a single tear fall onto the book. It darkened the",
+      "paper around an old word — *kindness*, in the kingdom's old hand — and they read on",
+      "without wiping it. The Reader has decided you are someone in front of whom they can,",
+      "briefly, cry.   (+2 Max HP, permanently — the Reader allowing themselves, in front of you, to cry at a page.)"
     ]
   },
   "insom2_let_you_walk_with_him": {
@@ -19480,7 +19488,7 @@
       "flag": "insom2_blanket"
     },
     "lines": [
-      "Tonight the Insomniac, finding you cold at the saving-hour, handed you the small thin",
+      "The Insomniac, finding you cold at the saving-hour, handed you the small thin",
       "blanket he carries with him on his walks. *I don't sleep,* he said. *You should.* You",
       "took the blanket. You slept under it. It is in your pack now. You will give it back, eventually.",
       "  (+1 Max HP, permanently — the Insomniac's walking-blanket given to you for the night.)"
@@ -19554,7 +19562,7 @@
       "flag": "smith2_first_blade"
     },
     "lines": [
-      "Tonight the smith told you about the first blade she ever made — the small one, the",
+      "The smith told you about the first blade she ever made — the small one, the",
       "child's knife, the one her mother kept. The blade is in Halna's stall, still. You had",
       "not noticed. You will look for it next time. Halna will not, you think, mind that you know.",
       "  (+1 Max HP, permanently — the smith's first-blade story and where it now lives, kept by you.)"
@@ -19579,7 +19587,7 @@
       "flag": "smith2_horseshoe_nails"
     },
     "lines": [
-      "Tonight the smith, between counts of the forge, handed you a small leather pouch with",
+      "The smith, between counts of the forge, handed you a small leather pouch with",
       "two horseshoe nails in it. *For luck,* she said. The kingdom's old way. You took the",
       "pouch. The nails are in your pocket. They will, in the bad hour, be there to hold.",
       "  (+1 Defense, permanently — two horseshoe nails the smith gave you for luck in the kingdom's old way.)"
@@ -19603,7 +19611,7 @@
       "flag": "karst_lookout_remembered"
     },
     "lines": [
-      "Tonight at the Karst Outpost — long abandoned — the lookout-post had, since your last",
+      "At the Karst Outpost — long abandoned — the lookout-post had, since your last",
       "visit, accumulated a small shelf of pebbles. Travellers leave them in the kingdom's old",
       "way to mark *I was here.* The shelf had recognized your previous pebble. It welcomed you.",
       "  (+1 Defense, permanently — a Karst lookout-shelf welcoming you back with the old pebble-mark.)"
@@ -19647,7 +19655,7 @@
       "flag": "karst_signpost_home"
     },
     "lines": [
-      "Tonight at the Karst Outpost the signpost had, on its fourth arm, the name of a town",
+      "At the Karst Outpost the signpost had, on its fourth arm, the name of a town",
       "you used to live in. The town does not exist anymore. The signpost still points. You",
       "did not walk that way. You walked on. The signpost will keep pointing, for the next walker.",
       "  (-1 Max HP, permanently — a signpost arm pointing to a town that does not exist anymore.)"
@@ -19671,7 +19679,7 @@
       "flag": "karst_emissary_token"
     },
     "lines": [
-      "Tonight at the Karst you found, in the dust, a small bronze token — an emissary's mark",
+      "At the Karst you found, in the dust, a small bronze token — an emissary's mark",
       "from one of the sister realms. The realm's name on it is one the kingdom has begun to",
       "forget. You took the token. It rides in your pocket. The realm will know its mark is with someone.",
       "  (+1 Max Stamina, permanently — a sister realm's emissary-token kept in your pocket against forgetting.)"
@@ -19694,7 +19702,7 @@
       "flag": "karst_bird_circled"
     },
     "lines": [
-      "Tonight at the Karst a bird — large, wings spread wide — circled three times over the",
+      "At the Karst a bird — large, wings spread wide — circled three times over the",
       "outpost as you arrived. The kingdom's old way of marking a particular visitor. The bird",
       "went. You looked after it. The next traveller will know to expect you, on some count.",
       "  (+1 Defense, permanently — a three-circling bird marking your arrival at the Karst in the old way.)"
@@ -19832,7 +19840,7 @@
       "flag": "wynne_arrowhead"
     },
     "lines": [
-      "Tonight at Wynne's the central post had a small arrowhead lodged in it — not the",
+      "At Wynne's the central post had a small arrowhead lodged in it — not the",
       "kingdom's make. A sister realm's. You worked it out with your knife. You took it. It",
       "rides in your pocket. The arrowhead remembers a hand that drew the bow that put it there.",
       "  (+1 Defense, permanently — a sister realm's arrowhead worked from Wynne's post into your pocket.)"
@@ -19926,7 +19934,7 @@
       "flag": "margrave_lord_thanked"
     },
     "lines": [
-      "Tonight at the monument, kneeling, you felt — for one count — a hand on your shoulder.",
+      "At the monument, kneeling, you felt — for one count — a hand on your shoulder.",
       "Old. Heavy. The kind of hand that knows the weight of a writ. The dead Margrave was,",
       "briefly, with you. The hand thanked you. You did not turn. The hand withdrew. You stood."
     ]
@@ -19949,7 +19957,7 @@
       "flag": "margrave_stone_softened"
     },
     "lines": [
-      "Tonight at the monument the stone where you knelt — between the dais and the wreath —",
+      "At the monument the stone where you knelt — between the dais and the wreath —",
       "had, by the time you stood, softened slightly. The stone has been kneeling-stone for a",
       "long count. It has, in this run, decided you are kin to its kneelers. The stone remembers.",
       "  (+1 Max Stamina, permanently — a kneeling-stone at the Margrave's monument that softened for you.)"
@@ -19973,7 +19981,7 @@
       "flag": "margrave_old_writ"
     },
     "lines": [
-      "Tonight at the monument, in the wreath of withered flowers, you found a small folded",
+      "Today, at the monument, in the wreath of withered flowers, you found a small folded",
       "paper. Old. The Margrave's writ — one of the originals. Faded. You read it. You did not",
       "leave it back. The writ rides in your pocket. The kingdom may, one day, need it produced.",
       "  (+1 Attack, permanently — an original Margrave's writ kept in your pocket against the kingdom's need.)"
@@ -19997,7 +20005,7 @@
       "flag": "margrave_bell_left"
     },
     "lines": [
-      "Tonight leaving the monument, the bell — the small one, the kind that rings when a",
+      "Leaving the monument, the bell — the small one, the kind that rings when a",
       "writ-bearer departs — rang once. There was no one to ring it. The bell rang for you.",
       "The Margrave's monument has decided you are, in some sense it kept, a bearer. You walked.",
       "  (+1 Max HP, permanently — the Margrave's bell rung once at your leaving by no hand.)"
@@ -20018,7 +20026,7 @@
       "flag": "first_hollowed_kill"
     },
     "lines": [
-      "Tonight you killed a Hollowed who had, you understood late, been somebody. The kill",
+      "You killed a Hollowed who had, you understood late, been somebody. The kill",
       "did not settle well. You laid them out. You said the small words. The kingdom thanked",
       "you. You did not feel thanked. You will feel less thanked from now on by such kills.",
       "  (-1 Max HP, permanently — a Hollowed kill that did not, in the end, settle in you well.)"
@@ -20039,7 +20047,7 @@
       "flag": "hollowed_button_kept"
     },
     "lines": [
-      "Tonight, after killing a Hollowed, you knelt and took one button from their coat. The",
+      "Today, after killing a Hollowed, you knelt and took one button from their coat. The",
       "kingdom's old courtesy — to remember the dead by something they had worn. The button",
       "rides in your pocket. You will, when you can, give it to someone who knew them.",
       "  (+1 Defense, permanently — a Hollowed's coat-button kept by you to give back, when you can, to a knower.)"
@@ -20060,7 +20068,7 @@
       "flag": "hollowed_familiar_face"
     },
     "lines": [
-      "Tonight, after the Hollowed went down, you saw the face under the hollow. You knew",
+      "After the Hollowed went down, you saw the face under the hollow. You knew",
       "the face. A neighbour from before the kingdom. Not someone you'd ever spoken to. Someone",
       "you had passed every day. You closed their eyes. You walked on. The face will stay.",
       "  (-2 Max HP, permanently — a familiar face under a Hollowed's hollow that you, tonight, recognized.)"
@@ -20100,7 +20108,7 @@
       "flag": "hollowed_wrong_name"
     },
     "lines": [
-      "Tonight in the worst beat the Hollowed called you a name — not yours. The name was",
+      "In the worst beat the Hollowed called you a name — not yours. The name was",
       "someone they had loved. You finished the fight. You laid them out. You said the name",
       "they had called you, back to them, before walking on. The kingdom may have heard you."
     ]
@@ -20202,7 +20210,7 @@
       "flag": "hollowed_warmer_breath"
     },
     "lines": [
-      "Tonight close-fighting a Hollowed, their breath against your face was — for one count —",
+      "Close-fighting a Hollowed, their breath against your face was — for one count —",
       "warmer than yours. The Hollow had something living in it still. You did not, in the",
       "end, kill them. You sidestepped. They left. You stood. The kingdom does not, always, want killing."
     ]
@@ -20243,7 +20251,7 @@
       "flag": "hollowed_lullaby"
     },
     "lines": [
-      "Tonight the Hollowed, as they died, sang — softly, in the kingdom's old tongue — a",
+      "The Hollowed, as they died, sang — softly, in the kingdom's old tongue — a",
       "lullaby. They had been, before being Hollowed, a parent. The lullaby was theirs. They",
       "finished the verse before they went. You knew the verse. You could not, in the end, sleep.",
       "  (-1 Max HP, permanently — a Hollowed's lullaby sung at their dying that took some of your sleep.)"
@@ -20285,9 +20293,9 @@
       "flag": "kingdom_breathed_out"
     },
     "lines": [
-      "Tonight when you finished the laying-out — palms folded, eyes closed, the small words —",
-      "the kingdom around you breathed out. You felt the breathing-out. It was, for the kingdom,",
-      "a small relief. You did, in this one, the work properly. The kingdom thanked you in air.",
+      "Tonight when you finished the laying-out — palms folded, eyes closed, the small words",
+      "in the old tongue — the kingdom around you breathed out. The walls of the Hollow",
+      "settled a thumbnail. The air went a degree warmer. You had done it properly this time.",
       "  (+1 Defense, permanently — the kingdom breathing out at one of your properly-laid Hollowed.)"
     ]
   },
@@ -20350,7 +20358,7 @@
       "flag": "kettle_whistled"
     },
     "lines": [
-      "Tonight in Gravewatch a kettle — somewhere, on someone's hearth — whistled as you",
+      "In Gravewatch a kettle — somewhere, on someone's hearth — whistled as you",
       "walked past their door. The kingdom is still doing its small daily things. You walked",
       "on warmed by the sound. You will, you suspect, set a kettle of your own going one of these nights.",
       "  (+1 Max Stamina, permanently — a kettle's whistle on someone's hearth that warmed you in passing.)"
@@ -20446,7 +20454,7 @@
       "flag": "bench_seat_offered"
     },
     "lines": [
-      "Tonight on the second bench in Gravewatch's square an old one shifted over and patted",
+      "On the second bench in Gravewatch's square an old one shifted over and patted",
       "the empty space beside them. The kingdom's old way. You sat. You did not speak. They",
       "did not speak. You both watched the square. They stood up first. The seat is, now, yours.",
       "  (+1 Max HP, permanently — a seat on the Gravewatch bench offered to you in the old way.)"
@@ -20470,7 +20478,7 @@
       "flag": "baker_bread_birds"
     },
     "lines": [
-      "Tonight you saw the Gravewatch baker, at the back of the shop, scattering yesterday's",
+      "You saw the Gravewatch baker, at the back of the shop, scattering yesterday's",
       "bread for the birds. The kingdom keeps small kindnesses. You stood at the corner",
       "watching. The baker saw. They scattered a little extra. The kingdom feeds itself in pieces.",
       "  (+1 Max Stamina, permanently — a baker's scattering for birds in the kingdom's small mercies.)"
@@ -20537,7 +20545,7 @@
       "flag": "chimney_swept"
     },
     "lines": [
-      "Tonight a chimney in Gravewatch — long unused, the house empty — had been swept. The",
+      "A chimney in Gravewatch — long unused, the house empty — had been swept. The",
       "soot was on the cobbles. Someone had decided. The empty house may have someone in it",
       "by week's end. The kingdom is filling back in by small acts. You walked on heartened."
     ]
@@ -20584,7 +20592,7 @@
       "flag": "window_open_air"
     },
     "lines": [
-      "Tonight a window in Gravewatch — the kind that has been closed for fear since the Pall —",
+      "A window in Gravewatch — the kind that has been closed for fear since the Pall —",
       "was open. The keeper was, briefly, letting in air. The air on the cobbles smelled, for a",
       "count, of indoors. The kingdom is, in small ways, opening back up. You stood and breathed.",
       "  (+1 Max Stamina, permanently — a window opened to let in air, the kingdom's small reopening.)"
@@ -20704,7 +20712,7 @@
       "flag": "children_game_known"
     },
     "lines": [
-      "Tonight two children were playing a game on the cobbles — clapping hands, chanting,",
+      "Two children were playing a game on the cobbles — clapping hands, chanting,",
       "the rhyme the kingdom's children used to chant. You knew the rhyme. You had played it.",
       "You stood watching. They did not see you. The rhyme is coming back. The kingdom remembers.",
       "  (+1 Max Stamina, permanently — the kingdom's children's clapping rhyme that you remembered watching.)"
@@ -20752,7 +20760,7 @@
       "flag": "child_sat_beside"
     },
     "lines": [
-      "Tonight a child — small, the kind that walks up to strangers without asking — sat on",
+      "A child — small, the kind that walks up to strangers without asking — sat on",
       "the bench next to you for a long count. They did not speak. You did not speak. You",
       "watched the square together. They got up and ran off. The kingdom's small acceptance.",
       "  (+1 Max HP, permanently — a child's small unspoken sit-beside-you, the once.)"
@@ -20774,7 +20782,7 @@
       "flag": "child_scar"
     },
     "lines": [
-      "Tonight a child asked, frankly, about the scar on your hand. *Where did you get it?*",
+      "A child asked, frankly, about the scar on your hand. *Where did you get it?*",
       "You did not, in the end, say. You said *climbing.* The child accepted *climbing.* They",
       "had wanted, you think, an honest answer. You will, when they are older, tell them honestly."
     ]
@@ -20845,7 +20853,7 @@
       "flag": "child_gave_seat"
     },
     "lines": [
-      "Tonight at the inn, the table being full, a child stood up — without being asked — and",
+      "At the inn, the table being full, a child stood up — without being asked — and",
       "let you have their seat. The kingdom's old courtesy. You did not, in the end, take it.",
       "You sat on the floor. The child sat on your knee. You ate together. The inn was full of laughing.",
       "  (+1 Max HP, permanently — a child standing to give you a seat that you ended up sharing on the floor.)"
@@ -20893,7 +20901,7 @@
       "flag": "child_pastry"
     },
     "lines": [
-      "Tonight in the square a child — sent on an errand, you think — handed you a small warm",
+      "In the square a child — sent on an errand, you think — handed you a small warm",
       "pastry. *Mother said,* they said. You ate it. It was good. You said thank-you to the",
       "child for the mother. The child ran off. The mother, somewhere, smiled when the child returned.",
       "  (+1 Max Stamina, permanently — a warm pastry handed to you by a child sent on an errand.)"
@@ -20918,7 +20926,7 @@
       "flag": "child_walked_path"
     },
     "lines": [
-      "Tonight at the Crossroads a child — they were going to Gravewatch with a small basket —",
+      "At the Crossroads a child — they were going to Gravewatch with a small basket —",
       "walked the first part of your path with you. They asked you which star was yours. You",
       "showed them. They nodded approval. They split off at the gate. The road will keep them safe.",
       "  (+1 Defense, permanently — a child who walked part of your path and asked which star was yours.)"
@@ -20942,7 +20950,7 @@
       "flag": "child_will_climb"
     },
     "lines": [
-      "Tonight a child, watching you sharpen your blade on the inn's bench, said quietly, *I",
+      "A child, watching you sharpen your blade on the inn's bench, said quietly, *I",
       "am going to climb too, when I am bigger.* They were small. They were serious. You did",
       "not, in the end, tell them what the climb was. You said *good.* They smiled. They will.",
       "  (+2 Max HP, permanently — a child's promise to climb when they are bigger, said in seriousness.)"
@@ -20963,7 +20971,7 @@
       "flag": "road_milestone_step"
     },
     "lines": [
-      "Tonight, walking between zones, you passed a milestone that — when your foot landed",
+      "Today, walking between zones, you passed a milestone that — when your foot landed",
       "next to it — gave, faintly, a thrum through the stone. The milestone recognized your",
       "step. The road has begun to know you, foot by foot. The other milestones will follow.",
       "  (+1 Defense, permanently — a milestone between zones that thrummed at your step in recognition.)"
@@ -21087,7 +21095,7 @@
       "flag": "road_print_lingered"
     },
     "lines": [
-      "Tonight on the road you noticed, looking back, that your footprint in the dust had not",
+      "On the road you noticed, looking back, that your footprint in the dust had not",
       "yet, in the count it usually does, blown out. The wind was strong. The print was still",
       "there. The kingdom has decided to remember your particular step on this stretch. Just this stretch."
     ]
@@ -21128,7 +21136,7 @@
       "flag": "road_old_song_walked"
     },
     "lines": [
-      "Tonight, walking between zones, you found yourself humming the whole way — the kingdom's",
+      "Walking between zones, you found yourself humming the whole way — the kingdom's",
       "old walking-song, the one the long-roads merchants used to use. The song carried you",
       "the whole distance. You did not tire as much. The song will walk with you again.",
       "  (+1 Max HP, permanently — the kingdom's old long-roads walking-song that carried you a whole distance.)"
@@ -21254,7 +21262,7 @@
       "flag": "pall_first_word_keeping"
     },
     "lines": [
-      "Tonight at the saving-place the Pall, without speaking, taught you the first word of",
+      "At the saving-place the Pall, without speaking, taught you the first word of",
       "the keeping — the word a Warden says, the first day, to begin the work. You will say",
       "it when you arrive. Your throat already knows. The word will, when said, take properly.",
       "  (+1 Attack, permanently — the first word of the keeping that the Pall taught your throat.)"
@@ -21296,7 +21304,7 @@
       "flag": "pall_held_memory"
     },
     "lines": [
-      "Tonight at the saving-place the Pall let you hold, briefly, one of its memories. A child",
+      "At the saving-place the Pall let you hold, briefly, one of its memories. A child",
       "in a kitchen, holding a small loaf, on the morning before the famine. You held the",
       "memory for one count. You gave it back. The Pall took it back. You walked the rest changed.",
       "  (+3 Max HP, permanently — one of the Pall's own memories briefly held in your hand and returned.)"
@@ -21357,7 +21365,7 @@
       "flag": "pall_kept_one_thing"
     },
     "lines": [
-      "Tonight the Pall, in farewell, asked you to choose one thing it had taken from you in",
+      "The Pall, in farewell, asked you to choose one thing it had taken from you in",
       "the run — a face, a word, a kitchen-smell — and you could have it back. You chose. The",
       "Pall returned it. The kingdom watched. The choosing is yours. The kept thing is yours, fully.",
       "  (+2 Max HP, permanently — one taken thing returned to you by the Pall at your choice, in farewell.)"
@@ -21399,7 +21407,7 @@
       "flag": "silence_landed"
     },
     "lines": [
-      "Tonight at the saving-place you held a silence — long, particular, the right kind. The",
+      "At the saving-place you held a silence — long, particular, the right kind. The",
       "silence landed correctly in the room. Some silences don't. This one did. You stood up",
       "afterwards in the silence's shape. You will, from now on, hold the right silences in their right ways.",
       "  (+1 Defense, permanently — a silence held correctly at the saving, that the kingdom honoured.)"
@@ -21444,7 +21452,7 @@
       "flag": "kettle_song_steadied"
     },
     "lines": [
-      "Tonight at the inn the kettle on the hearth sang, in its small whistled way, a melody",
+      "At the inn the kettle on the hearth sang, in its small whistled way, a melody",
       "that — by coincidence or design — was the kingdom's old hearth-song. You sat by the",
       "kettle until it cooled. The hearth-song steadied something in you. You can carry it now.",
       "  (+1 Max HP, permanently — a kettle whistling the kingdom's old hearth-song that steadied something in you.)"
@@ -21466,7 +21474,7 @@
       "flag": "unsung_came_back"
     },
     "lines": [
-      "Tonight an unsung verse of the kingdom's old Verse — one you had been carrying since",
+      "An unsung verse of the kingdom's old Verse — one you had been carrying since",
       "you found the lost line — came back, briefly, into the air around you. You sang it",
       "under your breath. The verse took. The kingdom is, in pieces, getting back its songs.",
       "  (+1 Attack, permanently — an unsung verse of the kingdom's old Verse returned briefly into the air with you.)"
@@ -21532,7 +21540,7 @@
       "flag": "silence_after_kill_kind"
     },
     "lines": [
-      "Tonight after a kill the silence — that comes between the last strike and the body",
+      "After a kill the silence — that comes between the last strike and the body",
       "going still — was, for once, kind. Not heavy. Open. You stood the count out. You said",
       "the small words. You walked on. The silence had decided to be a friend to you tonight.",
       "  (+1 Defense, permanently — a kind silence after a kill that decided to be a friend to you.)"

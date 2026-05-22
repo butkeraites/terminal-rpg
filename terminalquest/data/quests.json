@@ -899,7 +899,7 @@
     "needed": 3,
     "reward_gold": 600,
     "cleanse_required": 4,
-    "flavor": "Three of the effigies still raise the choir each morning. End the raising. The morning will be quiet."
+    "flavor": "Three of the effigies still raise the choir each morning. Their throats fill with smoke before the first note."
   },
   "reliquary_golems_two": {
     "name": "The Reliquary Golems Will Yield",
@@ -915,7 +915,7 @@
     "needed": 5,
     "reward_gold": 500,
     "cleanse_required": 4,
-    "flavor": "Five censer-shades fill the choir with smoke that will not settle. End them. The air will be air."
+    "flavor": "Five censer-shades fill the choir with smoke that will not settle on the floor. It hangs at chest-height like a held breath."
   },
   "cantor_vael_must_close_his_mouth": {
     "name": "Cantor Vael Must Close His Mouth",
@@ -1295,7 +1295,7 @@
     "needed": 3,
     "reward_gold": 400,
     "cleanse_required": 1,
-    "flavor": "Three doorshuts are the doors that closed the holds against the kingdom. End them. The doors will open once."
+    "flavor": "Three doorshuts are the doors that closed the holds against the kingdom. They lean against their posts like men who have done a long job."
   },
   "red_beards_three": {
     "name": "Three Red Beards on the Old Hammer-Road",
@@ -1311,7 +1311,7 @@
     "needed": 2,
     "reward_gold": 450,
     "cleanse_required": 2,
-    "flavor": "Two reedwives at the old wash, still trying to clean what should not be clean. End them. The wash can be wash again."
+    "flavor": "Two reedwives kneel at the old wash, still trying to clean what should not be clean. The water is the colour of old tea."
   },
   "doorposts_a_read_the_sentry_log": {
     "name": "The Names on the Doorposts — Read the Sentry Log",
@@ -1341,7 +1341,7 @@
     "reward_marks": [
       "holds_doorpost_remembered_a_name"
     ],
-    "flavor": "The seed ledger names a Red Beard who refused to share. End him. The ledger will name him a refuser."
+    "flavor": "The seed ledger names a Red Beard who refused to share — he is in the ledger in the kitchen's hand, between two food-stains."
   },
   "doorposts_c_brackmere_child": {
     "name": "The Names on the Doorposts — Brackmere's Child",
@@ -1359,7 +1359,7 @@
     "reward_marks": [
       "holds_you_forgot_a_grandmother"
     ],
-    "flavor": "The Brackmere child's name is on a reedwife's apron. End her. Take the apron. The child will be named again."
+    "flavor": "The Brackmere child's name is stitched on a reedwife's apron, the way mothers sew names on collars."
   },
   "doorposts_d_carve_a_name": {
     "name": "The Names on the Doorposts — Carve a Name",
@@ -1374,7 +1374,7 @@
     "reward_marks": [
       "holds_you_added_a_name_to_a_post"
     ],
-    "flavor": "Three bonesongs guard the doorpost where you can carve the names. End them. Carve. The kingdom will have four names the Pall did not unname."
+    "flavor": "Three bonesongs guard the doorpost where four names can still be carved. Their humming is at the height of the carving."
   },
   "red_beards_hammer_picked_up": {
     "name": "Red Beard's Hammer Haft, Reclaimed",
@@ -1400,7 +1400,7 @@
     "reward_marks": [
       "holds_recognized_your_grief"
     ],
-    "flavor": "The Holds blamed you for living. Three bonesongs sing the blame. End them. The blame will be a grief instead."
+    "flavor": "The Holds blamed you for living, once. Three bonesongs in the lower row sing the blame in turn, like a round."
   },
   "after_dead_hand_caught_sleeve": {
     "name": "After a Dead Hand Caught Your Sleeve",
@@ -1410,7 +1410,7 @@
     "cleanse_required": 2,
     "requires_mark": "holds_dead_hand_caught_your_sleeve",
     "reward_chronicle_line": "Once a dead hand had caught their sleeve in the Drowned Holds, they returned and ended the reedwife who had thrown it.",
-    "flavor": "Once a dead hand caught your sleeve here. A reedwife threw it. End her. The sleeve will be a sleeve."
+    "flavor": "A dead hand caught your sleeve here, once. A reedwife threw it from the wash, and is back at the wash with both her own."
   },
   "named_them_at_death_holds": {
     "name": "Name Them As They Die",
@@ -1485,7 +1485,7 @@
     "needed": 1,
     "reward_gold": 600,
     "cleanse_required": 1,
-    "flavor": "The pack lead has held the cache since the kingdom's last hunters left. End the holding. The cache will open."
+    "flavor": "The pack lead has held the cache shut since the kingdom's last hunters left. His jaw is still on the lid."
   },
   "hunters_cache_three_step_a": {
     "name": "The Hunter's Cache — Read the Lore",
@@ -1535,7 +1535,7 @@
     "needed": 3,
     "reward_gold": 700,
     "cleanse_required": 2,
-    "flavor": "Three of the wardens hold the sluice closed. End them. The Reach beyond will drain by one count."
+    "flavor": "Three of the wardens hold the sluice closed with their shoulders. The Reach beyond is one count higher than it would be without them."
   },
   "dyke_after_third_beams_read": {
     "name": "After Reading the Third Dyke's Beams",
@@ -1547,7 +1547,7 @@
       "third_dyke_beams"
     ],
     "reward_chronicle_line": "Once they had read the third dyke's beam-marks, they ended the warden who had carved them and read his name off his sleeve.",
-    "flavor": "The beams of the third dyke name the warden who carved them. End him. The carving will mean only what it meant."
+    "flavor": "The beams of the third dyke name the warden who carved them, in his own letters, on the wet side."
   },
   "library_warden_six": {
     "name": "Six Library-Wardens for the Catalog",
@@ -1555,7 +1555,7 @@
     "needed": 6,
     "reward_gold": 900,
     "cleanse_required": 3,
-    "flavor": "Six wardens have kept the burned catalog out of climbers' hands for a century. End them. The catalog will be readable."
+    "flavor": "Six wardens have kept the burned catalog out of climbers' hands for a century. Their gloves are still scorched at the cuff."
   },
   "library_after_clerks_seal": {
     "name": "After You Saw the Clerk's Seal Register",
@@ -1630,7 +1630,7 @@
       "the_climb_marked_your_lungs"
     ],
     "reward_chronicle_line": "After their first grey hair, the Pallid Stag let them have the kill. Some kills are gifts and some are losses; this was both.",
-    "flavor": "Once you have the first grey hair, the Pallid Stag knows. He will not refuse you. End him. The wood will know."
+    "flavor": "The Pallid Stag came to the clearing the morning your first grey hair was in the comb. He has not stepped back into the trees."
   },
   "hidden_library_remembers_a_reader": {
     "name": "The Library Remembers a Reader",
@@ -1823,7 +1823,7 @@
     "reward_marks": [
       "lamp2_gave_you_oil_for_the_climb"
     ],
-    "flavor": "The Pre-Pall Shrine has been waiting since before the Pall. The Keeper turns his head when you cross the threshold. End him. The Shrine will be older than you again."
+    "flavor": "The Pre-Pall Shrine has been waiting since before the Pall. The Keeper turns his head a half-count when you cross the threshold."
   },
   "margrave_unarmed_kill": {
     "name": "The Margrave, Unarmed",
@@ -1854,7 +1854,7 @@
       "summit_climb_taught_you_a_name_you_already_knew"
     ],
     "reward_chronicle_line": "A previous one of them had finished the climb. The Summit recognized their step. They ended the Warden the way previous selves had once been ended.",
-    "flavor": "A previous you climbed here. The Summit knows your step. End the Warden. The climb will know the name the previous you carried."
+    "flavor": "A previous self climbed here. The Summit knows the rhythm of that step, and the Warden has been at the upper stone listening for it."
   },
   "after_mira_recipe": {
     "name": "After Mira's Recipe",
@@ -1908,7 +1908,7 @@
       "talvas_case"
     ],
     "reward_chronicle_line": "Once they had read Tálva's case, they walked back to Mourncross and ended the magistrate who had heard it last.",
-    "flavor": "Tálva's case names the magistrate who heard it last. End him. The case will be a closed case."
+    "flavor": "Tálva's case names the magistrate who heard it last. His seal is on the bottom page in red."
   },
   "after_ondreks_spoon": {
     "name": "After You Held Ondrek's Spoon",
@@ -1958,7 +1958,7 @@
       "hold_walk_b_thresher"
     ],
     "chain_next": "hold_walk_d_procession",
-    "flavor": "There is salt in the cloth's weave — the Gullet's salt. A slime ate part of it. End it. The cloth will be cleaner."
+    "flavor": "There is Gullet salt in the cloth's weave. A slime has eaten part of it, leaving a clean patch in the shape of a hand."
   },
   "hold_walk_d_procession": {
     "name": "The Hold's Walk — A Procession",
@@ -1987,7 +1987,7 @@
     "reward_marks": [
       "choir_kept_the_third_line"
     ],
-    "flavor": "Two censer-shades carry the fourth lost verse in their smoke. End them. The verse will be in air instead."
+    "flavor": "Two censer-shades carry the fourth lost verse in their smoke. They hum it on the out-breath, never on the in."
   },
   "after_bone_tomb_seals": {
     "name": "After the Column of Seals",
@@ -2001,7 +2001,7 @@
     "reward_consumables": [
       "The Last Bread"
     ],
-    "flavor": "The Bone Tomb's column of seals names a Choir golem. End it. The column will lose one rune; the kingdom will gain one breath."
+    "flavor": "The Bone Tomb's column of seals carries a Choir golem's name carved in the third ring. The rune is fresh-cut."
   },
   "after_border_lichen": {
     "name": "After the Border Lichen Post",
@@ -2015,7 +2015,7 @@
     "reward_marks": [
       "the_climb_marked_your_lungs"
     ],
-    "flavor": "The Border lichen grows on the post the same way it grows on a Penitent's stone. End the Penitent. The Border will know it is bordered."
+    "flavor": "The Border lichen grows on the post the same pattern it grows on a Penitent's stone above the snowline. He has the same green on his shoulder."
   },
   "after_karst_grain": {
     "name": "After You Took a Karst Grain",
@@ -2084,7 +2084,7 @@
     "reward_marks": [
       "holds_bread_bowl_warmed_when_you_passed"
     ],
-    "flavor": "The Hearthkeeper's book names four wolves who killed her first hearth. End them. The hearth will warm without them."
+    "flavor": "The Hearthkeeper's book names four wolves who killed her first hearth. The names are in her hand, in milk."
   },
   "hidden_after_insomniac_tally": {
     "name": "The Insomniac's Tally Has Your Name",
@@ -2130,7 +2130,7 @@
     "reward_marks": [
       "the_wood_held_its_breath_for_you"
     ],
-    "flavor": "Atrél's marker names three bandits who passed it without kneeling. End them. The marker will get a kneeling later."
+    "flavor": "Atrél's marker names three bandits who passed it without kneeling. Their bootprints are still wet on the stone."
   },
   "stag_a_first_meeting": {
     "name": "The Pallid Stag — First Meeting",
@@ -2200,7 +2200,7 @@
     "reward_consumables": [
       "The Last Bread"
     ],
-    "flavor": "You forgot the smell of pine for a count. Three carrion bats remember the count. End them. The pine will smell again."
+    "flavor": "You forgot the smell of pine for a count. Three carrion bats roost in the pine where you forgot it, and remember."
   },
   "after_remembered_younger_step": {
     "name": "After the Wood Remembered a Younger Step",
@@ -2347,7 +2347,7 @@
     "reward_marks": [
       "reach_taught_you_to_wade"
     ],
-    "flavor": "Silt sat in your boots after the Reach. Two threshers walked past it without noticing. End them. The silt will teach you to wade after."
+    "flavor": "Silt from the Reach sat in your boots until the next town. Two threshers stepped over the line of it without noticing."
   },
   "after_river_hairband": {
     "name": "After the River Took Your Hairband",
@@ -2359,7 +2359,7 @@
     "reward_marks": [
       "reach_water_remembered_your_face"
     ],
-    "flavor": "The river took your hairband once. A silt-drowner wears it on his wrist. End him. The hairband will come back."
+    "flavor": "The river took your hairband once. A silt-drowner wears it on his wrist, knotted twice on the wrong side."
   },
   "after_kept_your_step": {
     "name": "After the Reach Kept Your Step",
@@ -2381,7 +2381,7 @@
     "reward_marks": [
       "reaper_water_did_not_answer"
     ],
-    "flavor": "A song you loved drowned in the Reach. The Reaper hums it now. End him. The song will be quiet."
+    "flavor": "A song you loved drowned in the Reach. The Reaper hums it now under the silt, off-key on the third line."
   },
   "after_helka_bench": {
     "name": "After Helka Set a Bench for You",
@@ -2517,7 +2517,7 @@
     "reward_marks": [
       "gullet_breathed_your_name"
     ],
-    "flavor": "A word of yours fell into the Gullet's air. Two slimes absorbed it. End them. The word will come back to you."
+    "flavor": "A word of yours fell into the Gullet's air. Two slimes drank from the puddle where it landed."
   },
   "after_older_hand_set_aside": {
     "name": "After the Older Hand Set a Thing Aside for You",
@@ -2530,7 +2530,7 @@
       "The Last Bread",
       "The Last Bread"
     ],
-    "flavor": "An older hand set a thing aside for you in the Gullet. A troll wants the thing for himself. End him. The thing is yours."
+    "flavor": "An older hand set a thing aside for you in the Gullet, behind the loose stone. A troll has his fist around it now."
   },
   "after_older_hand_looked_at_you": {
     "name": "After the Older Hand Looked at You",
@@ -2542,7 +2542,7 @@
     "reward_marks": [
       "gullet_did_not_take_what_was_yours"
     ],
-    "flavor": "The older hand looked at you once, and three bats took note. End them. The look will be forgotten by everyone except you."
+    "flavor": "The older hand in the Gullet looked at you once, and three bats took note from the rafter. They have not blinked since."
   },
   "after_found_a_button_pair": {
     "name": "After You Found a Button Pair in the Gullet",
@@ -2659,7 +2659,7 @@
     "reward_marks": [
       "gullet_older_hand_looked_at_you"
     ],
-    "flavor": "The older hand in the Gullet sees you step. Two bats notice the older hand noticing. End them. The hand will see again."
+    "flavor": "The older hand in the Gullet watches you step over the slick stone. Two bats in the rafter watch the older hand watching."
   },
   "after_atrel_peace_maw_quieter": {
     "name": "After Atrél's Peace, the Maw Is Quieter",
@@ -2671,7 +2671,7 @@
       "atrel_peace"
     ],
     "reward_chronicle_line": "Once they had made Atrél's Peace, the Maw-Mother was quieter by one count when she fell, and they could hear themselves think.",
-    "flavor": "Across runs, Atrél's Peace marks you. The Maw-Mother is quieter by one count for you. End her. The quiet remains."
+    "flavor": "Atrél's Peace left a mark on you the Maw-Mother can read. She has been chewing the same bone since you walked past her last."
   },
   "after_rope_in_palm": {
     "name": "After the Bellward's Rope Was in Your Palm",
@@ -2684,7 +2684,7 @@
       "bellward_bell_rang_for_you"
     ],
     "reward_chronicle_line": "Once the Bellward's rope had been in their palm, they returned and ended the Bellward who had handed it to them.",
-    "flavor": "The Bellward's rope passed through your palm once. He knows. Return. End him. The rope stays unrung after."
+    "flavor": "The Bellward's rope passed through your palm once. The skin remembers; the rope remembers; she is in the belfry, waiting."
   },
   "after_capital_air": {
     "name": "After You Breathed the Capital Air",
@@ -2708,7 +2708,7 @@
     "reward_marks": [
       "mourncross_lamp_lit_briefly"
     ],
-    "flavor": "Mourncross gave you one hour of light. Three of the procession walked through it. End them. The hour will return."
+    "flavor": "Mourncross gave you one hour of light. Three of the procession walked through it without dropping shadow."
   },
   "after_door_opened_count": {
     "name": "After a Door Opened for a Count",
@@ -2720,7 +2720,7 @@
     "reward_marks": [
       "mourncross_open_door_closed"
     ],
-    "flavor": "A door opened for one count for you in Mourncross. Two wretches stepped through after. End them. The door will close properly."
+    "flavor": "A door opened for one count for you in Mourncross. Two wretches stepped through after you, and have been inside since."
   },
   "after_unnamed_grave_called": {
     "name": "After an Unnamed Grave Called Your Name",
@@ -2730,7 +2730,7 @@
     "cleanse_required": 3,
     "requires_mark": "mourncross_an_unnamed_grave_called_your_name",
     "reward_chronicle_line": "Once an unnamed grave in Mourncross had called their name, they returned and ended the Bellward who had once made the grave unnamable.",
-    "flavor": "An unnamed grave called your name once. The Bellward heard the calling. End her. The grave will know one name now."
+    "flavor": "An unnamed grave called your name once. The Bellward heard the calling from the belfry and tilted her head."
   },
   "after_chairman_looked": {
     "name": "After the Chairman Looked at You",
@@ -2754,7 +2754,7 @@
     "reward_marks": [
       "mourncross_your_step_woke_a_room"
     ],
-    "flavor": "An open door in Mourncross closed behind you. A procession of one walks past it. End the one. The door will not need to close again."
+    "flavor": "An open door in Mourncross closed behind you. A procession of one walks past it, going the other way."
   },
   "rope_a_hear_the_bell": {
     "name": "The Bellward's Rope — Hear the Bell",
@@ -2766,7 +2766,7 @@
       "bellwards_card"
     ],
     "chain_next": "rope_b_grasp_the_rope",
-    "flavor": "Two of the procession ring the bell at first light. End them. The bell will fall silent for one morning."
+    "flavor": "Two of the procession ring the bell at first light. The rope is wet from their hands."
   },
   "rope_b_grasp_the_rope": {
     "name": "The Bellward's Rope — Grasp the Rope",
@@ -2781,7 +2781,7 @@
     "reward_marks": [
       "bellward_rope_in_your_palm"
     ],
-    "flavor": "A magistrate guards the belfry door. End him. Take the rope. The Bellward will feel it leaving."
+    "flavor": "A magistrate guards the belfry door, with his hand on the latch and his other on a seal. The Bellward will feel the rope leaving from inside."
   },
   "rope_c_close_the_belfry": {
     "name": "The Bellward's Rope — Close the Belfry",
@@ -2879,7 +2879,7 @@
     "reward_marks": [
       "choir_kept_the_third_line"
     ],
-    "flavor": "The Choir almost sang you into the rite. An effigy carries your half-sung name. End the effigy. The name will be yours."
+    "flavor": "The Choir almost sang you into the rite. An effigy stands holding the half of your name they got, like a coin she has not spent."
   },
   "after_lost_a_note": {
     "name": "After You Lost a Note in the Choir",
@@ -2891,7 +2891,7 @@
     "reward_marks": [
       "music_the_choir_air_was_thinner_for_a_song"
     ],
-    "flavor": "A note of yours dropped in the Choir. Three censer-shades carry it in their smoke. End them. The note will return."
+    "flavor": "A note of yours dropped in the Choir. Three censer-shades carry it folded inside their smoke."
   },
   "after_feather": {
     "name": "After You Found a Feather in the Choir",
@@ -2903,7 +2903,7 @@
     "reward_consumables": [
       "The Last Bread"
     ],
-    "flavor": "A feather is in your pack from the Choir. An effigy wants the feather as a relic. End the effigy. The feather stays."
+    "flavor": "A feather from the Choir is in your pack, against the seam. An effigy is leaning toward your pack from a hundred paces, wanting it back."
   },
   "after_left_thread": {
     "name": "After You Left a Thread for Atrél",
@@ -2915,7 +2915,7 @@
     "reward_marks": [
       "choir_atrel_held_your_grief_briefly"
     ],
-    "flavor": "A thread of yours waits on Atrél's altar. A golem holds the thread as evidence. End the golem. The thread is offered."
+    "flavor": "A thread of yours waits on Atrél's altar. A golem stands over it with one stone palm down, like evidence in a court."
   },
   "after_set_grief": {
     "name": "After You Set a Grief at Atrél's Altar",
@@ -2937,7 +2937,7 @@
     "cleanse_required": 4,
     "requires_mark": "cannot_defend_in_the_choir",
     "reward_chronicle_line": "Once they had been unable to defend in the Choir; they returned and ended the golem that had been there for the failed defense.",
-    "flavor": "Once you could not defend in the Choir. A golem stood there while the Choir struck. End the golem. The defense will hold next time."
+    "flavor": "Once, you could not defend in the Choir. The golem that stood watching while the Choir struck still stands in the same square of light."
   },
   "after_altar_candle": {
     "name": "After Atrél's Candle Did Not Flicker",
@@ -2949,7 +2949,7 @@
     "reward_marks": [
       "last_altar_atrel_set_a_grief_at_your_side"
     ],
-    "flavor": "Atrél's candle did not flicker for you. An effigy wants the candle's flame to fail. End the effigy. The flame holds."
+    "flavor": "Atrél's candle did not flicker for you at the altar. An effigy in the Choir is leaning toward the flame from a long way off."
   },
   "choir_no_potions": {
     "name": "No Potions in the Choir",
@@ -3104,7 +3104,7 @@
     "reward_marks": [
       "summit_climb_taught_you_a_name_you_already_knew"
     ],
-    "flavor": "The lampkeeper at Gravewatch gave you oil for the climb. A Penitent above the snowline burned the oil. End him. The lampkeeper will know."
+    "flavor": "The Gravewatch Lampkeeper gave you oil for the climb. A Penitent above the snowline burned it on his own stone, and is warm."
   },
   "after_a_child_promised_climber": {
     "name": "After a Child Promised to Be a Climber Too",
@@ -3117,7 +3117,7 @@
       "penitent_named_the_summit_for_you"
     ],
     "reward_chronicle_line": "Once a child had promised them to be a climber too, the Penitent named the Summit for them, and they took the Penitent at the naming.",
-    "flavor": "A child promised once to be a climber too. The Penitent wants the child's name. End him. The child will be safe."
+    "flavor": "A child promised once to be a climber too. The Penitent has been collecting the child's name out of the wind in pieces."
   },
   "after_breath_steamed_into_pall": {
     "name": "After Your Breath Steamed Into the Pall",
@@ -3129,7 +3129,7 @@
     "reward_marks": [
       "the_summit_started_to_listen"
     ],
-    "flavor": "Your breath steamed into the Pall once. Four wraiths now carry the steam. End them. The Pall will exhale."
+    "flavor": "Your breath steamed into the Pall once. Four wraiths now carry that small cloud between them, taking turns."
   },
   "after_summit_almost_turned_back": {
     "name": "After You Almost Turned Back",
@@ -3301,7 +3301,7 @@
     "reward_gold": 700,
     "cleanse_required": 2,
     "requires_flag": "is_reborn",
-    "flavor": "A Red Beard who had carved your previous self's name into the holds' doorpost. End him. The name stays carved.",
+    "flavor": "A Red Beard carved a previous self's name into the holds' doorpost with his haft. The cut is still pale where the wood is older.",
     "reward_marks": [
       "holds_you_added_a_name_to_a_post"
     ],
@@ -3314,7 +3314,7 @@
     "reward_gold": 500,
     "cleanse_required": 1,
     "requires_flag": "is_reborn",
-    "flavor": "A doorshut who once shut a door on the previous you. End it. The door will open."
+    "flavor": "A doorshut here pulled a door closed on a previous you. The wood still has the gouge from your boot."
   },
   "reborn_gullet_troll_carried_kettle": {
     "name": "A Troll Who Took a Kettle the Previous You Carried",
@@ -3323,7 +3323,7 @@
     "reward_gold": 700,
     "cleanse_required": 2,
     "requires_flag": "is_reborn",
-    "flavor": "The kettle the previous you carried is in a troll's hand. End the troll. The kettle will be a kettle again.",
+    "flavor": "The kettle the previous you carried into the Gullet is in a troll's hand. He is using it for water.",
     "reward_marks": [
       "gullet_you_helped_carry_a_kettle"
     ]
@@ -3335,7 +3335,7 @@
     "reward_gold": 500,
     "cleanse_required": 2,
     "requires_flag": "is_reborn",
-    "flavor": "A slime absorbed a word the previous you spoke into the Gullet. End it. The word will come back."
+    "flavor": "A slime absorbed a word the previous you spoke into the Gullet. The word is in the slime's clear belly, still legible."
   },
   "reborn_gullet_bat_button_pair": {
     "name": "A Bat Carrying the Previous You's Button Pair",
@@ -3344,7 +3344,7 @@
     "reward_gold": 400,
     "cleanse_required": 2,
     "requires_flag": "is_reborn",
-    "flavor": "A bat carries the previous you's button pair on a thread. End the bat. The buttons stay paired.",
+    "flavor": "A bat in the Gullet carries the previous you's button pair on a thread, one button per claw.",
     "reward_marks": [
       "gullet_found_a_button_pair"
     ]
@@ -3366,7 +3366,7 @@
     "reward_gold": 600,
     "cleanse_required": 3,
     "requires_flag": "is_reborn",
-    "flavor": "One of the hollow procession wears a coat the previous you had owned. End them. The coat will be put away properly.",
+    "flavor": "One of the hollow procession is wearing a coat the previous you owned. The cuff is frayed where you used to chew it.",
     "reward_marks": [
       "mourncross_a_window_had_a_face_at_it_for_one_count"
     ]
@@ -3387,7 +3387,7 @@
     "reward_gold": 1000,
     "cleanse_required": 4,
     "requires_flag": "is_reborn",
-    "flavor": "An effigy in the Choir sang for the previous you's funeral. End the effigy. The funeral will be over.",
+    "flavor": "An effigy in the Choir sang for the previous you's funeral. Her mouth still sits in the shape of the closing word.",
     "reward_marks": [
       "choir_almost_completed_the_rite"
     ],
@@ -3400,7 +3400,7 @@
     "reward_gold": 600,
     "cleanse_required": 4,
     "requires_flag": "is_reborn",
-    "flavor": "A censer-shade carries the previous you's last breath in its smoke. End the shade. The breath will dissipate properly."
+    "flavor": "A censer-shade carries the previous you's last breath in its smoke, low in the belly where smoke hides."
   },
   "reborn_climb_penitent_handprint_above": {
     "name": "A Penitent Whose Handprint Was Below the Previous You's",
@@ -3409,7 +3409,7 @@
     "reward_gold": 1300,
     "cleanse_required": 5,
     "requires_flag": "is_reborn",
-    "flavor": "A Penitent's handprint sits under the previous you's. He resents the ordering. End him. The handprints will settle.",
+    "flavor": "A Penitent's handprint sits a knuckle's width above the one your previous self left. He has been waiting for you to come back and see.",
     "reward_marks": [
       "penitent_handprint_under_yours"
     ],
@@ -3422,7 +3422,7 @@
     "reward_gold": 700,
     "cleanse_required": 4,
     "requires_flag": "is_reborn",
-    "flavor": "An ice-wraith was a climber once who climbed with a previous you. End the wraith. The climber will rest."
+    "flavor": "An ice-wraith on the upper rope was a climber once who climbed with a previous you. He still leans into the same wind."
   },
   "reborn_summit_warden_knew_old_step": {
     "name": "The Summit Warden Knew the Previous You's Step",
@@ -4000,7 +4000,7 @@
         "mark_id": "reach_silt_in_your_boots"
       }
     },
-    "flavor": "Once silt sat in your boots, two silt-drowners remembered the weight. End them. The silt will be silt only."
+    "flavor": "Silt sat in your boots after the Reach. Two silt-drowners remember the weight, and walk slower for it."
   },
   "hidden_mf_holds_grief": {
     "name": "After the Holds Recognized Your Grief",
@@ -4015,7 +4015,7 @@
         "mark_id": "holds_recognized_your_grief"
       }
     },
-    "flavor": "Once the Holds recognized your grief, a doorshut wanted to close on it. End the doorshut. The grief stays yours."
+    "flavor": "The Holds recognized your grief once. A doorshut here wants to close on it before you take it back out."
   },
   "hidden_mf_gullet_marked_skin": {
     "name": "After the Gullet Marked Your Skin",
@@ -4045,7 +4045,7 @@
         "mark_id": "choir_atrel_held_your_grief_briefly"
       }
     },
-    "flavor": "Once Atrél held your grief briefly, an effigy in the Choir wanted to take it back. End the effigy. The grief is hers, briefly, again.",
+    "flavor": "Atrél held your grief for a count once. An effigy in the Choir wants it back, and is reaching.",
     "reward_marks": [
       "choir_set_a_grief_at_atrels_side_altar"
     ]
@@ -4166,7 +4166,7 @@
     "requires_ending": [
       "purify"
     ],
-    "flavor": "Once you had purified the kingdom, five bonesongs in the Holds hummed a quieter pitch. End them. The pitch will be one count under after."
+    "flavor": "You purified the kingdom once. Five bonesongs in the Holds are humming a pitch one count lower than the rest of the room."
   },
   "purify_choir": {
     "name": "After the Purify, the Choir Sings a Younger Air",
@@ -4177,7 +4177,7 @@
     "requires_ending": [
       "purify"
     ],
-    "flavor": "Once you had purified the kingdom, two effigies in the Choir sang a younger air. End them. The Choir will sing kinder for one season.",
+    "flavor": "You purified the kingdom once. Two effigies in the Choir are singing a younger air now, in the wrong voices.",
     "reward_chronicle_line": "After the Purify, the Choir's effigies sang a younger air for them — two of those effigies ended kindly."
   },
   "atrel_reach": {
@@ -4189,7 +4189,7 @@
     "requires_ending": [
       "atrel_peace"
     ],
-    "flavor": "Once you had made Atrél's Peace, the Reach's Reaper held a grief instead of swinging. End him. The grief is yours, briefly.",
+    "flavor": "You knelt to Atrél at the road. The Reach's Reaper, when you came down to the silt, was holding a grief instead of a scythe.",
     "reward_marks": [
       "reach_drowned_a_song_you_loved"
     ]
@@ -4214,7 +4214,7 @@
     "requires_ending": [
       "atrel_peace"
     ],
-    "flavor": "Once you had made Atrél's Peace, two bandits on the road decided to test the peace. End them. The peace will hold.",
+    "flavor": "You knelt to Atrél at the marker, then two bandits stepped from the bracken to see what kneeling looked like up close.",
     "reward_chronicle_line": "Bandits had tested Atrél's Peace; two of them ended at the road's edge for the testing."
   },
   "old_seal_holds": {
@@ -4252,7 +4252,7 @@
     "requires_ending": [
       "reckoning"
     ],
-    "flavor": "Once you had once unmade Mournhold by Reckoning, six of the procession are unmaking still. End them. The Reckoning will continue.",
+    "flavor": "You unmade Mournhold by Reckoning, once. Six of the procession have been unmaking it ever since, slowly, with their feet.",
     "reward_marks": [
       "mourncross_breathed_the_capital_air"
     ]
@@ -4266,7 +4266,7 @@
     "requires_ending": [
       "reckoning"
     ],
-    "flavor": "Once you had unmade Mournhold by Reckoning, four censer-shades had less smoke. End them. The smoke will dissipate after."
+    "flavor": "You unmade Mournhold by Reckoning once. Four censer-shades have less smoke to carry since, and walk lighter, off-balance."
   },
   "reckoning_climb_path": {
     "name": "After the Reckoning, the Climb Has Fewer Stones",
@@ -4384,7 +4384,7 @@
     "reward_marks": [
       "the_wood_held_its_breath_for_you"
     ],
-    "flavor": "The wood has marked you twice — once for the wolf's scent, once for the younger step. A wolf walks who carries both. End it. The wood will know."
+    "flavor": "The wood marked you twice — once for the wolf's scent on your sleeve, once for the younger step you used to have. A wolf walks now that carries both marks in its nose."
   },
   "veteran_reach_two_marks": {
     "name": "The Reach Has Marked Your Face and Step",
@@ -4687,7 +4687,7 @@
     "reward_marks": [
       "choir_kept_the_third_line"
     ],
-    "flavor": "The Choir hid a fourth cistern under its floor. The reliquary golem keeps it. End him. The kingdom will drink again."
+    "flavor": "The Choir hid a fourth cistern under its floor. A reliquary golem stands on the stone above it with both feet planted."
   },
   "verren_a_voice_in_the_tomb": {
     "name": "Verren's Voice — Hear It in the Bone Tomb",
@@ -4789,7 +4789,7 @@
     "reward_marks": [
       "lamp2_gave_you_oil_for_the_climb"
     ],
-    "flavor": "A troll at the Gullet's mouth wears the missing climber's coat. End him. Take the coat. The Lampkeeper will know."
+    "flavor": "A troll at the Gullet's mouth wears the missing climber's coat — the wrong shoulders, the right buttons. The Lampkeeper will want what is in the pockets."
   },
   "disc_atrel_marker_pall": {
     "name": "The Pall Reads Atrél's Marker",
@@ -4851,7 +4851,7 @@
     "reward_marks": [
       "music_the_choir_air_was_thinner_for_a_song"
     ],
-    "flavor": "Once you lost a note in the Choir. A censer-shade carries it still. End it. The note will return."
+    "flavor": "A note you lost in the Choir is still here. A censer-shade carries it under one ash-stiff arm."
   },
   "mark_summit_button_left": {
     "name": "After You Left a Button at the Summit Step",
@@ -4874,7 +4874,7 @@
       "holds_recognized_your_grief"
     ],
     "reward_chronicle_line": "Once a child's voice had almost spoken to them at a doorpost, they returned and ended the two bonesongs that had been carrying the unsaid word.",
-    "flavor": "A child's voice almost spoke to you at a doorpost. Two bonesongs swallowed the rest of the word. End them. The word will not come back, but the almost will."
+    "flavor": "A child's voice almost spoke to you at a doorpost. Two bonesongs swallowed the rest of the word and have it in their throats now."
   },
   "dh2_doorpost_remembered_callback": {
     "name": "After a Doorpost Remembered a Name",
@@ -4886,7 +4886,7 @@
     "reward_marks": [
       "holds_you_added_a_name_to_a_post"
     ],
-    "flavor": "A doorpost held the warmth of a hand that was not yours. Three doorshuts want the post to forget. End them. The post will keep remembering."
+    "flavor": "A doorpost held the warmth of a hand that was not yours. Three doorshuts have leaned their shoulders against it to cool it."
   },
   "dh2_street_that_was_a_street": {
     "name": "After You Walked a Street That Was a Street",
@@ -4899,7 +4899,7 @@
       "holds_doorpost_remembered_a_name"
     ],
     "reward_chronicle_line": "They had once walked a lane in the Drowned Holds that was, briefly, a lane again. They returned and ended the reedwife who had washed the lane back into the water.",
-    "flavor": "For a few counts, a lane in the Holds was a lane. A reedwife is washing it back into water. End her. The seeing will stay."
+    "flavor": "For a few counts a lane in the Holds was a lane. A reedwife is at the cobbles now, washing them back into water."
   },
   "dh2_bread_bowl_warmed_ii": {
     "name": "The Bread Bowl Warmed for You Twice",
@@ -4911,7 +4911,7 @@
     "reward_consumables": [
       "The Last Bread"
     ],
-    "flavor": "Once the old bread bowl in the kitchen warmed when you passed. Three forager boys are at the bowl now, hands cupped. End them. The bowl will warm a second time."
+    "flavor": "The old bread bowl in the kitchen warmed when you passed it last. Three forager boys are at the bowl now, hands cupped in the dust."
   },
   "dh2_forager_boy_brackmere_clay": {
     "name": "The Forager Boy With Brackmere Clay on His Hands",
@@ -4964,7 +4964,7 @@
       "The Last Bread"
     ],
     "reward_chronicle_line": "A reedwife had been washing a child's coat — Eron's, the Bellward's son — in the wash that was no longer a wash. They ended her. The coat was hung to dry in the wind that was no longer a wind.",
-    "flavor": "A reedwife is washing a small coat at the old wash. It is Eron's. The Bellward's son. End her. The coat will hang in a wind that is almost a wind."
+    "flavor": "A reedwife is washing a small coat at the old wash. It is Eron's, the Bellward's son's, with the patch his mother sewed."
   },
   "dh2_erons_doorpost": {
     "name": "Eron's Doorpost",
@@ -4979,7 +4979,7 @@
     "reward_marks": [
       "holds_you_added_a_name_to_a_post"
     ],
-    "flavor": "The doorpost that warmed at your hand was Eron's family doorpost. Two doorshuts keep it shut against the carving. End them. Carve his name. The post will keep it."
+    "flavor": "The doorpost that warmed at your hand was Eron's family doorpost. Two doorshuts lean against it now, keeping it shut."
   },
   "dh2_eron_almost_spoke_again": {
     "name": "The Almost-Hearing, a Second Time",
@@ -4992,7 +4992,7 @@
       "holds_recognized_your_grief"
     ],
     "reward_chronicle_line": "The almost-hearing came a second time at the doorpost; they ended four bonesongs that had been pitching against it, and the almost stayed an almost.",
-    "flavor": "You hear Eron's voice almost speak a second time. Four bonesongs are pitching against the almost. End them. The almost will hold."
+    "flavor": "Eron's voice almost speaks at the doorpost. Four bonesongs are pitching against the almost, mouths half open."
   },
   "dh2_brackmere_carrots_at_the_ends": {
     "name": "The Carrots at the Ends",
@@ -5017,7 +5017,7 @@
     "reward_marks": [
       "holds_bread_bowl_warmed_when_you_passed"
     ],
-    "flavor": "Three bonesongs hum the bedtime list in their throats — the wrong nights, the wrong meals. End them. The list will go back to the kitchen where the child wrote it."
+    "flavor": "Three bonesongs hum the Brackmere bedtime list — the wrong nights, the wrong meals, the child's hand in the margins."
   },
   "dh2_brackmere_mama_was_quiet": {
     "name": "Mama Was Quiet Now",
@@ -5043,7 +5043,7 @@
     "reward_marks": [
       "holds_you_walked_a_street_that_was_a_street"
     ],
-    "flavor": "Four doorshuts have held their doors against the water for a hundred winters. A warrior leans on each one until the door yields back. End them. The lane will be a lane."
+    "flavor": "Four doorshuts have held doors against the water for a hundred winters. A warrior leans on each one until the door bows back at him."
   },
   "dh2_mage_bread_bowl_pitch": {
     "name": "The Mage's Pitch at the Bread Bowl",
@@ -5275,7 +5275,7 @@
     "reward_consumables": [
       "The Last Bread"
     ],
-    "flavor": "Piranesi drew the column of the Choir and named the golem at its base in pencil. End it. The column can lose a name; the Choir can lose a step."
+    "flavor": "Piranesi drew the column of the Choir and named the golem at its base in pencil. The pencil mark is gone; the golem is still there."
   },
   "da_after_piranesi_holds_doorpost": {
     "name": "After Piranesi's Doorpost",
@@ -5289,7 +5289,7 @@
     "reward_marks": [
       "piranesis_pencil_pointed_at_you"
     ],
-    "flavor": "Piranesi wrote names on the doorpost no living scribe had a right to. One bonesong sings them now. End it. The doorpost will go quiet."
+    "flavor": "Piranesi wrote names on the doorpost that no living scribe had a right to. One bonesong has memorised them and sings them in order."
   },
   "da_after_erons_doorpost": {
     "name": "After Eron's Doorpost",
@@ -5345,7 +5345,7 @@
     "reward_marks": [
       "you_dreamt_in_piranesis_voice"
     ],
-    "flavor": "Piranesi sketched the cave stone with a troll's tooth-mark on it. End the troll. The stone will lose the mark."
+    "flavor": "Piranesi sketched the cave stone with a troll's tooth-mark on it. The troll is sitting on the stone now, with the same tooth."
   },
   "da_after_last_dyke_lore": {
     "name": "After the Last Dyke's Older Name",
@@ -5360,7 +5360,7 @@
       "dyke_a_name_carved_on_the_stone"
     ],
     "reward_chronicle_line": "They learned the dyke's older name and ended the Warden who guarded the newer one. The stone could be re-carved.",
-    "flavor": "The Last Dyke had an older name. The Warden answers only to the newer one. End him. The older name can be carved over the newer."
+    "flavor": "The Last Dyke had an older name. The Warden answers only to the newer one, and corrects you when you ask."
   },
   "da_after_piranesi_reach_birds": {
     "name": "After Piranesi's Birds",
@@ -5371,7 +5371,7 @@
     "requires_discovery": [
       "piranesi_reach_birds"
     ],
-    "flavor": "Piranesi drew three birds over the floodfields and named none. Three lurchers wear feathers the same colour. End them. The birds will be named by the silence after."
+    "flavor": "Piranesi drew three birds over the floodfields and named none. Three lurchers wear feathers the same colour."
   },
   "da_after_famine_waterwheel_song": {
     "name": "After the Waterwheel Song",
@@ -5383,7 +5383,7 @@
       "famine_waterwheel_song"
     ],
     "reward_chronicle_line": "They heard the waterwheel song and put the Last Reaper down. The wheel turned once after, and was still.",
-    "flavor": "The waterwheel song names the Last Reaper in its second verse. End him. The song can have a final verse you write in silence."
+    "flavor": "The waterwheel song names the Last Reaper in its second verse, low, just under the wheel's slap."
   },
   "da_after_tace_last_bundle": {
     "name": "After Tace's Last Bundle",
@@ -5411,7 +5411,7 @@
     "reward_consumables": [
       "The Last Bread"
     ],
-    "flavor": "The capital letter on the famine page is a B and stops there. Two silt-drowners came up the river the night that B was written. End them. The letter can be finished by another hand."
+    "flavor": "The capital letter on the famine page is a B and stops there. Two silt-drowners came up the river the night the B was written."
   },
   "da_after_drowned_holds_petition": {
     "name": "After the Drowned Petition",
@@ -5422,7 +5422,7 @@
     "requires_discovery": [
       "drowned_holds_petition"
     ],
-    "flavor": "The petition was pushed under a door that had been shut for years. Two doorshuts now hold the names of the petitioners in their hinges. End them. The names can come out."
+    "flavor": "The petition was pushed under a door that had been shut for years. Two doorshuts now hold the names of the petitioners in their hinges, written there in the grease."
   },
   "da_after_atrel_side_altar": {
     "name": "After Atrél's Side Altar",
@@ -5450,7 +5450,7 @@
     "reward_marks": [
       "the_reach_remembers_your_step"
     ],
-    "flavor": "The Reach tally has three names in the lost column. Three threshers wear those names on their backs in salt. End them. The column can be closed."
+    "flavor": "The Reach tally has three names in the lost column. Three threshers wear those names on their backs, salt-rubbed into the cloth."
   },
   "da_after_piranesi_reach_furrow": {
     "name": "After Piranesi's Furrow",
@@ -5478,7 +5478,7 @@
     "reward_marks": [
       "gullet_older_hand_set_a_thing_aside"
     ],
-    "flavor": "The Gullet's alcove holds three roosting bats older than the Pall. End them. The alcove can hold something kinder for a while."
+    "flavor": "The Gullet's alcove holds three roosting bats older than the Pall. They have the dust of every winter folded into their wings."
   },
   "da_after_insomniac_tally": {
     "name": "After the Insomniac's Tally",
@@ -5638,7 +5638,7 @@
       "ending_warden_a_keeper_song_started_to_form_in_you"
     ],
     "reward_chronicle_line": "Once they had become the Warden, the dyke-warden recognised the keeper-mark on them and gave one nod before the fight; the fight ended.",
-    "flavor": "Across runs, you have been the Warden. The dyke-warden recognises the keeper-mark on you. She nods once. End her. The post is yours after."
+    "flavor": "You have been the Warden across runs, and the dyke-warden can read the mark on you. She nods once, then puts her hand to her hammer."
   },
   "hc2_pack_lead_no_abilities": {
     "name": "Halna's Way — Plain Steel at the Cache",
@@ -5728,7 +5728,7 @@
     "reward_marks": [
       "insomniac_taught_you_to_count_too"
     ],
-    "flavor": "The long black line on the Insomniac's beam is the nights she has not slept. Four goblins, by their noise outside her window, are why the line is one count taller than it would be. End them. The line will stop where it is, for one night."
+    "flavor": "The long black line on the Insomniac's beam is the nights she has not slept. Four goblins outside her window are why the line is one count taller than it should be."
   },
   "gw_hearthkeeper_limp_remembered": {
     "name": "The Limp the Hearthkeeper Noticed",
@@ -5796,7 +5796,7 @@
     "reward_marks": [
       "holds_bread_bowl_warmed_when_you_passed"
     ],
-    "flavor": "The Caretaker of Gravewatch walks the doors after the Hearthkeeper shuts the hearth. Three goblins in the wood have been keeping her round longer than it should be. End them. The Caretaker will finish her round at the hour she used to."
+    "flavor": "The Caretaker of Gravewatch walks the doors after the Hearthkeeper shuts the hearth. Three goblins in the wood have been stretching her round by half an hour each night."
   },
   "gw_readers_pencil_kinder_use": {
     "name": "The Reader's Pencil, Sharpened for a Kinder Use",
@@ -5943,7 +5943,7 @@
       "cz_wanderer_a_wood"
     ],
     "chain_next": "cz_wanderer_c_gullet",
-    "flavor": "The second drop was at a furrow in the Sodden Reach — three threshers turn the silt where she set the letter down to rest her arm. End them. The page beneath their boots is the second leaf of four."
+    "flavor": "She set the letter down on a furrow in the Sodden Reach to rest her writing arm. Three threshers turn the silt over it."
   },
   "cz_pilgrim_d_climb": {
     "name": "The Pilgrim's Stations — A Penitent on the Climb",
@@ -5981,7 +5981,7 @@
     "reward_marks": [
       "holds_you_walked_a_street_that_was_a_street"
     ],
-    "flavor": "The reliquary the Choir guards was carried up from a Brackmere hold the winter the gates closed. It held a saint's finger once. It holds nothing now. The golem keeps it anyway. End it. The hold can have its box back, empty though it will be."
+    "flavor": "The reliquary the Choir guards was carried up from a Brackmere hold the winter the gates closed. It held a saint's finger once; it holds nothing now. The golem has not noticed."
   },
   "cz_bounty_red_beard_cross": {
     "name": "The Smith Who Started for the Capital",
@@ -6000,7 +6000,7 @@
     "needed": 2,
     "reward_gold": 900,
     "cleanse_required": 4,
-    "flavor": "A funeral that set out from the drowned holds, walked through the Gullet, and arrived in Mourncross with no body to bury. Two such processions still walk that route. End them. The kingdom will be one less funeral that never ended."
+    "flavor": "A funeral set out from the drowned holds, walked through the Gullet, and arrived in Mourncross with no body. Two such processions still walk that route, and the route has worn into the road."
   },
   "cz_wanderer_d_climb": {
     "name": "The Wanderer's Letter — On the Ashen Climb",
@@ -6101,7 +6101,7 @@
     "needed": 5,
     "reward_gold": 600,
     "cleanse_required": 3,
-    "flavor": "Five drowners — each from a different broken sluice along the Reach, each carrying a different hold's name on her hem. End them. Five sluices will know they have been emptied of their keeper. The kingdom will know its drowning was many."
+    "flavor": "Five drowners — each from a different broken sluice along the Reach, each carrying a different hold's name stitched on her hem."
   },
   "cz_pilgrim_c_choir": {
     "name": "The Pilgrim's Stations — A Shade in the Choir",
@@ -6133,7 +6133,7 @@
     "needed": 1,
     "reward_gold": 1800,
     "cleanse_required": 5,
-    "flavor": "The Maw-Mother is hungrier in the cleansed kingdom; there is less to eat. End her. The Gullet will be only the Gullet after.",
+    "flavor": "The Maw-Mother is hungrier in the cleansed kingdom. The kingdom has less to feed her, and she has stopped chewing slowly.",
     "reward_marks": [
       "gullet_mawmother_braced_for_you"
     ]
@@ -6144,7 +6144,7 @@
     "needed": 1,
     "reward_gold": 2000,
     "cleanse_required": 5,
-    "flavor": "The Cantor has been singing for a hundred winters. The cleansed kingdom hears him quieter. End him. The third line will hold.",
+    "flavor": "The Cantor has been singing for a hundred winters. In the cleansed kingdom you can hear his third line breaking.",
     "reward_marks": [
       "choir_you_unsung_your_name"
     ],
@@ -6156,7 +6156,7 @@
     "needed": 1,
     "reward_gold": 1900,
     "cleanse_required": 5,
-    "flavor": "The Bellward has been ringing the bell for a hundred winters. The cleansed kingdom hears the bell from far. End her. The bell will find a new ringer or none."
+    "flavor": "The Bellward has been ringing the bell for a hundred winters. In the cleansed kingdom the bell carries further, into the wood, into the dyke."
   },
   "lg_after_summit_listened": {
     "name": "After the Summit Started to Listen",
@@ -6186,7 +6186,7 @@
     "needed": 4,
     "reward_gold": 1100,
     "cleanse_required": 5,
-    "flavor": "You named someone to the Summit wind once. Four ice-wraiths carry the name still. End them. The name will return to its owner.",
+    "flavor": "You named someone to the Summit wind once. Four ice-wraiths above the snow carry that name between them, syllable by syllable.",
     "requires_mark": "summit_you_named_someone_to_the_wind",
     "reward_marks": [
       "the_summit_wind_called_your_step"
@@ -6287,7 +6287,7 @@
     "needed": 2,
     "reward_gold": 1500,
     "cleanse_required": 5,
-    "flavor": "A previous self had ended Cantor Vael. The new self finds the Choir silent. Two effigies still raise their voices. End them. The Choir will be silent.",
+    "flavor": "A previous self ended Cantor Vael. The Choir is silent of his voice — but two effigies in the back row are still raising theirs.",
     "requires_ending": [
       "hidden_truth"
     ],
@@ -6356,7 +6356,7 @@
     "reward_gold": 300,
     "cleanse_required": 0,
     "requires_mark": "lamp2_told_you_her_first_name",
-    "flavor": "The Lampkeeper told you her first name once. Two wolves of the wood have learned the name. End them. The name stays the Lampkeeper's.",
+    "flavor": "The Lampkeeper told you her first name once, in a low voice. Two wolves of the wood were close enough to hear, and have not moved.",
     "reward_marks": [
       "lamp2_told_you_which_lamp_remembers_who"
     ]
@@ -6386,7 +6386,7 @@
     "reward_gold": 400,
     "cleanse_required": 1,
     "requires_mark": "lampkeeper_handed_you_her_drawing",
-    "flavor": "The Lampkeeper handed you a drawing she had made of a climber she'd lost. Four goblins are between you and the place in the drawing. End them. The drawing will arrive.",
+    "flavor": "The Lampkeeper handed you her drawing of a climber she had lost. Four goblins crouch on the rocks between you and the place she drew.",
     "reward_chronicle_line": "The Lampkeeper had handed them a drawing of a lost climber; the place in it was reached by ending four goblins between Gravewatch and the spot."
   },
   "gw2_lampkeeper_will_not_look": {
@@ -6456,7 +6456,7 @@
     "reward_gold": 250,
     "cleanse_required": 0,
     "requires_mark": "pet_hearth_cat_brought_you_a_mouse",
-    "flavor": "Gravewatch's hearth-cat brought you a mouse. Three wolves of the wood considered the gesture an offering. End them. The cat will know.",
+    "flavor": "Gravewatch's hearth-cat dropped a mouse at your boot. Three wolves of the wood watched the gesture and took it for an offering.",
     "reward_chronicle_line": "A village cat had brought a mouse to a climber; three wolves at the wood's edge fell for misreading the gesture."
   },
   "gw2_cat_curled_at_grief": {
@@ -6487,7 +6487,7 @@
     "reward_gold": 250,
     "cleanse_required": 0,
     "requires_mark": "insomniac_counted_your_cat",
-    "flavor": "The Insomniac of Gravewatch counted a cat as yours. Two wolves had thought the cat was theirs. End them. The count holds."
+    "flavor": "The Insomniac of Gravewatch counted the hearth-cat as yours, on the slate by her bed. Two wolves had been counting it as theirs."
   },
   "gw2_insomniac_not_today": {
     "name": "After the Insomniac Refused to Count You Today",
@@ -6505,7 +6505,7 @@
     "reward_gold": 700,
     "cleanse_required": 4,
     "requires_mark": "mage_a_lamp_lit_without_you_saying",
-    "flavor": "A lamp lit at Gravewatch without you saying. An effigy in the Choir had set the unsaying. End it. The lamp will continue to light.",
+    "flavor": "A lamp lit at Gravewatch without anyone saying the word. An effigy in the Choir is standing with her mouth in the shape of the unsaying.",
     "requires_class": [
       "mage"
     ]
@@ -6539,7 +6539,7 @@
     "reward_gold": 1200,
     "cleanse_required": 5,
     "requires_mark": "border_karst_a_chair_was_set_facing_yours",
-    "flavor": "A chair at Karst had been set facing yours, briefly. A Penitent above the snowline noticed the facing. End him. The chair stays.",
+    "flavor": "A chair at Karst was set facing yours, briefly. A Penitent above the snowline saw the facing through a crack in his shutter.",
     "reward_marks": [
       "the_border_air_changed_when_you_crossed"
     ]
@@ -6579,7 +6579,7 @@
     "reward_gold": 1400,
     "cleanse_required": 4,
     "requires_mark": "border_margrave_a_bell_rang_when_you_left",
-    "flavor": "A bell rang when you left the Margrave's Monument. The Margrave Censor rang it. End him. The bell will be a bell again.",
+    "flavor": "A bell rang at the Margrave's Monument when you left. The Margrave Censor was the one with his hand on the rope.",
     "reward_marks": [
       "border_margrave_a_dead_lord_thanked_you"
     ]
@@ -6600,7 +6600,7 @@
     "reward_gold": 1500,
     "cleanse_required": 4,
     "requires_mark": "border_margrave_the_stone_softened_to_your_kneel",
-    "flavor": "The Margrave's stone softened to your kneel. The Censor felt the softening. End him. The stone will keep the kneel.",
+    "flavor": "The Margrave's stone softened to your kneel, just enough to take the shape. The Censor felt the give in his own kneecap.",
     "reward_chronicle_line": "The Margrave's stone had softened to their kneel; the Censor ended in the soft place, and the kneel stayed."
   },
   "br_wynne_post_message": {
@@ -6622,7 +6622,7 @@
     "reward_gold": 700,
     "cleanse_required": 4,
     "requires_mark": "border_wynne_a_song_carried_on_the_wind",
-    "flavor": "A song carried on the wind at Wynne. Two ice-wraiths above the snow-line had been the song's singers. End them. The song stays carried."
+    "flavor": "A song was on the wind at Wynne. Two ice-wraiths above the snowline were the singers, mouths frozen open mid-vowel."
   },
   "br_wynne_arrowhead": {
     "name": "After an Arrowhead Was in the Wynne Post",
@@ -6649,7 +6649,7 @@
     "reward_gold": 1100,
     "cleanse_required": 4,
     "requires_mark": "the_border_air_changed_when_you_crossed",
-    "flavor": "The Border air changed when you crossed it. The Pre-Pall Shrine Keeper felt the change. End him. The Border will keep the change."
+    "flavor": "The Border air changed when you crossed it. The Pre-Pall Shrine Keeper felt the pressure shift at his shoulders."
   },
   "br_signpost_pointed": {
     "name": "After the Border Signpost Pointed at You",
@@ -6751,7 +6751,7 @@
     "reward_gold": 1300,
     "cleanse_required": 5,
     "requires_mark": "summit_kept_your_smaller_self",
-    "flavor": "The Summit kept the smaller version of you. A Penitent on the upper stone met the smaller you. End him. The smaller you stays kept.",
+    "flavor": "The Summit kept a smaller version of you, the size you were the first time. A Penitent on the upper stone is sitting beside her.",
     "reward_chronicle_line": "The Summit had kept the smaller version of them; the Penitent on the upper stone met the smaller self and ended at it."
   },
   "cr3_climb_warden_one_breath": {
@@ -6797,7 +6797,7 @@
     "reward_gold": 700,
     "cleanse_required": 1,
     "requires_mark": "reach_you_almost_drowned",
-    "flavor": "You almost drowned in the Reach. Four silt-drowners knew the almost-ness. End them. The drowning stays almost."
+    "flavor": "You almost drowned in the Reach. Four silt-drowners felt the almost-ness in the water, the way fish feel a hand."
   },
   "cr3_reach_song_loved": {
     "name": "After the Reach Drowned a Song II",
@@ -6806,7 +6806,7 @@
     "reward_gold": 600,
     "cleanse_required": 2,
     "requires_mark": "reach_drowned_a_song_you_loved",
-    "flavor": "A song you loved drowned in the Reach. Two threshers hum it still. End them. The song will be quiet."
+    "flavor": "A song you loved drowned in the Reach. Two threshers hum it still, badly, while they work the silt."
   },
   "cr3_burned_library_lore_seen": {
     "name": "After You Read the Burned Library's Lore",
@@ -6857,7 +6857,7 @@
     "reward_marks": [
       "choir_kept_the_third_line"
     ],
-    "flavor": "Once you know the third lost verse, three censer-shades in the Choir carry it. End them. The verse stays known."
+    "flavor": "The third lost verse came back to you on the climb. Three censer-shades in the Choir are carrying it folded thin in their smoke."
   },
   "cr3_pallid_stag_no_damage": {
     "name": "The Pallid Stag, Untouched",
@@ -6905,7 +6905,7 @@
       "chain2_forager_a_a_loaf"
     ],
     "chain_next": "chain2_forager_c_a_word",
-    "flavor": "A forager boy is wearing your shoe. End him. The shoe will come back to your foot."
+    "flavor": "A forager boy is wearing your shoe. The laces are tied the way you tie them, badly."
   },
   "chain2_forager_c_a_word": {
     "name": "The Forager's Path — A Word",
@@ -6920,7 +6920,7 @@
     "reward_marks": [
       "holds_eron_almost_spoke"
     ],
-    "flavor": "A forager boy almost speaks a word. End him. The word will be in the air after, briefly."
+    "flavor": "A forager boy is shaping a word with his mouth but not making sound. The shape is one you taught a child once."
   },
   "chain2_forager_d_a_name": {
     "name": "The Forager's Path — A Name",
@@ -7007,7 +7007,7 @@
       "chain2_doors_a_widow"
     ],
     "chain_next": "chain2_doors_c_child",
-    "flavor": "A doorshut at a father's old doorpost. End it. The father will not be the one shutting the door any more."
+    "flavor": "A doorshut at a father's old doorpost has its palm against the wood, the way the father used to lean before going in."
   },
   "chain2_doors_c_child": {
     "name": "The Three Doorposts — The Child's",
@@ -7022,7 +7022,7 @@
     "reward_marks": [
       "holds_you_added_a_name_to_a_post"
     ],
-    "flavor": "A doorshut at a child's old doorpost. End it. The child will be named on the post when you carve."
+    "flavor": "A doorshut at a child's old doorpost is the height the child was. It hums the bedtime list."
   },
   "chain2_doors_d_kingdom": {
     "name": "The Three Doorposts — The Kingdom's",
@@ -7037,7 +7037,7 @@
     "reward_marks": [
       "holds_doorpost_remembered_a_name"
     ],
-    "flavor": "The Sealed Chamber. The Chairman who decided the doorposts should be empty. End him. The doorposts will stay named."
+    "flavor": "The Sealed Chamber. The Chairman who decided the doorposts should be empty sits at the head of the table, with the carving knife."
   },
   "chain2_after_hunters_cache_collars": {
     "name": "After You Matched the Hunter's Cache Collars",
@@ -7062,7 +7062,7 @@
     "requires_discovery": [
       "atrel_register"
     ],
-    "flavor": "Atrél's register names two of the procession. End them. The register will know."
+    "flavor": "Atrél's register names two of the procession. Their footprints sit on the page the wind has wetted."
   },
   "chain2_after_palls_words": {
     "name": "After You Read the Pall's Only Words II",
@@ -7087,7 +7087,7 @@
     "requires_discovery": [
       "red_beards_hammer_haft"
     ],
-    "flavor": "Red Beard's haft is still in the doorpost. Two more of his kind walk the road. End them. The haft will stay where it sits."
+    "flavor": "Red Beard's haft is still in the doorpost where he left it. Two more of his kind walk the road, swinging hafts that match."
   },
   "chain2_after_engineer_plans_ii": {
     "name": "After the Engineer's Plans, the Bog Lurchers Knew",
@@ -7101,7 +7101,7 @@
     "reward_marks": [
       "reach_promised_the_field_a_grain"
     ],
-    "flavor": "The Engineer's plans named three lurchers as breaches in his weir. End them. The plans will hold."
+    "flavor": "Three lurchers stand in the breaches the Engineer drew. His ink names them, in his hand, on the page in your pocket."
   },
   "co_after_companion_first_name": {
     "name": "After the Companion Told You Their First Name",
@@ -7110,7 +7110,7 @@
     "reward_gold": 350,
     "cleanse_required": 0,
     "requires_mark": "companion_told_you_their_first_name",
-    "flavor": "Your sworn told you their first name. Three bandits had hoped to learn it without permission. End them. The name stays a gift."
+    "flavor": "Your sworn told you their first name in the dark. Three bandits at the next campfire have been working out what they almost heard."
   },
   "co_after_companion_grief": {
     "name": "After the Companion Carried Part of Your Grief",
@@ -7128,7 +7128,7 @@
     "reward_gold": 400,
     "cleanse_required": 0,
     "requires_mark": "companion_kept_first_watch_for_you",
-    "flavor": "Your sworn kept first watch while you slept. Four wolves of the wood had hoped to test the sleep. End them. The watch holds."
+    "flavor": "Your sworn kept first watch while you slept. Four wolves of the wood circled the fire just out of reach of the light."
   },
   "co_after_ate_first": {
     "name": "After the Companion Ate First for You",
@@ -7147,7 +7147,7 @@
     "reward_gold": 700,
     "cleanse_required": 3,
     "requires_mark": "companion_remembered_your_old_name",
-    "flavor": "Your sworn remembered the name you used to go by. A magistrate in Mourncross had crossed that name out. End him. The name comes back."
+    "flavor": "Your sworn remembered the name you used to go by. A magistrate in Mourncross has the line of ink where he crossed it out."
   },
   "co_after_named_star": {
     "name": "After the Companion Named a Star for You",
@@ -7156,7 +7156,7 @@
     "reward_gold": 600,
     "cleanse_required": 4,
     "requires_mark": "companion_named_a_star_for_you",
-    "flavor": "Your sworn named a star for you. Two ice-wraiths above the snowline had been competing for the name. End them. The star stays yours."
+    "flavor": "Your sworn named a star for you. Two ice-wraiths above the snowline have been trading the name like a coin."
   },
   "co_after_shared_dream": {
     "name": "After the Companion Shared a Dream",
@@ -7165,7 +7165,7 @@
     "reward_gold": 500,
     "cleanse_required": 4,
     "requires_mark": "companion_shared_a_dream_with_you",
-    "flavor": "Your sworn shared a dream with you. Two censer-shades carried smoke from it. End them. The dream stays between you."
+    "flavor": "Your sworn shared a dream with you and you woke at the same hour. Two censer-shades carry smoke from that hour in their bellies."
   },
   "co_after_sleep_lighter": {
     "name": "After the Companion Taught You to Sleep Lighter",
@@ -7183,7 +7183,7 @@
     "reward_gold": 500,
     "cleanse_required": 1,
     "requires_mark": "companion_taught_you_a_song_from_their_homeland",
-    "flavor": "Your sworn taught you a song from their homeland. Three threshers in the Reach hummed it back wrong. End them. The song will be sung right."
+    "flavor": "Your sworn taught you a song from their homeland. Three threshers in the Reach are humming it back wrong, off by a fourth."
   },
   "co_after_one_grief": {
     "name": "After the Companion Told You One of Their Griefs",
@@ -7204,7 +7204,7 @@
     "reward_gold": 450,
     "cleanse_required": 0,
     "requires_mark": "companion_learned_to_keep_silent_with_you",
-    "flavor": "Your sworn learned to keep silent with you. Four bandits had hoped to overhear something. End them. The silence holds."
+    "flavor": "Your sworn learned to keep silent with you. Four bandits crouched in the bracken for an hour, waiting for any word."
   },
   "co_after_almost_left": {
     "name": "After the Companion Almost Left at the Branching",
@@ -7223,7 +7223,7 @@
     "reward_gold": 500,
     "cleanse_required": 1,
     "requires_mark": "companion_lost_a_glove_for_you",
-    "flavor": "Your sworn lost a glove fetching something for you. Two silt-drowners wear it now. End them. The glove will be a pair again."
+    "flavor": "Your sworn lost a glove fetching something for you. Two silt-drowners are wearing the pair between them, one each."
   },
   "co_after_not_back_lookout": {
     "name": "After the Companion Did Not Come Back from the Lookout",
@@ -7496,7 +7496,7 @@
     "reward_gold": 400,
     "cleanse_required": 0,
     "requires_mark": "hireling_told_you_their_real_name",
-    "flavor": "Your hireling told you their real name. Three bandits had hoped to use it as leverage. End them. The name stays a gift."
+    "flavor": "Your hireling told you their real name in the rain. Three bandits a fire over had been hoping for any name they could lean on."
   },
   "ph_hireling_blow_for_you": {
     "name": "After the Hireling Took a Blow for You",
@@ -7559,7 +7559,7 @@
     "reward_gold": 700,
     "cleanse_required": 3,
     "requires_mark": "fallen_hireling_was_added_to_the_chronicle",
-    "flavor": "A fallen hireling of yours is named in the Chronicle. One of the procession holds an echo of the name. End them. The name stays.",
+    "flavor": "A fallen hireling of yours is named in the Chronicle, two lines down. One of the procession has the same name on her shroud.",
     "reward_chronicle_line": "A hireling who had fallen had been written into the Chronicle; one of the procession holding the echo fell to the next walk."
   },
   "ph_ash_hound_killed": {
@@ -7569,7 +7569,7 @@
     "reward_gold": 400,
     "cleanse_required": 0,
     "requires_mark": "pet_ash_hound_killed_for_you",
-    "flavor": "The ash hound killed for you. Three wolves had been considering the ash hound prey. End them. The hound holds."
+    "flavor": "The ash hound killed for you. Three wolves of the wood had been planning on the ash hound as prey, and have not yet adjusted."
   },
   "ph_ash_hound_followed_grief": {
     "name": "After the Ash Hound Followed Your Grief",
@@ -7578,7 +7578,7 @@
     "reward_gold": 600,
     "cleanse_required": 3,
     "requires_mark": "pet_ash_hound_followed_your_grief",
-    "flavor": "The ash hound followed your grief. One of the procession noticed the following. End it. The grief stays followed."
+    "flavor": "The ash hound followed your grief at a distance, as it does. One of the procession noticed the following and has been walking beside the hound since."
   },
   "ph_ash_hound_warmed": {
     "name": "After the Ash Hound Warmed Your Boots",
@@ -7651,7 +7651,7 @@
     "reward_gold": 500,
     "cleanse_required": 1,
     "requires_mark": "forgot_the_name_of_your_first_pet",
-    "flavor": "You forgot the name of your first pet. Two bonesongs in the Holds had eaten the name. End them. The name will be in air again, briefly."
+    "flavor": "You forgot the name of your first pet. Two bonesongs in the Holds are humming a syllable that almost fits it."
   },
   "cr_hub_first_arrival": {
     "name": "The Crossroads' First Recognition",
@@ -8444,7 +8444,7 @@
     "reward_gold": 2400,
     "cleanse_required": 5,
     "requires_mark": "ending_warden_a_lampkeeper_called_you_warden",
-    "flavor": "Across runs, the Lampkeeper called you Warden. The new Shadow Warden could not be called the same. End him. The title stays yours."
+    "flavor": "The Lampkeeper has called you Warden across runs. The new Shadow Warden takes the title personally, and has been waiting on the upper road for you."
   },
   "ee_warden_pall_walked_three": {
     "name": "After the Pall Walked Three Steps II",
@@ -8548,7 +8548,7 @@
     "reward_gold": 800,
     "cleanse_required": 4,
     "requires_mark": "music_an_unsung_verse_came_back",
-    "flavor": "An unsung verse came back to you — for one breath. An effigy in the Choir had eaten the verse before. End it. The verse stays sung."
+    "flavor": "An unsung verse came back to you on the in-breath. An effigy in the Choir is opening her mouth to take it again."
   },
   "mc_silence_kindness": {
     "name": "After Silence Was a Kindness",
@@ -8881,7 +8881,7 @@
     "reward_gold": 700,
     "cleanse_required": 4,
     "requires_mark": "pall_briefly_held_the_air_around_you",
-    "flavor": "The Pall briefly held the air around you. Three censer-shades had been the holding. End them. The air will be air."
+    "flavor": "The Pall briefly held the air around you, the way a hand cups a candle. Three censer-shades stood inside the cup."
   },
   "pl_forgot_road": {
     "name": "After You Forgot a Road",
@@ -8899,7 +8899,7 @@
     "reward_gold": 700,
     "cleanse_required": 4,
     "requires_mark": "forgot_a_song",
-    "flavor": "You forgot a song. An effigy in the Choir had been the song's previous singer. End it. The song returns by another route."
+    "flavor": "You forgot a song. An effigy in the Choir was its first singer; her mouth still sits in the right shape for the first line."
   },
   "pl_forgot_word_loved": {
     "name": "After You Forgot a Word You Loved",
@@ -8908,7 +8908,7 @@
     "reward_gold": 800,
     "cleanse_required": 3,
     "requires_mark": "forgot_a_word_you_loved",
-    "flavor": "You forgot a word you loved. A library-warden had crossed the word out. End him. The word will come back, slowly."
+    "flavor": "You forgot a word you loved. A library-warden in Mourncross has the page where he crossed it out, with the line still wet."
   },
   "pl_forgot_mothers_voice": {
     "name": "After You Forgot Your Mother's Voice",
@@ -8927,7 +8927,7 @@
     "reward_gold": 600,
     "cleanse_required": 1,
     "requires_mark": "forgot_your_first_friend",
-    "flavor": "You forgot your first friend for a passage. A bonesong in the Holds had absorbed the name. End it. The name returns clean."
+    "flavor": "You forgot your first friend for a passage. A bonesong in the Holds is humming the syllable you used to call her by."
   },
   "pl_bleed_dog_followed": {
     "name": "After a Dog Followed You Back to Town",
@@ -9110,7 +9110,7 @@
     "reward_gold": 800,
     "cleanse_required": 4,
     "requires_mark": "mage_you_forgot_your_first_spell",
-    "flavor": "The mage forgot their first spell. An effigy had absorbed it. End it. The first spell returns by another route.",
+    "flavor": "The mage forgot their first spell. An effigy in the Choir hums the shape of it under her stitched mouth.",
     "requires_class": [
       "mage"
     ]
@@ -9244,7 +9244,7 @@
     "reward_gold": 800,
     "cleanse_required": 3,
     "requires_mark": "reborn_a_grave_was_warm_for_you",
-    "flavor": "A grave in Mourncross was warm for you on arrival — a previous self had been laid there briefly. One of the procession had been keeping the warmth. End it. The grave will be still."
+    "flavor": "A grave in Mourncross was warm for you on arrival — a previous self had been laid there briefly. One of the procession has been sitting on the stone since, keeping it warm."
   },
   "rh_grove_carved_name": {
     "name": "After a Grove Held a Carved Name",
@@ -9272,7 +9272,7 @@
     "reward_gold": 500,
     "cleanse_required": 0,
     "requires_mark": "reborn_a_hollowed_left_a_message_carved_in_a_tree",
-    "flavor": "A Hollowed left a message carved in a tree across runs. Three wolves had been reading the carving. End them. The carving holds."
+    "flavor": "A Hollowed left a message carved in a tree across runs. Three wolves of the wood have been reading the carving with their tongues."
   },
   "rh_hollowed_token": {
     "name": "After a Hollowed Left a Token",
@@ -9372,7 +9372,7 @@
     "reward_gold": 700,
     "cleanse_required": 3,
     "requires_mark": "hollowed_had_been_a_child_once",
-    "flavor": "A Hollowed had been a child once. One of the procession knew the child's name. End it. The name stays in the kingdom."
+    "flavor": "A Hollowed had been a child once. One of the procession knows what the child was called, and answers to it sometimes."
   },
   "rh_hollowed_kingdom_breathed": {
     "name": "After the Kingdom Breathed Out at the Laying-to-Rest",
@@ -9659,7 +9659,7 @@
     "reward_gold": 600,
     "cleanse_required": 4,
     "requires_mark": "lost_a_small_song",
-    "flavor": "You lost a small song you knew. Two censer-shades had been carrying it as smoke. End them. The song comes back, slowly."
+    "flavor": "A small song you knew is gone from you. Two censer-shades carry it as smoke, one verse each."
   },
   "dd_lost_taste_food": {
     "name": "After You Lost the Taste for a Food",
@@ -9714,7 +9714,7 @@
     "reward_gold": 500,
     "cleanse_required": 1,
     "requires_mark": "near_death_dropped_a_word",
-    "flavor": "Near-death dropped a word from you. A bonesong in the Holds had been the catching basket. End it. The word returns."
+    "flavor": "A near-death dropped a word out of you. A bonesong in the Holds was the basket that caught it."
   },
   "nd_pall_breathed": {
     "name": "After You Heard the Pall Breathe at Near-Death",
@@ -9829,7 +9829,7 @@
     "reward_gold": 600,
     "cleanse_required": 1,
     "requires_mark": "learned_to_pity_an_enemy_without_letting_them_live",
-    "flavor": "You learned to pity without letting live. Four bandits on the road tested the pity. End them. The pity holds."
+    "flavor": "You learned to pity without letting live. Four bandits on the road tested the pity by stepping into the lantern's edge."
   },
   "am_dent_overnight": {
     "name": "After Your Armor Got a Dent Overnight",
@@ -22205,7 +22205,12 @@
     "requires_mark": "mourncross_heard_bell_for_someone",
     "target_composition": {
       "tolerance": "exact",
-      "notes": ["C4", "G3", "Eb4", "G3"],
+      "notes": [
+        "C4",
+        "G3",
+        "Eb4",
+        "G3"
+      ],
       "voice": "bell",
       "altar": "mourncross",
       "hints": [
@@ -22216,7 +22221,9 @@
         "The full phrase: C4 G3 Eb4 G3."
       ]
     },
-    "reward_marks": ["bellward_bell_rang_for_living"],
+    "reward_marks": [
+      "bellward_bell_rang_for_living"
+    ],
     "reward_chronicle_line": "They taught the bell, in a hand the bellward never knew, to ring for someone still breathing.",
     "flavor": "The bell tolls for the dead. Maybe it could ring, once, for someone still here."
   }

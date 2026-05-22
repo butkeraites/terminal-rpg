@@ -406,9 +406,9 @@
       "No one has come to extinguish it. No one will. The water keeps it lit."
     ],
     "intro_familiar": [
-      "🌊 The Drowned Holds. You have walked these streets that are still streets.",
-      "The water is still grief, kept liquid. But the doors you have walked past",
-      "you know now — which ones never opened, which ones still might."
+      "🌊 The Drowned Holds. You have learned which streets the water lets you walk.",
+      "The candle in the window has not gone out. You no longer slow when you pass.",
+      "You know now which doors never opened, and which ones still might."
     ],
     "intro_cleansed": [
       "🌊 The Drowned Holds. The water has receded from some of the lanes.",
@@ -1316,9 +1316,8 @@
     "unlock_flag": "border_open",
     "intro": [
       "🌐 The Crossroads' east turn is one Mournhold's maps used to label OUTSIDE.",
-      "Across it: three sister realms that watched Mournhold die.",
-      "They have been watching the Pall the whole three winters, from their own borders.",
-      "Each of them did something different with what they saw."
+      "Three sister realms wait beyond it.",
+      "They have watched the Pall for three winters. Each has come to a different verdict."
     ],
     "connections": ["crossroads"],
     "conditional_connections": ["karst_outpost", "wynne_camp", "margrave_monument"],
@@ -1539,8 +1538,7 @@
       "🪜 You leave the Witherwood north, past where the road wants to take you.",
       "A path. Older than the road. It does not appear on the maps Mournhold drew.",
       "It bends down into a hollow. The hollow is full of smoke from cookfires.",
-      "There are people here. Three generations of them. None of them are from Mournhold.",
-      "All of them are from holds Mournhold sealed the gates against, three winters ago."
+      "There are people here. Three generations. Their grandparents starved at the capital's closed gate."
     ],
     "connections": ["forest"],
     "encounters": [
@@ -1762,9 +1760,9 @@
       "🪨 The dragged door gives. Inside: a small room with one chair, and ten chairs around it.",
       "Five of the ten are turned over. Their occupants — what's left of them — are on the floor.",
       "On the walls behind the five overturned chairs, scratched into stone with knives, are five names.",
-      "Below each name, a line. They wrote, before they died, the things they wanted remembered.",
-      "At the head of the room, in the chair that did not fall, something still sits.",
-      "It is recording. It has been recording for many winters."
+      "Below each name, a line of what they wanted remembered.",
+      "At the head of the room, in the chair that did not fall, something sits.",
+      "It has been writing the names down for many winters. It is not yet finished."
     ],
     "connections": ["mourncross"],
     "encounters": [
@@ -2058,8 +2056,8 @@
       "Beneath it: a stair, and at the foot of the stair, a small room.",
       "A figure sits cross-legged at the centre. Ossified. The stone of the room",
       "has grown into her, and out of her, and through her open mouth.",
-      "She is the floor. She is the walls. She is the seal.",
-      "She is alive. She turns her head only a little. She sees you."
+      "She is the seal — floor, walls, and the body that became them.",
+      "She turns her head only a little. She sees you."
     ],
     "connections": ["pre_pall_shrine"],
     "encounters": [
