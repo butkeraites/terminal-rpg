@@ -271,22 +271,34 @@ class Content:
             _check_int("min_level", quest.get("min_level"), qid,
                        minimum=1, allow_none=True)
 
-            # Completion target: exactly one of target_enemy / target_trophy /
-            # completion_condition (the last for pure-condition quests like
-            # "complete the run without dying"; rare, but allowed).
+            # Completion target: need at least one of target_enemy /
+            # target_trophy / completion_condition / target_composition.
+            # Constraints:
+            #   - te and tt are mutually exclusive (legacy)
+            #   - cc may coexist with te (some quests gate kills behind
+            #     a condition — existing pattern, kept intact)
+            #   - tcomp is mutually exclusive with EVERYTHING — melody
+            #     quests are completed by composition alone
             te = quest.get("target_enemy")
             tt = quest.get("target_trophy")
             cc = quest.get("completion_condition")
-            targets = [t for t in (te, tt) if t is not None]
-            if not targets and not cc:
+            tcomp = quest.get("target_composition")
+            if not any((te, tt, cc, tcomp)):
                 raise ValueError(
                     f"quest '{qid}' must specify one of 'target_enemy', "
-                    f"'target_trophy', or 'completion_condition'"
+                    f"'target_trophy', 'target_composition', or "
+                    f"'completion_condition'"
                 )
-            if len(targets) > 1:
+            if te is not None and tt is not None:
                 raise ValueError(
                     f"quest '{qid}' must specify only one of 'target_enemy' "
                     f"or 'target_trophy', not both"
+                )
+            if tcomp is not None and any((te, tt, cc)):
+                raise ValueError(
+                    f"quest '{qid}' uses 'target_composition' — cannot "
+                    f"combine with 'target_enemy', 'target_trophy', or "
+                    f"'completion_condition'"
                 )
             if te is not None and te not in self.enemies:
                 raise ValueError(
@@ -301,6 +313,8 @@ class Content:
                 raise ValueError(
                     f"quest '{qid}' has unknown completion_condition '{cc}'"
                 )
+            if tcomp is not None:
+                self._validate_target_composition(qid, tcomp)
 
             # Gate references
             if "requires_flag" in quest:
@@ -408,6 +422,115 @@ class Content:
                         f"quest '{qid}' field 'trigger_action' must be a "
                         f"dict with a 'type' key"
                     )
+
+    def _validate_target_composition(self, qid, tcomp):
+        """Validate a quest's target_composition field shape.
+
+        Modes:
+          exact   — needs a `notes` list, every note parseable
+          by_mode — needs a `mode` string ('ROOT_NAME'), min_notes/max_notes,
+                    optional octave_range pair of parseable notes
+        Both modes share: `voice` in the synth's VOICES, `altar` is a real
+        location id, `hints` is a list of strings.
+        """
+        # Lazy imports so content.py stays light when boss music isn't used
+        from . import boss_music_synth as _synth
+        from . import composer as _composer
+
+        if not isinstance(tcomp, dict):
+            raise ValueError(
+                f"quest '{qid}' field 'target_composition' must be a dict"
+            )
+
+        tolerance = tcomp.get("tolerance", "exact")
+        if tolerance not in ("exact", "by_mode"):
+            raise ValueError(
+                f"quest '{qid}' target_composition.tolerance must be "
+                f"'exact' or 'by_mode', got {tolerance!r}"
+            )
+
+        voice = tcomp.get("voice", "voice")
+        if voice not in _synth.VOICES:
+            raise ValueError(
+                f"quest '{qid}' target_composition.voice {voice!r} "
+                f"not in synth VOICES"
+            )
+
+        altar = tcomp.get("altar")
+        if altar is None:
+            raise ValueError(
+                f"quest '{qid}' target_composition.altar is required"
+            )
+        if altar not in self.locations:
+            raise ValueError(
+                f"quest '{qid}' target_composition.altar {altar!r} "
+                f"is not a known location id"
+            )
+
+        hints = tcomp.get("hints", [])
+        if not isinstance(hints, list) or not all(isinstance(h, str)
+                                                   for h in hints):
+            raise ValueError(
+                f"quest '{qid}' target_composition.hints must be a list "
+                f"of strings"
+            )
+
+        if tolerance == "exact":
+            notes = tcomp.get("notes")
+            if not isinstance(notes, list) or not notes:
+                raise ValueError(
+                    f"quest '{qid}' target_composition.notes must be a "
+                    f"non-empty list for tolerance='exact'"
+                )
+            for note in notes:
+                try:
+                    _synth.note_freq(note)
+                except (KeyError, ValueError, IndexError):
+                    raise ValueError(
+                        f"quest '{qid}' target_composition.notes contains "
+                        f"unparseable note {note!r}"
+                    ) from None
+        else:  # by_mode
+            mode = tcomp.get("mode")
+            if not isinstance(mode, str):
+                raise ValueError(
+                    f"quest '{qid}' target_composition.mode is required "
+                    f"for tolerance='by_mode'"
+                )
+            try:
+                _composer.parse_mode(mode)
+            except ValueError as e:
+                raise ValueError(
+                    f"quest '{qid}' target_composition.mode invalid: {e}"
+                ) from None
+            min_n = tcomp.get("min_notes", 1)
+            max_n = tcomp.get("max_notes", 8)
+            if not isinstance(min_n, int) or not isinstance(max_n, int):
+                raise ValueError(
+                    f"quest '{qid}' target_composition.min_notes/max_notes "
+                    f"must be ints"
+                )
+            if min_n < 1 or max_n < min_n:
+                raise ValueError(
+                    f"quest '{qid}' target_composition note count range "
+                    f"invalid: min={min_n}, max={max_n}"
+                )
+            octave_range = tcomp.get("octave_range")
+            if octave_range is not None:
+                if (not isinstance(octave_range, list)
+                        or len(octave_range) != 2):
+                    raise ValueError(
+                        f"quest '{qid}' target_composition.octave_range "
+                        f"must be a 2-element list"
+                    )
+                for note in octave_range:
+                    try:
+                        _synth.note_freq(note)
+                    except (KeyError, ValueError, IndexError):
+                        raise ValueError(
+                            f"quest '{qid}' target_composition.octave_range "
+                            f"contains unparseable note {note!r}"
+                        ) from None
 
     def _validate_components(self):
         """Check every weapon slot exists and components grant only real stats."""

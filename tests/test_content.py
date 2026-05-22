@@ -176,11 +176,14 @@ def test_quests_load_and_target_real_enemies():
     content = load_content()
     assert content.quests, "quests.json should ship with the game"
     for qid, quest in content.quests.items():
-        # A quest must reference either a real enemy OR a real trophy.
+        # A quest must reference at least one completion path.
         tgt_enemy = quest.get("target_enemy")
         tgt_trophy = quest.get("target_trophy")
-        assert tgt_enemy or tgt_trophy or quest.get("completion_condition"), (
-            f"quest {qid!r} has no target_enemy/target_trophy/completion_condition")
+        tgt_comp = quest.get("target_composition")
+        assert (tgt_enemy or tgt_trophy or tgt_comp
+                or quest.get("completion_condition")), (
+            f"quest {qid!r} has no target_enemy/target_trophy/"
+            f"target_composition/completion_condition")
         if tgt_enemy:
             assert tgt_enemy in content.enemies, (
                 f"quest {qid!r} targets unknown enemy {tgt_enemy!r}")

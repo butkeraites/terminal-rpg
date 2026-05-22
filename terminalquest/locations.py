@@ -7,7 +7,7 @@ until the player dies, wins, or quits.
 """
 from . import banners as _banners
 from . import boss_music_synth as _boss_music
-from . import chronicle, endings, marks, saves
+from . import chronicle, composer, endings, marks, saves
 from . import dialogue as _dialogue
 from .accessory import make_accessory
 from .armor import make_armor
@@ -602,6 +602,33 @@ def _apply_quest_rewards(state, quest):
         io.show(f"   ✦ A path opens: {ending}")
 
 
+def _run_composition_quest(state, arg):
+    """Dispatch handler for the "compose" menu option.
+
+    Runs the composer flow; on success, applies the quest's rewards inline
+    so the player doesn't walk back to the quest board for a melody quest.
+    No automatic class consumable on success — the composition is the
+    reward; combat loot would feel like an apology for the kindness.
+    """
+    qid, quest = arg
+    if not composer.compose(state, quest):
+        return  # the player walked away
+    io = state.io
+    player = state.player
+    # Move from active to completed
+    if qid in state.flags.get("active_quests", []):
+        state.flags["active_quests"].remove(qid)
+    state.flags.setdefault("completed_quests", []).append(qid)
+    # Optional gold — melody quests typically set this to zero
+    gold = quest.get("reward_gold", 0)
+    if gold:
+        player.gold += gold
+        io.show(f"\n   +{gold} gold")
+    # Extended rewards — consumables, marks, chronicle_line, ending_unlock
+    _apply_quest_rewards(state, quest)
+    io.pause(2)
+
+
 def _quest_is_visible(quest, state, cleanses):
     """Return True if this quest should appear on the board for this player.
 
@@ -762,12 +789,19 @@ def quest_board(state):
             io.show_slow(f"\n📜 You take the slip: {quest['name']}.")
             io.pause(1)
         elif status == "active":
-            progress = state.flags["quest_progress"][quest_id]
-            target_label = (quest.get("target_enemy")
-                            or quest.get("target_trophy")
-                            or "?")
-            io.show(f"\nNot finished yet: {progress}/{quest['needed']} "
-                    f"{target_label}s.")
+            tcomp = quest.get("target_composition")
+            if tcomp is not None:
+                altar_loc = state.content.locations.get(tcomp["altar"], {})
+                altar_name = altar_loc.get("name", tcomp["altar"])
+                io.show(f"\nNot finished yet — compose at {altar_name} "
+                        f"when you're ready.")
+            else:
+                progress = state.flags["quest_progress"][quest_id]
+                target_label = (quest.get("target_enemy")
+                                or quest.get("target_trophy")
+                                or "?")
+                io.show(f"\nNot finished yet: {progress}/{quest['needed']} "
+                        f"{target_label}s.")
             io.pause(1)
         elif status == "completable":
             player.gold += quest["reward_gold"]
@@ -2522,6 +2556,23 @@ def _build_options(state, loc, fallen):
         target_name = content.locations[return_target]["name"]
         options.append((f"🛤️  Return to {target_name}",
                         ("fast_travel_return", return_target)))
+    # Melody quests: if any active quest has a target_composition whose altar
+    # matches the current location, surface a "Compose for the ..." option.
+    # The composer service handles the typed-input puzzle inline.
+    active_qids = state.flags.get("active_quests", [])
+    for qid in active_qids:
+        quest = content.quests.get(qid)
+        if quest is None:
+            continue
+        tcomp = quest.get("target_composition")
+        if tcomp is None:
+            continue
+        if tcomp.get("altar") != state.current_location:
+            continue
+        voice = tcomp.get("voice", "voice")
+        options.append((f"🎼 Compose for the {voice}",
+                        ("compose", (qid, quest))))
+
     options.append(("🗡️  Inspect Weapon", ("weapon", None)))
     options.append(("View Stats", ("stats", None)))
     options.append(("Save Game", ("save", None)))
@@ -2682,6 +2733,8 @@ def location_loop(state):
             # Re-load fallen so the just-laid-to-rest entry drops out.
             _entries = chronicle.load(state.chronicle_dir)
             fallen = chronicle.fallen(_entries)
+        elif kind == "compose":
+            _run_composition_quest(state, arg)
         elif kind == "fast_travel_return":
             target_name = content.locations[arg]["name"]
             io.show_slow(f"\n🛤️  You retrace the long road back to {target_name}.")

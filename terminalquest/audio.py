@@ -1,4 +1,4 @@
-"""Ambient + boss audio engine — opt-in, fails silently, no new dependencies.
+"""Ambient + boss + composition audio engine — opt-in, fails silently.
 
 Two kinds of audio:
 
@@ -18,9 +18,11 @@ Track transitions (ambient → boss → ambient) are crossfaded by spawning
 the new player and scheduling the old to die ~1 s later. Both tracks have
 built-in 0.5 s fades, so the overlap reads as one fading into the other.
 """
+import os
 import shutil
 import subprocess
 import sys
+import tempfile
 import threading
 from pathlib import Path
 
@@ -196,6 +198,51 @@ class AudioEngine:
                 playback.stop()
             self._active = []
             self._current_key = None
+
+    def play_composition(self, notes, voice="voice", note_seconds=0.7):
+        """Play a one-shot melody synchronously, layered over whatever is
+        currently playing. Used by the composer for melody quests — the
+        player hears their typed notes immediately, then continues.
+
+        Disabled engine, empty note list, or missing player command: no-op.
+        """
+        if not self.enabled or not notes:
+            return
+        events = [
+            (i * note_seconds, voice, note, note_seconds * 1.5, 0.85)
+            for i, note in enumerate(notes)
+        ]
+        duration = len(notes) * note_seconds + 1.0
+        try:
+            samples = boss_music_synth.render_events(events, duration)
+        except (KeyError, ValueError):
+            return
+        handle, path = tempfile.mkstemp(suffix=".wav")
+        os.close(handle)
+        try:
+            boss_music_synth.write_wav(samples, path)
+            cmd = _unix_player_cmd()
+            if cmd is not None:
+                try:
+                    subprocess.run(
+                        cmd + [str(path)],
+                        stdout=subprocess.DEVNULL,
+                        stderr=subprocess.DEVNULL,
+                        check=False,
+                    )
+                except (OSError, ValueError):
+                    pass
+            elif sys.platform == "win32":
+                try:
+                    import winsound
+                    winsound.PlaySound(str(path), winsound.SND_FILENAME)
+                except (ImportError, RuntimeError, OSError):
+                    pass
+        finally:
+            try:
+                Path(path).unlink()
+            except OSError:
+                pass
 
     def mute(self):
         self.enabled = False

@@ -22196,5 +22196,28 @@
     "cleanse_required": 3,
     "requires_mark": "cael_will_not_meet_your_eyes",
     "flavor": "Four Eye-Refusals V2. The kingdom marks it. Take them."
+  },
+  "bellwards_lullaby": {
+    "name": "The Bell, Once, For the Living",
+    "needed": 1,
+    "reward_gold": 0,
+    "cleanse_required": 0,
+    "requires_mark": "mourncross_heard_bell_for_someone",
+    "target_composition": {
+      "tolerance": "exact",
+      "notes": ["C4", "G3", "Eb4", "G3"],
+      "voice": "bell",
+      "altar": "mourncross",
+      "hints": [
+        "The bell hangs in Mourncross. Its tongue is iron. The first note should land like the bell does — a low full ring.",
+        "Four notes. The bell will copy each. Whoever it's for is in the lane below, still breathing.",
+        "Try a tonic — C — for the first. The bell knows C; it has been tolling C for a hundred winters. Surprise it with the second.",
+        "C, then a step down to G. G is a fifth — comfortable but not home. Then climb a minor third (the missing note) — Eb. End where you stepped down to.",
+        "The full phrase: C4 G3 Eb4 G3."
+      ]
+    },
+    "reward_marks": ["bellward_bell_rang_for_living"],
+    "reward_chronicle_line": "They taught the bell, in a hand the bellward never knew, to ring for someone still breathing.",
+    "flavor": "The bell tolls for the dead. Maybe it could ring, once, for someone still here."
   }
 }

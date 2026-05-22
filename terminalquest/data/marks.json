@@ -4054,6 +4054,25 @@
       "You will not be able to name them. The bell will ring for them tomorrow, also. It is alright."
     ]
   },
+  "bellward_bell_rang_for_living": {
+    "category": "promise_kept",
+    "trigger": {
+      "at": [
+        "zone_arrival"
+      ],
+      "location": [
+        "mourncross"
+      ],
+      "min_visits": 999,
+      "chance": 0.0
+    },
+    "effect": null,
+    "lines": [
+      "You took the rope. You rang the bell yourself, four heartbeats in a hand the bellward never knew.",
+      "Down in the lane, someone heard. They looked up. They were still breathing. They were named, once.",
+      "You will hear the bell, after this, the way the bellward hears it — searching."
+    ]
+  },
   "mourncross_left_a_flower_on_the_wall": {
     "category": "promise_kept",
     "trigger": {
