@@ -471,7 +471,9 @@ def test_chained_encounter_skips_refresh_between_sub_fights(content, monkeypatch
         recorded.append(refresh_after)
         return "victory"
 
-    monkeypatch.setattr(locations, "run_combat", fake_run_combat)
+    # run_combat is called from encounters.py after the v2.3 extraction.
+    from terminalquest import encounters
+    monkeypatch.setattr(encounters, "run_combat", fake_run_combat)
     encounter = {"type": "combat", "enemies": ["goblin", "wolf", "bandit"]}
     state = make_state(_strong_player(content), content, ScriptedIO(), StubRandom())
     locations.run_encounter(state, encounter, [], [])
@@ -484,7 +486,9 @@ def test_chained_encounter_restores_stamina_when_chain_breaks(content, monkeypat
         # Simulate run_combat fleeing mid-chain without restoring stamina.
         return "fled"
 
-    monkeypatch.setattr(locations, "run_combat", fake_run_combat)
+    # run_combat is called from encounters.py after the v2.3 extraction.
+    from terminalquest import encounters
+    monkeypatch.setattr(encounters, "run_combat", fake_run_combat)
     player = _strong_player(content)
     player.stamina = 1  # mimic the drained state run_combat would leave
     encounter = {"type": "combat", "enemies": ["goblin", "wolf", "bandit"]}

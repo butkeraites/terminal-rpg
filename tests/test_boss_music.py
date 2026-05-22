@@ -153,8 +153,9 @@ def test_bosses_defeated_appended_on_boss_victory(content, warrior):
     )
     # locations.py imports run_combat by name (`from .combat import run_combat`),
     # so patch its reference inside the locations module.
-    with patch.object(locations, "run_combat", return_value="victory"), \
-            patch.object(locations, "_offer_drop"):
+    from terminalquest import encounters
+    with patch.object(encounters, "run_combat", return_value="victory"), \
+            patch.object(encounters, "_offer_drop"):
         outcome = locations.run_encounter(state, encounter, [], [])
     assert outcome == "boss_victory"
     assert "pallid_stag" in state.flags["bosses_defeated"]
@@ -182,8 +183,9 @@ def test_warden_gets_defeated_bosses_context(content, warrior):
     state.flags["bosses_defeated"] = ["pallid_stag", "hollow_bellward"]
     encounter = {"id": "summit_fight", "type": "combat", "boss": True,
                  "enemies": ["shadow_warden"]}
-    with patch.object(locations, "run_combat", return_value="defeat"), \
-            patch.object(locations, "_offer_drop"):
+    from terminalquest import encounters
+    with patch.object(encounters, "run_combat", return_value="defeat"), \
+            patch.object(encounters, "_offer_drop"):
         locations.run_encounter(state, encounter, [], [])
     assert audio.boss_calls == [
         ("shadow_warden",
