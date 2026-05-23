@@ -15,20 +15,21 @@ def _player(content):
 def _visible_quest_order(state):
     """Return [(qid, quest), ...] in the same display order quest_board uses.
 
-    Authoring-time, the board groups by category (bounty → chain → special)
-    and numbers sequentially. Position-sensitive tests use this helper to
+    v3.1: the board now groups by zone (derived from each quest's
+    target_enemy via the zones where that enemy spawns), sorted by
+    recommended_level. Position-sensitive tests use this helper to
     compute the right index for the quest they care about and for Leave —
     so the suite stays green as more authored content is added.
     """
     cleanses = chronicle.cleanses(state.chronicle_dir)
     catalog = [(qid, q) for qid, q in state.content.quests.items()
                if locations._quest_is_visible(q, state, cleanses)]
-    grouped = locations._group_catalog_by_category(catalog)
+    grouped = locations._group_catalog_by_zone(catalog, state.content)
     out = []
     for row in grouped:
         if row[0] == "__header__":
             continue
-        _cat, qid, quest = row
+        _zname, qid, quest = row
         out.append((qid, quest))
     return out
 
@@ -1426,43 +1427,48 @@ def test_quest_category_special_for_condition_or_ending(content):
 
 def test_board_renders_category_headers_in_order(content, tmp_path):
     """The board UI shows Bounties → Chains → Special headers in order."""
-    # Inject one of each category.
-    content.quests["alpha_bounty"] = _hidden_test_quest(name="Alpha Bounty")
-    content.quests["alpha_chain"] = _hidden_test_quest(
-        name="Alpha Chain", requires_quest=["alpha_bounty"])
+    # v3.1: the board groups by zone (derived from target_enemy), not by
+    # category. Inject quests pointing at enemies in DIFFERENT zones so we
+    # get more than one zone header.
+    content.quests["alpha_witherwood"] = _hidden_test_quest(
+        name="Alpha Witherwood", target_enemy="wolf")  # → The Witherwood
+    content.quests["alpha_choir"] = _hidden_test_quest(
+        name="Alpha Choir", target_enemy="censer_shade")  # → Unanswered Choir
     content.quests["alpha_special"] = _hidden_test_quest(
-        name="Alpha Special", requires_class=["warrior"])
+        name="Alpha Special", requires_class=["warrior"], target_enemy=None)
     player = _player(content)
-    # Mark alpha_bounty completed so the chain step is visible.
     state = make_state(player, content, ScriptedIO(["999"]), StubRandom(),
                        chronicle_dir=tmp_path)
-    state.flags["completed_quests"] = ["alpha_bounty"]
     try:
         locations.quest_board(state)
     except AssertionError:
         pass
     rendered = "\n".join(state.io.output)
-    # Headers present.
-    assert "── Bounties ──" in rendered
-    assert "── Chains ──" in rendered
-    assert "── Special ──" in rendered
-    # And in the expected order.
-    pos_bounty = rendered.index("── Bounties ──")
-    pos_chain = rendered.index("── Chains ──")
-    pos_special = rendered.index("── Special ──")
-    assert pos_bounty < pos_chain < pos_special
+    # The Witherwood is recommended_level 1 — should appear before higher
+    # zones in the listing.
+    assert "── The Witherwood" in rendered
+    assert "── The Unanswered Choir" in rendered
+    # The unmappable "alpha_special" quest lands in the Special & Chain
+    # bucket, which always sorts last.
+    assert "── Special & Chain ──" in rendered
+    pos_wood = rendered.index("── The Witherwood")
+    pos_choir = rendered.index("── The Unanswered Choir")
+    pos_special = rendered.index("── Special & Chain ──")
+    # Witherwood (lvl 1) comes before Choir (lvl 6); special always last.
+    assert pos_wood < pos_choir < pos_special
 
 
-def test_board_skips_empty_category_headers(content, tmp_path):
-    """A category with no visible quests has no header."""
-    # Restrict the catalog to a controlled set: one bounty, one chain step,
-    # and zero specials. Authored content adds specials over time, so the
-    # test needs to assert about an isolated catalog or the assertion
-    # 'no Special header' becomes a content-dependent flake.
+def test_board_skips_empty_zone_headers(content, tmp_path):
+    """A zone with no visible quests gets no header."""
+    # Restrict catalog to a controlled set: one Witherwood bounty + one
+    # chain step (also targeting a Witherwood enemy). No Choir or Special
+    # quests — so those headers should not appear.
     content.quests = {
         "wolf_cull": content.quests["wolf_cull"],
         "solo_chain": _hidden_test_quest(
-            name="Solo Chain", requires_quest=["wolf_cull"]),
+            name="Solo Chain",
+            target_enemy="wolf",
+            requires_quest=["wolf_cull"]),
     }
     player = _player(content)
     state = make_state(player, content, ScriptedIO(["999"]), StubRandom(),
@@ -1473,12 +1479,11 @@ def test_board_skips_empty_category_headers(content, tmp_path):
     except AssertionError:
         pass
     rendered = "\n".join(state.io.output)
-    # There are still default bounties visible — Bounties header should show.
-    assert "── Bounties ──" in rendered
-    # The chain step is visible — Chains header should show.
-    assert "── Chains ──" in rendered
-    # No special quest visible — Special header should NOT show.
-    assert "── Special ──" not in rendered
+    # The Witherwood header should show (both quests target wolves).
+    assert "── The Witherwood" in rendered
+    # No other zone or Special headers should be present.
+    assert "── The Unanswered Choir" not in rendered
+    assert "── Special & Chain ──" not in rendered
 
 
 def test_board_numbering_stays_sequential_across_categories(content, tmp_path):

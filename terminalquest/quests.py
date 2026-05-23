@@ -106,13 +106,17 @@ def scan_hidden_quest_triggers(state):
     return [qid for qid, _ in triggered_now]
 
 
-# --- Phase-1 Batch-9: board UI categorization -----------------------------
+# --- Board UI grouping ----------------------------------------------------
 #
-# A flat catalog works fine for the 6 cleanse-gated bounties. At the
-# 2000-quest design horizon, players need visual grouping to navigate.
-# The board now groups visible quests into three buckets — Bounties,
-# Chains, Special — with headers above each, while the numbering stays
-# sequential across the whole list (player UX unchanged: pick a number).
+# Original Batch-9 grouping was by category (bounty / chain / special).
+# v3.1: the player feedback was that the board doesn't tell them WHERE
+# to go to complete a quest. The board now groups by ZONE — derived from
+# each quest's target_enemy via the zones where that enemy spawns — sorted
+# by zone recommended_level so lower-tier work appears first. Numbering
+# stays sequential across the whole list (player UX unchanged: pick a
+# number). Quests whose target can't be resolved to a zone (chains,
+# specials, composition quests at named altars) land in a final "Special
+# & Chain" bucket.
 
 _QUEST_CATEGORY_ORDER = ("bounty", "chain", "special")
 _QUEST_CATEGORY_HEADERS = {
@@ -121,24 +125,15 @@ _QUEST_CATEGORY_HEADERS = {
     "special": "── Special ──",
 }
 
+_SPECIAL_ZONE_LABEL = "Special & Chain"
+_SPECIAL_ZONE_KEY = "__special__"
+
 
 def _quest_category(quest):
     """Return one of 'bounty' / 'chain' / 'special' for the board UI.
 
-    Heuristic:
-      * 'chain'   — has any chain-shape field (requires_quest, denies_quest,
-                    or chain_next).
-      * 'special' — has any "rare-condition" gate or unusual completion:
-                    requires_mark(s), requires_class, requires_ending,
-                    requires_discovery, requires_chronicle_entry,
-                    completion_condition, or any reward_* field beyond
-                    the default gold+consumable.
-      * 'bounty'  — everything else (the cleanse-gated kill/trophy basics).
-
-    A quest can match multiple heuristics; the FIRST match wins in
-    chain → special → bounty order. This is deliberate: chains are
-    structurally distinctive; specials are *content*-distinctive;
-    bounties are the rest.
+    Kept as a per-quest tag (shown inline) — the primary grouping is now
+    by zone (see ``_group_catalog_by_zone``).
     """
     if (quest.get("requires_quest")
             or quest.get("denies_quest")
@@ -160,10 +155,11 @@ def _quest_category(quest):
 
 
 def _group_catalog_by_category(catalog):
-    """Order ``catalog`` (list of (qid, quest)) by category.
+    """Order ``catalog`` (list of (qid, quest)) by category — legacy.
 
-    Within each category, original ordering is preserved.
-    Returns a list of (category_label, qid, quest) tuples in display order.
+    Kept for any external caller that imported it; the board itself now
+    uses ``_group_catalog_by_zone``. Returns a list of
+    ``(category_label, qid, quest)`` tuples in display order.
     """
     by_cat = {cat: [] for cat in _QUEST_CATEGORY_ORDER}
     for qid, quest in catalog:
@@ -175,6 +171,103 @@ def _group_catalog_by_category(catalog):
         rows.append(("__header__", cat, None))
         for qid, quest in by_cat[cat]:
             rows.append((cat, qid, quest))
+    return rows
+
+
+# --- Zone resolution ------------------------------------------------------
+
+
+def _enemy_zones_map(content):
+    """Build ``{enemy_id: {zone_id: recommended_level}}`` from locations.
+
+    Cached on the content object (it's immutable after load). Used by
+    ``_quest_zone_info`` to figure out where each bounty's target lives.
+    """
+    cached = getattr(content, "_enemy_zones_cache", None)
+    if cached is not None:
+        return cached
+    out = {}
+    for lid, loc in content.locations.items():
+        level = loc.get("recommended_level", 0)
+        for enc in loc.get("encounters", []):
+            if enc.get("type") == "combat":
+                for eid in enc.get("enemies", []):
+                    out.setdefault(eid, {})[lid] = level
+    try:
+        content._enemy_zones_cache = out
+    except (AttributeError, TypeError):  # frozen/slotted content
+        pass
+    return out
+
+
+def _quest_zone_info(quest, content):
+    """Return ``(zone_id, zone_name, recommended_level)`` for a quest.
+
+    The zone is where the player should go to make progress. For a quest
+    with ``target_enemy`` or ``target_trophy``, we pick the lowest-level
+    zone where that enemy spawns (most accessible). Composition quests
+    point at their altar. Quests we can't resolve — chains, specials,
+    abstract quests — return ``(_SPECIAL_ZONE_KEY, "Special & Chain", 99)``
+    so they sort to the end of the board.
+    """
+    target = quest.get("target_enemy")
+    if target is None:
+        target = quest.get("target_trophy")
+    # Composition quests — go to their altar.
+    if target is None:
+        comp = quest.get("target_composition")
+        if comp and comp.get("altar"):
+            altar_id = comp["altar"]
+            altar_loc = content.locations.get(altar_id, {})
+            return (altar_id,
+                    altar_loc.get("name", altar_id),
+                    altar_loc.get("recommended_level", 0))
+        return (_SPECIAL_ZONE_KEY, _SPECIAL_ZONE_LABEL, 99)
+
+    # Trophy quests — find the enemy that drops this trophy, then map.
+    if "target_enemy" not in quest and "target_trophy" in quest:
+        trophy = quest["target_trophy"]
+        for eid, e in content.enemies.items():
+            if e.get("trophy") == trophy:
+                target = eid
+                break
+
+    zones_for_enemy = _enemy_zones_map(content).get(target, {})
+    if not zones_for_enemy:
+        return (_SPECIAL_ZONE_KEY, _SPECIAL_ZONE_LABEL, 99)
+
+    # Lowest-level zone wins (the most accessible place to fight this enemy).
+    zone_id = min(zones_for_enemy, key=zones_for_enemy.get)
+    zone_loc = content.locations.get(zone_id, {})
+    return (zone_id,
+            zone_loc.get("name", zone_id),
+            zones_for_enemy[zone_id])
+
+
+def _group_catalog_by_zone(catalog, content):
+    """Order ``catalog`` (list of (qid, quest)) by zone, then by quest level.
+
+    Returns a list of rows for the board renderer:
+      * ``("__header__", zone_label, level)`` — section header line
+      * ``(zone_label, qid, quest)`` — a quest in the section
+
+    Zones are ordered by ``recommended_level`` (lowest first); the
+    "Special & Chain" bucket always lands last. Within each zone, quests
+    keep their authoring order — the order is stable as new content lands.
+    """
+    by_zone = {}  # zone_id → (label, level, [quests])
+    for qid, quest in catalog:
+        zid, zname, zlevel = _quest_zone_info(quest, content)
+        slot = by_zone.setdefault(zid, (zname, zlevel, []))
+        slot[2].append((qid, quest))
+    # Sort by (level, zname) so ties go alphabetic
+    ordered = sorted(by_zone.items(),
+                     key=lambda kv: (kv[1][1], kv[1][0]))
+    rows = []
+    for zid, (zname, zlevel, qlist) in ordered:
+        rows.append(("__header__", zname, zlevel))
+        for qid, quest in qlist:
+            rows.append((zname, qid, quest))
     return rows
 
 
@@ -370,34 +463,47 @@ def quest_board(state):
         # claim appear without needing to leave and re-enter.
         catalog = [(qid, q) for qid, q in state.content.quests.items()
                    if _quest_is_visible(q, state, cleanses)]
-        # Phase-1 Batch-9: group the catalog by category for navigation at
-        # the 2000-quest horizon. Numbering stays sequential across the
-        # whole list — `selectable` is the index→(qid, quest) mapping the
-        # input parser uses.
-        grouped = _group_catalog_by_category(catalog)
+        # v3.1: group by zone (derived from target_enemy) so the player can
+        # see WHERE to go and what level the work is. Numbering stays
+        # sequential across the whole list — `selectable` is the
+        # index→(qid, quest) mapping the input parser uses.
+        grouped = _group_catalog_by_zone(catalog, state.content)
         selectable = []  # [(qid, quest), ...] in display order
         io.show(hud(player))
         for row in grouped:
             if row[0] == "__header__":
-                _cat = row[1]
-                io.show(f"\n{_QUEST_CATEGORY_HEADERS[_cat]}")
+                zname, zlevel = row[1], row[2]
+                if zname == _SPECIAL_ZONE_LABEL:
+                    io.show(f"\n── {zname} ──")
+                else:
+                    io.show(f"\n── {zname} (recommended lvl {zlevel}) ──")
                 continue
-            _cat, quest_id, quest = row
+            _zname, quest_id, quest = row
             selectable.append((quest_id, quest))
             index = len(selectable)
             status = _quest_status(state, quest_id)
             progress = state.flags.get("quest_progress", {}).get(quest_id, 0)
-            # Phase-1 Batch-2: trophy-target quests display their trophy
-            # name in the progress tag, not target_enemy.
+            # Trophy-target quests display their trophy name in the
+            # progress tag, not target_enemy.
             target_label = (quest.get("target_enemy")
                             or quest.get("target_trophy")
                             or "?")
+            needed = quest.get("needed", 1)
+            gold = quest.get("reward_gold", 0)
             tag = {
-                "available":   f"[{quest['reward_gold']}g + a class flask]",
-                "active":      f"[{progress}/{quest['needed']} {target_label}s]",
-                "completable": "[READY TO CLAIM]",
+                "available":   f"[{needed} {target_label}s → {gold}g + flask]",
+                "active":      f"[{progress}/{needed} {target_label}s]",
+                "completable": "[✓ READY TO CLAIM]",
                 "claimed":     "[done]",
             }[status]
+            # Composition quests don't fit the kill-X-of-Y schema.
+            if quest.get("target_composition"):
+                tag = {
+                    "available":   f"[compose — {gold}g]" if gold else "[compose]",
+                    "active":      "[compose at the altar]",
+                    "completable": "[✓ READY TO CLAIM]",
+                    "claimed":     "[done]",
+                }[status]
             io.show(f"\n{index}. {quest['name']}  {tag}")
             io.show(f"   {quest.get('flavor', '')}")
         io.show(f"\n{len(selectable) + 1}. Leave")

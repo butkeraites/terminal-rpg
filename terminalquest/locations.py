@@ -58,11 +58,14 @@ from .sq_services import (  # noqa: F401
 # `locations.scan_hidden_quest_triggers` keep working.
 from .quests import (  # noqa: F401
     _apply_quest_rewards,
+    _enemy_zones_map,
     _group_catalog_by_category,
+    _group_catalog_by_zone,
     _hidden_quest_trigger_holds,
     _quest_category,
     _quest_is_visible,
     _quest_status,
+    _quest_zone_info,
     _quests_newly_visible,
     _run_composition_quest,
     quest_board,
