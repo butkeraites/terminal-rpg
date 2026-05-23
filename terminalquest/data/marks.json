@@ -11,7 +11,11 @@
       "min_visits": 2,
       "chance": 0.04
     },
-    "effect": null,
+    "effect": {
+      "stat": "max_stamina",
+      "delta": -1,
+      "flag": "forgot_smell_of_pine"
+    },
     "lines": [
       "You sit by a Witherwood pine for a moment.",
       "You realize you cannot remember what pine smells like.",
@@ -27,7 +31,11 @@
       "min_level": 3,
       "chance": 0.015
     },
-    "effect": null,
+    "effect": {
+      "stat": "max_hp",
+      "delta": -1,
+      "flag": "forgot_mothers_voice"
+    },
     "lines": [
       "You write your save. As you do, you try to think of your mother saying your name.",
       "You cannot hear it anymore. The sound is gone. The shape of her voice is gone.",
@@ -45,7 +53,9 @@
       ],
       "chance": 0.02
     },
-    "effect": null,
+    "effect": {
+      "flag": "forgot_a_road"
+    },
     "lines": [
       "You stand at the Crossroads and try to remember which road you used to take",
       "before this one. You cannot. You know there was another. The shape is missing.",
@@ -63,7 +73,9 @@
       ],
       "chance": 0.03
     },
-    "effect": null,
+    "effect": {
+      "flag": "forgot_a_song"
+    },
     "lines": [
       "You stop in the south aisle. There was a song you used to know. You hum the start.",
       "The next note is gone. The song closes itself inside you, like a door at the end of a hall.",
@@ -79,7 +91,9 @@
       "min_level": 5,
       "chance": 0.012
     },
-    "effect": null,
+    "effect": {
+      "flag": "forgot_your_first_friend"
+    },
     "lines": [
       "You write your save. You realize you no longer remember the name of the first",
       "child who chose you back. The face is also going. The whole afternoon is going.",
@@ -94,7 +108,9 @@
       ],
       "chance": 0.015
     },
-    "effect": null,
+    "effect": {
+      "flag": "forgot_a_word_you_loved"
+    },
     "lines": [
       "You are reading. You reach for a word you have loved your whole life.",
       "It is not there. You know its shape. You cannot say it. Atrél has the word.",
@@ -134,7 +150,11 @@
       "min_level": 4,
       "chance": 0.02
     },
-    "effect": null,
+    "effect": {
+      "stat": "max_hp",
+      "delta": -1,
+      "flag": "white_hair_above_temple"
+    },
     "lines": [
       "You touch your temple, after. There is a white hair where there was none.",
       "It is short. It is a child's grey. It will not change back. You leave it."
@@ -337,7 +357,9 @@
       "min_visits": 2,
       "chance": 0.02
     },
-    "effect": null,
+    "effect": {
+      "flag": "knew_the_engineer_would_smile"
+    },
     "lines": [
       "You walk into the Reach knowing — without checking — that the Engineer will",
       "smile at you today. She does. You do not know why you knew. The knowing stays."
@@ -419,7 +441,11 @@
       "min_visits": 5,
       "chance": 0.025
     },
-    "effect": null,
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "tree_leans_toward_you"
+    },
     "lines": [
       "The third tree from the road north has shifted very slightly. Its shadow at noon",
       "now falls across the path where last week it fell beside. The tree has been a tree",
@@ -460,7 +486,11 @@
       "requires_flag": "discoveries_seen",
       "chance": 0.04
     },
-    "effect": null,
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "tessa_knows_your_step"
+    },
     "lines": [
       "The Atrél-marker — Tessa's marker, you know now — registers your step the way soil",
       "registers rain. When you pass it again, the stone will be a degree warmer than the",
@@ -581,7 +611,11 @@
       ],
       "chance": 0.025
     },
-    "effect": null,
+    "effect": {
+      "stat": "defense",
+      "delta": -1,
+      "flag": "you_lose_a_glove"
+    },
     "lines": [
       "You realize, in the Gullet's wet, that you no longer have your left glove.",
       "You do not remember where it went. The Older Hand will find it, eventually, and set it among the one-of-each."
@@ -620,7 +654,10 @@
       ],
       "chance": 0.03
     },
-    "effect": null,
+    "effect": {
+      "consumable": "Wooden Button",
+      "flag": "found_a_button"
+    },
     "lines": [
       "There is a small wooden button in the silt at your boot. Worn, bored through.",
       "You pick it up. It was someone's, once. It is yours, in the smallest possible way."
@@ -637,7 +674,10 @@
       ],
       "chance": 0.05
     },
-    "effect": null,
+    "effect": {
+      "consumable": "Green Thread",
+      "flag": "found_a_thread"
+    },
     "lines": [
       "On the path between the bakery and the Small Un's, a thread of dyed wool —",
       "green, almost grey now. It must be the Small Un's. You pick it up. You knot",
@@ -671,7 +711,10 @@
       ],
       "chance": 0.03
     },
-    "effect": null,
+    "effect": {
+      "consumable": "Choir Feather",
+      "flag": "found_a_feather_in_the_choir"
+    },
     "lines": [
       "On the south aisle's bench, where the column eats the word 'name,' a single",
       "white feather. You take it. It weighs less than it should. The Choir does not",
@@ -713,7 +756,9 @@
       "min_visits": 2,
       "chance": 0.03
     },
-    "effect": null,
+    "effect": {
+      "flag": "river_takes_your_knot"
+    },
     "lines": [
       "You realize, three steps after the crossing, that the knot you tied in your cloak",
       "for warmth is gone. The river took it. The river is patient. It tries everything."
@@ -747,7 +792,9 @@
       "min_level": 4,
       "chance": 0.018
     },
-    "effect": null,
+    "effect": {
+      "flag": "lost_a_small_song"
+    },
     "lines": [
       "You hum, while saving, a tune you have hummed all your life. The third note",
       "is missing today. You try again. Still missing. You will not get it back.",
@@ -765,7 +812,11 @@
       ],
       "chance": 0.02
     },
-    "effect": null,
+    "effect": {
+      "stat": "max_stamina",
+      "delta": -1,
+      "flag": "lost_the_taste_of_salt"
+    },
     "lines": [
       "You taste the wet of the Gullet on your lips. There is no salt in it. You realize",
       "you no longer know what salt tastes like. You knew this morning. You do not now."
@@ -803,7 +854,9 @@
       "min_level": 5,
       "chance": 0.012
     },
-    "effect": null,
+    "effect": {
+      "flag": "lost_the_word_for_kindness"
+    },
     "lines": [
       "You reach for the word *kindness* while reading. The shape is there in your mouth,",
       "the meaning is there behind the ribs, but the word itself has walked away. Atrél has",
@@ -1011,7 +1064,9 @@
       "min_level": 6,
       "chance": 0.04
     },
-    "effect": null,
+    "effect": {
+      "flag": "broke_kerris_promise"
+    },
     "lines": [
       "You save. You realize Kerris's name is no longer in your cloak's seam. It must",
       "have smudged out. You meant to write it again. You did not. Atrél has it now."
@@ -1052,7 +1107,9 @@
       "min_level": 6,
       "chance": 0.03
     },
-    "effect": null,
+    "effect": {
+      "flag": "broke_atrel_promise"
+    },
     "lines": [
       "You save. You realize — too late, again — that you did not bring the grief to",
       "Atrél's altar this run. You meant to. You meant well. Atrél's hands are open",
@@ -1091,7 +1148,9 @@
       ],
       "chance": 0.025
     },
-    "effect": null,
+    "effect": {
+      "flag": "almost_heard_your_name"
+    },
     "lines": [
       "The river is speaking. You almost hear your name in it. Not your name; close to it.",
       "You stop to listen. The river goes back to being water. The almost-hearing stays.",
@@ -1110,7 +1169,9 @@
       "min_visits": 2,
       "chance": 0.03
     },
-    "effect": null,
+    "effect": {
+      "flag": "almost_remembered_a_smell"
+    },
     "lines": [
       "Walking past Kerris's oven, you almost remember a smell that is older than you.",
       "Your grandmother, maybe. Your mother. You do not have the smell — only the",
@@ -1214,7 +1275,9 @@
       "min_visits": 2,
       "chance": 0.022
     },
-    "effect": null,
+    "effect": {
+      "flag": "halna_gave_you_the_quiet_word"
+    },
     "lines": [
       "Halna, after the fight, says one word to you. Quiet. You do not hear which.",
       "You know it is a name. You know it is hers. You will not repeat it. The wood",
@@ -1349,7 +1412,10 @@
       "min_visits": 4,
       "chance": 0.02
     },
-    "effect": null,
+    "effect": {
+      "consumable": "Helka's Chisel",
+      "flag": "helka_gave_you_her_chisel"
+    },
     "lines": [
       "Helka, today, presses a chisel into your hand. Short, brass, worn smooth.",
       "  'I will not need this. I have the long one. Take it. Carve a name somewhere.'",
@@ -1396,7 +1462,9 @@
       ],
       "chance": 0.012
     },
-    "effect": null,
+    "effect": {
+      "flag": "helka_will_not_lift_her_elbow_for_you"
+    },
     "lines": [
       "Helka does not look at you today. Her elbow is in the mud. You did not break the",
       "Reaper. You did not come back. The beams are still at the dyke. The dyke is still",
@@ -1439,7 +1507,9 @@
       "min_visits": 5,
       "chance": 0.012
     },
-    "effect": null,
+    "effect": {
+      "flag": "the_lamp_caught_when_you_passed"
+    },
     "lines": [
       "One of the north-quarter lamps, today, catches as you walk under it. Just a flicker.",
       "The Lampkeeper, who is far down the lane, does not see. You see. You did not tap it.",
@@ -1458,7 +1528,9 @@
       "min_visits": 4,
       "chance": 0.018
     },
-    "effect": null,
+    "effect": {
+      "flag": "lampkeeper_handed_you_her_drawing"
+    },
     "lines": [
       "The Lampkeeper passes you, today, a folded paper. A child's drawing. A lamp. Tapped.",
       "  'My daughter drew this. I have kept it. I want one more person to have seen it.'",
@@ -1477,7 +1549,9 @@
       "min_level": 5,
       "chance": 0.018
     },
-    "effect": null,
+    "effect": {
+      "flag": "you_forgot_the_word_for_lamp"
+    },
     "lines": [
       "You save. You realize you no longer have the word for what the Lampkeeper tends.",
       "You can describe it. You cannot name it. The word is at Atrél's altar.",
@@ -1499,7 +1573,9 @@
       ],
       "chance": 0.012
     },
-    "effect": null,
+    "effect": {
+      "flag": "lampkeeper_will_not_look_up_for_you"
+    },
     "lines": [
       "The Lampkeeper does not look up today. Or tomorrow. Or again. You did something.",
       "You may not know what. The Pall took something from him you do not yet know about.",
@@ -1602,7 +1678,9 @@
       "requires_flag": "discoveries_seen",
       "chance": 0.015
     },
-    "effect": null,
+    "effect": {
+      "flag": "penitent_told_you_his_wifes_name"
+    },
     "lines": [
       "The Penitent, today, says one word to you. *Maren.* His wife's name. He says it",
       "quietly, into the snow at his feet, and then he is climbing again. He has carried",
@@ -1714,7 +1792,10 @@
       "min_visits": 3,
       "chance": 0.025
     },
-    "effect": null,
+    "effect": {
+      "consumable": "Charcoal Thread",
+      "flag": "you_carry_a_thread_of_the_small_uns_drawing"
+    },
     "lines": [
       "The Small Un hands you a thread of charcoal. From their drawing of you. The one with",
       "two faces. They do not say which face the thread is from. You do not ask. You will carry the thread."
@@ -1781,7 +1862,9 @@
       "min_visits": 3,
       "chance": 0.02
     },
-    "effect": null,
+    "effect": {
+      "flag": "you_heard_cael_say_kess"
+    },
     "lines": [
       "Cael, today, says her sister's name aloud. Out of the stone. You hear it. KESS.",
       "She has not said it aloud in centuries. She is using your visit to say it."
@@ -1825,7 +1908,9 @@
       ],
       "chance": 0.01
     },
-    "effect": null,
+    "effect": {
+      "flag": "cael_will_not_meet_your_eyes"
+    },
     "lines": [
       "Cael's eyes do not meet yours today. She has decided you are not the one.",
       "She is not angry. She is sad. She will keep sitting. You will keep climbing."
@@ -1868,7 +1953,10 @@
       "min_visits": 3,
       "chance": 0.02
     },
-    "effect": null,
+    "effect": {
+      "consumable": "Unsigned Page",
+      "flag": "atrel_handed_you_an_unsigned_page"
+    },
     "lines": [
       "Atrél, today, hands you a page. Folded. Unsigned. He says only: 'In case you find',",
       "'someone who will need it. Do not read it yet. It is not for you. Carry it.'",
@@ -1936,7 +2024,9 @@
       "min_visits": 5,
       "chance": 0.015
     },
-    "effect": null,
+    "effect": {
+      "flag": "atrel_will_not_take_yours_today"
+    },
     "lines": [
       "Atrél, today, lifts a hand to stop you. 'Not today. I am too full. Bring me yours",
       "again later. I am sorry. I am a small god. I have been carrying many small ones.'"
@@ -2000,7 +2090,9 @@
       "requires_flag": "promised_hearth_line",
       "chance": 0.5
     },
-    "effect": null,
+    "effect": {
+      "flag": "you_wrote_in_the_book_after_all"
+    },
     "lines": [
       "The book is on the corner of the hearth. The pencil is on the mantel. You write.",
       "You do not show the hearth-keeper. She does not ask. She knows you have written.",
@@ -2019,7 +2111,9 @@
       "min_visits": 6,
       "chance": 0.015
     },
-    "effect": null,
+    "effect": {
+      "flag": "the_fire_was_warmer_for_you"
+    },
     "lines": [
       "You sit by the hearth and the fire, today, is a degree warmer than it should be.",
       "You do not say so. The hearth-keeper does not say so. The fire knows. The fire is",
@@ -2038,7 +2132,9 @@
       "requires_flag": "hearth_lines_written",
       "chance": 0.05
     },
-    "effect": null,
+    "effect": {
+      "flag": "hearthkeeper_left_the_book_open_to_your_page"
+    },
     "lines": [
       "The book, today, is open. To the page with your line. The hearth-keeper has been",
       "reading it. She does not say so. She turns a page when you sit down. You see what",
@@ -2082,7 +2178,9 @@
       "min_visits": 4,
       "chance": 0.025
     },
-    "effect": null,
+    "effect": {
+      "flag": "the_reader_wrote_a_line_for_you"
+    },
     "lines": [
       "The Reader, today, sets a folded paper at your spot before you arrive. A single line.",
       "  'I have been watching the way you walk. You walk like someone who is still here.'",
@@ -2147,7 +2245,9 @@
       "min_visits": 5,
       "chance": 0.015
     },
-    "effect": null,
+    "effect": {
+      "flag": "the_insomniac_marked_you_blue"
+    },
     "lines": [
       "There is a sixth blue mark on the Insomniac's beam, today, in a different blue than",
       "the others — colder, the colour of the lake at the inner curve of winter.",
@@ -2168,7 +2268,9 @@
       "min_visits": 6,
       "chance": 0.018
     },
-    "effect": null,
+    "effect": {
+      "flag": "piranesis_pencil_pointed_at_you"
+    },
     "lines": [
       "The Reader's pencil, set on the desk corner, is pointing at you when you arrive.",
       "Not quite at your chest. At your right hand. The Reader does not look up. The pencil has been doing this since you arrived, you realize."
@@ -2203,7 +2305,9 @@
       "requires_flag": "the_counted",
       "chance": 0.025
     },
-    "effect": null,
+    "effect": {
+      "flag": "insomniac_counted_your_cat"
+    },
     "lines": [
       "The Insomniac says, today: 'I have added a blue mark for your cat. It is the cat",
       "you have been thinking of. I do not need to know which one. Some climbers',",
@@ -2226,7 +2330,9 @@
       ],
       "chance": 0.012
     },
-    "effect": null,
+    "effect": {
+      "flag": "insomniac_will_not_count_you_today"
+    },
     "lines": [
       "The Insomniac, today, stops counting when you walk in. She waits. She starts again",
       "when you leave the room. She has paused on you. Not against you — pausing. She has",
@@ -2267,7 +2373,9 @@
       "min_level": 3,
       "chance": 0.5
     },
-    "effect": null,
+    "effect": {
+      "flag": "near_death_saw_your_grandmother"
+    },
     "lines": [
       "You are nearly down. At the edge of your sight, briefly, a face you have not seen",
       "in many years. Your grandmother. She does not say anything. She does not need to.",
@@ -2319,7 +2427,11 @@
       ],
       "chance": 0.4
     },
-    "effect": null,
+    "effect": {
+      "stat": "max_stamina",
+      "delta": -1,
+      "flag": "near_death_dropped_a_word"
+    },
     "lines": [
       "You shouted something to keep yourself upright. You do not remember what you shouted.",
       "Atrél heard. He has filed it. The word kept you on your feet. You will not need it again.",
@@ -2433,7 +2545,9 @@
       ],
       "chance": 0.3
     },
-    "effect": null,
+    "effect": {
+      "flag": "near_death_the_cat_saw_you"
+    },
     "lines": [
       "The cat — the same blue cat — was watching the whole time. From a tree, in the wood;",
       "from a windowsill, in the village. She did not blink. She did not move. She watched."
@@ -2550,7 +2664,11 @@
       "min_level": 4,
       "chance": 0.15
     },
-    "effect": null,
+    "effect": {
+      "stat": "attack",
+      "delta": -1,
+      "flag": "broken_fingernail_that_will_not_grow_back"
+    },
     "lines": [
       "A fingernail tore off in the fight. The bed is healing. The nail is not growing back.",
       "Some fingernails do this. They have decided. You did not ask them."
@@ -2876,7 +2994,9 @@
       "min_level": 4,
       "chance": 0.15
     },
-    "effect": null,
+    "effect": {
+      "flag": "weapon_took_a_notch"
+    },
     "lines": [
       "Your weapon has taken a notch. Small. On the edge. From a blow you did not see coming.",
       "It will not affect the cut. You will see it for the rest of your weapon's life."
@@ -2912,7 +3032,9 @@
       "min_level": 5,
       "chance": 0.12
     },
-    "effect": null,
+    "effect": {
+      "flag": "weapon_made_a_sound_it_never_made_before"
+    },
     "lines": [
       "In the middle of the fight, your weapon made a sound it has never made before.",
       "A small ringing. Old. Older than the iron it is made of. You did not stop to listen.",
@@ -2945,7 +3067,9 @@
       "min_level": 4,
       "chance": 0.15
     },
-    "effect": null,
+    "effect": {
+      "flag": "weapon_kept_a_drop_of_blood_in_its_seam"
+    },
     "lines": [
       "There is a drop of dried blood in the seam of the hilt where the wood meets the brass.",
       "You cannot clean it out. It is too deep. It will stay there for as long as you carry the weapon."
@@ -3104,7 +3228,9 @@
       "min_visits": 3,
       "chance": 0.2
     },
-    "effect": null,
+    "effect": {
+      "flag": "the_wood_held_its_breath_for_you"
+    },
     "lines": [
       "The Witherwood went quiet during the worst part of this fight. Not the silence of a",
       "wood about to ambush you. The silence of a wood that is paying attention. You won."
@@ -3123,7 +3249,9 @@
       "min_visits": 2,
       "chance": 0.2
     },
-    "effect": null,
+    "effect": {
+      "flag": "the_river_dimmed_for_you"
+    },
     "lines": [
       "The river — the Reach's river — went still during the worst part of this fight.",
       "You did not see it from where you stood. The Engineer saw, from the bridge. She did not say anything. The river was paying attention."
@@ -3138,7 +3266,11 @@
       "min_level": 6,
       "chance": 0.12
     },
-    "effect": null,
+    "effect": {
+      "stat": "max_hp",
+      "delta": -1,
+      "flag": "your_first_kill_caught_up_to_you"
+    },
     "lines": [
       "After the fight, the face of your very first kill — the gaunt wolf, the bandit, the boar,",
       "whichever it was — comes back to you. You cannot quite see it. Atrél has been holding",
@@ -3232,7 +3364,9 @@
       "min_visits": 2,
       "chance": 0.2
     },
-    "effect": null,
+    "effect": {
+      "flag": "reach_water_remembered_your_face"
+    },
     "lines": [
       "The Reach water, today, is still. It is still in a particular way — the way water is",
       "still when it is paying attention. You see your face in it. The water has seen your",
@@ -3297,7 +3431,11 @@
       "min_visits": 4,
       "chance": 0.18
     },
-    "effect": null,
+    "effect": {
+      "stat": "defense",
+      "delta": 1,
+      "flag": "reach_kept_your_step"
+    },
     "lines": [
       "Walking the Reach today, your step matched the step of someone who walked here before.",
       "Helka's, probably. Tace's, possibly. You will not know whose. The Reach has matched you",
@@ -3316,7 +3454,11 @@
       "min_level": 4,
       "chance": 0.18
     },
-    "effect": null,
+    "effect": {
+      "stat": "max_stamina",
+      "delta": -1,
+      "flag": "reach_drowned_a_song_you_loved"
+    },
     "lines": [
       "Crossing the Reach, you hum a song you have always known. The first verse gets through.",
       "The water takes the second. You sing the third without the second; it sounds wrong now.",
@@ -3359,7 +3501,9 @@
       ],
       "chance": 0.22
     },
-    "effect": null,
+    "effect": {
+      "flag": "reach_river_took_your_hairband"
+    },
     "lines": [
       "The river took something small today. Your hairband, or a bootlace, or a button.",
       "You do not notice until later. The river takes one small thing every other crossing."
@@ -3401,7 +3545,11 @@
       ],
       "chance": 0.1
     },
-    "effect": null,
+    "effect": {
+      "stat": "max_stamina",
+      "delta": -1,
+      "flag": "reach_did_not_promise_the_field"
+    },
     "lines": [
       "You walk past the drowned furrows. They are still drowned. You did not promise them",
       "anything. You did not need to. The field has decided about that. It will be slower",
@@ -3441,7 +3589,9 @@
       "min_visits": 2,
       "chance": 0.2
     },
-    "effect": null,
+    "effect": {
+      "flag": "holds_doorpost_remembered_a_name"
+    },
     "lines": [
       "Walking past a doorpost today, the wood was warmer than the air. You touched it.",
       "It cooled while you held it. The post remembered, briefly, the hand that used to",
@@ -3504,7 +3654,9 @@
       "min_visits": 3,
       "chance": 0.15
     },
-    "effect": null,
+    "effect": {
+      "flag": "holds_bread_bowl_warmed_when_you_passed"
+    },
     "lines": [
       "There is an old wooden bread bowl in one of the kitchens of the Holds. It is empty.",
       "Today, walking past, you put your hand on its rim. It was warmer than the air around it.",
@@ -3523,7 +3675,9 @@
       "min_level": 5,
       "chance": 0.2
     },
-    "effect": null,
+    "effect": {
+      "flag": "holds_you_forgot_a_grandmother"
+    },
     "lines": [
       "Walking the Holds, you think — without trying — of your grandmother. You can see her",
       "kitchen. You cannot see her face. You cannot remember her name. Atrél has the name.",
@@ -3589,7 +3743,9 @@
       "min_visits": 4,
       "chance": 0.18
     },
-    "effect": null,
+    "effect": {
+      "flag": "holds_you_walked_a_street_that_was_a_street"
+    },
     "lines": [
       "Walking down one of the lanes today, the lane was a lane again. Briefly. The doors",
       "were doors. The windows were windows. Then the water came back. It was a few seconds."
@@ -3627,7 +3783,10 @@
       ],
       "chance": 0.2
     },
-    "effect": null,
+    "effect": {
+      "consumable": "Brackmere Shard",
+      "flag": "holds_you_carry_a_shard_of_pottery"
+    },
     "lines": [
       "A piece of pottery, small, the colour of brackmere clay, is in your pocket when you",
       "leave the Holds. You do not remember picking it up. You will not put it down. The",
@@ -3646,7 +3805,10 @@
       "min_visits": 2,
       "chance": 0.2
     },
-    "effect": null,
+    "effect": {
+      "consumable": "Older Hand's Cup",
+      "flag": "gullet_older_hand_set_a_thing_aside"
+    },
     "lines": [
       "In the alcove, today, the Older Hand has set a single thing aside, separate from the",
       "one-of-each: a small tin cup with the handle wrapped in waxed thread. Beside it, a",
@@ -3665,7 +3827,9 @@
       ],
       "chance": 0.2
     },
-    "effect": null,
+    "effect": {
+      "flag": "gullet_dropped_a_word_into_the_throat"
+    },
     "lines": [
       "You spoke a word, today, in the Gullet. Out loud. You did not mean to. The throat",
       "took it. The word is gone now — not held by Atrél, not held by you. The throat keeps it.",
@@ -3726,7 +3890,9 @@
       ],
       "chance": 0.2
     },
-    "effect": null,
+    "effect": {
+      "flag": "gullet_lost_a_word_to_the_air"
+    },
     "lines": [
       "You save in the Gullet's wet. The air pulls one word out of your save. You did not",
       "feel it leave. Atrél is not in the Gullet. The throat is. The throat will have the word."
@@ -3768,7 +3934,10 @@
       "min_visits": 4,
       "chance": 0.15
     },
-    "effect": null,
+    "effect": {
+      "consumable": "Paired Button",
+      "flag": "gullet_found_a_button_pair"
+    },
     "lines": [
       "The Older Hand sets a wooden button on the slab today. The pair to the one in your",
       "pocket from the Drowned Holds. They do not say so. They do not need to. You match the buttons. You put both back in your pocket."
@@ -3809,7 +3978,9 @@
       "min_level": 5,
       "chance": 0.12
     },
-    "effect": null,
+    "effect": {
+      "flag": "gullet_mawmother_braced_for_you"
+    },
     "lines": [
       "The Maw-Mother, in the deep, braced. Not against you. For you. She bracing for whoever",
       "she will face today, in the future. She has decided you are someone she will face."
@@ -3851,7 +4022,9 @@
       "min_visits": 2,
       "chance": 0.2
     },
-    "effect": null,
+    "effect": {
+      "flag": "mourncross_open_door_closed"
+    },
     "lines": [
       "An open door in Mourncross — they are all open — closed today as you walked past it.",
       "Not all the way. A hand's width. You did not touch it. It closed because of you.",
@@ -3870,7 +4043,9 @@
       "min_visits": 3,
       "chance": 0.18
     },
-    "effect": null,
+    "effect": {
+      "flag": "mourncross_lamp_lit_briefly"
+    },
     "lines": [
       "A lamp in the north quarter caught when you passed under it. It went out again as you",
       "walked further. It was a child's tap that started it. The lamp is one the Lampkeeper's",
@@ -4010,7 +4185,9 @@
       "min_visits": 5,
       "chance": 0.15
     },
-    "effect": null,
+    "effect": {
+      "flag": "mourncross_heard_bell_for_someone"
+    },
     "lines": [
       "The Bellward rang the curfew bell, today, while you were standing in the lane.",
       "The bell, for half a beat, was for someone you knew. Not you. Someone. The bell knows."
@@ -4028,7 +4205,9 @@
       "min_visits": 999,
       "chance": 0.0
     },
-    "effect": null,
+    "effect": {
+      "flag": "bellward_bell_rang_for_living"
+    },
     "lines": [
       "You took the rope. You rang the bell yourself, four heartbeats in a hand the bellward never knew.",
       "Down in the lane, someone heard. They looked up. They were still breathing. They were named, once."
@@ -4072,7 +4251,9 @@
       ],
       "chance": 0.1
     },
-    "effect": null,
+    "effect": {
+      "flag": "mourncross_did_not_leave_the_flower"
+    },
     "lines": [
       "You walked past the five chairs without leaving anything today. You meant to. You did not.",
       "The wall did not blame you. The wall is patient. The wall has filed your not-leaving."
@@ -4090,7 +4271,9 @@
       "min_visits": 2,
       "chance": 0.2
     },
-    "effect": null,
+    "effect": {
+      "flag": "choir_almost_sang_you"
+    },
     "lines": [
       "The Choir, today, almost made a sound when you walked in. A held note. It did not finish.",
       "The Choir does not sing anymore. It almost sang you. You did not realize until you were out of the south aisle."
@@ -4177,7 +4360,9 @@
       "min_visits": 3,
       "chance": 0.2
     },
-    "effect": null,
+    "effect": {
+      "flag": "choir_pillar_ate_your_word"
+    },
     "lines": [
       "You whispered something near the column in the south transept. The column ate it.",
       "Eleven words pass through. The word you said was the twelfth. Atrél has not got it.",
@@ -4239,7 +4424,9 @@
       "min_visits": 4,
       "chance": 0.15
     },
-    "effect": null,
+    "effect": {
+      "flag": "choir_atrel_held_your_grief_briefly"
+    },
     "lines": [
       "Atrél, today, did not take anything. He only held what you brought, briefly, and set",
       "it back in your hands. 'Not for me,' he said. 'For now. Keep this one. It is teaching you.'"
@@ -4370,7 +4557,11 @@
       ],
       "chance": 0.15
     },
-    "effect": null,
+    "effect": {
+      "stat": "max_stamina",
+      "delta": -1,
+      "flag": "bone_tomb_kept_a_breath"
+    },
     "lines": [
       "You sighed once, against the wall, the kind of sigh that releases a thing. The wall took",
       "it. You walked out. The sigh did not come with you. You will not find it again. Whatever",
@@ -5324,7 +5515,9 @@
       ],
       "chance": 0.12
     },
-    "effect": null,
+    "effect": {
+      "flag": "save_dust_in_the_corner"
+    },
     "lines": [
       "There is dust in the corner of every save you make. Not much. The dust of all the runs",
       "before this one — yours and the others'. It is gathering. You cannot wipe it away. You",
