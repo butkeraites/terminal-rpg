@@ -47,3 +47,63 @@ jobs:
         with:
           name: ${{ matrix.asset }}
           path: dist/${{ matrix.asset }}
+
+  # Auto-deploy to itch.io on tag pushes. The build job emits one artifact
+  # per platform; this job downloads them all, stages a lean source bundle,
+  # and pushes each to its butler channel. The user only needs to set
+  # BUTLER_API_KEY in the repo secrets — see README/ROADMAP for instructions.
+  deploy-itch:
+    name: Deploy to itch.io
+    needs: build
+    runs-on: ubuntu-latest
+    if: startsWith(github.ref, 'refs/tags/v')
+    env:
+      BUTLER_API_KEY: ${{ secrets.BUTLER_API_KEY }}
+      ITCH_USER: abidlebob
+      ITCH_GAME: mournhold
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Butler
+        run: |
+          curl -L -o butler.zip https://broth.itch.zone/butler/linux-amd64/LATEST/archive/default
+          unzip butler.zip
+          chmod +x butler
+          sudo mv butler /usr/local/bin/butler
+          butler -V
+
+      - name: Download all artifacts from the build job
+        uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+
+      - name: Stage source bundle (lean — package + entrypoint + docs)
+        run: |
+          mkdir -p staging-source/design
+          rsync -a --exclude '__pycache__' terminalquest/ staging-source/terminalquest/
+          cp rpg.py README.md pyproject.toml ROADMAP.md staging-source/
+          cp design/cover.png staging-source/design/
+          du -sh staging-source/
+
+      - name: Resolve user-friendly version (strip leading 'v')
+        run: echo "USER_VERSION=${GITHUB_REF_NAME#v}" >> "$GITHUB_ENV"
+
+      - name: Push linux-x64
+        run: butler push artifacts/mournhold-linux-x64/mournhold-linux-x64
+          "$ITCH_USER/$ITCH_GAME:linux-x64" --userversion "$USER_VERSION"
+
+      - name: Push osx-arm64
+        run: butler push artifacts/mournhold-macos-arm64/mournhold-macos-arm64
+          "$ITCH_USER/$ITCH_GAME:osx-arm64" --userversion "$USER_VERSION"
+
+      - name: Push windows-x64
+        run: butler push artifacts/mournhold-windows-x64.exe/mournhold-windows-x64.exe
+          "$ITCH_USER/$ITCH_GAME:windows-x64" --userversion "$USER_VERSION"
+
+      - name: Push source
+        run: butler push staging-source
+          "$ITCH_USER/$ITCH_GAME:source" --userversion "$USER_VERSION"
+
+      - name: Show resulting channel state
+        run: butler status "$ITCH_USER/$ITCH_GAME"
