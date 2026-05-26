@@ -19,7 +19,7 @@ from .state import GameState
 
 SAVE_VERSION = 3
 DEFAULT_SAVE_DIR = Path.home() / ".terminalquest" / "saves"
-SLOTS = (1, 2, 3)
+SLOTS = (1, 2, 3, 4, 5, 6, 7, 8)
 
 
 class SaveError(ValueError):

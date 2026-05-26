@@ -61,16 +61,17 @@ def _save_menu(state):
     io.show("\nSave slots:")
     for slot in saves.SLOTS:
         io.show(f"{slot}. {saved.get(slot, '(empty)')}")
-    io.show("4. Cancel")
+    cancel = len(saves.SLOTS) + 1
+    io.show(f"{cancel}. Cancel")
     choice = io.ask("\nSave to which slot? ")
-    if choice in ("1", "2", "3"):
+    if choice.isdigit() and int(choice) in saves.SLOTS:
         saves.save_game(state, int(choice))
         io.show(f"\n💾 Game saved to slot {choice}.")
         # v1.51 — saving is a fire site. Atrél is the kingdom's audit log.
         marks.roll_at(state, "save_action")
         # Phase-1 Batch-7: the saving sometimes reveals a slip.
         scan_hidden_quest_triggers(state)
-    elif choice != "4":
+    elif choice != str(cancel):
         io.show("\n❌ Invalid choice!")
     io.pause(1)
 

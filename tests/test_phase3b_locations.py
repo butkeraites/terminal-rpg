@@ -73,7 +73,8 @@ class TestSaveMenu:
         save_game.assert_called_once_with(state, 1)
 
     def test_save_cancel(self, state):
-        state.io = ScriptedIO(["4"])
+        cancel = len(saves.SLOTS) + 1
+        state.io = ScriptedIO([str(cancel)])
         with patch.object(saves, "list_saves", return_value={}):
             locations._save_menu(state)
         # No save called; just a clean exit (no error message)

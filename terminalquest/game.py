@@ -213,9 +213,10 @@ def load_menu(content, io, rng):
     io.show("\nSaved games:")
     for slot, summary in saved.items():
         io.show(f"{slot}. {summary}")
-    io.show("4. Cancel")
+    cancel = len(saves.SLOTS) + 1
+    io.show(f"{cancel}. Cancel")
     choice = io.ask("\nLoad which slot? ")
-    if choice in ("1", "2", "3") and int(choice) in saved:
+    if choice.isdigit() and int(choice) in saved:
         try:
             return saves.load_game(int(choice), content, io, rng)
         except saves.SaveError:
